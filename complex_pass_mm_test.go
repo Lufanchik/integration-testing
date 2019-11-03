@@ -8,8 +8,25 @@ import (
 
 var (
 	casesComplexPass = Cases{
-		//две бесплатные поездки, и обрыв комплексной поездки по монорельсу (может быть только последним)
+
+		// MM - MM
 		{
+			&Pass{
+				PaymentType: PaymentTypeFullPayment,
+				RequestType: RequestTypeOnline,
+				Carrier:     carriers.Carrier_MM,
+				SubCarrier:  carriers.SubCarrier_MM_SUB,
+				ExpectedSum: 4200,
+			},
+			&Pass{
+				PaymentType: PaymentTypeFullPayment,
+				RequestType: RequestTypeOnline,
+				Carrier:     carriers.Carrier_MM,
+				SubCarrier:  carriers.SubCarrier_MM_SUB,
+				ExpectedSum: 4200,
+			},
+
+			//две бесплатные поездки, и обрыв комплексной поездки по монорельсу (может быть только последним)
 			&Pass{
 				PaymentType: PaymentTypeFullPayment,
 				RequestType: RequestTypeOnline,

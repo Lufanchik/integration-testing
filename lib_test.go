@@ -59,6 +59,8 @@ type (
 		ExpectedSum uint32
 		//ссылка на проход в нашем кейсе, которую мы считаем стартовой
 		Parent int
+		//функция времени
+		Now func() uint64
 	}
 	//модификациф прохода
 	Updater struct {
@@ -100,7 +102,8 @@ func CardEmv() string {
 	return "ca5zfeN8X0VQGfocwEl/8WI1IGyfrOPVST9rtzVBBpPDYVKm/f1/r+gyPwRBANXrWt13q/ADa6VEoQU8u+Og0FPk2IzepajqqPEpxzHGZANjE5fygv7Hk/kblwu6Ktxj76AhU3Te1nlr5LhrfcsOLr3LbEfr2YXOi8GRX2FC/AHNJRumHCyF6r7aBB4EwoAM/gBk53y1TIvM84eq7G4b+z4w0p/le+FXb4DzuryOsj633DVEaWtMbv4A+HgqpdubQyFizkbDmiRLlcEkXztuqEJX/c1jFrR4LhA4/gU9YPcd0YggZQ53gqJ8b57HljbVAosjwuvWE4JaG4sF71sRUg=="
 }
 
-func Now() uint64 {
+var Now func() uint64
+var NowBackup = func() uint64 {
 	return uint64(time.Now().UnixNano())
 }
 
@@ -131,10 +134,7 @@ func PassOfflineRequest(tap *processing.TapRequest, p *Pass) (*processing.Offlin
 		}
 	}
 	response := &processing.OfflinePassResponse{
-		Id:      "",
-		Created: 0,
-		Result:  processing.PassStatus_SUCCESS,
-		Msg:     "",
+		Result: processing.PassStatus_SUCCESS,
 	}
 	return request, response
 }
@@ -152,12 +152,38 @@ func PassOnlineRequest(tap *processing.TapRequest, p *Pass) (*processing.OnlineP
 		}
 	}
 	response := &processing.OnlinePassResponse{
-		Id:      "",
 		Created: 0,
 		Result:  processing.PassStatus_SUCCESS,
-		Status:  processing.AuthStatus_SUCCESS_AUTH,
-		Msg:     "",
 	}
+	switch p.PaymentType {
+	case PaymentTypeFullPayment:
+		response.Status = processing.AuthStatus_SUCCESS_AUTH
+	case PaymentTypeFree:
+		response.Status = processing.AuthStatus_SUCCESS_FREE
+	}
+	return request, response
+}
+
+func AuthStatusRequest(p *Pass) (*processing.AuthRequest, *processing.AuthResponse) {
+	request := &processing.AuthRequest{
+		Id: p.ID,
+	}
+
+	response := &processing.AuthResponse{
+		Result:     processing.AuthResponse_SUCCESS_RESULT,
+		Resolution: processing.AuthResponse_AUTHORIZED,
+	}
+	switch p.PaymentType {
+	case PaymentTypeFullPayment:
+		response.Status = processing.AuthResponse_SUCCESS_STATUS
+		response.Auth = &processing.Auth{
+			Sum:  p.ExpectedSum,
+			Type: processing.Auth_CLASSIC,
+		}
+	case PaymentTypeFree:
+		response.Status = processing.AuthResponse_SUCCESS_FREE
+	}
+
 	return request, response
 }
 
@@ -176,7 +202,7 @@ func TapRequest(c carriers.SubCarrier, card *processing.Card, carrierID string) 
 				SubCarrier: c,
 			},
 			Card: card,
-			Sign: "",
+			Sign: gofakeit.BeerStyle(),
 		},
 	}
 	response := &processing.TapResponse{
@@ -338,6 +364,23 @@ func ValidatePass(t *testing.T, tap *processing.TapRequest, card *processing.Car
 	require.NoError(t, err)
 }
 
+func AuthStatus(t *testing.T, p *Pass) {
+	req, resp := AuthStatusRequest(p)
+	t.Run(p.Carrier.String()+"/twirp/sirocco.ProcessingAPI/AuthStatus - sub carrier: "+p.SubCarrier.String(), func(t *testing.T) {
+		object := httpExpect.POST("/" + p.Carrier.String() + "/twirp/sirocco.ProcessingAPI/AuthStatus").WithJSON(req).
+			Expect().
+			Status(http.StatusOK).Body().Raw()
+
+		response := &processing.AuthResponse{}
+		err := jsonpb.Unmarshal(strings.NewReader(object), response)
+		require.NoError(t, err)
+
+		resp.Created = response.Created
+		resp.Info = response.Info
+		assert.Equal(t, resp, response)
+	})
+}
+
 func NanoToMicro(tm uint64) uint64 {
 	return tm / uint64(time.Microsecond) * 1000
 }
@@ -350,6 +393,11 @@ func Passes(t *testing.T, cases Cases) {
 		for _, step := range scenario {
 			p, ok := step.(*Pass)
 			if ok {
+				if p.Now != nil {
+					Now = p.Now
+				} else {
+					Now = NowBackup
+				}
 				p.CarrierID = carrierID
 				tapReq := TapBySubCarrier(t, p, card)
 				timeRequest := PassBySubCarrier(t, tapReq, p)
@@ -363,6 +411,7 @@ func Passes(t *testing.T, cases Cases) {
 				}
 				time.Sleep(time.Millisecond * 200)
 				ValidatePass(t, tapReq, card, p, parent, timeRequest)
+				AuthStatus(t, p)
 			}
 			u, ok := step.(Updater)
 			if ok {

@@ -4,6 +4,7 @@ import (
 	"lab.siroccotechnology.ru/tp/common/messages/carriers"
 	"lab.siroccotechnology.ru/tp/common/messages/pass"
 	"testing"
+	"time"
 )
 
 var (
@@ -16,6 +17,9 @@ var (
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				ExpectedSum: 4200,
+				Now: func() uint64 {
+					return uint64(time.Now().UnixNano())
+				},
 			},
 			&Pass{
 				PaymentType: PaymentTypeFree,
@@ -26,14 +30,14 @@ var (
 			},
 			&Pass{
 				PaymentType: PaymentTypeFree,
-				RequestType: RequestTypeOnline,
+				RequestType: RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MMTS_SUB,
 				Parent:      1,
 			},
 			&Pass{
 				PaymentType: PaymentTypeFullPayment,
-				RequestType: RequestTypeOnline,
+				RequestType: RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				ExpectedSum: 4200,

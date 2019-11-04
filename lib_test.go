@@ -22,8 +22,8 @@ import (
 )
 
 const (
-	url     = "http://localhost:9090"
-	passUrl = "http://localhost:13380"
+	processingApiUrl = "http://localhost:9090"
+	passUrl          = "http://localhost:13380"
 )
 
 var (
@@ -32,9 +32,10 @@ var (
 )
 
 type (
-	PassPaymentType uint8
-	PassRequestType uint8
-	Cases           [][]interface{}
+	PaymentType uint8
+	RequestType uint8
+	AuthType    uint8
+	Cases       [][]interface{}
 )
 
 //варианты шагов, который мы можем использовать в кейсах
@@ -46,9 +47,11 @@ type (
 		//сгенерированный ид прохода от перевозчика, заполняется автоматически после создания
 		CarrierID string
 		//тип оплаты
-		PaymentType PassPaymentType
+		PaymentType PaymentType
 		//тип прохода
-		RequestType PassRequestType
+		RequestType RequestType
+		//тип авторизации
+		AuthType AuthType
 		//ид саб перевозчика
 		SubCarrier carriers.SubCarrier
 		//ид перевозчика
@@ -61,6 +64,8 @@ type (
 		Parent int
 		//функция времени
 		Now func() uint64
+		//время отведенное на запрос в миллисекундах, работает только с онлайном
+		Duration uint32
 	}
 	//модификациф прохода
 	Updater struct {
@@ -72,13 +77,18 @@ type (
 )
 
 const (
-	PaymentTypeFree = iota + 1
+	PaymentTypeFree PaymentType = iota + 1
 	PaymentTypeFullPayment
 )
 
 const (
-	RequestTypeOffline = iota + 1
+	RequestTypeOffline RequestType = iota + 1
 	RequestTypeOnline
+)
+
+const (
+	AuthTypeCorrect AuthType = iota
+	AuthTypeIncorrect
 )
 
 func init() {
@@ -98,8 +108,12 @@ func CardPan() string {
 	return strconv.Itoa(gofakeit.CreditCardNumber())
 }
 
-func CardEmv() string {
+func CardEmvCorrect() string {
 	return "ca5zfeN8X0VQGfocwEl/8WI1IGyfrOPVST9rtzVBBpPDYVKm/f1/r+gyPwRBANXrWt13q/ADa6VEoQU8u+Og0FPk2IzepajqqPEpxzHGZANjE5fygv7Hk/kblwu6Ktxj76AhU3Te1nlr5LhrfcsOLr3LbEfr2YXOi8GRX2FC/AHNJRumHCyF6r7aBB4EwoAM/gBk53y1TIvM84eq7G4b+z4w0p/le+FXb4DzuryOsj633DVEaWtMbv4A+HgqpdubQyFizkbDmiRLlcEkXztuqEJX/c1jFrR4LhA4/gU9YPcd0YggZQ53gqJ8b57HljbVAosjwuvWE4JaG4sF71sRUg=="
+}
+
+func CardEmvIncorrect() string {
+	return "WovYAaagxXfxea2U/5cMzTN1MEQIJZAUTovU5NDItD4qB6PyP0rzjg3nnXjKH3XVaVMjUSHJ5YiIJ2Ji4jX3E5bj+Ufe5BntEUhjqyphe8HQz+jJdhWfld+Bm61C8yeeq3qhYbf7zgswrh3d2Gd5L6h4PlKVbbCuGLI8KOmTmfoqQXX5dtF+ZHum7l5BUIvGn3nFj1Fbkye0iKcxHXyToZd/l/M9FuRy9/klAgKYPScYlYWRSwH2I5HZs5qDKJi/cXscLjYoF6h9xxRJMsXJr68BQ5E1bx9sG5mlBb3Pzeytns8Qct9pziuUdDUnFEd2xgx07ul7jNu40k9BARcyfQ=="
 }
 
 var Now func() uint64
@@ -114,10 +128,18 @@ func Card() *processing.Card {
 		Pan:    CardPan(),
 		Bin:    CardBin(),
 		Exp:    CardExp(),
-		Emv:    CardEmv(),
 		Token: &processing.Token{
 			Type: processing.Token_SAMSUNG_PAY,
 		},
+	}
+}
+
+func GenerateEmv(card *processing.Card, p *Pass) {
+	switch p.AuthType {
+	case AuthTypeCorrect:
+		card.Emv = CardEmvCorrect()
+	case AuthTypeIncorrect:
+		card.Emv = CardEmvIncorrect()
 	}
 }
 
@@ -161,6 +183,15 @@ func PassOnlineRequest(tap *processing.TapRequest, p *Pass) (*processing.OnlineP
 	case PaymentTypeFree:
 		response.Status = processing.AuthStatus_SUCCESS_FREE
 	}
+
+	if p.AuthType == AuthTypeIncorrect {
+		response.Status = processing.AuthStatus_FAILURE_ISSUER
+	}
+
+	if p.Duration > 0 {
+		request.Timeout = p.Duration
+	}
+
 	return request, response
 }
 
@@ -182,6 +213,10 @@ func AuthStatusRequest(p *Pass) (*processing.AuthRequest, *processing.AuthRespon
 		}
 	case PaymentTypeFree:
 		response.Status = processing.AuthResponse_SUCCESS_FREE
+	}
+
+	if p.AuthType == AuthTypeIncorrect {
+		response.Resolution = processing.AuthResponse_FAILURE
 	}
 
 	return request, response
@@ -307,7 +342,7 @@ func ValidatePass(t *testing.T, tap *processing.TapRequest, card *processing.Car
 		Pan:    card.Pan,
 		Bin:    card.Bin,
 		Exp:    card.Exp,
-		Emv:    card.Emv,
+		Emv:    cardDB.Emv,
 		Token: &processing.Token{
 			Type: card.Token.Type,
 			Par:  card.Token.Par,
@@ -360,6 +395,11 @@ func ValidatePass(t *testing.T, tap *processing.TapRequest, card *processing.Car
 		expectPass.IsComplex = true
 		expectPass.ParentComplexId = parent.ID
 	}
+
+	if p.AuthType == AuthTypeIncorrect {
+		expectPass.IsAuth = false
+	}
+
 	assert.Equal(t, expectPass, passDB)
 	require.NoError(t, err)
 }
@@ -386,7 +426,7 @@ func NanoToMicro(tm uint64) uint64 {
 }
 
 func Passes(t *testing.T, cases Cases) {
-	httpExpect = httpexpect.New(t, url)
+	httpExpect = httpexpect.New(t, processingApiUrl)
 	for _, scenario := range cases {
 		card := Card()
 		carrierID := uuid.New().String()
@@ -398,6 +438,7 @@ func Passes(t *testing.T, cases Cases) {
 				} else {
 					Now = NowBackup
 				}
+				GenerateEmv(card, p)
 				p.CarrierID = carrierID
 				tapReq := TapBySubCarrier(t, p, card)
 				timeRequest := PassBySubCarrier(t, tapReq, p)
@@ -409,6 +450,7 @@ func Passes(t *testing.T, cases Cases) {
 					}
 					parent = pr
 				}
+				//ждем сообщения из rabbit mq
 				time.Sleep(time.Millisecond * 200)
 				ValidatePass(t, tapReq, card, p, parent, timeRequest)
 				AuthStatus(t, p)

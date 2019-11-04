@@ -61,6 +61,8 @@ type (
 		Parent int
 		//функция времени
 		Now func() uint64
+		//время отведенное на запрос в миллисекундах, работает только с онлайном
+		Duration uint32
 	}
 	//модификациф прохода
 	Updater struct {
@@ -161,6 +163,11 @@ func PassOnlineRequest(tap *processing.TapRequest, p *Pass) (*processing.OnlineP
 	case PaymentTypeFree:
 		response.Status = processing.AuthStatus_SUCCESS_FREE
 	}
+
+	if p.Duration > 0 {
+		request.Timeout = p.Duration
+	}
+
 	return request, response
 }
 
@@ -409,6 +416,7 @@ func Passes(t *testing.T, cases Cases) {
 					}
 					parent = pr
 				}
+				//ждем сообщения из rabbit mq
 				time.Sleep(time.Millisecond * 200)
 				ValidatePass(t, tapReq, card, p, parent, timeRequest)
 				AuthStatus(t, p)

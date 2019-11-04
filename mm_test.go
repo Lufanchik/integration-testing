@@ -156,7 +156,7 @@ var (
 )
 
 var (
-	// MM - MCK - MM
+	// MM - MCK - MM - MM
 	casesComplexPassMMMCKMMMM = Cases{
 
 		{
@@ -175,11 +175,18 @@ var (
 				Parent:      1,
 			},
 			&Pass{
-				PaymentType: PaymentTypeFullPayment,
+				PaymentType: PaymentTypeFree,
 				RequestType: RequestTypeOnline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				Parent:      1,
+			},
+			&Pass{
+				PaymentType: PaymentTypeFullPayment,
+				RequestType: RequestTypeOnline,
+				Carrier:     carriers.Carrier_MM,
+				SubCarrier:  carriers.SubCarrier_MM_SUB,
+				ExpectedSum: 4200,
 			},
 		},
 	}

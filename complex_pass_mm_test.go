@@ -7,7 +7,7 @@ import (
 )
 
 var (
-	casesComplexPass = Cases{
+	ComplexPassMM = Cases{
 		//две бесплатные поездки, и обрыв комплексной поездки по монорельсу (может быть только последним)
 		{
 			&Pass{
@@ -29,14 +29,14 @@ var (
 			},
 			&Pass{
 				PaymentType: PaymentTypeFree,
-				RequestType: RequestTypeOffline,
+				RequestType: RequestTypeOnline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MMTS_SUB,
 				Parent:      1,
 			},
 			&Pass{
 				PaymentType: PaymentTypeFullPayment,
-				RequestType: RequestTypeOffline,
+				RequestType: RequestTypeOnline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				ExpectedSum: 4200,
@@ -102,5 +102,5 @@ var (
 )
 
 func TestComplexPass(t *testing.T) {
-	Passes(t, casesComplexPass)
+	Passes(t, ComplexPassMM)
 }

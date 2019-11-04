@@ -14,7 +14,6 @@ var (
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				ExpectedSum: 4200,
-				Duration:    1,
 			},
 		},
 	}

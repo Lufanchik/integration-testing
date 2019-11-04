@@ -2,7 +2,6 @@ package http_test
 
 import (
 	"lab.siroccotechnology.ru/tp/common/messages/carriers"
-	"lab.siroccotechnology.ru/tp/common/messages/pass"
 	"testing"
 	"time"
 )
@@ -58,13 +57,14 @@ var (
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				ExpectedSum: 4200,
+				AuthType:    AuthTypeIncorrect,
 			},
-			Updater{
-				f: func(tap *pass.Tap) {
-					tap.IsAuth = false
-				},
-				target: 2,
-			},
+			//Updater{
+			//	f: func(tap *pass.Tap) {
+			//		tap.IsAuth = false
+			//	},
+			//	target: 2,
+			//},
 			&Pass{
 				PaymentType: PaymentTypeFree,
 				RequestType: RequestTypeOnline,

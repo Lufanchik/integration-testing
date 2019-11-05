@@ -6,6 +6,7 @@ import (
 	"time"
 )
 
+////////////////////////////////////////////
 func TestComplexPassMCKMCK(t *testing.T) {
 	Passes(t, casesComplexPassMCKMCK)
 }
@@ -13,7 +14,6 @@ func TestComplexPassMCKMCK(t *testing.T) {
 var (
 	// MCK - MCK
 	casesComplexPassMCKMCK = Cases{
-
 		{
 			&Pass{
 				PaymentType: PaymentTypeFullPayment,
@@ -36,14 +36,14 @@ var (
 	}
 )
 
+////////////////////////////////////////////
 func TestComplexPassMCKMMMM(t *testing.T) {
 	Passes(t, casesComplexPassMCKMMMM)
 }
 
 var (
-	// MM - MM
+	// MCK - MM - MM
 	casesComplexPassMCKMMMM = Cases{
-
 		{
 			&Pass{
 				PaymentType: PaymentTypeFullPayment,
@@ -56,22 +56,30 @@ var (
 				},
 			},
 			&Pass{
+				PaymentType: PaymentTypeFree,
+				RequestType: RequestTypeOnline,
+				Carrier:     carriers.Carrier_MM,
+				SubCarrier:  carriers.SubCarrier_MM_SUB,
+				Parent:      1,
+			},
+			&Pass{
 				PaymentType: PaymentTypeFullPayment,
 				RequestType: RequestTypeOnline,
 				Carrier:     carriers.Carrier_MM,
-				SubCarrier:  carriers.SubCarrier_MCK_SUB,
+				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				ExpectedSum: 4200,
 			},
 		},
 	}
 )
 
+////////////////////////////////////////////
 func TestComplexPassMCKMMMCK(t *testing.T) {
 	Passes(t, casesComplexPassMCKMMMCK)
 }
 
 var (
-	// MM - MM
+	// MCK - MM - MCK
 	casesComplexPassMCKMMMCK = Cases{
 
 		{
@@ -86,22 +94,23 @@ var (
 				},
 			},
 			&Pass{
-				PaymentType: PaymentTypeFullPayment,
+				PaymentType: PaymentTypeFree,
 				RequestType: RequestTypeOnline,
 				Carrier:     carriers.Carrier_MM,
-				SubCarrier:  carriers.SubCarrier_MCK_SUB,
-				ExpectedSum: 4200,
+				SubCarrier:  carriers.SubCarrier_MM_SUB,
+				Parent:      1,
 			},
 		},
 	}
 )
 
+////////////////////////////////////////////
 func TestComplexPassMCKMMTSMM(t *testing.T) {
 	Passes(t, casesComplexPassMCKMMTSMM)
 }
 
 var (
-	// MM - MM
+	// MCK - MMTS - MM
 	casesComplexPassMCKMMTSMM = Cases{
 
 		{
@@ -116,24 +125,31 @@ var (
 				},
 			},
 			&Pass{
+				PaymentType: PaymentTypeFree,
+				RequestType: RequestTypeOnline,
+				Carrier:     carriers.Carrier_MM,
+				SubCarrier:  carriers.SubCarrier_MMTS_SUB,
+				Parent:      1,
+			},
+			&Pass{
 				PaymentType: PaymentTypeFullPayment,
 				RequestType: RequestTypeOnline,
 				Carrier:     carriers.Carrier_MM,
-				SubCarrier:  carriers.SubCarrier_MCK_SUB,
+				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				ExpectedSum: 4200,
 			},
 		},
 	}
 )
 
+////////////////////////////////////////////
 func TestComplexPassMCKMMTSMCK(t *testing.T) {
 	Passes(t, casesComplexPassMCKMMTSMCK)
 }
 
 var (
-	// MM - MM
+	// MCK - MMTS - MCK
 	casesComplexPassMCKMMTSMCK = Cases{
-
 		{
 			&Pass{
 				PaymentType: PaymentTypeFullPayment,
@@ -146,6 +162,13 @@ var (
 				},
 			},
 			&Pass{
+				PaymentType: PaymentTypeFree,
+				RequestType: RequestTypeOnline,
+				Carrier:     carriers.Carrier_MM,
+				SubCarrier:  carriers.SubCarrier_MMTS_SUB,
+				Parent:      1,
+			},
+			&Pass{
 				PaymentType: PaymentTypeFullPayment,
 				RequestType: RequestTypeOnline,
 				Carrier:     carriers.Carrier_MM,
@@ -156,14 +179,14 @@ var (
 	}
 )
 
+////////////////////////////////////////////
 func TestComplexPassMCKMMTSMMTS(t *testing.T) {
 	Passes(t, casesComplexPassMCKMMTSMMTS)
 }
 
 var (
-	// MM - MM
+	// MCK - MMTS - MMTS
 	casesComplexPassMCKMMTSMMTS = Cases{
-
 		{
 			&Pass{
 				PaymentType: PaymentTypeFullPayment,
@@ -176,22 +199,30 @@ var (
 				},
 			},
 			&Pass{
+				PaymentType: PaymentTypeFree,
+				RequestType: RequestTypeOnline,
+				Carrier:     carriers.Carrier_MM,
+				SubCarrier:  carriers.SubCarrier_MMTS_SUB,
+				Parent:      1,
+			},
+			&Pass{
 				PaymentType: PaymentTypeFullPayment,
 				RequestType: RequestTypeOnline,
 				Carrier:     carriers.Carrier_MM,
-				SubCarrier:  carriers.SubCarrier_MCK_SUB,
+				SubCarrier:  carriers.SubCarrier_MMTS_SUB,
 				ExpectedSum: 4200,
 			},
 		},
 	}
 )
 
+////////////////////////////////////////////
 func TestComplexPassMCKMMMMTSMM(t *testing.T) {
 	Passes(t, casesComplexPassMCKMMMMTSMM)
 }
 
 var (
-	// MM - MM
+	// MCK - MM - MMTS - MM
 	casesComplexPassMCKMMMMTSMM = Cases{
 
 		{
@@ -206,22 +237,37 @@ var (
 				},
 			},
 			&Pass{
+				PaymentType: PaymentTypeFree,
+				RequestType: RequestTypeOnline,
+				Carrier:     carriers.Carrier_MM,
+				SubCarrier:  carriers.SubCarrier_MM_SUB,
+				Parent:      1,
+			},
+			&Pass{
+				PaymentType: PaymentTypeFree,
+				RequestType: RequestTypeOnline,
+				Carrier:     carriers.Carrier_MM,
+				SubCarrier:  carriers.SubCarrier_MMTS_SUB,
+				Parent:      1,
+			},
+			&Pass{
 				PaymentType: PaymentTypeFullPayment,
 				RequestType: RequestTypeOnline,
 				Carrier:     carriers.Carrier_MM,
-				SubCarrier:  carriers.SubCarrier_MCK_SUB,
+				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				ExpectedSum: 4200,
 			},
 		},
 	}
 )
 
+////////////////////////////////////////////
 func TestComplexPassMCKMMMMTSMCK(t *testing.T) {
 	Passes(t, casesComplexPassMCKMMMMTSMCK)
 }
 
 var (
-	// MM - MM
+	// MCK - MM -MMTS -MCK
 	casesComplexPassMCKMMMMTSMCK = Cases{
 
 		{
@@ -236,6 +282,20 @@ var (
 				},
 			},
 			&Pass{
+				PaymentType: PaymentTypeFree,
+				RequestType: RequestTypeOnline,
+				Carrier:     carriers.Carrier_MM,
+				SubCarrier:  carriers.SubCarrier_MM_SUB,
+				Parent:      1,
+			},
+			&Pass{
+				PaymentType: PaymentTypeFree,
+				RequestType: RequestTypeOnline,
+				Carrier:     carriers.Carrier_MM,
+				SubCarrier:  carriers.SubCarrier_MMTS_SUB,
+				Parent:      1,
+			},
+			&Pass{
 				PaymentType: PaymentTypeFullPayment,
 				RequestType: RequestTypeOnline,
 				Carrier:     carriers.Carrier_MM,
@@ -246,12 +306,13 @@ var (
 	}
 )
 
+////////////////////////////////////////////
 func TestComplexPassMCKMMMMTSMMTS(t *testing.T) {
 	Passes(t, casesComplexPassMCKMMMMTSMMTS)
 }
 
 var (
-	// MM - MM
+	// MCK - MM -MMTS -MMTS
 	casesComplexPassMCKMMMMTSMMTS = Cases{
 
 		{
@@ -266,10 +327,24 @@ var (
 				},
 			},
 			&Pass{
+				PaymentType: PaymentTypeFree,
+				RequestType: RequestTypeOnline,
+				Carrier:     carriers.Carrier_MM,
+				SubCarrier:  carriers.SubCarrier_MM_SUB,
+				Parent:      1,
+			},
+			&Pass{
+				PaymentType: PaymentTypeFree,
+				RequestType: RequestTypeOnline,
+				Carrier:     carriers.Carrier_MM,
+				SubCarrier:  carriers.SubCarrier_MMTS_SUB,
+				Parent:      1,
+			},
+			&Pass{
 				PaymentType: PaymentTypeFullPayment,
 				RequestType: RequestTypeOnline,
 				Carrier:     carriers.Carrier_MM,
-				SubCarrier:  carriers.SubCarrier_MCK_SUB,
+				SubCarrier:  carriers.SubCarrier_MMTS_SUB,
 				ExpectedSum: 4200,
 			},
 		},

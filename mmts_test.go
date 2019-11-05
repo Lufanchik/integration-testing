@@ -472,7 +472,40 @@ var (
 	}
 )
 
-// MMTS (Платная) -> MMTS (Платная)
+func TestComplexPassMMMMTSAuthMCK(t *testing.T) {
+	Passes(t, casesComplexPassMMMMTSAuthMCK)
+}
+
+//  MMTS - MMTS (not money) - MCK (если было две одинаковые поездки и последняя из них неоплачена, комплексная поездка должна создаваться и привязываться к последней)
+var (
+	casesComplexPassMMMMTSAuthMCK = Cases{
+		{
+			&Pass{
+				PaymentType: PaymentTypeFullPayment,
+				RequestType: RequestTypeOnline,
+				Carrier:     carriers.Carrier_MM,
+				SubCarrier:  carriers.SubCarrier_MMTS_SUB,
+				ExpectedSum: 4200,
+			},
+			&Pass{
+				PaymentType: PaymentTypeFullPayment,
+				RequestType: RequestTypeOnline,
+				Carrier:     carriers.Carrier_MM,
+				SubCarrier:  carriers.SubCarrier_MMTS_SUB,
+				ExpectedSum: 4200,
+				AuthType:    AuthTypeIncorrect,
+			},
+			&Pass{
+				PaymentType: PaymentTypeFree,
+				RequestType: RequestTypeOnline,
+				Carrier:     carriers.Carrier_MM,
+				SubCarrier:  carriers.SubCarrier_MCK_SUB,
+				Parent:      2,
+			},
+		},
+	}
+)
+
 func TestComplexPassMMTSMMTS(t *testing.T) {
 	Passes(t, casesComplexPassMMTSMMTS)
 }

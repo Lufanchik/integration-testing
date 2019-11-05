@@ -109,7 +109,7 @@ func TestComplexPassMMMMTSMCK(t *testing.T) {
 	Passes(t, casesComplexPassMMMMTSMCK)
 }
 
-// MM - MMTS -MCK
+// MM - MMTS -MCK (Бесплатная пересадка с ММ на ММТС, взимание денежных средств за пересадку с ММТС на МЦК (ММТС может быть только в начале или конце))
 var (
 	casesComplexPassMMMMTSMCK = Cases{
 		{
@@ -142,7 +142,7 @@ func TestComplexPassMMMMTSMMTS(t *testing.T) {
 	Passes(t, casesComplexPassMMMMTSMMTS)
 }
 
-// MM - MMTS -MMTS
+// MM - MMTS -MMTS (Бесплатная пересадка с ММ на ММТС, взимание денежных средств за пересадку с ММТС на ММТС)
 var (
 	casesComplexPassMMMMTSMMTS = Cases{
 		{
@@ -175,7 +175,7 @@ func TestComplexPassMMMCKMMMM(t *testing.T) {
 	Passes(t, casesComplexPassMMMCKMMMM)
 }
 
-// MM - MCK - MM - MM
+// MM - MCK - MM - MM (Бесплатная пересадка с ММ на МЦК, с МЦК на ММ, взимание денежных средств за пересадку с ММ на ММ)
 var (
 	casesComplexPassMMMCKMMMM = Cases{
 		{
@@ -215,7 +215,7 @@ func TestComplexPassMMMCKMMMCK(t *testing.T) {
 	Passes(t, casesComplexPassMMMCKMMMCK)
 }
 
-// MM - MCK -MM - MCK
+// MM - MCK -MM - MCK (Бесплатная пересадка с ММ на МЦК, с МЦК на ММ, взимание денежных средств за пересадку с ММ на МЦК)
 var (
 	casesComplexPassMMMCKMMMCK = Cases{
 		{
@@ -255,7 +255,7 @@ func TestComplexPassMMMCKMMMMTSMM(t *testing.T) {
 	Passes(t, casesComplexPassMMMCKMMMMTSMM)
 }
 
-// MM - MCK -MM - MMTS - MM
+// MM - MCK -MM - MMTS - MM (Бесплатная пересадка с ММ на МЦК, с МЦК на ММ (Действует правило промежуточного звена для ММ), с ММ на ММТС, взимание денежых средств за пересадку с ММТС на ММ)
 var (
 	casesComplexPassMMMCKMMMMTSMM = Cases{
 		{
@@ -302,7 +302,7 @@ func TestComplexPassMMMCKMMMMTSMCK(t *testing.T) {
 	Passes(t, casesComplexPassMMMCKMMMMTSMCK)
 }
 
-// MM - MCK - MM - MMTS - MCK
+// MM - MCK - MM - MMTS - MCK (Бесплатная пересадка с ММ на МЦК, с МЦК на ММ (Действует правило промежуточного звена для ММ), с ММ на ММТС, взимание денежых средств за пересадку с ММТС на МЦК)
 var (
 	casesComplexPassMMMCKMMMMTSMCK = Cases{
 		{
@@ -349,7 +349,7 @@ func TestComplexPassMMMCKMMMMTSMMTS(t *testing.T) {
 	Passes(t, casesComplexPassMMMCKMMMMTSMMTS)
 }
 
-// MM - MCK - MM - MMTS - MMTS
+// MM - MCK - MM - MMTS - MMTS (Бесплатная пересадка с ММ на МЦК, с МЦК на ММ (Действует правило промежуточного звена для ММ), с ММ на ММТС, взимание денежых средств за пересадку с ММТС на ММТС)
 var (
 	casesComplexPassMMMCKMMMMTSMMTS = Cases{
 		{
@@ -396,7 +396,7 @@ func TestComplexPassMMMCKMMTSMM(t *testing.T) {
 	Passes(t, casesComplexPassMMMCKMMTSMM)
 }
 
-// MM - MCK - MMTS - MM
+// MM - MCK - MMTS - MM (Бесплатная пересадка с ММ на МЦК, с МЦК на ММТС, взимание денежных средств при пересадке с ММТС на ММ)
 var (
 	casesComplexPassMMMCKMMTSMM = Cases{
 		{
@@ -436,7 +436,7 @@ func TestComplexPassMMMCKMMTSMCK(t *testing.T) {
 	Passes(t, casesComplexPassMMMCKMMTSMCK)
 }
 
-// MM - MCK - MMTS - MCK
+// MM - MCK - MMTS - MCK (Бесплатная пересадка с ММ на МЦК, с МЦК на ММТС, взимание денежных средств за пересадку с ММТС на МЦК)
 var (
 	casesComplexPassMMMCKMMTSMCK = Cases{
 		{
@@ -476,7 +476,7 @@ func TestComplexPassMMMCKMMTSMMTS(t *testing.T) {
 	Passes(t, casesComplexPassMMMCKMMTSMMTS)
 }
 
-// MM - MCK - MMTS - MMTS
+// MM - MCK - MMTS - MMTS (Бесплатная пересадка с ММ на МЦК, с МЦК на ММТС, взимание денежных средств за пересадку с ММТС на ММТС)
 var (
 	casesComplexPassMMMCKMMTSMMTS = Cases{
 		{
@@ -512,13 +512,15 @@ var (
 	}
 )
 
-func TestComplexPassMMMMMCK(t *testing.T) {
-	Passes(t, casesComplexPassMMMMMCK)
+// Кейсы включающие транзакции с некорректной авторизацией
+
+func TestComplexPassMMMMAuthMCKMMTS(t *testing.T) {
+	Passes(t, casesComplexPassMMMMAuthMCKMMTS)
 }
 
-//если было две одинаковые поездки и последняя из них неоплачена, комплексная поездка должна создаваться и привязываться к последней
+// MM - MM (AuthTypeIncorrect) - MCK - MMTS (если было две одинаковые поездки и последняя из них неоплачена, комплексная поездка должна создаваться и привязываться к последней)
 var (
-	casesComplexPassMMMMMCK = Cases{
+	casesComplexPassMMMMAuthMCKMMTS = Cases{
 		{
 			&Pass{
 				PaymentType: PaymentTypeFullPayment,
@@ -540,6 +542,82 @@ var (
 				RequestType: RequestTypeOnline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
+				Parent:      2,
+			},
+			&Pass{
+				PaymentType: PaymentTypeFree,
+				RequestType: RequestTypeOnline,
+				Carrier:     carriers.Carrier_MM,
+				SubCarrier:  carriers.SubCarrier_MMTS_SUB,
+				Parent:      2,
+			},
+		},
+	}
+)
+
+func TestComplexPassMMMMAuthMMTS(t *testing.T) {
+	Passes(t, casesComplexPassMMMMAuthMMTS)
+}
+
+//  MM - MM (AuthTypeIncorrect) - MMTS  (если было две одинаковые поездки и последняя из них неоплачена, комплексная поездка должна создаваться и привязываться к последней)
+var (
+	casesComplexPassMMMMAuthMMTS = Cases{
+		{
+			&Pass{
+				PaymentType: PaymentTypeFullPayment,
+				RequestType: RequestTypeOnline,
+				Carrier:     carriers.Carrier_MM,
+				SubCarrier:  carriers.SubCarrier_MM_SUB,
+				ExpectedSum: 4200,
+			},
+			&Pass{
+				PaymentType: PaymentTypeFullPayment,
+				RequestType: RequestTypeOnline,
+				Carrier:     carriers.Carrier_MM,
+				SubCarrier:  carriers.SubCarrier_MM_SUB,
+				ExpectedSum: 4200,
+				AuthType:    AuthTypeIncorrect,
+			},
+			&Pass{
+				PaymentType: PaymentTypeFree,
+				RequestType: RequestTypeOnline,
+				Carrier:     carriers.Carrier_MM,
+				SubCarrier:  carriers.SubCarrier_MMTS_SUB,
+				Parent:      2,
+			},
+		},
+	}
+)
+
+func TestComplexPassMMAuthMMAuthMMTS(t *testing.T) {
+	Passes(t, casesComplexPassMMAuthMMAuthMMTS)
+}
+
+//  MM - MM (AuthTypeIncorrect) - MMTS  (если было две одинаковые поездки и последняя из них неоплачена, комплексная поездка должна создаваться и привязываться к последней)
+var (
+	casesComplexPassMMAuthMMAuthMMTS = Cases{
+		{
+			&Pass{
+				PaymentType: PaymentTypeFullPayment,
+				RequestType: RequestTypeOnline,
+				Carrier:     carriers.Carrier_MM,
+				SubCarrier:  carriers.SubCarrier_MM_SUB,
+				ExpectedSum: 4200,
+				AuthType:    AuthTypeIncorrect,
+			},
+			&Pass{
+				PaymentType: PaymentTypeFullPayment,
+				RequestType: RequestTypeOnline,
+				Carrier:     carriers.Carrier_MM,
+				SubCarrier:  carriers.SubCarrier_MM_SUB,
+				ExpectedSum: 4200,
+				AuthType:    AuthTypeIncorrect,
+			},
+			&Pass{
+				PaymentType: PaymentTypeFree,
+				RequestType: RequestTypeOnline,
+				Carrier:     carriers.Carrier_MM,
+				SubCarrier:  carriers.SubCarrier_MMTS_SUB,
 				Parent:      2,
 			},
 		},

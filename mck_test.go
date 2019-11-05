@@ -97,6 +97,16 @@ var (
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				Parent:      1,
 			},
+			&Pass{
+				PaymentType: PaymentTypeFullPayment,
+				RequestType: RequestTypeOnline,
+				Carrier:     carriers.Carrier_MM,
+				SubCarrier:  carriers.SubCarrier_MCK_SUB,
+				ExpectedSum: 4200,
+				Now: func() uint64 {
+					return uint64(time.Now().UnixNano())
+				},
+			},
 		},
 	}
 )
@@ -305,7 +315,6 @@ func TestComplexPassMCKMMMMTSMMTS(t *testing.T) {
 var (
 	// MCK - MM -MMTS -MMTS
 	casesComplexPassMCKMMMMTSMMTS = Cases{
-
 		{
 			&Pass{
 				PaymentType: PaymentTypeFullPayment,
@@ -382,11 +391,79 @@ var (
 				Parent:      2,
 			},
 			&Pass{
+				PaymentType: PaymentTypeFullPayment,
+				RequestType: RequestTypeOnline,
+				Carrier:     carriers.Carrier_MM,
+				SubCarrier:  carriers.SubCarrier_MM_SUB,
+				ExpectedSum: 4200,
+			},
+		},
+	}
+)
+
+func TestComplexPassMCKMCKAuthMMTS(t *testing.T) {
+	Passes(t, casesComplexPassMCKMCKAuthMMTS)
+}
+
+// "MCK - MCK (AuthTypeIncorrect) - MMTS" (Если было две одинаковые поездки и последняя из них неоплачена, комплексная поездка должна создаваться и привязываться к последней)
+var (
+	casesComplexPassMCKMCKAuthMMTS = Cases{
+		{
+			&Pass{
+				PaymentType: PaymentTypeFullPayment,
+				RequestType: RequestTypeOnline,
+				Carrier:     carriers.Carrier_MM,
+				SubCarrier:  carriers.SubCarrier_MCK_SUB,
+				ExpectedSum: 4200,
+			},
+			&Pass{
+				PaymentType: PaymentTypeFullPayment,
+				RequestType: RequestTypeOnline,
+				Carrier:     carriers.Carrier_MM,
+				SubCarrier:  carriers.SubCarrier_MCK_SUB,
+				ExpectedSum: 4200,
+				AuthType:    AuthTypeIncorrect,
+			},
+			&Pass{
+				PaymentType: PaymentTypeFree,
+				RequestType: RequestTypeOnline,
+				Carrier:     carriers.Carrier_MM,
+				SubCarrier:  carriers.SubCarrier_MMTS_SUB,
+				Parent:      2,
+			},
+		},
+	}
+)
+
+func TestComplexPassMCKAuthMMMMTS(t *testing.T) {
+	Passes(t, casesComplexPassMCKAuthMMMMTS)
+}
+
+// "MCK (AuthTypeIncorrect) - MM - MMTS" (Если было две одинаковые поездки и последняя из них неоплачена, комплексная поездка должна создаваться и привязываться к последней)
+var (
+	casesComplexPassMCKAuthMMMMTS = Cases{
+		{
+			&Pass{
+				PaymentType: PaymentTypeFullPayment,
+				RequestType: RequestTypeOnline,
+				Carrier:     carriers.Carrier_MM,
+				SubCarrier:  carriers.SubCarrier_MCK_SUB,
+				ExpectedSum: 4200,
+				AuthType:    AuthTypeIncorrect,
+			},
+			&Pass{
 				PaymentType: PaymentTypeFree,
 				RequestType: RequestTypeOnline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
-				Parent:      2,
+				Parent:      1,
+			},
+			&Pass{
+				PaymentType: PaymentTypeFree,
+				RequestType: RequestTypeOnline,
+				Carrier:     carriers.Carrier_MM,
+				SubCarrier:  carriers.SubCarrier_MMTS_SUB,
+				Parent:      1,
 			},
 		},
 	}

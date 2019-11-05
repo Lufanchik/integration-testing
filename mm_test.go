@@ -6,6 +6,7 @@ import (
 	"time"
 )
 
+////////////////////////////////////////////
 func TestComplexPassMMMM(t *testing.T) {
 	Passes(t, casesComplexPassMMММ)
 }
@@ -35,6 +36,7 @@ var (
 	}
 )
 
+////////////////////////////////////////////
 func TestComplexPassMMMCKMCK(t *testing.T) {
 	Passes(t, casesComplexPassMMMCKMCK)
 }
@@ -71,6 +73,7 @@ var (
 	}
 )
 
+////////////////////////////////////////////
 func TestComplexPassMMMMTSMM(t *testing.T) {
 	Passes(t, casesComplexPassMMMMTSMM)
 }
@@ -105,6 +108,7 @@ var (
 	}
 )
 
+////////////////////////////////////////////
 func TestComplexPassMMMMTSMCK(t *testing.T) {
 	Passes(t, casesComplexPassMMMMTSMCK)
 }
@@ -138,6 +142,7 @@ var (
 	}
 )
 
+////////////////////////////////////////////
 func TestComplexPassMMMMTSMMTS(t *testing.T) {
 	Passes(t, casesComplexPassMMMMTSMMTS)
 }
@@ -171,6 +176,7 @@ var (
 	}
 )
 
+////////////////////////////////////////////
 func TestComplexPassMMMCKMMMM(t *testing.T) {
 	Passes(t, casesComplexPassMMMCKMMMM)
 }
@@ -211,6 +217,7 @@ var (
 	}
 )
 
+////////////////////////////////////////////
 func TestComplexPassMMMCKMMMCK(t *testing.T) {
 	Passes(t, casesComplexPassMMMCKMMMCK)
 }
@@ -251,6 +258,7 @@ var (
 	}
 )
 
+////////////////////////////////////////////
 func TestComplexPassMMMCKMMMMTSMM(t *testing.T) {
 	Passes(t, casesComplexPassMMMCKMMMMTSMM)
 }
@@ -298,6 +306,7 @@ var (
 	}
 )
 
+////////////////////////////////////////////
 func TestComplexPassMMMCKMMMMTSMCK(t *testing.T) {
 	Passes(t, casesComplexPassMMMCKMMMMTSMCK)
 }
@@ -345,6 +354,7 @@ var (
 	}
 )
 
+////////////////////////////////////////////
 func TestComplexPassMMMCKMMMMTSMMTS(t *testing.T) {
 	Passes(t, casesComplexPassMMMCKMMMMTSMMTS)
 }
@@ -392,6 +402,7 @@ var (
 	}
 )
 
+////////////////////////////////////////////
 func TestComplexPassMMMCKMMTSMM(t *testing.T) {
 	Passes(t, casesComplexPassMMMCKMMTSMM)
 }
@@ -432,6 +443,7 @@ var (
 	}
 )
 
+////////////////////////////////////////////
 func TestComplexPassMMMCKMMTSMCK(t *testing.T) {
 	Passes(t, casesComplexPassMMMCKMMTSMCK)
 }
@@ -472,6 +484,7 @@ var (
 	}
 )
 
+////////////////////////////////////////////
 func TestComplexPassMMMCKMMTSMMTS(t *testing.T) {
 	Passes(t, casesComplexPassMMMCKMMTSMMTS)
 }
@@ -512,6 +525,7 @@ var (
 	}
 )
 
+////////////////////////////////////////////
 func TestComplexPassMMMMMCK(t *testing.T) {
 	Passes(t, casesComplexPassMMMMMCK)
 }

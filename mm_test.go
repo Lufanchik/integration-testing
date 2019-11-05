@@ -511,3 +511,37 @@ var (
 		},
 	}
 )
+
+func TestComplexPassMMMMMCK(t *testing.T) {
+	Passes(t, casesComplexPassMMMMMCK)
+}
+
+//если было две одинаковые поездки и последняя из них неоплачена, комплексная поездка должна создаваться и привязываться к последней
+var (
+	casesComplexPassMMMMMCK = Cases{
+		{
+			&Pass{
+				PaymentType: PaymentTypeFullPayment,
+				RequestType: RequestTypeOnline,
+				Carrier:     carriers.Carrier_MM,
+				SubCarrier:  carriers.SubCarrier_MM_SUB,
+				ExpectedSum: 4200,
+			},
+			&Pass{
+				PaymentType: PaymentTypeFullPayment,
+				RequestType: RequestTypeOnline,
+				Carrier:     carriers.Carrier_MM,
+				SubCarrier:  carriers.SubCarrier_MM_SUB,
+				ExpectedSum: 4200,
+				AuthType:    AuthTypeIncorrect,
+			},
+			&Pass{
+				PaymentType: PaymentTypeFree,
+				RequestType: RequestTypeOnline,
+				Carrier:     carriers.Carrier_MM,
+				SubCarrier:  carriers.SubCarrier_MCK_SUB,
+				Parent:      2,
+			},
+		},
+	}
+)

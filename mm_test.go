@@ -76,6 +76,7 @@ var (
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				ExpectedSum: 4200,
+				AuthType:    AuthTypeIncorrect,
 			},
 			&Pass{
 				PaymentType: PaymentTypeFree,

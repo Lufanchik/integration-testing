@@ -22,8 +22,8 @@ import (
 )
 
 const (
-	processingApiUrl = "http://10.244.2.11:9090"
-	passUrl          = "http://10.244.1.5:13380"
+	processingApiUrl = "http://10.244.2.200:9090"
+	passUrl          = "http://10.244.3.21:13380"
 )
 
 var (

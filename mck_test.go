@@ -6,7 +6,6 @@ import (
 	"time"
 )
 
-////////////////////////////////////////////
 func TestComplexPassMCKMCK(t *testing.T) {
 	Passes(t, casesComplexPassMCKMCK)
 }
@@ -36,7 +35,6 @@ var (
 	}
 )
 
-////////////////////////////////////////////
 func TestComplexPassMCKMMMM(t *testing.T) {
 	Passes(t, casesComplexPassMCKMMMM)
 }
@@ -73,7 +71,6 @@ var (
 	}
 )
 
-////////////////////////////////////////////
 func TestComplexPassMCKMMMCK(t *testing.T) {
 	Passes(t, casesComplexPassMCKMMMCK)
 }
@@ -104,7 +101,6 @@ var (
 	}
 )
 
-////////////////////////////////////////////
 func TestComplexPassMCKMMTSMM(t *testing.T) {
 	Passes(t, casesComplexPassMCKMMTSMM)
 }
@@ -142,7 +138,6 @@ var (
 	}
 )
 
-////////////////////////////////////////////
 func TestComplexPassMCKMMTSMCK(t *testing.T) {
 	Passes(t, casesComplexPassMCKMMTSMCK)
 }
@@ -179,7 +174,6 @@ var (
 	}
 )
 
-////////////////////////////////////////////
 func TestComplexPassMCKMMTSMMTS(t *testing.T) {
 	Passes(t, casesComplexPassMCKMMTSMMTS)
 }
@@ -216,7 +210,6 @@ var (
 	}
 )
 
-////////////////////////////////////////////
 func TestComplexPassMCKMMMMTSMM(t *testing.T) {
 	Passes(t, casesComplexPassMCKMMMMTSMM)
 }
@@ -261,7 +254,6 @@ var (
 	}
 )
 
-////////////////////////////////////////////
 func TestComplexPassMCKMMMMTSMCK(t *testing.T) {
 	Passes(t, casesComplexPassMCKMMMMTSMCK)
 }
@@ -306,7 +298,6 @@ var (
 	}
 )
 
-////////////////////////////////////////////
 func TestComplexPassMCKMMMMTSMMTS(t *testing.T) {
 	Passes(t, casesComplexPassMCKMMMMTSMMTS)
 }
@@ -346,6 +337,56 @@ var (
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MMTS_SUB,
 				ExpectedSum: 4200,
+			},
+		},
+	}
+)
+
+// Кейсы включающие транзакции с некорректной авторизацией
+
+func TestComplexPassMCKMCKAuthMMMMTSMM(t *testing.T) {
+	Passes(t, casesComplexPassMCKMCKAuthMMMMTSMM)
+}
+
+// "MCK - MCK (AuthTypeIncorrect) - MM - MMTS -MM" (Если было две одинаковые поездки и последняя из них неоплачена, комплексная поездка должна создаваться и привязываться к последней)
+var (
+	casesComplexPassMCKMCKAuthMMMMTSMM = Cases{
+		{
+			&Pass{
+				PaymentType: PaymentTypeFullPayment,
+				RequestType: RequestTypeOnline,
+				Carrier:     carriers.Carrier_MM,
+				SubCarrier:  carriers.SubCarrier_MCK_SUB,
+				ExpectedSum: 4200,
+			},
+			&Pass{
+				PaymentType: PaymentTypeFullPayment,
+				RequestType: RequestTypeOnline,
+				Carrier:     carriers.Carrier_MM,
+				SubCarrier:  carriers.SubCarrier_MCK_SUB,
+				ExpectedSum: 4200,
+				AuthType:    AuthTypeIncorrect,
+			},
+			&Pass{
+				PaymentType: PaymentTypeFree,
+				RequestType: RequestTypeOnline,
+				Carrier:     carriers.Carrier_MM,
+				SubCarrier:  carriers.SubCarrier_MM_SUB,
+				Parent:      2,
+			},
+			&Pass{
+				PaymentType: PaymentTypeFree,
+				RequestType: RequestTypeOnline,
+				Carrier:     carriers.Carrier_MM,
+				SubCarrier:  carriers.SubCarrier_MMTS_SUB,
+				Parent:      2,
+			},
+			&Pass{
+				PaymentType: PaymentTypeFree,
+				RequestType: RequestTypeOnline,
+				Carrier:     carriers.Carrier_MM,
+				SubCarrier:  carriers.SubCarrier_MM_SUB,
+				Parent:      2,
 			},
 		},
 	}

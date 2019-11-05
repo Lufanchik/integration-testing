@@ -22,8 +22,8 @@ import (
 )
 
 const (
-	url     = "http://localhost:9090"
-	passUrl = "http://localhost:13380"
+	url     = "http://10.244.2.11:9090"
+	passUrl = "http://10.244.2.135:13380"
 )
 
 var (

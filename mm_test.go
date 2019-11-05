@@ -10,7 +10,7 @@ func TestComplexPassMMMM(t *testing.T) {
 	Passes(t, casesComplexPassMMММ)
 }
 
-// MM - MM
+// MM - MM (Две платные поездки)
 var (
 	casesComplexPassMMММ = Cases{
 		{
@@ -39,7 +39,7 @@ func TestComplexPassMMMCKMCK(t *testing.T) {
 	Passes(t, casesComplexPassMMMCKMCK)
 }
 
-// MM - MCK - MCK
+// MM - MCK - MCK (Бесплатная пересадка на первое звено MЦК, взимание денежных средств с второй поездки на МЦК)
 var (
 	casesComplexPassMMMCKMCK = Cases{
 		{

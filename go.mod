@@ -22,6 +22,6 @@ require (
 	github.com/yudai/gojsondiff v1.0.0 // indirect
 	github.com/yudai/golcs v0.0.0-20170316035057-ecda9a501e82 // indirect
 	github.com/yudai/pp v2.0.1+incompatible // indirect
-	lab.siroccotechnology.ru/tp/common v0.0.121
+	lab.siroccotechnology.ru/tp/common v0.0.123
 	lab.siroccotechnology.ru/tp/pass-service v0.0.51
 )

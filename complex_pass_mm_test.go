@@ -137,5 +137,5 @@ func TestComplexPass(t *testing.T) {
 }
 
 func TestComplexPas(t *testing.T) {
-	Passes(t, casesComplexPas)
+	Run(t, casesComplexPas)
 }

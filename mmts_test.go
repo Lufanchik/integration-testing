@@ -605,49 +605,49 @@ var (
 )
 
 func TestComplexPassMMTSMMTS(t *testing.T) {
-	Passes(t, casesComplexPassMMTSMMTS)
+	Run(t, casesComplexPassMMTSMMTS)
 }
 
 func TestComplexPassMMTSMMMM(t *testing.T) {
-	Passes(t, casesComplexPassMMTSMMMM)
+	Run(t, casesComplexPassMMTSMMMM)
 }
 
 func TestComplexPassMMTSMCKMCK(t *testing.T) {
-	Passes(t, casesComplexPassMMTSMCKMCK)
+	Run(t, casesComplexPassMMTSMCKMCK)
 }
 
 func TestComplexPassMMTSMMMMTS(t *testing.T) {
-	Passes(t, casesComplexPassMMTSMMMMTS)
+	Run(t, casesComplexPassMMTSMMMMTS)
 }
 
 func TestComplexPassMMTSMMMCKMCK(t *testing.T) {
-	Passes(t, casesComplexPassMMTSMMMCKMCK)
+	Run(t, casesComplexPassMMTSMMMCKMCK)
 }
 
 func TestComplexPassMMTSMMMCKMMTS(t *testing.T) {
-	Passes(t, casesComplexPassMMTSMMMCKMMTS)
+	Run(t, casesComplexPassMMTSMMMCKMMTS)
 }
 
 func TestComplexPassMMTSMCKMMMM(t *testing.T) {
-	Passes(t, casesComplexPassMMTSMCKMMMM)
+	Run(t, casesComplexPassMMTSMCKMMMM)
 }
 
 func TestComplexPassMMTSMCKMMMCK(t *testing.T) {
-	Passes(t, casesComplexPassMMTSMCKMMMCK)
+	Run(t, casesComplexPassMMTSMCKMMMCK)
 }
 
 func TestComplexPassMMTSMCKMMMMTS(t *testing.T) {
-	Passes(t, casesComplexPassMMTSMCKMMMMTS)
+	Run(t, casesComplexPassMMTSMCKMMMMTS)
 }
 
 func TestComplexPassMMTSMMMCKMMMM(t *testing.T) {
-	Passes(t, casesComplexPassMMTSMMMCKMMMM)
+	Run(t, casesComplexPassMMTSMMMCKMMMM)
 }
 
 func TestComplexPassMMTSMMMCKMMMCK(t *testing.T) {
-	Passes(t, casesComplexPassMMTSMMMCKMMMCK)
+	Run(t, casesComplexPassMMTSMMMCKMMMCK)
 }
 
 func TestComplexPassMMTSMMMCKMMMMTS(t *testing.T) {
-	Passes(t, casesComplexPassMMTSMMMCKMMMMTS)
+	Run(t, casesComplexPassMMTSMMMCKMMMMTS)
 }

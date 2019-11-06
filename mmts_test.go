@@ -594,11 +594,11 @@ var (
 				Parent:      2,
 			},
 			&Pass{
-				PaymentType: PaymentTypeFree,
+				PaymentType: PaymentTypeFullPayment,
 				RequestType: RequestTypeOnline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
-				Parent:      2,
+				ExpectedSum: 4200,
 			},
 		},
 	}

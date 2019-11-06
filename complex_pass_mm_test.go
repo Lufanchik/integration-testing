@@ -118,24 +118,6 @@ var (
 	}
 )
 
-var (
-	casesComplexPas = Cases{
-		{
-			&Pass{
-				PaymentType: PaymentTypeFullPayment,
-				RequestType: RequestTypeOnline,
-				Carrier:     carriers.Carrier_MM,
-				SubCarrier:  carriers.SubCarrier_MM_SUB,
-				ExpectedSum: 4200,
-			},
-		},
-	}
-)
-
 func TestComplexPass(t *testing.T) {
 	Run(t, casesComplexPass)
-}
-
-func TestComplexPas(t *testing.T) {
-	Run(t, casesComplexPas)
 }

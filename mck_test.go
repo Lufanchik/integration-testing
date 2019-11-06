@@ -7,7 +7,7 @@ import (
 )
 
 func TestComplexPassMCKMCK(t *testing.T) {
-	Passes(t, casesComplexPassMCKMCK)
+	Run(t, casesComplexPassMCKMCK)
 }
 
 var (
@@ -36,7 +36,7 @@ var (
 )
 
 func TestComplexPassMCKMMMM(t *testing.T) {
-	Passes(t, casesComplexPassMCKMMMM)
+	Run(t, casesComplexPassMCKMMMM)
 }
 
 var (
@@ -72,7 +72,7 @@ var (
 )
 
 func TestComplexPassMCKMMMCK(t *testing.T) {
-	Passes(t, casesComplexPassMCKMMMCK)
+	Run(t, casesComplexPassMCKMMMCK)
 }
 
 var (
@@ -112,7 +112,7 @@ var (
 )
 
 func TestComplexPassMCKMMTSMM(t *testing.T) {
-	Passes(t, casesComplexPassMCKMMTSMM)
+	Run(t, casesComplexPassMCKMMTSMM)
 }
 
 var (
@@ -149,7 +149,7 @@ var (
 )
 
 func TestComplexPassMCKMMTSMCK(t *testing.T) {
-	Passes(t, casesComplexPassMCKMMTSMCK)
+	Run(t, casesComplexPassMCKMMTSMCK)
 }
 
 var (
@@ -185,7 +185,7 @@ var (
 )
 
 func TestComplexPassMCKMMTSMMTS(t *testing.T) {
-	Passes(t, casesComplexPassMCKMMTSMMTS)
+	Run(t, casesComplexPassMCKMMTSMMTS)
 }
 
 var (
@@ -221,7 +221,7 @@ var (
 )
 
 func TestComplexPassMCKMMMMTSMM(t *testing.T) {
-	Passes(t, casesComplexPassMCKMMMMTSMM)
+	Run(t, casesComplexPassMCKMMMMTSMM)
 }
 
 var (
@@ -265,7 +265,7 @@ var (
 )
 
 func TestComplexPassMCKMMMMTSMCK(t *testing.T) {
-	Passes(t, casesComplexPassMCKMMMMTSMCK)
+	Run(t, casesComplexPassMCKMMMMTSMCK)
 }
 
 var (
@@ -309,7 +309,7 @@ var (
 )
 
 func TestComplexPassMCKMMMMTSMMTS(t *testing.T) {
-	Passes(t, casesComplexPassMCKMMMMTSMMTS)
+	Run(t, casesComplexPassMCKMMMMTSMMTS)
 }
 
 var (
@@ -354,7 +354,7 @@ var (
 // Кейсы включающие транзакции с некорректной авторизацией
 
 func TestComplexPassMCKMCKAuthMMMMTSMM(t *testing.T) {
-	Passes(t, casesComplexPassMCKMCKAuthMMMMTSMM)
+	Run(t, casesComplexPassMCKMCKAuthMMMMTSMM)
 }
 
 // "MCK - MCK (AuthTypeIncorrect) - MM - MMTS -MM" (Если было две одинаковые поездки и последняя из них неоплачена, комплексная поездка должна создаваться и привязываться к последней)
@@ -402,7 +402,7 @@ var (
 )
 
 func TestComplexPassMCKMCKAuthMMTS(t *testing.T) {
-	Passes(t, casesComplexPassMCKMCKAuthMMTS)
+	Run(t, casesComplexPassMCKMCKAuthMMTS)
 }
 
 // "MCK - MCK (AuthTypeIncorrect) - MMTS" (Если было две одинаковые поездки и последняя из них неоплачена, комплексная поездка должна создаваться и привязываться к последней)
@@ -436,7 +436,7 @@ var (
 )
 
 func TestComplexPassMCKAuthMMMMTS(t *testing.T) {
-	Passes(t, casesComplexPassMCKAuthMMMMTS)
+	Run(t, casesComplexPassMCKAuthMMMMTS)
 }
 
 // "MCK (AuthTypeIncorrect) - MM - MMTS" (Если было две одинаковые поездки и последняя из них неоплачена, комплексная поездка должна создаваться и привязываться к последней)

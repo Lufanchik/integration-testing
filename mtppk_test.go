@@ -2,6 +2,7 @@ package http_test
 
 import (
 	"lab.siroccotechnology.ru/tp/common/messages/carriers"
+	"lab.siroccotechnology.ru/tp/common/messages/processing"
 	"testing"
 )
 
@@ -10,27 +11,38 @@ var (
 		{
 			&Pass{
 				PaymentType: PaymentTypeFullPayment,
-				RequestType: RequestTypeOnline,
 				Carrier:     carriers.Carrier_MTPPK,
+				Auth: &processing.Auth{
+					Sum:  0,
+					Type: processing.Auth_AGGREGATE,
+				},
 				ExpectedSum: 0,
 			},
 			&Pass{
 				PaymentType: PaymentTypeFullPayment,
-				RequestType: RequestTypeOnline,
 				Carrier:     carriers.Carrier_MTPPK,
-				Sum:         3000,
+				Auth: &processing.Auth{
+					Sum:  3000,
+					Type: processing.Auth_AGGREGATE,
+				},
 				ExpectedSum: 3000,
 			},
 			&Pass{
 				PaymentType: PaymentTypeFullPayment,
-				RequestType: RequestTypeOnline,
 				Carrier:     carriers.Carrier_MTPPK,
+				Auth: &processing.Auth{
+					Sum:  0,
+					Type: processing.Auth_AGGREGATE,
+				},
 				ExpectedSum: 0,
 			},
 			&Pass{
 				PaymentType: PaymentTypeFullPayment,
-				RequestType: RequestTypeOnline,
 				Carrier:     carriers.Carrier_MTPPK,
+				Auth: &processing.Auth{
+					Sum:  0,
+					Type: processing.Auth_AGGREGATE,
+				},
 				ExpectedSum: 0,
 			},
 		},
@@ -38,5 +50,5 @@ var (
 )
 
 func TestMTPPK(t *testing.T) {
-	Passes(t, mtppkPasses)
+	Run(t, mtppkPasses)
 }

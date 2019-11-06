@@ -20,5 +20,5 @@ var (
 )
 
 func TestSimplePass(t *testing.T) {
-	Passes(t, casesSimplePass)
+	Run(t, casesSimplePass)
 }

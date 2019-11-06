@@ -6,7 +6,7 @@ import (
 )
 
 func TestComplexPassMCK(t *testing.T) {
-	Passes(t, ComplexPassMCK)
+	Run(t, ComplexPassMCK)
 }
 
 var ComplexPassMCK = Cases{

@@ -448,12 +448,6 @@ lab.siroccotechnology.ru/tp/common v0.0.100/go.mod h1:OlZ1Or7QSZ5tYJLwcFGvrLQ8JD
 lab.siroccotechnology.ru/tp/common v0.0.105/go.mod h1:OlZ1Or7QSZ5tYJLwcFGvrLQ8JDkelSq2Kt3kMepkhQk=
 lab.siroccotechnology.ru/tp/common v0.0.114 h1:fMPhLkWrbkBAge1I5sCEAEbURJgc99hzYa7RJ/7LmUo=
 lab.siroccotechnology.ru/tp/common v0.0.114/go.mod h1:WgJ11KO7VOUf+JAEbYEpyNAJAP/FjB1dx2KE1/xnQ2Y=
-lab.siroccotechnology.ru/tp/common v0.0.117 h1:Mm0k6Vew6aljxdjtqukat0fQ4VfpGSZF9gyMUnFY2hY=
-lab.siroccotechnology.ru/tp/common v0.0.117/go.mod h1:WgJ11KO7VOUf+JAEbYEpyNAJAP/FjB1dx2KE1/xnQ2Y=
-lab.siroccotechnology.ru/tp/common v0.0.121 h1:AxO8QXqY+SL3Uymwkoo6Htg85BQl8Iii/BptKPkN+i8=
-lab.siroccotechnology.ru/tp/common v0.0.121/go.mod h1:WgJ11KO7VOUf+JAEbYEpyNAJAP/FjB1dx2KE1/xnQ2Y=
-lab.siroccotechnology.ru/tp/common v0.0.122 h1:7w2YKGHHYUN98DvJ2aVjvv58RWOurA7k7NNy6OYaSgQ=
-lab.siroccotechnology.ru/tp/common v0.0.122/go.mod h1:WgJ11KO7VOUf+JAEbYEpyNAJAP/FjB1dx2KE1/xnQ2Y=
 lab.siroccotechnology.ru/tp/common v0.0.123 h1:weioHLlNloNQiCwgjAhVeutulxztjZhT/WdkSPxBqJs=
 lab.siroccotechnology.ru/tp/common v0.0.123/go.mod h1:WgJ11KO7VOUf+JAEbYEpyNAJAP/FjB1dx2KE1/xnQ2Y=
 lab.siroccotechnology.ru/tp/pass-service v0.0.24/go.mod h1:S212PdJFE55gKHls2bJ+hi7pnuskczOlNLb8Rbq3vX0=

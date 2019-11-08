@@ -1,8 +1,10 @@
 package http_test
 
-const (
-	processingApiUrl  = "http://10.244.3.40:9090"
-	passUrl           = "http://10.244.2.97:13380"
-	apmApiUrl         = "http://127.0.0.1:1340"
+import "os"
+
+var (
+	processingApiUrl  = os.Getenv("PROCESSING_API_URL")
+	passUrl           = os.Getenv("PASS_URL")
+	apmApiUrl         = os.Getenv("APM_API_URL")
 	globalRequestType = RequestTypeOnline
 )

@@ -10,10 +10,6 @@ test: export PROCESSING_API_URL=http://processing-api-gateway.test.svc.cluster.l
 test: export PASS_URL=http://pass-service.test.svc.cluster.local:13380
 test: export APM_API_URL=http://apm-api-gateway-public.test.svc.cluster.local:1340
 
-test_ip: export PROCESSING_API_URL=http://10.244.3.40:9090
-test_ip: export PASS_URL=http://10.244.3.39:13380
-test_ip: export APM_API_URL=http://10.244.2.183:1340
-
 simple:
 	go test -c -o ./bin/test
 	./bin/test -test.v -test.run ^TestSimplePass$

@@ -65,7 +65,7 @@ type (
 		//время отведенное на запрос в миллисекундах, работает только с онлайном
 		Duration uint32
 	}
-	//модификациф прохода
+	//модификация прохода
 	Updater struct {
 		//функция модификатора
 		f func(tap *pass.Tap)
@@ -441,7 +441,7 @@ func LoginApi(t *testing.T, lg *Login) {
 	t.Run("twirp/proto.ApmAPIGatewayPublic/Login", func(t *testing.T) {
 		_ = httpApmApi.POST("/twirp/proto.ApmAPIGatewayPublic/Login").WithJSON(req).
 			Expect().
-			Status(http.StatusOK).Body().Raw()
+			Status(http.StatusNotFound).Body().Raw()
 	})
 }
 

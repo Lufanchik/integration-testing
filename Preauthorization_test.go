@@ -5,6 +5,10 @@ import (
 	"testing"
 )
 
+func TestSimplePreauthorization(t *testing.T) {
+	Run(t, casesSimplePreauthorization)
+}
+
 var (
 	casesSimplePreauthorization = Cases{
 		{
@@ -20,8 +24,8 @@ var (
 	}
 )
 
-func TestSimplePreauthorization(t *testing.T) {
-	Run(t, casesSimplePreauthorization)
+func TestSimplePreauthorizationone(t *testing.T) {
+	Run(t, casesSimplePreauthorizationone)
 }
 
 var (
@@ -39,8 +43,8 @@ var (
 	}
 )
 
-func TestSimplePreauthorizationone(t *testing.T) {
-	Run(t, casesSimplePreauthorizationone)
+func TestSimplePreauthorizationtwo(t *testing.T) {
+	Run(t, casesSimplePreauthorizationtwo)
 }
 
 var (
@@ -57,7 +61,3 @@ var (
 		},
 	}
 )
-
-func TestSimplePreauthorizationtwo(t *testing.T) {
-	Run(t, casesSimplePreauthorizationtwo)
-}

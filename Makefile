@@ -26,6 +26,8 @@ complex_mm:
 	go test -c -o ./bin/test
 	./bin/test -test.v -test.run ^TestComplexPassMM$
 
-localhost: simple apm complex_mck complex_mm
-test: simple apm complex_mck complex_mm
-stage: simple apm complex_mck complex_mm
+full: simple apm complex_mck complex_mm
+
+localhost: full
+test: full
+stage: full

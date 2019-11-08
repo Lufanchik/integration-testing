@@ -12,6 +12,8 @@ import (
 	"lab.siroccotechnology.ru/tp/common/messages/carriers"
 	"lab.siroccotechnology.ru/tp/common/messages/pass"
 	"lab.siroccotechnology.ru/tp/common/messages/processing"
+	"lab.siroccotechnology.ru/tp/common/messages/registries"
+	"lab.siroccotechnology.ru/tp/common/messages/user"
 	"net/http"
 	"strconv"
 	"strings"
@@ -21,14 +23,10 @@ import (
 	passService "lab.siroccotechnology.ru/tp/pass-service/proto"
 )
 
-const (
-	processingApiUrl = "http://localhost:9090"
-	passUrl          = "http://localhost:13380"
-)
-
 var (
-	httpExpect *httpexpect.Expect
-	ps         passService.PassService
+	httpProcessingApi *httpexpect.Expect
+	httpApmApi        *httpexpect.Expect
+	ps                passService.PassService
 )
 
 type (
@@ -56,8 +54,8 @@ type (
 		SubCarrier carriers.SubCarrier
 		//ид перевозчика
 		Carrier carriers.Carrier
-		//сумма, которую мы передадим в запрос
-		Sum uint32
+		//данные об авторизации
+		Auth *processing.Auth
 		//сумма, на которую мы ожидаем авторизацию
 		ExpectedSum uint32
 		//ссылка на проход в нашем кейсе, которую мы считаем стартовой
@@ -67,12 +65,20 @@ type (
 		//время отведенное на запрос в миллисекундах, работает только с онлайном
 		Duration uint32
 	}
-	//модификациф прохода
+	//модификация прохода
 	Updater struct {
 		//функция модификатора
 		f func(tap *pass.Tap)
 		//ссылка на проход в нашем кейсе, которую мы считаем стартовой
 		target int
+	}
+
+	//получение реестров абс
+	AbsGetRegistry struct {
+	}
+
+	//логин
+	Login struct {
 	}
 )
 
@@ -82,7 +88,8 @@ const (
 )
 
 const (
-	RequestTypeOffline RequestType = iota + 1
+	RequestTypeNone RequestType = iota
+	RequestTypeOffline
 	RequestTypeOnline
 )
 
@@ -149,11 +156,8 @@ func PassOfflineRequest(tap *processing.TapRequest, p *Pass) (*processing.Offlin
 		Created: Now(),
 		Tap:     tap.Tap,
 	}
-	if p.Sum != 0 {
-		request.Auth = &processing.Auth{
-			Sum:  p.Sum,
-			Type: processing.Auth_CLASSIC,
-		}
+	if p.Auth != nil {
+		request.Auth = p.Auth
 	}
 	response := &processing.OfflinePassResponse{
 		Result: processing.PassStatus_SUCCESS,
@@ -167,11 +171,8 @@ func PassOnlineRequest(tap *processing.TapRequest, p *Pass) (*processing.OnlineP
 		Created: Now(),
 		Tap:     tap.Tap,
 	}
-	if p.Sum != 0 {
-		request.Auth = &processing.Auth{
-			Sum:  p.Sum,
-			Type: processing.Auth_CLASSIC,
-		}
+	if p.Auth != nil {
+		request.Auth = p.Auth
 	}
 	response := &processing.OnlinePassResponse{
 		Created: 0,
@@ -253,7 +254,7 @@ func TapBySubCarrier(t *testing.T, p *Pass, card *processing.Card) *processing.T
 	req, resp := TapRequest(p.SubCarrier, card, p.CarrierID)
 
 	t.Run(p.Carrier.String()+"/twirp/sirocco.ProcessingAPI/ProcessTap - sub carrier: "+p.SubCarrier.String(), func(t *testing.T) {
-		object := httpExpect.POST("/" + p.Carrier.String() + "/twirp/sirocco.ProcessingAPI/ProcessTap").WithJSON(req).
+		object := httpProcessingApi.POST("/" + p.Carrier.String() + "/twirp/sirocco.ProcessingAPI/ProcessTap").WithJSON(req).
 			Expect().
 			Status(http.StatusOK).Body().Raw()
 
@@ -278,7 +279,7 @@ func PassBySubCarrier(t *testing.T, tap *processing.TapRequest, p *Pass) uint64 
 		req, resp := PassOfflineRequest(tap, p)
 		requestedTime = req.Created
 		t.Run(p.Carrier.String()+"/twirp/sirocco.ProcessingAPI/ProcessOfflinePass - sub carrier: "+p.SubCarrier.String(), func(t *testing.T) {
-			object := httpExpect.POST("/" + p.Carrier.String() + "/twirp/sirocco.ProcessingAPI/ProcessOfflinePass").WithJSON(req).
+			object := httpProcessingApi.POST("/" + p.Carrier.String() + "/twirp/sirocco.ProcessingAPI/ProcessOfflinePass").WithJSON(req).
 				Expect().
 				Status(http.StatusOK).Body().Raw()
 
@@ -296,7 +297,7 @@ func PassBySubCarrier(t *testing.T, tap *processing.TapRequest, p *Pass) uint64 
 		req, resp := PassOnlineRequest(tap, p)
 		requestedTime = req.Created
 		t.Run(p.Carrier.String()+"/twirp/sirocco.ProcessingAPI/ProcessOnlinePass - sub carrier: "+p.SubCarrier.String(), func(t *testing.T) {
-			object := httpExpect.POST("/" + p.Carrier.String() + "/twirp/sirocco.ProcessingAPI/ProcessOnlinePass").WithJSON(req).
+			object := httpProcessingApi.POST("/" + p.Carrier.String() + "/twirp/sirocco.ProcessingAPI/ProcessOnlinePass").WithJSON(req).
 				Expect().
 				Status(http.StatusOK).Body().Raw()
 
@@ -369,7 +370,7 @@ func ValidatePass(t *testing.T, tap *processing.TapRequest, card *processing.Car
 		ParentComplexId:   "",
 		IsComplexCarrier:  global.IsComplexCarrier(p.Carrier),
 		IsPass:            true,
-		IsFreePass:        false,
+		IsFree:            false,
 		CarrierCodeSub:    p.SubCarrier,
 		Sum:               p.ExpectedSum,
 		IsAuth:            false,
@@ -384,10 +385,10 @@ func ValidatePass(t *testing.T, tap *processing.TapRequest, card *processing.Car
 
 	switch p.PaymentType {
 	case PaymentTypeFree:
-		expectPass.IsFreePass = true
+		expectPass.IsFree = true
 		expectPass.IsAuth = false
 	case PaymentTypeFullPayment:
-		expectPass.IsFreePass = false
+		expectPass.IsFree = false
 		expectPass.IsAuth = true
 	}
 
@@ -407,7 +408,7 @@ func ValidatePass(t *testing.T, tap *processing.TapRequest, card *processing.Car
 func AuthStatus(t *testing.T, p *Pass) {
 	req, resp := AuthStatusRequest(p)
 	t.Run(p.Carrier.String()+"/twirp/sirocco.ProcessingAPI/AuthStatus - sub carrier: "+p.SubCarrier.String(), func(t *testing.T) {
-		object := httpExpect.POST("/" + p.Carrier.String() + "/twirp/sirocco.ProcessingAPI/AuthStatus").WithJSON(req).
+		object := httpProcessingApi.POST("/" + p.Carrier.String() + "/twirp/sirocco.ProcessingAPI/AuthStatus").WithJSON(req).
 			Expect().
 			Status(http.StatusOK).Body().Raw()
 
@@ -425,18 +426,42 @@ func NanoToMicro(tm uint64) uint64 {
 	return tm / uint64(time.Microsecond) * 1000
 }
 
-func Passes(t *testing.T, cases Cases) {
-	httpExpect = httpexpect.New(t, processingApiUrl)
+func AbsGetRegistryApi(t *testing.T, registry *AbsGetRegistry) {
+	req := registries.AbsRegistryRequest{}
+	t.Run("twirp/proto.ApmAPIGateway/AbsGetRegistry", func(t *testing.T) {
+		httpApmApi.POST("/twirp/proto.ApmAPIGateway/AbsGetRegistry").WithJSON(req).
+			Expect().
+			Status(http.StatusForbidden)
+	})
+}
+
+func LoginApi(t *testing.T, lg *Login) {
+	req := user.LoginRequest{}
+	//resp := user.JWTResponse{}
+	t.Run("twirp/proto.ApmAPIGatewayPublic/Login", func(t *testing.T) {
+		_ = httpApmApi.POST("/twirp/proto.ApmAPIGatewayPublic/Login").WithJSON(req).
+			Expect().
+			Status(http.StatusNotFound).Body().Raw()
+	})
+}
+
+func Run(t *testing.T, cases Cases) {
+	httpProcessingApi = httpexpect.New(t, processingApiUrl)
+	httpApmApi = httpexpect.New(t, apmApiUrl)
 	for _, scenario := range cases {
 		card := Card()
 		carrierID := uuid.New().String()
 		for _, step := range scenario {
+			//Pass
 			p, ok := step.(*Pass)
 			if ok {
 				if p.Now != nil {
 					Now = p.Now
 				} else {
 					Now = NowBackup
+				}
+				if p.RequestType == RequestTypeNone {
+					p.RequestType = globalRequestType
 				}
 				GenerateEmv(card, p)
 				p.CarrierID = carrierID
@@ -455,6 +480,8 @@ func Passes(t *testing.T, cases Cases) {
 				ValidatePass(t, tapReq, card, p, parent, timeRequest)
 				AuthStatus(t, p)
 			}
+
+			//Updater
 			u, ok := step.(Updater)
 			if ok {
 				pu, ok := (scenario[u.target-1]).(*Pass)
@@ -462,6 +489,18 @@ func Passes(t *testing.T, cases Cases) {
 					t.Fail()
 				}
 				Update(t, pu, u)
+			}
+
+			//AbsGetRegistry
+			agr, ok := step.(*AbsGetRegistry)
+			if ok {
+				AbsGetRegistryApi(t, agr)
+			}
+
+			//AbsGetRegistry
+			lg, ok := step.(*Login)
+			if ok {
+				LoginApi(t, lg)
 			}
 		}
 	}

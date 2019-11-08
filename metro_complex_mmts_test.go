@@ -6,6 +6,10 @@ import (
 	"time"
 )
 
+func TestComplexPassMMTSMMTS(t *testing.T) {
+	Run(t, casesComplexPassMMTSMMTS)
+}
+
 var (
 	// MMTS - MMTS
 	casesComplexPassMMTSMMTS = Cases{
@@ -31,6 +35,10 @@ var (
 		},
 	}
 )
+
+func TestComplexPassMMTSMMMM(t *testing.T) {
+	Run(t, casesComplexPassMMTSMMMM)
+}
 
 var (
 	// MMTS - MM - MM
@@ -65,6 +73,10 @@ var (
 	}
 )
 
+func TestComplexPassMMTSMCKMCK(t *testing.T) {
+	Run(t, casesComplexPassMMTSMCKMCK)
+}
+
 var (
 	// MMTS - MCK - MCK
 	casesComplexPassMMTSMCKMCK = Cases{
@@ -98,6 +110,10 @@ var (
 	}
 )
 
+func TestComplexPassMMTSMMMMTS(t *testing.T) {
+	Run(t, casesComplexPassMMTSMMMMTS)
+}
+
 var (
 	// MMTS - MM - MMTS
 	casesComplexPassMMTSMMMMTS = Cases{
@@ -130,6 +146,10 @@ var (
 		},
 	}
 )
+
+func TestComplexPassMMTSMMMCKMCK(t *testing.T) {
+	Run(t, casesComplexPassMMTSMMMCKMCK)
+}
 
 var (
 	// MMTS - MM - MCK - MCK
@@ -171,6 +191,10 @@ var (
 	}
 )
 
+func TestComplexPassMMTSMMMCKMMTS(t *testing.T) {
+	Run(t, casesComplexPassMMTSMMMCKMMTS)
+}
+
 var (
 	// MMTS - MM - MCK - MMTS
 	casesComplexPassMMTSMMMCKMMTS = Cases{
@@ -210,6 +234,10 @@ var (
 		},
 	}
 )
+
+func TestComplexPassMMTSMCKMMMM(t *testing.T) {
+	Run(t, casesComplexPassMMTSMCKMMMM)
+}
 
 var (
 	// MMTS - MCK - MM - MM
@@ -251,6 +279,10 @@ var (
 	}
 )
 
+func TestComplexPassMMTSMCKMMMCK(t *testing.T) {
+	Run(t, casesComplexPassMMTSMCKMMMCK)
+}
+
 var (
 	// MMTS - MCK - MM - MCK
 	casesComplexPassMMTSMCKMMMCK = Cases{
@@ -291,6 +323,10 @@ var (
 	}
 )
 
+func TestComplexPassMMTSMCKMMMMTS(t *testing.T) {
+	Run(t, casesComplexPassMMTSMCKMMMMTS)
+}
+
 var (
 	// MMTS - MCK - MM - MMTS
 	casesComplexPassMMTSMCKMMMMTS = Cases{
@@ -330,6 +366,10 @@ var (
 		},
 	}
 )
+
+func TestComplexPassMMTSMMMCKMMMM(t *testing.T) {
+	Run(t, casesComplexPassMMTSMMMCKMMMM)
+}
 
 var (
 	// MMTS - MM -MCK - MM -MM
@@ -378,6 +418,10 @@ var (
 	}
 )
 
+func TestComplexPassMMTSMMMCKMMMCK(t *testing.T) {
+	Run(t, casesComplexPassMMTSMMMCKMMMCK)
+}
+
 var (
 	// MMTS - MM -MCK - MM -MCK
 	casesComplexPassMMTSMMMCKMMMCK = Cases{
@@ -424,6 +468,10 @@ var (
 		},
 	}
 )
+
+func TestComplexPassMMTSMMMCKMMMMTS(t *testing.T) {
+	Run(t, casesComplexPassMMTSMMMCKMMMMTS)
+}
 
 var (
 	// MMTS - MM -MCK - MM -MMTS
@@ -603,51 +651,3 @@ var (
 		},
 	}
 )
-
-func TestComplexPassMMTSMMTS(t *testing.T) {
-	Run(t, casesComplexPassMMTSMMTS)
-}
-
-func TestComplexPassMMTSMMMM(t *testing.T) {
-	Run(t, casesComplexPassMMTSMMMM)
-}
-
-func TestComplexPassMMTSMCKMCK(t *testing.T) {
-	Run(t, casesComplexPassMMTSMCKMCK)
-}
-
-func TestComplexPassMMTSMMMMTS(t *testing.T) {
-	Run(t, casesComplexPassMMTSMMMMTS)
-}
-
-func TestComplexPassMMTSMMMCKMCK(t *testing.T) {
-	Run(t, casesComplexPassMMTSMMMCKMCK)
-}
-
-func TestComplexPassMMTSMMMCKMMTS(t *testing.T) {
-	Run(t, casesComplexPassMMTSMMMCKMMTS)
-}
-
-func TestComplexPassMMTSMCKMMMM(t *testing.T) {
-	Run(t, casesComplexPassMMTSMCKMMMM)
-}
-
-func TestComplexPassMMTSMCKMMMCK(t *testing.T) {
-	Run(t, casesComplexPassMMTSMCKMMMCK)
-}
-
-func TestComplexPassMMTSMCKMMMMTS(t *testing.T) {
-	Run(t, casesComplexPassMMTSMCKMMMMTS)
-}
-
-func TestComplexPassMMTSMMMCKMMMM(t *testing.T) {
-	Run(t, casesComplexPassMMTSMMMCKMMMM)
-}
-
-func TestComplexPassMMTSMMMCKMMMCK(t *testing.T) {
-	Run(t, casesComplexPassMMTSMMMCKMMMCK)
-}
-
-func TestComplexPassMMTSMMMCKMMMMTS(t *testing.T) {
-	Run(t, casesComplexPassMMTSMMMCKMMMMTS)
-}

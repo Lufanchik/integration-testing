@@ -10,10 +10,6 @@ test: export PROCESSING_API_URL=http://processing-api-gateway.test.svc.cluster.l
 test: export PASS_URL=http://pass-service.test.svc.cluster.local:13380
 test: export APM_API_URL=http://apm-api-gateway-public.test.svc.cluster.local:1340
 
-prod: export PROCESSING_API_URL=http://processing-api-gateway.production.svc.cluster.local:9090
-prod: export PASS_URL=http://pass-service.production.svc.cluster.local:13380
-prod: export APM_API_URL=http://apm-api-gateway-public.production.svc.cluster.local:1340
-
 simple:
 	go test -c -o ./bin/test
 	./bin/test -test.v -test.run ^TestSimplePass$
@@ -35,4 +31,3 @@ full: simple apm complex_mck complex_mm
 localhost: full
 test: full
 stage: full
-prod: full

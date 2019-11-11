@@ -68,7 +68,7 @@ type (
 	//модификация прохода
 	Updater struct {
 		//функция модификатора
-		f func(tap *pass.Tap)
+		f func(tap *pass.Pass)
 		//ссылка на проход в нашем кейсе, которую мы считаем стартовой
 		target int
 	}
@@ -317,43 +317,25 @@ func PassBySubCarrier(t *testing.T, tap *processing.TapRequest, p *Pass) uint64 
 
 func Update(t *testing.T, p *Pass, up Updater) {
 	ctx := context.Background()
-	tap, err := ps.GetTap(ctx, &pass.TapRequest{
+	tap, err := ps.GetPass(ctx, &pass.PassRequest{
 		Id: p.ID,
 	})
 	require.NoError(t, err)
 	up.f(tap)
-	_, err = ps.UpdateTap(ctx, tap)
+	_, err = ps.UpdatePass(ctx, tap)
 	require.NoError(t, err)
 }
 
 func ValidatePass(t *testing.T, tap *processing.TapRequest, card *processing.Card, p *Pass, parent *Pass, timeRequest uint64) {
 	ctx := context.Background()
-	passDB, err := ps.GetTap(ctx, &pass.TapRequest{
+	passDB, err := ps.GetPass(ctx, &pass.PassRequest{
 		Id: p.ID,
 	})
 	require.NoError(t, err)
-	cardDB, err := ps.GetCard(ctx, &pass.CardRequest{
-		Id: passDB.CardId,
-	})
-	require.NoError(t, err)
-	expectCard := &pass.Card{
-		Id:     passDB.CardId,
-		System: card.System,
-		Type:   card.Type,
-		Pan:    card.Pan,
-		Bin:    card.Bin,
-		Exp:    card.Exp,
-		Emv:    cardDB.Emv,
-		Token: &processing.Token{
-			Type: card.Token.Type,
-			Par:  card.Token.Par,
-		},
-	}
-	assert.Equal(t, expectCard, cardDB)
 
-	expectPass := &pass.Tap{
+	expectPass := &pass.Pass{
 		Id:                p.ID,
-		CardId:            cardDB.Id,
+		UserId:            card.Pan,
 		Kind:              0,
 		CarrierTapId:      tap.Id,
 		CarrierCode:       p.Carrier,
@@ -476,7 +458,7 @@ func Run(t *testing.T, cases Cases) {
 					parent = pr
 				}
 				//ждем сообщения из rabbit mq
-				time.Sleep(time.Millisecond * 200)
+				time.Sleep(time.Millisecond * 400)
 				ValidatePass(t, tapReq, card, p, parent, timeRequest)
 				AuthStatus(t, p)
 			}

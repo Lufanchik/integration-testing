@@ -18,6 +18,10 @@ simple:
 	go test -c -o ./bin/test
 	./bin/test -test.v -test.run ^TestSimplePass$
 
+simple_complex:
+	go test -c -o ./bin/test
+	./bin/test -test.v -test.run ^TestSimpleComplexPass$
+
 apm:
 	go test -c -o ./bin/test
 	./bin/test -test.v -test.run ^TestApmGateway$
@@ -30,8 +34,7 @@ complex_mm:
 	go test -c -o ./bin/test
 	./bin/test -test.v -test.run ^TestComplexPassMM$
 
-full: simple apm complex_mck complex_mm
-
+full: simple simple_complex apm complex_mck complex_mm
 localhost: full
 test: full
 stage: full

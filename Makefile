@@ -1,6 +1,6 @@
-localhost: export PROCESSING_API_URL=http://localhost:9090
-localhost: export PASS_URL=http://localhost:13380
-localhost: export APM_API_URL=http://localhost:1340
+local: export PROCESSING_API_URL=http://localhost:9090
+local: export PASS_URL=http://localhost:13380
+local: export APM_API_URL=http://localhost:1340
 
 stage: export PROCESSING_API_URL=http://processing-api-gateway.stage.svc.cluster.local:9090
 stage: export PASS_URL=http://pass-service.stage.svc.cluster.local:13380
@@ -34,8 +34,12 @@ complex_mm:
 	go test -c -o ./bin/test
 	./bin/test -test.v -test.run ^TestComplexPassMM$
 
+complex_wrong_time:
+	go test -c -o ./bin/test
+	./bin/test -test.v -test.run ^TestWrongTimeComplexPass$
+
 full: simple simple_complex apm complex_mck complex_mm
-localhost: full
+local: complex_wrong_time
 test: full
 stage: full
 prod: full

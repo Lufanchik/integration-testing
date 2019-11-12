@@ -35,15 +35,16 @@ complex_mm:
 	./bin/test -test.v -test.run ^TestComplexPassMM$
 
 MetroComplexMCK:
-    go test -c -o ./bin/test
+	go test -c -o ./bin/test
 	./bin/test -test.v -test.run ^TestMetroComplexMCK$
 
 MetroComplexMM:
-     go test -c -o ./bin/test
+	go test -c -o ./bin/test
 	./bin/test -test.v -test.run ^TestMetroComplexMM$
 
 
 full: simple simple_complex apm complex_mck complex_mm MetroComplexMCK MetroComplexMM
+
 localhost: full
 test: full
 stage: full

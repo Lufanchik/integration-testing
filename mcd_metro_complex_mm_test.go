@@ -7,7 +7,7 @@ import (
 )
 
 func TestComplexPassMMM(t *testing.T) {
-	Run(t, casesComplexPassMMММ)
+	Run(t, casesComplexPassMMМ)
 }
 
 // "MM - MM" (Две платные поездки)

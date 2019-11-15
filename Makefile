@@ -28,7 +28,7 @@ apm:
 
 complex_mck:
 	go test -c -o ./bin/test
-	./bin/test -test.v -test.run ^TestComplexPassMCK$
+	./bin/test -test.v -test.run ^TestMetroComplexMCK$
 
 complex_wrong_time:
 	go test -c -o ./bin/test
@@ -45,8 +45,6 @@ metro_complex_mck:
 metro_complex_mmts:
 	go test -c -o ./bin/test
 	./bin/test -test.v -test.run ^TestMetroComplexMMTS$
-
-
 
 
 full: simple simple_complex apm complex_mck metro_complex_mm metro_complex_mck metro_complex_mmts

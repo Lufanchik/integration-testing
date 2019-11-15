@@ -34,11 +34,16 @@ type (
 	PaymentType uint8
 	RequestType uint8
 	AuthType    uint8
-	Cases       [][]interface{}
+	Cases       []Case
+	T           []interface{}
 )
 
 //варианты шагов, который мы можем использовать в кейсах
 type (
+	Case struct {
+		N string
+		T T
+	}
 	//генерация прохода
 	Pass struct {
 		//тип оплаты
@@ -524,82 +529,84 @@ func Run(t *testing.T, cases Cases) {
 	for _, scenario := range cases {
 		card := Card()
 		carrierID := uuid.New().String()
-		for _, step := range scenario {
-			//Pass
-			p, ok := step.(*Pass)
-			if ok {
-				if p.Now != nil {
-					Now = p.Now
-				} else {
-					Now = NowBackup
+		for _, step := range scenario.T {
+			t.Run("case: "+scenario.N, func(t *testing.T) {
+				//Pass
+				p, ok := step.(*Pass)
+				if ok {
+					if p.Now != nil {
+						Now = p.Now
+					} else {
+						Now = NowBackup
+					}
+					if p.RequestType == RequestTypeNone {
+						p.RequestType = globalRequestType
+					}
+					GenerateEmv(card, p)
+					p.carrierID = carrierID
+					tapReq := TapBySubCarrier(t, p, card)
+					timeRequest := PassBySubCarrier(t, tapReq, p)
+					var parent *Pass
+					if p.Parent > 0 {
+						pr, ok := (scenario.T[p.Parent-1]).(*Pass)
+						if !ok {
+							t.Fail()
+						}
+						parent = pr
+					}
+					p.tapRequest = tapReq
+					p.timeRequest = timeRequest
+					p.card = card
+					ValidatePass(t, p, parent)
+					AuthStatus(t, p)
 				}
-				if p.RequestType == RequestTypeNone {
-					p.RequestType = globalRequestType
-				}
-				GenerateEmv(card, p)
-				p.carrierID = carrierID
-				tapReq := TapBySubCarrier(t, p, card)
-				timeRequest := PassBySubCarrier(t, tapReq, p)
-				var parent *Pass
-				if p.Parent > 0 {
-					pr, ok := (scenario[p.Parent-1]).(*Pass)
+
+				//Updater
+				u, ok := step.(Updater)
+				if ok {
+					pu, ok := (scenario.T[u.target-1]).(*Pass)
 					if !ok {
 						t.Fail()
 					}
-					parent = pr
+					Update(t, pu, u)
 				}
-				p.tapRequest = tapReq
-				p.timeRequest = timeRequest
-				p.card = card
-				ValidatePass(t, p, parent)
-				AuthStatus(t, p)
-			}
 
-			//Updater
-			u, ok := step.(Updater)
-			if ok {
-				pu, ok := (scenario[u.target-1]).(*Pass)
-				if !ok {
-					t.Fail()
+				//AbsGetRegistry
+				agr, ok := step.(*AbsGetRegistry)
+				if ok {
+					AbsGetRegistryApi(t, agr)
 				}
-				Update(t, pu, u)
-			}
 
-			//AbsGetRegistry
-			agr, ok := step.(*AbsGetRegistry)
-			if ok {
-				AbsGetRegistryApi(t, agr)
-			}
-
-			//AbsGetRegistry
-			lg, ok := step.(*Login)
-			if ok {
-				LoginApi(t, lg)
-			}
-
-			//PassCheck
-			pc, ok := step.(*PassCheck)
-			if ok {
-				target, ok := (scenario[pc.Target-1]).(*Pass)
-				if !ok {
-					t.Fail()
+				//AbsGetRegistry
+				lg, ok := step.(*Login)
+				if ok {
+					LoginApi(t, lg)
 				}
-				parent, ok := (scenario[pc.Parent-1]).(*Pass)
-				if !ok {
-					t.Fail()
-				}
-				PassCheckApi(t, pc, target, parent)
-			}
 
-			//Cancel
-			cl, ok := step.(*Cancel)
-			if ok {
-				target, ok := (scenario[cl.Target-1]).(*Pass)
-				if !ok {
-					t.Fail()
+				//PassCheck
+				pc, ok := step.(*PassCheck)
+				if ok {
+					target, ok := (scenario.T[pc.Target-1]).(*Pass)
+					if !ok {
+						t.Fail()
+					}
+					parent, ok := (scenario.T[pc.Parent-1]).(*Pass)
+					if !ok {
+						t.Fail()
+					}
+					PassCheckApi(t, pc, target, parent)
 				}
-				CancelApi(t, cl, target)
-			}
+
+				//Cancel
+				cl, ok := step.(*Cancel)
+				if ok {
+					target, ok := (scenario.T[cl.Target-1]).(*Pass)
+					if !ok {
+						t.Fail()
+					}
+					CancelApi(t, cl, target)
+				}
+			})
 		}
 	}
 }

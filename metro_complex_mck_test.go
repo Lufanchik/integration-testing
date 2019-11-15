@@ -6,13 +6,13 @@ import (
 	"time"
 )
 
-func TestComplexPassMCKMCK(t *testing.T) {
-	Run(t, casesComplexPassMCKMCK)
+func TestMetroComplexMCK(t *testing.T) {
+	Run(t, casesMetroComplexMCK)
 }
 
 var (
 	// MCK - MCK
-	casesComplexPassMCKMCK = Cases{
+	casesMetroComplexMCK = Cases{
 		{
 			&Pass{
 				PaymentType: PaymentTypeFullPayment,
@@ -32,16 +32,8 @@ var (
 				ExpectedSum: 4200,
 			},
 		},
-	}
-)
 
-func TestComplexPassMCKMMMM(t *testing.T) {
-	Run(t, casesComplexPassMCKMMMM)
-}
-
-var (
-	// MCK - MM - MM
-	casesComplexPassMCKMMMM = Cases{
+		// MCK - MM - MM
 		{
 			&Pass{
 				PaymentType: PaymentTypeFullPayment,
@@ -68,17 +60,8 @@ var (
 				ExpectedSum: 4200,
 			},
 		},
-	}
-)
 
-func TestComplexPassMCKMMMCK(t *testing.T) {
-	Run(t, casesComplexPassMCKMMMCK)
-}
-
-var (
-	// MCK - MM - MCK
-	casesComplexPassMCKMMMCK = Cases{
-
+		// MCK - MM - MCK
 		{
 			&Pass{
 				PaymentType: PaymentTypeFullPayment,
@@ -108,17 +91,7 @@ var (
 				},
 			},
 		},
-	}
-)
-
-func TestComplexPassMCKMMTSMM(t *testing.T) {
-	Run(t, casesComplexPassMCKMMTSMM)
-}
-
-var (
-	// MCK - MMTS - MM
-	casesComplexPassMCKMMTSMM = Cases{
-
+		// MCK - MMTS - MM
 		{
 			&Pass{
 				PaymentType: PaymentTypeFullPayment,
@@ -145,16 +118,7 @@ var (
 				ExpectedSum: 4200,
 			},
 		},
-	}
-)
-
-func TestComplexPassMCKMMTSMCK(t *testing.T) {
-	Run(t, casesComplexPassMCKMMTSMCK)
-}
-
-var (
-	// MCK - MMTS - MCK
-	casesComplexPassMCKMMTSMCK = Cases{
+		// MCK - MMTS - MCK
 		{
 			&Pass{
 				PaymentType: PaymentTypeFullPayment,
@@ -181,16 +145,7 @@ var (
 				ExpectedSum: 4200,
 			},
 		},
-	}
-)
-
-func TestComplexPassMCKMMTSMMTS(t *testing.T) {
-	Run(t, casesComplexPassMCKMMTSMMTS)
-}
-
-var (
-	// MCK - MMTS - MMTS
-	casesComplexPassMCKMMTSMMTS = Cases{
+		// MCK - MMTS - MMTS
 		{
 			&Pass{
 				PaymentType: PaymentTypeFullPayment,
@@ -217,17 +172,7 @@ var (
 				ExpectedSum: 4200,
 			},
 		},
-	}
-)
-
-func TestComplexPassMCKMMMMTSMM(t *testing.T) {
-	Run(t, casesComplexPassMCKMMMMTSMM)
-}
-
-var (
-	// MCK - MM - MMTS - MM
-	casesComplexPassMCKMMMMTSMM = Cases{
-
+		// MCK - MM - MMTS - MM
 		{
 			&Pass{
 				PaymentType: PaymentTypeFullPayment,
@@ -261,17 +206,7 @@ var (
 				ExpectedSum: 4200,
 			},
 		},
-	}
-)
-
-func TestComplexPassMCKMMMMTSMCK(t *testing.T) {
-	Run(t, casesComplexPassMCKMMMMTSMCK)
-}
-
-var (
-	// MCK - MM -MMTS -MCK
-	casesComplexPassMCKMMMMTSMCK = Cases{
-
+		// MCK - MM -MMTS -MCK
 		{
 			&Pass{
 				PaymentType: PaymentTypeFullPayment,
@@ -305,16 +240,8 @@ var (
 				ExpectedSum: 4200,
 			},
 		},
-	}
-)
 
-func TestComplexPassMCKMMMMTSMMTS(t *testing.T) {
-	Run(t, casesComplexPassMCKMMMMTSMMTS)
-}
-
-var (
-	// MCK - MM -MMTS -MMTS
-	casesComplexPassMCKMMMMTSMMTS = Cases{
+		// MCK - MM -MMTS -MMTS
 		{
 			&Pass{
 				PaymentType: PaymentTypeFullPayment,
@@ -348,18 +275,9 @@ var (
 				ExpectedSum: 4200,
 			},
 		},
-	}
-)
 
-// Кейсы включающие транзакции с некорректной авторизацией
-
-func TestComplexPassMCKMCKAuthMMMMTSMM(t *testing.T) {
-	Run(t, casesComplexPassMCKMCKAuthMMMMTSMM)
-}
-
-// "MCK - MCK (AuthTypeIncorrect) - MM - MMTS -MM" (Если было две одинаковые поездки и последняя из них неоплачена, комплексная поездка должна создаваться и привязываться к последней)
-var (
-	casesComplexPassMCKMCKAuthMMMMTSMM = Cases{
+		// Кейсы включающие транзакции с некорректной авторизацией
+		// "MCK - MCK (AuthTypeIncorrect) - MM - MMTS -MM" (Если было две одинаковые поездки и последняя из них неоплачена, комплексная поездка должна создаваться и привязываться к последней)
 		{
 			&Pass{
 				PaymentType: PaymentTypeFullPayment,
@@ -398,16 +316,7 @@ var (
 				ExpectedSum: 4200,
 			},
 		},
-	}
-)
-
-func TestComplexPassMCKMCKAuthMMTS(t *testing.T) {
-	Run(t, casesComplexPassMCKMCKAuthMMTS)
-}
-
-// "MCK - MCK (AuthTypeIncorrect) - MMTS" (Если было две одинаковые поездки и последняя из них неоплачена, комплексная поездка должна создаваться и привязываться к последней)
-var (
-	casesComplexPassMCKMCKAuthMMTS = Cases{
+		// "MCK - MCK (AuthTypeIncorrect) - MMTS" (Если было две одинаковые поездки и последняя из них неоплачена, комплексная поездка должна создаваться и привязываться к последней)
 		{
 			&Pass{
 				PaymentType: PaymentTypeFullPayment,
@@ -432,16 +341,8 @@ var (
 				Parent:      2,
 			},
 		},
-	}
-)
 
-func TestComplexPassMCKAuthMMMMTS(t *testing.T) {
-	Run(t, casesComplexPassMCKAuthMMMMTS)
-}
-
-// "MCK (AuthTypeIncorrect) - MM - MMTS" (Если было две одинаковые поездки и последняя из них неоплачена, комплексная поездка должна создаваться и привязываться к последней)
-var (
-	casesComplexPassMCKAuthMMMMTS = Cases{
+		// "MCK (AuthTypeIncorrect) - MM - MMTS" (Если было две одинаковые поездки и последняя из них неоплачена, комплексная поездка должна создаваться и привязываться к последней)
 		{
 			&Pass{
 				PaymentType: PaymentTypeFullPayment,

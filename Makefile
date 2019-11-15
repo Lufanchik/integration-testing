@@ -28,7 +28,7 @@ apm:
 
 complex_mck:
 	go test -c -o ./bin/test
-	./bin/test -test.v -test.run ^TestComplexPassMCK$
+	./bin/test -test.v -test.run ^TestMetroComplexMCK$
 
 complex_mm:
 	go test -c -o ./bin/test
@@ -39,7 +39,7 @@ complex_wrong_time:
 	./bin/test -test.v -test.run ^TestWrongTimeComplexPass$
 
 full: simple simple_complex complex_mck complex_mm
-local: full
+local: complex_mck
 test: complex_mm
 stage: full
 prod: full

@@ -1,6 +1,6 @@
-localhost: export PROCESSING_API_URL=http://localhost:9090
-localhost: export PASS_URL=http://localhost:13380
-localhost: export APM_API_URL=http://localhost:1340
+local: export PROCESSING_API_URL=http://localhost:9090
+local: export PASS_URL=http://localhost:13380
+local: export APM_API_URL=http://localhost:1340
 
 stage: export PROCESSING_API_URL=http://processing-api-gateway.stage.svc.cluster.local:9090
 stage: export PASS_URL=http://pass-service.stage.svc.cluster.local:13380
@@ -30,22 +30,27 @@ complex_mck:
 	go test -c -o ./bin/test
 	./bin/test -test.v -test.run ^TestComplexPassMCK$
 
-complex_mm:
+complex_wrong_time:
 	go test -c -o ./bin/test
-	./bin/test -test.v -test.run ^TestComplexPassMM$
+	./bin/test -test.v -test.run ^TestWrongTimeComplexPass$
 
-MetroComplexMCK:
-	go test -c -o ./bin/test
-	./bin/test -test.v -test.run ^TestMetroComplexMCK$
-
-MetroComplexMM:
+metro_complex_mm:
 	go test -c -o ./bin/test
 	./bin/test -test.v -test.run ^TestMetroComplexMM$
 
+metro_complex_mck:
+	go test -c -o ./bin/test
+	./bin/test -test.v -test.run ^TestMetroComplexMCK$
 
-full: simple simple_complex apm complex_mck complex_mm MetroComplexMCK MetroComplexMM
+metro_complex_mmts:
+	go test -c -o ./bin/test
+	./bin/test -test.v -test.run ^TestMetroComplexMMTS$
 
-localhost: full
+
+
+
+full: simple simple_complex apm complex_mck metro_complex_mm metro_complex_mck metro_complex_mmts
+local: complex_wrong_time
 test: full
 stage: full
 prod: full

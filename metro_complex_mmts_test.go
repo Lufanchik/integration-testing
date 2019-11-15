@@ -33,8 +33,7 @@ var (
 				ExpectedSum: 4200,
 			},
 		},
-
-
+		
 		{
 			&Pass{
 				PaymentType: PaymentTypeFullPayment,
@@ -61,8 +60,7 @@ var (
 				ExpectedSum: 4200,
 			},
 		},
-
-
+		
 		{
 			&Pass{
 				PaymentType: PaymentTypeFullPayment,
@@ -89,9 +87,7 @@ var (
 				ExpectedSum: 4200,
 			},
 		},
-
-
-
+		
 		{
 			&Pass{
 				PaymentType: PaymentTypeFullPayment,
@@ -118,9 +114,7 @@ var (
 				ExpectedSum: 4200,
 			},
 		},
-
-
-
+		
 		{
 			&Pass{
 				PaymentType: PaymentTypeFullPayment,
@@ -154,8 +148,7 @@ var (
 				ExpectedSum: 4200,
 			},
 		},
-
-
+		
 		{
 			&Pass{
 				PaymentType: PaymentTypeFullPayment,
@@ -189,8 +182,7 @@ var (
 				ExpectedSum: 4200,
 			},
 		},
-
-
+		
 		{
 			&Pass{
 				PaymentType: PaymentTypeFullPayment,
@@ -224,8 +216,7 @@ var (
 				ExpectedSum: 4200,
 			},
 		},
-
-
+		
 		{
 			&Pass{
 				PaymentType: PaymentTypeFullPayment,
@@ -259,8 +250,7 @@ var (
 				ExpectedSum: 4200,
 			},
 		},
-
-
+		
 		{
 			&Pass{
 				PaymentType: PaymentTypeFullPayment,
@@ -294,8 +284,7 @@ var (
 				ExpectedSum: 4200,
 			},
 		},
-
-
+		
 		{
 			&Pass{
 				PaymentType: PaymentTypeFullPayment,
@@ -336,8 +325,7 @@ var (
 				ExpectedSum: 4200,
 			},
 		},
-
-
+		
 		{
 			&Pass{
 				PaymentType: PaymentTypeFullPayment,
@@ -378,8 +366,7 @@ var (
 				ExpectedSum: 4200,
 			},
 		},
-
-
+		
 		{
 			&Pass{
 				PaymentType: PaymentTypeFullPayment,
@@ -420,8 +407,7 @@ var (
 				ExpectedSum: 4200,
 			},
 		},
-
-
+		
 		//  MMTS - MMTS (not money) - MCK (если было две одинаковые поездки и последняя из них неоплачена, комплексная поездка должна создаваться и привязываться к последней)
 
 		{
@@ -448,12 +434,8 @@ var (
 				Parent:      2,
 			},
 		},
-
-
 		// Кейсы включающие транзакции с некорректной авторизацией
-
 		// "MMTS - MMTS (AuthTypeIncorrect) - MM - MCK -MM" (Если было две одинаковые поездки и последняя из них неоплачена, комплексная поездка должна создаваться и привязываться к последней)
-
 		{
 			&Pass{
 				PaymentType: PaymentTypeFullPayment,
@@ -492,8 +474,6 @@ var (
 				Parent:      2,
 			},
 		},
-
-
 		// "MMTS - MMTS (AuthTypeIncorrect) - MM - MCK -MM" (Если было две одинаковые поездки и последняя из них неоплачена, комплексная поездка должна создаваться и привязываться к последней)
 
 		{

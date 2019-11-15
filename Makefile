@@ -38,8 +38,8 @@ complex_wrong_time:
 	go test -c -o ./bin/test
 	./bin/test -test.v -test.run ^TestWrongTimeComplexPass$
 
-full: simple simple_complex apm complex_mck complex_mm
-local: complex_wrong_time
-test: full
+full: simple simple_complex complex_mck complex_mm
+local: full
+test: complex_mm
 stage: full
 prod: full

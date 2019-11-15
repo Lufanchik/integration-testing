@@ -2,6 +2,7 @@ package http_test
 
 import (
 	"context"
+	"fmt"
 	"github.com/brianvoe/gofakeit"
 	"github.com/gavv/httpexpect"
 	"github.com/golang/protobuf/jsonpb"
@@ -40,10 +41,6 @@ type (
 type (
 	//генерация прохода
 	Pass struct {
-		//сгенерированный ид прохода, заполняется автоматически после создания
-		ID string
-		//сгенерированный ид прохода от перевозчика, заполняется автоматически после создания
-		CarrierID string
 		//тип оплаты
 		PaymentType PaymentType
 		//тип прохода
@@ -64,7 +61,26 @@ type (
 		Now func() uint64
 		//время отведенное на запрос в миллисекундах, работает только с онлайном
 		Duration uint32
+
+		id          string
+		carrierID   string
+		tapRequest  *processing.TapRequest
+		timeRequest uint64
+		card        *processing.Card
 	}
+
+	//генерация прохода
+	PassCheck struct {
+		//тип оплаты
+		PaymentType PaymentType
+		//сумма, на которую мы ожидаем авторизацию
+		ExpectedSum uint32
+		//ссылка на проход в нашем кейсе, которую мы считаем стартовой
+		Parent int
+		//ссылка на проход в нашем кейсе, которую мы считаем стартовой
+		Target int
+	}
+
 	//модификация прохода
 	Updater struct {
 		//функция модификатора
@@ -79,6 +95,12 @@ type (
 
 	//логин
 	Login struct {
+	}
+
+	//отмена
+	Cancel struct {
+		Target int
+		Reason processing.CancelPassRequest_CancelPassReason
 	}
 )
 
@@ -196,14 +218,28 @@ func PassOnlineRequest(tap *processing.TapRequest, p *Pass) (*processing.OnlineP
 	return request, response
 }
 
+func CancelRequest(cl *Cancel, p *Pass) (*processing.CancelPassRequest, *processing.CancelPassResponse) {
+	request := &processing.CancelPassRequest{
+		Id:      p.id,
+		Created: Now(),
+		Reason:  cl.Reason,
+	}
+
+	response := &processing.CancelPassResponse{
+		Id:     p.id,
+		Result: processing.CancelPassResponse_SUCCESS,
+	}
+
+	return request, response
+}
+
 func AuthStatusRequest(p *Pass) (*processing.AuthRequest, *processing.AuthResponse) {
 	request := &processing.AuthRequest{
-		Id: p.ID,
+		Id: p.id,
 	}
 
 	response := &processing.AuthResponse{
-		Result:     processing.AuthResponse_SUCCESS_RESULT,
-		Resolution: processing.AuthResponse_AUTHORIZED,
+		Result: processing.AuthResponse_SUCCESS_RESULT,
 	}
 	switch p.PaymentType {
 	case PaymentTypeFullPayment:
@@ -212,6 +248,7 @@ func AuthStatusRequest(p *Pass) (*processing.AuthRequest, *processing.AuthRespon
 			Sum:  p.ExpectedSum,
 			Type: processing.Auth_CLASSIC,
 		}
+		response.Resolution = processing.AuthResponse_AUTHORIZED
 	case PaymentTypeFree:
 		response.Status = processing.AuthResponse_SUCCESS_FREE
 	}
@@ -251,12 +288,17 @@ func TapRequest(c carriers.SubCarrier, card *processing.Card, carrierID string) 
 }
 
 func TapBySubCarrier(t *testing.T, p *Pass, card *processing.Card) *processing.TapRequest {
-	req, resp := TapRequest(p.SubCarrier, card, p.CarrierID)
+	req, resp := TapRequest(p.SubCarrier, card, p.carrierID)
 
 	t.Run(p.Carrier.String()+"/twirp/sirocco.ProcessingAPI/ProcessTap - sub carrier: "+p.SubCarrier.String(), func(t *testing.T) {
-		object := httpProcessingApi.POST("/" + p.Carrier.String() + "/twirp/sirocco.ProcessingAPI/ProcessTap").WithJSON(req).
+		r := httpProcessingApi.POST("/" + p.Carrier.String() + "/twirp/sirocco.ProcessingAPI/ProcessTap").WithJSON(req).
 			Expect().
-			Status(http.StatusOK).Body().Raw()
+			Status(http.StatusOK)
+
+		object := r.Body().Raw()
+
+		trace := r.Header("X-Trace-ID")
+		fmt.Println("trace id: ", trace.Raw())
 
 		response := &processing.TapResponse{}
 		err := jsonpb.Unmarshal(strings.NewReader(object), response)
@@ -264,7 +306,7 @@ func TapBySubCarrier(t *testing.T, p *Pass, card *processing.Card) *processing.T
 
 		resp.Id = response.Id
 		resp.Created = response.Created
-		p.ID = response.Id
+		p.id = response.Id
 
 		assert.Equal(t, resp, response)
 	})
@@ -279,9 +321,14 @@ func PassBySubCarrier(t *testing.T, tap *processing.TapRequest, p *Pass) uint64 
 		req, resp := PassOfflineRequest(tap, p)
 		requestedTime = req.Created
 		t.Run(p.Carrier.String()+"/twirp/sirocco.ProcessingAPI/ProcessOfflinePass - sub carrier: "+p.SubCarrier.String(), func(t *testing.T) {
-			object := httpProcessingApi.POST("/" + p.Carrier.String() + "/twirp/sirocco.ProcessingAPI/ProcessOfflinePass").WithJSON(req).
+			r := httpProcessingApi.POST("/" + p.Carrier.String() + "/twirp/sirocco.ProcessingAPI/ProcessOfflinePass").WithJSON(req).
 				Expect().
-				Status(http.StatusOK).Body().Raw()
+				Status(http.StatusOK)
+
+			object := r.Body().Raw()
+
+			trace := r.Header("X-Trace-ID")
+			fmt.Println("trace id: ", trace.Raw())
 
 			response := &processing.OfflinePassResponse{}
 			err := jsonpb.Unmarshal(strings.NewReader(object), response)
@@ -289,7 +336,7 @@ func PassBySubCarrier(t *testing.T, tap *processing.TapRequest, p *Pass) uint64 
 
 			resp.Id = response.Id
 			resp.Created = response.Created
-			p.ID = response.Id
+			p.id = response.Id
 
 			assert.Equal(t, resp, response)
 		})
@@ -297,9 +344,14 @@ func PassBySubCarrier(t *testing.T, tap *processing.TapRequest, p *Pass) uint64 
 		req, resp := PassOnlineRequest(tap, p)
 		requestedTime = req.Created
 		t.Run(p.Carrier.String()+"/twirp/sirocco.ProcessingAPI/ProcessOnlinePass - sub carrier: "+p.SubCarrier.String(), func(t *testing.T) {
-			object := httpProcessingApi.POST("/" + p.Carrier.String() + "/twirp/sirocco.ProcessingAPI/ProcessOnlinePass").WithJSON(req).
+			r := httpProcessingApi.POST("/" + p.Carrier.String() + "/twirp/sirocco.ProcessingAPI/ProcessOnlinePass").WithJSON(req).
 				Expect().
-				Status(http.StatusOK).Body().Raw()
+				Status(http.StatusOK)
+
+			object := r.Body().Raw()
+
+			trace := r.Header("X-Trace-ID")
+			fmt.Println("trace id: ", trace.Raw())
 
 			response := &processing.OnlinePassResponse{}
 			err := jsonpb.Unmarshal(strings.NewReader(object), response)
@@ -307,7 +359,7 @@ func PassBySubCarrier(t *testing.T, tap *processing.TapRequest, p *Pass) uint64 
 
 			resp.Id = response.Id
 			resp.Created = response.Created
-			p.ID = response.Id
+			p.id = response.Id
 
 			assert.Equal(t, resp, response)
 		})
@@ -318,7 +370,7 @@ func PassBySubCarrier(t *testing.T, tap *processing.TapRequest, p *Pass) uint64 
 func Update(t *testing.T, p *Pass, up Updater) {
 	ctx := context.Background()
 	tap, err := ps.GetPass(ctx, &pass.PassRequest{
-		Id: p.ID,
+		Id: p.id,
 	})
 	require.NoError(t, err)
 	up.f(tap)
@@ -326,28 +378,29 @@ func Update(t *testing.T, p *Pass, up Updater) {
 	require.NoError(t, err)
 }
 
-func ValidatePass(t *testing.T, tap *processing.TapRequest, card *processing.Card, p *Pass, parent *Pass, timeRequest uint64) {
+func ValidatePass(t *testing.T, p *Pass, parent *Pass) {
 	ctx := context.Background()
+	time.Sleep(time.Millisecond * 200)
 	passDB, err := ps.GetPass(ctx, &pass.PassRequest{
-		Id: p.ID,
+		Id: p.id,
 	})
 	require.NoError(t, err)
 
 	expectPass := &pass.Pass{
-		Id:                p.ID,
-		UserId:            card.Pan,
+		Id:                p.id,
+		UserId:            p.card.Pan,
 		Kind:              0,
-		CarrierTapId:      tap.Id,
+		CarrierTapId:      p.tapRequest.Id,
 		CarrierCode:       p.Carrier,
-		CarrierResolution: tap.Tap.Resolution,
-		TerminalId:        tap.Tap.Terminal.Id,
-		TerminalStation:   tap.Tap.Terminal.Station,
-		TerminalDirection: tap.Tap.Terminal.Direction,
-		Sign:              tap.Tap.Sign,
+		CarrierResolution: p.tapRequest.Tap.Resolution,
+		TerminalId:        p.tapRequest.Tap.Terminal.Id,
+		TerminalStation:   p.tapRequest.Tap.Terminal.Station,
+		TerminalDirection: p.tapRequest.Tap.Terminal.Direction,
+		Sign:              p.tapRequest.Tap.Sign,
 		IsCancel:          false,
 		IsComplexTimeout:  false,
-		CreatedAtRequest:  NanoToMicro(timeRequest),
-		CreatedAtCarrier:  NanoToMicro(tap.Tap.Created),
+		CreatedAtRequest:  NanoToMicro(p.timeRequest),
+		CreatedAtCarrier:  NanoToMicro(p.tapRequest.Tap.Created),
 		IsComplex:         false,
 		ParentComplexId:   "",
 		IsComplexCarrier:  global.IsComplexCarrier(p.Carrier),
@@ -376,7 +429,7 @@ func ValidatePass(t *testing.T, tap *processing.TapRequest, card *processing.Car
 
 	if p.Parent > 0 {
 		expectPass.IsComplex = true
-		expectPass.ParentComplexId = parent.ID
+		expectPass.ParentComplexId = parent.id
 	}
 
 	if p.AuthType == AuthTypeIncorrect {
@@ -390,9 +443,14 @@ func ValidatePass(t *testing.T, tap *processing.TapRequest, card *processing.Car
 func AuthStatus(t *testing.T, p *Pass) {
 	req, resp := AuthStatusRequest(p)
 	t.Run(p.Carrier.String()+"/twirp/sirocco.ProcessingAPI/AuthStatus - sub carrier: "+p.SubCarrier.String(), func(t *testing.T) {
-		object := httpProcessingApi.POST("/" + p.Carrier.String() + "/twirp/sirocco.ProcessingAPI/AuthStatus").WithJSON(req).
+		r := httpProcessingApi.POST("/" + p.Carrier.String() + "/twirp/sirocco.ProcessingAPI/AuthStatus").WithJSON(req).
 			Expect().
-			Status(http.StatusOK).Body().Raw()
+			Status(http.StatusOK)
+
+		object := r.Body().Raw()
+
+		trace := r.Header("X-Trace-ID")
+		fmt.Println("trace id: ", trace.Raw())
 
 		response := &processing.AuthResponse{}
 		err := jsonpb.Unmarshal(strings.NewReader(object), response)
@@ -411,9 +469,12 @@ func NanoToMicro(tm uint64) uint64 {
 func AbsGetRegistryApi(t *testing.T, registry *AbsGetRegistry) {
 	req := registries.AbsRegistryRequest{}
 	t.Run("twirp/proto.ApmAPIGateway/AbsGetRegistry", func(t *testing.T) {
-		httpApmApi.POST("/twirp/proto.ApmAPIGateway/AbsGetRegistry").WithJSON(req).
+		r := httpApmApi.POST("/twirp/proto.ApmAPIGateway/AbsGetRegistry").WithJSON(req).
 			Expect().
 			Status(http.StatusForbidden)
+
+		trace := r.Header("X-Trace-ID")
+		fmt.Println("trace id: ", trace.Raw())
 	})
 }
 
@@ -421,9 +482,39 @@ func LoginApi(t *testing.T, lg *Login) {
 	req := user.LoginRequest{}
 	//resp := user.JWTResponse{}
 	t.Run("twirp/proto.ApmAPIGatewayPublic/Login", func(t *testing.T) {
-		_ = httpApmApi.POST("/twirp/proto.ApmAPIGatewayPublic/Login").WithJSON(req).
+		r := httpApmApi.POST("/twirp/proto.ApmAPIGatewayPublic/Login").WithJSON(req).
 			Expect().
-			Status(http.StatusNotFound).Body().Raw()
+			Status(http.StatusNotFound)
+
+		trace := r.Header("X-Trace-ID")
+		fmt.Println("trace id: ", trace.Raw())
+	})
+}
+
+func PassCheckApi(t *testing.T, pc *PassCheck, target *Pass, parent *Pass) {
+	target.PaymentType = pc.PaymentType
+	target.ExpectedSum = pc.ExpectedSum
+	ValidatePass(t, target, parent)
+	AuthStatus(t, target)
+}
+
+func CancelApi(t *testing.T, cl *Cancel, target *Pass) {
+	req, resp := CancelRequest(cl, target)
+	t.Run(target.Carrier.String()+"/twirp/sirocco.ProcessingAPI/CancelPass - sub carrier: "+target.SubCarrier.String(), func(t *testing.T) {
+		r := httpProcessingApi.POST("/" + target.Carrier.String() + "/twirp/sirocco.ProcessingAPI/CancelPass").WithJSON(req).
+			Expect().
+			Status(http.StatusOK)
+
+		object := r.Body().Raw()
+
+		trace := r.Header("X-Trace-ID")
+		fmt.Println("trace id: ", trace.Raw())
+
+		response := &processing.CancelPassResponse{}
+		err := jsonpb.Unmarshal(strings.NewReader(object), response)
+		require.NoError(t, err)
+		resp.Created = response.Created
+		assert.Equal(t, resp, response)
 	})
 }
 
@@ -446,7 +537,7 @@ func Run(t *testing.T, cases Cases) {
 					p.RequestType = globalRequestType
 				}
 				GenerateEmv(card, p)
-				p.CarrierID = carrierID
+				p.carrierID = carrierID
 				tapReq := TapBySubCarrier(t, p, card)
 				timeRequest := PassBySubCarrier(t, tapReq, p)
 				var parent *Pass
@@ -457,9 +548,10 @@ func Run(t *testing.T, cases Cases) {
 					}
 					parent = pr
 				}
-				//ждем сообщения из rabbit mq
-				time.Sleep(time.Millisecond * 400)
-				ValidatePass(t, tapReq, card, p, parent, timeRequest)
+				p.tapRequest = tapReq
+				p.timeRequest = timeRequest
+				p.card = card
+				ValidatePass(t, p, parent)
 				AuthStatus(t, p)
 			}
 
@@ -483,6 +575,30 @@ func Run(t *testing.T, cases Cases) {
 			lg, ok := step.(*Login)
 			if ok {
 				LoginApi(t, lg)
+			}
+
+			//PassCheck
+			pc, ok := step.(*PassCheck)
+			if ok {
+				target, ok := (scenario[pc.Target-1]).(*Pass)
+				if !ok {
+					t.Fail()
+				}
+				parent, ok := (scenario[pc.Parent-1]).(*Pass)
+				if !ok {
+					t.Fail()
+				}
+				PassCheckApi(t, pc, target, parent)
+			}
+
+			//Cancel
+			cl, ok := step.(*Cancel)
+			if ok {
+				target, ok := (scenario[cl.Target-1]).(*Pass)
+				if !ok {
+					t.Fail()
+				}
+				CancelApi(t, cl, target)
 			}
 		}
 	}

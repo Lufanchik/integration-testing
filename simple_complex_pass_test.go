@@ -10,14 +10,12 @@ var (
 		{
 			&Pass{
 				PaymentType: PaymentTypeFullPayment,
-				RequestType: RequestTypeOnline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				ExpectedSum: 4200,
 			},
 			&Pass{
 				PaymentType: PaymentTypeFree,
-				RequestType: RequestTypeOnline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
 				Parent:      1,

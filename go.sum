@@ -545,6 +545,7 @@ lab.siroccotechnology.ru/tp/common v0.0.123 h1:weioHLlNloNQiCwgjAhVeutulxztjZhT/
 lab.siroccotechnology.ru/tp/common v0.0.123/go.mod h1:WgJ11KO7VOUf+JAEbYEpyNAJAP/FjB1dx2KE1/xnQ2Y=
 lab.siroccotechnology.ru/tp/common v0.0.132/go.mod h1:H0W3gsxeQQV7EaGHsPjLznavcrdDZSEkyK0olo/H7v4=
 lab.siroccotechnology.ru/tp/common v0.0.136/go.mod h1:H0W3gsxeQQV7EaGHsPjLznavcrdDZSEkyK0olo/H7v4=
+lab.siroccotechnology.ru/tp/common v0.0.137/go.mod h1:H0W3gsxeQQV7EaGHsPjLznavcrdDZSEkyK0olo/H7v4=
 lab.siroccotechnology.ru/tp/common v0.0.140/go.mod h1:H0W3gsxeQQV7EaGHsPjLznavcrdDZSEkyK0olo/H7v4=
 lab.siroccotechnology.ru/tp/common v0.0.141 h1:SFEWQCe5clOuF1u5dAFrQTPfnWet8cEkMCNoF7TiXcA=
 lab.siroccotechnology.ru/tp/common v0.0.141/go.mod h1:H0W3gsxeQQV7EaGHsPjLznavcrdDZSEkyK0olo/H7v4=
@@ -556,6 +557,7 @@ lab.siroccotechnology.ru/tp/pass-service v0.0.49/go.mod h1:QIEQgYcTcXUOP47PMN0Be
 lab.siroccotechnology.ru/tp/pass-service v0.0.51 h1:OMneGnOubv4LL+KurgN4Zc+XkNfmUltHN8MczEdUPDY=
 lab.siroccotechnology.ru/tp/pass-service v0.0.51/go.mod h1:vsYSo/zwWtqH+yV5rseQrKzr9VUw+Fh7YuzyKIkm75g=
 lab.siroccotechnology.ru/tp/pass-service v0.0.67/go.mod h1:iiBVhJ//8zHBCT2H1rdbKfVQPr9TtOnZ0hKSgrmOjRc=
+lab.siroccotechnology.ru/tp/pass-service v0.0.70/go.mod h1:SgPjx+/NpfvmeCSg8bBvbm/lu2Yn6CopBowApKOQSa0=
 lab.siroccotechnology.ru/tp/pass-service v0.0.73 h1:5D1hFwkJW+3L84ryc08nGXKJI+LtjXAoy15bndDhTeU=
 lab.siroccotechnology.ru/tp/pass-service v0.0.73/go.mod h1:kcbSwuBGl/Q9dd2Dm5IRzIV/0h40ENgrFQEk4m2NTDY=
 lab.siroccotechnology.ru/tp/pass-service v0.0.74 h1:5WPalGVbJQxfBzEGdYWLO+dsEDvKB+bJUY9I3jQy08c=

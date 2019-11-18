@@ -30,16 +30,25 @@ complex_mck:
 	go test -c -o ./bin/test
 	./bin/test -test.v -test.run ^TestMetroComplexMCK$
 
-complex_mm:
-	go test -c -o ./bin/test
-	./bin/test -test.v -test.run ^TestComplexPassMM$
-
 complex_wrong_time:
 	go test -c -o ./bin/test
 	./bin/test -test.v -test.run ^TestWrongTimeComplexPass$
 
-full: simple simple_complex complex_mck complex_mm
-local: complex_mck
-test: complex_mm
+metro_complex_mm:
+	go test -c -o ./bin/test
+	./bin/test -test.v -test.run ^TestMetroComplexMM$
+
+metro_complex_mck:
+	go test -c -o ./bin/test
+	./bin/test -test.v -test.run ^TestMetroComplexMCK$
+
+metro_complex_mmts:
+	go test -c -o ./bin/test
+	./bin/test -test.v -test.run ^TestMetroComplexMMTS$
+
+
+full: simple simple_complex apm complex_mck metro_complex_mm metro_complex_mck metro_complex_mmts
+local: complex_wrong_time
+test: full
 stage: full
 prod: full

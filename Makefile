@@ -46,10 +46,12 @@ metro_complex_mmts:
 	go test -c -o ./bin/test
 	./bin/test -test.v -test.run ^TestMetroComplexMMTS$
 
+metrocomplexcancel:
+	go test -c -o ./bin/test
+	./bin/test -test.v -test.run ^TestMetroComplexCancel$
 
 
-
-full: simple simple_complex apm complex_mck metro_complex_mm metro_complex_mck metro_complex_mmts
+full: simple simple_complex apm complex_mck metro_complex_mm metro_complex_mck metro_complex_mmts metrocomplexcancel
 local: complex_wrong_time
 test: full
 stage: full

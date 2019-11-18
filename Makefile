@@ -48,7 +48,7 @@ metro_complex_mmts:
 
 
 full: simple simple_complex apm complex_mck metro_complex_mm metro_complex_mck metro_complex_mmts
-local: complex_wrong_time
+local: complex_mck metro_complex_mm metro_complex_mck metro_complex_mmts
 test: full
 stage: full
 prod: full

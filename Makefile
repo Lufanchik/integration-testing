@@ -46,12 +46,27 @@ metro_complex_mmts:
 	go test -c -o ./bin/test
 	./bin/test -test.v -test.run ^TestMetroComplexMMTS$
 
-metrocomplexcancel:
+OfflineMetroComplexMCK:
 	go test -c -o ./bin/test
-	./bin/test -test.v -test.run ^TestMetroComplexCancel$
+	./bin/test -test.v -test.run ^TestOfflineMetroComplexMCK$
 
+OfflineMetroComplexMM:
+	go test -c -o ./bin/test
+	./bin/test -test.v -test.run ^TestOfflineMetroComplexMM$
 
-full: simple simple_complex apm complex_mck metro_complex_mm metro_complex_mck metro_complex_mmts metrocomplexcancel
+OfflineMetroComplexMMTS:
+	go test -c -o ./bin/test
+	./bin/test -test.v -test.run ^TestOfflineMetroComplexMMTS$
+
+Cancel:
+	go test -c -o ./bin/test
+	./bin/test -test.v -test.run ^TestCancel$
+
+Preauthorizaton:
+	go test -c -o ./bin/test
+	./bin/test -test.v -test.run ^TestPreauthorizaton$
+
+full: metro_complex_mm metro_complex_mck metro_complex_mmts OfflineMetroComplexMCK OfflineMetroComplexMM OfflineMetroComplexMMTS Cancel
 local: complex_wrong_time
 test: full
 stage: full

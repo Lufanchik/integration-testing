@@ -66,6 +66,8 @@ type (
 		Now func() uint64
 		//время отведенное на запрос в миллисекундах, работает только с онлайном
 		Duration uint32
+		//данные о терминале
+		Terminal *processing.Terminal
 
 		id          string
 		carrierID   string
@@ -107,11 +109,18 @@ type (
 		Target int
 		Reason processing.CancelPassRequest_CancelPassReason
 	}
+
+	//проверка парковки
+	Parking struct {
+		rp processing.CheckParkingResponse_Result
+		r  *processing.CheckParkingRequest
+	}
 )
 
 const (
 	PaymentTypeFree PaymentType = iota + 1
 	PaymentTypeFullPayment
+	PaymentTypePartPayment
 )
 
 const (
@@ -238,6 +247,16 @@ func CancelRequest(cl *Cancel, p *Pass) (*processing.CancelPassRequest, *process
 	return request, response
 }
 
+func ParkingRequest(card *processing.Card, pr *Parking) (*processing.CheckParkingRequest, *processing.CheckParkingResponse) {
+	pr.r.Pan = card.Pan
+
+	response := &processing.CheckParkingResponse{
+		Result: pr.rp,
+	}
+
+	return pr.r, response
+}
+
 func AuthStatusRequest(p *Pass) (*processing.AuthRequest, *processing.AuthResponse) {
 	request := &processing.AuthRequest{
 		Id: p.id,
@@ -265,10 +284,10 @@ func AuthStatusRequest(p *Pass) (*processing.AuthRequest, *processing.AuthRespon
 	return request, response
 }
 
-func TapRequest(c carriers.SubCarrier, card *processing.Card, carrierID string) (*processing.TapRequest, *processing.TapResponse) {
+func TapRequest(c carriers.SubCarrier, card *processing.Card, p *Pass) (*processing.TapRequest, *processing.TapResponse) {
 	timeNow := Now()
 	request := &processing.TapRequest{
-		Id:      carrierID,
+		Id:      p.carrierID,
 		Created: timeNow,
 		Tap: &processing.Tap{
 			Created:    timeNow,
@@ -283,6 +302,9 @@ func TapRequest(c carriers.SubCarrier, card *processing.Card, carrierID string) 
 			Sign: gofakeit.BeerStyle(),
 		},
 	}
+	if p.Terminal != nil {
+		request.Tap.Terminal = p.Terminal
+	}
 	response := &processing.TapResponse{
 		Id:      "",
 		Created: 0,
@@ -293,7 +315,7 @@ func TapRequest(c carriers.SubCarrier, card *processing.Card, carrierID string) 
 }
 
 func TapBySubCarrier(t *testing.T, p *Pass, card *processing.Card) *processing.TapRequest {
-	req, resp := TapRequest(p.SubCarrier, card, p.carrierID)
+	req, resp := TapRequest(p.SubCarrier, card, p)
 
 	t.Run(p.Carrier.String()+"/twirp/sirocco.ProcessingAPI/ProcessTap - sub carrier: "+p.SubCarrier.String(), func(t *testing.T) {
 		r := httpProcessingApi.POST("/" + p.Carrier.String() + "/twirp/sirocco.ProcessingAPI/ProcessTap").WithJSON(req).
@@ -523,6 +545,25 @@ func CancelApi(t *testing.T, cl *Cancel, target *Pass) {
 	})
 }
 
+func ParkingApi(t *testing.T, card *processing.Card, pr *Parking) {
+	req, resp := ParkingRequest(card, pr)
+	t.Run("/mm/twirp/sirocco.ProcessingAPI/CheckParking - sub carrier: mm", func(t *testing.T) {
+		r := httpProcessingApi.POST("/mm/twirp/sirocco.ProcessingAPI/CheckParking").WithJSON(req).
+			Expect().
+			Status(http.StatusOK)
+
+		object := r.Body().Raw()
+
+		trace := r.Header("X-Trace-ID")
+		fmt.Println("trace id: ", trace.Raw())
+
+		response := &processing.CheckParkingResponse{}
+		err := jsonpb.Unmarshal(strings.NewReader(object), response)
+		require.NoError(t, err)
+		assert.Equal(t, resp, response)
+	})
+}
+
 func Run(t *testing.T, cases Cases) {
 	httpProcessingApi = httpexpect.New(t, processingApiUrl)
 	httpApmApi = httpexpect.New(t, apmApiUrl)
@@ -556,6 +597,7 @@ func Run(t *testing.T, cases Cases) {
 					}
 					p.tapRequest = tapReq
 					p.timeRequest = timeRequest
+
 					p.card = card
 					ValidatePass(t, p, parent)
 					AuthStatus(t, p)
@@ -605,6 +647,12 @@ func Run(t *testing.T, cases Cases) {
 						t.Fail()
 					}
 					CancelApi(t, cl, target)
+				}
+
+				//Parking
+				pr, ok := step.(*Parking)
+				if ok {
+					ParkingApi(t, card, pr)
 				}
 			})
 		}

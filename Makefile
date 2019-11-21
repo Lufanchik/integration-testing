@@ -46,9 +46,13 @@ metro_complex_mmts:
 	go test -c -o ./bin/test
 	./bin/test -test.v -test.run ^TestMetroComplexMMTS$
 
+parking:
+	go test -c -o ./bin/test
+	./bin/test -test.v -test.run ^TestParking$
 
-full: simple simple_complex apm complex_mck metro_complex_mm metro_complex_mck metro_complex_mmts
-local: complex_mck metro_complex_mm metro_complex_mck metro_complex_mmts
+complex: complex_mck metro_complex_mm metro_complex_mck metro_complex_mmts
+full: simple simple_complex apm complex parking
+local: parking
 test: full
 stage: full
 prod: full

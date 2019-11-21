@@ -6,13 +6,13 @@ import (
 	"testing"
 )
 
-func TestMetroComplexMCD(t *testing.T) {
-	Run(t, casesMetroComplexMCD)
+func TestComplexMCD(t *testing.T) {
+	Run(t, casesComplexMCD)
 }
 
 // "MM - MM" (Две платные поездки)
 var (
-	casesMetroComplexMCD = Cases{
+	casesComplexMCD = Cases{
 		{
 			N: "MCD",
 			T: T{

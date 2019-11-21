@@ -5,24 +5,26 @@ import (
 	"testing"
 )
 
-func TestMetroComplexMM(t *testing.T) {
-	Run(t, casesMetroComplexMM)
+func TestOfflineMetroComplexMM(t *testing.T) {
+	Run(t, casesOfflineMetroComplexMM)
 }
 
 // "MM - MM" (Две платные поездки)
 var (
-	casesMetroComplexMM = Cases{
+	casesOfflineMetroComplexMM = Cases{
 		{
 			N: "MCK - MCK",
 			T: T{
 				&Pass{
 					PaymentType: PaymentTypeFullPayment,
+					RequestType: RequestTypeOffline,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MM_SUB,
 					ExpectedSum: 4200,
 				},
 				&Pass{
 					PaymentType: PaymentTypeFullPayment,
+					RequestType: RequestTypeOffline,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MM_SUB,
 					ExpectedSum: 4200,
@@ -34,18 +36,21 @@ var (
 			T: T{
 				&Pass{
 					PaymentType: PaymentTypeFullPayment,
+					RequestType: RequestTypeOffline,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MM_SUB,
 					ExpectedSum: 4200,
 				},
 				&Pass{
 					PaymentType: PaymentTypeFree,
+					RequestType: RequestTypeOffline,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MCK_SUB,
 					Parent:      1,
 				},
 				&Pass{
 					PaymentType: PaymentTypeFullPayment,
+					RequestType: RequestTypeOffline,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MCK_SUB,
 					ExpectedSum: 4200,
@@ -57,6 +62,7 @@ var (
 			T: T{
 				&Pass{
 					PaymentType: PaymentTypeFullPayment,
+					RequestType: RequestTypeOffline,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MM_SUB,
 					ExpectedSum: 4200,
@@ -64,12 +70,14 @@ var (
 				},
 				&Pass{
 					PaymentType: PaymentTypeFree,
+					RequestType: RequestTypeOffline,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MMTS_SUB,
 					Parent:      1,
 				},
 				&Pass{
 					PaymentType: PaymentTypeFullPayment,
+					RequestType: RequestTypeOffline,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MMTS_SUB,
 					ExpectedSum: 4200,
@@ -81,18 +89,21 @@ var (
 			T: T{
 				&Pass{
 					PaymentType: PaymentTypeFullPayment,
+					RequestType: RequestTypeOffline,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MM_SUB,
 					ExpectedSum: 4200,
 				},
 				&Pass{
 					PaymentType: PaymentTypeFree,
+					RequestType: RequestTypeOffline,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MMTS_SUB,
 					Parent:      1,
 				},
 				&Pass{
 					PaymentType: PaymentTypeFullPayment,
+					RequestType: RequestTypeOffline,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MCK_SUB,
 					ExpectedSum: 4200,
@@ -104,18 +115,21 @@ var (
 			T: T{
 				&Pass{
 					PaymentType: PaymentTypeFullPayment,
+					RequestType: RequestTypeOffline,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MM_SUB,
 					ExpectedSum: 4200,
 				},
 				&Pass{
 					PaymentType: PaymentTypeFree,
+					RequestType: RequestTypeOffline,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MMTS_SUB,
 					Parent:      1,
 				},
 				&Pass{
 					PaymentType: PaymentTypeFullPayment,
+					RequestType: RequestTypeOffline,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MMTS_SUB,
 					ExpectedSum: 4200,
@@ -127,24 +141,28 @@ var (
 			T: T{
 				&Pass{
 					PaymentType: PaymentTypeFullPayment,
+					RequestType: RequestTypeOffline,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MM_SUB,
 					ExpectedSum: 4200,
 				},
 				&Pass{
 					PaymentType: PaymentTypeFree,
+					RequestType: RequestTypeOffline,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MCK_SUB,
 					Parent:      1,
 				},
 				&Pass{
 					PaymentType: PaymentTypeFree,
+					RequestType: RequestTypeOffline,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MM_SUB,
 					Parent:      1,
 				},
 				&Pass{
 					PaymentType: PaymentTypeFullPayment,
+					RequestType: RequestTypeOffline,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MM_SUB,
 					ExpectedSum: 4200,
@@ -156,24 +174,28 @@ var (
 			T: T{
 				&Pass{
 					PaymentType: PaymentTypeFullPayment,
+					RequestType: RequestTypeOffline,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MM_SUB,
 					ExpectedSum: 4200,
 				},
 				&Pass{
 					PaymentType: PaymentTypeFree,
+					RequestType: RequestTypeOffline,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MCK_SUB,
 					Parent:      1,
 				},
 				&Pass{
 					PaymentType: PaymentTypeFree,
+					RequestType: RequestTypeOffline,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MMTS_SUB,
 					Parent:      1,
 				},
 				&Pass{
 					PaymentType: PaymentTypeFullPayment,
+					RequestType: RequestTypeOffline,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MCK_SUB,
 					ExpectedSum: 4200,
@@ -185,30 +207,35 @@ var (
 			T: T{
 				&Pass{
 					PaymentType: PaymentTypeFullPayment,
+					RequestType: RequestTypeOffline,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MM_SUB,
 					ExpectedSum: 4200,
 				},
 				&Pass{
 					PaymentType: PaymentTypeFree,
+					RequestType: RequestTypeOffline,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MCK_SUB,
 					Parent:      1,
 				},
 				&Pass{
 					PaymentType: PaymentTypeFree,
+					RequestType: RequestTypeOffline,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MM_SUB,
 					Parent:      1,
 				},
 				&Pass{
 					PaymentType: PaymentTypeFree,
+					RequestType: RequestTypeOffline,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MMTS_SUB,
 					Parent:      1,
 				},
 				&Pass{
 					PaymentType: PaymentTypeFullPayment,
+					RequestType: RequestTypeOffline,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MM_SUB,
 					ExpectedSum: 4200,
@@ -220,30 +247,35 @@ var (
 			T: T{
 				&Pass{
 					PaymentType: PaymentTypeFullPayment,
+					RequestType: RequestTypeOffline,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MM_SUB,
 					ExpectedSum: 4200,
 				},
 				&Pass{
 					PaymentType: PaymentTypeFree,
+					RequestType: RequestTypeOffline,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MCK_SUB,
 					Parent:      1,
 				},
 				&Pass{
 					PaymentType: PaymentTypeFree,
+					RequestType: RequestTypeOffline,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MM_SUB,
 					Parent:      1,
 				},
 				&Pass{
 					PaymentType: PaymentTypeFree,
+					RequestType: RequestTypeOffline,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MMTS_SUB,
 					Parent:      1,
 				},
 				&Pass{
 					PaymentType: PaymentTypeFullPayment,
+					RequestType: RequestTypeOffline,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MCK_SUB,
 					ExpectedSum: 4200,
@@ -255,30 +287,35 @@ var (
 			T: T{
 				&Pass{
 					PaymentType: PaymentTypeFullPayment,
+					RequestType: RequestTypeOffline,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MM_SUB,
 					ExpectedSum: 4200,
 				},
 				&Pass{
 					PaymentType: PaymentTypeFree,
+					RequestType: RequestTypeOffline,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MCK_SUB,
 					Parent:      1,
 				},
 				&Pass{
 					PaymentType: PaymentTypeFree,
+					RequestType: RequestTypeOffline,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MM_SUB,
 					Parent:      1,
 				},
 				&Pass{
 					PaymentType: PaymentTypeFree,
+					RequestType: RequestTypeOffline,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MMTS_SUB,
 					Parent:      1,
 				},
 				&Pass{
 					PaymentType: PaymentTypeFullPayment,
+					RequestType: RequestTypeOffline,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MMTS_SUB,
 					ExpectedSum: 4200,
@@ -290,24 +327,28 @@ var (
 			T: T{
 				&Pass{
 					PaymentType: PaymentTypeFullPayment,
+					RequestType: RequestTypeOffline,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MM_SUB,
 					ExpectedSum: 4200,
 				},
 				&Pass{
 					PaymentType: PaymentTypeFree,
+					RequestType: RequestTypeOffline,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MCK_SUB,
 					Parent:      1,
 				},
 				&Pass{
 					PaymentType: PaymentTypeFree,
+					RequestType: RequestTypeOffline,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MMTS_SUB,
 					Parent:      1,
 				},
 				&Pass{
 					PaymentType: PaymentTypeFullPayment,
+					RequestType: RequestTypeOffline,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MM_SUB,
 					ExpectedSum: 4200,
@@ -319,24 +360,28 @@ var (
 			T: T{
 				&Pass{
 					PaymentType: PaymentTypeFullPayment,
+					RequestType: RequestTypeOffline,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MM_SUB,
 					ExpectedSum: 4200,
 				},
 				&Pass{
 					PaymentType: PaymentTypeFree,
+					RequestType: RequestTypeOffline,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MCK_SUB,
 					Parent:      1,
 				},
 				&Pass{
 					PaymentType: PaymentTypeFree,
+					RequestType: RequestTypeOffline,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MMTS_SUB,
 					Parent:      1,
 				},
 				&Pass{
 					PaymentType: PaymentTypeFullPayment,
+					RequestType: RequestTypeOffline,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MCK_SUB,
 					ExpectedSum: 4200,
@@ -348,24 +393,28 @@ var (
 			T: T{
 				&Pass{
 					PaymentType: PaymentTypeFullPayment,
+					RequestType: RequestTypeOffline,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MM_SUB,
 					ExpectedSum: 4200,
 				},
 				&Pass{
 					PaymentType: PaymentTypeFree,
+					RequestType: RequestTypeOffline,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MCK_SUB,
 					Parent:      1,
 				},
 				&Pass{
 					PaymentType: PaymentTypeFree,
+					RequestType: RequestTypeOffline,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MMTS_SUB,
 					Parent:      1,
 				},
 				&Pass{
 					PaymentType: PaymentTypeFullPayment,
+					RequestType: RequestTypeOffline,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MMTS_SUB,
 					ExpectedSum: 4200,
@@ -378,12 +427,14 @@ var (
 			T: T{
 				&Pass{
 					PaymentType: PaymentTypeFullPayment,
+					RequestType: RequestTypeOffline,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MM_SUB,
 					ExpectedSum: 4200,
 				},
 				&Pass{
 					PaymentType: PaymentTypeFullPayment,
+					RequestType: RequestTypeOffline,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MM_SUB,
 					ExpectedSum: 4200,
@@ -391,12 +442,14 @@ var (
 				},
 				&Pass{
 					PaymentType: PaymentTypeFree,
+					RequestType: RequestTypeOffline,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MCK_SUB,
 					Parent:      2,
 				},
 				&Pass{
 					PaymentType: PaymentTypeFree,
+					RequestType: RequestTypeOffline,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MMTS_SUB,
 					Parent:      2,
@@ -408,12 +461,14 @@ var (
 			T: T{
 				&Pass{
 					PaymentType: PaymentTypeFullPayment,
+					RequestType: RequestTypeOffline,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MM_SUB,
 					ExpectedSum: 4200,
 				},
 				&Pass{
 					PaymentType: PaymentTypeFullPayment,
+					RequestType: RequestTypeOffline,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MM_SUB,
 					ExpectedSum: 4200,
@@ -421,6 +476,7 @@ var (
 				},
 				&Pass{
 					PaymentType: PaymentTypeFree,
+					RequestType: RequestTypeOffline,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MMTS_SUB,
 					Parent:      2,
@@ -432,6 +488,7 @@ var (
 			T: T{
 				&Pass{
 					PaymentType: PaymentTypeFullPayment,
+					RequestType: RequestTypeOffline,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MM_SUB,
 					ExpectedSum: 4200,
@@ -439,6 +496,7 @@ var (
 				},
 				&Pass{
 					PaymentType: PaymentTypeFullPayment,
+					RequestType: RequestTypeOffline,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MM_SUB,
 					ExpectedSum: 4200,
@@ -446,6 +504,7 @@ var (
 				},
 				&Pass{
 					PaymentType: PaymentTypeFree,
+					RequestType: RequestTypeOffline,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MMTS_SUB,
 					Parent:      2,
@@ -457,6 +516,7 @@ var (
 			T: T{
 				&Pass{
 					PaymentType: PaymentTypeFullPayment,
+					RequestType: RequestTypeOffline,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MM_SUB,
 					ExpectedSum: 4200,
@@ -464,12 +524,14 @@ var (
 				},
 				&Pass{
 					PaymentType: PaymentTypeFree,
+					RequestType: RequestTypeOffline,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MCK_SUB,
 					Parent:      1,
 				},
 				&Pass{
 					PaymentType: PaymentTypeFree,
+					RequestType: RequestTypeOffline,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MMTS_SUB,
 					Parent:      1,
@@ -481,6 +543,7 @@ var (
 			T: T{
 				&Pass{
 					PaymentType: PaymentTypeFullPayment,
+					RequestType: RequestTypeOffline,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MM_SUB,
 					ExpectedSum: 4200,
@@ -488,6 +551,7 @@ var (
 				},
 				&Pass{
 					PaymentType: PaymentTypeFullPayment,
+					RequestType: RequestTypeOffline,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MM_SUB,
 					ExpectedSum: 4200,
@@ -495,12 +559,14 @@ var (
 				},
 				&Pass{
 					PaymentType: PaymentTypeFree,
+					RequestType: RequestTypeOffline,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MCK_SUB,
 					Parent:      2,
 				},
 				&Pass{
 					PaymentType: PaymentTypeFree,
+					RequestType: RequestTypeOffline,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MM_SUB,
 					Parent:      2,

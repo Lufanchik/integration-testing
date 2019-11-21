@@ -116,5 +116,66 @@ var (
 				},
 			},
 		},
+
+		{
+			N: "MM - MCK - MMTS", //Отмена прохода бесплатной транзакции (пересадка)
+			T: T{
+				&Pass{
+					PaymentType: PaymentTypeFullPayment,
+					RequestType: RequestTypeOnline,
+					Carrier:     carriers.Carrier_MM,
+					SubCarrier:  carriers.SubCarrier_MM_SUB,
+					ExpectedSum: 4200,
+					AuthType:    AuthTypeIncorrect,
+				},
+				&Pass{
+					PaymentType: PaymentTypeFree,
+					Carrier:     carriers.Carrier_MM,
+					SubCarrier:  carriers.SubCarrier_MCK_SUB,
+					Parent:      1,
+				},
+				&Pass{
+					PaymentType: PaymentTypeFree,
+					Carrier:     carriers.Carrier_MM,
+					SubCarrier:  carriers.SubCarrier_MMTS_SUB,
+					Parent:      1,
+				},
+				&Cancel{
+					Target: 2,
+					Reason: processing.CancelPassRequest_CSS,
+				},
+			},
+		},
+
+		{
+			N: "MM - MCK - MMTS", //Отмена прохода родительской транзакции комплексной поездки
+			T: T{
+				&Pass{
+					PaymentType: PaymentTypeFullPayment,
+					RequestType: RequestTypeOnline,
+					Carrier:     carriers.Carrier_MM,
+					SubCarrier:  carriers.SubCarrier_MM_SUB,
+					ExpectedSum: 4200,
+					AuthType:    AuthTypeIncorrect,
+				},
+				&Pass{
+					PaymentType: PaymentTypeFree,
+					Carrier:     carriers.Carrier_MM,
+					SubCarrier:  carriers.SubCarrier_MCK_SUB,
+					Parent:      1,
+				},
+				&Pass{
+					PaymentType: PaymentTypeFree,
+					Carrier:     carriers.Carrier_MM,
+					SubCarrier:  carriers.SubCarrier_MMTS_SUB,
+					Parent:      1,
+				},
+				&Cancel{
+					Target: 1,
+					Reason: processing.CancelPassRequest_CSS,
+				},
+			},
+		},
+
 	}
 )

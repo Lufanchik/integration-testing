@@ -50,7 +50,12 @@ parking:
 	go test -c -o ./bin/test
 	./bin/test -test.v -test.run ^TestParking$
 
-complex: metro_complex_mm metro_complex_mck metro_complex_mmts
+Cancel:
+	go test -c -o ./bin/test
+	./bin/test -test.v -test.run ^TestCancel$
+
+
+complex: metro_complex_mm metro_complex_mck metro_complex_mmts Cancel
 full: simple simple_complex apm complex parking
 local: metro_complex_mcd
 test: full

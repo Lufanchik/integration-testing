@@ -303,6 +303,9 @@ func TapRequest(c carriers.SubCarrier, card *processing.Card, p *Pass) (*process
 		},
 	}
 	if p.Terminal != nil {
+		if p.Terminal.Id == "" {
+			p.Terminal.Id = gofakeit.HipsterWord()
+		}
 		request.Tap.Terminal = p.Terminal
 	}
 	response := &processing.TapResponse{
@@ -570,6 +573,7 @@ func Run(t *testing.T, cases Cases) {
 	for _, scenario := range cases {
 		card := Card()
 		carrierID := uuid.New().String()
+		fmt.Println(card.String())
 		for _, step := range scenario.T {
 			t.Run("case: "+scenario.N, func(t *testing.T) {
 				//Pass

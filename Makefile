@@ -50,6 +50,10 @@ parking:
 	go test -c -o ./bin/test
 	./bin/test -test.v -test.run ^TestParking$
 
+scope_check:
+	go test -c -o ./bin/test
+	./bin/test -test.v -test.run ^TestScopeCheckPass$
+
 complex: metro_complex_mm metro_complex_mck metro_complex_mmts
 full: simple simple_complex apm complex parking
 local: metro_complex_mcd

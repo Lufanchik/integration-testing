@@ -8,7 +8,7 @@ var (
 	mtppkPasses = Cases{
 		{
 			//&Pass{
-			//	PaymentType: PaymentTypeFullPayment,
+			//	PaymentType: PaymentTypePayment,
 			//	Carrier:     carriers.Carrier_MTPPK,
 			//	Auth: &processing.Auth{
 			//		Sum:  0,
@@ -17,7 +17,7 @@ var (
 			//	ExpectedSum: 0,
 			//},
 			//&Pass{
-			//	PaymentType: PaymentTypeFullPayment,
+			//	PaymentType: PaymentTypePayment,
 			//	Carrier:     carriers.Carrier_MTPPK,
 			//	Auth: &processing.Auth{
 			//		Sum:  3000,
@@ -26,7 +26,7 @@ var (
 			//	ExpectedSum: 3000,
 			//},
 			//&Pass{
-			//	PaymentType: PaymentTypeFullPayment,
+			//	PaymentType: PaymentTypePayment,
 			//	Carrier:     carriers.Carrier_MTPPK,
 			//	Auth: &processing.Auth{
 			//		Sum:  0,
@@ -35,7 +35,7 @@ var (
 			//	ExpectedSum: 0,
 			//},
 			//&Pass{
-			//	PaymentType: PaymentTypeFullPayment,
+			//	PaymentType: PaymentTypePayment,
 			//	Carrier:     carriers.Carrier_MTPPK,
 			//	Auth: &processing.Auth{
 			//		Sum:  0,

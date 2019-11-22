@@ -12,7 +12,7 @@ var (
 			N: "Simple pass && cancel",
 			T: T{
 				&Pass{
-					PaymentType: PaymentTypeFullPayment,
+					PaymentType: PaymentTypePayment,
 					RequestType: RequestTypeOnline,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MM_SUB,

@@ -50,13 +50,17 @@ revise:
 	go test -c -o ./bin/test
 	./bin/test -test.v -test.run ^TestRevise$
 
+resolve:
+	go test -c -o ./bin/test
+	./bin/test -test.v -test.run ^TestResolve$
+
 parking:
 	go test -c -o ./bin/test
 	./bin/test -test.v -test.run ^TestParking$
 
 complex: simple_complex metro_complex_mm metro_complex_mck metro_complex_mmts metro_complex_mcd
-full: simple simple_complex apm complex parking revise
-local: complex
+full: simple simple_complex apm complex parking revise resolve
+local: resolve
 test: full
 stage: full
 prod: full

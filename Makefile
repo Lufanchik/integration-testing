@@ -1,7 +1,6 @@
 local: export PROCESSING_API_URL=http://localhost:9090
 local: export PASS_URL=http://localhost:13380
 local: export APM_API_URL=http://localhost:1340
-local: export REVISE_URL=http://localhost:1338
 
 stage: export PROCESSING_API_URL=http://processing-api-gateway.stage.svc.cluster.local:9090
 stage: export PASS_URL=http://pass-service.stage.svc.cluster.local:13380

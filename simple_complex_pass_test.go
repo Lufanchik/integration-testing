@@ -8,7 +8,7 @@ var (
 	casesSimpleComplexPass = Cases{
 		{
 			//&Pass{
-			//	PaymentType: PaymentTypeFullPayment,
+			//	PaymentType: PaymentTypePayment,
 			//	Carrier:     carriers.Carrier_MM,
 			//	SubCarrier:  carriers.SubCarrier_MM_SUB,
 			//	ExpectedSum: 4200,
@@ -34,7 +34,7 @@ var (
 			//	Parent:      1,
 			//},
 			//&Pass{
-			//	PaymentType: PaymentTypeFullPayment,
+			//	PaymentType: PaymentTypePayment,
 			//	RequestType: RequestTypeOnline,
 			//	Carrier:     carriers.Carrier_MM,
 			//	SubCarrier:  carriers.SubCarrier_MCK_SUB,

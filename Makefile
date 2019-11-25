@@ -26,13 +26,13 @@ apm:
 	go test -c -o ./bin/test
 	./bin/test -test.v -test.run ^TestApmGateway$
 
-complex_mck:
-	go test -c -o ./bin/test
-	./bin/test -test.v -test.run ^TestMetroComplexMCK$
-
 complex_wrong_time:
 	go test -c -o ./bin/test
 	./bin/test -test.v -test.run ^TestWrongTimeComplexPass$
+
+metro_complex_mcd:
+	go test -c -o ./bin/test
+	./bin/test -test.v -test.run ^TestComplexMCD$
 
 metro_complex_mm:
 	go test -c -o ./bin/test
@@ -50,8 +50,13 @@ revise:
 	go test -c -o ./bin/test
 	./bin/test -test.v -test.run ^TestRevise$
 
-full: simple simple_complex apm complex_mck metro_complex_mm metro_complex_mck metro_complex_mmts revise
-local: revise
+parking:
+	go test -c -o ./bin/test
+	./bin/test -test.v -test.run ^TestParking$
+
+complex: simple_complex metro_complex_mm metro_complex_mck metro_complex_mmts metro_complex_mcd
+full: simple simple_complex apm complex parking revise
+local: complex
 test: full
 stage: full
 prod: full

@@ -46,9 +46,12 @@ metro_complex_mmts:
 	go test -c -o ./bin/test
 	./bin/test -test.v -test.run ^TestMetroComplexMMTS$
 
+revise:
+	go test -c -o ./bin/test
+	./bin/test -test.v -test.run ^TestRevise$
 
-full: simple simple_complex apm complex_mck metro_complex_mm metro_complex_mck metro_complex_mmts
-local: complex_wrong_time
+full: simple simple_complex apm complex_mck metro_complex_mm metro_complex_mck metro_complex_mmts revise
+local: revise
 test: full
 stage: full
 prod: full

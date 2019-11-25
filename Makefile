@@ -34,6 +34,10 @@ metro_complex_mcd:
 	go test -c -o ./bin/test
 	./bin/test -test.v -test.run ^TestComplexMCD$
 
+metro_complex_mcd_2:
+	go test -c -o ./bin/test
+	./bin/test -test.v -test.run ^TestComplexMCD2$
+
 metro_complex_mm:
 	go test -c -o ./bin/test
 	./bin/test -test.v -test.run ^TestMetroComplexMM$
@@ -58,7 +62,7 @@ parking:
 	go test -c -o ./bin/test
 	./bin/test -test.v -test.run ^TestParking$
 
-complex: simple_complex metro_complex_mm metro_complex_mck metro_complex_mmts metro_complex_mcd
+complex: simple_complex metro_complex_mm metro_complex_mck metro_complex_mmts metro_complex_mcd metro_complex_mcd_2
 full: simple simple_complex apm complex parking revise resolve
 local: resolve
 test: full

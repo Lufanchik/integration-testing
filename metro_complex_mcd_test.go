@@ -10,7 +10,6 @@ func TestComplexMCD(t *testing.T) {
 	Run(t, casesComplexMCD)
 }
 
-// "MM - MM" (Две платные поездки)
 var (
 	casesComplexMCD = Cases{
 		{

@@ -1,6 +1,7 @@
 local: export PROCESSING_API_URL=http://localhost:9090
 local: export PASS_URL=http://localhost:13380
 local: export APM_API_URL=http://localhost:1340
+local: export REVISE_URL=http://localhost:1338
 
 stage: export PROCESSING_API_URL=http://processing-api-gateway.stage.svc.cluster.local:9090
 stage: export PASS_URL=http://pass-service.stage.svc.cluster.local:13380
@@ -46,9 +47,12 @@ metro_complex_mmts:
 	go test -c -o ./bin/test
 	./bin/test -test.v -test.run ^TestMetroComplexMMTS$
 
+revise:
+	go test -c -o ./bin/test
+	./bin/test -test.v -test.run ^TestRevise$
 
-full: simple simple_complex apm complex_mck metro_complex_mm metro_complex_mck metro_complex_mmts
-local: complex_wrong_time
+full: simple simple_complex apm complex_mck metro_complex_mm metro_complex_mck metro_complex_mmts revise
+local: revise
 test: full
 stage: full
 prod: full

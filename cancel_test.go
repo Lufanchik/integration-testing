@@ -121,7 +121,7 @@ var (
 			N: "MM - MCK - MMTS", //Отмена прохода бесплатной транзакции (пересадка)
 			T: T{
 				&Pass{
-					PaymentType: PaymentTypeFullPayment,
+					PaymentType: PaymentTypePayment,
 					RequestType: RequestTypeOnline,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MM_SUB,
@@ -151,7 +151,7 @@ var (
 			N: "MM - MCK - MMTS", //Отмена прохода родительской транзакции комплексной поездки
 			T: T{
 				&Pass{
-					PaymentType: PaymentTypeFullPayment,
+					PaymentType: PaymentTypePayment,
 					RequestType: RequestTypeOnline,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MM_SUB,
@@ -181,7 +181,7 @@ var (
 			N: "MM - MCK - MMTS", //Отмена прохода родительской транзакции комплексной поездки
 			T: T{
 				&Pass{
-					PaymentType: PaymentTypeFullPayment,
+					PaymentType: PaymentTypePayment,
 					RequestType: RequestTypeOnline,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MM_SUB,

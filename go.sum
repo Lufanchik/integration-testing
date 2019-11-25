@@ -159,6 +159,7 @@ github.com/gostaticanalysis/analysisutil v0.0.0-20190318220348-4088753ea4d3/go.m
 github.com/gostaticanalysis/analysisutil v0.0.3 h1:iwp+5/UAyzQSFgQ4uR2sni99sJ8Eo9DEacKWM5pekIg=
 github.com/gostaticanalysis/analysisutil v0.0.3/go.mod h1:eEOZF4jCKGi+aprrirO9e7WKB3beBRtWgqGunKl6pKE=
 github.com/gregory-vc/goose v0.0.1/go.mod h1:nowyaB+bDEJtTaCvOTl81bb/7UGJUdgGa3ZcjAAgU6k=
+github.com/gregory-vc/goose v0.0.2/go.mod h1:nowyaB+bDEJtTaCvOTl81bb/7UGJUdgGa3ZcjAAgU6k=
 github.com/grpc-ecosystem/go-grpc-middleware v1.0.0/go.mod h1:FiyG127CGDf3tlThmgyCl78X/SZQqEOJBCDaAfeWzPs=
 github.com/grpc-ecosystem/go-grpc-prometheus v1.2.0/go.mod h1:8NvIoxWQoOIhqOTXgfV/d3M/q6VIi02HzZEHgUlZvzk=
 github.com/grpc-ecosystem/grpc-gateway v1.9.0/go.mod h1:vNeuVxBJEsws4ogUvrchl83t/GYV9WGTSLVdBhOQFDY=
@@ -535,6 +536,7 @@ lab.siroccotechnology.ru/tp/calculator-service v0.0.39/go.mod h1:u4Zo5W1vUzzWrex
 lab.siroccotechnology.ru/tp/calculator-service v0.0.42/go.mod h1:MJRKaDhyCtG1PrVKFPfycob2DIyJs/p2POFRzozFkgY=
 lab.siroccotechnology.ru/tp/calculator-service v0.0.44/go.mod h1:3aKLmg2SyqW4IweHip8NHYVzBmf4ah2UzYpGqueEJS8=
 lab.siroccotechnology.ru/tp/calculator-service v0.0.52/go.mod h1:uGGWQJFiDIp5tkNX3KQUaarv3aw1b+npVj+JPnl91aU=
+lab.siroccotechnology.ru/tp/calculator-service v0.0.53/go.mod h1:uGGWQJFiDIp5tkNX3KQUaarv3aw1b+npVj+JPnl91aU=
 lab.siroccotechnology.ru/tp/common v0.0.73/go.mod h1:RY3dWYbllLA/kJp8arFdQnUK/nzR477JUD5BDvaDeDI=
 lab.siroccotechnology.ru/tp/common v0.0.85/go.mod h1:RY3dWYbllLA/kJp8arFdQnUK/nzR477JUD5BDvaDeDI=
 lab.siroccotechnology.ru/tp/common v0.0.94/go.mod h1:iyeUbLuY+UoUBlvuHyZ8FIsjOo3+VbJyXf6mZuG6pO8=
@@ -555,6 +557,9 @@ lab.siroccotechnology.ru/tp/common v0.0.142 h1:i+bhwCzW7FYdnGufil99CYamVmR9ksyp5
 lab.siroccotechnology.ru/tp/common v0.0.142/go.mod h1:H0W3gsxeQQV7EaGHsPjLznavcrdDZSEkyK0olo/H7v4=
 lab.siroccotechnology.ru/tp/common v0.0.160 h1:Dbw+wRtapoU5BdDOY1eN3HVXdWoQHFG3JhM+zmB08A0=
 lab.siroccotechnology.ru/tp/common v0.0.160/go.mod h1:C2wAUIFg27EH3GNMIiJvrVuwPkFqgbqH8mOmEi2hpHk=
+lab.siroccotechnology.ru/tp/common v0.0.166/go.mod h1:C2wAUIFg27EH3GNMIiJvrVuwPkFqgbqH8mOmEi2hpHk=
+lab.siroccotechnology.ru/tp/common v0.0.168 h1:DmT4+S6omk9bfhRK7UvRSGx4QVBIR2pqwtZ0zDpumgU=
+lab.siroccotechnology.ru/tp/common v0.0.168/go.mod h1:C2wAUIFg27EH3GNMIiJvrVuwPkFqgbqH8mOmEi2hpHk=
 lab.siroccotechnology.ru/tp/pass-service v0.0.24/go.mod h1:S212PdJFE55gKHls2bJ+hi7pnuskczOlNLb8Rbq3vX0=
 lab.siroccotechnology.ru/tp/pass-service v0.0.38/go.mod h1:PyrBmWPQ92/9IVt8gz3i1XAOngu4f26g125Guk7sqLE=
 lab.siroccotechnology.ru/tp/pass-service v0.0.49/go.mod h1:QIEQgYcTcXUOP47PMN0Be0VVR2Jf48dOk9M5+QqhzR0=
@@ -567,6 +572,8 @@ lab.siroccotechnology.ru/tp/pass-service v0.0.74 h1:5WPalGVbJQxfBzEGdYWLO+dsEDvK
 lab.siroccotechnology.ru/tp/pass-service v0.0.74/go.mod h1:uYAvpw7QYyrjJhhZZWX2VOwJt6w1UBjv0fIb129vbA8=
 lab.siroccotechnology.ru/tp/pass-service v0.0.84 h1:3dPFRqdgmWCNTT1OONL7cjtCMlOJaebO0jG6n7sZm7I=
 lab.siroccotechnology.ru/tp/pass-service v0.0.84/go.mod h1:LScpmE4cGM+xDcaxncgqIlWCkOqbD2eENfymFUx/QV4=
+lab.siroccotechnology.ru/tp/pass-service v0.0.89 h1:cituM9xhAQ4YpiOgMOabveQ6wx35tjMCV+DqS6u8dRU=
+lab.siroccotechnology.ru/tp/pass-service v0.0.89/go.mod h1:kNphq7fEnjgIp8q62Qz78ViVcnCH0tY+jmlTLKj14JM=
 lab.siroccotechnology.ru/tp/tidpool-service v0.0.3/go.mod h1:LjqDP24fYOAkZEUT16FHzSH1qVZebkVrMjYO1Hj9xC0=
 lab.siroccotechnology.ru/tp/tidpool-service v0.0.5/go.mod h1:LjqDP24fYOAkZEUT16FHzSH1qVZebkVrMjYO1Hj9xC0=
 mvdan.cc/interfacer v0.0.0-20180901003855-c20040233aed h1:WX1yoOaKQfddO/mLzdV4wptyWgoH/6hwLs7QHTixo0I=

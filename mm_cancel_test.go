@@ -16,7 +16,7 @@ var (
 			N: "MCK (AuthTypeIncorrect) - MM - MMTS", //(Если было две одинаковые поездки и последняя из них неоплачена, комплексная поездка должна создаваться и привязываться к последней)
 			T: T{
 				&Pass{
-					PaymentType: PaymentTypeFullPayment,
+					PaymentType: PaymentTypePayment,
 					RequestType: RequestTypeOffline,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MCK_SUB,
@@ -42,7 +42,7 @@ var (
 			N: "MM - MCK - MMTS",
 			T: T{
 				&Pass{
-					PaymentType: PaymentTypeFullPayment,
+					PaymentType: PaymentTypePayment,
 					RequestType: RequestTypeOffline,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MM_SUB,
@@ -68,7 +68,7 @@ var (
 			N: "MCK - MM - MMTS",
 			T: T{
 				&Pass{
-					PaymentType: PaymentTypeFullPayment,
+					PaymentType: PaymentTypePayment,
 					RequestType: RequestTypeOffline,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MCK_SUB,

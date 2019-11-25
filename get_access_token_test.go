@@ -12,8 +12,6 @@ import (
 )
 
 func getAccessToken(t *testing.T) (AT string, err error) {
-	apmApiUrl = "http://localhost:1340"
-
 	httpClient := http.DefaultClient
 
 	rq := &user.LoginRequest{

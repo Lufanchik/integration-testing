@@ -12,7 +12,7 @@ var (
 			N: "Parking",
 			T: T{
 				&Pass{
-					PaymentType: PaymentTypeFullPayment,
+					PaymentType: PaymentTypePayment,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MM_SUB,
 					ExpectedSum: 4200,

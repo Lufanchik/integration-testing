@@ -16,7 +16,7 @@ var (
 			N: "MM_successful_authorization_and_cancel",
 			T: T{
 				&Pass{
-					PaymentType: PaymentTypeFullPayment,
+					PaymentType: PaymentTypePayment,
 					RequestType: RequestTypeOnline,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MM_SUB,
@@ -33,7 +33,7 @@ var (
 			N: "MCK_successful_authorization_and_cancel",
 			T: T{
 				&Pass{
-					PaymentType: PaymentTypeFullPayment,
+					PaymentType: PaymentTypePayment,
 					RequestType: RequestTypeOnline,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MCK_SUB,
@@ -50,7 +50,7 @@ var (
 			N: "MMTS_successful_authorization_and_cancel",
 			T: T{
 				&Pass{
-					PaymentType: PaymentTypeFullPayment,
+					PaymentType: PaymentTypePayment,
 					RequestType: RequestTypeOnline,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MMTS_SUB,
@@ -67,7 +67,7 @@ var (
 			N: "MM_failed_authorization_and_cancel",
 			T: T{
 				&Pass{
-					PaymentType: PaymentTypeFullPayment,
+					PaymentType: PaymentTypePayment,
 					RequestType: RequestTypeOnline,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MM_SUB,
@@ -85,7 +85,7 @@ var (
 			N: "MCK_failed_authorization_and_cancel",
 			T: T{
 				&Pass{
-					PaymentType: PaymentTypeFullPayment,
+					PaymentType: PaymentTypePayment,
 					RequestType: RequestTypeOnline,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MCK_SUB,
@@ -103,7 +103,7 @@ var (
 			N: "MMTS_failed_authorization_and_cancel",
 			T: T{
 				&Pass{
-					PaymentType: PaymentTypeFullPayment,
+					PaymentType: PaymentTypePayment,
 					RequestType: RequestTypeOnline,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MMTS_SUB,

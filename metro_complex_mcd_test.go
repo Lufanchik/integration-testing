@@ -13,6 +13,94 @@ func TestComplexMCD(t *testing.T) {
 var (
 	casesComplexMCD = Cases{
 		{
+			N: "mm-mcd1-mo",
+			T: T{
+				&Pass{
+					PaymentType: PaymentTypePayment,
+					Carrier:     carriers.Carrier_MM,
+					SubCarrier:  carriers.SubCarrier_MM_SUB,
+					ExpectedSum: 4200,
+				},
+				&Pass{
+					PaymentType: PaymentTypePayment,
+					Carrier:     carriers.Carrier_MCD,
+					SubCarrier:  carriers.SubCarrier_MCD1_MO,
+					Terminal: &processing.Terminal{
+						Station:   "2000055",
+						Direction: processing.TerminalDirection_INGRESS,
+					},
+					ExpectedSum: 4900,
+				},
+				&Pass{
+					PaymentType: PaymentTypeFree,
+					Carrier:     carriers.Carrier_MCD,
+					SubCarrier:  carriers.SubCarrier_MCD1_MO,
+					Terminal: &processing.Terminal{
+						Station:   "2000600",
+						Direction: processing.TerminalDirection_EGRESS,
+					},
+					Ingress: 2,
+				},
+			},
+		},
+		{
+			N: "MM-MCD1MO-MCD2",
+			T: T{
+				&Pass{
+					PaymentType: PaymentTypePayment,
+					Carrier:     carriers.Carrier_MM,
+					SubCarrier:  carriers.SubCarrier_MM_SUB,
+					ExpectedSum: 4200,
+				},
+				&Pass{
+					PaymentType: PaymentTypeFree,
+					Carrier:     carriers.Carrier_MM,
+					SubCarrier:  carriers.SubCarrier_MCK_SUB,
+					Parent:      1,
+				},
+				&Pass{
+					PaymentType: PaymentTypePayment,
+					Carrier:     carriers.Carrier_MCD,
+					SubCarrier:  carriers.SubCarrier_MCD2_MO,
+					Terminal: &processing.Terminal{
+						Station:   "2003960",
+						Direction: processing.TerminalDirection_INGRESS,
+					},
+					ExpectedSum: 4900,
+				},
+				&Pass{
+					PaymentType: PaymentTypeFree,
+					Carrier:     carriers.Carrier_MCD,
+					SubCarrier:  carriers.SubCarrier_MCD2_MO,
+					Terminal: &processing.Terminal{
+						Station:   "2002952",
+						Direction: processing.TerminalDirection_EGRESS,
+					},
+					Ingress: 3,
+				},
+				&Pass{
+					PaymentType: PaymentTypePayment,
+					Carrier:     carriers.Carrier_MCD,
+					SubCarrier:  carriers.SubCarrier_MCD1_MO,
+					Terminal: &processing.Terminal{
+						Station:   "2000055",
+						Direction: processing.TerminalDirection_INGRESS,
+					},
+					ExpectedSum: 4900,
+				},
+				&Pass{
+					PaymentType: PaymentTypeFree,
+					Carrier:     carriers.Carrier_MCD,
+					SubCarrier:  carriers.SubCarrier_MCD1_MO,
+					Terminal: &processing.Terminal{
+						Station:   "2002910",
+						Direction: processing.TerminalDirection_EGRESS,
+					},
+					Ingress: 5,
+				},
+			},
+		},
+		{
 			N: "MM-MO-MO",
 			T: T{
 				&Pass{

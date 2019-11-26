@@ -421,21 +421,8 @@ var (
 					ExpectedSum: 4200,
 				},
 			},
-			package http_test
 
-import (
-	"lab.siroccotechnology.ru/tp/common/messages/carriers"
-	"lab.siroccotechnology.ru/tp/common/messages/processing"
-	"testing"
-)
-
-func TestComplexMCD(t *testing.T) {
-	Run(t, casesComplexMCD)
-}
-
-// "MM - MM" (Две платные поездки)
-var (
-	casesComplexMCD = Cases{
+		},
 		{
 			N: "MCD MO - MM - MM",
 			T: T{
@@ -971,10 +958,6 @@ var (
 					ExpectedSum: 4200,
 				},
 			},
-		},
-	}
-)
-
 		},
 	}
 )

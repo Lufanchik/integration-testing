@@ -421,7 +421,6 @@ var (
 					ExpectedSum: 4200,
 				},
 			},
-
 		},
 		{
 			N: "MCD MO - MM - MM",
@@ -504,25 +503,24 @@ var (
 					Ingress: 3,
 				},
 				&Pass{
-					PaymentType: PaymentTypeFree,
+					PaymentType: PaymentTypePayment,
 					Carrier:     carriers.Carrier_MCD,
 					SubCarrier:  carriers.SubCarrier_MCD1_MO,
 					Terminal: &processing.Terminal{
 						Station:   "2000600",
 						Direction: processing.TerminalDirection_INGRESS,
 					},
-					Parent: 1,
+					ExpectedSum: 4900,
 				},
 				&Pass{
-					PaymentType: PaymentTypePayment,
+					PaymentType: PaymentTypeFree,
 					Carrier:     carriers.Carrier_MCD,
-					SubCarrier:  carriers.SubCarrier_MCD1_MO,
+					SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 					Terminal: &processing.Terminal{
 						Station:   "2000155",
 						Direction: processing.TerminalDirection_EGRESS,
 					},
-					Ingress:     5,
-					ExpectedSum: 700,
+					Ingress: 5,
 				},
 			},
 		},

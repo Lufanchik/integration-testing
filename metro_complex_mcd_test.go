@@ -278,16 +278,16 @@ var (
 					ExpectedSum: 700,
 				},
 				&Pass{
-					PaymentType: PaymentTypeFree,
-					Carrier:     carriers.Carrier_MM,
-					SubCarrier:  carriers.SubCarrier_MM_SUB,
-					Parent:      1,
-				},
-				&Pass{
 					PaymentType: PaymentTypePayment,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MM_SUB,
 					ExpectedSum: 4200,
+				},
+				&Pass{
+					PaymentType: PaymentTypeFree,
+					Carrier:     carriers.Carrier_MM,
+					SubCarrier:  carriers.SubCarrier_MMTS_SUB,
+					Parent:      6,
 				},
 			},
 		},
@@ -409,10 +409,10 @@ var (
 					Ingress: 4,
 				},
 				&Pass{
-					PaymentType: PaymentTypeFree,
+					PaymentType: PaymentTypePayment,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MM_SUB,
-					Parent:      1,
+					ExpectedSum: 4200,
 				},
 				&Pass{
 					PaymentType: PaymentTypePayment,

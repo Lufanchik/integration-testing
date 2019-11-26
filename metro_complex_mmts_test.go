@@ -5,12 +5,12 @@ import (
 	"testing"
 )
 
-func TestComplexPassMMTSMMTS(t *testing.T) {
-	Run(t, casesComplexPassMMTSMMTS)
+func TestMetroComplexMMTS(t *testing.T) {
+	Run(t, casesComplexPassMMTS)
 }
 
 var (
-	casesComplexPassMMTSMMTS = Cases{
+	casesComplexPassMMTS = Cases{
 
 		{
 			N: "MMTS - MMTS",

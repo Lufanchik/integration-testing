@@ -34,6 +34,10 @@ metro_complex_mcd:
 	go test -c -o ./bin/test
 	./bin/test -test.v -test.run ^TestComplexMCD$
 
+metro_complex_2mcd:
+	go test -c -o ./bin/test
+	./bin/test -test.v -test.run ^TestComplex2MCD$
+
 metro_complex_mm:
 	go test -c -o ./bin/test
 	./bin/test -test.v -test.run ^TestMetroComplexMM$
@@ -46,13 +50,34 @@ metro_complex_mmts:
 	go test -c -o ./bin/test
 	./bin/test -test.v -test.run ^TestMetroComplexMMTS$
 
+offline_metro_complex_mck_test:
+	go test -c -o ./bin/test
+	./bin/test -test.v -test.run ^TestOfflineMetroComplexMCK$
+
+offline_metro_complex_mm_test:
+	go test -c -o ./bin/test
+	./bin/test -test.v -test.run ^TestOfflineMetroComplexMM$
+
+offline_metro_complex_mmts_test:
+	go test -c -o ./bin/test
+	./bin/test -test.v -test.run ^TestOfflineMetroComplexMMTS$
+
+revise:
+	go test -c -o ./bin/test
+	./bin/test -test.v -test.run ^TestRevise$
+
+resolve:
+	go test -c -o ./bin/test
+	./bin/test -test.v -test.run ^TestResolve$
+
 parking:
 	go test -c -o ./bin/test
 	./bin/test -test.v -test.run ^TestParking$
 
-complex: simple_complex metro_complex_mm metro_complex_mck metro_complex_mmts metro_complex_mcd
-full: simple simple_complex apm complex parking
+offline: offline_metro_complex_mck_test offline_metro_complex_mm_test offline_metro_complex_mmts_test
+complex: simple_complex metro_complex_mm metro_complex_mck metro_complex_mmts metro_complex_mcd metro_complex_2mcd offline
+full: simple simple_complex apm complex parking revise resolve
 local: complex
-test: full
+test: complex
 stage: full
 prod: full

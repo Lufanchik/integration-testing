@@ -12,7 +12,7 @@ var (
 	casesSimplePreauthorization = Cases{
 		//{
 		//	&Pass{
-		//		PaymentType: PaymentTypeFullPayment,
+		//		PaymentType: PaymentTypePayment,
 		//		RequestType: RequestTypeOnline,
 		//		Carrier:     carriers.Carrier_MM,
 		//		SubCarrier:  carriers.SubCarrier_MM_SUB,
@@ -31,7 +31,7 @@ var (
 	casesSimplePreauthorizationone = Cases{
 		{
 			//&Pass{
-			//	PaymentType: PaymentTypeFullPayment,
+			//	PaymentType: PaymentTypePayment,
 			//	RequestType: RequestTypeOnline,
 			//	Carrier:     carriers.Carrier_MM,
 			//	SubCarrier:  carriers.SubCarrier_MCK_SUB,
@@ -50,7 +50,7 @@ var (
 	casesSimplePreauthorizationtwo = Cases{
 		{
 			//&Pass{
-			//	PaymentType: PaymentTypeFullPayment,
+			//	PaymentType: PaymentTypePayment,
 			//	RequestType: RequestTypeOnline,
 			//	Carrier:     carriers.Carrier_MM,
 			//	SubCarrier:  carriers.SubCarrier_MMTS_SUB,

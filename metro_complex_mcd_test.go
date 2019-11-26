@@ -278,16 +278,16 @@ var (
 					ExpectedSum: 700,
 				},
 				&Pass{
-					PaymentType: PaymentTypeFree,
-					Carrier:     carriers.Carrier_MM,
-					SubCarrier:  carriers.SubCarrier_MM_SUB,
-					Parent:      1,
-				},
-				&Pass{
 					PaymentType: PaymentTypePayment,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MM_SUB,
 					ExpectedSum: 4200,
+				},
+				&Pass{
+					PaymentType: PaymentTypeFree,
+					Carrier:     carriers.Carrier_MM,
+					SubCarrier:  carriers.SubCarrier_MMTS_SUB,
+					Parent:      6,
 				},
 			},
 		},
@@ -409,890 +409,86 @@ var (
 					Ingress: 4,
 				},
 				&Pass{
-					PaymentType: PaymentTypeFree,
-					Carrier:     carriers.Carrier_MM,
-					SubCarrier:  carriers.SubCarrier_MM_SUB,
-					Parent:      1,
-				},
-				&Pass{
 					PaymentType: PaymentTypePayment,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MM_SUB,
 					ExpectedSum: 4200,
 				},
-			},
-		},
-		//gusmanov test case
-		{
-			N: "MCK - MM - MM", //1
-			T: T{
 				&Pass{
 					PaymentType: PaymentTypePayment,
-					Carrier: carriers.Carrier_MM,
-					SubCarrier: carriers.SubCarrier_MCK_SUB,
-					ExpectedSum: 4200,
-				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
-					Carrier: carriers.Carrier_MM,
-					SubCarrier: carriers.SubCarrier_MM_SUB,
-					Parent: 1,
-				},
-				&Pass{
-					PaymentType: PaymentTypePayment,
-					Carrier: carriers.Carrier_MM,
-					SubCarrier: carriers.SubCarrier_MM_SUB,
-					ExpectedSum: 4200,
-				},
-			},
-		},
-
-		{
-			N: "MCK - MM - MCK", //2
-			T: T{
-				&Pass{
-					PaymentType: PaymentTypePayment,
-					Carrier: carriers.Carrier_MM,
-					SubCarrier: carriers.SubCarrier_MCK_SUB,
-					ExpectedSum: 4200,
-				},
-				&Pass{
-					PaymentType: PaymentTypePayment,
-					Carrier: carriers.Carrier_MM,
-					SubCarrier: carriers.SubCarrier_MM_SUB,
-					Parent: 1,
-				},
-				&Pass{
-					PaymentType: PaymentTypePayment,
-					Carrier: carriers.Carrier_MM,
-					SubCarrier: carriers.SubCarrier_MCK_SUB,
-					ExpectedSum: 4200,
-				},
-			},
-		},
-
-		{
-			N: "MCK - MM - MMTS - MM", //3
-			T: T{
-				&Pass{
-					PaymentType: PaymentTypePayment,
-					Carrier: carriers.Carrier_MM,
-					SubCarrier: carriers.SubCarrier_MCK_SUB,
-					ExpectedSum: 4200,
-				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
-					Carrier: carriers.Carrier_MM,
-					SubCarrier: carriers.SubCarrier_MM_SUB,
-					Parent: 1,
-				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
-					Carrier: carriers.Carrier_MM,
-					SubCarrier: carriers.SubCarrier_MMTS_SUB,
-					Parent: 1,
-				},
-				&Pass{
-					PaymentType: PaymentTypePayment,
-					Carrier: carriers.Carrier_MM,
-					SubCarrier: carriers.SubCarrier_MM_SUB,
-					ExpectedSum: 1,
-				},
-			},
-		},
-
-		{
-			N: "MCK - MM - MMTS - MCK", //4
-			T: T{
-				&Pass{
-					PaymentType: PaymentTypePayment,
-					Carrier: carriers.Carrier_MM,
-					SubCarrier: carriers.SubCarrier_MCK_SUB,
-					ExpectedSum: 4200,
-				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
-					Carrier: carriers.Carrier_MM,
-					SubCarrier: carriers.SubCarrier_MM_SUB,
-					Parent: 1,
-				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
-					Carrier: carriers.Carrier_MM,
-					SubCarrier: carriers.SubCarrier_MMTS_SUB,
-					Parent: 1,
-				},
-				&Pass{
-					PaymentType: PaymentTypePayment,
-					Carrier: carriers.Carrier_MM,
-					SubCarrier: carriers.SubCarrier_MCK_SUB,
-					ExpectedSum: 4200,
-				},
-			},
-		},
-
-		{
-			N: "MCK - MM - MMTS - MMTS", //5
-			T: T{
-				&Pass{
-					PaymentType: PaymentTypePayment,
-					Carrier:     carriers.Carrier_MM,
-					SubCarrier:  carriers.SubCarrier_MCK_SUB,
-					ExpectedSum: 4200,
-				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MM_SUB,
-					Parent: 1,
-				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
-					Carrier:     carriers.Carrier_MM,
-					SubCarrier:  carriers.SubCarrier_MMTS_SUB,
-					Parent: 1,
-				},
-				&Pass{
-					PaymentType: PaymentTypePayment,
-					Carrier:     carriers.Carrier_MM,
-					SubCarrier:  carriers.SubCarrier_MMTS_SUB,
 					ExpectedSum: 4200,
 				},
 			},
-		},
 
+		},
 		{
-			N: "MCK - MM - MMTS - MCD_MSK", //6
+			N: "MCD MO - MM - MM",
 			T: T{
-				&Pass{
-					PaymentType: PaymentTypePayment,
-					Carrier:     carriers.Carrier_MM,
-					SubCarrier:  carriers.SubCarrier_MCK_SUB,
-					ExpectedSum: 4200,
-				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
-					Carrier:     carriers.Carrier_MM,
-					SubCarrier:  carriers.SubCarrier_MM_SUB,
-					Parent: 1,
-				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
-					Carrier:     carriers.Carrier_MM,
-					SubCarrier:  carriers.SubCarrier_MMTS_SUB,
-					Parent: 1,
-				},
 				&Pass{
 					PaymentType: PaymentTypePayment,
 					Carrier:     carriers.Carrier_MCD,
-					SubCarrier:  carriers.SubCarrier_MCD1_MSK,
+					SubCarrier:  carriers.SubCarrier_MCD1_MO,
 					Terminal: &processing.Terminal{
-						Station: "2000275", //СЕТУНЬ
+						Station:   "2000055",
 						Direction: processing.TerminalDirection_INGRESS,
 					},
-					ExpectedSum: 4200,
+					ExpectedSum: 4900,
 				},
 				&Pass{
 					PaymentType: PaymentTypeFree,
 					Carrier:     carriers.Carrier_MCD,
 					SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 					Terminal: &processing.Terminal{
-						Station: "2001060", //БЕГОВАЯ
+						Station:   "2000155",
 						Direction: processing.TerminalDirection_EGRESS,
 					},
-					Ingress: 4,
-				},
-			},
-		},
-
-		{
-			N: "MCK - MM - MMTS - MCD_MO", //7
-			T: T{
-				&Pass{
-					PaymentType: PaymentTypePayment,
-					Carrier:     carriers.Carrier_MM,
-					SubCarrier:  carriers.SubCarrier_MCK_SUB,
-					ExpectedSum: 4200,
+					Ingress: 1,
 				},
 				&Pass{
 					PaymentType: PaymentTypeFree,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MM_SUB,
-					Parent: 1,
+					Parent:      1,
 				},
 				&Pass{
-					PaymentType: PaymentTypeFree,
+					PaymentType: PaymentTypePayment,
 					Carrier:     carriers.Carrier_MM,
-					SubCarrier:  carriers.SubCarrier_MMTS_SUB,
-					Parent: 1,
+					SubCarrier:  carriers.SubCarrier_MM_SUB,
+					ExpectedSum: 4200,
 				},
+			},
+		},
+		{
+			N: "MCD MSK1 - MCD MSK2 - MCD MO1",
+			T: T{
 				&Pass{
 					PaymentType: PaymentTypePayment,
 					Carrier:     carriers.Carrier_MCD,
 					SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 					Terminal: &processing.Terminal{
-						Station: "2002077", //марк
+						Station:   "2000275",
 						Direction: processing.TerminalDirection_INGRESS,
 					},
 					ExpectedSum: 4200,
 				},
 				&Pass{
-					PaymentType: PaymentTypePayment,
+					PaymentType: PaymentTypeFree,
 					Carrier:     carriers.Carrier_MCD,
-					SubCarrier:  carriers.SubCarrier_MCD1_MO,
+					SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 					Terminal: &processing.Terminal{
-						Station: "2000115", //лобня
+						Station:   "2001270",
 						Direction: processing.TerminalDirection_EGRESS,
 					},
-					Ingress: 4,
-					ExpectedSum: 700,
-				},
-			},
-		},
-
-		{
-			N: "MCK - MM - MCD_MSK - MM - MM", //8
-			T: T{
-				&Pass{
-					PaymentType: PaymentTypePayment,
-					Carrier:     carriers.Carrier_MM,
-					SubCarrier:  carriers.SubCarrier_MCK_SUB,
-					ExpectedSum: 4200,
-				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
-					Carrier:     carriers.Carrier_MM,
-					SubCarrier:  carriers.SubCarrier_MM_SUB,
-					Parent: 1,
+					Ingress: 1,
 				},
 				&Pass{
 					PaymentType: PaymentTypeFree,
 					Carrier:     carriers.Carrier_MCD,
-					SubCarrier:  carriers.SubCarrier_MCD1_MSK,
+					SubCarrier:  carriers.SubCarrier_MCD2_MSK,
 					Terminal: &processing.Terminal{
-						Station: "2000245", //рабочий поселок
-						Direction: processing.TerminalDirection_INGRESS,
-					},
-					Parent: 1,
-				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
-					Carrier:     carriers.Carrier_MCD,
-					SubCarrier:  carriers.SubCarrier_MCD1_MSK,
-					Terminal: &processing.Terminal{
-						Station: "2001270", //ОКРУЖНАЯ
-						Direction: processing.TerminalDirection_INGRESS,
-					},
-					Ingress: 3,
-				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
-					Carrier:     carriers.Carrier_MM,
-					SubCarrier:  carriers.SubCarrier_MM_SUB,
-					Parent: 1,
-				},
-				&Pass{
-					PaymentType: PaymentTypePayment,
-					Carrier:     carriers.Carrier_MM,
-					SubCarrier:  carriers.SubCarrier_MM_SUB,
-					ExpectedSum: 4200,
-				},
-			},
-		},
-
-		{
-			N: "MCK - MM - MCD_MSK - MM - MCK", //9
-			T: T{
-				&Pass{
-					PaymentType: PaymentTypePayment,
-					Carrier:     carriers.Carrier_MM,
-					SubCarrier:  carriers.SubCarrier_MCK_SUB,
-					ExpectedSum: 4200,
-				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
-					Carrier:     carriers.Carrier_MM,
-					SubCarrier:  carriers.SubCarrier_MM_SUB,
-					Parent: 1,
-				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
-					Carrier:     carriers.Carrier_MCD,
-					SubCarrier:  carriers.SubCarrier_MCD1_MSK,
-					Terminal: &processing.Terminal{
-						Station: "2001140", //Кунцевская (бывш. КУНЦЕВО 1)
-						Direction: processing.TerminalDirection_INGRESS,
-					},
-					Parent: 1,
-				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
-					Carrier:     carriers.Carrier_MCD,
-					SubCarrier:  carriers.SubCarrier_MCD1_MSK,
-					Terminal: &processing.Terminal{
-						Station: "2000455", //ДЕГУНИНО
-						Direction: processing.TerminalDirection_INGRESS,
-					},
-					Ingress: 3,
-				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
-					Carrier:     carriers.Carrier_MM,
-					SubCarrier:  carriers.SubCarrier_MM_SUB,
-					Parent: 1,
-				},
-				&Pass{
-					PaymentType: PaymentTypePayment,
-					Carrier:     carriers.Carrier_MM,
-					SubCarrier:  carriers.SubCarrier_MCK_SUB,
-					ExpectedSum: 4200,
-				},
-			},
-		},
-
-		{
-			N: "MCK - MM - MCD_MSK - MM - MMTS", //10
-			T: T{
-				&Pass{
-					PaymentType: PaymentTypePayment,
-					Carrier:     carriers.Carrier_MM,
-					SubCarrier:  carriers.SubCarrier_MCK_SUB,
-					ExpectedSum: 4200,
-				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
-					Carrier:     carriers.Carrier_MM,
-					SubCarrier:  carriers.SubCarrier_MM_SUB,
-					Parent: 1,
-				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
-					Carrier:     carriers.Carrier_MCD,
-					SubCarrier:  carriers.SubCarrier_MCD1_MSK,
-					Terminal: &processing.Terminal{
-						Station: "2000700", //ТЕСТОВСКАЯ
-						Direction: processing.TerminalDirection_INGRESS,
-					},
-					Parent: 1,
-				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
-					Carrier:     carriers.Carrier_MCD,
-					SubCarrier:  carriers.SubCarrier_MCD1_MSK,
-					Terminal: &processing.Terminal{
-						Station: "2003965", //ТИМИРЯЗЕВСКАЯ
-						Direction: processing.TerminalDirection_INGRESS,
-					},
-					Ingress: 3,
-				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
-					Carrier:     carriers.Carrier_MM,
-					SubCarrier:  carriers.SubCarrier_MM_SUB,
-					Parent: 1,
-				},
-				&Pass{
-					PaymentType: PaymentTypePayment,
-					Carrier:     carriers.Carrier_MM,
-					SubCarrier:  carriers.SubCarrier_MMTS_SUB,
-					ExpectedSum: 4200,
-				},
-			},
-		},
-
-		{
-			N: "MCK - MM - MCD_MSK - MM - MCD_MSK", //11
-			T: T{
-				&Pass{
-					PaymentType: PaymentTypePayment,
-					Carrier:     carriers.Carrier_MM,
-					SubCarrier:  carriers.SubCarrier_MCK_SUB,
-					ExpectedSum: 4200,
-				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
-					Carrier:     carriers.Carrier_MM,
-					SubCarrier:  carriers.SubCarrier_MM_SUB,
-					Parent: 1,
-				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
-					Carrier:     carriers.Carrier_MCD,
-					SubCarrier:  carriers.SubCarrier_MCD1_MSK,
-					Terminal: &processing.Terminal{
-						Station: "2000155", //ФИЛИ
-						Direction: processing.TerminalDirection_INGRESS,
-					},
-					Parent: 1,
-				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
-					Carrier:     carriers.Carrier_MCD,
-					SubCarrier:  carriers.SubCarrier_MCD1_MSK,
-					Terminal: &processing.Terminal{
-						Station: "2001270", //ОКРУЖНАЯ
-						Direction: processing.TerminalDirection_INGRESS,
-					},
-					Ingress: 3,
-				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
-					Carrier:     carriers.Carrier_MM,
-					SubCarrier:  carriers.SubCarrier_MM_SUB,
-					Parent: 1,
-				},
-				&Pass{
-					PaymentType: PaymentTypePayment,
-					Carrier:     carriers.Carrier_MCD,
-					SubCarrier:  carriers.SubCarrier_MCD1_MSK,
-					Terminal: &processing.Terminal{
-						Station: "2001270", //ОКРУЖНАЯ
-						Direction: processing.TerminalDirection_INGRESS,
-					},
-					ExpectedSum: 4200,
-				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
-					Carrier:     carriers.Carrier_MCD,
-					SubCarrier:  carriers.SubCarrier_MCD1_MSK,
-					Terminal: &processing.Terminal{
-						Station: "2000245", //РАБОЧИЙ ПОСЕЛОК
-						Direction: processing.TerminalDirection_INGRESS,
-					},
-					Ingress: 6,
-				},
-			},
-		},
-
-		{
-			N: "MCK - MM - MCD_MSK - MM - MCD_MO", //12
-			T: T{
-				&Pass{
-					PaymentType: PaymentTypePayment,
-					Carrier:     carriers.Carrier_MM,
-					SubCarrier:  carriers.SubCarrier_MCK_SUB,
-					ExpectedSum: 4200,
-				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
-					Carrier:     carriers.Carrier_MM,
-					SubCarrier:  carriers.SubCarrier_MM_SUB,
-					Parent: 1,
-				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
-					Carrier:     carriers.Carrier_MCD,
-					SubCarrier:  carriers.SubCarrier_MCD1_MSK,
-					Terminal: &processing.Terminal{
-						Station: "2000155", //ФИЛИ
-						Direction: processing.TerminalDirection_INGRESS,
-					},
-					Parent: 1,
-				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
-					Carrier:     carriers.Carrier_MCD,
-					SubCarrier:  carriers.SubCarrier_MCD1_MSK,
-					Terminal: &processing.Terminal{
-						Station: "2001270", //ОКРУЖНАЯ
-						Direction: processing.TerminalDirection_INGRESS,
-					},
-					Ingress: 3,
-				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
-					Carrier:     carriers.Carrier_MM,
-					SubCarrier:  carriers.SubCarrier_MM_SUB,
-					Parent: 1,
-				},
-				&Pass{
-					PaymentType: PaymentTypePayment,
-					Carrier:     carriers.Carrier_MCD,
-					SubCarrier:  carriers.SubCarrier_MCD1_MSK,
-					Terminal: &processing.Terminal{
-						Station: "2001270", //ОКРУЖНАЯ
-						Direction: processing.TerminalDirection_INGRESS,
-					},
-					ExpectedSum: 4200,
-				},
-				&Pass{
-					PaymentType: PaymentTypePayment,
-					Carrier:     carriers.Carrier_MCD,
-					SubCarrier:  carriers.SubCarrier_MCD1_MO,
-					Terminal: &processing.Terminal{
-						Station: "2000115", //ЛОБНЯ
-						Direction: processing.TerminalDirection_INGRESS,
-					},
-					Ingress: 6,
-					ExpectedSum: 700,
-				},
-			},
-		},
-
-		{
-			N: "MCK - MM - MCD_MSK - MCK", //13
-			T: T{
-				&Pass{
-					PaymentType: PaymentTypePayment,
-					Carrier:     carriers.Carrier_MM,
-					SubCarrier:  carriers.SubCarrier_MCK_SUB,
-					ExpectedSum: 4200,
-				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
-					Carrier:     carriers.Carrier_MM,
-					SubCarrier:  carriers.SubCarrier_MM_SUB,
-					Parent: 1,
-				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
-					Carrier:     carriers.Carrier_MCD,
-					SubCarrier:  carriers.SubCarrier_MCD1_MSK,
-					Terminal: &processing.Terminal{
-						Station: "2000155", //ФИЛИ
-						Direction: processing.TerminalDirection_INGRESS,
-					},
-					Parent: 1,
-				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
-					Carrier:     carriers.Carrier_MCD,
-					SubCarrier:  carriers.SubCarrier_MCD1_MSK,
-					Terminal: &processing.Terminal{
-						Station: "2001270", //ОКРУЖНАЯ
-						Direction: processing.TerminalDirection_INGRESS,
-					},
-					Ingress: 3,
-				},
-				&Pass{
-					PaymentType: PaymentTypePayment,
-					Carrier:     carriers.Carrier_MM,
-					SubCarrier:  carriers.SubCarrier_MCK_SUB,
-					ExpectedSum: 4200,
-				},
-			},
-		},
-
-		{
-			N: "MCK - MM - MCD_MSK - MMTS - MM", //14
-			T: T{
-				&Pass{
-					PaymentType: PaymentTypePayment,
-					Carrier:     carriers.Carrier_MM,
-					SubCarrier:  carriers.SubCarrier_MCK_SUB,
-					ExpectedSum: 4200,
-				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
-					Carrier:     carriers.Carrier_MM,
-					SubCarrier:  carriers.SubCarrier_MM_SUB,
-					Parent: 1,
-				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
-					Carrier:     carriers.Carrier_MCD,
-					SubCarrier:  carriers.SubCarrier_MCD1_MSK,
-					Terminal: &processing.Terminal{
-						Station: "2000155", //ФИЛИ
-						Direction: processing.TerminalDirection_INGRESS,
-					},
-					Parent: 1,
-				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
-					Carrier:     carriers.Carrier_MCD,
-					SubCarrier:  carriers.SubCarrier_MCD1_MSK,
-					Terminal: &processing.Terminal{
-						Station: "2001270", //ОКРУЖНАЯ
-						Direction: processing.TerminalDirection_INGRESS,
-					},
-					Ingress: 3,
-				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
-					Carrier:     carriers.Carrier_MM,
-					SubCarrier:  carriers.SubCarrier_MMTS_SUB,
-					Parent:      1,
-				},
-				&Pass{
-					PaymentType: PaymentTypePayment,
-					Carrier: 	 carriers.Carrier_MM,
-					SubCarrier:  carriers.SubCarrier_MM_SUB,
-					ExpectedSum: 4200,
-				},
-			},
-		},
-
-		{
-			N: "MCK - MM - MCD_MSK - MMTS - MCK", //15
-			T: T{
-				&Pass{
-					PaymentType: PaymentTypePayment,
-					Carrier:     carriers.Carrier_MM,
-					SubCarrier:  carriers.SubCarrier_MCK_SUB,
-					ExpectedSum: 4200,
-				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
-					Carrier:     carriers.Carrier_MM,
-					SubCarrier:  carriers.SubCarrier_MM_SUB,
-					Parent: 1,
-				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
-					Carrier:     carriers.Carrier_MCD,
-					SubCarrier:  carriers.SubCarrier_MCD1_MSK,
-					Terminal: &processing.Terminal{
-						Station: "2000155", //ФИЛИ
-						Direction: processing.TerminalDirection_INGRESS,
-					},
-					Parent: 1,
-				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
-					Carrier:     carriers.Carrier_MCD,
-					SubCarrier:  carriers.SubCarrier_MCD1_MSK,
-					Terminal: &processing.Terminal{
-						Station: "2001270", //ОКРУЖНАЯ
-						Direction: processing.TerminalDirection_INGRESS,
-					},
-					Ingress: 3,
-				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
-					Carrier:     carriers.Carrier_MM,
-					SubCarrier:  carriers.SubCarrier_MMTS_SUB,
-					Parent:      1,
-				},
-				&Pass{
-					PaymentType: PaymentTypePayment,
-					Carrier: 	 carriers.Carrier_MM,
-					SubCarrier:  carriers.SubCarrier_MCK_SUB,
-					ExpectedSum: 4200,
-				},
-			},
-		},
-
-		{
-			N: "MCK - MM - MCD_MSK - MMTS - MMTS", //16
-			T: T{
-				&Pass{
-					PaymentType: PaymentTypePayment,
-					Carrier:     carriers.Carrier_MM,
-					SubCarrier:  carriers.SubCarrier_MCK_SUB,
-					ExpectedSum: 4200,
-				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
-					Carrier:     carriers.Carrier_MM,
-					SubCarrier:  carriers.SubCarrier_MM_SUB,
-					Parent: 1,
-				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
-					Carrier:     carriers.Carrier_MCD,
-					SubCarrier:  carriers.SubCarrier_MCD1_MSK,
-					Terminal: &processing.Terminal{
-						Station: "2000155", //ФИЛИ
-						Direction: processing.TerminalDirection_INGRESS,
-					},
-					Parent: 1,
-				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
-					Carrier:     carriers.Carrier_MCD,
-					SubCarrier:  carriers.SubCarrier_MCD1_MSK,
-					Terminal: &processing.Terminal{
-						Station: "2001270", //ОКРУЖНАЯ
-						Direction: processing.TerminalDirection_INGRESS,
-					},
-					Ingress: 3,
-				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
-					Carrier:     carriers.Carrier_MM,
-					SubCarrier:  carriers.SubCarrier_MMTS_SUB,
-					Parent:      1,
-				},
-				&Pass{
-					PaymentType: PaymentTypePayment,
-					Carrier: 	 carriers.Carrier_MM,
-					SubCarrier:  carriers.SubCarrier_MMTS_SUB,
-					ExpectedSum: 4200,
-				},
-			},
-		},
-
-		{
-			N: "MCK - MM - MCD_MSK - MMTS - MCD_MSK", //17
-			T: T{
-				&Pass{
-					PaymentType: PaymentTypePayment,
-					Carrier:     carriers.Carrier_MM,
-					SubCarrier:  carriers.SubCarrier_MCK_SUB,
-					ExpectedSum: 4200,
-				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
-					Carrier:     carriers.Carrier_MM,
-					SubCarrier:  carriers.SubCarrier_MM_SUB,
-					Parent: 1,
-				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
-					Carrier:     carriers.Carrier_MCD,
-					SubCarrier:  carriers.SubCarrier_MCD1_MSK,
-					Terminal: &processing.Terminal{
-						Station: "2000155", //ФИЛИ
-						Direction: processing.TerminalDirection_INGRESS,
-					},
-					Parent: 1,
-				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
-					Carrier:     carriers.Carrier_MCD,
-					SubCarrier:  carriers.SubCarrier_MCD1_MSK,
-					Terminal: &processing.Terminal{
-						Station: "2001270", //ОКРУЖНАЯ
-						Direction: processing.TerminalDirection_INGRESS,
-					},
-					Ingress: 3,
-				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
-					Carrier:     carriers.Carrier_MM,
-					SubCarrier:  carriers.SubCarrier_MMTS_SUB,
-					Parent:      1,
-				},
-				&Pass{
-					PaymentType: PaymentTypePayment,
-					Carrier:     carriers.Carrier_MCD,
-					SubCarrier:  carriers.SubCarrier_MCD1_MSK,
-					Terminal: &processing.Terminal{
-						Station: "2001060", //БЕГОВАЯ
-						Direction: processing.TerminalDirection_INGRESS,
-					},
-					ExpectedSum: 4200,
-				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
-					Carrier:     carriers.Carrier_MCD,
-					SubCarrier:  carriers.SubCarrier_MCD1_MSK,
-					Terminal: &processing.Terminal{
-						Station: "2003965", //ТИМИРЯЗЕВСКАЯ
-						Direction: processing.TerminalDirection_INGRESS,
-					},
-					Ingress: 6,
-				},
-			},
-		},
-
-		{
-			N: "MCK - MM - MCD_MSK - MMTS - MCD_MO", //18
-			T: T{
-				&Pass{
-					PaymentType: PaymentTypePayment,
-					Carrier:     carriers.Carrier_MM,
-					SubCarrier:  carriers.SubCarrier_MCK_SUB,
-					ExpectedSum: 4200,
-				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
-					Carrier:     carriers.Carrier_MM,
-					SubCarrier:  carriers.SubCarrier_MM_SUB,
-					Parent: 1,
-				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
-					Carrier:     carriers.Carrier_MCD,
-					SubCarrier:  carriers.SubCarrier_MCD1_MSK,
-					Terminal: &processing.Terminal{
-						Station: "2000155", //ФИЛИ
-						Direction: processing.TerminalDirection_INGRESS,
-					},
-					Parent: 1,
-				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
-					Carrier:     carriers.Carrier_MCD,
-					SubCarrier:  carriers.SubCarrier_MCD1_MSK,
-					Terminal: &processing.Terminal{
-						Station: "2001270", //ОКРУЖНАЯ
-						Direction: processing.TerminalDirection_INGRESS,
-					},
-					Ingress: 3,
-				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
-					Carrier:     carriers.Carrier_MM,
-					SubCarrier:  carriers.SubCarrier_MMTS_SUB,
-					Parent:      1,
-				},
-				&Pass{
-					PaymentType: PaymentTypePayment,
-					Carrier:     carriers.Carrier_MCD,
-					SubCarrier:  carriers.SubCarrier_MCD1_MSK,
-					Terminal: &processing.Terminal{
-						Station: "2001060", //БЕГОВАЯ
-						Direction: processing.TerminalDirection_INGRESS,
-					},
-					ExpectedSum: 4200,
-				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
-					Carrier:     carriers.Carrier_MCD,
-					SubCarrier:  carriers.SubCarrier_MCD1_MO,
-					Terminal: &processing.Terminal{
-						Station: "2001775", //ШЕРЕМЕТЬЕВСКАЯ
-						Direction: processing.TerminalDirection_INGRESS,
-					},
-					Ingress: 6,
-					ExpectedSum: 700,
-				},
-			},
-		},
-
-		{
-			N: "MCK - MM - MCD_MSK1 - MCD_MSK2 - MM", //19
-			T: T{
-				&Pass{
-					PaymentType: PaymentTypePayment,
-					Carrier:     carriers.Carrier_MM,
-					SubCarrier:  carriers.SubCarrier_MCK_SUB,
-					ExpectedSum: 4200,
-				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
-					Carrier:     carriers.Carrier_MM,
-					SubCarrier:  carriers.SubCarrier_MM_SUB,
-					Parent: 1,
-				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
-					Carrier:     carriers.Carrier_MCD,
-					SubCarrier:  carriers.SubCarrier_MCD1_MSK,
-					Terminal: &processing.Terminal{
-						Station: "2000155", //ФИЛИ
-						Direction: processing.TerminalDirection_INGRESS,
-					},
-					Parent: 1,
-				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
-					Carrier:     carriers.Carrier_MCD,
-					SubCarrier:  carriers.SubCarrier_MCD1_MSK,
-					Terminal: &processing.Terminal{
-						Station: "2001270", //ОКРУЖНАЯ
-						Direction: processing.TerminalDirection_INGRESS,
-					},
-					Ingress: 3,
-				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
-					Carrier:     carriers.Carrier_MCD,
-					SubCarrier:  carriers.SubCarrier_MCD1_MSK,
-					Terminal: &processing.Terminal{
-						Station: "2000009", //САВЕЛОВСКИЙ ВОКЗАЛ
+						Station:   "2000075",
 						Direction: processing.TerminalDirection_INGRESS,
 					},
 					Parent: 1,
@@ -1302,51 +498,7 @@ var (
 					Carrier:     carriers.Carrier_MCD,
 					SubCarrier:  carriers.SubCarrier_MCD2_MSK,
 					Terminal: &processing.Terminal{
-						Station: "2001425", //КРАСНЫЙ БАЛТИЕЦ
-						Direction: processing.TerminalDirection_EGRESS,
-					},
-					Ingress: 5,
-				},
-				&Pass{
-					PaymentType: PaymentTypePayment,
-					Carrier:     carriers.Carrier_MM,
-					SubCarrier:  carriers.SubCarrier_MM_SUB,
-					ExpectedSum: 4200,
-				},
-			},
-		},
-
-		{
-			N: "MCK - MM - MCD_MSK1 - MCD_MSK2 - MCK", //20
-			T: T{
-				&Pass{
-					PaymentType: PaymentTypePayment,
-					Carrier:     carriers.Carrier_MM,
-					SubCarrier:  carriers.SubCarrier_MCK_SUB,
-					ExpectedSum: 4200,
-				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
-					Carrier:     carriers.Carrier_MM,
-					SubCarrier:  carriers.SubCarrier_MM_SUB,
-					Parent: 1,
-				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
-					Carrier:     carriers.Carrier_MCD,
-					SubCarrier:  carriers.SubCarrier_MCD1_MSK,
-					Terminal: &processing.Terminal{
-						Station: "2000155", //ФИЛИ
-						Direction: processing.TerminalDirection_INGRESS,
-					},
-					Parent: 1,
-				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
-					Carrier:     carriers.Carrier_MCD,
-					SubCarrier:  carriers.SubCarrier_MCD1_MSK,
-					Terminal: &processing.Terminal{
-						Station: "2001270", //ОКРУЖНАЯ
+						Station:   "2000045",
 						Direction: processing.TerminalDirection_EGRESS,
 					},
 					Ingress: 3,
@@ -1354,22 +506,115 @@ var (
 				&Pass{
 					PaymentType: PaymentTypeFree,
 					Carrier:     carriers.Carrier_MCD,
-					SubCarrier:  carriers.SubCarrier_MCD2_MSK,
+					SubCarrier:  carriers.SubCarrier_MCD1_MO,
 					Terminal: &processing.Terminal{
-						Station: "2000009", //САВЕЛОВСКИЙ ВОКЗАЛ
+						Station:   "2000600",
 						Direction: processing.TerminalDirection_INGRESS,
 					},
 					Parent: 1,
 				},
 				&Pass{
-					PaymentType: PaymentTypeFree,
+					PaymentType: PaymentTypePayment,
 					Carrier:     carriers.Carrier_MCD,
-					SubCarrier:  carriers.SubCarrier_MCD2_MSK,
+					SubCarrier:  carriers.SubCarrier_MCD1_MO,
 					Terminal: &processing.Terminal{
-						Station: "2000605", //Рижская
+						Station:   "2000155",
 						Direction: processing.TerminalDirection_EGRESS,
 					},
-					Ingress: 5,
+					Ingress:     5,
+					ExpectedSum: 700,
+				},
+			},
+		},
+		{
+			N: "МЦД МО - ММ - МЦК -	ММ - MM",
+			T: T{
+				&Pass{
+					PaymentType: PaymentTypePayment,
+					Carrier:     carriers.Carrier_MCD,
+					SubCarrier:  carriers.SubCarrier_MCD1_MO,
+					Terminal: &processing.Terminal{
+						Station:   "2000055",
+						Direction: processing.TerminalDirection_INGRESS,
+					},
+					ExpectedSum: 4900,
+				},
+				&Pass{
+					PaymentType: PaymentTypeFree,
+					Carrier:     carriers.Carrier_MCD,
+					SubCarrier:  carriers.SubCarrier_MCD1_MSK,
+					Terminal: &processing.Terminal{
+						Station:   "2000155",
+						Direction: processing.TerminalDirection_EGRESS,
+					},
+					Ingress: 1,
+				},
+				&Pass{
+					PaymentType: PaymentTypeFree,
+					Carrier:     carriers.Carrier_MM,
+					SubCarrier:  carriers.SubCarrier_MM_SUB,
+					Parent:      1,
+				},
+				&Pass{
+					PaymentType: PaymentTypeFree,
+					Carrier:     carriers.Carrier_MM,
+					SubCarrier:  carriers.SubCarrier_MCK_SUB,
+					Parent:      1,
+				},
+				&Pass{
+					PaymentType: PaymentTypeFree,
+					Carrier:     carriers.Carrier_MM,
+					SubCarrier:  carriers.SubCarrier_MM_SUB,
+					Parent:      1,
+				},
+				&Pass{
+					PaymentType: PaymentTypePayment,
+					Carrier:     carriers.Carrier_MM,
+					SubCarrier:  carriers.SubCarrier_MM_SUB,
+					ExpectedSum: 4200,
+				},
+			},
+		},
+		{
+			N: "МЦД МО - ММ -  МЦК - ММ - МЦК",
+			T: T{
+				&Pass{
+					PaymentType: PaymentTypePayment,
+					Carrier:     carriers.Carrier_MCD,
+					SubCarrier:  carriers.SubCarrier_MCD1_MO,
+					Terminal: &processing.Terminal{
+						Station:   "2000055",
+						Direction: processing.TerminalDirection_INGRESS,
+					},
+					ExpectedSum: 4900,
+				},
+				&Pass{
+					PaymentType: PaymentTypeFree,
+					Carrier:     carriers.Carrier_MCD,
+					SubCarrier:  carriers.SubCarrier_MCD1_MSK,
+					Terminal: &processing.Terminal{
+						Station:   "2000155",
+						Direction: processing.TerminalDirection_EGRESS,
+					},
+					Ingress: 1,
+				},
+				&Pass{
+					PaymentType: PaymentTypeFree,
+					Carrier:     carriers.Carrier_MM,
+					SubCarrier:  carriers.SubCarrier_MM_SUB,
+					Parent:      1,
+				},
+				&Pass{
+					PaymentType: PaymentTypeFree,
+					Carrier:     carriers.Carrier_MM,
+					SubCarrier:  carriers.SubCarrier_MCK_SUB,
+					Parent:      1,
+				},
+				&Pass{
+					PaymentType: PaymentTypeFree,
+					Carrier:     carriers.Carrier_MM,
+					SubCarrier:  carriers.SubCarrier_MM_SUB,
+					Parent:      1,
 				},
 				&Pass{
 					PaymentType: PaymentTypePayment,
@@ -1379,9 +624,340 @@ var (
 				},
 			},
 		},
-
-
-
-
+		{
+			N: "МЦД МО - ММ -  МЦК - ММ - МMTS",
+			T: T{
+				&Pass{
+					PaymentType: PaymentTypePayment,
+					Carrier:     carriers.Carrier_MCD,
+					SubCarrier:  carriers.SubCarrier_MCD1_MO,
+					Terminal: &processing.Terminal{
+						Station:   "2000055",
+						Direction: processing.TerminalDirection_INGRESS,
+					},
+					ExpectedSum: 4900,
+				},
+				&Pass{
+					PaymentType: PaymentTypeFree,
+					Carrier:     carriers.Carrier_MCD,
+					SubCarrier:  carriers.SubCarrier_MCD1_MSK,
+					Terminal: &processing.Terminal{
+						Station:   "2000155",
+						Direction: processing.TerminalDirection_EGRESS,
+					},
+					Ingress: 1,
+				},
+				&Pass{
+					PaymentType: PaymentTypeFree,
+					Carrier:     carriers.Carrier_MM,
+					SubCarrier:  carriers.SubCarrier_MM_SUB,
+					Parent:      1,
+				},
+				&Pass{
+					PaymentType: PaymentTypeFree,
+					Carrier:     carriers.Carrier_MM,
+					SubCarrier:  carriers.SubCarrier_MCK_SUB,
+					Parent:      1,
+				},
+				&Pass{
+					PaymentType: PaymentTypeFree,
+					Carrier:     carriers.Carrier_MM,
+					SubCarrier:  carriers.SubCarrier_MM_SUB,
+					Parent:      1,
+				},
+				&Pass{
+					PaymentType: PaymentTypePayment,
+					Carrier:     carriers.Carrier_MM,
+					SubCarrier:  carriers.SubCarrier_MMTS_SUB,
+					ExpectedSum: 4200,
+				},
+			},
+		},
+		{
+			N: "МЦД МО - ММ -  МЦК - ММ - МЦД МО",
+			T: T{
+				&Pass{
+					PaymentType: PaymentTypePayment,
+					Carrier:     carriers.Carrier_MCD,
+					SubCarrier:  carriers.SubCarrier_MCD1_MO,
+					Terminal: &processing.Terminal{
+						Station:   "2000055",
+						Direction: processing.TerminalDirection_INGRESS,
+					},
+					ExpectedSum: 4900,
+				},
+				&Pass{
+					PaymentType: PaymentTypeFree,
+					Carrier:     carriers.Carrier_MCD,
+					SubCarrier:  carriers.SubCarrier_MCD1_MSK,
+					Terminal: &processing.Terminal{
+						Station:   "2000155",
+						Direction: processing.TerminalDirection_EGRESS,
+					},
+					Ingress: 1,
+				},
+				&Pass{
+					PaymentType: PaymentTypeFree,
+					Carrier:     carriers.Carrier_MM,
+					SubCarrier:  carriers.SubCarrier_MM_SUB,
+					Parent:      1,
+				},
+				&Pass{
+					PaymentType: PaymentTypeFree,
+					Carrier:     carriers.Carrier_MM,
+					SubCarrier:  carriers.SubCarrier_MCK_SUB,
+					Parent:      1,
+				},
+				&Pass{
+					PaymentType: PaymentTypeFree,
+					Carrier:     carriers.Carrier_MM,
+					SubCarrier:  carriers.SubCarrier_MM_SUB,
+					Parent:      1,
+				},
+				&Pass{
+					PaymentType: PaymentTypePayment,
+					Carrier:     carriers.Carrier_MCD,
+					SubCarrier:  carriers.SubCarrier_MCD1_MO,
+					Terminal: &processing.Terminal{
+						Station:   "2000055",
+						Direction: processing.TerminalDirection_INGRESS,
+					},
+					ExpectedSum: 4900,
+				},
+			},
+		},
+		{
+			N: "МЦД МО - ММ -  МЦК - МЦК",
+			T: T{
+				&Pass{
+					PaymentType: PaymentTypePayment,
+					Carrier:     carriers.Carrier_MCD,
+					SubCarrier:  carriers.SubCarrier_MCD1_MO,
+					Terminal: &processing.Terminal{
+						Station:   "2000055",
+						Direction: processing.TerminalDirection_INGRESS,
+					},
+					ExpectedSum: 4900,
+				},
+				&Pass{
+					PaymentType: PaymentTypeFree,
+					Carrier:     carriers.Carrier_MCD,
+					SubCarrier:  carriers.SubCarrier_MCD1_MSK,
+					Terminal: &processing.Terminal{
+						Station:   "2000155",
+						Direction: processing.TerminalDirection_EGRESS,
+					},
+					Ingress: 1,
+				},
+				&Pass{
+					PaymentType: PaymentTypeFree,
+					Carrier:     carriers.Carrier_MM,
+					SubCarrier:  carriers.SubCarrier_MM_SUB,
+					Parent:      1,
+				},
+				&Pass{
+					PaymentType: PaymentTypeFree,
+					Carrier:     carriers.Carrier_MM,
+					SubCarrier:  carriers.SubCarrier_MCK_SUB,
+					Parent:      1,
+				},
+				&Pass{
+					PaymentType: PaymentTypePayment,
+					Carrier:     carriers.Carrier_MM,
+					SubCarrier:  carriers.SubCarrier_MCK_SUB,
+					ExpectedSum: 4200,
+				},
+			},
+		},
+		{
+			N: "МЦД МО - ММ -  МЦК - МMTS",
+			T: T{
+				&Pass{
+					PaymentType: PaymentTypePayment,
+					Carrier:     carriers.Carrier_MCD,
+					SubCarrier:  carriers.SubCarrier_MCD1_MO,
+					Terminal: &processing.Terminal{
+						Station:   "2000055",
+						Direction: processing.TerminalDirection_INGRESS,
+					},
+					ExpectedSum: 4900,
+				},
+				&Pass{
+					PaymentType: PaymentTypeFree,
+					Carrier:     carriers.Carrier_MCD,
+					SubCarrier:  carriers.SubCarrier_MCD1_MSK,
+					Terminal: &processing.Terminal{
+						Station:   "2000155",
+						Direction: processing.TerminalDirection_EGRESS,
+					},
+					Ingress: 1,
+				},
+				&Pass{
+					PaymentType: PaymentTypeFree,
+					Carrier:     carriers.Carrier_MM,
+					SubCarrier:  carriers.SubCarrier_MM_SUB,
+					Parent:      1,
+				},
+				&Pass{
+					PaymentType: PaymentTypeFree,
+					Carrier:     carriers.Carrier_MM,
+					SubCarrier:  carriers.SubCarrier_MCK_SUB,
+					Parent:      1,
+				},
+				&Pass{
+					PaymentType: PaymentTypeFree,
+					Carrier:     carriers.Carrier_MM,
+					SubCarrier:  carriers.SubCarrier_MMTS_SUB,
+					Parent:      1,
+				},
+			},
+		},
+		{
+			N: "МЦД МО - ММ -  МЦК - МMTS - MM",
+			T: T{
+				&Pass{
+					PaymentType: PaymentTypePayment,
+					Carrier:     carriers.Carrier_MCD,
+					SubCarrier:  carriers.SubCarrier_MCD1_MO,
+					Terminal: &processing.Terminal{
+						Station:   "2000055",
+						Direction: processing.TerminalDirection_INGRESS,
+					},
+					ExpectedSum: 4900,
+				},
+				&Pass{
+					PaymentType: PaymentTypeFree,
+					Carrier:     carriers.Carrier_MCD,
+					SubCarrier:  carriers.SubCarrier_MCD1_MSK,
+					Terminal: &processing.Terminal{
+						Station:   "2000155",
+						Direction: processing.TerminalDirection_EGRESS,
+					},
+					Ingress: 1,
+				},
+				&Pass{
+					PaymentType: PaymentTypeFree,
+					Carrier:     carriers.Carrier_MM,
+					SubCarrier:  carriers.SubCarrier_MM_SUB,
+					Parent:      1,
+				},
+				&Pass{
+					PaymentType: PaymentTypeFree,
+					Carrier:     carriers.Carrier_MM,
+					SubCarrier:  carriers.SubCarrier_MCK_SUB,
+					Parent:      1,
+				},
+				&Pass{
+					PaymentType: PaymentTypeFree,
+					Carrier:     carriers.Carrier_MM,
+					SubCarrier:  carriers.SubCarrier_MMTS_SUB,
+					Parent:      1,
+				},
+				&Pass{
+					PaymentType: PaymentTypePayment,
+					Carrier:     carriers.Carrier_MM,
+					SubCarrier:  carriers.SubCarrier_MM_SUB,
+					ExpectedSum: 4200,
+				},
+			},
+		},
+		{
+			N: "МЦД МО - ММ -  МЦК - МMTS - MCK",
+			T: T{
+				&Pass{
+					PaymentType: PaymentTypePayment,
+					Carrier:     carriers.Carrier_MCD,
+					SubCarrier:  carriers.SubCarrier_MCD1_MO,
+					Terminal: &processing.Terminal{
+						Station:   "2000055",
+						Direction: processing.TerminalDirection_INGRESS,
+					},
+					ExpectedSum: 4900,
+				},
+				&Pass{
+					PaymentType: PaymentTypeFree,
+					Carrier:     carriers.Carrier_MCD,
+					SubCarrier:  carriers.SubCarrier_MCD1_MSK,
+					Terminal: &processing.Terminal{
+						Station:   "2000155",
+						Direction: processing.TerminalDirection_EGRESS,
+					},
+					Ingress: 1,
+				},
+				&Pass{
+					PaymentType: PaymentTypeFree,
+					Carrier:     carriers.Carrier_MM,
+					SubCarrier:  carriers.SubCarrier_MM_SUB,
+					Parent:      1,
+				},
+				&Pass{
+					PaymentType: PaymentTypeFree,
+					Carrier:     carriers.Carrier_MM,
+					SubCarrier:  carriers.SubCarrier_MCK_SUB,
+					Parent:      1,
+				},
+				&Pass{
+					PaymentType: PaymentTypeFree,
+					Carrier:     carriers.Carrier_MM,
+					SubCarrier:  carriers.SubCarrier_MMTS_SUB,
+					Parent:      1,
+				},
+				&Pass{
+					PaymentType: PaymentTypePayment,
+					Carrier:     carriers.Carrier_MM,
+					SubCarrier:  carriers.SubCarrier_MCK_SUB,
+					ExpectedSum: 4200,
+				},
+			},
+		},
+		{
+			N: "МЦД МО - ММ -  МЦК - МMTS - MMTS",
+			T: T{
+				&Pass{
+					PaymentType: PaymentTypePayment,
+					Carrier:     carriers.Carrier_MCD,
+					SubCarrier:  carriers.SubCarrier_MCD1_MO,
+					Terminal: &processing.Terminal{
+						Station:   "2000055",
+						Direction: processing.TerminalDirection_INGRESS,
+					},
+					ExpectedSum: 4900,
+				},
+				&Pass{
+					PaymentType: PaymentTypeFree,
+					Carrier:     carriers.Carrier_MCD,
+					SubCarrier:  carriers.SubCarrier_MCD1_MSK,
+					Terminal: &processing.Terminal{
+						Station:   "2000155",
+						Direction: processing.TerminalDirection_EGRESS,
+					},
+					Ingress: 1,
+				},
+				&Pass{
+					PaymentType: PaymentTypeFree,
+					Carrier:     carriers.Carrier_MM,
+					SubCarrier:  carriers.SubCarrier_MM_SUB,
+					Parent:      1,
+				},
+				&Pass{
+					PaymentType: PaymentTypeFree,
+					Carrier:     carriers.Carrier_MM,
+					SubCarrier:  carriers.SubCarrier_MCK_SUB,
+					Parent:      1,
+				},
+				&Pass{
+					PaymentType: PaymentTypeFree,
+					Carrier:     carriers.Carrier_MM,
+					SubCarrier:  carriers.SubCarrier_MMTS_SUB,
+					Parent:      1,
+				},
+				&Pass{
+					PaymentType: PaymentTypePayment,
+					Carrier:     carriers.Carrier_MM,
+					SubCarrier:  carriers.SubCarrier_MMTS_SUB,
+					ExpectedSum: 4200,
+				},
+			},
+		},
 	}
 )

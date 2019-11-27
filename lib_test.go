@@ -334,24 +334,22 @@ func TapRequest(c carriers.SubCarrier, card *processing.Card, p *Pass) (*process
 func TapBySubCarrier(t *testing.T, p *Pass, card *processing.Card) *processing.TapRequest {
 	req, resp := TapRequest(p.SubCarrier, card, p)
 	u := "/" + p.Carrier.String() + "/twirp/sirocco.ProcessingAPI/ProcessTap"
-	t.Run(u, func(t *testing.T) {
-		r := httpProcessingApi.POST(u).WithJSON(req).
-			Expect().
-			Status(http.StatusOK)
+	r := httpProcessingApi.POST(u).WithJSON(req).
+		Expect().
+		Status(http.StatusOK)
 
-		object := r.Body().Raw()
-		logRequest(u, r)
+	object := r.Body().Raw()
+	logRequest(u, r)
 
-		response := &processing.TapResponse{}
-		err := jsonpb.Unmarshal(strings.NewReader(object), response)
-		require.NoError(t, err)
+	response := &processing.TapResponse{}
+	err := jsonpb.Unmarshal(strings.NewReader(object), response)
+	require.NoError(t, err)
 
-		resp.Id = response.Id
-		resp.Created = response.Created
-		p.id = response.Id
+	resp.Id = response.Id
+	resp.Created = response.Created
+	p.id = response.Id
 
-		require.Equal(t, resp, response)
-	})
+	require.Equal(t, resp, response)
 
 	return req
 }
@@ -368,45 +366,41 @@ func PassBySubCarrier(t *testing.T, tap *processing.TapRequest, p *Pass) uint64 
 		req, resp := PassOfflineRequest(tap, p)
 		requestedTime = req.Created
 		u := "/" + p.Carrier.String() + "/twirp/sirocco.ProcessingAPI/ProcessOfflinePass"
-		t.Run(u, func(t *testing.T) {
-			r := httpProcessingApi.POST(u).WithJSON(req).
-				Expect().
-				Status(http.StatusOK)
-			object := r.Body().Raw()
-			logRequest(u, r)
+		r := httpProcessingApi.POST(u).WithJSON(req).
+			Expect().
+			Status(http.StatusOK)
+		object := r.Body().Raw()
+		logRequest(u, r)
 
-			response := &processing.OfflinePassResponse{}
-			err := jsonpb.Unmarshal(strings.NewReader(object), response)
-			require.NoError(t, err)
+		response := &processing.OfflinePassResponse{}
+		err := jsonpb.Unmarshal(strings.NewReader(object), response)
+		require.NoError(t, err)
 
-			resp.Id = response.Id
-			resp.Created = response.Created
-			p.id = response.Id
+		resp.Id = response.Id
+		resp.Created = response.Created
+		p.id = response.Id
 
-			require.Equal(t, resp, response)
-		})
+		require.Equal(t, resp, response)
 	case RequestTypeOnline:
 		req, resp := PassOnlineRequest(tap, p)
 		requestedTime = req.Created
 		u := "/" + p.Carrier.String() + "/twirp/sirocco.ProcessingAPI/ProcessOnlinePass"
-		t.Run(u, func(t *testing.T) {
-			r := httpProcessingApi.POST(u).WithJSON(req).
-				Expect().
-				Status(http.StatusOK)
+		r := httpProcessingApi.POST(u).WithJSON(req).
+			Expect().
+			Status(http.StatusOK)
 
-			object := r.Body().Raw()
-			logRequest(u, r)
+		object := r.Body().Raw()
+		logRequest(u, r)
 
-			response := &processing.OnlinePassResponse{}
-			err := jsonpb.Unmarshal(strings.NewReader(object), response)
-			require.NoError(t, err)
+		response := &processing.OnlinePassResponse{}
+		err := jsonpb.Unmarshal(strings.NewReader(object), response)
+		require.NoError(t, err)
 
-			resp.Id = response.Id
-			resp.Created = response.Created
-			p.id = response.Id
+		resp.Id = response.Id
+		resp.Created = response.Created
+		p.id = response.Id
 
-			require.Equal(t, resp, response)
-		})
+		require.Equal(t, resp, response)
 	}
 	return requestedTime
 }
@@ -498,22 +492,20 @@ func ValidatePass(t *testing.T, p *Pass, parent *Pass, ingress *Pass) {
 func AuthStatus(t *testing.T, p *Pass) {
 	req, resp := AuthStatusRequest(p)
 	u := "/" + p.Carrier.String() + "/twirp/sirocco.ProcessingAPI/AuthStatus"
-	t.Run(u, func(t *testing.T) {
-		r := httpProcessingApi.POST(u).WithJSON(req).
-			Expect().
-			Status(http.StatusOK)
+	r := httpProcessingApi.POST(u).WithJSON(req).
+		Expect().
+		Status(http.StatusOK)
 
-		object := r.Body().Raw()
-		logRequest(u, r)
+	object := r.Body().Raw()
+	logRequest(u, r)
 
-		response := &processing.AuthResponse{}
-		err := jsonpb.Unmarshal(strings.NewReader(object), response)
-		require.NoError(t, err)
+	response := &processing.AuthResponse{}
+	err := jsonpb.Unmarshal(strings.NewReader(object), response)
+	require.NoError(t, err)
 
-		resp.Created = response.Created
-		resp.Info = response.Info
-		require.Equal(t, resp, response)
-	})
+	resp.Created = response.Created
+	resp.Info = response.Info
+	require.Equal(t, resp, response)
 }
 
 func NanoToMicro(tm uint64) uint64 {
@@ -523,25 +515,21 @@ func NanoToMicro(tm uint64) uint64 {
 func AbsGetRegistryApi(t *testing.T, registry *AbsGetRegistry) {
 	req := registries.AbsRegistryRequest{}
 	u := "/twirp/proto.ApmAPIGateway/AbsGetRegistry"
-	t.Run(u, func(t *testing.T) {
-		r := httpApmApi.POST(u).WithJSON(req).
-			Expect().
-			Status(http.StatusForbidden)
+	r := httpApmApi.POST(u).WithJSON(req).
+		Expect().
+		Status(http.StatusForbidden)
 
-		logRequest(u, r)
-	})
+	logRequest(u, r)
 }
 
 func LoginApi(t *testing.T, lg *Login) {
 	req := user.LoginRequest{}
 	u := "/twirp/proto.ApmAPIGatewayPublic/Login"
-	t.Run(u, func(t *testing.T) {
-		r := httpApmApi.POST(u).WithJSON(req).
-			Expect().
-			Status(http.StatusNotFound)
+	r := httpApmApi.POST(u).WithJSON(req).
+		Expect().
+		Status(http.StatusNotFound)
 
-		logRequest(u, r)
-	})
+	logRequest(u, r)
 }
 
 func PassCheckApi(t *testing.T, pc *PassCheck, target *Pass, parent *Pass) {
@@ -554,43 +542,40 @@ func PassCheckApi(t *testing.T, pc *PassCheck, target *Pass, parent *Pass) {
 func CancelApi(t *testing.T, cl *Cancel, target *Pass) {
 	req, resp := CancelRequest(cl, target)
 	u := "/" + target.Carrier.String() + "/twirp/sirocco.ProcessingAPI/CancelPass"
-	t.Run(u, func(t *testing.T) {
-		r := httpProcessingApi.POST(u).WithJSON(req).
-			Expect().
-			Status(http.StatusOK)
+	r := httpProcessingApi.POST(u).WithJSON(req).
+		Expect().
+		Status(http.StatusOK)
 
-		object := r.Body().Raw()
-		logRequest(u, r)
+	object := r.Body().Raw()
+	logRequest(u, r)
 
-		response := &processing.CancelPassResponse{}
-		err := jsonpb.Unmarshal(strings.NewReader(object), response)
-		require.NoError(t, err)
-		resp.Created = response.Created
-		require.Equal(t, resp, response)
-	})
+	response := &processing.CancelPassResponse{}
+	err := jsonpb.Unmarshal(strings.NewReader(object), response)
+	require.NoError(t, err)
+	resp.Created = response.Created
+	require.Equal(t, resp, response)
 }
 
 func ParkingApi(t *testing.T, card *processing.Card, pr *Parking) {
 	req, resp := ParkingRequest(card, pr)
 	u := "/mm/twirp/sirocco.ProcessingAPI/CheckParking"
-	t.Run(u, func(t *testing.T) {
-		r := httpProcessingApi.POST(u).WithJSON(req).
-			Expect().
-			Status(http.StatusOK)
+	r := httpProcessingApi.POST(u).WithJSON(req).
+		Expect().
+		Status(http.StatusOK)
 
-		object := r.Body().Raw()
-		logRequest(u, r)
+	object := r.Body().Raw()
+	logRequest(u, r)
 
-		response := &processing.CheckParkingResponse{}
-		err := jsonpb.Unmarshal(strings.NewReader(object), response)
-		require.NoError(t, err)
-		require.Equal(t, resp, response)
-	})
+	response := &processing.CheckParkingResponse{}
+	err := jsonpb.Unmarshal(strings.NewReader(object), response)
+	require.NoError(t, err)
+	require.Equal(t, resp, response)
 }
 
 func Run(t *testing.T, cases Cases) {
 	httpProcessingApi = httpexpect.New(t, processingApiUrl)
 	httpApmApi = httpexpect.New(t, apmApiUrl)
+	t.Parallel()
 	for _, scenario := range cases {
 		card := Card()
 		carrierID := uuid.New().String()

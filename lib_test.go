@@ -165,6 +165,14 @@ var NowBackup = func() uint64 {
 	return uint64(time.Now().UnixNano())
 }
 
+var NowCustom = func(hour, min int) func() uint64 {
+	now := time.Now()
+	return func() uint64 {
+		return uint64(time.Date(
+			now.Year(), now.Month(), now.Day(), hour, min, now.Second(), now.Nanosecond(), time.UTC).UnixNano())
+	}
+}
+
 func Card() *processing.Card {
 	return &processing.Card{
 		System: processing.CardSystem_VISA,

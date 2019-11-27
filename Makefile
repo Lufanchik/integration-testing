@@ -38,6 +38,10 @@ metro_complex_2mcd:
 	go test -c -o ./bin/test
 	./bin/test -test.v -test.run ^TestComplex2MCD$
 
+metro_complex_time_mcd:
+	go test -c -o ./bin/test
+	./bin/test -test.v -test.run ^TestComplexTimeMCD$
+
 metro_complex_mm:
 	go test -c -o ./bin/test
 	./bin/test -test.v -test.run ^TestMetroComplexMM$

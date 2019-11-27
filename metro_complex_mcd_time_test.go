@@ -4,6 +4,7 @@ import (
 	"lab.siroccotechnology.ru/tp/common/messages/carriers"
 	"lab.siroccotechnology.ru/tp/common/messages/processing"
 	"testing"
+	"time"
 )
 
 func TestComplexTimeMCD(t *testing.T) {
@@ -25,6 +26,7 @@ var (
 					},
 					Now:         NowCustom(10, 30),
 					ExpectedSum: 4900,
+					TimeToWait:  35 * time.Minute,
 				},
 				&Pass{
 					PaymentType: PaymentTypeFree,

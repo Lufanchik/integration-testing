@@ -4,6 +4,7 @@ import (
 	"lab.siroccotechnology.ru/tp/common/messages/carriers"
 	"lab.siroccotechnology.ru/tp/common/messages/processing"
 	"testing"
+	"time"
 )
 
 func TestComplex2MCD(t *testing.T) {
@@ -284,8 +285,9 @@ var (
 						Station:   "2000155",
 						Direction: processing.TerminalDirection_INGRESS,
 					},
-					Parent: 1,
-					Now:    NowCustom(10, 30),
+					Parent:     1,
+					Now:        NowCustom(10, 30),
+					TimeToWait: 95 * time.Minute,
 				},
 				&Pass{
 					PaymentType: PaymentTypePayment,

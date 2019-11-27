@@ -7,7 +7,6 @@ import (
 	"github.com/gavv/httpexpect"
 	"github.com/golang/protobuf/jsonpb"
 	"github.com/google/uuid"
-	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"lab.siroccotechnology.ru/tp/common/global"
 	"lab.siroccotechnology.ru/tp/common/messages/carriers"
@@ -70,12 +69,18 @@ type (
 		Duration uint32
 		//данные о терминале
 		Terminal *processing.Terminal
+		//время, которое мы ждяли перед входом
+		TimeToWait time.Duration
 
 		id          string
 		carrierID   string
 		tapRequest  *processing.TapRequest
 		timeRequest uint64
 		card        *processing.Card
+		parent      *Pass
+		ingress     *Pass
+		isParent    bool
+		timeToWait  time.Duration
 	}
 
 	//генерация прохода
@@ -169,7 +174,7 @@ var NowCustom = func(hour, min int) func() uint64 {
 	now := time.Now()
 	return func() uint64 {
 		return uint64(time.Date(
-			now.Year(), now.Month(), now.Day(), hour, min, now.Second(), now.Nanosecond(), time.UTC).UnixNano())
+			now.Year(), now.Month(), now.Day(), hour, min, 0, 0, time.UTC).UnixNano())
 	}
 }
 
@@ -328,16 +333,14 @@ func TapRequest(c carriers.SubCarrier, card *processing.Card, p *Pass) (*process
 
 func TapBySubCarrier(t *testing.T, p *Pass, card *processing.Card) *processing.TapRequest {
 	req, resp := TapRequest(p.SubCarrier, card, p)
-
-	t.Run(p.Carrier.String()+"/twirp/sirocco.ProcessingAPI/ProcessTap - sub carrier: "+p.SubCarrier.String(), func(t *testing.T) {
-		r := httpProcessingApi.POST("/" + p.Carrier.String() + "/twirp/sirocco.ProcessingAPI/ProcessTap").WithJSON(req).
+	u := "/" + p.Carrier.String() + "/twirp/sirocco.ProcessingAPI/ProcessTap"
+	t.Run(u, func(t *testing.T) {
+		r := httpProcessingApi.POST(u).WithJSON(req).
 			Expect().
 			Status(http.StatusOK)
 
 		object := r.Body().Raw()
-
-		trace := r.Header("X-Trace-ID")
-		fmt.Println("trace id: ", trace.Raw())
+		logRequest(u, r)
 
 		response := &processing.TapResponse{}
 		err := jsonpb.Unmarshal(strings.NewReader(object), response)
@@ -347,10 +350,15 @@ func TapBySubCarrier(t *testing.T, p *Pass, card *processing.Card) *processing.T
 		resp.Created = response.Created
 		p.id = response.Id
 
-		assert.Equal(t, resp, response)
+		require.Equal(t, resp, response)
 	})
 
 	return req
+}
+
+func logRequest(u string, r *httpexpect.Response) {
+	trace := r.Header("X-Trace-ID")
+	fmt.Println(fmt.Sprintf("%s, trace id: %s", u, trace.Raw()))
 }
 
 func PassBySubCarrier(t *testing.T, tap *processing.TapRequest, p *Pass) uint64 {
@@ -359,15 +367,13 @@ func PassBySubCarrier(t *testing.T, tap *processing.TapRequest, p *Pass) uint64 
 	case RequestTypeOffline:
 		req, resp := PassOfflineRequest(tap, p)
 		requestedTime = req.Created
-		t.Run(p.Carrier.String()+"/twirp/sirocco.ProcessingAPI/ProcessOfflinePass - sub carrier: "+p.SubCarrier.String(), func(t *testing.T) {
-			r := httpProcessingApi.POST("/" + p.Carrier.String() + "/twirp/sirocco.ProcessingAPI/ProcessOfflinePass").WithJSON(req).
+		u := "/" + p.Carrier.String() + "/twirp/sirocco.ProcessingAPI/ProcessOfflinePass"
+		t.Run(u, func(t *testing.T) {
+			r := httpProcessingApi.POST(u).WithJSON(req).
 				Expect().
 				Status(http.StatusOK)
-
 			object := r.Body().Raw()
-
-			trace := r.Header("X-Trace-ID")
-			fmt.Println("trace id: ", trace.Raw())
+			logRequest(u, r)
 
 			response := &processing.OfflinePassResponse{}
 			err := jsonpb.Unmarshal(strings.NewReader(object), response)
@@ -377,20 +383,19 @@ func PassBySubCarrier(t *testing.T, tap *processing.TapRequest, p *Pass) uint64 
 			resp.Created = response.Created
 			p.id = response.Id
 
-			assert.Equal(t, resp, response)
+			require.Equal(t, resp, response)
 		})
 	case RequestTypeOnline:
 		req, resp := PassOnlineRequest(tap, p)
 		requestedTime = req.Created
-		t.Run(p.Carrier.String()+"/twirp/sirocco.ProcessingAPI/ProcessOnlinePass - sub carrier: "+p.SubCarrier.String(), func(t *testing.T) {
-			r := httpProcessingApi.POST("/" + p.Carrier.String() + "/twirp/sirocco.ProcessingAPI/ProcessOnlinePass").WithJSON(req).
+		u := "/" + p.Carrier.String() + "/twirp/sirocco.ProcessingAPI/ProcessOnlinePass"
+		t.Run(u, func(t *testing.T) {
+			r := httpProcessingApi.POST(u).WithJSON(req).
 				Expect().
 				Status(http.StatusOK)
 
 			object := r.Body().Raw()
-
-			trace := r.Header("X-Trace-ID")
-			fmt.Println("trace id: ", trace.Raw())
+			logRequest(u, r)
 
 			response := &processing.OnlinePassResponse{}
 			err := jsonpb.Unmarshal(strings.NewReader(object), response)
@@ -400,7 +405,7 @@ func PassBySubCarrier(t *testing.T, tap *processing.TapRequest, p *Pass) uint64 
 			resp.Created = response.Created
 			p.id = response.Id
 
-			assert.Equal(t, resp, response)
+			require.Equal(t, resp, response)
 		})
 	}
 	return requestedTime
@@ -419,7 +424,6 @@ func Update(t *testing.T, p *Pass, up Updater) {
 
 func ValidatePass(t *testing.T, p *Pass, parent *Pass, ingress *Pass) {
 	ctx := context.Background()
-	time.Sleep(time.Millisecond * 200)
 	passDB, err := ps.GetPass(ctx, &pass.PassRequest{
 		Id: p.id,
 	})
@@ -450,8 +454,16 @@ func ValidatePass(t *testing.T, p *Pass, parent *Pass, ingress *Pass) {
 		IsAuth:            false,
 	}
 
+	if p.timeToWait != 0 {
+		expectPass.CreatedAtCarrier = NanoToMicro(p.tapRequest.Tap.Created + uint64(p.timeToWait.Nanoseconds()))
+	}
+
 	if ingress != nil {
 		expectPass.IngressId = ingress.id
+	}
+
+	if p.isParent {
+		expectPass.IsComplex = true
 	}
 
 	switch p.RequestType {
@@ -479,21 +491,20 @@ func ValidatePass(t *testing.T, p *Pass, parent *Pass, ingress *Pass) {
 		expectPass.IsAuth = false
 	}
 
-	assert.Equal(t, expectPass, passDB)
+	require.Equal(t, expectPass, passDB)
 	require.NoError(t, err)
 }
 
 func AuthStatus(t *testing.T, p *Pass) {
 	req, resp := AuthStatusRequest(p)
-	t.Run(p.Carrier.String()+"/twirp/sirocco.ProcessingAPI/AuthStatus - sub carrier: "+p.SubCarrier.String(), func(t *testing.T) {
-		r := httpProcessingApi.POST("/" + p.Carrier.String() + "/twirp/sirocco.ProcessingAPI/AuthStatus").WithJSON(req).
+	u := "/" + p.Carrier.String() + "/twirp/sirocco.ProcessingAPI/AuthStatus"
+	t.Run(u, func(t *testing.T) {
+		r := httpProcessingApi.POST(u).WithJSON(req).
 			Expect().
 			Status(http.StatusOK)
 
 		object := r.Body().Raw()
-
-		trace := r.Header("X-Trace-ID")
-		fmt.Println("trace id: ", trace.Raw())
+		logRequest(u, r)
 
 		response := &processing.AuthResponse{}
 		err := jsonpb.Unmarshal(strings.NewReader(object), response)
@@ -501,7 +512,7 @@ func AuthStatus(t *testing.T, p *Pass) {
 
 		resp.Created = response.Created
 		resp.Info = response.Info
-		assert.Equal(t, resp, response)
+		require.Equal(t, resp, response)
 	})
 }
 
@@ -511,26 +522,25 @@ func NanoToMicro(tm uint64) uint64 {
 
 func AbsGetRegistryApi(t *testing.T, registry *AbsGetRegistry) {
 	req := registries.AbsRegistryRequest{}
-	t.Run("twirp/proto.ApmAPIGateway/AbsGetRegistry", func(t *testing.T) {
-		r := httpApmApi.POST("/twirp/proto.ApmAPIGateway/AbsGetRegistry").WithJSON(req).
+	u := "/twirp/proto.ApmAPIGateway/AbsGetRegistry"
+	t.Run(u, func(t *testing.T) {
+		r := httpApmApi.POST(u).WithJSON(req).
 			Expect().
 			Status(http.StatusForbidden)
 
-		trace := r.Header("X-Trace-ID")
-		fmt.Println("trace id: ", trace.Raw())
+		logRequest(u, r)
 	})
 }
 
 func LoginApi(t *testing.T, lg *Login) {
 	req := user.LoginRequest{}
-	//resp := user.JWTResponse{}
-	t.Run("twirp/proto.ApmAPIGatewayPublic/Login", func(t *testing.T) {
-		r := httpApmApi.POST("/twirp/proto.ApmAPIGatewayPublic/Login").WithJSON(req).
+	u := "/twirp/proto.ApmAPIGatewayPublic/Login"
+	t.Run(u, func(t *testing.T) {
+		r := httpApmApi.POST(u).WithJSON(req).
 			Expect().
 			Status(http.StatusNotFound)
 
-		trace := r.Header("X-Trace-ID")
-		fmt.Println("trace id: ", trace.Raw())
+		logRequest(u, r)
 	})
 }
 
@@ -543,40 +553,38 @@ func PassCheckApi(t *testing.T, pc *PassCheck, target *Pass, parent *Pass) {
 
 func CancelApi(t *testing.T, cl *Cancel, target *Pass) {
 	req, resp := CancelRequest(cl, target)
-	t.Run(target.Carrier.String()+"/twirp/sirocco.ProcessingAPI/CancelPass - sub carrier: "+target.SubCarrier.String(), func(t *testing.T) {
-		r := httpProcessingApi.POST("/" + target.Carrier.String() + "/twirp/sirocco.ProcessingAPI/CancelPass").WithJSON(req).
+	u := "/" + target.Carrier.String() + "/twirp/sirocco.ProcessingAPI/CancelPass"
+	t.Run(u, func(t *testing.T) {
+		r := httpProcessingApi.POST(u).WithJSON(req).
 			Expect().
 			Status(http.StatusOK)
 
 		object := r.Body().Raw()
-
-		trace := r.Header("X-Trace-ID")
-		fmt.Println("trace id: ", trace.Raw())
+		logRequest(u, r)
 
 		response := &processing.CancelPassResponse{}
 		err := jsonpb.Unmarshal(strings.NewReader(object), response)
 		require.NoError(t, err)
 		resp.Created = response.Created
-		assert.Equal(t, resp, response)
+		require.Equal(t, resp, response)
 	})
 }
 
 func ParkingApi(t *testing.T, card *processing.Card, pr *Parking) {
 	req, resp := ParkingRequest(card, pr)
-	t.Run("/mm/twirp/sirocco.ProcessingAPI/CheckParking - sub carrier: mm", func(t *testing.T) {
-		r := httpProcessingApi.POST("/mm/twirp/sirocco.ProcessingAPI/CheckParking").WithJSON(req).
+	u := "/mm/twirp/sirocco.ProcessingAPI/CheckParking"
+	t.Run(u, func(t *testing.T) {
+		r := httpProcessingApi.POST(u).WithJSON(req).
 			Expect().
 			Status(http.StatusOK)
 
 		object := r.Body().Raw()
-
-		trace := r.Header("X-Trace-ID")
-		fmt.Println("trace id: ", trace.Raw())
+		logRequest(u, r)
 
 		response := &processing.CheckParkingResponse{}
 		err := jsonpb.Unmarshal(strings.NewReader(object), response)
 		require.NoError(t, err)
-		assert.Equal(t, resp, response)
+		require.Equal(t, resp, response)
 	})
 }
 
@@ -586,8 +594,10 @@ func Run(t *testing.T, cases Cases) {
 	for _, scenario := range cases {
 		card := Card()
 		carrierID := uuid.New().String()
+		fmt.Println(scenario.N)
 		fmt.Println(card.String())
-		for _, step := range scenario.T {
+		for N, step := range scenario.T {
+			fmt.Println(N + 1)
 			t.Run("case: "+scenario.N, func(t *testing.T) {
 				//Pass
 				p, ok := step.(*Pass)
@@ -611,6 +621,8 @@ func Run(t *testing.T, cases Cases) {
 							t.Fail()
 						}
 						parent = pr
+						parent.isParent = true
+						parent.timeToWait = parent.TimeToWait
 					}
 					if p.Ingress > 0 {
 						ing, ok := (scenario.T[p.Ingress-1]).(*Pass)
@@ -618,13 +630,28 @@ func Run(t *testing.T, cases Cases) {
 							t.Fail()
 						}
 						ingress = ing
+						ingress.timeToWait = ingress.TimeToWait
 					}
 					p.tapRequest = tapReq
 					p.timeRequest = timeRequest
-
 					p.card = card
+					p.parent = parent
+					p.ingress = ingress
+
+					time.Sleep(time.Millisecond * 200)
+
 					ValidatePass(t, p, parent, ingress)
 					AuthStatus(t, p)
+
+					if parent != nil {
+						ValidatePass(t, parent, parent.parent, parent.ingress)
+						AuthStatus(t, parent)
+					}
+
+					if ingress != nil {
+						ValidatePass(t, ingress, ingress.parent, ingress.ingress)
+						AuthStatus(t, ingress)
+					}
 				}
 
 				//Updater
@@ -660,6 +687,7 @@ func Run(t *testing.T, cases Cases) {
 					if !ok {
 						t.Fail()
 					}
+					time.Sleep(time.Millisecond * 200)
 					PassCheckApi(t, pc, target, parent)
 				}
 
@@ -679,6 +707,12 @@ func Run(t *testing.T, cases Cases) {
 					ParkingApi(t, card, pr)
 				}
 			})
+			if t.Failed() {
+				break
+			}
+		}
+		if t.Failed() {
+			break
 		}
 	}
 }

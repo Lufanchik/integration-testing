@@ -78,10 +78,15 @@ parking:
 	go test -c -o ./bin/test
 	./bin/test -test.run ^TestParking$
 
+scope_check:
+	go test -c -o ./bin/test
+	./bin/test -test.v -test.run ^TestScopeCheckPass$
+
+
 offline: offline_metro_complex_mck_test offline_metro_complex_mm_test offline_metro_complex_mmts_test
-complex: simple_complex metro_complex_mm metro_complex_mck metro_complex_mmts metro_complex_mcd metro_complex_2mcd offline
+complex: metro_complex_mmts metro_complex_mm simple_complex metro_complex_mck metro_complex_mcd metro_complex_2mcd offline scope_check
 full: simple simple_complex apm complex parking revise resolve
 local: metro_complex_time_mcd
-test: metro_complex_time_mcd
+test: metro_complex_mmts
 stage: full
 prod: full

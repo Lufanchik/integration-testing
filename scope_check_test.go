@@ -106,7 +106,7 @@ var (
 			N: "28. Одиночная поездка за пределами МСК (Вход МЦД МО – Выход МЦД МСК)",
 			T: T{
 				&Pass{
-					PaymentType: PaymentTypeFullPayment,
+					PaymentType: PaymentTypePayment,
 					RequestType: RequestTypeOnline,
 					Carrier:     carriers.Carrier_MCD,
 					SubCarrier:  carriers.SubCarrier_MCD1_MO,
@@ -130,7 +130,7 @@ var (
 			N: "29. Одиночная поездка за пределами МСК (Вход МЦД МСК – Выход МЦД МО)",
 			T: T{
 				&Pass{
-					PaymentType: PaymentTypeFullPayment,
+					PaymentType: PaymentTypePayment,
 					RequestType: RequestTypeOnline,
 					Carrier:     carriers.Carrier_MCD,
 					SubCarrier:  carriers.SubCarrier_MCD1_MSK,
@@ -154,7 +154,7 @@ var (
 			N: "30. Одиночная поездка МЦД (Вход МЦД МСК – валидация МЦД МО)",
 			T: T{
 				&Pass{
-					PaymentType: PaymentTypeFullPayment,
+					PaymentType: PaymentTypePayment,
 					RequestType: RequestTypeOnline,
 					Carrier:     carriers.Carrier_MCD,
 					SubCarrier:  carriers.SubCarrier_MCD1_MSK,
@@ -178,7 +178,7 @@ var (
 			N: "31. Одиночная поездка МЦД (МЦД МО валидация –  МЦД МО выход)",
 			T: T{
 				&Pass{
-					PaymentType: PaymentTypeFullPayment,
+					PaymentType: PaymentTypePayment,
 					RequestType: RequestTypeOnline,
 					Carrier:     carriers.Carrier_MCD,
 					SubCarrier:  carriers.SubCarrier_MCD1_MO,
@@ -202,7 +202,7 @@ var (
 			N: "32. Одиночная поездка МЦД (МЦД МО валидация –  МЦД МО валидация)",
 			T: T{
 				&Pass{
-					PaymentType: PaymentTypeFullPayment,
+					PaymentType: PaymentTypePayment,
 					RequestType: RequestTypeOnline,
 					Carrier:     carriers.Carrier_MCD,
 					SubCarrier:  carriers.SubCarrier_MCD1_MO,
@@ -250,7 +250,7 @@ var (
 			N: "34. Комиссионный сбор при неосуществлении выхода с МЦД (МЦД МСК - выхода с МЦД не последовало)",
 			T: T{
 				&Pass{
-					PaymentType: PaymentTypeFullPayment,
+					PaymentType: PaymentTypePayment,
 					RequestType: RequestTypeOnline,
 					Carrier:     carriers.Carrier_MCD,
 					SubCarrier:  carriers.SubCarrier_MCD1_MO,
@@ -274,7 +274,7 @@ var (
 			N: "37. Комплексная поездка во время перехода на новые транспортные сутки.",
 			T: T{
 				&Pass{
-					PaymentType: PaymentTypeFullPayment,
+					PaymentType: PaymentTypePayment,
 					RequestType: RequestTypeOnline,
 					Carrier:     carriers.Carrier_MCD,
 					SubCarrier:  carriers.SubCarrier_MCD1_MO,
@@ -301,7 +301,7 @@ var (
 			N: "38. Попытка повторного прохода для ММ на одном терминале.",
 			T: T{
 				&Pass{
-					PaymentType: PaymentTypeFullPayment,
+					PaymentType: PaymentTypePayment,
 					RequestType: RequestTypeOnline,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MM_SUB,
@@ -319,7 +319,7 @@ var (
 			N: "39. Повторный проход по для ММ на разных терминалах.",
 			T: T{
 				&Pass{
-					PaymentType: PaymentTypeFullPayment,
+					PaymentType: PaymentTypePayment,
 					RequestType: RequestTypeOnline,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MM_SUB,
@@ -343,7 +343,7 @@ var (
 			N: "40. Комплексная поездка во время перехода на новые транспортные сутки.",
 			T: T{
 				&Pass{
-					PaymentType: PaymentTypeFullPayment,
+					PaymentType: PaymentTypePayment,
 					RequestType: RequestTypeOnline,
 					Carrier:     carriers.Carrier_MCD,
 					SubCarrier:  carriers.SubCarrier_MCD1_MSK,
@@ -353,7 +353,7 @@ var (
 					},
 				},
 				&Pass{
-					PaymentType: PaymentTypeFullPayment,
+					PaymentType: PaymentTypePayment,
 					RequestType: RequestTypeOnline,
 					Carrier:     carriers.Carrier_MCD,
 					SubCarrier:  carriers.SubCarrier_MCD1_MSK,
@@ -363,7 +363,7 @@ var (
 					},
 				},
 				&Pass{
-					PaymentType: PaymentTypeFullPayment,
+					PaymentType: PaymentTypePayment,
 					RequestType: RequestTypeOnline,
 					Carrier:     carriers.Carrier_MCD,
 					SubCarrier:  carriers.SubCarrier_MCD1_MSK,
@@ -378,7 +378,7 @@ var (
 			N: "41. Повторение вида поездки внутри комплексной поездки для ММ (ММ – МЦК - ММ)",
 			T: T{
 				&Pass{
-					PaymentType: PaymentTypeFullPayment,
+					PaymentType: PaymentTypePayment,
 					RequestType: RequestTypeOnline,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MM_SUB,
@@ -404,7 +404,7 @@ var (
 			N: "42. Повторение вида поездки внутри комплексной поездки (МЦК – ММ -МЦК)",
 			T: T{
 				&Pass{
-					PaymentType: PaymentTypeFullPayment,
+					PaymentType: PaymentTypePayment,
 					RequestType: RequestTypeOnline,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MCK_SUB,
@@ -418,7 +418,7 @@ var (
 					ExpectedSum: 0,
 				},
 				&Pass{
-					PaymentType: PaymentTypeFullPayment,
+					PaymentType: PaymentTypePayment,
 					RequestType: RequestTypeOnline,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MCK_SUB,
@@ -430,7 +430,7 @@ var (
 			N: "43. Дублирование звеньев в пределах МСК на МЦД в пределах разных линий (МЦД линия 1 – МЦД линия 2)",
 			T: T{
 				&Pass{
-					PaymentType: PaymentTypeFullPayment,
+					PaymentType: PaymentTypePayment,
 					RequestType: RequestTypeOnline,
 					Carrier:     carriers.Carrier_MCD,
 					SubCarrier:  carriers.SubCarrier_MCD1_MSK,
@@ -475,7 +475,7 @@ var (
 			N: "44. Закрытие комплексной поездки по максимальному количеству пересадок в пределах МСК (ММТС – ММ – МЦК – МЦД МСК вход – МЦД МСК выход)",
 			T: T{
 				&Pass{
-					PaymentType: PaymentTypeFullPayment,
+					PaymentType: PaymentTypePayment,
 					RequestType: RequestTypeOnline,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MMTS_SUB,
@@ -521,7 +521,7 @@ var (
 			N: "45. Закрытие комплексной поездки по максимальному количеству пересадок за пределами МСК (ММТС – МЦК – ММ – МЦД МСК вход – МЦД МО выход)",
 			T: T{
 				&Pass{
-					PaymentType: PaymentTypeFullPayment,
+					PaymentType: PaymentTypePayment,
 					RequestType: RequestTypeOnline,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MMTS_SUB,
@@ -567,7 +567,7 @@ var (
 			N: "46. Закрытие комплексной поездки при проходе на ММТС (МЦК – ММ – ММТС)",
 			T: T{
 				&Pass{
-					PaymentType: PaymentTypeFullPayment,
+					PaymentType: PaymentTypePayment,
 					RequestType: RequestTypeOnline,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MCK_SUB,
@@ -619,7 +619,7 @@ var (
 			N: "48. Поездка из Аэропорта Шереметьево на Аэроэкспрессе и выход на МЦД МО (Аэропорт вход – МЦД МО выход)",
 			T: T{
 				&Pass{
-					PaymentType: PaymentTypeFullPayment,
+					PaymentType: PaymentTypePayment,
 					RequestType: RequestTypeOnline,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MCK_SUB,
@@ -641,108 +641,108 @@ var (
 				},
 			},
 		},
-		{
-			N: "57. Открытие периода комплексной поездки при отсутствии прохода в интервале [-90 мин;+90 мин] относительно полученного прохода. (ММ – МЦК - ММ)",
-			T: T{
-				&Pass{
-					PaymentType: PaymentTypeFullPayment,
-					RequestType: RequestTypeOnline,
-					Carrier:     carriers.Carrier_MM,
-					SubCarrier:  carriers.SubCarrier_MM_SUB,
-					ExpectedSum: 4200,
-					tapRequest: &processing.TapRequest{
-						Tap: &processing.Tap{
-							Created: Now(),
-						},
-					},
-				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
-					RequestType: RequestTypeOnline,
-					Carrier:     carriers.Carrier_MM,
-					SubCarrier:  carriers.SubCarrier_MCK_SUB,
-					ExpectedSum: 0,
-				},
-				&Pass{
-					PaymentType: PaymentTypeFullPayment,
-					RequestType: RequestTypeOnline,
-					Carrier:     carriers.Carrier_MM,
-					SubCarrier:  carriers.SubCarrier_MM_SUB,
-					ExpectedSum: 4200,
-					tapRequest: &processing.TapRequest{
-						Tap: &processing.Tap{
-							Created: Now() + 5400,
-						},
-					},
-				},
-			},
-		},
-		{
-			N: "58. Продление периода комплексной поездки по параметру времени посадки для поездки по МЦД. (МЦД МО вход – МЦД МСК выход – ММ - МЦК)",
-			T: T{
-				&Pass{
-					PaymentType: PaymentTypeFullPayment,
-					RequestType: RequestTypeOnline,
-					Carrier:     carriers.Carrier_MCD,
-					SubCarrier:  carriers.SubCarrier_MCD1_MO,
-					Terminal: &processing.Terminal{
-						Direction: processing.TerminalDirection_INGRESS,
-						Station:   "2002077",
-					},
-					ExpectedSum: 4900,
-					tapRequest: &processing.TapRequest{
-						Tap: &processing.Tap{
-							Created: Now(),
-						},
-					},
-				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
-					RequestType: RequestTypeOnline,
-					Carrier:     carriers.Carrier_MCD,
-					SubCarrier:  carriers.SubCarrier_MCD1_MSK,
-					Terminal: &processing.Terminal{
-						Direction: processing.TerminalDirection_EGRESS,
-						Station:   "2000275",
-					},
-					ExpectedSum: 0,
-					tapRequest: &processing.TapRequest{
-						Tap: &processing.Tap{
-							Created: Now() + 3600,
-						},
-					},
-				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
-					RequestType: RequestTypeOnline,
-					Carrier:     carriers.Carrier_MM,
-					SubCarrier:  carriers.SubCarrier_MM_SUB,
-					ExpectedSum: 0,
-					tapRequest: &processing.TapRequest{
-						Tap: &processing.Tap{
-							Created: NowBackup() + 5700,
-						},
-					},
-				},
-				&Pass{
-					PaymentType: PaymentTypeFullPayment,
-					RequestType: RequestTypeOnline,
-					Carrier:     carriers.Carrier_MM,
-					SubCarrier:  carriers.SubCarrier_MCK_SUB,
-					ExpectedSum: 4200,
-					tapRequest: &processing.TapRequest{
-						Tap: &processing.Tap{
-							Created: NowBackup() + 7200,
-						},
-					},
-				},
-			},
-		},
+		//{
+		//	N: "57. Открытие периода комплексной поездки при отсутствии прохода в интервале [-90 мин;+90 мин] относительно полученного прохода. (ММ – МЦК - ММ)",
+		//	T: T{
+		//		&Pass{
+		//			PaymentType: PaymentTypePayment,
+		//			RequestType: RequestTypeOnline,
+		//			Carrier:     carriers.Carrier_MM,
+		//			SubCarrier:  carriers.SubCarrier_MM_SUB,
+		//			ExpectedSum: 4200,
+		//			tapRequest: &processing.TapRequest{
+		//				Tap: &processing.Tap{
+		//					Created: Now(),
+		//				},
+		//			},
+		//		},
+		//		&Pass{
+		//			PaymentType: PaymentTypeFree,
+		//			RequestType: RequestTypeOnline,
+		//			Carrier:     carriers.Carrier_MM,
+		//			SubCarrier:  carriers.SubCarrier_MCK_SUB,
+		//			ExpectedSum: 0,
+		//		},
+		//		&Pass{
+		//			PaymentType: PaymentTypePayment,
+		//			RequestType: RequestTypeOnline,
+		//			Carrier:     carriers.Carrier_MM,
+		//			SubCarrier:  carriers.SubCarrier_MM_SUB,
+		//			ExpectedSum: 4200,
+		//			tapRequest: &processing.TapRequest{
+		//				Tap: &processing.Tap{
+		//					Created: Now() + 5400,
+		//				},
+		//			},
+		//		},
+		//	},
+		//},
+		//{
+		//	N: "58. Продление периода комплексной поездки по параметру времени посадки для поездки по МЦД. (МЦД МО вход – МЦД МСК выход – ММ - МЦК)",
+		//	T: T{
+		//		&Pass{
+		//			PaymentType: PaymentTypePayment,
+		//			RequestType: RequestTypeOnline,
+		//			Carrier:     carriers.Carrier_MCD,
+		//			SubCarrier:  carriers.SubCarrier_MCD1_MO,
+		//			Terminal: &processing.Terminal{
+		//				Direction: processing.TerminalDirection_INGRESS,
+		//				Station:   "2002077",
+		//			},
+		//			ExpectedSum: 4900,
+		//			tapRequest: &processing.TapRequest{
+		//				Tap: &processing.Tap{
+		//					Created: Now(),
+		//				},
+		//			},
+		//		},
+		//		&Pass{
+		//			PaymentType: PaymentTypeFree,
+		//			RequestType: RequestTypeOnline,
+		//			Carrier:     carriers.Carrier_MCD,
+		//			SubCarrier:  carriers.SubCarrier_MCD1_MSK,
+		//			Terminal: &processing.Terminal{
+		//				Direction: processing.TerminalDirection_EGRESS,
+		//				Station:   "2000275",
+		//			},
+		//			ExpectedSum: 0,
+		//			tapRequest: &processing.TapRequest{
+		//				Tap: &processing.Tap{
+		//					Created: Now() + 3600,
+		//				},
+		//			},
+		//		},
+		//		&Pass{
+		//			PaymentType: PaymentTypeFree,
+		//			RequestType: RequestTypeOnline,
+		//			Carrier:     carriers.Carrier_MM,
+		//			SubCarrier:  carriers.SubCarrier_MM_SUB,
+		//			ExpectedSum: 0,
+		//			tapRequest: &processing.TapRequest{
+		//				Tap: &processing.Tap{
+		//					Created: NowBackup() + 5700,
+		//				},
+		//			},
+		//		},
+		//		&Pass{
+		//			PaymentType: PaymentTypePayment,
+		//			RequestType: RequestTypeOnline,
+		//			Carrier:     carriers.Carrier_MM,
+		//			SubCarrier:  carriers.SubCarrier_MCK_SUB,
+		//			ExpectedSum: 4200,
+		//			tapRequest: &processing.TapRequest{
+		//				Tap: &processing.Tap{
+		//					Created: NowBackup() + 7200,
+		//				},
+		//			},
+		//		},
+		//	},
+		//},
 		{
 			N: "59. В ТП пришел проход, ставший пересадкой внутри комплексной поездки, не изменив следующую поездку.",
 			T: T{
 				&Pass{
-					PaymentType: PaymentTypeFullPayment,
+					PaymentType: PaymentTypePayment,
 					RequestType: RequestTypeOnline,
 					Carrier:     carriers.Carrier_MCD,
 					SubCarrier:  carriers.SubCarrier_MCD1_MSK,
@@ -803,7 +803,7 @@ var (
 			N: "60. В ТП пришел проход, ставший новой поездкой, не изменив следующую комплексную поездку.",
 			T: T{
 				&Pass{
-					PaymentType: PaymentTypeFullPayment,
+					PaymentType: PaymentTypePayment,
 					RequestType: RequestTypeOnline,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MM_SUB,
@@ -815,7 +815,7 @@ var (
 					},
 				},
 				&Pass{
-					PaymentType: PaymentTypeFullPayment,
+					PaymentType: PaymentTypePayment,
 					RequestType: RequestTypeOnline,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MM_SUB,
@@ -827,7 +827,7 @@ var (
 					},
 				},
 				&Pass{
-					PaymentType: PaymentTypeFullPayment,
+					PaymentType: PaymentTypePayment,
 					RequestType: RequestTypeOnline,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MM_SUB,
@@ -844,7 +844,7 @@ var (
 			N: "61. В ТП пришел проход, ставший новой поездкой, не изменив следующую комплексную поездку.",
 			T: T{
 				&Pass{
-					PaymentType: PaymentTypeFullPayment,
+					PaymentType: PaymentTypePayment,
 					RequestType: RequestTypeOnline,
 					Carrier:     carriers.Carrier_MCD,
 					SubCarrier:  carriers.SubCarrier_MCD1_MSK,
@@ -888,7 +888,7 @@ var (
 					},
 				},
 				&Pass{
-					PaymentType: PaymentTypeFullPayment,
+					PaymentType: PaymentTypePayment,
 					RequestType: RequestTypeOnline,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MM_SUB,
@@ -905,7 +905,7 @@ var (
 			N: "62. В ТП пришел проход, ставший новой поездкой, не изменив следующую комплексную поездку.",
 			T: T{
 				&Pass{
-					PaymentType: PaymentTypeFullPayment,
+					PaymentType: PaymentTypePayment,
 					RequestType: RequestTypeOnline,
 					Carrier:     carriers.Carrier_MCD,
 					SubCarrier:  carriers.SubCarrier_MCD1_MSK,
@@ -949,7 +949,7 @@ var (
 					},
 				},
 				&Pass{
-					PaymentType: PaymentTypeFullPayment,
+					PaymentType: PaymentTypePayment,
 					RequestType: RequestTypeOnline,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MM_SUB,
@@ -994,7 +994,7 @@ var (
 					},
 				},
 				&Pass{
-					PaymentType: PaymentTypeFullPayment,
+					PaymentType: PaymentTypePayment,
 					RequestType: RequestTypeOnline,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MM_SUB,
@@ -1007,7 +1007,5 @@ var (
 				},
 			},
 		},
-
-
 	}
 )

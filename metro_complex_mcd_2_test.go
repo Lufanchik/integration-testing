@@ -14,6 +14,70 @@ func TestComplex2MCD(t *testing.T) {
 var (
 	casesComplexMCD2 = Cases{
 		{
+			N: "98. ММТС - МСК-МСК - ММ - МСК-МО - ММ",
+			T: T{
+				&Pass{
+					PaymentType: PaymentTypePayment,
+					Carrier:     carriers.Carrier_MM,
+					SubCarrier:  carriers.SubCarrier_MMTS_SUB,
+					ExpectedSum: 4200,
+				},
+				&Pass{
+					PaymentType: PaymentTypeFree,
+					Carrier:     carriers.Carrier_MCD,
+					SubCarrier:  carriers.SubCarrier_MCD1_MSK,
+					Terminal: &processing.Terminal{
+						Station:   "2001140", //КУНЦЕВСКАЯ
+						Direction: processing.TerminalDirection_INGRESS,
+					},
+					Parent: 1,
+				},
+				&Pass{
+					PaymentType: PaymentTypeFree,
+					Carrier:     carriers.Carrier_MCD,
+					SubCarrier:  carriers.SubCarrier_MCD1_MSK,
+					Terminal: &processing.Terminal{
+						Station:   "2000009", //САВЕЛОВСКИЙ ВОКЗАЛ
+						Direction: processing.TerminalDirection_EGRESS,
+					},
+					Ingress: 2,
+				},
+				&Pass{
+					PaymentType: PaymentTypeFree,
+					Carrier:     carriers.Carrier_MM,
+					SubCarrier:  carriers.SubCarrier_MM_SUB,
+					Parent:      1,
+				},
+				&Pass{
+					PaymentType: PaymentTypePayment,
+					Carrier:     carriers.Carrier_MCD,
+					SubCarrier:  carriers.SubCarrier_MCD1_MSK,
+					Terminal: &processing.Terminal{
+						Station:   "2000155", //ФИЛИ
+						Direction: processing.TerminalDirection_INGRESS,
+					},
+					ExpectedSum: 4200,
+				},
+				&Pass{
+					PaymentType: PaymentTypePayment,
+					Carrier:     carriers.Carrier_MCD,
+					SubCarrier:  carriers.SubCarrier_MCD1_MO,
+					Terminal: &processing.Terminal{
+						Station:   "2000055", //ОДИНЦОВО
+						Direction: processing.TerminalDirection_EGRESS,
+					},
+					Ingress:     5,
+					ExpectedSum: 700,
+				},
+				&Pass{
+					PaymentType: PaymentTypePayment,
+					Carrier:     carriers.Carrier_MM,
+					SubCarrier:  carriers.SubCarrier_MM_SUB,
+					ExpectedSum: 4200,
+				},
+			},
+		},
+		{
 			N: "МЦД МО - ММ -  МЦК - ММ - МMTS",
 			T: T{
 				&Pass{

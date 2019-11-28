@@ -84,9 +84,9 @@ scope_check:
 
 
 offline: offline_metro_complex_mck_test offline_metro_complex_mm_test offline_metro_complex_mmts_test
-complex: metro_complex_mmts metro_complex_mm simple_complex metro_complex_mck metro_complex_mcd metro_complex_2mcd offline scope_check
+complex: simple_complex metro_complex_mm metro_complex_mck metro_complex_mmts metro_complex_mcd metro_complex_2mcd metro_complex_time_mcd offline
 full: simple simple_complex apm complex parking revise resolve
-local: simple_complex metro_complex_mm metro_complex_mck metro_complex_mmts metro_complex_2mcd offline
-test: simple_complex metro_complex_mm metro_complex_mck metro_complex_mmts metro_complex_2mcd offline
+local: metro_complex_time_mcd
+test: metro_complex_time_mcd
 stage: full
 prod: full

@@ -78,10 +78,14 @@ parking:
 	go test -c -o ./bin/test
 	./bin/test -test.run ^TestParking$
 
-offline: offline_metro_complex_mck_test offline_metro_complex_mm_test offline_metro_complex_mmts_test
-complex: metro_complex_mcd
-full: simple simple_complex apm complex parking revise resolve
-local: simple_complex metro_complex_mm metro_complex_mck metro_complex_mmts metro_complex_2mcd offline
-test: simple_complex metro_complex_mm metro_complex_mck metro_complex_mmts metro_complex_2mcd offline
-stage: full
+ComplexMCK1:
+	go test -c -o ./bin/test
+	./bin/test -test.run ^TestComplexMCK$
+
+offline: ComplexMCK1
+complex: ComplexMCK1
+full: ComplexMCK1
+local: ComplexMCK1
+test: ComplexMCK1
+stage: ComplexMCK1
 prod: full

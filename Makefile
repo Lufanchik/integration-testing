@@ -52,7 +52,7 @@ metro_complex_mck:
 
 metro_complex_mmts:
 	go test -c -o ./bin/test
-	./bin/test -test.run ^TestMetroComplexMMTS$
+	./bin/test -test.run ^TestMetroComplexMMTS1$
 
 offline_metro_complex_mck_test:
 	go test -c -o ./bin/test
@@ -78,14 +78,14 @@ parking:
 	go test -c -o ./bin/test
 	./bin/test -test.run ^TestParking$
 
-ComplexMCK1:
+ComplexMCK:
 	go test -c -o ./bin/test
 	./bin/test -test.run ^TestComplexMCK$
 
-offline: ComplexMCK1
-complex: ComplexMCK1
-full: ComplexMCK1
-local: ComplexMCK1
-test: ComplexMCK1
-stage: ComplexMCK1
+offline: metro_complex_mck
+complex: metro_complex_mck
+full: metro_complex_mck
+local: metro_complex_mck
+test: metro_complex_mck
+stage: metro_complex_mck
 prod: full

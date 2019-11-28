@@ -600,7 +600,7 @@ var (
 						Station:   "2000685", //БАКОВКА
 						Direction: processing.TerminalDirection_EGRESS,
 					},
-					Ingress: 5,
+					Ingress:     5,
 					ExpectedSum: 700,
 				},
 			},
@@ -658,7 +658,7 @@ var (
 					PaymentType: PaymentTypeFree,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MM_SUB,
-					Parent: 	 1,
+					Parent:      1,
 				},
 				&Pass{
 					PaymentType: PaymentTypePayment,
@@ -721,7 +721,7 @@ var (
 					PaymentType: PaymentTypeFree,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MM_SUB,
-					Parent: 	 1,
+					Parent:      1,
 				},
 				&Pass{
 					PaymentType: PaymentTypePayment,
@@ -784,7 +784,7 @@ var (
 					PaymentType: PaymentTypeFree,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MM_SUB,
-					Parent: 	 1,
+					Parent:      1,
 				},
 				&Pass{
 					PaymentType: PaymentTypePayment,
@@ -847,7 +847,7 @@ var (
 					PaymentType: PaymentTypeFree,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MM_SUB,
-					Parent: 	 1,
+					Parent:      1,
 				},
 				&Pass{
 					PaymentType: PaymentTypePayment,
@@ -924,7 +924,7 @@ var (
 					PaymentType: PaymentTypeFree,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MM_SUB,
-					Parent: 	 1,
+					Parent:      1,
 				},
 				&Pass{
 					PaymentType: PaymentTypePayment,
@@ -944,7 +944,7 @@ var (
 						Station:   "2000055", //ОДИНЦОВО
 						Direction: processing.TerminalDirection_EGRESS,
 					},
-					Ingress: 7,
+					Ingress:     7,
 					ExpectedSum: 700,
 				},
 			},
@@ -2102,5 +2102,5 @@ var (
 				},
 			},
 		},
-	},
+	}
 )

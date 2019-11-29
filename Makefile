@@ -52,7 +52,7 @@ metro_complex_mck:
 
 metro_complex_mmts:
 	go test -c -o ./bin/test
-	./bin/test -test.run ^TestMetroComplexMMTS1$
+	./bin/test -test.run ^TestMetroComplexMMTS$
 
 offline_metro_complex_mck_test:
 	go test -c -o ./bin/test
@@ -78,26 +78,10 @@ parking:
 	go test -c -o ./bin/test
 	./bin/test -test.run ^TestParking$
 
-ComplexMCK1:
-	go test -c -o ./bin/test
-	./bin/test -test.run ^TestMetroComplexMCK1$
-
-ComplexMCK2:
-	go test -c -o ./bin/test
-	./bin/test -test.run ^TestMetroComplexMCK2$
-
-ComplexMCK3:
-	go test -c -o ./bin/test
-	./bin/test -test.run ^TestMetroComplexMCK3$
-
-ComplexMCK4:
-	go test -c -o ./bin/test
-	./bin/test -test.run ^TestMetroComplexMCK4$
-
-offline: ComplexMCK1 ComplexMCK2 ComplexMCK3 ComplexMCK4
-complex: ComplexMCK1 ComplexMCK2 ComplexMCK3 ComplexMCK4
-full: ComplexMCK1 ComplexMCK2 ComplexMCK3 ComplexMCK4
-local: ComplexMCK1 ComplexMCK2 ComplexMCK3 ComplexMCK4
-test: ComplexMCK1 ComplexMCK2 ComplexMCK3 ComplexMCK4
-stage: ComplexMCK1 ComplexMCK2 ComplexMCK3 ComplexMCK4
+offline: offline_metro_complex_mck_test offline_metro_complex_mm_test offline_metro_complex_mmts_test
+complex: simple_complex metro_complex_mm metro_complex_mck metro_complex_mmts metro_complex_mcd metro_complex_2mcd offline
+full: simple simple_complex apm complex parking revise resolve
+local: simple_complex metro_complex_mm metro_complex_mck metro_complex_mmts metro_complex_2mcd offline
+test: simple_complex metro_complex_mm metro_complex_mck metro_complex_mmts metro_complex_2mcd offline
+stage: full
 prod: full

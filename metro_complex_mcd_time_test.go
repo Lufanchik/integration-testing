@@ -14,78 +14,6 @@ func TestComplexTimeMCD(t *testing.T) {
 var (
 	casesComplexTimeMCD = Cases{
 		{
-			N: "МЦД МО/МСК 1 - ММ - МЦД МСК 2 - МЦД_МСК/МО_1", //46
-			T: T{
-				&Pass{
-					PaymentType: PaymentTypePayment,
-					Carrier:     carriers.Carrier_MCD,
-					SubCarrier:  carriers.SubCarrier_MCD1_MO,
-					Terminal: &processing.Terminal{
-						Station:   "2000115", //ЛОБНЯ
-						Direction: processing.TerminalDirection_INGRESS,
-					},
-					ExpectedSum: 4900,
-				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
-					Carrier:     carriers.Carrier_MCD,
-					SubCarrier:  carriers.SubCarrier_MCD1_MSK,
-					Terminal: &processing.Terminal{
-						Station:   "2000009", //САВЕЛОВСКИЙ ВОКЗАЛ
-						Direction: processing.TerminalDirection_EGRESS,
-					},
-					Ingress: 1,
-				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
-					Carrier:     carriers.Carrier_MM,
-					SubCarrier:  carriers.SubCarrier_MM_SUB,
-					Parent:      1,
-				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
-					Carrier:     carriers.Carrier_MCD,
-					SubCarrier:  carriers.SubCarrier_MCD2_MSK,
-					Terminal: &processing.Terminal{
-						Station:   "2000075", //ТУШИНО
-						Direction: processing.TerminalDirection_INGRESS,
-					},
-					Parent: 1,
-				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
-					Carrier:     carriers.Carrier_MCD,
-					SubCarrier:  carriers.SubCarrier_MCD2_MSK,
-					Terminal: &processing.Terminal{
-						Station:   "2000200", //КАЛИТНИКИ
-						Direction: processing.TerminalDirection_EGRESS,
-					},
-					Ingress: 4,
-				},
-				&Pass{
-					PaymentType: PaymentTypePayment,
-					Carrier:     carriers.Carrier_MCD,
-					SubCarrier:  carriers.SubCarrier_MCD1_MSK,
-					Terminal: &processing.Terminal{
-						Station:   "2000009", //САВЕЛОВСКИЙ ВОКЗАЛ 2000009
-						Direction: processing.TerminalDirection_INGRESS,
-					},
-					ExpectedSum: 4200,
-				},
-				&Pass{
-					PaymentType: PaymentTypePayment,
-					Carrier:     carriers.Carrier_MCD,
-					SubCarrier:  carriers.SubCarrier_MCD1_MO,
-					Terminal: &processing.Terminal{
-						Station:   "2000115", //ЛОБНЯ 2000115
-						Direction: processing.TerminalDirection_EGRESS,
-					},
-					Ingress:     6,
-					ExpectedSum: 700,
-				},
-			},
-		},
-		{
 			N: "MCD egress after complex period",
 			T: T{
 				&Pass{
@@ -105,20 +33,105 @@ var (
 					Carrier:     carriers.Carrier_MCD,
 					SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 					Terminal: &processing.Terminal{
-						Station:   "2000155",
+						Station:   "2001140",
 						Direction: processing.TerminalDirection_EGRESS,
 					},
 					Ingress: 1,
-					Now:     NowCustom(11, 30),
+					Now:     NowCustom(11, 22),
 				},
 				&Pass{
 					PaymentType: PaymentTypeFree,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MM_SUB,
-					Now:         NowCustom(12, 01),
+					Now:         NowCustom(12, 35),
 					Parent:      1,
 				},
 			},
 		},
+		//{
+		//	N: "MCD egress after complex period",
+		//	T: T{
+		//		&Pass{
+		//			PaymentType: PaymentTypePayment,
+		//			Carrier:     carriers.Carrier_MCD,
+		//			SubCarrier:  carriers.SubCarrier_MCD2_MO,
+		//			Terminal: &processing.Terminal{
+		//				Station:   "2000065",
+		//				Direction: processing.TerminalDirection_INGRESS,
+		//			},
+		//			Now:         NowCustom(10, 30),
+		//			ExpectedSum: 4900,
+		//			TimeToWait:  360 * time.Minute,
+		//		},
+		//		&Pass{
+		//			PaymentType: PaymentTypeFree,
+		//			Carrier:     carriers.Carrier_MCD,
+		//			SubCarrier:  carriers.SubCarrier_MCD2_MSK,
+		//			Terminal: &processing.Terminal{
+		//				Station:   "2002780",
+		//				Direction: processing.TerminalDirection_EGRESS,
+		//			},
+		//			Ingress: 1,
+		//			Now:     NowCustom(17, 9),
+		//		},
+		//		&Pass{
+		//			PaymentType: PaymentTypeFree,
+		//			Carrier:     carriers.Carrier_MM,
+		//			SubCarrier:  carriers.SubCarrier_MM_SUB,
+		//			Now:         NowCustom(17, 31),
+		//			Parent:      1,
+		//		},
+		//	},
+		//},
+		//{
+		//	N: "MCD egress after complex period",
+		//	T: T{
+		//		&Pass{
+		//			PaymentType: PaymentTypePayment,
+		//			Carrier:     carriers.Carrier_MM,
+		//			SubCarrier:  carriers.SubCarrier_MM_SUB,
+		//			Now:         NowCustom(10, 00),
+		//			ExpectedSum: 4200,
+		//		},
+		//		&Pass{
+		//			PaymentType: PaymentTypePayment,
+		//			Carrier:     carriers.Carrier_MM,
+		//			SubCarrier:  carriers.SubCarrier_MCK_SUB,
+		//			Now:         NowCustom(11, 31),
+		//			ExpectedSum: 4200,
+		//		},
+		//		&Pass{
+		//			PaymentType: PaymentTypePayment,
+		//			Carrier:     carriers.Carrier_MM,
+		//			SubCarrier:  carriers.SubCarrier_MMTS_SUB,
+		//			Now:         NowCustom(13, 02),
+		//			ExpectedSum: 4200,
+		//		},
+		//		&Pass{
+		//			PaymentType: PaymentTypePayment,
+		//			Carrier:     carriers.Carrier_MCD,
+		//			SubCarrier:  carriers.SubCarrier_MCD1_MSK,
+		//			Terminal: &processing.Terminal{
+		//				Station:   "2000700", //ТЕСТОВСКАЯ
+		//				Direction: processing.TerminalDirection_INGRESS,
+		//			},
+		//			ExpectedSum: 4200,
+		//			Now:		 NowCustom(14, 33),
+		//			TimeToWait:  5 * time.Minute,
+		//		},
+		//		&Pass{
+		//			PaymentType: PaymentTypePayment,
+		//			Carrier:     carriers.Carrier_MCD,
+		//			SubCarrier:  carriers.SubCarrier_MCD1_MO,
+		//			Terminal: &processing.Terminal{
+		//				Station:   "2001101", //ИННОВАЦИОННЫЙ ЦЕНТР
+		//				Direction: processing.TerminalDirection_EGRESS,
+		//			},
+		//			Ingress: 4,
+		//			Now:		 NowCustom(15, 00),
+		//			ExpectedSum: 700,
+		//		},
+		//	},
+		//},
 	}
 )

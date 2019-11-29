@@ -7,11 +7,11 @@ import (
 )
 
 func TestMetroComplexMCK1(t *testing.T) {
-	Run(t, casesComplexMCK1)
+	Run(t, casesMetroComplexMCK1)
 }
 
 var (
-	casesComplexMCK1 = Cases{ //gusmanov test case
+	casesMetroComplexMCK1 = Cases{ //gusmanov test case
 		{
 			N: "1. MCK - MM - MM", //1
 			T: T{

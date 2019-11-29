@@ -78,14 +78,26 @@ parking:
 	go test -c -o ./bin/test
 	./bin/test -test.run ^TestParking$
 
-ComplexMCK:
+ComplexMCK1:
 	go test -c -o ./bin/test
-	./bin/test -test.run ^TestComplexMCK$
+	./bin/test -test.run ^TestMetroComplexMCK1$
 
-offline: metro_complex_mck
-complex: metro_complex_mck
-full: metro_complex_mck
-local: metro_complex_mck
-test: metro_complex_mck
-stage: metro_complex_mck
+ComplexMCK2:
+	go test -c -o ./bin/test
+	./bin/test -test.run ^TestMetroComplexMCK2$
+
+ComplexMCK3:
+	go test -c -o ./bin/test
+	./bin/test -test.run ^TestMetroComplexMCK3$
+
+ComplexMCK4:
+	go test -c -o ./bin/test
+	./bin/test -test.run ^TestMetroComplexMCK4$
+
+offline: ComplexMCK1 ComplexMCK2 ComplexMCK3 ComplexMCK4
+complex: ComplexMCK1 ComplexMCK2 ComplexMCK3 ComplexMCK4
+full: ComplexMCK1 ComplexMCK2 ComplexMCK3 ComplexMCK4
+local: ComplexMCK1 ComplexMCK2 ComplexMCK3 ComplexMCK4
+test: ComplexMCK1 ComplexMCK2 ComplexMCK3 ComplexMCK4
+stage: ComplexMCK1 ComplexMCK2 ComplexMCK3 ComplexMCK4
 prod: full

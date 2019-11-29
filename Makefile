@@ -94,10 +94,14 @@ ComplexMCDMOPartFour:
 	go test -c -o ./bin/test
 	./bin/test -test.v -test.run ^TestComplexMCDMOPartFour$
 
-offline: ComplexMCDMOPartFour
-complex: ComplexMCDMOPartFour
-full: ComplexMCDMOPartFour
-local: ComplexMCDMOPartFour
-test: ComplexMCDMOPartFour
-stage: ComplexMCDMOPartFour
-prod: ComplexMCDMOPartFour
+ComplexMCDMOPartFife:
+	go test -c -o ./bin/test
+	./bin/test -test.v -test.run ^TestComplexMCDMOPartFife$
+
+offline: ComplexMCDMOPartFife
+complex: ComplexMCDMOPartFife
+full: ComplexMCDMOPartFife
+local: ComplexMCDMOPartFife
+test: ComplexMCDMOPartFife
+stage: ComplexMCDMOPartFife
+prod: ComplexMCDMOPartFife

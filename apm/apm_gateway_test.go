@@ -1,4 +1,4 @@
-package http_test
+package apm_test
 
 import (
 	"testing"

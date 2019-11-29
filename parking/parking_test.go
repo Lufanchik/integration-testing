@@ -1,4 +1,4 @@
-package http_test
+package parking_test
 
 import (
 	"lab.siroccotechnology.ru/tp/common/messages/carriers"

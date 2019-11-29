@@ -1,4 +1,4 @@
-package http_test
+package resolve_test
 
 import (
 	"github.com/gavv/httpexpect"
@@ -8,6 +8,8 @@ import (
 	"lab.siroccotechnology.ru/tp/common/messages/carriers"
 	"lab.siroccotechnology.ru/tp/common/messages/crud"
 	"lab.siroccotechnology.ru/tp/common/messages/registries"
+	"lab.siroccotechnology.ru/tp/integration-testing/test"
+	"lab.siroccotechnology.ru/tp/integration-testing/user"
 	"net/http"
 	"strconv"
 	"strings"
@@ -20,13 +22,13 @@ func TestReviseGetTaskList(t *testing.T) {
 		AT  string
 		err error
 	)
-	if AT, err = getAccessToken(t); err != nil {
+	if AT, err = user.GetAccessToken(t); err != nil {
 		log.Error("Error to get Access Token")
 		t.Error(err)
 		return
 	}
 
-	httpApi := httpexpect.New(t, apmApiUrl)
+	httpApi := httpexpect.New(t, test.ApmApiUrl)
 	request := &crud.EntitiesRequest{
 		Filters: []*crud.Filter{
 			&crud.Filter{
@@ -53,7 +55,7 @@ func TestReviseCreateTask(t *testing.T) {
 		AT  string
 		err error
 	)
-	if AT, err = getAccessToken(t); err != nil {
+	if AT, err = user.GetAccessToken(t); err != nil {
 		log.Error("Error to get Access Token")
 		t.Error(err)
 		return
@@ -61,7 +63,7 @@ func TestReviseCreateTask(t *testing.T) {
 
 	orderNum := time.Now().Unix()
 
-	httpApi := httpexpect.New(t, apmApiUrl)
+	httpApi := httpexpect.New(t, test.ApmApiUrl)
 	request := &registries.StartReviseRequest{
 		CarrierID: []carriers.Carrier{
 			carriers.Carrier_MM,
@@ -85,13 +87,13 @@ func TestReviseResetTask(t *testing.T) {
 		AT  string
 		err error
 	)
-	if AT, err = getAccessToken(t); err != nil {
+	if AT, err = user.GetAccessToken(t); err != nil {
 		log.Error("Error to get Access Token")
 		t.Error(err)
 		return
 	}
 
-	httpApi := httpexpect.New(t, apmApiUrl)
+	httpApi := httpexpect.New(t, test.ApmApiUrl)
 	request := &crud.EntitiesRequest{
 		Filters: []*crud.Filter{
 			&crud.Filter{
@@ -160,13 +162,13 @@ func TestReviseGetTaskStatus(t *testing.T) {
 		AT  string
 		err error
 	)
-	if AT, err = getAccessToken(t); err != nil {
+	if AT, err = user.GetAccessToken(t); err != nil {
 		log.Error("Error to get Access Token")
 		t.Error(err)
 		return
 	}
 
-	httpApi := httpexpect.New(t, apmApiUrl)
+	httpApi := httpexpect.New(t, test.ApmApiUrl)
 	request := &crud.EntitiesRequest{
 		Filters: []*crud.Filter{
 			&crud.Filter{
@@ -240,13 +242,13 @@ func TestReviseGetTaskStages(t *testing.T) {
 		AT  string
 		err error
 	)
-	if AT, err = getAccessToken(t); err != nil {
+	if AT, err = user.GetAccessToken(t); err != nil {
 		log.Error("Error to get Access Token")
 		t.Error(err)
 		return
 	}
 
-	httpApi := httpexpect.New(t, apmApiUrl)
+	httpApi := httpexpect.New(t, test.ApmApiUrl)
 	request := &registries.EmptyMessage{}
 
 	t.Run("ReviseGetTaskList", func(t *testing.T) {

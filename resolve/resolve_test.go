@@ -1,4 +1,4 @@
-package http_test
+package resolve_test
 
 import (
 	"github.com/gavv/httpexpect"
@@ -6,6 +6,8 @@ import (
 	"lab.siroccotechnology.ru/tp/common/messages/carriers"
 	"lab.siroccotechnology.ru/tp/common/messages/crud"
 	"lab.siroccotechnology.ru/tp/common/messages/registries"
+	"lab.siroccotechnology.ru/tp/integration-testing/test"
+	"lab.siroccotechnology.ru/tp/integration-testing/user"
 	"net/http"
 	"testing"
 )
@@ -15,13 +17,13 @@ func TestResolveGetTaskList(t *testing.T) {
 		AT  string
 		err error
 	)
-	if AT, err = getAccessToken(t); err != nil {
+	if AT, err = user.GetAccessToken(t); err != nil {
 		log.Error("Error to get Access Token")
 		t.Error(err)
 		return
 	}
 
-	httpApi := httpexpect.New(t, apmApiUrl)
+	httpApi := httpexpect.New(t, test.ApmApiUrl)
 	request := &crud.EntitiesRequest{
 		Filters: []*crud.Filter{
 			&crud.Filter{
@@ -51,13 +53,13 @@ func TestResolveCreateTask(t *testing.T) {
 		AT  string
 		err error
 	)
-	if AT, err = getAccessToken(t); err != nil {
+	if AT, err = user.GetAccessToken(t); err != nil {
 		log.Error("Error to get Access Token")
 		t.Error(err)
 		return
 	}
 
-	httpApi := httpexpect.New(t, apmApiUrl)
+	httpApi := httpexpect.New(t, test.ApmApiUrl)
 	request := &registries.StartResolveRequest{
 		CarrierID: []carriers.Carrier{
 			carriers.Carrier_MM,

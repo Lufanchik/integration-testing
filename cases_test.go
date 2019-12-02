@@ -42,7 +42,11 @@ func init() {
 	AddP(mm.CasesOfflineMetroComplexMM)
 
 	//МЦК
-	AddP(mck.CasesMetroComplexMCK)
+	Add(mck.CasesMetroComplexMCK)
+	Add(mck.CasesMetroComplexMCK1)
+	Add(mck.CasesMetroComplexMCK2)
+	Add(mck.CasesMetroComplexMCK3)
+	Add(mck.CasesMetroComplexMCK4)
 	AddP(mck.CasesOfflineMetroComplexMCK)
 
 	//МЦД

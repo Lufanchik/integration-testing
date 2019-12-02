@@ -13,10 +13,9 @@ import (
 
 func init() {
 	//последовательный запуск
-	Add(passes.CasesCancel)
+	//Add(passes.CasesCancel)
 
-	//параллельный запуск
-	//общие кейсы проходов
+	//параллельный запуск - общие кейсы
 	AddP(passes.CasesCancel)
 	//AddP(passes.CasesWrongTimeComplexPass)
 	//AddP(passes.CasesScopeCheckPass)
@@ -39,6 +38,7 @@ func init() {
 	AddP(mm.CasesMetroComplexMM2)
 	AddP(mm.CasesMetroComplexMM3)
 	AddP(mm.CasesMetroComplexMM4)
+	AddP(mm.CasesOfflineMetroComplexMM1)
 	AddP(mm.CasesOfflineMetroComplexMM)
 
 	//МЦК

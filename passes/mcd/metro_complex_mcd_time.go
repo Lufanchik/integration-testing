@@ -17,7 +17,7 @@ var (
 					Carrier:     carriers.Carrier_MCD,
 					SubCarrier:  carriers.SubCarrier_MCD1_MO,
 					Terminal: &processing.Terminal{
-						Station:   "2000055",
+						Station:   "2000055", //ОДИНЦОВО
 						Direction: processing.TerminalDirection_INGRESS,
 					},
 					Now:         test.NowCustom(10, 30),

@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+cd ../../pass-service && sed -i 's/MM/MCD/g' config.local.yml && sed -i 's/13380/13385/g' config.local.yml && \
+./bin/app -f config.local.yml &> ../logs/pass-service-mcd.logs

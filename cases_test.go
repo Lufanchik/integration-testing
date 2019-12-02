@@ -1,6 +1,8 @@
 package integration_testing
 
 import (
+	"lab.siroccotechnology.ru/tp/integration-testing/apm"
+	"lab.siroccotechnology.ru/tp/integration-testing/parking"
 	"lab.siroccotechnology.ru/tp/integration-testing/passes"
 	"lab.siroccotechnology.ru/tp/integration-testing/passes/mcd"
 	"lab.siroccotechnology.ru/tp/integration-testing/passes/mck"
@@ -13,7 +15,8 @@ func init() {
 	//последовательный запуск
 	Add(passes.CasesCancel)
 
-	//параллельный запуск - общие кейсы
+	//параллельный запуск
+	//общие кейсы проходов
 	AddP(passes.CasesCancel)
 	//AddP(passes.CasesWrongTimeComplexPass)
 	//AddP(passes.CasesScopeCheckPass)
@@ -51,4 +54,10 @@ func init() {
 	AddP(mcd.CasesMetroComplexMCDMSK4)
 	AddP(mcd.CasesMetroComplexMCDMSK5)
 	AddP(mcd.CasesComplexTimeMCD)
+
+	//APM
+	AddP(apm.CasesApmGateway)
+
+	//Parking
+	AddP(parking.CasesParkingPass)
 }

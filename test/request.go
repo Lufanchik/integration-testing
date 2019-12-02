@@ -75,13 +75,13 @@ func CancelRequest(cl *Cancel, p *Pass) (*processing.CancelPassRequest, *process
 }
 
 func ParkingRequest(card *processing.Card, pr *Parking) (*processing.CheckParkingRequest, *processing.CheckParkingResponse) {
-	pr.r.Pan = card.Pan
+	pr.R.Pan = card.Pan
 
 	response := &processing.CheckParkingResponse{
-		Result: pr.rp,
+		Result: pr.RP,
 	}
 
-	return pr.r, response
+	return pr.R, response
 }
 
 func AuthStatusRequest(p *Pass) (*processing.AuthRequest, *processing.AuthResponse) {

@@ -130,3 +130,11 @@ var NowCustom = func(hour, min int) func() uint64 {
 			now.Year(), now.Month(), now.Day(), hour, min, 0, 0, time.UTC).UnixNano())
 	}
 }
+
+var NowCustomDate = func(year, month, hour, min int) func() uint64 {
+	now := time.Now()
+	return func() uint64 {
+		return uint64(time.Date(
+			now.Year(), now.Month(), now.Day(), hour, min, 0, 0, time.UTC).UnixNano())
+	}
+}

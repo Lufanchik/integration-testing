@@ -1,34 +1,29 @@
-package http_test
+package mck
 
 import (
 	"lab.siroccotechnology.ru/tp/common/messages/carriers"
 	"lab.siroccotechnology.ru/tp/common/messages/processing"
-	"testing"
+	"lab.siroccotechnology.ru/tp/integration-testing/test"
 )
 
-func TestMetroComplexMCK2(t *testing.T) {
-	Run(t, casesComplexMCK2)
-}
-
-var (
-	casesComplexMCK2 = Cases{ //gusmanov test case
+var CasesMetroComplexMCK2 = test.Cases{ //gusmanov test case
 		{
 			N: "25. MCK - MM - MCD_MSK1 - MCD2_MO - MM", //25
-			T: T{
-				&Pass{
-					PaymentType: PaymentTypePayment,
+			T: test.T{
+				&test.Pass{
+					PaymentType: test.PaymentTypePayment,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MCK_SUB,
 					ExpectedSum: 4200,
 				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
+				&test.Pass{
+					PaymentType: test.PaymentTypeFree,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MM_SUB,
 					Parent:      1,
 				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
+				&test.Pass{
+					PaymentType: test.PaymentTypeFree,
 					Carrier:     carriers.Carrier_MCD,
 					SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 					Terminal: &processing.Terminal{
@@ -37,8 +32,8 @@ var (
 					},
 					Parent: 1,
 				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
+				&test.Pass{
+					PaymentType: test.PaymentTypeFree,
 					Carrier:     carriers.Carrier_MCD,
 					SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 					Terminal: &processing.Terminal{
@@ -47,8 +42,8 @@ var (
 					},
 					Ingress: 3,
 				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
+				&test.Pass{
+					PaymentType: test.PaymentTypeFree,
 					Carrier:     carriers.Carrier_MCD,
 					SubCarrier:  carriers.SubCarrier_MCD2_MSK,
 					Terminal: &processing.Terminal{
@@ -57,8 +52,8 @@ var (
 					},
 					Parent: 1,
 				},
-				&Pass{
-					PaymentType: PaymentTypePayment,
+				&test.Pass{
+					PaymentType: test.PaymentTypePayment,
 					Carrier:     carriers.Carrier_MCD,
 					SubCarrier:  carriers.SubCarrier_MCD2_MO,
 					Terminal: &processing.Terminal{
@@ -68,8 +63,8 @@ var (
 					Ingress:     5,
 					ExpectedSum: 700,
 				},
-				&Pass{
-					PaymentType: PaymentTypePayment,
+				&test.Pass{
+					PaymentType: test.PaymentTypePayment,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MM_SUB,
 					ExpectedSum: 4200,
@@ -79,21 +74,21 @@ var (
 
 		{
 			N: "26. MCK - MM - MCD_MSK1 - MCD2_MO - MCK", //26
-			T: T{
-				&Pass{
-					PaymentType: PaymentTypePayment,
+			T: test.T{
+				&test.Pass{
+					PaymentType: test.PaymentTypePayment,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MCK_SUB,
 					ExpectedSum: 4200,
 				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
+				&test.Pass{
+					PaymentType: test.PaymentTypeFree,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MM_SUB,
 					Parent:      1,
 				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
+				&test.Pass{
+					PaymentType: test.PaymentTypeFree,
 					Carrier:     carriers.Carrier_MCD,
 					SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 					Terminal: &processing.Terminal{
@@ -102,8 +97,8 @@ var (
 					},
 					Parent: 1,
 				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
+				&test.Pass{
+					PaymentType: test.PaymentTypeFree,
 					Carrier:     carriers.Carrier_MCD,
 					SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 					Terminal: &processing.Terminal{
@@ -112,8 +107,8 @@ var (
 					},
 					Ingress: 3,
 				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
+				&test.Pass{
+					PaymentType: test.PaymentTypeFree,
 					Carrier:     carriers.Carrier_MCD,
 					SubCarrier:  carriers.SubCarrier_MCD2_MSK,
 					Terminal: &processing.Terminal{
@@ -122,8 +117,8 @@ var (
 					},
 					Parent: 1,
 				},
-				&Pass{
-					PaymentType: PaymentTypePayment,
+				&test.Pass{
+					PaymentType: test.PaymentTypePayment,
 					Carrier:     carriers.Carrier_MCD,
 					SubCarrier:  carriers.SubCarrier_MCD2_MO,
 					Terminal: &processing.Terminal{
@@ -133,8 +128,8 @@ var (
 					Ingress:     5,
 					ExpectedSum: 700,
 				},
-				&Pass{
-					PaymentType: PaymentTypePayment,
+				&test.Pass{
+					PaymentType: test.PaymentTypePayment,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MCK_SUB,
 					ExpectedSum: 4200,
@@ -144,21 +139,21 @@ var (
 
 		{
 			N: "27. MCK - MM - MCD_MSK1 - MCD2_MO - MMTS", //27
-			T: T{
-				&Pass{
-					PaymentType: PaymentTypePayment,
+			T: test.T{
+				&test.Pass{
+					PaymentType: test.PaymentTypePayment,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MCK_SUB,
 					ExpectedSum: 4200,
 				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
+				&test.Pass{
+					PaymentType: test.PaymentTypeFree,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MM_SUB,
 					Parent:      1,
 				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
+				&test.Pass{
+					PaymentType: test.PaymentTypeFree,
 					Carrier:     carriers.Carrier_MCD,
 					SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 					Terminal: &processing.Terminal{
@@ -167,8 +162,8 @@ var (
 					},
 					Parent: 1,
 				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
+				&test.Pass{
+					PaymentType: test.PaymentTypeFree,
 					Carrier:     carriers.Carrier_MCD,
 					SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 					Terminal: &processing.Terminal{
@@ -177,8 +172,8 @@ var (
 					},
 					Ingress: 3,
 				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
+				&test.Pass{
+					PaymentType: test.PaymentTypeFree,
 					Carrier:     carriers.Carrier_MCD,
 					SubCarrier:  carriers.SubCarrier_MCD2_MSK,
 					Terminal: &processing.Terminal{
@@ -187,8 +182,8 @@ var (
 					},
 					Parent: 1,
 				},
-				&Pass{
-					PaymentType: PaymentTypePayment,
+				&test.Pass{
+					PaymentType: test.PaymentTypePayment,
 					Carrier:     carriers.Carrier_MCD,
 					SubCarrier:  carriers.SubCarrier_MCD2_MO,
 					Terminal: &processing.Terminal{
@@ -198,8 +193,8 @@ var (
 					Ingress:     5,
 					ExpectedSum: 700,
 				},
-				&Pass{
-					PaymentType: PaymentTypePayment,
+				&test.Pass{
+					PaymentType: test.PaymentTypePayment,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MMTS_SUB,
 					ExpectedSum: 4200,
@@ -209,21 +204,21 @@ var (
 
 		{
 			N: "28. MCK - MM - MCD_MSK1 - MCD2_MO - MCD_MSK1", //28
-			T: T{
-				&Pass{
-					PaymentType: PaymentTypePayment,
+			T: test.T{
+				&test.Pass{
+					PaymentType: test.PaymentTypePayment,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MCK_SUB,
 					ExpectedSum: 4200,
 				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
+				&test.Pass{
+					PaymentType: test.PaymentTypeFree,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MM_SUB,
 					Parent:      1,
 				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
+				&test.Pass{
+					PaymentType: test.PaymentTypeFree,
 					Carrier:     carriers.Carrier_MCD,
 					SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 					Terminal: &processing.Terminal{
@@ -232,8 +227,8 @@ var (
 					},
 					Parent: 1,
 				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
+				&test.Pass{
+					PaymentType: test.PaymentTypeFree,
 					Carrier:     carriers.Carrier_MCD,
 					SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 					Terminal: &processing.Terminal{
@@ -242,8 +237,8 @@ var (
 					},
 					Ingress: 3,
 				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
+				&test.Pass{
+					PaymentType: test.PaymentTypeFree,
 					Carrier:     carriers.Carrier_MCD,
 					SubCarrier:  carriers.SubCarrier_MCD2_MSK,
 					Terminal: &processing.Terminal{
@@ -252,8 +247,8 @@ var (
 					},
 					Parent: 1,
 				},
-				&Pass{
-					PaymentType: PaymentTypePayment,
+				&test.Pass{
+					PaymentType: test.PaymentTypePayment,
 					Carrier:     carriers.Carrier_MCD,
 					SubCarrier:  carriers.SubCarrier_MCD2_MO,
 					Terminal: &processing.Terminal{
@@ -263,8 +258,8 @@ var (
 					Ingress:     5,
 					ExpectedSum: 700,
 				},
-				&Pass{
-					PaymentType: PaymentTypePayment,
+				&test.Pass{
+					PaymentType: test.PaymentTypePayment,
 					Carrier:     carriers.Carrier_MCD,
 					SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 					Terminal: &processing.Terminal{
@@ -273,8 +268,8 @@ var (
 					},
 					ExpectedSum: 4200,
 				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
+				&test.Pass{
+					PaymentType: test.PaymentTypeFree,
 					Carrier:     carriers.Carrier_MCD,
 					SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 					Terminal: &processing.Terminal{
@@ -288,21 +283,21 @@ var (
 
 		{
 			N: "29. MCK - MM - MCD_MSK1 - MCD2_MO - MCD1_MO", //29
-			T: T{
-				&Pass{
-					PaymentType: PaymentTypePayment,
+			T: test.T{
+				&test.Pass{
+					PaymentType: test.PaymentTypePayment,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MCK_SUB,
 					ExpectedSum: 4200,
 				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
+				&test.Pass{
+					PaymentType: test.PaymentTypeFree,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MM_SUB,
 					Parent:      1,
 				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
+				&test.Pass{
+					PaymentType: test.PaymentTypeFree,
 					Carrier:     carriers.Carrier_MCD,
 					SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 					Terminal: &processing.Terminal{
@@ -311,8 +306,8 @@ var (
 					},
 					Parent: 1,
 				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
+				&test.Pass{
+					PaymentType: test.PaymentTypeFree,
 					Carrier:     carriers.Carrier_MCD,
 					SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 					Terminal: &processing.Terminal{
@@ -321,8 +316,8 @@ var (
 					},
 					Ingress: 3,
 				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
+				&test.Pass{
+					PaymentType: test.PaymentTypeFree,
 					Carrier:     carriers.Carrier_MCD,
 					SubCarrier:  carriers.SubCarrier_MCD2_MSK,
 					Terminal: &processing.Terminal{
@@ -331,8 +326,8 @@ var (
 					},
 					Parent: 1,
 				},
-				&Pass{
-					PaymentType: PaymentTypePayment,
+				&test.Pass{
+					PaymentType: test.PaymentTypePayment,
 					Carrier:     carriers.Carrier_MCD,
 					SubCarrier:  carriers.SubCarrier_MCD2_MO,
 					Terminal: &processing.Terminal{
@@ -342,8 +337,8 @@ var (
 					Ingress:     5,
 					ExpectedSum: 700,
 				},
-				&Pass{
-					PaymentType: PaymentTypePayment,
+				&test.Pass{
+					PaymentType: test.PaymentTypePayment,
 					Carrier:     carriers.Carrier_MCD,
 					SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 					Terminal: &processing.Terminal{
@@ -352,8 +347,8 @@ var (
 					},
 					ExpectedSum: 4200,
 				},
-				&Pass{
-					PaymentType: PaymentTypePayment,
+				&test.Pass{
+					PaymentType: test.PaymentTypePayment,
 					Carrier:     carriers.Carrier_MCD,
 					SubCarrier:  carriers.SubCarrier_MCD1_MO,
 					Terminal: &processing.Terminal{
@@ -368,21 +363,21 @@ var (
 
 		{
 			N: "30. MCK - MM - MCD1_MO - MM",
-			T: T{
-				&Pass{
-					PaymentType: PaymentTypePayment,
+			T: test.T{
+				&test.Pass{
+					PaymentType: test.PaymentTypePayment,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MCK_SUB,
 					ExpectedSum: 4200,
 				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
+				&test.Pass{
+					PaymentType: test.PaymentTypeFree,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MM_SUB,
 					Parent:      1,
 				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
+				&test.Pass{
+					PaymentType: test.PaymentTypeFree,
 					Carrier:     carriers.Carrier_MCD,
 					SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 					Terminal: &processing.Terminal{
@@ -391,8 +386,8 @@ var (
 					},
 					Parent: 1,
 				},
-				&Pass{
-					PaymentType: PaymentTypePayment,
+				&test.Pass{
+					PaymentType: test.PaymentTypePayment,
 					Carrier:     carriers.Carrier_MCD,
 					SubCarrier:  carriers.SubCarrier_MCD1_MO,
 					Terminal: &processing.Terminal{
@@ -402,8 +397,8 @@ var (
 					Ingress:     3,
 					ExpectedSum: 700,
 				},
-				&Pass{
-					PaymentType: PaymentTypePayment,
+				&test.Pass{
+					PaymentType: test.PaymentTypePayment,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MM_SUB,
 					ExpectedSum: 4200,
@@ -413,21 +408,21 @@ var (
 
 		{
 			N: "31. MCK - MM - MCD1_MO - MCK",
-			T: T{
-				&Pass{
-					PaymentType: PaymentTypePayment,
+			T: test.T{
+				&test.Pass{
+					PaymentType: test.PaymentTypePayment,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MCK_SUB,
 					ExpectedSum: 4200,
 				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
+				&test.Pass{
+					PaymentType: test.PaymentTypeFree,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MM_SUB,
 					Parent:      1,
 				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
+				&test.Pass{
+					PaymentType: test.PaymentTypeFree,
 					Carrier:     carriers.Carrier_MCD,
 					SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 					Terminal: &processing.Terminal{
@@ -436,8 +431,8 @@ var (
 					},
 					Parent: 1,
 				},
-				&Pass{
-					PaymentType: PaymentTypePayment,
+				&test.Pass{
+					PaymentType: test.PaymentTypePayment,
 					Carrier:     carriers.Carrier_MCD,
 					SubCarrier:  carriers.SubCarrier_MCD1_MO,
 					Terminal: &processing.Terminal{
@@ -447,8 +442,8 @@ var (
 					Ingress:     3,
 					ExpectedSum: 700,
 				},
-				&Pass{
-					PaymentType: PaymentTypePayment,
+				&test.Pass{
+					PaymentType: test.PaymentTypePayment,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MCK_SUB,
 					ExpectedSum: 4200,
@@ -458,21 +453,21 @@ var (
 
 		{
 			N: "32. MCK - MM - MCD1_MO - MMTC",
-			T: T{
-				&Pass{
-					PaymentType: PaymentTypePayment,
+			T: test.T{
+				&test.Pass{
+					PaymentType: test.PaymentTypePayment,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MCK_SUB,
 					ExpectedSum: 4200,
 				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
+				&test.Pass{
+					PaymentType: test.PaymentTypeFree,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MM_SUB,
 					Parent:      1,
 				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
+				&test.Pass{
+					PaymentType: test.PaymentTypeFree,
 					Carrier:     carriers.Carrier_MCD,
 					SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 					Terminal: &processing.Terminal{
@@ -481,8 +476,8 @@ var (
 					},
 					Parent: 1,
 				},
-				&Pass{
-					PaymentType: PaymentTypePayment,
+				&test.Pass{
+					PaymentType: test.PaymentTypePayment,
 					Carrier:     carriers.Carrier_MCD,
 					SubCarrier:  carriers.SubCarrier_MCD1_MO,
 					Terminal: &processing.Terminal{
@@ -492,8 +487,8 @@ var (
 					Ingress:     3,
 					ExpectedSum: 700,
 				},
-				&Pass{
-					PaymentType: PaymentTypePayment,
+				&test.Pass{
+					PaymentType: test.PaymentTypePayment,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MMTS_SUB,
 					ExpectedSum: 4200,
@@ -503,21 +498,21 @@ var (
 
 		{
 			N: "33. MCK - MM - MCD1_MO - MCD1_MSK",
-			T: T{
-				&Pass{
-					PaymentType: PaymentTypePayment,
+			T: test.T{
+				&test.Pass{
+					PaymentType: test.PaymentTypePayment,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MCK_SUB,
 					ExpectedSum: 4200,
 				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
+				&test.Pass{
+					PaymentType: test.PaymentTypeFree,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MM_SUB,
 					Parent:      1,
 				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
+				&test.Pass{
+					PaymentType: test.PaymentTypeFree,
 					Carrier:     carriers.Carrier_MCD,
 					SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 					Terminal: &processing.Terminal{
@@ -526,8 +521,8 @@ var (
 					},
 					Parent: 1,
 				},
-				&Pass{
-					PaymentType: PaymentTypePayment,
+				&test.Pass{
+					PaymentType: test.PaymentTypePayment,
 					Carrier:     carriers.Carrier_MCD,
 					SubCarrier:  carriers.SubCarrier_MCD1_MO,
 					Terminal: &processing.Terminal{
@@ -537,8 +532,8 @@ var (
 					Ingress:     3,
 					ExpectedSum: 700,
 				},
-				&Pass{
-					PaymentType: PaymentTypePayment,
+				&test.Pass{
+					PaymentType: test.PaymentTypePayment,
 					Carrier:     carriers.Carrier_MCD,
 					SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 					Terminal: &processing.Terminal{
@@ -547,8 +542,8 @@ var (
 					},
 					ExpectedSum: 4200,
 				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
+				&test.Pass{
+					PaymentType: test.PaymentTypeFree,
 					Carrier:     carriers.Carrier_MCD,
 					SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 					Terminal: &processing.Terminal{
@@ -562,21 +557,21 @@ var (
 
 		{
 			N: "33. MCK - MM - MCD1_MO - MCD1_MO",
-			T: T{
-				&Pass{
-					PaymentType: PaymentTypePayment,
+			T: test.T{
+				&test.Pass{
+					PaymentType: test.PaymentTypePayment,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MCK_SUB,
 					ExpectedSum: 4200,
 				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
+				&test.Pass{
+					PaymentType: test.PaymentTypeFree,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MM_SUB,
 					Parent:      1,
 				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
+				&test.Pass{
+					PaymentType: test.PaymentTypeFree,
 					Carrier:     carriers.Carrier_MCD,
 					SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 					Terminal: &processing.Terminal{
@@ -585,8 +580,8 @@ var (
 					},
 					Parent: 1,
 				},
-				&Pass{
-					PaymentType: PaymentTypePayment,
+				&test.Pass{
+					PaymentType: test.PaymentTypePayment,
 					Carrier:     carriers.Carrier_MCD,
 					SubCarrier:  carriers.SubCarrier_MCD1_MO,
 					Terminal: &processing.Terminal{
@@ -596,8 +591,8 @@ var (
 					Ingress:     3,
 					ExpectedSum: 700,
 				},
-				&Pass{
-					PaymentType: PaymentTypePayment,
+				&test.Pass{
+					PaymentType: test.PaymentTypePayment,
 					Carrier:     carriers.Carrier_MCD,
 					SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 					Terminal: &processing.Terminal{
@@ -606,8 +601,8 @@ var (
 					},
 					ExpectedSum: 4200,
 				},
-				&Pass{
-					PaymentType: PaymentTypePayment,
+				&test.Pass{
+					PaymentType: test.PaymentTypePayment,
 					Carrier:     carriers.Carrier_MCD,
 					SubCarrier:  carriers.SubCarrier_MCD1_MO,
 					Terminal: &processing.Terminal{
@@ -622,15 +617,15 @@ var (
 
 		{
 			N: "35. MCK - MCK",
-			T: T{
-				&Pass{
-					PaymentType: PaymentTypePayment,
+			T: test.T{
+				&test.Pass{
+					PaymentType: test.PaymentTypePayment,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MCK_SUB,
 					ExpectedSum: 4200,
 				},
-				&Pass{
-					PaymentType: PaymentTypePayment,
+				&test.Pass{
+					PaymentType: test.PaymentTypePayment,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MCK_SUB,
 					ExpectedSum: 4200,
@@ -640,21 +635,21 @@ var (
 
 		{
 			N: "36. MCK - MMTC - MM",
-			T: T{
-				&Pass{
-					PaymentType: PaymentTypePayment,
+			T: test.T{
+				&test.Pass{
+					PaymentType: test.PaymentTypePayment,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MCK_SUB,
 					ExpectedSum: 4200,
 				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
+				&test.Pass{
+					PaymentType: test.PaymentTypeFree,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MMTS_SUB,
 					Parent:      1,
 				},
-				&Pass{
-					PaymentType: PaymentTypePayment,
+				&test.Pass{
+					PaymentType: test.PaymentTypePayment,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MM_SUB,
 					ExpectedSum: 4200,
@@ -664,21 +659,21 @@ var (
 
 		{
 			N: "37. MCK - MMTC - MCK",
-			T: T{
-				&Pass{
-					PaymentType: PaymentTypePayment,
+			T: test.T{
+				&test.Pass{
+					PaymentType: test.PaymentTypePayment,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MCK_SUB,
 					ExpectedSum: 4200,
 				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
+				&test.Pass{
+					PaymentType: test.PaymentTypeFree,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MMTS_SUB,
 					Parent:      1,
 				},
-				&Pass{
-					PaymentType: PaymentTypePayment,
+				&test.Pass{
+					PaymentType: test.PaymentTypePayment,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MCK_SUB,
 					ExpectedSum: 4200,
@@ -688,21 +683,21 @@ var (
 
 		{
 			N: "38. MCK - MMTC - MMTC",
-			T: T{
-				&Pass{
-					PaymentType: PaymentTypePayment,
+			T: test.T{
+				&test.Pass{
+					PaymentType: test.PaymentTypePayment,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MCK_SUB,
 					ExpectedSum: 4200,
 				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
+				&test.Pass{
+					PaymentType: test.PaymentTypeFree,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MMTS_SUB,
 					Parent:      1,
 				},
-				&Pass{
-					PaymentType: PaymentTypePayment,
+				&test.Pass{
+					PaymentType: test.PaymentTypePayment,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MMTS_SUB,
 					ExpectedSum: 4200,
@@ -712,21 +707,21 @@ var (
 
 		{
 			N: "39. MCK - MMTC - MCD1_MSK",
-			T: T{
-				&Pass{
-					PaymentType: PaymentTypePayment,
+			T: test.T{
+				&test.Pass{
+					PaymentType: test.PaymentTypePayment,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MCK_SUB,
 					ExpectedSum: 4200,
 				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
+				&test.Pass{
+					PaymentType: test.PaymentTypeFree,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MMTS_SUB,
 					Parent:      1,
 				},
-				&Pass{
-					PaymentType: PaymentTypePayment,
+				&test.Pass{
+					PaymentType: test.PaymentTypePayment,
 					Carrier:     carriers.Carrier_MCD,
 					SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 					Terminal: &processing.Terminal{
@@ -735,8 +730,8 @@ var (
 					},
 					ExpectedSum: 4200,
 				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
+				&test.Pass{
+					PaymentType: test.PaymentTypeFree,
 					Carrier:     carriers.Carrier_MCD,
 					SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 					Terminal: &processing.Terminal{
@@ -750,21 +745,21 @@ var (
 
 		{
 			N: "40. MCK - MMTC - MCD1_MO",
-			T: T{
-				&Pass{
-					PaymentType: PaymentTypePayment,
+			T: test.T{
+				&test.Pass{
+					PaymentType: test.PaymentTypePayment,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MCK_SUB,
 					ExpectedSum: 4200,
 				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
+				&test.Pass{
+					PaymentType: test.PaymentTypeFree,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MMTS_SUB,
 					Parent:      1,
 				},
-				&Pass{
-					PaymentType: PaymentTypePayment,
+				&test.Pass{
+					PaymentType: test.PaymentTypePayment,
 					Carrier:     carriers.Carrier_MCD,
 					SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 					Terminal: &processing.Terminal{
@@ -773,8 +768,8 @@ var (
 					},
 					ExpectedSum: 4200,
 				},
-				&Pass{
-					PaymentType: PaymentTypePayment,
+				&test.Pass{
+					PaymentType: test.PaymentTypePayment,
 					Carrier:     carriers.Carrier_MCD,
 					SubCarrier:  carriers.SubCarrier_MCD1_MO,
 					Terminal: &processing.Terminal{
@@ -789,15 +784,15 @@ var (
 
 		{
 			N: "41. MCK -  MCD1_MSK - MM - MM",
-			T: T{
-				&Pass{
-					PaymentType: PaymentTypePayment,
+			T: test.T{
+				&test.Pass{
+					PaymentType: test.PaymentTypePayment,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MCK_SUB,
 					ExpectedSum: 4200,
 				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
+				&test.Pass{
+					PaymentType: test.PaymentTypeFree,
 					Carrier:     carriers.Carrier_MCD,
 					SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 					Terminal: &processing.Terminal{
@@ -806,8 +801,8 @@ var (
 					},
 					Parent: 1,
 				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
+				&test.Pass{
+					PaymentType: test.PaymentTypeFree,
 					Carrier:     carriers.Carrier_MCD,
 					SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 					Terminal: &processing.Terminal{
@@ -816,14 +811,14 @@ var (
 					},
 					Ingress: 2,
 				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
+				&test.Pass{
+					PaymentType: test.PaymentTypeFree,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MM_SUB,
 					Parent:      1,
 				},
-				&Pass{
-					PaymentType: PaymentTypePayment,
+				&test.Pass{
+					PaymentType: test.PaymentTypePayment,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MM_SUB,
 					ExpectedSum: 4200,
@@ -833,15 +828,15 @@ var (
 
 		{
 			N: "42. MCK -  MCD1_MSK - MM - MCK",
-			T: T{
-				&Pass{
-					PaymentType: PaymentTypePayment,
+			T: test.T{
+				&test.Pass{
+					PaymentType: test.PaymentTypePayment,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MCK_SUB,
 					ExpectedSum: 4200,
 				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
+				&test.Pass{
+					PaymentType: test.PaymentTypeFree,
 					Carrier:     carriers.Carrier_MCD,
 					SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 					Terminal: &processing.Terminal{
@@ -850,8 +845,8 @@ var (
 					},
 					Parent: 1,
 				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
+				&test.Pass{
+					PaymentType: test.PaymentTypeFree,
 					Carrier:     carriers.Carrier_MCD,
 					SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 					Terminal: &processing.Terminal{
@@ -860,14 +855,14 @@ var (
 					},
 					Ingress: 2,
 				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
+				&test.Pass{
+					PaymentType: test.PaymentTypeFree,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MM_SUB,
 					Parent:      1,
 				},
-				&Pass{
-					PaymentType: PaymentTypePayment,
+				&test.Pass{
+					PaymentType: test.PaymentTypePayment,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MCK_SUB,
 					ExpectedSum: 4200,
@@ -877,15 +872,15 @@ var (
 
 		{
 			N: "43. MCK -  MCD1_MSK - MM - MMTS - MM",
-			T: T{
-				&Pass{
-					PaymentType: PaymentTypePayment,
+			T: test.T{
+				&test.Pass{
+					PaymentType: test.PaymentTypePayment,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MCK_SUB,
 					ExpectedSum: 4200,
 				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
+				&test.Pass{
+					PaymentType: test.PaymentTypeFree,
 					Carrier:     carriers.Carrier_MCD,
 					SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 					Terminal: &processing.Terminal{
@@ -894,8 +889,8 @@ var (
 					},
 					Parent: 1,
 				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
+				&test.Pass{
+					PaymentType: test.PaymentTypeFree,
 					Carrier:     carriers.Carrier_MCD,
 					SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 					Terminal: &processing.Terminal{
@@ -904,20 +899,20 @@ var (
 					},
 					Ingress: 2,
 				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
+				&test.Pass{
+					PaymentType: test.PaymentTypeFree,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MM_SUB,
 					Parent:      1,
 				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
+				&test.Pass{
+					PaymentType: test.PaymentTypeFree,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MMTS_SUB,
 					Parent:      1,
 				},
-				&Pass{
-					PaymentType: PaymentTypePayment,
+				&test.Pass{
+					PaymentType: test.PaymentTypePayment,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MM_SUB,
 					ExpectedSum: 4200,
@@ -927,15 +922,15 @@ var (
 
 		{
 			N: "44. MCK -  MCD1_MSK - MM - MMTS - MCK",
-			T: T{
-				&Pass{
-					PaymentType: PaymentTypePayment,
+			T: test.T{
+				&test.Pass{
+					PaymentType: test.PaymentTypePayment,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MCK_SUB,
 					ExpectedSum: 4200,
 				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
+				&test.Pass{
+					PaymentType: test.PaymentTypeFree,
 					Carrier:     carriers.Carrier_MCD,
 					SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 					Terminal: &processing.Terminal{
@@ -944,8 +939,8 @@ var (
 					},
 					Parent: 1,
 				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
+				&test.Pass{
+					PaymentType: test.PaymentTypeFree,
 					Carrier:     carriers.Carrier_MCD,
 					SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 					Terminal: &processing.Terminal{
@@ -954,20 +949,20 @@ var (
 					},
 					Ingress: 2,
 				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
+				&test.Pass{
+					PaymentType: test.PaymentTypeFree,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MM_SUB,
 					Parent:      1,
 				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
+				&test.Pass{
+					PaymentType: test.PaymentTypeFree,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MMTS_SUB,
 					Parent:      1,
 				},
-				&Pass{
-					PaymentType: PaymentTypePayment,
+				&test.Pass{
+					PaymentType: test.PaymentTypePayment,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MCK_SUB,
 					ExpectedSum: 4200,
@@ -977,15 +972,15 @@ var (
 
 		{
 			N: "45. MCK -  MCD1_MSK - MM - MMTS - MMTS",
-			T: T{
-				&Pass{
-					PaymentType: PaymentTypePayment,
+			T: test.T{
+				&test.Pass{
+					PaymentType: test.PaymentTypePayment,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MCK_SUB,
 					ExpectedSum: 4200,
 				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
+				&test.Pass{
+					PaymentType: test.PaymentTypeFree,
 					Carrier:     carriers.Carrier_MCD,
 					SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 					Terminal: &processing.Terminal{
@@ -994,8 +989,8 @@ var (
 					},
 					Parent: 1,
 				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
+				&test.Pass{
+					PaymentType: test.PaymentTypeFree,
 					Carrier:     carriers.Carrier_MCD,
 					SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 					Terminal: &processing.Terminal{
@@ -1004,20 +999,20 @@ var (
 					},
 					Ingress: 2,
 				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
+				&test.Pass{
+					PaymentType: test.PaymentTypeFree,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MM_SUB,
 					Parent:      1,
 				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
+				&test.Pass{
+					PaymentType: test.PaymentTypeFree,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MMTS_SUB,
 					Parent:      1,
 				},
-				&Pass{
-					PaymentType: PaymentTypePayment,
+				&test.Pass{
+					PaymentType: test.PaymentTypePayment,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MMTS_SUB,
 					ExpectedSum: 4200,
@@ -1027,15 +1022,15 @@ var (
 
 		{
 			N: "46. MCK -  MCD1_MSK - MM - MMTS - MCD1_MSK",
-			T: T{
-				&Pass{
-					PaymentType: PaymentTypePayment,
+			T: test.T{
+				&test.Pass{
+					PaymentType: test.PaymentTypePayment,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MCK_SUB,
 					ExpectedSum: 4200,
 				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
+				&test.Pass{
+					PaymentType: test.PaymentTypeFree,
 					Carrier:     carriers.Carrier_MCD,
 					SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 					Terminal: &processing.Terminal{
@@ -1044,8 +1039,8 @@ var (
 					},
 					Parent: 1,
 				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
+				&test.Pass{
+					PaymentType: test.PaymentTypeFree,
 					Carrier:     carriers.Carrier_MCD,
 					SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 					Terminal: &processing.Terminal{
@@ -1054,20 +1049,20 @@ var (
 					},
 					Ingress: 2,
 				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
+				&test.Pass{
+					PaymentType: test.PaymentTypeFree,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MM_SUB,
 					Parent:      1,
 				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
+				&test.Pass{
+					PaymentType: test.PaymentTypeFree,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MMTS_SUB,
 					Parent:      1,
 				},
-				&Pass{
-					PaymentType: PaymentTypePayment,
+				&test.Pass{
+					PaymentType: test.PaymentTypePayment,
 					Carrier:     carriers.Carrier_MCD,
 					SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 					Terminal: &processing.Terminal{
@@ -1076,8 +1071,8 @@ var (
 					},
 					ExpectedSum: 4200,
 				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
+				&test.Pass{
+					PaymentType: test.PaymentTypeFree,
 					Carrier:     carriers.Carrier_MCD,
 					SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 					Terminal: &processing.Terminal{
@@ -1091,15 +1086,15 @@ var (
 
 		{
 			N: "47. MCK -  MCD1_MSK - MM - MMTS - MCD1_MO",
-			T: T{
-				&Pass{
-					PaymentType: PaymentTypePayment,
+			T: test.T{
+				&test.Pass{
+					PaymentType: test.PaymentTypePayment,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MCK_SUB,
 					ExpectedSum: 4200,
 				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
+				&test.Pass{
+					PaymentType: test.PaymentTypeFree,
 					Carrier:     carriers.Carrier_MCD,
 					SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 					Terminal: &processing.Terminal{
@@ -1108,8 +1103,8 @@ var (
 					},
 					Parent: 1,
 				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
+				&test.Pass{
+					PaymentType: test.PaymentTypeFree,
 					Carrier:     carriers.Carrier_MCD,
 					SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 					Terminal: &processing.Terminal{
@@ -1118,20 +1113,20 @@ var (
 					},
 					Ingress: 2,
 				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
+				&test.Pass{
+					PaymentType: test.PaymentTypeFree,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MM_SUB,
 					Parent:      1,
 				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
+				&test.Pass{
+					PaymentType: test.PaymentTypeFree,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MMTS_SUB,
 					Parent:      1,
 				},
-				&Pass{
-					PaymentType: PaymentTypePayment,
+				&test.Pass{
+					PaymentType: test.PaymentTypePayment,
 					Carrier:     carriers.Carrier_MCD,
 					SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 					Terminal: &processing.Terminal{
@@ -1140,8 +1135,8 @@ var (
 					},
 					ExpectedSum: 4200,
 				},
-				&Pass{
-					PaymentType: PaymentTypePayment,
+				&test.Pass{
+					PaymentType: test.PaymentTypePayment,
 					Carrier:     carriers.Carrier_MCD,
 					SubCarrier:  carriers.SubCarrier_MCD1_MO,
 					Terminal: &processing.Terminal{
@@ -1156,15 +1151,15 @@ var (
 
 		{
 			N: "48. MCK -  MCD1_MSK - MM - MCD2_MSK - MM",
-			T: T{
-				&Pass{
-					PaymentType: PaymentTypePayment,
+			T: test.T{
+				&test.Pass{
+					PaymentType: test.PaymentTypePayment,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MCK_SUB,
 					ExpectedSum: 4200,
 				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
+				&test.Pass{
+					PaymentType: test.PaymentTypeFree,
 					Carrier:     carriers.Carrier_MCD,
 					SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 					Terminal: &processing.Terminal{
@@ -1173,8 +1168,8 @@ var (
 					},
 					Parent: 1,
 				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
+				&test.Pass{
+					PaymentType: test.PaymentTypeFree,
 					Carrier:     carriers.Carrier_MCD,
 					SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 					Terminal: &processing.Terminal{
@@ -1183,14 +1178,14 @@ var (
 					},
 					Ingress: 2,
 				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
+				&test.Pass{
+					PaymentType: test.PaymentTypeFree,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MM_SUB,
 					Parent:      1,
 				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
+				&test.Pass{
+					PaymentType: test.PaymentTypeFree,
 					Carrier:     carriers.Carrier_MCD,
 					SubCarrier:  carriers.SubCarrier_MCD2_MSK,
 					Terminal: &processing.Terminal{
@@ -1199,8 +1194,8 @@ var (
 					},
 					Parent: 1,
 				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
+				&test.Pass{
+					PaymentType: test.PaymentTypeFree,
 					Carrier:     carriers.Carrier_MCD,
 					SubCarrier:  carriers.SubCarrier_MCD2_MSK,
 					Terminal: &processing.Terminal{
@@ -1209,8 +1204,8 @@ var (
 					},
 					Ingress: 5,
 				},
-				&Pass{
-					PaymentType: PaymentTypePayment,
+				&test.Pass{
+					PaymentType: test.PaymentTypePayment,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MM_SUB,
 					ExpectedSum: 4200,
@@ -1220,15 +1215,15 @@ var (
 
 		{
 			N: "49. MCK -  MCD1_MSK - MM - MCD2_MSK - MCK",
-			T: T{
-				&Pass{
-					PaymentType: PaymentTypePayment,
+			T: test.T{
+				&test.Pass{
+					PaymentType: test.PaymentTypePayment,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MCK_SUB,
 					ExpectedSum: 4200,
 				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
+				&test.Pass{
+					PaymentType: test.PaymentTypeFree,
 					Carrier:     carriers.Carrier_MCD,
 					SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 					Terminal: &processing.Terminal{
@@ -1237,8 +1232,8 @@ var (
 					},
 					Parent: 1,
 				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
+				&test.Pass{
+					PaymentType: test.PaymentTypeFree,
 					Carrier:     carriers.Carrier_MCD,
 					SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 					Terminal: &processing.Terminal{
@@ -1247,14 +1242,14 @@ var (
 					},
 					Ingress: 2,
 				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
+				&test.Pass{
+					PaymentType: test.PaymentTypeFree,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MM_SUB,
 					Parent:      1,
 				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
+				&test.Pass{
+					PaymentType: test.PaymentTypeFree,
 					Carrier:     carriers.Carrier_MCD,
 					SubCarrier:  carriers.SubCarrier_MCD2_MSK,
 					Terminal: &processing.Terminal{
@@ -1263,8 +1258,8 @@ var (
 					},
 					Parent: 1,
 				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
+				&test.Pass{
+					PaymentType: test.PaymentTypeFree,
 					Carrier:     carriers.Carrier_MCD,
 					SubCarrier:  carriers.SubCarrier_MCD2_MSK,
 					Terminal: &processing.Terminal{
@@ -1273,8 +1268,8 @@ var (
 					},
 					Ingress: 5,
 				},
-				&Pass{
-					PaymentType: PaymentTypePayment,
+				&test.Pass{
+					PaymentType: test.PaymentTypePayment,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MCK_SUB,
 					ExpectedSum: 4200,
@@ -1284,15 +1279,15 @@ var (
 
 		{
 			N: "50. MCK -  MCD1_MSK - MM - MCD2_MSK - MMTS",
-			T: T{
-				&Pass{
-					PaymentType: PaymentTypePayment,
+			T: test.T{
+				&test.Pass{
+					PaymentType: test.PaymentTypePayment,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MCK_SUB,
 					ExpectedSum: 4200,
 				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
+				&test.Pass{
+					PaymentType: test.PaymentTypeFree,
 					Carrier:     carriers.Carrier_MCD,
 					SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 					Terminal: &processing.Terminal{
@@ -1301,8 +1296,8 @@ var (
 					},
 					Parent: 1,
 				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
+				&test.Pass{
+					PaymentType: test.PaymentTypeFree,
 					Carrier:     carriers.Carrier_MCD,
 					SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 					Terminal: &processing.Terminal{
@@ -1311,14 +1306,14 @@ var (
 					},
 					Ingress: 2,
 				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
+				&test.Pass{
+					PaymentType: test.PaymentTypeFree,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MM_SUB,
 					Parent:      1,
 				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
+				&test.Pass{
+					PaymentType: test.PaymentTypeFree,
 					Carrier:     carriers.Carrier_MCD,
 					SubCarrier:  carriers.SubCarrier_MCD2_MSK,
 					Terminal: &processing.Terminal{
@@ -1327,8 +1322,8 @@ var (
 					},
 					Parent: 1,
 				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
+				&test.Pass{
+					PaymentType: test.PaymentTypeFree,
 					Carrier:     carriers.Carrier_MCD,
 					SubCarrier:  carriers.SubCarrier_MCD2_MSK,
 					Terminal: &processing.Terminal{
@@ -1337,8 +1332,8 @@ var (
 					},
 					Ingress: 5,
 				},
-				&Pass{
-					PaymentType: PaymentTypePayment,
+				&test.Pass{
+					PaymentType: test.PaymentTypePayment,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MMTS_SUB,
 					ExpectedSum: 4200,
@@ -1346,5 +1341,5 @@ var (
 			},
 		},
 	}
-)
+
 

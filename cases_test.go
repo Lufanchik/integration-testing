@@ -1,4 +1,4 @@
-package integration_testing
+package mck
 
 import (
 	"lab.siroccotechnology.ru/tp/integration-testing/passes"

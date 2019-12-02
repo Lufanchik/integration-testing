@@ -10,7 +10,7 @@ import (
 var (
 	CasesComplexTimeMCD = test.Cases{
 		{
-			N: "1. MCD egress after complex period",
+			N: "1. МО-МСК - ММ",
 			T: test.T{
 				&test.Pass{
 					PaymentType: test.PaymentTypePayment,
@@ -29,7 +29,7 @@ var (
 					Carrier:     carriers.Carrier_MCD,
 					SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 					Terminal: &processing.Terminal{
-						Station:   "2001140",
+						Station:   "2001140", //КУНЦЕВСКАЯ
 						Direction: processing.TerminalDirection_EGRESS,
 					},
 					Ingress: 1,

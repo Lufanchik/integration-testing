@@ -4,6 +4,7 @@ import (
 	"lab.siroccotechnology.ru/tp/common/messages/carriers"
 	"lab.siroccotechnology.ru/tp/common/messages/processing"
 	"lab.siroccotechnology.ru/tp/integration-testing/test"
+	"time"
 )
 
 var CasesScopeCheckPass = test.Cases{
@@ -249,30 +250,30 @@ var CasesScopeCheckPass = test.Cases{
 	//	},
 	//},
 	//},
-	{
-		N: "34. Комиссионный сбор при неосуществлении выхода с МЦД (МЦД МСК - выхода с МЦД не последовало)",
-		T: test.T{
-			&test.Pass{
-				PaymentType: test.PaymentTypePayment,
-				RequestType: test.RequestTypeOnline,
-				Carrier:     carriers.Carrier_MCD,
-				SubCarrier:  carriers.SubCarrier_MCD1_MO,
-				ExpectedSum: 4200,
-				Terminal: &processing.Terminal{
-					Direction: 0,
-				},
-			},
-			&test.Pass{
-				PaymentType: test.PaymentTypeFree,
-				RequestType: test.RequestTypeOnline,
-				Carrier:     carriers.Carrier_MCD,
-				SubCarrier:  carriers.SubCarrier_MCD1_MO,
-				Terminal: &processing.Terminal{
-					Direction: 0,
-				},
-			},
-		},
-	},
+	//{
+	//	N: "34. Комиссионный сбор при неосуществлении выхода с МЦД (МЦД МСК - выхода с МЦД не последовало)",
+	//	T: test.T{
+	//		&test.Pass{
+	//			PaymentType: test.PaymentTypePayment,
+	//			RequestType: test.RequestTypeOnline,
+	//			Carrier:     carriers.Carrier_MCD,
+	//			SubCarrier:  carriers.SubCarrier_MCD1_MO,
+	//			ExpectedSum: 4200,
+	//			Terminal: &processing.Terminal{
+	//				Direction: 0,
+	//			},
+	//		},
+	//		&test.Pass{
+	//			PaymentType: test.PaymentTypeFree,
+	//			RequestType: test.RequestTypeOnline,
+	//			Carrier:     carriers.Carrier_MCD,
+	//			SubCarrier:  carriers.SubCarrier_MCD1_MO,
+	//			Terminal: &processing.Terminal{
+	//				Direction: 0,
+	//			},
+	//		},
+	//	},
+	//},
 	{
 		N: "37. Комплексная поездка во время перехода на новые транспортные сутки.",
 		T: test.T{
@@ -281,7 +282,13 @@ var CasesScopeCheckPass = test.Cases{
 				RequestType: test.RequestTypeOnline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MO,
-				ExpectedSum: 4200,
+				ExpectedSum: 4900,
+				Now:         test.NowCustomDate(12, 2, 3, 30),
+				TimeToWait:  30 * time.Minute,
+				Terminal: &processing.Terminal{
+					Station:   "2000055",
+					Direction: processing.TerminalDirection_INGRESS,
+				},
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -289,14 +296,19 @@ var CasesScopeCheckPass = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Direction: 2,
+					Direction: processing.TerminalDirection_EGRESS,
+					Station:   "2000155",
 				},
+				Now:     test.NowCustomDate(12, 2, 4, 25),
+				Ingress: 1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
 				RequestType: test.RequestTypeOnline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
+				Parent:      1,
+				Now:         test.NowCustomDate(12, 2, 4, 40),
 			},
 		},
 	},

@@ -97,8 +97,8 @@ type (
 
 	//проверка парковки
 	Parking struct {
-		rp processing.CheckParkingResponse_Result
-		r  *processing.CheckParkingRequest
+		RP processing.CheckParkingResponse_Result
+		R  *processing.CheckParkingRequest
 	}
 )
 

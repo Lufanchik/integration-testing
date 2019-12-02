@@ -1,4 +1,4 @@
-package mck
+package integration_testing
 
 import (
 	"errors"

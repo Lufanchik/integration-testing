@@ -16,13 +16,13 @@ prod: export APM_API_URL=http://apm-api-gateway-public.production.svc.cluster.lo
 
 full:
 	go test -c -o ./bin/test
-	./bin/test -test.run ^CasesMetroComplexMCK$
+	./bin/test -test.run ^TestFull$
 
 simple:
 	go test -c -o ./bin/test
-	./bin/test -test.run ^CasesMetroComplexMCK$
+	./bin/test -test.run ^TestSimple$
 
 local: full
-test: CasesMetroComplexMCK
+test: full
 stage: full
 prod: full

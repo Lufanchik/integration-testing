@@ -97,126 +97,134 @@ var CasesScopeCheckPass = test.Cases{
 	//		},
 	//	},
 	//},
-	{
-		N: "28. Одиночная поездка за пределами МСК (Вход МЦД МО – Выход МЦД МСК)",
-		T: test.T{
-			&test.Pass{
-				PaymentType: test.PaymentTypePayment,
-				RequestType: test.RequestTypeOnline,
-				Carrier:     carriers.Carrier_MCD,
-				SubCarrier:  carriers.SubCarrier_MCD1_MO,
-				ExpectedSum: 4200,
-				Terminal: &processing.Terminal{
-					Direction: 1,
-				},
-			},
-			&test.Pass{
-				PaymentType: test.PaymentTypeFree,
-				RequestType: test.RequestTypeOnline,
-				Carrier:     carriers.Carrier_MCD,
-				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
-				Terminal: &processing.Terminal{
-					Direction: 2,
-				},
-			},
-		},
-	},
-	{
-		N: "29. Одиночная поездка за пределами МСК (Вход МЦД МСК – Выход МЦД МО)",
-		T: test.T{
-			&test.Pass{
-				PaymentType: test.PaymentTypePayment,
-				RequestType: test.RequestTypeOnline,
-				Carrier:     carriers.Carrier_MCD,
-				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
-				ExpectedSum: 4200,
-				Terminal: &processing.Terminal{
-					Direction: 1,
-				},
-			},
-			&test.Pass{
-				PaymentType: test.PaymentTypeFree,
-				RequestType: test.RequestTypeOnline,
-				Carrier:     carriers.Carrier_MCD,
-				SubCarrier:  carriers.SubCarrier_MCD1_MO,
-				Terminal: &processing.Terminal{
-					Direction: 2,
-				},
-			},
-		},
-	},
-	{
-		N: "30. Одиночная поездка МЦД (Вход МЦД МСК – валидация МЦД МО)",
-		T: test.T{
-			&test.Pass{
-				PaymentType: test.PaymentTypePayment,
-				RequestType: test.RequestTypeOnline,
-				Carrier:     carriers.Carrier_MCD,
-				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
-				ExpectedSum: 4200,
-				Terminal: &processing.Terminal{
-					Direction: 1,
-				},
-			},
-			&test.Pass{
-				PaymentType: test.PaymentTypeFree,
-				RequestType: test.RequestTypeOnline,
-				Carrier:     carriers.Carrier_MCD,
-				SubCarrier:  carriers.SubCarrier_MCD1_MO,
-				Terminal: &processing.Terminal{
-					Direction: 0,
-				},
-			},
-		},
-	},
-	{
-		N: "31. Одиночная поездка МЦД (МЦД МО валидация –  МЦД МО выход)",
-		T: test.T{
-			&test.Pass{
-				PaymentType: test.PaymentTypePayment,
-				RequestType: test.RequestTypeOnline,
-				Carrier:     carriers.Carrier_MCD,
-				SubCarrier:  carriers.SubCarrier_MCD1_MO,
-				ExpectedSum: 4200,
-				Terminal: &processing.Terminal{
-					Direction: 0,
-				},
-			},
-			&test.Pass{
-				PaymentType: test.PaymentTypeFree,
-				RequestType: test.RequestTypeOnline,
-				Carrier:     carriers.Carrier_MCD,
-				SubCarrier:  carriers.SubCarrier_MCD1_MO,
-				Terminal: &processing.Terminal{
-					Direction: 2,
-				},
-			},
-		},
-	},
-	{
-		N: "32. Одиночная поездка МЦД (МЦД МО валидация –  МЦД МО валидация)",
-		T: test.T{
-			&test.Pass{
-				PaymentType: test.PaymentTypePayment,
-				RequestType: test.RequestTypeOnline,
-				Carrier:     carriers.Carrier_MCD,
-				SubCarrier:  carriers.SubCarrier_MCD1_MO,
-				ExpectedSum: 4200,
-				Terminal: &processing.Terminal{
-					Direction: 0,
-				},
-			},
-			&test.Pass{
-				PaymentType: test.PaymentTypeFree,
-				RequestType: test.RequestTypeOnline,
-				Carrier:     carriers.Carrier_MCD,
-				SubCarrier:  carriers.SubCarrier_MCD1_MO,
-				Terminal: &processing.Terminal{
-					Direction: 0,
-				},
-			},
-		},
-	},
+	//{
+	//	N: "28. Одиночная поездка за пределами МСК (Вход МЦД МО – Выход МЦД МСК)",
+	//	T: test.T{
+	//		&test.Pass{
+	//			PaymentType: test.PaymentTypePayment,
+	//			Carrier:     carriers.Carrier_MCD,
+	//			SubCarrier:  carriers.SubCarrier_MCD1_MO,
+	//			Terminal: &processing.Terminal{
+	//				Station:   "2000055", //ОДИНЦОВО
+	//				Direction: processing.TerminalDirection_INGRESS,
+	//			},
+	//			ExpectedSum: 4900,
+	//		},
+	//		&test.Pass{
+	//			PaymentType: test.PaymentTypeFree,
+	//			RequestType: test.RequestTypeOnline,
+	//			Carrier:     carriers.Carrier_MCD,
+	//			SubCarrier:  carriers.SubCarrier_MCD1_MSK,
+	//			Terminal: &processing.Terminal{
+	//				Station:   "2000700", //ТЕСТОВСКАЯ
+	//				Direction: processing.TerminalDirection_EGRESS,
+	//			},
+	//			Ingress: 	 1,
+	//		},
+	//	},
+	//},
+	//{
+	//	N: "29. Одиночная поездка за пределами МСК (Вход МЦД МСК – Выход МЦД МО)",
+	//	T: test.T{
+	//		&test.Pass{
+	//			PaymentType: test.PaymentTypePayment,
+	//			Carrier:     carriers.Carrier_MCD,
+	//			SubCarrier:  carriers.SubCarrier_MCD1_MSK,
+	//			Terminal: &processing.Terminal{
+	//				Station:   "2000700", //ТЕСТОВСКАЯ
+	//				Direction: processing.TerminalDirection_INGRESS,
+	//			},
+	//			ExpectedSum: 4200,
+	//		},
+	//		&test.Pass{
+	//			PaymentType: test.PaymentTypePayment,
+	//			Carrier:     carriers.Carrier_MCD,
+	//			SubCarrier:  carriers.SubCarrier_MCD1_MO,
+	//			Terminal: &processing.Terminal{
+	//				Station:   "2000055", //ОДИНЦОВО
+	//				Direction: processing.TerminalDirection_EGRESS,
+	//			},
+	//			ExpectedSum: 700,
+	//			Ingress: 	 1,
+	//		},
+	//	},
+	//},
+	//{
+	//	N: "30. Одиночная поездка МЦД (Вход МЦД МСК – валидация МЦД МО)",
+	//	T: test.T{
+	//		&test.Pass{
+	//			PaymentType: test.PaymentTypePayment,
+	//			Carrier:     carriers.Carrier_MCD,
+	//			SubCarrier:  carriers.SubCarrier_MCD1_MO,
+	//			Terminal: &processing.Terminal{
+	//				Station:   "2000055", //ОДИНЦОВО
+	//				Direction: processing.TerminalDirection_INGRESS,
+	//			},
+	//			ExpectedSum: 4900,
+	//		},
+	//		&test.Pass{
+	//			PaymentType: test.PaymentTypeFree,
+	//			RequestType: test.RequestTypeOnline,
+	//			Carrier:     carriers.Carrier_MCD,
+	//			SubCarrier:  carriers.SubCarrier_MCD1_MSK,
+	//			Terminal: &processing.Terminal{
+	//				Station:   "2000700", //ТЕСТОВСКАЯ
+	//				Direction: processing.TerminalDirection_EGRESS,
+	//			},
+	//			Ingress: 	 1,
+	//		},
+	//	},
+	//},
+	//{
+	//	N: "31. Одиночная поездка МЦД (МЦД МО валидация –  МЦД МО выход)",
+	//	T: test.T{
+	//		&test.Pass{
+	//			PaymentType: test.PaymentTypePayment,
+	//			Carrier:     carriers.Carrier_MCD,
+	//			SubCarrier:  carriers.SubCarrier_MCD1_MO,
+	//			Terminal: &processing.Terminal{
+	//				Station:   "2000055", //ОДИНЦОВО
+	//				Direction: processing.TerminalDirection_INGRESS,
+	//			},
+	//			ExpectedSum: 4900,
+	//		},
+	//		&test.Pass{
+	//			PaymentType: test.PaymentTypeFree,
+	//			Carrier:     carriers.Carrier_MCD,
+	//			SubCarrier:  carriers.SubCarrier_MCD1_MO,
+	//			Terminal: &processing.Terminal{
+	//				Station:   "2000115", //ЛОБНЯ
+	//				Direction: processing.TerminalDirection_EGRESS,
+	//			},
+	//			Ingress: 	 1,
+	//		},
+	//	},
+	//},
+	//{
+	//	N: "32. Одиночная поездка МЦД (МЦД МО валидация –  МЦД МО валидация)",
+	//	T: test.T{
+	//		&test.Pass{
+	//			PaymentType: test.PaymentTypePayment,
+	//			Carrier:     carriers.Carrier_MCD,
+	//			SubCarrier:  carriers.SubCarrier_MCD1_MO,
+	//			Terminal: &processing.Terminal{
+	//				Station:   "2000055", //ОДИНЦОВО
+	//				Direction: processing.TerminalDirection_INGRESS,
+	//			},
+	//			ExpectedSum: 4900,
+	//		},
+	//		&test.Pass{
+	//			PaymentType: test.PaymentTypeFree,
+	//			Carrier:     carriers.Carrier_MCD,
+	//			SubCarrier:  carriers.SubCarrier_MCD1_MO,
+	//			Terminal: &processing.Terminal{
+	//				Station:   "2000115", //ЛОБНЯ
+	//				Direction: processing.TerminalDirection_EGRESS,
+	//			},
+	//			Ingress: 	 1,
+	//		},
+	//	},
+	//},
 	//{
 	//N: "33. Информация о выходе по МЦД пришла после закрытия периода комплексной поездки, но до списания комиссионного сбора.",
 	//T: test.T{
@@ -297,39 +305,43 @@ var CasesScopeCheckPass = test.Cases{
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
-				RequestType: test.RequestTypeOnline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				ExpectedSum: 4200,
+				Now:         test.NowFullDate(12, 2, 3, 30, 15),
 			},
 			&test.Pass{
-				PaymentType: test.PaymentTypeFree,
-				RequestType: test.RequestTypeOnline,
+				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
+				ExpectedSum: 4200,
+				Now:         test.NowFullDate(12, 2, 3, 30, 30),
 			},
 		},
 	},
 	{
-		N: "39. Повторный проход по для ММ на разных терминалах.",
+		N: "39. Повторный проход для ММ на разных терминалах.",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
-				RequestType: test.RequestTypeOnline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				ExpectedSum: 4200,
+				Now:         test.NowFullDate(12, 2, 3, 30, 15),
 				Terminal: &processing.Terminal{
-					Station: "456",
+					Id:      "sirocco",
+					Station: "123",
 				},
 			},
 			&test.Pass{
-				PaymentType: test.PaymentTypeFree,
-				RequestType: test.RequestTypeOnline,
+				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
+				ExpectedSum: 4200,
+				Now:         test.NowFullDate(12, 2, 3, 30, 30),
 				Terminal: &processing.Terminal{
-					Station: "457",
+					Id:      "multicarta",
+					Station: "123",
 				},
 			},
 		},
@@ -344,7 +356,8 @@ var CasesScopeCheckPass = test.Cases{
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				ExpectedSum: 4200,
 				Terminal: &processing.Terminal{
-					Direction: 1,
+					Id:        "sirocco",
+					Direction: processing.TerminalDirection_INGRESS,
 				},
 			},
 			&test.Pass{
@@ -354,7 +367,8 @@ var CasesScopeCheckPass = test.Cases{
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				ExpectedSum: 4200,
 				Terminal: &processing.Terminal{
-					Direction: 2,
+					Id:        "multicarta",
+					Direction: processing.TerminalDirection_EGRESS,
 				},
 			},
 			&test.Pass{

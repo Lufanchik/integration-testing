@@ -1,22 +1,22 @@
-package parking_test
+package parking
 
 import (
 	"lab.siroccotechnology.ru/tp/common/messages/carriers"
 	"lab.siroccotechnology.ru/tp/common/messages/processing"
-	"testing"
+	"lab.siroccotechnology.ru/tp/integration-testing/test"
 )
 
 var (
-	parkingPass = Cases{
+	CasesParkingPass = test.Cases{
 		{
 			N: "Parking",
-			T: T{
-				&Pass{
-					PaymentType: PaymentTypePayment,
+			T: test.T{
+				&test.Pass{
+					PaymentType: test.PaymentTypePayment,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MM_SUB,
 					ExpectedSum: 4200,
-					AuthType:    AuthTypeIncorrect,
+					AuthType:    test.AuthTypeIncorrect,
 					Terminal: &processing.Terminal{
 						Id:         "1",
 						Station:    "1234",
@@ -24,8 +24,8 @@ var (
 						SubCarrier: carriers.SubCarrier_MM_SUB,
 					},
 				},
-				&Pass{
-					PaymentType: PaymentTypeFree,
+				&test.Pass{
+					PaymentType: test.PaymentTypeFree,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MMTS_SUB,
 					Parent:      1,
@@ -36,15 +36,15 @@ var (
 						SubCarrier: carriers.SubCarrier_MMTS_SUB,
 					},
 				},
-				&Parking{
-					rp: processing.CheckParkingResponse_SUCCESS,
-					r: &processing.CheckParkingRequest{
+				&test.Parking{
+					RP: processing.CheckParkingResponse_SUCCESS,
+					R: &processing.CheckParkingRequest{
 						Stations: []string{"2", "1234"},
 					},
 				},
-				&Parking{
-					rp: processing.CheckParkingResponse_NOT_FOUND,
-					r: &processing.CheckParkingRequest{
+				&test.Parking{
+					RP: processing.CheckParkingResponse_NOT_FOUND,
+					R: &processing.CheckParkingRequest{
 						Stations: []string{"2"},
 					},
 				},
@@ -52,7 +52,3 @@ var (
 		},
 	}
 )
-
-func TestParking(t *testing.T) {
-	Run(t, parkingPass)
-}

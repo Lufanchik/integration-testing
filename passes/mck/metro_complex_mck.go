@@ -2,20 +2,21 @@ package mck
 
 import (
 	"lab.siroccotechnology.ru/tp/common/messages/carriers"
+	"lab.siroccotechnology.ru/tp/integration-testing/test"
 )
 
-var CasesMetroComplexMCK = Cases{
+var CasesMetroComplexMCK = test.Cases{
 	{
 		N: "MCK - MCK",
-		T: T{
-			&Pass{
-				PaymentType: PaymentTypePayment,
+		T: test.T{
+			&test.Pass{
+				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
 				ExpectedSum: 4200,
 			},
-			&Pass{
-				PaymentType: PaymentTypePayment,
+			&test.Pass{
+				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
 				ExpectedSum: 4200,
@@ -24,21 +25,21 @@ var CasesMetroComplexMCK = Cases{
 	},
 	{
 		N: "MCK - MM - MM",
-		T: T{
-			&Pass{
-				PaymentType: PaymentTypePayment,
+		T: test.T{
+			&test.Pass{
+				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
 				ExpectedSum: 4200,
 			},
-			&Pass{
-				PaymentType: PaymentTypeFree,
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				Parent:      1,
 			},
-			&Pass{
-				PaymentType: PaymentTypePayment,
+			&test.Pass{
+				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				ExpectedSum: 4200,
@@ -47,21 +48,21 @@ var CasesMetroComplexMCK = Cases{
 	},
 	{
 		N: "MCK - MM - MCK",
-		T: T{
-			&Pass{
-				PaymentType: PaymentTypePayment,
+		T: test.T{
+			&test.Pass{
+				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
 				ExpectedSum: 4200,
 			},
-			&Pass{
-				PaymentType: PaymentTypeFree,
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				Parent:      1,
 			},
-			&Pass{
-				PaymentType: PaymentTypePayment,
+			&test.Pass{
+				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
 				ExpectedSum: 4200,
@@ -70,21 +71,21 @@ var CasesMetroComplexMCK = Cases{
 	},
 	{
 		N: "MCK - MMTS - MM",
-		T: T{
-			&Pass{
-				PaymentType: PaymentTypePayment,
+		T: test.T{
+			&test.Pass{
+				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
 				ExpectedSum: 4200,
 			},
-			&Pass{
-				PaymentType: PaymentTypeFree,
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MMTS_SUB,
 				Parent:      1,
 			},
-			&Pass{
-				PaymentType: PaymentTypePayment,
+			&test.Pass{
+				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				ExpectedSum: 4200,
@@ -93,21 +94,21 @@ var CasesMetroComplexMCK = Cases{
 	},
 	{
 		N: "MCK - MMTS - MCK",
-		T: T{
-			&Pass{
-				PaymentType: PaymentTypePayment,
+		T: test.T{
+			&test.Pass{
+				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
 				ExpectedSum: 4200,
 			},
-			&Pass{
-				PaymentType: PaymentTypeFree,
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MMTS_SUB,
 				Parent:      1,
 			},
-			&Pass{
-				PaymentType: PaymentTypePayment,
+			&test.Pass{
+				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
 				ExpectedSum: 4200,
@@ -117,21 +118,21 @@ var CasesMetroComplexMCK = Cases{
 
 	{
 		N: "MCK - MMTS - MMTS",
-		T: T{
-			&Pass{
-				PaymentType: PaymentTypePayment,
+		T: test.T{
+			&test.Pass{
+				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
 				ExpectedSum: 4200,
 			},
-			&Pass{
-				PaymentType: PaymentTypeFree,
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MMTS_SUB,
 				Parent:      1,
 			},
-			&Pass{
-				PaymentType: PaymentTypePayment,
+			&test.Pass{
+				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MMTS_SUB,
 				ExpectedSum: 4200,
@@ -140,27 +141,27 @@ var CasesMetroComplexMCK = Cases{
 	},
 	{
 		N: "MCK - MM - MMTS - MM",
-		T: T{
-			&Pass{
-				PaymentType: PaymentTypePayment,
+		T: test.T{
+			&test.Pass{
+				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
 				ExpectedSum: 4200,
 			},
-			&Pass{
-				PaymentType: PaymentTypeFree,
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				Parent:      1,
 			},
-			&Pass{
-				PaymentType: PaymentTypeFree,
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MMTS_SUB,
 				Parent:      1,
 			},
-			&Pass{
-				PaymentType: PaymentTypePayment,
+			&test.Pass{
+				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				ExpectedSum: 4200,
@@ -170,27 +171,27 @@ var CasesMetroComplexMCK = Cases{
 
 	{
 		N: "MCK - MM -MMTS -MCK",
-		T: T{
-			&Pass{
-				PaymentType: PaymentTypePayment,
+		T: test.T{
+			&test.Pass{
+				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
 				ExpectedSum: 4200,
 			},
-			&Pass{
-				PaymentType: PaymentTypeFree,
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				Parent:      1,
 			},
-			&Pass{
-				PaymentType: PaymentTypeFree,
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MMTS_SUB,
 				Parent:      1,
 			},
-			&Pass{
-				PaymentType: PaymentTypePayment,
+			&test.Pass{
+				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
 				ExpectedSum: 4200,
@@ -199,27 +200,27 @@ var CasesMetroComplexMCK = Cases{
 	},
 	{
 		N: "MCK - MM - MMTS - MMTS",
-		T: T{
-			&Pass{
-				PaymentType: PaymentTypePayment,
+		T: test.T{
+			&test.Pass{
+				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
 				ExpectedSum: 4200,
 			},
-			&Pass{
-				PaymentType: PaymentTypeFree,
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				Parent:      1,
 			},
-			&Pass{
-				PaymentType: PaymentTypeFree,
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MMTS_SUB,
 				Parent:      1,
 			},
-			&Pass{
-				PaymentType: PaymentTypePayment,
+			&test.Pass{
+				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MMTS_SUB,
 				ExpectedSum: 4200,
@@ -229,35 +230,35 @@ var CasesMetroComplexMCK = Cases{
 	//
 	//// Кейсы включающие транзакции с некорректной авторизацией
 	{
-		N: "MCK - MCK (AuthTypeIncorrect) - MM - MMTS -MM", //(Если было две одинаковые поездки и последняя из них неоплачена, комплексная поездка должна создаваться и привязываться к последней)
-		T: T{
-			&Pass{
-				PaymentType: PaymentTypePayment,
+		N: "MCK - MCK (test.AuthTypeIncorrect) - MM - MMTS -MM", //(Если было две одинаковые поездки и последняя из них неоплачена, комплексная поездка должна создаваться и привязываться к последней)
+		T: test.T{
+			&test.Pass{
+				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
 				ExpectedSum: 4200,
 			},
-			&Pass{
-				PaymentType: PaymentTypePayment,
+			&test.Pass{
+				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
 				ExpectedSum: 4200,
-				AuthType:    AuthTypeIncorrect,
+				AuthType:    test.AuthTypeIncorrect,
 			},
-			&Pass{
-				PaymentType: PaymentTypeFree,
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				Parent:      2,
 			},
-			&Pass{
-				PaymentType: PaymentTypeFree,
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MMTS_SUB,
 				Parent:      2,
 			},
-			&Pass{
-				PaymentType: PaymentTypePayment,
+			&test.Pass{
+				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				ExpectedSum: 4200,
@@ -265,23 +266,23 @@ var CasesMetroComplexMCK = Cases{
 		},
 	},
 	{
-		N: "MCK - MCK (AuthTypeIncorrect) - MMTS", //(Если было две одинаковые поездки и последняя из них неоплачена, комплексная поездка должна создаваться и привязываться к последней)
-		T: T{
-			&Pass{
-				PaymentType: PaymentTypePayment,
+		N: "MCK - MCK (test.AuthTypeIncorrect) - MMTS", //(Если было две одинаковые поездки и последняя из них неоплачена, комплексная поездка должна создаваться и привязываться к последней)
+		T: test.T{
+			&test.Pass{
+				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
 				ExpectedSum: 4200,
 			},
-			&Pass{
-				PaymentType: PaymentTypePayment,
+			&test.Pass{
+				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
 				ExpectedSum: 4200,
-				AuthType:    AuthTypeIncorrect,
+				AuthType:    test.AuthTypeIncorrect,
 			},
-			&Pass{
-				PaymentType: PaymentTypeFree,
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MMTS_SUB,
 				Parent:      2,
@@ -289,23 +290,23 @@ var CasesMetroComplexMCK = Cases{
 		},
 	},
 	{
-		N: "MCK (AuthTypeIncorrect) - MM - MMTS", //(Если было две одинаковые поездки и последняя из них неоплачена, комплексная поездка должна создаваться и привязываться к последней)
-		T: T{
-			&Pass{
-				PaymentType: PaymentTypePayment,
+		N: "MCK (test.AuthTypeIncorrect) - MM - MMTS", //(Если было две одинаковые поездки и последняя из них неоплачена, комплексная поездка должна создаваться и привязываться к последней)
+		T: test.T{
+			&test.Pass{
+				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
 				ExpectedSum: 4200,
-				AuthType:    AuthTypeIncorrect,
+				AuthType:    test.AuthTypeIncorrect,
 			},
-			&Pass{
-				PaymentType: PaymentTypeFree,
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				Parent:      1,
 			},
-			&Pass{
-				PaymentType: PaymentTypeFree,
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MMTS_SUB,
 				Parent:      1,

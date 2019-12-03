@@ -312,25 +312,31 @@ var CasesScopeCheckPass = test.Cases{
 			},
 		},
 	},
-	{
-		N: "38. Попытка повторного прохода для ММ на одном терминале.",
-		T: test.T{
-			&test.Pass{
-				PaymentType: test.PaymentTypePayment,
-				Carrier:     carriers.Carrier_MM,
-				SubCarrier:  carriers.SubCarrier_MM_SUB,
-				ExpectedSum: 4200,
-				Now:         test.NowFullDate(12, 2, 3, 30, 15),
-			},
-			&test.Pass{
-				PaymentType: test.PaymentTypePayment,
-				Carrier:     carriers.Carrier_MM,
-				SubCarrier:  carriers.SubCarrier_MM_SUB,
-				ExpectedSum: 4200,
-				Now:         test.NowFullDate(12, 2, 3, 30, 30),
-			},
-		},
-	},
+	//{
+	//	N: "38. Попытка повторного прохода для ММ на одном терминале.",
+	//	T: test.T{
+	//		&test.Pass{
+	//			PaymentType: test.PaymentTypePayment,
+	//			Carrier:     carriers.Carrier_MM,
+	//			SubCarrier:  carriers.SubCarrier_MM_SUB,
+	//			ExpectedSum: 4200,
+	//			Now:         test.NowFullDate(12, 2, 3, 30, 15),
+	//			Terminal: &processing.Terminal{
+	//				Id:   "lacoste",
+	//			},
+	//		},
+	//		&test.Pass{
+	//			PaymentType: test.PaymentTypePayment,
+	//			Carrier:     carriers.Carrier_MM,
+	//			SubCarrier:  carriers.SubCarrier_MM_SUB,
+	//			ExpectedSum: 4200,
+	//			Now:         test.NowFullDate(12, 2, 3, 30, 30),
+	//			Terminal: &processing.Terminal{
+	//				Id:   "lacoste",
+	//			},
+	//		},
+	//	},
+	//},
 	{
 		N: "39. Повторный проход для ММ на разных терминалах.",
 		T: test.T{

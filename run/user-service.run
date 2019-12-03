@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+cd ../../user-service && make run &> ../logs/user-service.logs

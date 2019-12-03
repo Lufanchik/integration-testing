@@ -14,77 +14,15 @@ prod: export PROCESSING_API_URL=http://processing-api-gateway.production.svc.clu
 prod: export PASS_URL=http://pass-service.production.svc.cluster.local:13380
 prod: export APM_API_URL=http://apm-api-gateway-public.production.svc.cluster.local:1340
 
+full:
+	go test -c -o ./bin/test
+	./bin/test -test.run ^TestFull$
+
 simple:
 	go test -c -o ./bin/test
-	./bin/test -test.v -test.run ^TestSimplePass$
+	./bin/test -test.run ^TestSimple$
 
-simple_complex:
-	go test -c -o ./bin/test
-	./bin/test -test.v -test.run ^TestSimpleComplexPass$
-
-apm:
-	go test -c -o ./bin/test
-	./bin/test -test.v -test.run ^TestApmGateway$
-
-complex_mck:
-	go test -c -o ./bin/test
-	./bin/test -test.v -test.run ^TestMetroComplexMCK$
-
-complex_wrong_time:
-	go test -c -o ./bin/test
-	./bin/test -test.v -test.run ^TestWrongTimeComplexPass$
-
-metro_complex_2mcd:
-	go test -c -o ./bin/test
-	./bin/test -test.v -test.run ^TestComplex2MCD$
-
-metro_complex_mm:
-	go test -c -o ./bin/test
-	./bin/test -test.v -test.run ^TestMetroComplexMM$
-
-metro_complex_mck:
-	go test -c -o ./bin/test
-	./bin/test -test.v -test.run ^TestMetroComplexMCK$
-
-metro_complex_mmts:
-	go test -c -o ./bin/test
-	./bin/test -test.v -test.run ^TestMetroComplexMMTS$
-
-offline_metro_complex_mck_test:
-	go test -c -o ./bin/test
-	./bin/test -test.v -test.run ^TestOfflineMetroComplexMCK$
-
-offline_metro_complex_mm_test:
-	go test -c -o ./bin/test
-	./bin/test -test.v -test.run ^TestOfflineMetroComplexMM$
-
-offline_metro_complex_mmts_test:
-	go test -c -o ./bin/test
-	./bin/test -test.v -test.run ^TestOfflineMetroComplexMMTS$
-
-revise:
-	go test -c -o ./bin/test
-	./bin/test -test.v -test.run ^TestRevise$
-
-resolve:
-	go test -c -o ./bin/test
-	./bin/test -test.v -test.run ^TestResolve$
-
-parking:
-	go test -c -o ./bin/test
-	./bin/test -test.v -test.run ^TestParking$
-
-<<<<<<< HEAD
-complex: complex_mck metro_complex_mm metro_complex_mck metro_complex_mmts
-full: simple simple_complex apm complex parking
-local: parking
+local: full
 test: full
-=======
-offline: offline_metro_complex_mck_test offline_metro_complex_mm_test offline_metro_complex_mmts_test
-complex: simple_complex metro_complex_mm metro_complex_mck metro_complex_mmts metro_complex_mcd metro_complex_2mcd offline
-full: simple simple_complex apm complex parking revise resolve
-local: complex
-test: complex
->>>>>>> 4c6329942920d78f4350ba007e295894de91c414
 stage: full
 prod: full

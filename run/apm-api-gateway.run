@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+cd ../../apm-api-gateway && make run &> ../logs/apm-api-gateway.logs

@@ -39,9 +39,13 @@ func init() {
 
 	//МЦК
 	//AddP(mck.CasesMetroComplexMCK)
+	//AddP(mck.CasesMetroComplexMCK1)
+	//AddP(mck.CasesMetroComplexMCK2)
+	//AddP(mck.CasesMetroComplexMCK3)
+	//AddP(mck.CasesMetroComplexMCK4)
 	//AddP(mck.CasesOfflineMetroComplexMCK)
-	//
-	////МЦД
+
+	//МЦД
 	AddP(mcd.CasesComplexMCD)
 	AddP(mcd.CasesComplexMCD2)
 	AddP(mcd.CasesMetroComplexMCDMSK1)

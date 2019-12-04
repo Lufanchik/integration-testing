@@ -49,6 +49,8 @@ type (
 		Terminal *processing.Terminal
 		//время, которое мы ждяли перед входом
 		TimeToWait time.Duration
+		//является ли проход комплексным
+		IsComplex bool
 
 		id          string
 		carrierID   string
@@ -59,6 +61,7 @@ type (
 		ingress     *Pass
 		isParent    bool
 		timeToWait  time.Duration
+		isCancel    bool
 	}
 
 	//генерация прохода

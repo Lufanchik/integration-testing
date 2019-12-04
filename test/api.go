@@ -163,6 +163,10 @@ func ValidatePass(t *testing.T, p *Pass, parent *Pass, ingress *Pass) {
 		expectPass.IsAuth = false
 	}
 
+	if p.isCancel {
+		expectPass.IsCancel = true
+	}
+
 	require.Equal(t, expectPass, passDB)
 	require.NoError(t, err)
 }

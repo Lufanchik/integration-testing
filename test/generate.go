@@ -15,14 +15,17 @@ func init() {
 }
 
 func CardExp() string {
+	gofakeit.Seed(time.Now().UnixNano())
 	return strconv.Itoa(gofakeit.Number(1000, 9999))
 }
 
 func CardBin() uint32 {
+	gofakeit.Seed(time.Now().UnixNano())
 	return uint32(gofakeit.Number(1000, 9999))
 }
 
 func CardPan() string {
+	gofakeit.Seed(time.Now().UnixNano())
 	return strconv.Itoa(gofakeit.CreditCardNumber())
 }
 
@@ -35,6 +38,7 @@ func CardEmvIncorrect() string {
 }
 
 func Card() *processing.Card {
+	gofakeit.Seed(time.Now().UnixNano())
 	return &processing.Card{
 		System: processing.CardSystem_VISA,
 		Type:   processing.CardType_DEBIT,

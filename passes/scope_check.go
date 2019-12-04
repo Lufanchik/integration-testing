@@ -283,7 +283,7 @@ var CasesScopeCheckPass = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MO,
 				ExpectedSum: 4900,
-				Now:         test.NowCustomDate(12, 2, 3, 30),
+				Now:         test.NowFullDate(2019, 12, 31, 3, 30, 00),
 				TimeToWait:  30 * time.Minute,
 				Terminal: &processing.Terminal{
 					Station:   "2000055",
@@ -299,7 +299,7 @@ var CasesScopeCheckPass = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 					Station:   "2000155",
 				},
-				Now:     test.NowCustomDate(12, 2, 4, 25),
+				Now:     test.NowFullDate(2019, 12, 31, 4, 25, 00),
 				Ingress: 1,
 			},
 			&test.Pass{
@@ -308,7 +308,7 @@ var CasesScopeCheckPass = test.Cases{
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				Parent:      1,
-				Now:         test.NowCustomDate(12, 2, 4, 40),
+				Now:         test.NowFullDate(2019, 12, 31, 4, 40, 00),
 			},
 		},
 	},
@@ -345,7 +345,7 @@ var CasesScopeCheckPass = test.Cases{
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				ExpectedSum: 4200,
-				Now:         test.NowFullDate(12, 2, 3, 30, 15),
+				Now:         test.NowFullDate(2019, 12, 2, 3, 30, 15),
 				Terminal: &processing.Terminal{
 					Id:      "sirocco",
 					Station: "123",
@@ -356,7 +356,7 @@ var CasesScopeCheckPass = test.Cases{
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				ExpectedSum: 4200,
-				Now:         test.NowFullDate(12, 2, 3, 30, 30),
+				Now:         test.NowFullDate(2019, 12, 2, 3, 30, 30),
 				Terminal: &processing.Terminal{
 					Id:      "multicarta",
 					Station: "123",

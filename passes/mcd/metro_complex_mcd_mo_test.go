@@ -7,7 +7,7 @@ import (
 )
 
 var (
-	casesComplexMCDMOPartOne = test.Cases{
+	CasesComplexMCDMOPartOne = test.Cases{
 		{
 			N: "ММ - МЦД_МО_1", //
 			T: test.T{

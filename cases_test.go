@@ -4,6 +4,7 @@ import (
 	"lab.siroccotechnology.ru/tp/integration-testing/apm"
 	"lab.siroccotechnology.ru/tp/integration-testing/passes"
 	"lab.siroccotechnology.ru/tp/integration-testing/passes/mcd"
+	"lab.siroccotechnology.ru/tp/integration-testing/passes/mck"
 	"lab.siroccotechnology.ru/tp/integration-testing/passes/mm"
 	"lab.siroccotechnology.ru/tp/integration-testing/passes/mmts"
 	"lab.siroccotechnology.ru/tp/integration-testing/passes/mtppk"
@@ -39,10 +40,10 @@ func init() {
 
 	//МЦК
 	//AddP(mck.CasesMetroComplexMCK)
-	//AddP(mck.CasesMetroComplexMCK1)
-	//AddP(mck.CasesMetroComplexMCK2)
-	//AddP(mck.CasesMetroComplexMCK3)
-	//AddP(mck.CasesMetroComplexMCK4)
+	AddP(mck.CasesMetroComplexMCK1)
+	AddP(mck.CasesMetroComplexMCK2)
+	AddP(mck.CasesMetroComplexMCK3)
+	AddP(mck.CasesMetroComplexMCK4)
 	//AddP(mck.CasesOfflineMetroComplexMCK)
 
 	//МЦД

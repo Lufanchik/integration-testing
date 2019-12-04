@@ -107,7 +107,8 @@ var CasesScopeCheckPass = test.Cases{
 				SubCarrier:  carriers.SubCarrier_MCD1_MO,
 				ExpectedSum: 4200,
 				Terminal: &processing.Terminal{
-					Direction: 1,
+					Station:   "2000115", //ЛОБНЯ
+					Direction: processing.TerminalDirection_INGRESS,
 				},
 			},
 			&test.Pass{
@@ -116,8 +117,10 @@ var CasesScopeCheckPass = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Direction: 2,
+					Station:   "2001270", //ОКРУЖНАЯ
+					Direction: processing.TerminalDirection_EGRESS,
 				},
+				Ingress: 1,
 			},
 		},
 	},

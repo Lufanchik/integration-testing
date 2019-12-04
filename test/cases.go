@@ -49,6 +49,8 @@ type (
 		Terminal *processing.Terminal
 		//время, которое мы ждяли перед входом
 		TimeToWait time.Duration
+		//является ли проход комплексным
+		IsComplex bool
 
 		id          string
 		carrierID   string
@@ -59,6 +61,7 @@ type (
 		ingress     *Pass
 		isParent    bool
 		timeToWait  time.Duration
+		isCancel    bool
 	}
 
 	//генерация прохода
@@ -123,7 +126,7 @@ var NowBackup = func() uint64 {
 	return uint64(time.Now().UnixNano())
 }
 
-var NowCustom = func(hour, min int) func() uint64 {
+var  NowCustom = func(hour, min int) func() uint64 {
 	now := time.Now()
 	return func() uint64 {
 		return uint64(time.Date(

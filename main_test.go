@@ -3,6 +3,7 @@ package integration_testing
 import (
 	"errors"
 	"fmt"
+	"github.com/jinzhu/copier"
 	"lab.siroccotechnology.ru/tp/integration-testing/passes"
 	"lab.siroccotechnology.ru/tp/integration-testing/test"
 	"testing"
@@ -21,7 +22,12 @@ func Add(c test.Cases) {
 }
 
 func AddP(c test.Cases) {
-	CasesParallel = append(CasesParallel, c)
+	nCases := test.Cases{}
+	err := copier.Copy(&nCases, &c)
+	if err != nil {
+		panic(err)
+	}
+	CasesParallel = append(CasesParallel, nCases)
 }
 
 func TestFull(t *testing.T) {
@@ -31,7 +37,7 @@ func TestFull(t *testing.T) {
 	t1 := time.Now()
 
 	for i := 0; i < Workers; i++ {
-		go func() {
+		go func(tasks chan test.Cases, err chan error, done chan struct{}) {
 			for v := range tasks {
 				test.Run(t, v)
 				if t.Failed() {
@@ -39,7 +45,7 @@ func TestFull(t *testing.T) {
 				}
 				done <- struct{}{}
 			}
-		}()
+		}(tasks, err, done)
 	}
 
 	for _, v := range CasesParallel {
@@ -49,6 +55,7 @@ func TestFull(t *testing.T) {
 	scenarios := 0
 	cases := 0
 	steps := 0
+
 	for _, v := range CasesParallel {
 		scenarios++
 		cases += len(v)
@@ -64,6 +71,8 @@ func TestFull(t *testing.T) {
 		}
 
 	}
+
+	fmt.Println(scenarios)
 
 	for _, v := range Cases {
 		scenarios++

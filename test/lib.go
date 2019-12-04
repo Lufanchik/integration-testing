@@ -21,7 +21,7 @@ func NanoToMicro(tm uint64) uint64 {
 	return tm / uint64(time.Microsecond) * 1000
 }
 
-func RunPass(t *testing.T, p *Pass, scenario Case, carrierID string, card *processing.Card) {
+func RunPass(t *testing.T, p *Pass, scenario *Case, carrierID string, card *processing.Card) {
 	if p.Now != nil {
 		Now = p.Now
 	} else {
@@ -58,9 +58,9 @@ func RunPass(t *testing.T, p *Pass, scenario Case, carrierID string, card *proce
 	p.parent = parent
 	p.ingress = ingress
 
-	time.Sleep(time.Millisecond * 100)
+	time.Sleep(time.Millisecond * 200)
 
-	ValidatePass(t, p, parent, ingress)
+	ValidatePass(t, p, p.parent, p.ingress)
 	AuthStatus(t, p)
 
 	if parent != nil {
@@ -77,18 +77,32 @@ func RunPass(t *testing.T, p *Pass, scenario Case, carrierID string, card *proce
 func Run(t *testing.T, cases Cases) {
 	httpProcessingApi = httpexpect.New(t, ProcessingApiUrl)
 	httpApmApi = httpexpect.New(t, ApmApiUrl)
-	for _, scenario := range cases {
-		card := Card()
-		carrierID := uuid.New().String()
-		fmt.Println(scenario.N)
-		fmt.Println(card.String())
+	type NCase struct {
+		c         *Case
+		card      *processing.Card
+		carrierId string
+	}
+	nc := make([]*NCase, len(cases))
+
+	for k, _ := range cases {
+		nc[k] = &NCase{
+			c:         &cases[k],
+			card:      Card(),
+			carrierId: uuid.New().String(),
+		}
+	}
+
+	for _, ncc := range nc {
+		fmt.Println("name: " + ncc.c.N)
+		fmt.Println(ncc.card.String())
+		scenario := ncc.c
 		for N, step := range scenario.T {
 			fmt.Println(N + 1)
 			t.Run("case: "+scenario.N, func(t *testing.T) {
 				//Pass
 				p, ok := step.(*Pass)
 				if ok {
-					RunPass(t, p, scenario, carrierID, card)
+					RunPass(t, p, scenario, ncc.carrierId, ncc.card)
 				}
 
 				//Updater
@@ -134,13 +148,41 @@ func Run(t *testing.T, cases Cases) {
 					if !ok {
 						t.Fail()
 					}
+					target.isCancel = true
 					CancelApi(t, cl, target)
 				}
 
 				//Parking
 				pr, ok := step.(*Parking)
 				if ok {
-					ParkingApi(t, card, pr)
+					ParkingApi(t, ncc.card, pr)
+				}
+			})
+			if t.Failed() {
+				break
+			}
+		}
+		if t.Failed() {
+			break
+		}
+	}
+
+	for _, ncc := range nc {
+		fmt.Println("name check: " + ncc.c.N)
+		fmt.Println(ncc.card.String())
+		scenario := ncc.c
+		time.Sleep(time.Millisecond * 1000)
+		for N, step := range scenario.T {
+			fmt.Println(fmt.Sprintf("check = %d", N+1))
+			t.Run("case check: "+scenario.N, func(t *testing.T) {
+				//Pass
+				p, ok := step.(*Pass)
+				if ok && !p.isCancel {
+					GenerateEmv(ncc.card, p)
+					TapBySubCarrier(t, p, ncc.card)
+					PassBySubCarrier(t, p.tapRequest, p)
+					ValidatePass(t, p, p.parent, p.ingress)
+					AuthStatus(t, p)
 				}
 			})
 			if t.Failed() {

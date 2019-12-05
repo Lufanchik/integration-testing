@@ -35,6 +35,7 @@ func init() {
 	AddP(mm.CasesMetroComplexMM3)
 	AddP(mm.CasesMetroComplexMM4)
 	AddP(mm.CasesOfflineMetroComplexMM)
+	AddP(mm.CasesComplexTimeMM)
 
 	//МЦК
 	AddP(mck.CasesMetroComplexMCK)

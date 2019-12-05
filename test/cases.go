@@ -20,6 +20,8 @@ type (
 	Case struct {
 		N string
 		T T
+		//платежная система
+		CardSystem processing.CardSystem
 	}
 	//генерация прохода
 	Pass struct {
@@ -103,11 +105,20 @@ type (
 		RP processing.CheckParkingResponse_Result
 		R  *processing.CheckParkingRequest
 	}
+
+	//закоытие периода агрегации
+	Complete struct {
+		StartPass int
+		Passes    []int
+		Sum       int
+	}
 )
 
 const (
 	PaymentTypeFree PaymentType = iota + 1
 	PaymentTypePayment
+	PaymentTypeStartAggregate
+	PaymentTypeAggregate
 )
 
 const (

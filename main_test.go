@@ -1,16 +1,19 @@
 package integration_testing
 
 import (
-	"errors"
 	"fmt"
 	"github.com/jinzhu/copier"
-	"lab.siroccotechnology.ru/tp/integration-testing/passes"
+	"github.com/prometheus/client_golang/prometheus/promhttp"
+	"github.com/stretchr/testify/require"
+	"lab.siroccotechnology.ru/tp/integration-testing/passes/mtppk"
 	"lab.siroccotechnology.ru/tp/integration-testing/test"
+	"net/http"
+	"net/http/pprof"
 	"testing"
 	"time"
 )
 
-const Workers = 20
+const Workers = 15
 
 var (
 	Cases         []test.Cases
@@ -30,22 +33,42 @@ func AddP(c test.Cases) {
 	CasesParallel = append(CasesParallel, nCases)
 }
 
+func status(listenAddr string) *http.Server {
+	router := http.NewServeMux()
+	router.Handle("/debug/pprof/", http.HandlerFunc(pprof.Index))
+	router.Handle("/debug/pprof/cmdline", http.HandlerFunc(pprof.Cmdline))
+	router.Handle("/debug/pprof/profile", http.HandlerFunc(pprof.Profile))
+	router.Handle("/debug/pprof/symbol", http.HandlerFunc(pprof.Symbol))
+	router.Handle("/debug/pprof/trace", http.HandlerFunc(pprof.Trace))
+	router.Handle("/metrics", promhttp.Handler())
+
+	return &http.Server{
+		Addr:    listenAddr,
+		Handler: router,
+	}
+}
+
 func TestFull(t *testing.T) {
-	tasks := make(chan test.Cases, Workers)
+	statusServer := status(":9096")
+
+	go func() {
+		if err := statusServer.ListenAndServe(); err != nil && err != http.ErrServerClosed {
+			require.NoError(t, err)
+		}
+	}()
+
+	tasks := make(chan test.Cases, len(CasesParallel))
 	err := make(chan error)
 	done := make(chan struct{})
 	t1 := time.Now()
 
 	for i := 0; i < Workers; i++ {
-		go func(tasks chan test.Cases, err chan error, done chan struct{}) {
+		go func(tasks chan test.Cases, err chan error, done chan struct{}, w int) {
 			for v := range tasks {
 				test.Run(t, v)
-				if t.Failed() {
-					err <- errors.New("failed")
-				}
 				done <- struct{}{}
 			}
-		}(tasks, err, done)
+		}(tasks, err, done, i)
 	}
 
 	for _, v := range CasesParallel {
@@ -63,16 +86,8 @@ func TestFull(t *testing.T) {
 			steps += len(s.T)
 		}
 
-		select {
-		case <-err:
-			fmt.Println(err)
-		case <-done:
-			fmt.Println("done")
-		}
-
+		<-done
 	}
-
-	fmt.Println(scenarios)
 
 	for _, v := range Cases {
 		scenarios++
@@ -89,5 +104,5 @@ func TestFull(t *testing.T) {
 }
 
 func TestSimple(t *testing.T) {
-	test.Run(t, passes.CasesCancel)
+	test.Run(t, mtppk.CasesMTPPKPasses)
 }

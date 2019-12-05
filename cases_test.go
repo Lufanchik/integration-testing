@@ -1,7 +1,6 @@
 package integration_testing
 
 import (
-	"lab.siroccotechnology.ru/tp/integration-testing/apm"
 	"lab.siroccotechnology.ru/tp/integration-testing/passes"
 	"lab.siroccotechnology.ru/tp/integration-testing/passes/mcd"
 	"lab.siroccotechnology.ru/tp/integration-testing/passes/mck"
@@ -62,7 +61,7 @@ func init() {
 	AddP(mcd.CasesComplexMCDMOPartFife)
 
 	//APM
-	AddP(apm.CasesApmGateway)
+	//AddP(apm.CasesApmGateway)
 
 	//Parking
 	//AddP(parking.CasesParkingPass)

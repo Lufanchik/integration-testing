@@ -14,94 +14,15 @@ prod: export PROCESSING_API_URL=http://processing-api-gateway.production.svc.clu
 prod: export PASS_URL=http://pass-service.production.svc.cluster.local:13380
 prod: export APM_API_URL=http://apm-api-gateway-public.production.svc.cluster.local:1340
 
+full:
+	go test -c -o ./bin/test
+	./bin/test -test.run ^TestFull$
+
 simple:
 	go test -c -o ./bin/test
-	./bin/test -test.v -test.run ^TestSimplePass$
+	./bin/test -test.run ^TestSimple$
 
-simple_complex:
-	go test -c -o ./bin/test
-	./bin/test -test.v -test.run ^TestSimpleComplexPass$
-
-apm:
-	go test -c -o ./bin/test
-	./bin/test -test.v -test.run ^TestApmGateway$
-
-complex_wrong_time:
-	go test -c -o ./bin/test
-	./bin/test -test.v -test.run ^TestWrongTimeComplexPass$
-
-metro_complex_mcd:
-	go test -c -o ./bin/test
-	./bin/test -test.v -test.run ^TestComplexMCD$
-
-metro_complex_2mcd:
-	go test -c -o ./bin/test
-	./bin/test -test.v -test.run ^TestComplex2MCD$
-
-metro_complex_mm:
-	go test -c -o ./bin/test
-	./bin/test -test.v -test.run ^TestMetroComplexMM$
-
-metro_complex_mck:
-	go test -c -o ./bin/test
-	./bin/test -test.v -test.run ^TestMetroComplexMCK$
-
-metro_complex_mmts:
-	go test -c -o ./bin/test
-	./bin/test -test.v -test.run ^TestMetroComplexMMTS$
-
-offline_metro_complex_mck_test:
-	go test -c -o ./bin/test
-	./bin/test -test.v -test.run ^TestOfflineMetroComplexMCK$
-
-offline_metro_complex_mm_test:
-	go test -c -o ./bin/test
-	./bin/test -test.v -test.run ^TestOfflineMetroComplexMM$
-
-offline_metro_complex_mmts_test:
-	go test -c -o ./bin/test
-	./bin/test -test.v -test.run ^TestOfflineMetroComplexMMTS$
-
-revise:
-	go test -c -o ./bin/test
-	./bin/test -test.v -test.run ^TestRevise$
-
-resolve:
-	go test -c -o ./bin/test
-	./bin/test -test.v -test.run ^TestResolve$
-
-parking:
-	go test -c -o ./bin/test
-	./bin/test -test.v -test.run ^TestParking$
-
-ComplexMCDDeb:
-	go test -c -o ./bin/test
-	./bin/test -test.v -test.run ^TestComplexMCDD$
-
-ComplexMCDMOPartOne:
-	go test -c -o ./bin/test
-	./bin/test -test.v -test.run ^TestComplexMCDMOPartOne$
-
-ComplexMCDMOPartTwo:
-	go test -c -o ./bin/test
-	./bin/test -test.v -test.run ^TestComplexMCDMOPartTwo$
-
-ComplexMCDMOPartThree:
-	go test -c -o ./bin/test
-	./bin/test -test.v -test.run ^TestComplexMCDMOPartThree$
-
-ComplexMCDMOPartFour:
-	go test -c -o ./bin/test
-	./bin/test -test.v -test.run ^TestComplexMCDMOPartFour$
-
-ComplexMCDMOPartThree:
-	go test -c -o ./bin/test
-	./bin/test -test.v -test.run ^TestComplexMCDMOPartFife$
-
-offline: casesComplexMCDMOPartOne
-complex: casesComplexMCDMOPartOne
-full: casesComplexMCDMOPartOne
-local: casesComplexMCDMOPartOne
-test: casesComplexMCDMOPartOne
-stage: casesComplexMCDMOPartOne
-prod: casesComplexMCDMOPartOne
+local: full
+test: full
+stage: full
+prod: full

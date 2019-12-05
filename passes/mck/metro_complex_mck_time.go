@@ -3,8 +3,10 @@ package mck
 import (
 	"lab.siroccotechnology.ru/tp/common/messages/carriers"
 	"lab.siroccotechnology.ru/tp/common/messages/processing"
+	_ "lab.siroccotechnology.ru/tp/common/messages/processing"
 	"lab.siroccotechnology.ru/tp/integration-testing/test"
 	"time"
+	_ "time"
 )
 
 var CasesComplexTimeMCK = test.Cases{
@@ -222,31 +224,57 @@ var CasesComplexTimeMCK = test.Cases{
 		},
 	},
 
-	//{
-	//	N: "4. MCK - MM - MMTS",
-	//	T: test.T{
-	//		&test.Pass{
-	//			PaymentType: test.PaymentTypePayment,
-	//			Carrier:     carriers.Carrier_MM,
-	//			SubCarrier:  carriers.SubCarrier_MCK_SUB,
-	//			ExpectedSum: 4200,
-	//			Now:         test.NowCustom(10, 00),
-	//		},
-	//		&test.Pass{
-	//			PaymentType: test.PaymentTypeFree,
-	//			Carrier:     carriers.Carrier_MM,
-	//			SubCarrier:  carriers.SubCarrier_MM_SUB,
-	//			ExpectedSum: 4200,
-	//			Parent: 1,
-	//			Now:         test.NowCustom(11, 29),
-	//		},
-	//		&test.Pass{
-	//			PaymentType: test.PaymentTypePayment,
-	//			Carrier:     carriers.Carrier_MM,
-	//			SubCarrier:  carriers.SubCarrier_MMTS_SUB,
-	//			ExpectedSum: 4200,
-	//			Now:         test.NowCustom(13, 02),
-	//		},
-	//	},
-	//},
+	{
+		N: "4. MCK - MM - MMTS",
+		T: test.T{
+			&test.Pass{
+				PaymentType: test.PaymentTypePayment,
+				Carrier:     carriers.Carrier_MM,
+				SubCarrier:  carriers.SubCarrier_MCK_SUB,
+				ExpectedSum: 4200,
+				Now:         test.NowCustom(10, 00),
+			},
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
+				Carrier:     carriers.Carrier_MM,
+				SubCarrier:  carriers.SubCarrier_MM_SUB,
+				Parent: 1,
+				Now:         test.NowCustom(10, 30),
+			},
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
+				Carrier:     carriers.Carrier_MM,
+				SubCarrier:  carriers.SubCarrier_MMTS_SUB,
+				Parent: 1,
+				Now:         test.NowCustom(11, 00),
+			},
+		},
+	},
+
+	{
+		N: "5. MM - MMTS - MCK ",
+		T: test.T{
+			&test.Pass{
+				PaymentType: test.PaymentTypePayment,
+				Carrier:     carriers.Carrier_MM,
+				SubCarrier:  carriers.SubCarrier_MM_SUB,
+				ExpectedSum: 4200,
+				Now:         test.NowCustom(10, 00),
+			},
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
+				Carrier:     carriers.Carrier_MM,
+				SubCarrier:  carriers.SubCarrier_MMTS_SUB,
+				Parent: 1,
+				Now:         test.NowCustom(10, 20),
+			},
+			&test.Pass{
+				PaymentType: test.PaymentTypePayment,
+				Carrier:     carriers.Carrier_MM,
+				SubCarrier:  carriers.SubCarrier_MCK_SUB,
+				ExpectedSum: 4200,
+				Now:         test.NowCustom(19, 30),
+			},
+		},
+	},
 }

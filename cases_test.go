@@ -12,9 +12,6 @@ import (
 )
 
 func init() {
-	//последовательный запуск
-	//Add(passes.CasesCancel)
-
 	//параллельный запуск
 	//общие кейсы проходов
 	AddP(passes.CasesCancel)

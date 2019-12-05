@@ -2,9 +2,11 @@ package test
 
 import (
 	"fmt"
+	"github.com/brianvoe/gofakeit"
 	"github.com/gavv/httpexpect"
 	"github.com/google/uuid"
 	"lab.siroccotechnology.ru/tp/common/messages/processing"
+	"math/rand"
 	"testing"
 	"time"
 
@@ -21,17 +23,34 @@ func NanoToMicro(tm uint64) uint64 {
 	return tm / uint64(time.Microsecond) * 1000
 }
 
-func RunPass(t *testing.T, p *Pass, scenario *Case, carrierID string, card *processing.Card) {
+func getRequestType(t *testing.T, p *Pass) RequestType {
+	if globalRequestType != RequestTypeNone {
+		return globalRequestType
+	}
+
+	if p.RequestType == RequestTypeNone {
+		return RequestType(gofakeit.Number(1, 2))
+	}
+
+	return p.RequestType
+}
+
+func ConfigurePass(t *testing.T, p *Pass, carrierID string, card *processing.Card) {
 	if p.Now != nil {
 		Now = p.Now
 	} else {
 		Now = NowBackup
 	}
 	if p.RequestType == RequestTypeNone {
-		p.RequestType = globalRequestType
+		rand.Seed(time.Now().UnixNano())
+		p.RequestType = getRequestType(t, p)
 	}
 	GenerateEmv(card, p)
 	p.carrierID = carrierID
+}
+
+func RunPass(t *testing.T, p *Pass, scenario *Case, carrierID string, card *processing.Card) {
+	ConfigurePass(t, p, carrierID, card)
 	tapReq := TapBySubCarrier(t, p, card)
 	timeRequest := PassBySubCarrier(t, tapReq, p)
 	var parent, ingress *Pass
@@ -178,7 +197,7 @@ func Run(t *testing.T, cases Cases) {
 				//Pass
 				p, ok := step.(*Pass)
 				if ok && !p.isCancel {
-					GenerateEmv(ncc.card, p)
+					ConfigurePass(t, p, ncc.carrierId, ncc.card)
 					TapBySubCarrier(t, p, ncc.card)
 					PassBySubCarrier(t, p.tapRequest, p)
 					ValidatePass(t, p, p.parent, p.ingress)

@@ -53,6 +53,8 @@ type (
 		TimeToWait time.Duration
 		//является ли проход комплексным
 		IsComplex bool
+		//вышли ли мы за пределы таймаута комплексной поездки
+		IsComplexTimeout bool
 
 		id          string
 		carrierID   string

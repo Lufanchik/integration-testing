@@ -173,6 +173,10 @@ func ValidatePass(t *testing.T, p *Pass, parent *Pass, ingress *Pass) {
 		expectPass.IsCancel = true
 	}
 
+	if p.IsComplexTimeout {
+		expectPass.IsComplexTimeout = true
+	}
+
 	require.Equal(t, expectPass, passDB)
 	require.NoError(t, err)
 }

@@ -154,6 +154,12 @@ func ValidatePass(t *testing.T, p *Pass, parent *Pass, ingress *Pass) {
 		expectPass.IsAuth = true
 	}
 
+	if p.PaymentType == PaymentTypeAggregate || p.PaymentType == PaymentTypeStartAggregate {
+		expectPass.IsAuth = false
+		expectPass.IsAggregate = true
+		expectPass.Sum = 0
+	}
+
 	if p.Parent > 0 {
 		expectPass.IsComplex = true
 		expectPass.ParentComplexId = parent.id
@@ -246,6 +252,23 @@ func ParkingApi(t *testing.T, card *processing.Card, pr *Parking) {
 
 	response := &processing.CheckParkingResponse{}
 	err := jsonpb.Unmarshal(strings.NewReader(object), response)
+	require.NoError(t, err)
+	require.Equal(t, resp, response)
+}
+
+func CompleteApi(t *testing.T, pass *Pass, passes []*Pass, sum int) {
+	req, resp := CompleteRequest(pass, passes, sum)
+	u := "/twirp/sirocco.ProcessingAPI/ProcessComplete"
+	r := httpProcessingApi.POST(u).WithJSON(req).
+		Expect().
+		Status(http.StatusOK)
+
+	object := r.Body().Raw()
+	logRequest(u, r)
+
+	response := &processing.CompleteResponse{}
+	err := jsonpb.Unmarshal(strings.NewReader(object), response)
+	resp.Created = response.Created
 	require.NoError(t, err)
 	require.Equal(t, resp, response)
 }

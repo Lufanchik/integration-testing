@@ -5,7 +5,7 @@ import (
 	"github.com/jinzhu/copier"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 	"github.com/stretchr/testify/require"
-	"lab.siroccotechnology.ru/tp/integration-testing/passes"
+	"lab.siroccotechnology.ru/tp/integration-testing/passes/mtppk"
 	"lab.siroccotechnology.ru/tp/integration-testing/test"
 	"net/http"
 	"net/http/pprof"
@@ -13,7 +13,7 @@ import (
 	"time"
 )
 
-const Workers = 10
+const Workers = 15
 
 var (
 	Cases         []test.Cases
@@ -104,5 +104,5 @@ func TestFull(t *testing.T) {
 }
 
 func TestSimple(t *testing.T) {
-	test.Run(t, passes.CasesCancel)
+	test.Run(t, mtppk.CasesMTPPKPasses)
 }

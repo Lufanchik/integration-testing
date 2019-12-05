@@ -37,9 +37,9 @@ func CardEmvIncorrect() string {
 	return "WovYAaagxXfxea2U/5cMzTN1MEQIJZAUTovU5NDItD4qB6PyP0rzjg3nnXjKH3XVaVMjUSHJ5YiIJ2Ji4jX3E5bj+Ufe5BntEUhjqyphe8HQz+jJdhWfld+Bm61C8yeeq3qhYbf7zgswrh3d2Gd5L6h4PlKVbbCuGLI8KOmTmfoqQXX5dtF+ZHum7l5BUIvGn3nFj1Fbkye0iKcxHXyToZd/l/M9FuRy9/klAgKYPScYlYWRSwH2I5HZs5qDKJi/cXscLjYoF6h9xxRJMsXJr68BQ5E1bx9sG5mlBb3Pzeytns8Qct9pziuUdDUnFEd2xgx07ul7jNu40k9BARcyfQ=="
 }
 
-func Card() *processing.Card {
+func Card(system processing.CardSystem) *processing.Card {
 	gofakeit.Seed(time.Now().UnixNano())
-	return &processing.Card{
+	card := &processing.Card{
 		System: processing.CardSystem_VISA,
 		Type:   processing.CardType_DEBIT,
 		Pan:    CardPan(),
@@ -49,6 +49,10 @@ func Card() *processing.Card {
 			Type: processing.Token_SAMSUNG_PAY,
 		},
 	}
+	if system != processing.CardSystem_NONE_SYSTEM {
+		card.System = system
+	}
+	return card
 }
 
 func GenerateEmv(card *processing.Card, p *Pass) {

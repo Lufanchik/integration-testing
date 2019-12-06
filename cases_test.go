@@ -1,14 +1,12 @@
 package integration_testing
 
-import (
-	"lab.siroccotechnology.ru/tp/integration-testing/passes/mck"
-)
+import "lab.siroccotechnology.ru/tp/integration-testing/passes/mck"
 
 func init() {
 	//параллельный запуск
 	//общие кейсы проходов
-	//Add(mck.CasesComplexTimeMCK)
-	Add(mck.CasesOfflineMetroComplexMCK)
+	Add(mck.CasesComplexTimeMCK)
+	//Add(mck.CasesOfflineMetroComplexMCK)
 	//AddP(passes.CasesSimpleComplexPass)
 	//AddP(passes.CasesSimplePass)
 

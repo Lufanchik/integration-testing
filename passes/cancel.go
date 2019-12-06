@@ -111,4 +111,20 @@ var CasesCancel = test.Cases{
 			},
 		},
 	},
+	{
+		N: "MM_successful_authorization_and_cancel",
+		T: test.T{
+			&test.Pass{
+				PaymentType: test.PaymentTypePayment,
+				RequestType: test.RequestTypeOnline,
+				Carrier:     carriers.Carrier_MM,
+				SubCarrier:  carriers.SubCarrier_MM_SUB,
+				ExpectedSum: 4200,
+			},
+			&test.Cancel{
+				Target: 1,
+				Reason: processing.CancelPassRequest_CSS,
+			},
+		},
+	},
 }

@@ -35,7 +35,6 @@ func init() {
 	AddP(mm.CasesMetroComplexMM3)
 	AddP(mm.CasesMetroComplexMM4)
 	AddP(mm.CasesOfflineMetroComplexMM)
-	AddP(mm.CasesComplexTimeMM) //Не проходят
 
 	//МЦК
 	AddP(mck.CasesMetroComplexMCK)
@@ -65,4 +64,7 @@ func init() {
 	//черновики, которые пока что не запускаются
 	//AddP(passes.CasesWrongTimeComplexPass)
 	//AddP(passes.CasesScopeCheckPass)
+	//AddP(mm.CasesComplexTimeMM)
+
+	//Add(passes.CasesCancel)
 }

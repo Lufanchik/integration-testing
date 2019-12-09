@@ -6,6 +6,7 @@ import (
 	"lab.siroccotechnology.ru/tp/integration-testing/passes"
 	"lab.siroccotechnology.ru/tp/integration-testing/passes/mcd"
 	"lab.siroccotechnology.ru/tp/integration-testing/passes/mck"
+	"lab.siroccotechnology.ru/tp/integration-testing/passes/mgt"
 	"lab.siroccotechnology.ru/tp/integration-testing/passes/mm"
 	"lab.siroccotechnology.ru/tp/integration-testing/passes/mmts"
 )
@@ -13,6 +14,7 @@ import (
 func init() {
 	//параллельный запуск
 	//общие кейсы проходов
+	Add(mgt.CasesMGT)
 	AddP(passes.CasesCancel)
 	AddP(passes.CasesSimpleComplexPass)
 	AddP(passes.CasesSimplePass)

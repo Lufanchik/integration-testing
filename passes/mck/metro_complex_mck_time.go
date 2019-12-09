@@ -3,10 +3,8 @@ package mck
 import (
 	"lab.siroccotechnology.ru/tp/common/messages/carriers"
 	"lab.siroccotechnology.ru/tp/common/messages/processing"
-	_ "lab.siroccotechnology.ru/tp/common/messages/processing"
 	"lab.siroccotechnology.ru/tp/integration-testing/test"
 	"time"
-	_ "time"
 )
 
 var CasesComplexTimeMCK = test.Cases{
@@ -273,7 +271,7 @@ var CasesComplexTimeMCK = test.Cases{
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
 				ExpectedSum: 4200,
-				//Now:         test.NowCustom(22, 30),
+				Now:         test.NowCustom(22, 30),
 			},
 		},
 	},

@@ -8,7 +8,7 @@ import (
 
 var CasesSimplePass = test.Cases{
 	{
-		N: "Simple pass && cancel",
+		N: "!!! Simple pass && cancel",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,

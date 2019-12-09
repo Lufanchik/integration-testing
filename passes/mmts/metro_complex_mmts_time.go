@@ -1,4 +1,4 @@
-package mm
+package mmts
 
 import (
 	"lab.siroccotechnology.ru/tp/common/messages/carriers"
@@ -8,14 +8,14 @@ import (
 )
 
 var (
-	CasesComplexTimeMM = test.Cases{
+	CasesComplexTimeMMTS = test.Cases{
 		{
-			N: "1. ММ - ММ",
+			N: "1. ММТС - ММТС",
 			T: test.T{
 				&test.Pass{
 					PaymentType:      test.PaymentTypePayment,
 					Carrier:          carriers.Carrier_MM,
-					SubCarrier:       carriers.SubCarrier_MM_SUB,
+					SubCarrier:       carriers.SubCarrier_MMTS_SUB,
 					Now:              test.NowFullDate(2019, 12, 01, 10, 30, 00),
 					ExpectedSum:      4200,
 					IsComplexTimeout: true,
@@ -23,20 +23,20 @@ var (
 				&test.Pass{
 					PaymentType:      test.PaymentTypePayment,
 					Carrier:          carriers.Carrier_MM,
-					SubCarrier:       carriers.SubCarrier_MM_SUB,
-					Now:              test.NowFullDate(2019, 12, 01, 11, 00, 00),
+					SubCarrier:       carriers.SubCarrier_MMTS_SUB,
+					Now:              test.NowFullDate(2019, 12, 01, 12, 00, 01),
 					ExpectedSum:      4200,
 					IsComplexTimeout: true,
 				},
 			},
 		},
 		{
-			N: "2. ММ - МЦК / Втечение 90 мин",
+			N: "2. ММТС - МЦК / Втечение 90 мин",
 			T: test.T{
 				&test.Pass{
 					PaymentType:      test.PaymentTypePayment,
 					Carrier:          carriers.Carrier_MM,
-					SubCarrier:       carriers.SubCarrier_MM_SUB,
+					SubCarrier:       carriers.SubCarrier_MMTS_SUB,
 					Now:              test.NowFullDate(2019, 11, 01, 23, 50, 00),
 					IsComplexTimeout: true,
 					ExpectedSum:      4200,
@@ -52,13 +52,13 @@ var (
 			},
 		},
 		{
-			N: "3. ММ - МЦК / После 90 мин",
+			N: "3. ММТС - МЦК / После 90 мин",
 			T: test.T{
 				&test.Pass{
 					PaymentType:      test.PaymentTypePayment,
 					Carrier:          carriers.Carrier_MM,
-					SubCarrier:       carriers.SubCarrier_MM_SUB,
-					Now:              test.NowFullDate(2019, 12, 01, 10, 30, 00),
+					SubCarrier:       carriers.SubCarrier_MMTS_SUB,
+					Now:              test.NowFullDate(2019, 12, 01, 8, 30, 00),
 					ExpectedSum:      4200,
 					IsComplexTimeout: true,
 				},
@@ -66,19 +66,19 @@ var (
 					PaymentType:      test.PaymentTypePayment,
 					Carrier:          carriers.Carrier_MM,
 					SubCarrier:       carriers.SubCarrier_MCK_SUB,
-					Now:              test.NowFullDate(2019, 12, 01, 12, 00, 01),
+					Now:              test.NowFullDate(2019, 12, 01, 10, 00, 01),
 					ExpectedSum:      4200,
 					IsComplexTimeout: true,
 				},
 			},
 		},
 		{
-			N: "4. ММ - ММТС / Втечение 90 мин",
+			N: "4. ММТС - ММ / Втечение 90 мин",
 			T: test.T{
 				&test.Pass{
 					PaymentType:      test.PaymentTypePayment,
 					Carrier:          carriers.Carrier_MM,
-					SubCarrier:       carriers.SubCarrier_MM_SUB,
+					SubCarrier:       carriers.SubCarrier_MMTS_SUB,
 					Now:              test.NowFullDate(2019, 12, 01, 10, 30, 00),
 					ExpectedSum:      4200,
 					IsComplexTimeout: true,
@@ -86,7 +86,7 @@ var (
 				&test.Pass{
 					PaymentType:      test.PaymentTypeFree,
 					Carrier:          carriers.Carrier_MM,
-					SubCarrier:       carriers.SubCarrier_MMTS_SUB,
+					SubCarrier:       carriers.SubCarrier_MM_SUB,
 					Now:              test.NowFullDate(2019, 12, 01, 11, 59, 59),
 					Parent:           1,
 					IsComplexTimeout: true,
@@ -94,13 +94,13 @@ var (
 			},
 		},
 		{
-			N: "5. ММ - ММТС / После 90 мин",
+			N: "5. ММТС - ММ / После 90 мин",
 			T: test.T{
 				&test.Pass{
 					PaymentType:      test.PaymentTypePayment,
 					Carrier:          carriers.Carrier_MM,
-					SubCarrier:       carriers.SubCarrier_MM_SUB,
-					Now:              test.NowFullDate(2019, 12, 05, 10, 30, 00),
+					SubCarrier:       carriers.SubCarrier_MMTS_SUB,
+					Now:              test.NowFullDate(2019, 12, 05, 17, 30, 00),
 					ExpectedSum:      4200,
 					IsComplexTimeout: true,
 				},
@@ -108,8 +108,86 @@ var (
 					PaymentType:      test.PaymentTypePayment,
 					Carrier:          carriers.Carrier_MM,
 					SubCarrier:       carriers.SubCarrier_MMTS_SUB,
-					Now:              test.NowFullDate(2019, 12, 05, 12, 00, 01),
+					Now:              test.NowFullDate(2019, 12, 05, 19, 00, 01),
 					ExpectedSum:      4200,
+					IsComplexTimeout: true,
+				},
+			},
+		},
+		{
+			N: "6. ММТС - МСК-МСК / Втечение 90 мин",
+			T: test.T{
+				&test.Pass{
+					PaymentType:      test.PaymentTypePayment,
+					Carrier:          carriers.Carrier_MM,
+					SubCarrier:       carriers.SubCarrier_MMTS_SUB,
+					Now:              test.NowFullDate(2019, 12, 2, 8, 15, 04),
+					ExpectedSum:      4200,
+					IsComplexTimeout: true,
+				},
+				&test.Pass{
+					PaymentType: test.PaymentTypeFree,
+					Carrier:     carriers.Carrier_MCD,
+					SubCarrier:  carriers.SubCarrier_MCD1_MSK,
+					Terminal: &processing.Terminal{
+						Station:   "2000700", //ТЕСТОВСКАЯ
+						Direction: processing.TerminalDirection_INGRESS,
+					},
+					Parent:           1,
+					Now:              test.NowFullDate(2019, 12, 2, 8, 33, 00),
+					TimeToWait:       5 * time.Minute,
+					IsComplexTimeout: true,
+				},
+				&test.Pass{
+					PaymentType: test.PaymentTypePayment,
+					Carrier:     carriers.Carrier_MCD,
+					SubCarrier:  carriers.SubCarrier_MCD1_MO,
+					Terminal: &processing.Terminal{
+						Station:   "2001101", //ИННОВАЦИОННЫЙ ЦЕНТР
+						Direction: processing.TerminalDirection_EGRESS,
+					},
+					Ingress:          2,
+					Now:              test.NowFullDate(2019, 12, 2, 9, 00, 00),
+					ExpectedSum:      700,
+					IsComplexTimeout: true,
+				},
+			},
+		},
+		{
+			N: "7. ММТС - МСК-МСК / После 90 мин",
+			T: test.T{
+				&test.Pass{
+					PaymentType:      test.PaymentTypePayment,
+					Carrier:          carriers.Carrier_MM,
+					SubCarrier:       carriers.SubCarrier_MMTS_SUB,
+					Now:              test.NowFullDate(2019, 12, 2, 6, 15, 04),
+					ExpectedSum:      4200,
+					IsComplexTimeout: true,
+				},
+				&test.Pass{
+					PaymentType: test.PaymentTypePayment,
+					Carrier:     carriers.Carrier_MCD,
+					SubCarrier:  carriers.SubCarrier_MCD1_MSK,
+					Terminal: &processing.Terminal{
+						Station:   "2000700", //ТЕСТОВСКАЯ
+						Direction: processing.TerminalDirection_INGRESS,
+					},
+					ExpectedSum:      4200,
+					Now:              test.NowFullDate(2019, 12, 2, 8, 33, 00),
+					TimeToWait:       5 * time.Minute,
+					IsComplexTimeout: true,
+				},
+				&test.Pass{
+					PaymentType: test.PaymentTypePayment,
+					Carrier:     carriers.Carrier_MCD,
+					SubCarrier:  carriers.SubCarrier_MCD1_MO,
+					Terminal: &processing.Terminal{
+						Station:   "2001101", //ИННОВАЦИОННЫЙ ЦЕНТР
+						Direction: processing.TerminalDirection_EGRESS,
+					},
+					Ingress:          2,
+					Now:              test.NowFullDate(2019, 12, 2, 9, 00, 00),
+					ExpectedSum:      700,
 					IsComplexTimeout: true,
 				},
 			},

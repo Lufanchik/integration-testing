@@ -8,7 +8,6 @@ import (
 	"lab.siroccotechnology.ru/tp/integration-testing/passes/mck"
 	"lab.siroccotechnology.ru/tp/integration-testing/passes/mm"
 	"lab.siroccotechnology.ru/tp/integration-testing/passes/mmts"
-	"lab.siroccotechnology.ru/tp/integration-testing/passes/mtppk"
 )
 
 func init() {
@@ -19,7 +18,7 @@ func init() {
 	AddP(passes.CasesSimplePass)
 
 	//МТППК
-	AddP(mtppk.CasesMTPPKPasses)
+	//AddP(mtppk.CasesMTPPKPasses)
 
 	//ММТС
 	AddP(mmts.CasesComplexPassMMTS1)
@@ -28,6 +27,7 @@ func init() {
 	AddP(mmts.CasesComplexPassMMTS4)
 	AddP(mmts.CasesComplexPassMMTS5)
 	AddP(mmts.CasesOfflineMetroComplexMMTS)
+	Add(mmts.CasesComplexTimeMMTS)
 
 	//MM
 	AddP(mm.CasesMetroComplexMM1)
@@ -46,7 +46,6 @@ func init() {
 
 	//МЦД
 	AddP(mcd.CasesComplexMCD)
-	AddP(mcd.CasesComplexMCD2)
 	AddP(mcd.CasesMetroComplexMCDMSK1)
 	AddP(mcd.CasesMetroComplexMCDMSK2)
 	AddP(mcd.CasesMetroComplexMCDMSK3)
@@ -63,4 +62,7 @@ func init() {
 	//черновики, которые пока что не запускаются
 	//AddP(passes.CasesWrongTimeComplexPass)
 	//AddP(passes.CasesScopeCheckPass)
+	//AddP(mm.CasesComplexTimeMM)
+
+	//Add(passes.CasesCancel)
 }

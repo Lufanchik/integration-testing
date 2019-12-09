@@ -40,20 +40,20 @@ var CasesMTPPKPasses = test.Cases{
 			},
 		},
 	},
-	{
-		N:          "2. MTPPK, MASTERCARD IS NOT AGGREGATE",
-		CardSystem: processing.CardSystem_MASTERCARD,
-		T: test.T{
-			&test.Pass{
-				PaymentType: test.PaymentTypePayment,
-				Carrier:     carriers.Carrier_MTPPK,
-				ExpectedSum: 4200,
-			},
-			&test.Pass{
-				PaymentType: test.PaymentTypePayment,
-				Carrier:     carriers.Carrier_MTPPK,
-				ExpectedSum: 4200,
-			},
-		},
-	},
+	//{
+	//	N:          "2. MTPPK, MASTERCARD IS NOT AGGREGATE",
+	//	CardSystem: processing.CardSystem_MASTERCARD,
+	//	T: test.T{
+	//		&test.Pass{
+	//			PaymentType: test.PaymentTypePayment,
+	//			Carrier:     carriers.Carrier_MTPPK,
+	//			ExpectedSum: 4200,
+	//		},
+	//		&test.Pass{
+	//			PaymentType: test.PaymentTypePayment,
+	//			Carrier:     carriers.Carrier_MTPPK,
+	//			ExpectedSum: 4200,
+	//		},
+	//	},
+	//},
 }

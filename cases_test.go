@@ -1,7 +1,7 @@
 package integration_testing
 
 import (
-	"lab.siroccotechnology.ru/tp/integration-testing/passes/mmts"
+	"lab.siroccotechnology.ru/tp/integration-testing/passes"
 )
 
 func init() {
@@ -9,8 +9,8 @@ func init() {
 	//Add(mck.CasesComplexTimeMCK)
 	//параллельный запуск
 	//общие кейсы проходов
-	//Add(passes.CasesCancel)
-	Add(mmts.CasesComplexTimeMMTS)
+	Add(passes.CasesCancel)
+	//Add(mmts.CasesComplexTimeMMTS)
 	//AddP(passes.CasesSimpleComplexPass)
 	//Add(passes.CasesSimplePass)
 

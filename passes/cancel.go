@@ -111,7 +111,7 @@ var CasesCancel = test.Cases{
 	//		},
 	//	},
 	//},
-
+	//
 	//{
 	//	N: "MM_successful_authorization_and_cancel",
 	//	T: test.T{
@@ -128,59 +128,68 @@ var CasesCancel = test.Cases{
 	//		},
 	//	},
 	//},
-	//
-	//{
-	//	N: "MM - отменай первой поездки",
-	//	CardSystem: processing.CardSystem_VISA,
-	//	T: test.T{
-	//		&test.Pass{
-	//			PaymentType: test.PaymentTypePayment,
-	//			RequestType: test.RequestTypeOnline,
-	//			Carrier:     carriers.Carrier_MM,
-	//			SubCarrier:  carriers.SubCarrier_MM_SUB,
-	//			ExpectedSum: 4200,
-	//		},
-	//		&test.Pass{
-	//			PaymentType: test.PaymentTypePayment,
-	//			RequestType: test.RequestTypeOnline,
-	//			Carrier:     carriers.Carrier_MM,
-	//			SubCarrier:  carriers.SubCarrier_MM_SUB,
-	//			ExpectedSum: 4200,
-	//		},
-	//		&test.Pass{
-	//			PaymentType: test.PaymentTypePayment,
-	//			RequestType: test.RequestTypeOnline,
-	//			Carrier:     carriers.Carrier_MM,
-	//			SubCarrier:  carriers.SubCarrier_MM_SUB,
-	//			ExpectedSum: 4200,
-	//		},
-	//		&test.Pass{
-	//			PaymentType: test.PaymentTypePayment,
-	//			RequestType: test.RequestTypeOnline,
-	//			Carrier:     carriers.Carrier_MM,
-	//			SubCarrier:  carriers.SubCarrier_MM_SUB,
-	//			ExpectedSum: 4200,
-	//		},
-	//		&test.Pass{
-	//			PaymentType: test.PaymentTypePayment,
-	//			RequestType: test.RequestTypeOnline,
-	//			Carrier:     carriers.Carrier_MM,
-	//			SubCarrier:  carriers.SubCarrier_MM_SUB,
-	//			ExpectedSum: 4200,
-	//		},
-	//		&test.Complete{
-	//			StartPass: 1,
-	//			Passes: []int{
-	//				1, 2, 3, 4, 5,
-	//			},
-	//			Sum: 21000,
-	//		},
-	//		&test.Cancel{
-	//			Target: 1,
-	//			Reason: processing.CancelPassRequest_CSS,
-	//		},
-	//	},
-	//},
+
+	{
+		N: "MM - отмена поездки",
+		CardSystem: processing.CardSystem_VISA,
+		T: test.T{
+			&test.Pass{
+				PaymentType: test.PaymentTypePayment,
+				RequestType: test.RequestTypeOnline,
+				Carrier:     carriers.Carrier_MM,
+				SubCarrier:  carriers.SubCarrier_MM_SUB,
+				ExpectedSum: 4200,
+			},
+			&test.Cancel{
+				Target: 1,
+				Reason: processing.CancelPassRequest_CSS,
+			},
+			&test.Pass{
+				PaymentType: test.PaymentTypePayment,
+				RequestType: test.RequestTypeOnline,
+				Carrier:     carriers.Carrier_MM,
+				SubCarrier:  carriers.SubCarrier_MM_SUB,
+				ExpectedSum: 4200,
+			},
+			&test.Cancel{
+				Target: 3,
+				Reason: processing.CancelPassRequest_CSS,
+			},
+			&test.Pass{
+				PaymentType: test.PaymentTypePayment,
+				RequestType: test.RequestTypeOnline,
+				Carrier:     carriers.Carrier_MM,
+				SubCarrier:  carriers.SubCarrier_MM_SUB,
+				ExpectedSum: 4200,
+			},
+			&test.Cancel{
+				Target: 5,
+				Reason: processing.CancelPassRequest_CSS,
+			},
+			&test.Pass{
+				PaymentType: test.PaymentTypePayment,
+				RequestType: test.RequestTypeOnline,
+				Carrier:     carriers.Carrier_MM,
+				SubCarrier:  carriers.SubCarrier_MM_SUB,
+				ExpectedSum: 4200,
+			},
+			&test.Cancel{
+				Target: 7,
+				Reason: processing.CancelPassRequest_CSS,
+			},
+			&test.Pass{
+				PaymentType: test.PaymentTypePayment,
+				RequestType: test.RequestTypeOnline,
+				Carrier:     carriers.Carrier_MM,
+				SubCarrier:  carriers.SubCarrier_MM_SUB,
+				ExpectedSum: 4200,
+			},
+			&test.Cancel{
+				Target: 9,
+				Reason: processing.CancelPassRequest_CSS,
+			},
+		},
+	},
 
 	{
 		N: "45. Закрытие комплексной поездки по максимальному количеству пересадок за пределами МСК (ММТС – МЦК – ММ – МЦД МСК вход – МЦД МО выход)",
@@ -236,9 +245,5 @@ var CasesCancel = test.Cases{
 				ExpectedSum: 700,
 			},
 		},
-	},
-
-	{
-		N: "MM - MCK - MMTS - ",
 	},
 }

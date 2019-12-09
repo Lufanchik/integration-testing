@@ -27,7 +27,6 @@ func init() {
 	AddP(mmts.CasesComplexPassMMTS4)
 	AddP(mmts.CasesComplexPassMMTS5)
 	AddP(mmts.CasesOfflineMetroComplexMMTS)
-	AddP(mmts.CasesComplexTimeMMTS)
 
 	//MM
 	AddP(mm.CasesMetroComplexMM1)
@@ -35,7 +34,6 @@ func init() {
 	AddP(mm.CasesMetroComplexMM3)
 	AddP(mm.CasesMetroComplexMM4)
 	AddP(mm.CasesOfflineMetroComplexMM)
-	AddP(mm.CasesComplexTimeMM)
 
 	//МЦК
 	AddP(mck.CasesMetroComplexMCK)
@@ -44,7 +42,6 @@ func init() {
 	AddP(mck.CasesMetroComplexMCK3)
 	AddP(mck.CasesMetroComplexMCK4)
 	AddP(mck.CasesOfflineMetroComplexMCK)
-	AddP(mck.CasesComplexTimeMCK)
 
 	//МЦД
 	AddP(mcd.CasesComplexMCD)
@@ -53,9 +50,12 @@ func init() {
 	AddP(mcd.CasesMetroComplexMCDMSK3)
 	AddP(mcd.CasesMetroComplexMCDMSK4)
 	AddP(mcd.CasesMetroComplexMCDMSK5)
-	AddP(mcd.CasesComplexTimeMCD)
+	AddP(mcd.CasesComplexMCDMOPartOne)
+	AddP(mcd.CasesComplexMCDMOPartTwo)
+	AddP(mcd.CasesComplexMCDMOPartThree)
+	AddP(mcd.CasesComplexMCDMOPartFour)
+	AddP(mcd.CasesComplexMCDMOPartFife)
 	AddP(mcd.CasesOfflineMetroComplexMCD)
-
 	//APM
 	AddP(apm.CasesApmGateway)
 
@@ -65,7 +65,12 @@ func init() {
 	//черновики, которые пока что не запускаются
 	//AddP(passes.CasesWrongTimeComplexPass)
 	//AddP(passes.CasesScopeCheckPass)
+
+	//тесты с нестандартным временем - надо придумать как с ними работать
 	//AddP(mm.CasesComplexTimeMM)
+	//AddP(mcd.CasesComplexTimeMCD)
+	//Add(mmts.CasesComplexTimeMMTS)
+	//AddP(mcd.CasesComplexTimeMCD)
 
 	//Add(passes.CasesCancel)
 }

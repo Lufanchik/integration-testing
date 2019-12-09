@@ -31,89 +31,13 @@ var CasesCancel = test.Cases{
 				PaymentType: test.PaymentTypePayment,
 				RequestType: test.RequestTypeOnline,
 				Carrier:     carriers.Carrier_MM,
-				SubCarrier:  carriers.SubCarrier_MCK_SUB,
-				ExpectedSum: 4200,
-			},
-			&test.Cancel{
-				Target: 1,
-				Reason: processing.CancelPassRequest_CSS,
-			},
-		},
-	},
-
-	{
-		N: "3. ММТС ММ успешная авторизация + Отмена",
-		T: test.T{
-			&test.Pass{
-				PaymentType: test.PaymentTypePayment,
-				RequestType: test.RequestTypeOnline,
-				Carrier:     carriers.Carrier_MM,
-				SubCarrier:  carriers.SubCarrier_MMTS_SUB,
-				ExpectedSum: 4200,
-			},
-			&test.Cancel{
-				Target: 1,
-				Reason: processing.CancelPassRequest_CSS,
-			},
-		},
-	},
-
-	{
-		N: "4. ММ неуспешная авторизация + Отмена",
-		T: test.T{
-			&test.Pass{
-				PaymentType: test.PaymentTypePayment,
-				RequestType: test.RequestTypeOnline,
-				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				ExpectedSum: 4200,
-				AuthType:    test.AuthTypeIncorrect,
 			},
 			&test.Cancel{
-				Target: 1,
+				Target: 3,
 				Reason: processing.CancelPassRequest_CSS,
 			},
-		},
-	},
-
-	{
-		N: "5. MCK_failed_authorization_and_cancel",
-		T: test.T{
-			&test.Pass{
-				PaymentType: test.PaymentTypePayment,
-				RequestType: test.RequestTypeOnline,
-				Carrier:     carriers.Carrier_MM,
-				SubCarrier:  carriers.SubCarrier_MCK_SUB,
-				ExpectedSum: 4200,
-				AuthType:    test.AuthTypeIncorrect,
-			},
-			&test.Cancel{
-				Target: 1,
-				Reason: processing.CancelPassRequest_CSS,
-			},
-		},
-	},
-
-	{
-		N: "6. MMTS_failed_authorization_and_cancel",
-		T: test.T{
-			&test.Pass{
-				PaymentType: test.PaymentTypePayment,
-				RequestType: test.RequestTypeOnline,
-				Carrier:     carriers.Carrier_MM,
-				SubCarrier:  carriers.SubCarrier_MMTS_SUB,
-				ExpectedSum: 4200,
-				AuthType:    test.AuthTypeIncorrect,
-			},
-			&test.Cancel{
-				Target: 1,
-				Reason: processing.CancelPassRequest_CSS,
-			},
-		},
-	},
-	{
-		N: "7. MM_successful_authorization_and_cancel",
-		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				RequestType: test.RequestTypeOnline,
@@ -122,8 +46,85 @@ var CasesCancel = test.Cases{
 				ExpectedSum: 4200,
 			},
 			&test.Cancel{
-				Target: 1,
+				Target: 5,
 				Reason: processing.CancelPassRequest_CSS,
+			},
+			&test.Pass{
+				PaymentType: test.PaymentTypePayment,
+				RequestType: test.RequestTypeOnline,
+				Carrier:     carriers.Carrier_MM,
+				SubCarrier:  carriers.SubCarrier_MM_SUB,
+				ExpectedSum: 4200,
+			},
+			&test.Cancel{
+				Target: 7,
+				Reason: processing.CancelPassRequest_CSS,
+			},
+			&test.Pass{
+				PaymentType: test.PaymentTypePayment,
+				RequestType: test.RequestTypeOnline,
+				Carrier:     carriers.Carrier_MM,
+				SubCarrier:  carriers.SubCarrier_MM_SUB,
+				ExpectedSum: 4200,
+			},
+			&test.Cancel{
+				Target: 9,
+				Reason: processing.CancelPassRequest_CSS,
+			},
+		},
+	},
+
+	{
+		N: "45. Закрытие комплексной поездки по максимальному количеству пересадок за пределами МСК (ММТС – МЦК – ММ – МЦД МСК вход – МЦД МО выход)",
+		T: test.T{
+			&test.Pass{
+				PaymentType: test.PaymentTypePayment,
+				RequestType: test.RequestTypeOnline,
+				Carrier:     carriers.Carrier_MM,
+				SubCarrier:  carriers.SubCarrier_MMTS_SUB,
+				ExpectedSum: 4200,
+			},
+			//&test.Cancel{
+			//	Target: 1,
+			//	Reason: processing.CancelPassRequest_CSS,
+			//},
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOnline,
+				Carrier:     carriers.Carrier_MM,
+				SubCarrier:  carriers.SubCarrier_MCK_SUB,
+				//ExpectedSum: 4200,
+				Parent: 1,
+			},
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOnline,
+				Carrier:     carriers.Carrier_MM,
+				SubCarrier:  carriers.SubCarrier_MM_SUB,
+				Parent:      1,
+			},
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOnline,
+				Carrier:     carriers.Carrier_MCD,
+				SubCarrier:  carriers.SubCarrier_MCD2_MSK,
+				Terminal: &processing.Terminal{
+					Station:   "2000075", //ТУШИНО
+					Direction: processing.TerminalDirection_INGRESS,
+				},
+				Parent: 1,
+			},
+			&test.Pass{
+				PaymentType: test.PaymentTypePayment,
+				RequestType: test.RequestTypeOnline,
+				Carrier:     carriers.Carrier_MCD,
+				SubCarrier:  carriers.SubCarrier_MCD2_MO,
+				Terminal: &processing.Terminal{
+					Station:   "2000460", //НАХАБИНО
+					Direction: processing.TerminalDirection_EGRESS,
+				},
+				Ingress:     4,
+				ExpectedSum: 700,
 			},
 		},
 	},

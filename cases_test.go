@@ -56,7 +56,7 @@ func init() {
 	AddP(mcd.CasesComplexMCDMOPartThree)
 	AddP(mcd.CasesComplexMCDMOPartFour)
 	AddP(mcd.CasesComplexMCDMOPartFife)
-
+    AddP(mcd.CasesOfflineMetroComplexMCD)
 	//APM
 	AddP(apm.CasesApmGateway)
 

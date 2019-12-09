@@ -27,7 +27,6 @@ func init() {
 	AddP(mmts.CasesComplexPassMMTS4)
 	AddP(mmts.CasesComplexPassMMTS5)
 	AddP(mmts.CasesOfflineMetroComplexMMTS)
-	Add(mmts.CasesComplexTimeMMTS)
 
 	//MM
 	AddP(mm.CasesMetroComplexMM1)
@@ -51,7 +50,6 @@ func init() {
 	AddP(mcd.CasesMetroComplexMCDMSK3)
 	AddP(mcd.CasesMetroComplexMCDMSK4)
 	AddP(mcd.CasesMetroComplexMCDMSK5)
-	AddP(mcd.CasesComplexTimeMCD)
 	AddP(mcd.CasesOfflineMetroComplexMCD)
 
 	//APM
@@ -63,7 +61,11 @@ func init() {
 	//черновики, которые пока что не запускаются
 	//AddP(passes.CasesWrongTimeComplexPass)
 	//AddP(passes.CasesScopeCheckPass)
+
+	//тесты с нестандартным временем - надо придумать как с ними работать
 	//AddP(mm.CasesComplexTimeMM)
+	//AddP(mcd.CasesComplexTimeMCD)
+	//Add(mmts.CasesComplexTimeMMTS)
 
 	//Add(passes.CasesCancel)
 }

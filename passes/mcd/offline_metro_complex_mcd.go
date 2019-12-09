@@ -1030,7 +1030,7 @@ var CasesOfflineMetroComplexMCD = test.Cases{
 				ExpectedSum: 4200,
 			},
 			&test.Pass{
-				PaymentType: test.PaymentTypePayment,
+				PaymentType: test.PaymentTypeFree,
 				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
@@ -1041,7 +1041,7 @@ var CasesOfflineMetroComplexMCD = test.Cases{
 				Ingress: 1,
 			},
 			&test.Pass{
-				PaymentType: test.PaymentTypePayment,
+				PaymentType: test.PaymentTypeFree,
 				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD2_MSK,

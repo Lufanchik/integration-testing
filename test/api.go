@@ -157,7 +157,6 @@ func ValidatePass(t *testing.T, p *Pass, parent *Pass, ingress *Pass) {
 	if p.PaymentType == PaymentTypeAggregate || p.PaymentType == PaymentTypeStartAggregate {
 		expectPass.IsAuth = false
 		expectPass.IsAggregate = true
-		expectPass.Sum = 0
 	}
 
 	if p.Parent > 0 {

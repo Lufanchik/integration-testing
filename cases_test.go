@@ -27,7 +27,7 @@ func init() {
 	AddP(mmts.CasesComplexPassMMTS4)
 	AddP(mmts.CasesComplexPassMMTS5)
 	AddP(mmts.CasesOfflineMetroComplexMMTS)
-	Add(mmts.CasesComplexTimeMMTS)
+	AddP(mmts.CasesComplexTimeMMTS)
 
 	//MM
 	AddP(mm.CasesMetroComplexMM1)
@@ -35,6 +35,7 @@ func init() {
 	AddP(mm.CasesMetroComplexMM3)
 	AddP(mm.CasesMetroComplexMM4)
 	AddP(mm.CasesOfflineMetroComplexMM)
+	AddP(mm.CasesComplexTimeMM)
 
 	//МЦК
 	AddP(mck.CasesMetroComplexMCK)
@@ -43,6 +44,7 @@ func init() {
 	AddP(mck.CasesMetroComplexMCK3)
 	AddP(mck.CasesMetroComplexMCK4)
 	AddP(mck.CasesOfflineMetroComplexMCK)
+	AddP(mck.CasesComplexTimeMCK)
 
 	//МЦД
 	AddP(mcd.CasesComplexMCD)

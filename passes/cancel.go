@@ -8,7 +8,7 @@ import (
 
 var CasesCancel = test.Cases{
 	{
-		N: "MM_successful_authorization_and_cancel",
+		N: "1. ММ успешная авторизация + Отмена",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -25,7 +25,7 @@ var CasesCancel = test.Cases{
 	},
 
 	{
-		N: "MCK_successful_authorization_and_cancel",
+		N: "2. МЦК ММ успешная авторизация + Отмена",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -42,7 +42,7 @@ var CasesCancel = test.Cases{
 	},
 
 	{
-		N: "MMTS_successful_authorization_and_cancel",
+		N: "3. ММТС ММ успешная авторизация + Отмена",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -59,7 +59,7 @@ var CasesCancel = test.Cases{
 	},
 
 	{
-		N: "MM_failed_authorization_and_cancel",
+		N: "4. ММ неуспешная авторизация + Отмена",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -77,7 +77,7 @@ var CasesCancel = test.Cases{
 	},
 
 	{
-		N: "MCK_failed_authorization_and_cancel",
+		N: "5. MCK_failed_authorization_and_cancel",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -95,7 +95,7 @@ var CasesCancel = test.Cases{
 	},
 
 	{
-		N: "MMTS_failed_authorization_and_cancel",
+		N: "6. MMTS_failed_authorization_and_cancel",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -112,7 +112,7 @@ var CasesCancel = test.Cases{
 		},
 	},
 	{
-		N: "MM_successful_authorization_and_cancel",
+		N: "7. MM_successful_authorization_and_cancel",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,

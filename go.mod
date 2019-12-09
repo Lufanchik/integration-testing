@@ -17,6 +17,7 @@ require (
 	github.com/k0kubun/colorstring v0.0.0-20150214042306-9440f1994b88 // indirect
 	github.com/moul/http2curl v1.0.0 // indirect
 	github.com/pkg/errors v0.8.1
+	github.com/prometheus/client_golang v1.2.1
 	github.com/prometheus/common v0.7.0
 	github.com/sergi/go-diff v1.0.0 // indirect
 	github.com/smartystreets/goconvey v0.0.0-20190731233626-505e41936337 // indirect
@@ -26,6 +27,6 @@ require (
 	github.com/yudai/gojsondiff v1.0.0 // indirect
 	github.com/yudai/golcs v0.0.0-20170316035057-ecda9a501e82 // indirect
 	github.com/yudai/pp v2.0.1+incompatible // indirect
-	lab.siroccotechnology.ru/tp/common v0.0.173
+	lab.siroccotechnology.ru/tp/common v0.0.197
 	lab.siroccotechnology.ru/tp/pass-service v0.0.90
 )

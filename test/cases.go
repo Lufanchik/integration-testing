@@ -115,7 +115,7 @@ type (
 		Sum       int
 	}
 
-	WebAPICheck struct {
+	WebAPIPasses struct {
 		Passes []int
 	}
 )

@@ -37,7 +37,7 @@ var (
 						SubCarrier: carriers.SubCarrier_MM_SUB,
 					},
 				},
-				&test.WebAPICheck{
+				&test.WebAPIPasses{
 					Passes: []int{1, 2},
 				},
 			},

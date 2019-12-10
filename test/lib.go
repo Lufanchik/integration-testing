@@ -194,7 +194,7 @@ func Run(t *testing.T, cases Cases) {
 					CompleteApi(t, start, passes, cm.Sum)
 				}
 
-				wgw, ok := step.(*WebAPICheck)
+				wgw, ok := step.(*WebAPIPasses)
 				if ok {
 					var passes []*Pass
 					for _, v := range wgw.Passes {

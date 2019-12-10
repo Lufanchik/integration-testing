@@ -289,6 +289,8 @@ func WebAPI(t *testing.T, card *processing.Card, passes []*Pass) {
 	err := jsonpb.Unmarshal(strings.NewReader(object), response)
 	require.NoError(t, err)
 
+	require.Equal(t, len(passes), len(response.Passes), "passes count doesn't match")
+
 	responsePassesMap := map[string]struct{}{}
 	for _, p := range response.Passes {
 		if p.Status == webApi.PassStatus_PAID {

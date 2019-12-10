@@ -16,6 +16,7 @@ import (
 var (
 	httpProcessingApi *httpexpect.Expect
 	httpApmApi        *httpexpect.Expect
+	httpWebApi        *httpexpect.Expect
 	ps                passService.PassService
 )
 
@@ -96,6 +97,7 @@ func RunPass(t *testing.T, p *Pass, scenario *Case, carrierID string, card *proc
 func Run(t *testing.T, cases Cases) {
 	httpProcessingApi = httpexpect.New(t, ProcessingApiUrl)
 	httpApmApi = httpexpect.New(t, ApmApiUrl)
+	httpWebApi = httpexpect.New(t, WebApiUrl)
 	type NCase struct {
 		c         *Case
 		card      *processing.Card
@@ -190,6 +192,16 @@ func Run(t *testing.T, cases Cases) {
 					}
 
 					CompleteApi(t, start, passes, cm.Sum)
+				}
+
+				wgw, ok := step.(*WebAPICheck)
+				if ok {
+					var passes []*Pass
+					for _, v := range wgw.Passes {
+						passes = append(passes, (scenario.T[v-1]).(*Pass))
+					}
+
+					WebAPI(t, ncc.card, passes)
 				}
 			})
 			if t.Failed() {

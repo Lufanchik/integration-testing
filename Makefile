@@ -18,6 +18,6 @@ simple:
 	go test -c -o ./bin/test
 	./bin/test -test.run ^TestSimple$
 
-local: simple
-test: simple
+local: full
+test: full
 stage: full

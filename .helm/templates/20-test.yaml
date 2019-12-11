@@ -35,3 +35,4 @@ spec:
           value: {{ pluck .Values.global.env .Values.pass | first }}
         - name: APM_API_URL
           value: {{ pluck .Values.global.env .Values.apm_api | first }}
+      restartPolicy: Never

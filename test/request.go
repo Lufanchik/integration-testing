@@ -142,11 +142,15 @@ func AuthStatusRequest(p *Pass) (*processing.AuthRequest, *processing.AuthRespon
 		response.Resolution = processing.AuthResponse_FAILURE
 	}
 
-	if p.PaymentType == PaymentTypeStartAggregate || p.PaymentType == PaymentTypeAggregate {
+	if isAggregate(p) {
 		response.Auth = &processing.Auth{}
 	}
 
 	return request, response
+}
+
+func isAggregate(p *Pass) bool {
+	return p.PaymentType == PaymentTypeStartAggregate || p.PaymentType == PaymentTypeAggregate
 }
 
 func TapRequest(c carriers.SubCarrier, card *processing.Card, p *Pass) (*processing.TapRequest, *processing.TapResponse) {

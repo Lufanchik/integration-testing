@@ -104,5 +104,6 @@ func TestFull(t *testing.T) {
 }
 
 func TestSimple(t *testing.T) {
-	test.Run(t, mgt.CasesMGT)
+	//test.Run(t, mgt.CasesMGT)
+	test.Run(t, mgt.CasesMGT1)
 }

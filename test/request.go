@@ -14,9 +14,8 @@ func PassOfflineRequest(tap *processing.TapRequest, p *Pass) (*processing.Offlin
 		Created: Now(),
 		Tap:     tap.Tap,
 	}
-	if p.Auth != nil {
-		request.Auth = p.Auth
-	}
+	request.Auth = auth(p)
+
 	response := &processing.OfflinePassResponse{
 		Result: processing.PassStatus_SUCCESS,
 	}
@@ -28,35 +27,50 @@ func logRequest(u string, r *httpexpect.Response) {
 	fmt.Println(fmt.Sprintf("%s, trace id: %s", u, trace.Raw()))
 }
 
+func auth(p *Pass) *processing.Auth {
+	if p.Auth != nil {
+		return p.Auth
+	} else {
+		na := &processing.Auth{
+			Sum:  p.ExpectedSum,
+			Type: processing.Auth_CLASSIC,
+		}
+		if p.PaymentType == PaymentTypeStartAggregate {
+			na.Type = processing.Auth_AGGREGATE
+		}
+		return na
+	}
+}
+
 func PassOnlineRequest(tap *processing.TapRequest, p *Pass) (*processing.OnlinePassRequest, *processing.OnlinePassResponse) {
 	request := &processing.OnlinePassRequest{
 		Id:      tap.Id,
 		Created: Now(),
 		Tap:     tap.Tap,
 	}
-	if p.Auth != nil {
-		request.Auth = p.Auth
-	}
-	response := &processing.OnlinePassResponse{
+
+	request.Auth = auth(p)
+
+	responseOR := &processing.OnlinePassResponse{
 		Created: 0,
 		Result:  processing.PassStatus_SUCCESS,
 	}
 	switch p.PaymentType {
 	case PaymentTypePayment:
-		response.Status = processing.AuthStatus_SUCCESS_AUTH
+		responseOR.Status = processing.AuthStatus_SUCCESS_AUTH
 	case PaymentTypeFree:
-		response.Status = processing.AuthStatus_SUCCESS_FREE
+		responseOR.Status = processing.AuthStatus_SUCCESS_FREE
 	}
 
 	if p.AuthType == AuthTypeIncorrect {
-		response.Status = processing.AuthStatus_FAILURE_ISSUER
+		responseOR.Status = processing.AuthStatus_FAILURE_ISSUER
 	}
 
 	if p.Duration > 0 {
 		request.Timeout = p.Duration
 	}
 
-	return request, response
+	return request, responseOR
 }
 
 func CancelRequest(cl *Cancel, p *Pass) (*processing.CancelPassRequest, *processing.CancelPassResponse) {
@@ -84,6 +98,26 @@ func ParkingRequest(card *processing.Card, pr *Parking) (*processing.CheckParkin
 	return pr.R, response
 }
 
+func CompleteRequest(pass *Pass, passes []*Pass, sum int) (*processing.CompleteRequest, *processing.CompleteResponse) {
+	request := &processing.CompleteRequest{
+		Id:      pass.id,
+		Created: Now(),
+		Amount:  uint32(sum),
+	}
+	var ids []string
+	for _, v := range passes {
+		ids = append(ids, v.id)
+	}
+
+	request.Pass = ids
+
+	response := &processing.CompleteResponse{
+		Result: processing.CompleteResponse_SUCCESS,
+	}
+
+	return request, response
+}
+
 func AuthStatusRequest(p *Pass) (*processing.AuthRequest, *processing.AuthResponse) {
 	request := &processing.AuthRequest{
 		Id: p.id,
@@ -108,7 +142,15 @@ func AuthStatusRequest(p *Pass) (*processing.AuthRequest, *processing.AuthRespon
 		response.Resolution = processing.AuthResponse_FAILURE
 	}
 
+	if isAggregate(p) {
+		response.Auth = &processing.Auth{}
+	}
+
 	return request, response
+}
+
+func isAggregate(p *Pass) bool {
+	return p.PaymentType == PaymentTypeStartAggregate || p.PaymentType == PaymentTypeAggregate
 }
 
 func TapRequest(c carriers.SubCarrier, card *processing.Card, p *Pass) (*processing.TapRequest, *processing.TapResponse) {

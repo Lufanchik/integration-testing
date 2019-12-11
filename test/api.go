@@ -94,7 +94,7 @@ func Update(t *testing.T, p *Pass, up Updater) {
 	require.NoError(t, err)
 }
 
-func ValidatePass(t *testing.T, p *Pass, parent *Pass, ingress *Pass) {
+func ValidatePass(t *testing.T, p *Pass, parent *Pass, ingress *Pass, isFirst bool) {
 	ctx := context.Background()
 	passDB, err := ps.GetPass(ctx, &pass.PassRequest{
 		Id: p.id,
@@ -154,6 +154,11 @@ func ValidatePass(t *testing.T, p *Pass, parent *Pass, ingress *Pass) {
 		expectPass.IsAuth = true
 	}
 
+	if isAggregate(p) {
+		expectPass.IsAuth = false
+		expectPass.IsAggregate = true
+	}
+
 	if p.Parent > 0 {
 		expectPass.IsComplex = true
 		expectPass.ParentComplexId = parent.id
@@ -166,6 +171,16 @@ func ValidatePass(t *testing.T, p *Pass, parent *Pass, ingress *Pass) {
 	if p.isCancel {
 		expectPass.IsCancel = true
 	}
+
+	if p.PaymentType == PaymentTypeStartAggregate && p.AuthType == AuthTypeCorrect && !isFirst {
+		expectPass.IsAuth = true
+	}
+
+	if p.PaymentType == PaymentTypeAggregate && p.AuthType == AuthTypeCorrect && !isFirst {
+		expectPass.AggregateId = p.aggregate.id
+	}
+
+	expectPass.IsComplexTimeout = global.IsComplexTimeout(global.UnixNanoToLocalizedTime(expectPass.CreatedAtCarrier))
 
 	require.Equal(t, expectPass, passDB)
 	require.NoError(t, err)
@@ -213,7 +228,7 @@ func LoginApi(t *testing.T, lg *Login) {
 func PassCheckApi(t *testing.T, pc *PassCheck, target *Pass, parent *Pass) {
 	target.PaymentType = pc.PaymentType
 	target.ExpectedSum = pc.ExpectedSum
-	ValidatePass(t, target, parent, nil)
+	ValidatePass(t, target, parent, nil, true)
 	AuthStatus(t, target)
 }
 
@@ -246,6 +261,23 @@ func ParkingApi(t *testing.T, card *processing.Card, pr *Parking) {
 
 	response := &processing.CheckParkingResponse{}
 	err := jsonpb.Unmarshal(strings.NewReader(object), response)
+	require.NoError(t, err)
+	require.Equal(t, resp, response)
+}
+
+func CompleteApi(t *testing.T, pass *Pass, passes []*Pass, sum int) {
+	req, resp := CompleteRequest(pass, passes, sum)
+	u := "/twirp/sirocco.ProcessingAPI/ProcessComplete"
+	r := httpProcessingApi.POST(u).WithJSON(req).
+		Expect().
+		Status(http.StatusOK)
+
+	object := r.Body().Raw()
+	logRequest(u, r)
+
+	response := &processing.CompleteResponse{}
+	err := jsonpb.Unmarshal(strings.NewReader(object), response)
+	resp.Created = response.Created
 	require.NoError(t, err)
 	require.Equal(t, resp, response)
 }

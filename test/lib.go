@@ -24,8 +24,8 @@ func NanoToMicro(tm uint64) uint64 {
 }
 
 func getRequestType(t *testing.T, p *Pass) RequestType {
-	if globalRequestType != RequestTypeNone {
-		return globalRequestType
+	if GlobalRequestType != RequestTypeNone {
+		return GlobalRequestType
 	}
 
 	if p.RequestType == RequestTypeNone {
@@ -53,7 +53,7 @@ func RunPass(t *testing.T, p *Pass, scenario *Case, carrierID string, card *proc
 	ConfigurePass(t, p, carrierID, card)
 	tapReq := TapBySubCarrier(t, p, card)
 	timeRequest := PassBySubCarrier(t, tapReq, p)
-	var parent, ingress *Pass
+	var parent, ingress, aggregate *Pass
 	if p.Parent > 0 {
 		pr, ok := (scenario.T[p.Parent-1]).(*Pass)
 		if !ok {
@@ -71,25 +71,40 @@ func RunPass(t *testing.T, p *Pass, scenario *Case, carrierID string, card *proc
 		ingress = ing
 		ingress.timeToWait = ingress.TimeToWait
 	}
+	if p.Aggregate > 0 {
+		agg, ok := (scenario.T[p.Aggregate-1]).(*Pass)
+		if !ok {
+			t.Fail()
+		}
+		aggregate = agg
+	}
+
 	p.tapRequest = tapReq
 	p.timeRequest = timeRequest
 	p.card = card
 	p.parent = parent
 	p.ingress = ingress
+	p.aggregate = aggregate
 
-	time.Sleep(time.Millisecond * 200)
+	time.Sleep(TimeAfterRequest)
 
-	ValidatePass(t, p, p.parent, p.ingress)
-	AuthStatus(t, p)
+	ValidatePass(t, p, p.parent, p.ingress, true)
+	if !isAggregate(p) {
+		AuthStatus(t, p)
+	}
 
 	if parent != nil {
-		ValidatePass(t, parent, parent.parent, parent.ingress)
-		AuthStatus(t, parent)
+		ValidatePass(t, parent, parent.parent, parent.ingress, false)
+		if !isAggregate(parent) {
+			AuthStatus(t, parent)
+		}
 	}
 
 	if ingress != nil {
-		ValidatePass(t, ingress, ingress.parent, ingress.ingress)
-		AuthStatus(t, ingress)
+		ValidatePass(t, ingress, ingress.parent, ingress.ingress, false)
+		if !isAggregate(ingress) {
+			AuthStatus(t, ingress)
+		}
 	}
 }
 
@@ -106,7 +121,7 @@ func Run(t *testing.T, cases Cases) {
 	for k, _ := range cases {
 		nc[k] = &NCase{
 			c:         &cases[k],
-			card:      Card(),
+			card:      Card(cases[k].CardSystem),
 			carrierId: uuid.New().String(),
 		}
 	}
@@ -176,6 +191,21 @@ func Run(t *testing.T, cases Cases) {
 				if ok {
 					ParkingApi(t, ncc.card, pr)
 				}
+
+				cm, ok := step.(*Complete)
+				if ok {
+					start, ok := (scenario.T[cm.StartPass-1]).(*Pass)
+					if !ok {
+						t.Fail()
+					}
+
+					var passes []*Pass
+					for _, v := range cm.Passes {
+						passes = append(passes, (scenario.T[v-1]).(*Pass))
+					}
+
+					CompleteApi(t, start, passes, cm.Sum)
+				}
 			})
 			if t.Failed() {
 				break
@@ -186,30 +216,39 @@ func Run(t *testing.T, cases Cases) {
 		}
 	}
 
-	for _, ncc := range nc {
-		fmt.Println("name check: " + ncc.c.N)
-		fmt.Println(ncc.card.String())
-		scenario := ncc.c
-		time.Sleep(time.Millisecond * 1000)
-		for N, step := range scenario.T {
-			fmt.Println(fmt.Sprintf("check = %d", N+1))
-			t.Run("case check: "+scenario.N, func(t *testing.T) {
-				//Pass
-				p, ok := step.(*Pass)
-				if ok && !p.isCancel {
-					ConfigurePass(t, p, ncc.carrierId, ncc.card)
-					TapBySubCarrier(t, p, ncc.card)
-					PassBySubCarrier(t, p.tapRequest, p)
-					ValidatePass(t, p, p.parent, p.ingress)
-					AuthStatus(t, p)
+	if !t.Failed() {
+		for _, ncc := range nc {
+			fmt.Println("name check: " + ncc.c.N)
+			fmt.Println(ncc.card.String())
+			scenario := ncc.c
+			time.Sleep(TimeBeforeRecheck)
+			for N, step := range scenario.T {
+				fmt.Println(fmt.Sprintf("check = %d", N+1))
+				t.Run("case check: "+scenario.N, func(t *testing.T) {
+					//Pass
+					p, ok := step.(*Pass)
+					if ok && !p.isCancel {
+						ConfigurePass(t, p, ncc.carrierId, ncc.card)
+						ValidatePass(t, p, p.parent, p.ingress, false)
+						if !isAggregate(p) {
+							AuthStatus(t, p)
+						}
+						TapBySubCarrier(t, p, ncc.card)
+						PassBySubCarrier(t, p.tapRequest, p)
+						time.Sleep(TimeAfterRequest)
+						ValidatePass(t, p, p.parent, p.ingress, false)
+						if !isAggregate(p) {
+							AuthStatus(t, p)
+						}
+					}
+				})
+				if t.Failed() {
+					break
 				}
-			})
+			}
 			if t.Failed() {
 				break
 			}
-		}
-		if t.Failed() {
-			break
 		}
 	}
 }

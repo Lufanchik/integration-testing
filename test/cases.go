@@ -43,6 +43,8 @@ type (
 		Parent int
 		//ссылка на вход, для валидации связи
 		Ingress int
+		//ссылка на открывающую агрегацию
+		Aggregate int
 		//функция времени
 		Now func() uint64
 		//время отведенное на запрос в миллисекундах, работает только с онлайном
@@ -53,6 +55,8 @@ type (
 		TimeToWait time.Duration
 		//является ли проход комплексным
 		IsComplex bool
+		//вышли ли мы за пределы таймаута комплексной поездки
+		IsComplexTimeout bool
 
 		id          string
 		carrierID   string
@@ -61,6 +65,7 @@ type (
 		card        *processing.Card
 		parent      *Pass
 		ingress     *Pass
+		aggregate   *Pass
 		isParent    bool
 		timeToWait  time.Duration
 		isCancel    bool
@@ -142,5 +147,12 @@ var NowCustom = func(hour, min int) func() uint64 {
 	return func() uint64 {
 		return uint64(time.Date(
 			now.Year(), now.Month(), now.Day(), hour, min, 0, 0, time.UTC).UnixNano())
+	}
+}
+
+var NowFullDate = func(year, month, day, hour, min, sec int) func() uint64 {
+	return func() uint64 {
+		return uint64(time.Date(
+			year, time.Month(month), day, hour, min, sec, 0, time.UTC).UnixNano())
 	}
 }

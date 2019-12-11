@@ -6,12 +6,61 @@ import (
 	"lab.siroccotechnology.ru/tp/integration-testing/test"
 )
 
-var CasesComplexMCD = test.Cases{
+var CasesOfflineMetroComplexMCD = test.Cases{
 	{
-		N: "MO-MSK",
+		N: "mm-mcd1-mo",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
+				RequestType: test.RequestTypeOffline,
+				Carrier:     carriers.Carrier_MM,
+				SubCarrier:  carriers.SubCarrier_MM_SUB,
+				ExpectedSum: 4200,
+			},
+			&test.Pass{
+				PaymentType: test.PaymentTypePayment,
+				RequestType: test.RequestTypeOffline,
+				Carrier:     carriers.Carrier_MCD,
+				SubCarrier:  carriers.SubCarrier_MCD1_MO,
+				Terminal: &processing.Terminal{
+					Station:   "2000055",
+					Direction: processing.TerminalDirection_INGRESS,
+				},
+				ExpectedSum: 4900,
+			},
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
+				Carrier:     carriers.Carrier_MCD,
+				SubCarrier:  carriers.SubCarrier_MCD1_MO,
+				Terminal: &processing.Terminal{
+					Station:   "2000600",
+					Direction: processing.TerminalDirection_EGRESS,
+				},
+				Ingress: 2,
+			},
+		},
+	},
+	{
+		N: "MM-MCD1MO-MCD2",
+		T: test.T{
+			&test.Pass{
+				PaymentType: test.PaymentTypePayment,
+				RequestType: test.RequestTypeOffline,
+				Carrier:     carriers.Carrier_MM,
+				SubCarrier:  carriers.SubCarrier_MM_SUB,
+				ExpectedSum: 4200,
+			},
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
+				Carrier:     carriers.Carrier_MM,
+				SubCarrier:  carriers.SubCarrier_MCK_SUB,
+				Parent:      1,
+			},
+			&test.Pass{
+				PaymentType: test.PaymentTypePayment,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD2_MO,
 				Terminal: &processing.Terminal{
@@ -22,6 +71,180 @@ var CasesComplexMCD = test.Cases{
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
+				Carrier:     carriers.Carrier_MCD,
+				SubCarrier:  carriers.SubCarrier_MCD2_MO,
+				Terminal: &processing.Terminal{
+					Station:   "2002952",
+					Direction: processing.TerminalDirection_EGRESS,
+				},
+				Ingress: 3,
+			},
+			&test.Pass{
+				PaymentType: test.PaymentTypePayment,
+				RequestType: test.RequestTypeOffline,
+				Carrier:     carriers.Carrier_MCD,
+				SubCarrier:  carriers.SubCarrier_MCD1_MO,
+				Terminal: &processing.Terminal{
+					Station:   "2000055",
+					Direction: processing.TerminalDirection_INGRESS,
+				},
+				ExpectedSum: 4900,
+			},
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
+				Carrier:     carriers.Carrier_MCD,
+				SubCarrier:  carriers.SubCarrier_MCD1_MO,
+				Terminal: &processing.Terminal{
+					Station:   "2002910",
+					Direction: processing.TerminalDirection_EGRESS,
+				},
+				Ingress: 5,
+			},
+		},
+	},
+	{
+		N: "MM-MO-MO",
+		T: test.T{
+			&test.Pass{
+				PaymentType: test.PaymentTypePayment,
+				RequestType: test.RequestTypeOffline,
+				Carrier:     carriers.Carrier_MM,
+				SubCarrier:  carriers.SubCarrier_MM_SUB,
+				ExpectedSum: 4200,
+			},
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
+				Carrier:     carriers.Carrier_MM,
+				SubCarrier:  carriers.SubCarrier_MCK_SUB,
+				Parent:      1,
+			},
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
+				Carrier:     carriers.Carrier_MM,
+				SubCarrier:  carriers.SubCarrier_MM_SUB,
+				Parent:      1,
+			},
+			&test.Pass{
+				PaymentType: test.PaymentTypePayment,
+				RequestType: test.RequestTypeOffline,
+				Carrier:     carriers.Carrier_MCD,
+				SubCarrier:  carriers.SubCarrier_MCD2_MO,
+				Terminal: &processing.Terminal{
+					Station:   "2003960",
+					Direction: processing.TerminalDirection_INGRESS,
+				},
+				ExpectedSum: 4900,
+			},
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
+				Carrier:     carriers.Carrier_MCD,
+				SubCarrier:  carriers.SubCarrier_MCD2_MSK,
+				Terminal: &processing.Terminal{
+					Station:   "2000285", //ЩЕРБИНКА
+					Direction: processing.TerminalDirection_EGRESS,
+				},
+				Ingress: 4,
+			},
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
+				Carrier:     carriers.Carrier_MM,
+				SubCarrier:  carriers.SubCarrier_MM_SUB,
+				Parent:      4,
+			},
+			&test.Pass{
+				PaymentType: test.PaymentTypePayment,
+				RequestType: test.RequestTypeOffline,
+				Carrier:     carriers.Carrier_MM,
+				SubCarrier:  carriers.SubCarrier_MM_SUB,
+				ExpectedSum: 4200,
+			},
+		},
+	},
+	{
+		N: "MM-MO-MSK",
+		T: test.T{
+			&test.Pass{
+				PaymentType: test.PaymentTypePayment,
+				RequestType: test.RequestTypeOffline,
+				Carrier:     carriers.Carrier_MM,
+				SubCarrier:  carriers.SubCarrier_MM_SUB,
+				ExpectedSum: 4200,
+			},
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
+				Carrier:     carriers.Carrier_MM,
+				SubCarrier:  carriers.SubCarrier_MCK_SUB,
+				Parent:      1,
+			},
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
+				Carrier:     carriers.Carrier_MM,
+				SubCarrier:  carriers.SubCarrier_MM_SUB,
+				Parent:      1,
+			},
+			&test.Pass{
+				PaymentType: test.PaymentTypePayment,
+				RequestType: test.RequestTypeOffline,
+				Carrier:     carriers.Carrier_MCD,
+				SubCarrier:  carriers.SubCarrier_MCD2_MO,
+				Terminal: &processing.Terminal{
+					Station:   "2003960",
+					Direction: processing.TerminalDirection_INGRESS,
+				},
+				ExpectedSum: 4900,
+			},
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
+				Carrier:     carriers.Carrier_MCD,
+				SubCarrier:  carriers.SubCarrier_MCD2_MSK,
+				Terminal: &processing.Terminal{
+					Station:   "2002780",
+					Direction: processing.TerminalDirection_EGRESS,
+				},
+				Ingress: 4,
+			},
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
+				Carrier:     carriers.Carrier_MM,
+				SubCarrier:  carriers.SubCarrier_MM_SUB,
+				Parent:      4,
+			},
+			&test.Pass{
+				PaymentType: test.PaymentTypePayment,
+				RequestType: test.RequestTypeOffline,
+				Carrier:     carriers.Carrier_MM,
+				SubCarrier:  carriers.SubCarrier_MM_SUB,
+				ExpectedSum: 4200,
+			},
+		},
+	},
+	{
+		N: "MO-MSK",
+		T: test.T{
+			&test.Pass{
+				PaymentType: test.PaymentTypePayment,
+				RequestType: test.RequestTypeOffline,
+				Carrier:     carriers.Carrier_MCD,
+				SubCarrier:  carriers.SubCarrier_MCD2_MO,
+				Terminal: &processing.Terminal{
+					Station:   "2003960",
+					Direction: processing.TerminalDirection_INGRESS,
+				},
+				ExpectedSum: 4900,
+			},
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD2_MSK,
 				Terminal: &processing.Terminal{
@@ -33,10 +256,95 @@ var CasesComplexMCD = test.Cases{
 		},
 	},
 	{
+		N: "MM-MSK-MO",
+		T: test.T{
+			&test.Pass{
+				PaymentType: test.PaymentTypePayment,
+				RequestType: test.RequestTypeOffline,
+				Carrier:     carriers.Carrier_MM,
+				SubCarrier:  carriers.SubCarrier_MM_SUB,
+				ExpectedSum: 4200,
+			},
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
+				Carrier:     carriers.Carrier_MM,
+				SubCarrier:  carriers.SubCarrier_MCK_SUB,
+				Parent:      1,
+			},
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
+				Carrier:     carriers.Carrier_MM,
+				SubCarrier:  carriers.SubCarrier_MM_SUB,
+				Parent:      1,
+			},
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
+				Carrier:     carriers.Carrier_MCD,
+				SubCarrier:  carriers.SubCarrier_MCD2_MSK,
+				Terminal: &processing.Terminal{
+					Station:   "2002780",
+					Direction: processing.TerminalDirection_INGRESS,
+				},
+				Parent: 1,
+			},
+			&test.Pass{
+				PaymentType: test.PaymentTypePayment,
+				RequestType: test.RequestTypeOffline,
+				Carrier:     carriers.Carrier_MCD,
+				SubCarrier:  carriers.SubCarrier_MCD2_MO,
+				Terminal: &processing.Terminal{
+					Station:   "2003960",
+					Direction: processing.TerminalDirection_EGRESS,
+				},
+				Ingress:     4,
+				ExpectedSum: 700,
+			},
+			&test.Pass{
+				PaymentType: test.PaymentTypePayment,
+				RequestType: test.RequestTypeOffline,
+				Carrier:     carriers.Carrier_MM,
+				SubCarrier:  carriers.SubCarrier_MM_SUB,
+				ExpectedSum: 4200,
+			},
+		},
+	},
+	{
+		N: "MSK-MO",
+		T: test.T{
+			&test.Pass{
+				PaymentType: test.PaymentTypePayment,
+				RequestType: test.RequestTypeOffline,
+				Carrier:     carriers.Carrier_MCD,
+				SubCarrier:  carriers.SubCarrier_MCD2_MSK,
+				Terminal: &processing.Terminal{
+					Station:   "2001250",
+					Direction: processing.TerminalDirection_INGRESS,
+				},
+				ExpectedSum: 4200,
+			},
+			&test.Pass{
+				PaymentType: test.PaymentTypePayment,
+				RequestType: test.RequestTypeOffline,
+				Carrier:     carriers.Carrier_MCD,
+				SubCarrier:  carriers.SubCarrier_MCD2_MO,
+				Terminal: &processing.Terminal{
+					Station:   "2003960",
+					Direction: processing.TerminalDirection_EGRESS,
+				},
+				ExpectedSum: 700,
+				Ingress:     1,
+			},
+		},
+	},
+	{
 		N: "MO-MO",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD2_MO,
 				Terminal: &processing.Terminal{
@@ -47,6 +355,7 @@ var CasesComplexMCD = test.Cases{
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD2_MO,
 				Terminal: &processing.Terminal{
@@ -58,10 +367,93 @@ var CasesComplexMCD = test.Cases{
 		},
 	},
 	{
+		N: "MSK-MSK",
+		T: test.T{
+			&test.Pass{
+				PaymentType: test.PaymentTypePayment,
+				RequestType: test.RequestTypeOffline,
+				Carrier:     carriers.Carrier_MCD,
+				SubCarrier:  carriers.SubCarrier_MCD2_MSK,
+				Terminal: &processing.Terminal{
+					Station:   "2002780",
+					Direction: processing.TerminalDirection_INGRESS,
+				},
+				ExpectedSum: 4200,
+			},
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
+				Carrier:     carriers.Carrier_MCD,
+				SubCarrier:  carriers.SubCarrier_MCD2_MSK,
+				Terminal: &processing.Terminal{
+					Station:   "2000200",
+					Direction: processing.TerminalDirection_EGRESS,
+				},
+				Ingress: 1,
+			},
+		},
+	},
+	{
+		N: "ММ - МСК - ММ - МЦД МСК 2",
+		T: test.T{
+			&test.Pass{
+				PaymentType: test.PaymentTypePayment,
+				RequestType: test.RequestTypeOffline,
+				Carrier:     carriers.Carrier_MM,
+				SubCarrier:  carriers.SubCarrier_MM_SUB,
+				ExpectedSum: 4200,
+			},
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
+				Carrier:     carriers.Carrier_MM,
+				SubCarrier:  carriers.SubCarrier_MCK_SUB,
+				Parent:      1,
+			},
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
+				Carrier:     carriers.Carrier_MM,
+				SubCarrier:  carriers.SubCarrier_MM_SUB,
+				Parent:      1,
+			},
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
+				Carrier:     carriers.Carrier_MCD,
+				SubCarrier:  carriers.SubCarrier_MCD2_MSK,
+				Terminal: &processing.Terminal{
+					Station:   "2002780",
+					Direction: processing.TerminalDirection_INGRESS,
+				},
+				Parent: 1,
+			},
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
+				Carrier:     carriers.Carrier_MCD,
+				SubCarrier:  carriers.SubCarrier_MCD2_MSK,
+				Terminal: &processing.Terminal{
+					Station:   "2000200",
+					Direction: processing.TerminalDirection_EGRESS,
+				},
+				Ingress: 4,
+			},
+			&test.Pass{
+				PaymentType: test.PaymentTypePayment,
+				RequestType: test.RequestTypeOffline,
+				Carrier:     carriers.Carrier_MM,
+				SubCarrier:  carriers.SubCarrier_MM_SUB,
+				ExpectedSum: 4200,
+			},
+		},
+	},
+	{
 		N: "MCD MO - MM - MM",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MO,
 				Terminal: &processing.Terminal{
@@ -72,6 +464,7 @@ var CasesComplexMCD = test.Cases{
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
@@ -82,12 +475,14 @@ var CasesComplexMCD = test.Cases{
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				Parent:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				ExpectedSum: 4200,
@@ -99,6 +494,7 @@ var CasesComplexMCD = test.Cases{
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MO,
 				Terminal: &processing.Terminal{
@@ -109,6 +505,7 @@ var CasesComplexMCD = test.Cases{
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
@@ -119,24 +516,28 @@ var CasesComplexMCD = test.Cases{
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				Parent:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
 				Parent:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				Parent:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				ExpectedSum: 4200,
@@ -148,6 +549,7 @@ var CasesComplexMCD = test.Cases{
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MO,
 				Terminal: &processing.Terminal{
@@ -158,6 +560,7 @@ var CasesComplexMCD = test.Cases{
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
@@ -168,24 +571,28 @@ var CasesComplexMCD = test.Cases{
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				Parent:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
 				Parent:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				Parent:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
 				ExpectedSum: 4200,
@@ -197,6 +604,7 @@ var CasesComplexMCD = test.Cases{
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MO,
 				Terminal: &processing.Terminal{
@@ -207,6 +615,7 @@ var CasesComplexMCD = test.Cases{
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
@@ -217,24 +626,28 @@ var CasesComplexMCD = test.Cases{
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				Parent:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
 				Parent:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				Parent:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MMTS_SUB,
 				ExpectedSum: 4200,
@@ -246,6 +659,7 @@ var CasesComplexMCD = test.Cases{
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MO,
 				Terminal: &processing.Terminal{
@@ -256,6 +670,7 @@ var CasesComplexMCD = test.Cases{
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
@@ -266,24 +681,28 @@ var CasesComplexMCD = test.Cases{
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				Parent:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
 				Parent:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				Parent:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MO,
 				Terminal: &processing.Terminal{
@@ -299,6 +718,7 @@ var CasesComplexMCD = test.Cases{
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MO,
 				Terminal: &processing.Terminal{
@@ -309,6 +729,7 @@ var CasesComplexMCD = test.Cases{
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
@@ -319,18 +740,21 @@ var CasesComplexMCD = test.Cases{
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				Parent:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
 				Parent:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
 				ExpectedSum: 4200,
@@ -342,6 +766,7 @@ var CasesComplexMCD = test.Cases{
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MO,
 				Terminal: &processing.Terminal{
@@ -352,6 +777,7 @@ var CasesComplexMCD = test.Cases{
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
@@ -362,18 +788,21 @@ var CasesComplexMCD = test.Cases{
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				Parent:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
 				Parent:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MMTS_SUB,
 				Parent:      1,
@@ -385,6 +814,7 @@ var CasesComplexMCD = test.Cases{
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MO,
 				Terminal: &processing.Terminal{
@@ -395,6 +825,7 @@ var CasesComplexMCD = test.Cases{
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
@@ -405,24 +836,28 @@ var CasesComplexMCD = test.Cases{
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				Parent:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
 				Parent:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MMTS_SUB,
 				Parent:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				ExpectedSum: 4200,
@@ -434,6 +869,7 @@ var CasesComplexMCD = test.Cases{
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MO,
 				Terminal: &processing.Terminal{
@@ -444,6 +880,7 @@ var CasesComplexMCD = test.Cases{
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
@@ -454,24 +891,28 @@ var CasesComplexMCD = test.Cases{
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				Parent:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
 				Parent:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MMTS_SUB,
 				Parent:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
 				ExpectedSum: 4200,
@@ -483,6 +924,7 @@ var CasesComplexMCD = test.Cases{
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MO,
 				Terminal: &processing.Terminal{
@@ -493,6 +935,7 @@ var CasesComplexMCD = test.Cases{
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
@@ -503,24 +946,28 @@ var CasesComplexMCD = test.Cases{
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				Parent:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
 				Parent:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MMTS_SUB,
 				Parent:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MMTS_SUB,
 				ExpectedSum: 4200,
@@ -532,6 +979,7 @@ var CasesComplexMCD = test.Cases{
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MO,
 				Terminal: &processing.Terminal{
@@ -542,6 +990,7 @@ var CasesComplexMCD = test.Cases{
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
@@ -552,15 +1001,67 @@ var CasesComplexMCD = test.Cases{
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				Parent:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				ExpectedSum: 4200,
+			},
+		},
+	},
+	{
+		N: "MCD MSK1 - MCD MSK2 - MCD MO2",
+		T: test.T{
+			&test.Pass{
+				PaymentType: test.PaymentTypePayment,
+				RequestType: test.RequestTypeOffline,
+				Carrier:     carriers.Carrier_MCD,
+				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
+				Terminal: &processing.Terminal{
+					Station:   "2000275",
+					Direction: processing.TerminalDirection_INGRESS,
+				},
+				ExpectedSum: 4200,
+			},
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
+				Carrier:     carriers.Carrier_MCD,
+				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
+				Terminal: &processing.Terminal{
+					Station:   "2001270",
+					Direction: processing.TerminalDirection_EGRESS,
+				},
+				Ingress: 1,
+			},
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
+				Carrier:     carriers.Carrier_MCD,
+				SubCarrier:  carriers.SubCarrier_MCD2_MSK,
+				Terminal: &processing.Terminal{
+					Station:   "2000075",
+					Direction: processing.TerminalDirection_INGRESS,
+				},
+				Parent: 1,
+			},
+			&test.Pass{
+				PaymentType: test.PaymentTypePayment,
+				RequestType: test.RequestTypeOffline,
+				Carrier:     carriers.Carrier_MCD,
+				SubCarrier:  carriers.SubCarrier_MCD2_MO,
+				Terminal: &processing.Terminal{
+					Station:   "2000460",
+					Direction: processing.TerminalDirection_EGRESS,
+				},
+				Ingress:     3,
+				ExpectedSum: 700,
 			},
 		},
 	},
@@ -569,6 +1070,7 @@ var CasesComplexMCD = test.Cases{
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MO,
 				Terminal: &processing.Terminal{
@@ -579,6 +1081,7 @@ var CasesComplexMCD = test.Cases{
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
@@ -589,24 +1092,28 @@ var CasesComplexMCD = test.Cases{
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				Parent:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
 				Parent:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				Parent:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				ExpectedSum: 4200,
@@ -618,6 +1125,7 @@ var CasesComplexMCD = test.Cases{
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MO,
 				Terminal: &processing.Terminal{
@@ -628,6 +1136,7 @@ var CasesComplexMCD = test.Cases{
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
@@ -638,24 +1147,28 @@ var CasesComplexMCD = test.Cases{
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				Parent:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
 				Parent:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				Parent:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
 				ExpectedSum: 4200,
@@ -667,6 +1180,7 @@ var CasesComplexMCD = test.Cases{
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MO,
 				Terminal: &processing.Terminal{
@@ -677,6 +1191,7 @@ var CasesComplexMCD = test.Cases{
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
@@ -687,24 +1202,28 @@ var CasesComplexMCD = test.Cases{
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				Parent:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
 				Parent:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				Parent:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MMTS_SUB,
 				ExpectedSum: 4200,
@@ -716,6 +1235,7 @@ var CasesComplexMCD = test.Cases{
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MO,
 				Terminal: &processing.Terminal{
@@ -726,6 +1246,7 @@ var CasesComplexMCD = test.Cases{
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
@@ -736,24 +1257,28 @@ var CasesComplexMCD = test.Cases{
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				Parent:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
 				Parent:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				Parent:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MO,
 				Terminal: &processing.Terminal{
@@ -764,6 +1289,7 @@ var CasesComplexMCD = test.Cases{
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
@@ -779,6 +1305,7 @@ var CasesComplexMCD = test.Cases{
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MO,
 				Terminal: &processing.Terminal{
@@ -789,6 +1316,7 @@ var CasesComplexMCD = test.Cases{
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
@@ -799,18 +1327,21 @@ var CasesComplexMCD = test.Cases{
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				Parent:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
 				Parent:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
 				ExpectedSum: 4200,
@@ -822,6 +1353,7 @@ var CasesComplexMCD = test.Cases{
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MO,
 				Terminal: &processing.Terminal{
@@ -832,6 +1364,7 @@ var CasesComplexMCD = test.Cases{
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
@@ -842,18 +1375,21 @@ var CasesComplexMCD = test.Cases{
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				Parent:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
 				Parent:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MMTS_SUB,
 				Parent:      1,
@@ -865,6 +1401,7 @@ var CasesComplexMCD = test.Cases{
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MO,
 				Terminal: &processing.Terminal{
@@ -875,6 +1412,7 @@ var CasesComplexMCD = test.Cases{
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
@@ -885,24 +1423,28 @@ var CasesComplexMCD = test.Cases{
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				Parent:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
 				Parent:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MMTS_SUB,
 				Parent:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				ExpectedSum: 4200,
@@ -914,6 +1456,7 @@ var CasesComplexMCD = test.Cases{
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MO,
 				Terminal: &processing.Terminal{
@@ -924,6 +1467,7 @@ var CasesComplexMCD = test.Cases{
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
@@ -934,24 +1478,28 @@ var CasesComplexMCD = test.Cases{
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				Parent:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
 				Parent:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MMTS_SUB,
 				Parent:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
 				ExpectedSum: 4200,
@@ -963,6 +1511,7 @@ var CasesComplexMCD = test.Cases{
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MO,
 				Terminal: &processing.Terminal{
@@ -973,6 +1522,7 @@ var CasesComplexMCD = test.Cases{
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
@@ -983,24 +1533,28 @@ var CasesComplexMCD = test.Cases{
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				Parent:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
 				Parent:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MMTS_SUB,
 				Parent:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MMTS_SUB,
 				ExpectedSum: 4200,
@@ -1012,6 +1566,7 @@ var CasesComplexMCD = test.Cases{
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MO,
 				Terminal: &processing.Terminal{
@@ -1022,6 +1577,7 @@ var CasesComplexMCD = test.Cases{
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
@@ -1032,24 +1588,28 @@ var CasesComplexMCD = test.Cases{
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				Parent:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
 				Parent:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MMTS_SUB,
 				Parent:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
@@ -1060,6 +1620,7 @@ var CasesComplexMCD = test.Cases{
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
@@ -1075,6 +1636,7 @@ var CasesComplexMCD = test.Cases{
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MO,
 				Terminal: &processing.Terminal{
@@ -1085,6 +1647,7 @@ var CasesComplexMCD = test.Cases{
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
@@ -1095,24 +1658,28 @@ var CasesComplexMCD = test.Cases{
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				Parent:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
 				Parent:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MMTS_SUB,
 				Parent:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
@@ -1123,6 +1690,7 @@ var CasesComplexMCD = test.Cases{
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MO,
 				Terminal: &processing.Terminal{
@@ -1139,6 +1707,7 @@ var CasesComplexMCD = test.Cases{
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MO,
 				Terminal: &processing.Terminal{
@@ -1149,6 +1718,7 @@ var CasesComplexMCD = test.Cases{
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
@@ -1159,12 +1729,14 @@ var CasesComplexMCD = test.Cases{
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				Parent:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
 				Parent:      1,
@@ -1172,6 +1744,7 @@ var CasesComplexMCD = test.Cases{
 
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD2_MSK,
 				Terminal: &processing.Terminal{
@@ -1182,6 +1755,7 @@ var CasesComplexMCD = test.Cases{
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD2_MSK,
 				Terminal: &processing.Terminal{
@@ -1192,6 +1766,7 @@ var CasesComplexMCD = test.Cases{
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				ExpectedSum: 4200,
@@ -1203,6 +1778,7 @@ var CasesComplexMCD = test.Cases{
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MO,
 				Terminal: &processing.Terminal{
@@ -1213,6 +1789,7 @@ var CasesComplexMCD = test.Cases{
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
@@ -1223,12 +1800,14 @@ var CasesComplexMCD = test.Cases{
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				Parent:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
 				Parent:      1,
@@ -1236,6 +1815,7 @@ var CasesComplexMCD = test.Cases{
 
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD2_MSK,
 				Terminal: &processing.Terminal{
@@ -1246,6 +1826,7 @@ var CasesComplexMCD = test.Cases{
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD2_MSK,
 				Terminal: &processing.Terminal{
@@ -1256,6 +1837,7 @@ var CasesComplexMCD = test.Cases{
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
 				ExpectedSum: 4200,
@@ -1267,6 +1849,7 @@ var CasesComplexMCD = test.Cases{
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MO,
 				Terminal: &processing.Terminal{
@@ -1277,6 +1860,7 @@ var CasesComplexMCD = test.Cases{
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
@@ -1287,12 +1871,14 @@ var CasesComplexMCD = test.Cases{
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				Parent:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
 				Parent:      1,
@@ -1300,6 +1886,7 @@ var CasesComplexMCD = test.Cases{
 
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD2_MSK,
 				Terminal: &processing.Terminal{
@@ -1310,6 +1897,7 @@ var CasesComplexMCD = test.Cases{
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD2_MSK,
 				Terminal: &processing.Terminal{
@@ -1320,6 +1908,7 @@ var CasesComplexMCD = test.Cases{
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MMTS_SUB,
 				ExpectedSum: 4200,
@@ -1331,6 +1920,7 @@ var CasesComplexMCD = test.Cases{
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MO,
 				Terminal: &processing.Terminal{
@@ -1341,6 +1931,7 @@ var CasesComplexMCD = test.Cases{
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
@@ -1351,12 +1942,14 @@ var CasesComplexMCD = test.Cases{
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				Parent:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
 				Parent:      1,
@@ -1364,6 +1957,7 @@ var CasesComplexMCD = test.Cases{
 
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD2_MSK,
 				Terminal: &processing.Terminal{
@@ -1374,6 +1968,7 @@ var CasesComplexMCD = test.Cases{
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD2_MSK,
 				Terminal: &processing.Terminal{
@@ -1384,6 +1979,7 @@ var CasesComplexMCD = test.Cases{
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
@@ -1394,6 +1990,7 @@ var CasesComplexMCD = test.Cases{
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
@@ -1409,6 +2006,7 @@ var CasesComplexMCD = test.Cases{
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MO,
 				Terminal: &processing.Terminal{
@@ -1419,6 +2017,7 @@ var CasesComplexMCD = test.Cases{
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
@@ -1429,12 +2028,14 @@ var CasesComplexMCD = test.Cases{
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				Parent:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
 				Parent:      1,
@@ -1442,6 +2043,7 @@ var CasesComplexMCD = test.Cases{
 
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD2_MSK,
 				Terminal: &processing.Terminal{
@@ -1452,6 +2054,7 @@ var CasesComplexMCD = test.Cases{
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD2_MSK,
 				Terminal: &processing.Terminal{
@@ -1462,6 +2065,7 @@ var CasesComplexMCD = test.Cases{
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
@@ -1472,6 +2076,7 @@ var CasesComplexMCD = test.Cases{
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MO,
 				Terminal: &processing.Terminal{
@@ -1488,6 +2093,7 @@ var CasesComplexMCD = test.Cases{
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MO,
 				Terminal: &processing.Terminal{
@@ -1498,6 +2104,7 @@ var CasesComplexMCD = test.Cases{
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
@@ -1508,12 +2115,14 @@ var CasesComplexMCD = test.Cases{
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				Parent:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
 				Parent:      1,
@@ -1521,6 +2130,7 @@ var CasesComplexMCD = test.Cases{
 
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD2_MSK,
 				Terminal: &processing.Terminal{
@@ -1531,6 +2141,7 @@ var CasesComplexMCD = test.Cases{
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD2_MO,
 				Terminal: &processing.Terminal{
@@ -1541,6 +2152,7 @@ var CasesComplexMCD = test.Cases{
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				ExpectedSum: 4200,
@@ -1552,6 +2164,7 @@ var CasesComplexMCD = test.Cases{
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MO,
 				Terminal: &processing.Terminal{
@@ -1562,6 +2175,7 @@ var CasesComplexMCD = test.Cases{
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
@@ -1572,12 +2186,14 @@ var CasesComplexMCD = test.Cases{
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				Parent:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
 				Parent:      1,
@@ -1585,6 +2201,7 @@ var CasesComplexMCD = test.Cases{
 
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD2_MSK,
 				Terminal: &processing.Terminal{
@@ -1595,6 +2212,7 @@ var CasesComplexMCD = test.Cases{
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD2_MO,
 				Terminal: &processing.Terminal{
@@ -1605,6 +2223,7 @@ var CasesComplexMCD = test.Cases{
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
 				ExpectedSum: 4200,
@@ -1616,6 +2235,7 @@ var CasesComplexMCD = test.Cases{
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MO,
 				Terminal: &processing.Terminal{
@@ -1626,6 +2246,7 @@ var CasesComplexMCD = test.Cases{
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
@@ -1636,12 +2257,14 @@ var CasesComplexMCD = test.Cases{
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				Parent:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
 				Parent:      1,
@@ -1649,6 +2272,7 @@ var CasesComplexMCD = test.Cases{
 
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD2_MSK,
 				Terminal: &processing.Terminal{
@@ -1659,6 +2283,7 @@ var CasesComplexMCD = test.Cases{
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD2_MO,
 				Terminal: &processing.Terminal{
@@ -1669,6 +2294,7 @@ var CasesComplexMCD = test.Cases{
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MMTS_SUB,
 				ExpectedSum: 4200,
@@ -1680,6 +2306,7 @@ var CasesComplexMCD = test.Cases{
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MO,
 				Terminal: &processing.Terminal{
@@ -1690,6 +2317,7 @@ var CasesComplexMCD = test.Cases{
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
@@ -1700,18 +2328,21 @@ var CasesComplexMCD = test.Cases{
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				Parent:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
 				Parent:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD2_MSK,
 				Terminal: &processing.Terminal{
@@ -1722,6 +2353,7 @@ var CasesComplexMCD = test.Cases{
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD2_MO,
 				Terminal: &processing.Terminal{
@@ -1732,6 +2364,7 @@ var CasesComplexMCD = test.Cases{
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
@@ -1742,6 +2375,7 @@ var CasesComplexMCD = test.Cases{
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
@@ -1757,6 +2391,7 @@ var CasesComplexMCD = test.Cases{
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MO,
 				Terminal: &processing.Terminal{
@@ -1767,6 +2402,7 @@ var CasesComplexMCD = test.Cases{
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
@@ -1777,18 +2413,21 @@ var CasesComplexMCD = test.Cases{
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				Parent:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
 				Parent:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD2_MSK,
 				Terminal: &processing.Terminal{
@@ -1799,6 +2438,7 @@ var CasesComplexMCD = test.Cases{
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD2_MO,
 				Terminal: &processing.Terminal{
@@ -1809,6 +2449,7 @@ var CasesComplexMCD = test.Cases{
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
@@ -1819,6 +2460,7 @@ var CasesComplexMCD = test.Cases{
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MO,
 				Terminal: &processing.Terminal{
@@ -1835,6 +2477,7 @@ var CasesComplexMCD = test.Cases{
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MO,
 				Terminal: &processing.Terminal{
@@ -1845,6 +2488,7 @@ var CasesComplexMCD = test.Cases{
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
@@ -1855,18 +2499,21 @@ var CasesComplexMCD = test.Cases{
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				Parent:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MMTS_SUB,
 				Parent:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				ExpectedSum: 4200,
@@ -1878,6 +2525,7 @@ var CasesComplexMCD = test.Cases{
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MO,
 				Terminal: &processing.Terminal{
@@ -1888,6 +2536,7 @@ var CasesComplexMCD = test.Cases{
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
@@ -1898,18 +2547,21 @@ var CasesComplexMCD = test.Cases{
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				Parent:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MMTS_SUB,
 				Parent:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
 				ExpectedSum: 4200,
@@ -1921,6 +2573,7 @@ var CasesComplexMCD = test.Cases{
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MO,
 				Terminal: &processing.Terminal{
@@ -1931,6 +2584,7 @@ var CasesComplexMCD = test.Cases{
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
@@ -1941,18 +2595,21 @@ var CasesComplexMCD = test.Cases{
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				Parent:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MMTS_SUB,
 				Parent:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MMTS_SUB,
 				ExpectedSum: 4200,
@@ -1964,6 +2621,7 @@ var CasesComplexMCD = test.Cases{
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MO,
 				Terminal: &processing.Terminal{
@@ -1974,6 +2632,7 @@ var CasesComplexMCD = test.Cases{
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
@@ -1984,18 +2643,21 @@ var CasesComplexMCD = test.Cases{
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				Parent:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MMTS_SUB,
 				Parent:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
@@ -2006,6 +2668,7 @@ var CasesComplexMCD = test.Cases{
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
@@ -2021,6 +2684,7 @@ var CasesComplexMCD = test.Cases{
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MO,
 				Terminal: &processing.Terminal{
@@ -2031,6 +2695,7 @@ var CasesComplexMCD = test.Cases{
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
@@ -2041,18 +2706,21 @@ var CasesComplexMCD = test.Cases{
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				Parent:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MMTS_SUB,
 				Parent:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MO,
 				Terminal: &processing.Terminal{
@@ -2063,6 +2731,7 @@ var CasesComplexMCD = test.Cases{
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
@@ -2078,6 +2747,7 @@ var CasesComplexMCD = test.Cases{
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MO,
 				Terminal: &processing.Terminal{
@@ -2088,6 +2758,7 @@ var CasesComplexMCD = test.Cases{
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
@@ -2098,12 +2769,14 @@ var CasesComplexMCD = test.Cases{
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				Parent:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD2_MSK,
 				Terminal: &processing.Terminal{
@@ -2114,6 +2787,7 @@ var CasesComplexMCD = test.Cases{
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD2_MSK,
 				Terminal: &processing.Terminal{
@@ -2124,12 +2798,14 @@ var CasesComplexMCD = test.Cases{
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				Parent:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				ExpectedSum: 4200,
@@ -2141,6 +2817,7 @@ var CasesComplexMCD = test.Cases{
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MO,
 				Terminal: &processing.Terminal{
@@ -2151,6 +2828,7 @@ var CasesComplexMCD = test.Cases{
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
@@ -2161,12 +2839,14 @@ var CasesComplexMCD = test.Cases{
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				Parent:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD2_MSK,
 				Terminal: &processing.Terminal{
@@ -2177,6 +2857,7 @@ var CasesComplexMCD = test.Cases{
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD2_MSK,
 				Terminal: &processing.Terminal{
@@ -2187,12 +2868,14 @@ var CasesComplexMCD = test.Cases{
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				Parent:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
 				ExpectedSum: 4200,
@@ -2204,6 +2887,7 @@ var CasesComplexMCD = test.Cases{
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MO,
 				Terminal: &processing.Terminal{
@@ -2214,6 +2898,7 @@ var CasesComplexMCD = test.Cases{
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
@@ -2224,12 +2909,14 @@ var CasesComplexMCD = test.Cases{
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				Parent:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD2_MSK,
 				Terminal: &processing.Terminal{
@@ -2240,6 +2927,7 @@ var CasesComplexMCD = test.Cases{
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD2_MSK,
 				Terminal: &processing.Terminal{
@@ -2250,12 +2938,14 @@ var CasesComplexMCD = test.Cases{
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				Parent:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MMTS_SUB,
 				ExpectedSum: 4200,
@@ -2267,6 +2957,7 @@ var CasesComplexMCD = test.Cases{
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MO,
 				Terminal: &processing.Terminal{
@@ -2277,6 +2968,7 @@ var CasesComplexMCD = test.Cases{
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
@@ -2287,12 +2979,14 @@ var CasesComplexMCD = test.Cases{
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				Parent:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD2_MSK,
 				Terminal: &processing.Terminal{
@@ -2303,6 +2997,7 @@ var CasesComplexMCD = test.Cases{
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD2_MSK,
 				Terminal: &processing.Terminal{
@@ -2313,12 +3008,14 @@ var CasesComplexMCD = test.Cases{
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				Parent:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
@@ -2329,6 +3026,7 @@ var CasesComplexMCD = test.Cases{
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
@@ -2344,6 +3042,7 @@ var CasesComplexMCD = test.Cases{
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MO,
 				Terminal: &processing.Terminal{
@@ -2354,6 +3053,7 @@ var CasesComplexMCD = test.Cases{
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
@@ -2364,12 +3064,14 @@ var CasesComplexMCD = test.Cases{
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				Parent:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD2_MSK,
 				Terminal: &processing.Terminal{
@@ -2380,6 +3082,7 @@ var CasesComplexMCD = test.Cases{
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD2_MSK,
 				Terminal: &processing.Terminal{
@@ -2390,12 +3093,14 @@ var CasesComplexMCD = test.Cases{
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				Parent:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MO,
 				Terminal: &processing.Terminal{
@@ -2406,6 +3111,7 @@ var CasesComplexMCD = test.Cases{
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
@@ -2421,6 +3127,7 @@ var CasesComplexMCD = test.Cases{
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MO,
 				Terminal: &processing.Terminal{
@@ -2431,6 +3138,7 @@ var CasesComplexMCD = test.Cases{
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
@@ -2441,12 +3149,14 @@ var CasesComplexMCD = test.Cases{
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				Parent:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD2_MSK,
 				Terminal: &processing.Terminal{
@@ -2457,6 +3167,7 @@ var CasesComplexMCD = test.Cases{
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD2_MSK,
 				Terminal: &processing.Terminal{
@@ -2467,12 +3178,14 @@ var CasesComplexMCD = test.Cases{
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
 				Parent:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				ExpectedSum: 4200,
@@ -2484,6 +3197,7 @@ var CasesComplexMCD = test.Cases{
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MO,
 				Terminal: &processing.Terminal{
@@ -2494,6 +3208,7 @@ var CasesComplexMCD = test.Cases{
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
@@ -2504,12 +3219,14 @@ var CasesComplexMCD = test.Cases{
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				Parent:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD2_MSK,
 				Terminal: &processing.Terminal{
@@ -2520,6 +3237,7 @@ var CasesComplexMCD = test.Cases{
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD2_MSK,
 				Terminal: &processing.Terminal{
@@ -2530,12 +3248,14 @@ var CasesComplexMCD = test.Cases{
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
 				Parent:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
 				ExpectedSum: 4200,
@@ -2547,6 +3267,7 @@ var CasesComplexMCD = test.Cases{
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MO,
 				Terminal: &processing.Terminal{
@@ -2557,6 +3278,7 @@ var CasesComplexMCD = test.Cases{
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
@@ -2567,12 +3289,14 @@ var CasesComplexMCD = test.Cases{
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				Parent:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD2_MSK,
 				Terminal: &processing.Terminal{
@@ -2583,6 +3307,7 @@ var CasesComplexMCD = test.Cases{
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD2_MSK,
 				Terminal: &processing.Terminal{
@@ -2593,12 +3318,14 @@ var CasesComplexMCD = test.Cases{
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
 				Parent:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
+				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
 				ExpectedSum: 4200,

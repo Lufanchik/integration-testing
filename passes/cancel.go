@@ -130,7 +130,7 @@ var CasesCancel = test.Cases{
 	//},
 
 	{
-		N: "MM - отмена поездки",
+		N:          "MM - отмена поездки",
 		CardSystem: processing.CardSystem_VISA,
 		T: test.T{
 			&test.Pass{
@@ -218,30 +218,29 @@ var CasesCancel = test.Cases{
 				RequestType: test.RequestTypeOnline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
-				Parent: 1,
+				Parent:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
 				RequestType: test.RequestTypeOnline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD2_MSK,
-				Terminal:    &processing.Terminal{
+				Terminal: &processing.Terminal{
 					Station:   "2000075", //ТУШИНО
 					Direction: processing.TerminalDirection_INGRESS,
 				},
 				Parent: 1,
-
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				RequestType: test.RequestTypeOnline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD2_MO,
-				Terminal:    &processing.Terminal{
+				Terminal: &processing.Terminal{
 					Station:   "2000460", //НАХАБИНО
 					Direction: processing.TerminalDirection_EGRESS,
 				},
-				Ingress: 4,
+				Ingress:     4,
 				ExpectedSum: 700,
 			},
 		},

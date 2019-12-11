@@ -51,8 +51,6 @@ ansible:
     file:
       path: "{{`{{ item }}`}}"
       mode: a+x
-      owner: app
-      group: app
     with_items:
       - /app/start_full.sh
       - /app/start_simple.sh

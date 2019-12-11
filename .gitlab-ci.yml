@@ -1,0 +1,3 @@
+include:
+  - project: 'infra/pipeline'
+    file: '/.gitlab-ci.yml'

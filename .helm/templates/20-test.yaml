@@ -1,0 +1,38 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: {{ .Chart.Name }}
+  labels:
+    app: {{ .Chart.Name }}
+  annotations:
+    "helm.sh/hook": post-install,post-upgrade
+    "helm.sh/hook-delete-policy": before-hook-creation
+    "helm.sh/hook-weight": "0"
+spec:
+  activeDeadlineSeconds: 600
+  backoffLimit: 1
+  template:
+    metadata:
+      labels:
+        app: {{ .Chart.Name }}
+    spec:
+      imagePullSecrets:
+      - name: "registrysecret"
+      containers:
+      - name: app
+{{ tuple "app" . | include "werf_container_image" | indent 8 }}
+{{- include "resources_app" . | indent 8 }}
+        workingDir: /app/
+        command: ["make test"]
+        lifecycle:
+          preStop:
+            exec:
+              command: [ "/bin/bash", "-c", "sleep 5" ]
+        env:
+{{ tuple "app" . | include "werf_container_env" | indent 8 }}
+        - name: PROCESSING_API_URL
+          value: {{ pluck .Values.global.env .Values.processing_api | first }}
+        - name: PASS_URL
+          value: {{ pluck .Values.global.env .Values.pass | first }}
+        - name: APM_API_URL
+          value: {{ pluck .Values.global.env .Values.apm_api | first }}

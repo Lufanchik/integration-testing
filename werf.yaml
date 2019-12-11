@@ -1,0 +1,52 @@
+configVersion: 1
+project: integration-testing
+deploy:
+ helmRelease: "[[ project ]]-[[ env ]]"
+ namespace: "[[ env ]]"
+---
+image: app
+from: debian:stretch-slim
+docker:
+  WORKDIR: /app
+  ENV:
+    LC_ALL: en_US.UTF-8
+    TZ: Europe/Moscow
+mount:
+- from: build_dir
+  to: /var/cache/apt/
+- from: tmp_dir
+  to: /var/lib/apt/lists
+git:
+- add: /
+  to: /app
+ansible:
+  beforeInstall:
+  - name: Install essential utils
+    apt:
+      update_cache: yes
+      name:
+      - tzdata
+      - locales
+      - gnupg
+      - bash
+      - make
+  - name: "Pgsql repo keys"     
+    apt_key:
+      url: https://www.postgresql.org/media/keys/ACCC4CF8.asc
+      state: present
+  - name: "Pgsql repo"
+    apt_repository:
+      repo: "deb http://apt.postgresql.org/pub/repos/apt/ stretch-pgdg main"
+      state: present
+  - name: Install postgresql client
+    apt:
+      update_cache: yes
+      name:
+      - postgresql-client-11
+  - name: "Generate en_US.UTF-8 default locale"
+    locale_gen:
+      name: en_US.UTF-8
+      state: present
+  - name: Set timezone
+    timezone:
+      name: "Europe/Moscow"

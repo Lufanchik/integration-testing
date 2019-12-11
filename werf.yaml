@@ -5,7 +5,7 @@ deploy:
  namespace: "[[ env ]]"
 ---
 image: test
-from: debian:stretch-slim
+from: golang:stretch
 docker:
   WORKDIR: /app
   ENV:

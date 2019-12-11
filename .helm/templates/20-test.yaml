@@ -23,7 +23,7 @@ spec:
 {{ tuple "test" . | include "werf_container_image" | indent 8 }}
         workingDir: /app
         command: ["/bin/bash"]
-        args: ["-c", "start_full.sh"]
+        args: ["-c", "/app/start_full.sh"]
         lifecycle:
           preStop:
             exec:

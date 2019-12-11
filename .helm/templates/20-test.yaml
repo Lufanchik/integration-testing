@@ -23,7 +23,7 @@ spec:
 {{ tuple "test" . | include "werf_container_image" | indent 8 }}
         workingDir: /app
         command: ["/bin/bash"]
-        args: ["-c", "/app/start_full.sh"]
+        args: ["-c", "/start_full.sh"]
         lifecycle:
           preStop:
             exec:
@@ -36,4 +36,8 @@ spec:
           value: {{ pluck .Values.global.env .Values.pass | first }}
         - name: APM_API_URL
           value: {{ pluck .Values.global.env .Values.apm_api | first }}
+        - name: GOPROXY
+          value: https://athens.k8s.siroccotechnology.ru
+        - name: GOSUMDB
+          value: "off"
       restartPolicy: Never

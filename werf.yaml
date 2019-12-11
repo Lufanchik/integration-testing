@@ -26,9 +26,9 @@ git:
     install:
       - "**/*"
 - add: /.werffiles/start_full.sh
-  to: /app/start_full.sh
+  to: /start_full.sh
 - add: /.werffiles/start_simple.sh
-  to: /app/start_simple.sh
+  to: /start_simple.sh
 ansible:
   install:
   - name: Install essential utils
@@ -47,10 +47,12 @@ ansible:
     timezone:
       name: "Europe/Moscow"
   setup:
+  - name: "Private repo git hack"
+    shell: git config --global url.https://{{ env "RUNNER_GIT_ACCESS_USER" }}:{{ env "RUNNER_GIT_ACCESS_TOKEN" }}@lab.siroccotechnology.ru.insteadOf https://lab.siroccotechnology.ru
   - name: "Change rights for scripts"
     file:
       path: "{{`{{ item }}`}}"
       mode: a+x
     with_items:
-      - /app/start_full.sh
-      - /app/start_simple.sh
+      - /start_full.sh
+      - /start_simple.sh

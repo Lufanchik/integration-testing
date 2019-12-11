@@ -19,16 +19,17 @@ spec:
       imagePullSecrets:
       - name: "registrysecret"
       containers:
-      - name: app
-{{ tuple "app" . | include "werf_container_image" | indent 8 }}
+      - name: test
+{{ tuple "test" . | include "werf_container_image" | indent 8 }}
         workingDir: /app/
-        command: ["make test"]
+        command: ["/bin/bash"]
+        args: ["-c", "start_full.sh"]
         lifecycle:
           preStop:
             exec:
               command: [ "/bin/bash", "-c", "sleep 5" ]
         env:
-{{ tuple "app" . | include "werf_container_env" | indent 8 }}
+{{ tuple "test" . | include "werf_container_env" | indent 8 }}
         - name: PROCESSING_API_URL
           value: {{ pluck .Values.global.env .Values.processing_api | first }}
         - name: PASS_URL

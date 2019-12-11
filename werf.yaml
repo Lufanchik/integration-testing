@@ -4,7 +4,7 @@ deploy:
  helmRelease: "[[ project ]]-[[ env ]]"
  namespace: "[[ env ]]"
 ---
-image: app
+image: test
 from: debian:stretch-slim
 docker:
   WORKDIR: /app
@@ -19,8 +19,18 @@ mount:
 git:
 - add: /
   to: /app
+  excludePaths:
+  - .werffiles
+  - .helm
+  stageDependencies:
+    install:
+      - "**/*"
+- add: /.werffiles/start_full.sh
+  to: /app/start_full.sh
+- add: /.werffiles/start_simple.sh
+  to: /app/start_simple.sh
 ansible:
-  beforeInstall:
+  install:
   - name: Install essential utils
     apt:
       update_cache: yes
@@ -29,20 +39,6 @@ ansible:
       - locales
       - gnupg
       - bash
-      - make
-  - name: "Pgsql repo keys"     
-    apt_key:
-      url: https://www.postgresql.org/media/keys/ACCC4CF8.asc
-      state: present
-  - name: "Pgsql repo"
-    apt_repository:
-      repo: "deb http://apt.postgresql.org/pub/repos/apt/ stretch-pgdg main"
-      state: present
-  - name: Install postgresql client
-    apt:
-      update_cache: yes
-      name:
-      - postgresql-client-11
   - name: "Generate en_US.UTF-8 default locale"
     locale_gen:
       name: en_US.UTF-8
@@ -50,3 +46,13 @@ ansible:
   - name: Set timezone
     timezone:
       name: "Europe/Moscow"
+  setup:
+  - name: "Change rights for scripts"
+    file:
+      path: "{{`{{ item }}`}}"
+      mode: a+x
+      owner: app
+      group: app
+    with_items:
+      - /app/start_full.sh
+      - /app/start_simple.sh

@@ -17,7 +17,6 @@ func init() {
 	//общие кейсы проходов
 	AddP(passes.CasesCancel)
 	AddP(passes.CasesSimpleComplexPass)
-	AddP(passes.CasesSimplePass)
 
 	//МТППК
 	AddP(mtppk.CasesMTPPKPasses)

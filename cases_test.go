@@ -47,11 +47,13 @@ func init() {
 
 	//МЦД
 	AddP(mcd.CasesComplexMCD)
+	AddP(mcd.CasesComplexMCD2)
 	AddP(mcd.CasesMetroComplexMCDMSK1)
 	AddP(mcd.CasesMetroComplexMCDMSK2)
 	AddP(mcd.CasesMetroComplexMCDMSK3)
 	AddP(mcd.CasesMetroComplexMCDMSK4)
 	AddP(mcd.CasesMetroComplexMCDMSK5)
+	AddP(mcd.CasesComplexTimeMCD)
 	AddP(mcd.CasesComplexMCDMOPartOne)
 	AddP(mcd.CasesComplexMCDMOPartTwo)
 	AddP(mcd.CasesComplexMCDMOPartThree)

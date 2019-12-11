@@ -5,7 +5,7 @@ metadata:
   labels:
     app: {{ .Chart.Name }}
   annotations:
-    "helm.sh/hook": post-install,post-upgrade
+    "helm.sh/hook": pre-install,pre-upgrade
     "helm.sh/hook-delete-policy": before-hook-creation
     "helm.sh/hook-weight": "0"
 spec:

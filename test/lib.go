@@ -53,7 +53,7 @@ func RunPass(t *testing.T, p *Pass, scenario *Case, carrierID string, card *proc
 	ConfigurePass(t, p, carrierID, card)
 	tapReq := TapBySubCarrier(t, p, card)
 	timeRequest := PassBySubCarrier(t, tapReq, p)
-	var parent, ingress *Pass
+	var parent, ingress, aggregate *Pass
 	if p.Parent > 0 {
 		pr, ok := (scenario.T[p.Parent-1]).(*Pass)
 		if !ok {
@@ -71,25 +71,40 @@ func RunPass(t *testing.T, p *Pass, scenario *Case, carrierID string, card *proc
 		ingress = ing
 		ingress.timeToWait = ingress.TimeToWait
 	}
+	if p.Aggregate > 0 {
+		agg, ok := (scenario.T[p.Aggregate-1]).(*Pass)
+		if !ok {
+			t.Fail()
+		}
+		aggregate = agg
+	}
+
 	p.tapRequest = tapReq
 	p.timeRequest = timeRequest
 	p.card = card
 	p.parent = parent
 	p.ingress = ingress
+	p.aggregate = aggregate
 
 	time.Sleep(time.Millisecond * 400)
 
-	ValidatePass(t, p, p.parent, p.ingress)
-	AuthStatus(t, p)
+	ValidatePass(t, p, p.parent, p.ingress, true)
+	if !isAggregate(p) {
+		AuthStatus(t, p)
+	}
 
 	if parent != nil {
-		ValidatePass(t, parent, parent.parent, parent.ingress)
-		AuthStatus(t, parent)
+		ValidatePass(t, parent, parent.parent, parent.ingress, false)
+		if !isAggregate(parent) {
+			AuthStatus(t, parent)
+		}
 	}
 
 	if ingress != nil {
-		ValidatePass(t, ingress, ingress.parent, ingress.ingress)
-		AuthStatus(t, ingress)
+		ValidatePass(t, ingress, ingress.parent, ingress.ingress, false)
+		if !isAggregate(ingress) {
+			AuthStatus(t, ingress)
+		}
 	}
 }
 
@@ -214,13 +229,17 @@ func Run(t *testing.T, cases Cases) {
 					p, ok := step.(*Pass)
 					if ok && !p.isCancel {
 						ConfigurePass(t, p, ncc.carrierId, ncc.card)
-						ValidatePass(t, p, p.parent, p.ingress)
-						AuthStatus(t, p)
+						ValidatePass(t, p, p.parent, p.ingress, false)
+						if !isAggregate(p) {
+							AuthStatus(t, p)
+						}
 						TapBySubCarrier(t, p, ncc.card)
 						PassBySubCarrier(t, p.tapRequest, p)
 						time.Sleep(time.Millisecond * 400)
-						ValidatePass(t, p, p.parent, p.ingress)
-						AuthStatus(t, p)
+						ValidatePass(t, p, p.parent, p.ingress, false)
+						if !isAggregate(p) {
+							AuthStatus(t, p)
+						}
 					}
 				})
 				if t.Failed() {

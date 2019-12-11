@@ -21,7 +21,7 @@ spec:
       containers:
       - name: test
 {{ tuple "test" . | include "werf_container_image" | indent 8 }}
-        workingDir: /app/
+        workingDir: /app
         command: ["/bin/bash"]
         args: ["-c", "start_full.sh"]
         lifecycle:

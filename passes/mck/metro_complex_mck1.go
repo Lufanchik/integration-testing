@@ -6,24 +6,24 @@ import (
 	"lab.siroccotechnology.ru/tp/integration-testing/test"
 )
 
-var CasesMetroComplexMCK1 = test.Cases{
+var CasesMetroComplexMCK1 = test.Cases{ //gusmanov test case
 	{
 		N: "1. MCK - MM - MM", //1
-		T: T{
-			&Pass{
-				PaymentType: PaymentTypePayment,
+		T: test.T{
+			&test.Pass{
+				PaymentType: test.PaymentTypePayment,
 				Carrier: carriers.Carrier_MM,
 				SubCarrier: carriers.SubCarrier_MCK_SUB,
 				ExpectedSum: 4200,
 			},
-			&Pass{
-				PaymentType: PaymentTypeFree,
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
 				Carrier: carriers.Carrier_MM,
 				SubCarrier: carriers.SubCarrier_MM_SUB,
 				Parent: 1,
 			},
-			&Pass{
-				PaymentType: PaymentTypePayment,
+			&test.Pass{
+				PaymentType: test.PaymentTypePayment,
 				Carrier: carriers.Carrier_MM,
 				SubCarrier: carriers.SubCarrier_MM_SUB,
 				ExpectedSum: 4200,
@@ -33,21 +33,21 @@ var CasesMetroComplexMCK1 = test.Cases{
 
 	{
 		N: "2. MCK - MM - MCK", //2
-		T: T{
-			&Pass{
-				PaymentType: PaymentTypePayment,
+		T: test.T{
+			&test.Pass{
+				PaymentType: test.PaymentTypePayment,
 				Carrier: carriers.Carrier_MM,
 				SubCarrier: carriers.SubCarrier_MCK_SUB,
 				ExpectedSum: 4200,
 			},
-			&Pass{
-				PaymentType: PaymentTypeFree,
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
 				Carrier: carriers.Carrier_MM,
 				SubCarrier: carriers.SubCarrier_MM_SUB,
 				Parent: 1,
 			},
-			&Pass{
-				PaymentType: PaymentTypePayment,
+			&test.Pass{
+				PaymentType: test.PaymentTypePayment,
 				Carrier: carriers.Carrier_MM,
 				SubCarrier: carriers.SubCarrier_MCK_SUB,
 				ExpectedSum: 4200,
@@ -56,27 +56,27 @@ var CasesMetroComplexMCK1 = test.Cases{
 	},
 	{
 		N: "3. MCK - MM - MMTS - MM", //3
-		T: T{
-			&Pass{
-				PaymentType: PaymentTypePayment,
+		T: test.T{
+			&test.Pass{
+				PaymentType: test.PaymentTypePayment,
 				Carrier: carriers.Carrier_MM,
 				SubCarrier: carriers.SubCarrier_MCK_SUB,
 				ExpectedSum: 4200,
 			},
-			&Pass{
-				PaymentType: PaymentTypeFree,
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
 				Carrier: carriers.Carrier_MM,
 				SubCarrier: carriers.SubCarrier_MM_SUB,
 				Parent: 1,
 			},
-			&Pass{
-				PaymentType: PaymentTypeFree,
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
 				Carrier: carriers.Carrier_MM,
 				SubCarrier: carriers.SubCarrier_MMTS_SUB,
 				Parent: 1,
 			},
-			&Pass{
-				PaymentType: PaymentTypePayment,
+			&test.Pass{
+				PaymentType: test.PaymentTypePayment,
 				Carrier: carriers.Carrier_MM,
 				SubCarrier: carriers.SubCarrier_MM_SUB,
 				ExpectedSum: 4200,
@@ -85,27 +85,27 @@ var CasesMetroComplexMCK1 = test.Cases{
 	},
 	{
 		N: "4. MCK - MM - MMTS - MCK", //4
-		T: T{
-			&Pass{
-				PaymentType: PaymentTypePayment,
+		T: test.T{
+			&test.Pass{
+				PaymentType: test.PaymentTypePayment,
 				Carrier: carriers.Carrier_MM,
 				SubCarrier: carriers.SubCarrier_MCK_SUB,
 				ExpectedSum: 4200,
 			},
-			&Pass{
-				PaymentType: PaymentTypeFree,
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
 				Carrier: carriers.Carrier_MM,
 				SubCarrier: carriers.SubCarrier_MM_SUB,
 				Parent: 1,
 			},
-			&Pass{
-				PaymentType: PaymentTypeFree,
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
 				Carrier: carriers.Carrier_MM,
 				SubCarrier: carriers.SubCarrier_MMTS_SUB,
 				Parent: 1,
 			},
-			&Pass{
-				PaymentType: PaymentTypePayment,
+			&test.Pass{
+				PaymentType: test.PaymentTypePayment,
 				Carrier: carriers.Carrier_MM,
 				SubCarrier: carriers.SubCarrier_MCK_SUB,
 				ExpectedSum: 4200,
@@ -114,27 +114,27 @@ var CasesMetroComplexMCK1 = test.Cases{
 	},
 	{
 		N: "5. MCK - MM - MMTS - MMTS", //5
-		T: T{
-			&Pass{
-				PaymentType: PaymentTypePayment,
+		T: test.T{
+			&test.Pass{
+				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
 				ExpectedSum: 4200,
 			},
-			&Pass{
-				PaymentType: PaymentTypeFree,
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				Parent: 1,
 			},
-			&Pass{
-				PaymentType: PaymentTypeFree,
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MMTS_SUB,
 				Parent: 1,
 			},
-			&Pass{
-				PaymentType: PaymentTypePayment,
+			&test.Pass{
+				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MMTS_SUB,
 				ExpectedSum: 4200,
@@ -143,27 +143,27 @@ var CasesMetroComplexMCK1 = test.Cases{
 	},
 	{
 		N: "6. MCK - MM - MMTS - MCD_MSK", //6
-		T: T{
-			&Pass{
-				PaymentType: PaymentTypePayment,
+		T: test.T{
+			&test.Pass{
+				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
 				ExpectedSum: 4200,
 			},
-			&Pass{
-				PaymentType: PaymentTypeFree,
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				Parent: 1,
 			},
-			&Pass{
-				PaymentType: PaymentTypeFree,
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MMTS_SUB,
 				Parent: 1,
 			},
-			&Pass{
-				PaymentType: PaymentTypePayment,
+			&test.Pass{
+				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
@@ -172,8 +172,8 @@ var CasesMetroComplexMCK1 = test.Cases{
 				},
 				ExpectedSum: 4200,
 			},
-			&Pass{
-				PaymentType: PaymentTypeFree,
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
@@ -186,27 +186,27 @@ var CasesMetroComplexMCK1 = test.Cases{
 	},
 	{
 		N: "7. MCK - MM - MMTS - MCD_MO", //7
-		T: T{
-			&Pass{
-				PaymentType: PaymentTypePayment,
+		T: test.T{
+			&test.Pass{
+				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
 				ExpectedSum: 4200,
 			},
-			&Pass{
-				PaymentType: PaymentTypeFree,
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				Parent: 1,
 			},
-			&Pass{
-				PaymentType: PaymentTypeFree,
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MMTS_SUB,
 				Parent: 1,
 			},
-			&Pass{
-				PaymentType: PaymentTypePayment,
+			&test.Pass{
+				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
@@ -215,8 +215,8 @@ var CasesMetroComplexMCK1 = test.Cases{
 				},
 				ExpectedSum: 4200,
 			},
-			&Pass{
-				PaymentType: PaymentTypePayment,
+			&test.Pass{
+				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MO,
 				Terminal: &processing.Terminal{
@@ -230,21 +230,21 @@ var CasesMetroComplexMCK1 = test.Cases{
 	},
 	{
 		N: "8. MCK - MM - MCD_MSK - MM - MM", //8
-		T: T{
-			&Pass{
-				PaymentType: PaymentTypePayment,
+		T: test.T{
+			&test.Pass{
+				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
 				ExpectedSum: 4200,
 			},
-			&Pass{
-				PaymentType: PaymentTypeFree,
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				Parent: 1,
 			},
-			&Pass{
-				PaymentType: PaymentTypeFree,
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
@@ -253,8 +253,8 @@ var CasesMetroComplexMCK1 = test.Cases{
 				},
 				Parent: 1,
 			},
-			&Pass{
-				PaymentType: PaymentTypeFree,
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
@@ -263,14 +263,14 @@ var CasesMetroComplexMCK1 = test.Cases{
 				},
 				Ingress: 3,
 			},
-			&Pass{
-				PaymentType: PaymentTypeFree,
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				Parent: 1,
 			},
-			&Pass{
-				PaymentType: PaymentTypePayment,
+			&test.Pass{
+				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				ExpectedSum: 4200,
@@ -279,21 +279,21 @@ var CasesMetroComplexMCK1 = test.Cases{
 	},
 	{
 		N: "9. MCK - MM - MCD_MSK - MM - MCK", //9
-		T: T{
-			&Pass{
-				PaymentType: PaymentTypePayment,
+		T: test.T{
+			&test.Pass{
+				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
 				ExpectedSum: 4200,
 			},
-			&Pass{
-				PaymentType: PaymentTypeFree,
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				Parent: 1,
 			},
-			&Pass{
-				PaymentType: PaymentTypeFree,
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
@@ -302,8 +302,8 @@ var CasesMetroComplexMCK1 = test.Cases{
 				},
 				Parent: 1,
 			},
-			&Pass{
-				PaymentType: PaymentTypeFree,
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
@@ -312,14 +312,14 @@ var CasesMetroComplexMCK1 = test.Cases{
 				},
 				Ingress: 3,
 			},
-			&Pass{
-				PaymentType: PaymentTypeFree,
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				Parent: 1,
 			},
-			&Pass{
-				PaymentType: PaymentTypePayment,
+			&test.Pass{
+				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
 				ExpectedSum: 4200,
@@ -328,21 +328,21 @@ var CasesMetroComplexMCK1 = test.Cases{
 	},
 	{
 		N: "10. MCK - MM - MCD_MSK - MM - MMTS", //10
-		T: T{
-			&Pass{
-				PaymentType: PaymentTypePayment,
+		T: test.T{
+			&test.Pass{
+				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
 				ExpectedSum: 4200,
 			},
-			&Pass{
-				PaymentType: PaymentTypeFree,
+			&test.Pass{
+				PaymentType:test. PaymentTypeFree,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				Parent: 1,
 			},
-			&Pass{
-				PaymentType: PaymentTypeFree,
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
@@ -351,8 +351,8 @@ var CasesMetroComplexMCK1 = test.Cases{
 				},
 				Parent: 1,
 			},
-			&Pass{
-				PaymentType: PaymentTypeFree,
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
@@ -361,14 +361,14 @@ var CasesMetroComplexMCK1 = test.Cases{
 				},
 				Ingress: 3,
 			},
-			&Pass{
-				PaymentType: PaymentTypeFree,
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				Parent: 1,
 			},
-			&Pass{
-				PaymentType: PaymentTypePayment,
+			&test.Pass{
+				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MMTS_SUB,
 				ExpectedSum: 4200,
@@ -377,21 +377,21 @@ var CasesMetroComplexMCK1 = test.Cases{
 	},
 	{
 		N: "11. MCK - MM - MCD_MSK - MM - MCD_MSK", //11
-		T: T{
-			&Pass{
-				PaymentType: PaymentTypePayment,
+		T: test.T{
+			&test.Pass{
+				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
 				ExpectedSum: 4200,
 			},
-			&Pass{
-				PaymentType: PaymentTypeFree,
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				Parent: 1,
 			},
-			&Pass{
-				PaymentType: PaymentTypeFree,
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
@@ -400,8 +400,8 @@ var CasesMetroComplexMCK1 = test.Cases{
 				},
 				Parent: 1,
 			},
-			&Pass{
-				PaymentType: PaymentTypeFree,
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
@@ -410,14 +410,14 @@ var CasesMetroComplexMCK1 = test.Cases{
 				},
 				Ingress: 3,
 			},
-			&Pass{
-				PaymentType: PaymentTypeFree,
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				Parent: 1,
 			},
-			&Pass{
-				PaymentType: PaymentTypePayment,
+			&test.Pass{
+				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
@@ -426,8 +426,8 @@ var CasesMetroComplexMCK1 = test.Cases{
 				},
 				ExpectedSum: 4200,
 			},
-			&Pass{
-				PaymentType: PaymentTypeFree,
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
@@ -440,21 +440,21 @@ var CasesMetroComplexMCK1 = test.Cases{
 	},
 	{
 		N: "12. MCK - MM - MCD_MSK - MM - MCD_MO", //12
-		T: T{
-			&Pass{
-				PaymentType: PaymentTypePayment,
+		T: test.T{
+			&test.Pass{
+				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
 				ExpectedSum: 4200,
 			},
-			&Pass{
-				PaymentType: PaymentTypeFree,
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				Parent: 1,
 			},
-			&Pass{
-				PaymentType: PaymentTypeFree,
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
@@ -463,8 +463,8 @@ var CasesMetroComplexMCK1 = test.Cases{
 				},
 				Parent: 1,
 			},
-			&Pass{
-				PaymentType: PaymentTypeFree,
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
@@ -473,14 +473,14 @@ var CasesMetroComplexMCK1 = test.Cases{
 				},
 				Ingress: 3,
 			},
-			&Pass{
-				PaymentType: PaymentTypeFree,
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				Parent: 1,
 			},
-			&Pass{
-				PaymentType: PaymentTypePayment,
+			&test.Pass{
+				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
@@ -489,8 +489,8 @@ var CasesMetroComplexMCK1 = test.Cases{
 				},
 				ExpectedSum: 4200,
 			},
-			&Pass{
-				PaymentType: PaymentTypePayment,
+			&test.Pass{
+				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MO,
 				Terminal: &processing.Terminal{
@@ -504,21 +504,21 @@ var CasesMetroComplexMCK1 = test.Cases{
 	},
 	{
 		N: "13. MCK - MM - MCD_MSK - MCK", //13
-		T: T{
-			&Pass{
-				PaymentType: PaymentTypePayment,
+		T: test.T{
+			&test.Pass{
+				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
 				ExpectedSum: 4200,
 			},
-			&Pass{
-				PaymentType: PaymentTypeFree,
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				Parent: 1,
 			},
-			&Pass{
-				PaymentType: PaymentTypeFree,
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
@@ -527,8 +527,8 @@ var CasesMetroComplexMCK1 = test.Cases{
 				},
 				Parent: 1,
 			},
-			&Pass{
-				PaymentType: PaymentTypeFree,
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
@@ -537,8 +537,8 @@ var CasesMetroComplexMCK1 = test.Cases{
 				},
 				Ingress: 3,
 			},
-			&Pass{
-				PaymentType: PaymentTypePayment,
+			&test.Pass{
+				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
 				ExpectedSum: 4200,
@@ -547,21 +547,21 @@ var CasesMetroComplexMCK1 = test.Cases{
 	},
 	{
 		N: "14. MCK - MM - MCD_MSK - MMTS - MM", //14
-		T: T{
-			&Pass{
-				PaymentType: PaymentTypePayment,
+		T: test.T{
+			&test.Pass{
+				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
 				ExpectedSum: 4200,
 			},
-			&Pass{
-				PaymentType: PaymentTypeFree,
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				Parent: 1,
 			},
-			&Pass{
-				PaymentType: PaymentTypeFree,
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
@@ -570,8 +570,8 @@ var CasesMetroComplexMCK1 = test.Cases{
 				},
 				Parent: 1,
 			},
-			&Pass{
-				PaymentType: PaymentTypeFree,
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
@@ -580,14 +580,14 @@ var CasesMetroComplexMCK1 = test.Cases{
 				},
 				Ingress: 3,
 			},
-			&Pass{
-				PaymentType: PaymentTypeFree,
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MMTS_SUB,
 				Parent:      1,
 			},
-			&Pass{
-				PaymentType: PaymentTypePayment,
+			&test.Pass{
+				PaymentType: test.PaymentTypePayment,
 				Carrier:    carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				ExpectedSum: 4200,
@@ -596,21 +596,21 @@ var CasesMetroComplexMCK1 = test.Cases{
 	},
 	{
 		N: "15. MCK - MM - MCD_MSK - MMTS - MCK", //15
-		T: T{
-			&Pass{
-				PaymentType: PaymentTypePayment,
+		T: test.T{
+			&test.Pass{
+				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
 				ExpectedSum: 4200,
 			},
-			&Pass{
-				PaymentType: PaymentTypeFree,
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				Parent: 1,
 			},
-			&Pass{
-				PaymentType: PaymentTypeFree,
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
@@ -619,8 +619,8 @@ var CasesMetroComplexMCK1 = test.Cases{
 				},
 				Parent: 1,
 			},
-			&Pass{
-				PaymentType: PaymentTypeFree,
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
@@ -629,14 +629,14 @@ var CasesMetroComplexMCK1 = test.Cases{
 				},
 				Ingress: 3,
 			},
-			&Pass{
-				PaymentType: PaymentTypeFree,
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MMTS_SUB,
 				Parent:      1,
 			},
-			&Pass{
-				PaymentType: PaymentTypePayment,
+			&test.Pass{
+				PaymentType: test.PaymentTypePayment,
 				Carrier:    carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
 				ExpectedSum: 4200,
@@ -645,21 +645,21 @@ var CasesMetroComplexMCK1 = test.Cases{
 	},
 	{
 		N: "16. MCK - MM - MCD_MSK - MMTS - MMTS", //16
-		T: T{
-			&Pass{
-				PaymentType: PaymentTypePayment,
+		T: test.T{
+			&test.Pass{
+				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
 				ExpectedSum: 4200,
 			},
-			&Pass{
-				PaymentType: PaymentTypeFree,
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				Parent: 1,
 			},
-			&Pass{
-				PaymentType: PaymentTypeFree,
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
@@ -668,8 +668,8 @@ var CasesMetroComplexMCK1 = test.Cases{
 				},
 				Parent: 1,
 			},
-			&Pass{
-				PaymentType: PaymentTypeFree,
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
@@ -678,14 +678,14 @@ var CasesMetroComplexMCK1 = test.Cases{
 				},
 				Ingress: 3,
 			},
-			&Pass{
-				PaymentType: PaymentTypeFree,
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MMTS_SUB,
 				Parent:      1,
 			},
-			&Pass{
-				PaymentType: PaymentTypePayment,
+			&test.Pass{
+				PaymentType: test.PaymentTypePayment,
 				Carrier:    carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MMTS_SUB,
 				ExpectedSum: 4200,
@@ -694,21 +694,21 @@ var CasesMetroComplexMCK1 = test.Cases{
 	},
 	{
 		N: "17. MCK - MM - MCD_MSK - MMTS - MCD_MSK", //17
-		T: T{
-			&Pass{
-				PaymentType: PaymentTypePayment,
+		T: test.T{
+			&test.Pass{
+				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
 				ExpectedSum: 4200,
 			},
-			&Pass{
-				PaymentType: PaymentTypeFree,
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				Parent: 1,
 			},
-			&Pass{
-				PaymentType: PaymentTypeFree,
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
@@ -717,8 +717,8 @@ var CasesMetroComplexMCK1 = test.Cases{
 				},
 				Parent: 1,
 			},
-			&Pass{
-				PaymentType: PaymentTypeFree,
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
@@ -727,14 +727,14 @@ var CasesMetroComplexMCK1 = test.Cases{
 				},
 				Ingress: 3,
 			},
-			&Pass{
-				PaymentType: PaymentTypeFree,
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MMTS_SUB,
 				Parent:      1,
 			},
-			&Pass{
-				PaymentType: PaymentTypePayment,
+			&test.Pass{
+				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
@@ -743,8 +743,8 @@ var CasesMetroComplexMCK1 = test.Cases{
 				},
 				ExpectedSum: 4200,
 			},
-			&Pass{
-				PaymentType: PaymentTypeFree,
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
@@ -757,21 +757,21 @@ var CasesMetroComplexMCK1 = test.Cases{
 	},
 	{
 		N: "18. MCK - MM - MCD_MSK - MMTS - MCD_MO", //18
-		T: T{
-			&Pass{
-				PaymentType: PaymentTypePayment,
+		T: test.T{
+			&test.Pass{
+				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
 				ExpectedSum: 4200,
 			},
-			&Pass{
-				PaymentType: PaymentTypeFree,
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				Parent: 1,
 			},
-			&Pass{
-				PaymentType: PaymentTypeFree,
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
@@ -780,8 +780,8 @@ var CasesMetroComplexMCK1 = test.Cases{
 				},
 				Parent: 1,
 			},
-			&Pass{
-				PaymentType: PaymentTypeFree,
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
@@ -790,14 +790,14 @@ var CasesMetroComplexMCK1 = test.Cases{
 				},
 				Ingress: 3,
 			},
-			&Pass{
-				PaymentType: PaymentTypeFree,
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MMTS_SUB,
 				Parent:      1,
 			},
-			&Pass{
-				PaymentType: PaymentTypePayment,
+			&test.Pass{
+				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
@@ -806,8 +806,8 @@ var CasesMetroComplexMCK1 = test.Cases{
 				},
 				ExpectedSum: 4200,
 			},
-			&Pass{
-				PaymentType: PaymentTypePayment,
+			&test.Pass{
+				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MO,
 				Terminal: &processing.Terminal{
@@ -821,21 +821,21 @@ var CasesMetroComplexMCK1 = test.Cases{
 	},
 	{
 		N: "19. MCK - MM - MCD_MSK1 - MCD_MSK2 - MM", //19
-		T: T{
-			&Pass{
-				PaymentType: PaymentTypePayment,
+		T: test.T{
+			&test.Pass{
+				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
 				ExpectedSum: 4200,
 			},
-			&Pass{
-				PaymentType: PaymentTypeFree,
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				Parent: 1,
 			},
-			&Pass{
-				PaymentType: PaymentTypeFree,
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
@@ -844,8 +844,8 @@ var CasesMetroComplexMCK1 = test.Cases{
 				},
 				Parent: 1,
 			},
-			&Pass{
-				PaymentType: PaymentTypeFree,
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
@@ -854,8 +854,8 @@ var CasesMetroComplexMCK1 = test.Cases{
 				},
 				Ingress: 3,
 			},
-			&Pass{
-				PaymentType: PaymentTypeFree,
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD2_MSK,
 				Terminal: &processing.Terminal{
@@ -864,8 +864,8 @@ var CasesMetroComplexMCK1 = test.Cases{
 				},
 				Parent: 1,
 			},
-			&Pass{
-				PaymentType: PaymentTypeFree,
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD2_MSK,
 				Terminal: &processing.Terminal{
@@ -874,8 +874,8 @@ var CasesMetroComplexMCK1 = test.Cases{
 				},
 				Ingress: 5,
 			},
-			&Pass{
-				PaymentType: PaymentTypePayment,
+			&test.Pass{
+				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				ExpectedSum: 4200,
@@ -884,21 +884,21 @@ var CasesMetroComplexMCK1 = test.Cases{
 	},
 	{
 		N: "20. MCK - MM - MCD_MSK1 - MCD_MSK2 - MCK", //20
-		T: T{
-			&Pass{
-				PaymentType: PaymentTypePayment,
+		T: test.T{
+			&test.Pass{
+				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
 				ExpectedSum: 4200,
 			},
-			&Pass{
-				PaymentType: PaymentTypeFree,
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				Parent: 1,
 			},
-			&Pass{
-				PaymentType: PaymentTypeFree,
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
@@ -907,8 +907,8 @@ var CasesMetroComplexMCK1 = test.Cases{
 				},
 				Parent: 1,
 			},
-			&Pass{
-				PaymentType: PaymentTypeFree,
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
@@ -917,8 +917,8 @@ var CasesMetroComplexMCK1 = test.Cases{
 				},
 				Ingress: 3,
 			},
-			&Pass{
-				PaymentType: PaymentTypeFree,
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD2_MSK,
 				Terminal: &processing.Terminal{
@@ -927,8 +927,8 @@ var CasesMetroComplexMCK1 = test.Cases{
 				},
 				Parent: 1,
 			},
-			&Pass{
-				PaymentType: PaymentTypeFree,
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD2_MSK,
 				Terminal: &processing.Terminal{
@@ -937,8 +937,8 @@ var CasesMetroComplexMCK1 = test.Cases{
 				},
 				Ingress: 5,
 			},
-			&Pass{
-				PaymentType: PaymentTypePayment,
+			&test.Pass{
+				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
 				ExpectedSum: 4200,
@@ -948,21 +948,21 @@ var CasesMetroComplexMCK1 = test.Cases{
 
 	{
 		N: "21. MCK - MM - MCD_MSK1 - MCD_MSK2 - MMTS", //21
-		T: T{
-			&Pass{
-				PaymentType: PaymentTypePayment,
+		T: test.T{
+			&test.Pass{
+				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
 				ExpectedSum: 4200,
 			},
-			&Pass{
-				PaymentType: PaymentTypeFree,
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				Parent: 1,
 			},
-			&Pass{
-				PaymentType: PaymentTypeFree,
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
@@ -971,8 +971,8 @@ var CasesMetroComplexMCK1 = test.Cases{
 				},
 				Parent: 1,
 			},
-			&Pass{
-				PaymentType: PaymentTypeFree,
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
@@ -981,8 +981,8 @@ var CasesMetroComplexMCK1 = test.Cases{
 				},
 				Ingress: 3,
 			},
-			&Pass{
-				PaymentType: PaymentTypeFree,
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD2_MSK,
 				Terminal: &processing.Terminal{
@@ -991,8 +991,8 @@ var CasesMetroComplexMCK1 = test.Cases{
 				},
 				Parent: 1,
 			},
-			&Pass{
-				PaymentType: PaymentTypeFree,
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD2_MSK,
 				Terminal: &processing.Terminal{
@@ -1001,8 +1001,8 @@ var CasesMetroComplexMCK1 = test.Cases{
 				},
 				Ingress: 5,
 			},
-			&Pass{
-				PaymentType: PaymentTypePayment,
+			&test.Pass{
+				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MMTS_SUB,
 				ExpectedSum: 4200,
@@ -1012,21 +1012,21 @@ var CasesMetroComplexMCK1 = test.Cases{
 
 	{
 		N: "22. MCK - MM - MCD_MSK1 - MCD_MSK2 - MCD_MSK1", //22
-		T: T{
-			&Pass{
-				PaymentType: PaymentTypePayment,
+		T: test.T{
+			&test.Pass{
+				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
 				ExpectedSum: 4200,
 			},
-			&Pass{
-				PaymentType: PaymentTypeFree,
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				Parent: 1,
 			},
-			&Pass{
-				PaymentType: PaymentTypeFree,
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
@@ -1035,8 +1035,8 @@ var CasesMetroComplexMCK1 = test.Cases{
 				},
 				Parent: 1,
 			},
-			&Pass{
-				PaymentType: PaymentTypeFree,
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
@@ -1045,8 +1045,8 @@ var CasesMetroComplexMCK1 = test.Cases{
 				},
 				Ingress: 3,
 			},
-			&Pass{
-				PaymentType: PaymentTypeFree,
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD2_MSK,
 				Terminal: &processing.Terminal{
@@ -1055,8 +1055,8 @@ var CasesMetroComplexMCK1 = test.Cases{
 				},
 				Parent: 1,
 			},
-			&Pass{
-				PaymentType: PaymentTypeFree,
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD2_MSK,
 				Terminal: &processing.Terminal{
@@ -1065,8 +1065,8 @@ var CasesMetroComplexMCK1 = test.Cases{
 				},
 				Ingress: 5,
 			},
-			&Pass{
-				PaymentType: PaymentTypePayment,
+			&test.Pass{
+				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
@@ -1075,8 +1075,8 @@ var CasesMetroComplexMCK1 = test.Cases{
 				},
 				ExpectedSum: 4200,
 			},
-			&Pass{
-				PaymentType: PaymentTypeFree,
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
@@ -1090,21 +1090,21 @@ var CasesMetroComplexMCK1 = test.Cases{
 
 	{
 		N: "23. MCK - MM - MCD_MSK1 - MCD_MSK2 - MCD_MO", //23
-		T: T{
-			&Pass{
-				PaymentType: PaymentTypePayment,
+		T: test.T{
+			&test.Pass{
+				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
 				ExpectedSum: 4200,
 			},
-			&Pass{
-				PaymentType: PaymentTypeFree,
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				Parent: 1,
 			},
-			&Pass{
-				PaymentType: PaymentTypeFree,
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
@@ -1113,8 +1113,8 @@ var CasesMetroComplexMCK1 = test.Cases{
 				},
 				Parent: 1,
 			},
-			&Pass{
-				PaymentType: PaymentTypeFree,
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
@@ -1123,8 +1123,8 @@ var CasesMetroComplexMCK1 = test.Cases{
 				},
 				Ingress: 3,
 			},
-			&Pass{
-				PaymentType: PaymentTypeFree,
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD2_MSK,
 				Terminal: &processing.Terminal{
@@ -1133,8 +1133,8 @@ var CasesMetroComplexMCK1 = test.Cases{
 				},
 				Parent: 1,
 			},
-			&Pass{
-				PaymentType: PaymentTypeFree,
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD2_MSK,
 				Terminal: &processing.Terminal{
@@ -1143,8 +1143,8 @@ var CasesMetroComplexMCK1 = test.Cases{
 				},
 				Ingress: 5,
 			},
-			&Pass{
-				PaymentType: PaymentTypePayment,
+			&test.Pass{
+				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
@@ -1153,8 +1153,8 @@ var CasesMetroComplexMCK1 = test.Cases{
 				},
 				ExpectedSum: 4200,
 			},
-			&Pass{
-				PaymentType: PaymentTypePayment,
+			&test.Pass{
+				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MO,
 				Terminal: &processing.Terminal{
@@ -1169,21 +1169,21 @@ var CasesMetroComplexMCK1 = test.Cases{
 
 	{
 		N: "24. MCK - MM - MCD_MSK1 - MCD_MSK1", //24
-		T: T{
-			&Pass{
-				PaymentType: PaymentTypePayment,
+		T: test.T{
+			&test.Pass{
+				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
 				ExpectedSum: 4200,
 			},
-			&Pass{
-				PaymentType: PaymentTypeFree,
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				Parent:      1,
 			},
-			&Pass{
-				PaymentType: PaymentTypeFree,
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
@@ -1192,8 +1192,8 @@ var CasesMetroComplexMCK1 = test.Cases{
 				},
 				Parent: 1,
 			},
-			&Pass{
-				PaymentType: PaymentTypeFree,
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
@@ -1202,8 +1202,8 @@ var CasesMetroComplexMCK1 = test.Cases{
 				},
 				Ingress: 3,
 			},
-			&Pass{
-				PaymentType: PaymentTypePayment,
+			&test.Pass{
+				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
@@ -1212,8 +1212,8 @@ var CasesMetroComplexMCK1 = test.Cases{
 				},
 				ExpectedSum: 4200,
 			},
-			&Pass{
-				PaymentType: PaymentTypeFree,
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{

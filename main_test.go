@@ -5,6 +5,7 @@ import (
 	"github.com/jinzhu/copier"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 	"github.com/stretchr/testify/require"
+	_ "lab.siroccotechnology.ru/tp/integration-testing/passes/mcd"
 	"lab.siroccotechnology.ru/tp/integration-testing/passes/mgt"
 	"lab.siroccotechnology.ru/tp/integration-testing/test"
 	"net/http"
@@ -104,5 +105,5 @@ func TestFull(t *testing.T) {
 }
 
 func TestSimple(t *testing.T) {
-	test.Run(t, mgt.CasesMGT)
+	test.Run(t, mgt.CasesMGT3)
 }

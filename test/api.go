@@ -9,6 +9,7 @@ import (
 	"lab.siroccotechnology.ru/tp/common/messages/processing"
 	"lab.siroccotechnology.ru/tp/common/messages/registries"
 	"lab.siroccotechnology.ru/tp/common/messages/user"
+	webApi "lab.siroccotechnology.ru/tp/web-api-gateway/proto"
 	"net/http"
 	"strings"
 	"testing"
@@ -280,4 +281,37 @@ func CompleteApi(t *testing.T, pass *Pass, passes []*Pass, sum int) {
 	resp.Created = response.Created
 	require.NoError(t, err)
 	require.Equal(t, resp, response)
+}
+
+func WebAPI(t *testing.T, card *processing.Card, passes []*Pass) {
+	req := WebAPIRequest(card)
+	u := "/api/0.1/passes"
+	r := httpWebApi.POST(u).WithJSON(req).
+		Expect().
+		Status(http.StatusOK)
+
+	object := r.Body().Raw()
+	logRequest(u, r)
+
+	response := &webApi.PassesResponse{}
+	err := jsonpb.Unmarshal(strings.NewReader(object), response)
+	require.NoError(t, err)
+
+	require.Equal(t, len(passes), len(response.Passes), "passes count doesn't match")
+
+	responsePassesMap := map[string]struct{}{}
+	for _, p := range response.Passes {
+		if p.Status == webApi.PassStatus_PAID {
+			require.NotEmpty(t, p.AuthTime)
+		} else {
+			require.Empty(t, p.AuthTime)
+		}
+
+		responsePassesMap[p.Id] = struct{}{}
+	}
+
+	for _, p := range passes {
+		_, ok := responsePassesMap[p.id]
+		require.True(t, ok, "pass not found: %s", p.id)
+	}
 }

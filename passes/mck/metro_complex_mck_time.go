@@ -236,14 +236,14 @@ var CasesComplexTimeMCK = test.Cases{
 				PaymentType: test.PaymentTypeFree,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
-				Parent: 1,
+				Parent:      1,
 				Now:         test.NowCustom(10, 30),
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MMTS_SUB,
-				Parent: 1,
+				Parent:      1,
 				Now:         test.NowCustom(11, 00),
 			},
 		},
@@ -263,7 +263,7 @@ var CasesComplexTimeMCK = test.Cases{
 				PaymentType: test.PaymentTypeFree,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MMTS_SUB,
-				Parent: 1,
+				Parent:      1,
 				Now:         test.NowCustom(10, 20),
 			},
 			&test.Pass{
@@ -290,7 +290,7 @@ var CasesComplexTimeMCK = test.Cases{
 				PaymentType: test.PaymentTypeFree,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
-				Parent: 1,
+				Parent:      1,
 				Now:         test.NowCustom(11, 29),
 			},
 			&test.Pass{
@@ -299,7 +299,6 @@ var CasesComplexTimeMCK = test.Cases{
 				SubCarrier:  carriers.SubCarrier_MMTS_SUB,
 				ExpectedSum: 4200,
 				Now:         test.NowCustom(11, 40),
-
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -312,14 +311,14 @@ var CasesComplexTimeMCK = test.Cases{
 				PaymentType: test.PaymentTypeFree,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
-				Parent: 4,
+				Parent:      4,
 				Now:         test.NowCustom(13, 13),
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
-				Parent: 4,
+				Parent:      4,
 				Now:         test.NowCustom(13, 30),
 			},
 			&test.Pass{
@@ -360,9 +359,9 @@ var CasesComplexTimeMCK = test.Cases{
 					Station:   "2000075", //ТУШИНО
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				Parent:      9,
-				Now:         test.NowCustom(14, 16),
-				TimeToWait:  4 * time.Minute,
+				Parent:     9,
+				Now:        test.NowCustom(14, 16),
+				TimeToWait: 4 * time.Minute,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,

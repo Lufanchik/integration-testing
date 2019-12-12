@@ -43,6 +43,8 @@ type (
 		Parent int
 		//ссылка на вход, для валидации связи
 		Ingress int
+		//ссылка на открывающую агрегацию
+		Aggregate int
 		//функция времени
 		Now func() uint64
 		//время отведенное на запрос в миллисекундах, работает только с онлайном
@@ -63,6 +65,7 @@ type (
 		card        *processing.Card
 		parent      *Pass
 		ingress     *Pass
+		aggregate   *Pass
 		isParent    bool
 		timeToWait  time.Duration
 		isCancel    bool

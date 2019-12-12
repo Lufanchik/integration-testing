@@ -95,7 +95,7 @@ func Update(t *testing.T, p *Pass, up Updater) {
 	require.NoError(t, err)
 }
 
-func ValidatePass(t *testing.T, p *Pass, parent *Pass, ingress *Pass) {
+func ValidatePass(t *testing.T, p *Pass, parent *Pass, ingress *Pass, isFirst bool) {
 	ctx := context.Background()
 	passDB, err := ps.GetPass(ctx, &pass.PassRequest{
 		Id: p.id,
@@ -155,7 +155,7 @@ func ValidatePass(t *testing.T, p *Pass, parent *Pass, ingress *Pass) {
 		expectPass.IsAuth = true
 	}
 
-	if p.PaymentType == PaymentTypeAggregate || p.PaymentType == PaymentTypeStartAggregate {
+	if isAggregate(p) {
 		expectPass.IsAuth = false
 		expectPass.IsAggregate = true
 	}
@@ -171,6 +171,14 @@ func ValidatePass(t *testing.T, p *Pass, parent *Pass, ingress *Pass) {
 
 	if p.isCancel {
 		expectPass.IsCancel = true
+	}
+
+	if p.PaymentType == PaymentTypeStartAggregate && p.AuthType == AuthTypeCorrect && !isFirst {
+		expectPass.IsAuth = true
+	}
+
+	if p.PaymentType == PaymentTypeAggregate && p.AuthType == AuthTypeCorrect && !isFirst {
+		expectPass.AggregateId = p.aggregate.id
 	}
 
 	expectPass.IsComplexTimeout = global.IsComplexTimeout(global.UnixNanoToLocalizedTime(expectPass.CreatedAtCarrier))
@@ -221,7 +229,7 @@ func LoginApi(t *testing.T, lg *Login) {
 func PassCheckApi(t *testing.T, pc *PassCheck, target *Pass, parent *Pass) {
 	target.PaymentType = pc.PaymentType
 	target.ExpectedSum = pc.ExpectedSum
-	ValidatePass(t, target, parent, nil)
+	ValidatePass(t, target, parent, nil, true)
 	AuthStatus(t, target)
 }
 

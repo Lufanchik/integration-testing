@@ -235,11 +235,11 @@ func Run(t *testing.T, cases Cases) {
 			scenario := ncc.c
 			time.Sleep(TimeBeforeRecheck)
 			for N, step := range scenario.T {
-				fmt.Println(fmt.Sprintf("check = %d", N+1))
 				t.Run("case check: "+scenario.N, func(t *testing.T) {
 					//Pass
 					p, ok := step.(*Pass)
 					if ok && !p.isCancel {
+						fmt.Println(fmt.Sprintf("check = %d", N+1))
 						ConfigurePass(t, p, ncc.carrierId, ncc.card)
 						ValidatePass(t, p, p.parent, p.ingress, false)
 						if !isAggregate(p) {

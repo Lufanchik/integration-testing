@@ -285,7 +285,7 @@ func CompleteApi(t *testing.T, pass *Pass, passes []*Pass, sum int) {
 
 func WebAPI(t *testing.T, card *processing.Card, passes []*Pass) {
 	req := WebAPIRequest(card)
-	u := "/api/0.1/passes"
+	u := "/twirp/proto.WebAPIGateway/GetPasses"
 	r := httpWebApi.POST(u).WithJSON(req).
 		Expect().
 		Status(http.StatusOK)

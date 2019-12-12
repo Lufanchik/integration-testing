@@ -3,6 +3,7 @@ package test
 import (
 	"context"
 	"github.com/golang/protobuf/jsonpb"
+	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"lab.siroccotechnology.ru/tp/common/global"
 	"lab.siroccotechnology.ru/tp/common/messages/pass"
@@ -13,6 +14,7 @@ import (
 	"net/http"
 	"strings"
 	"testing"
+	"time"
 )
 
 func TapBySubCarrier(t *testing.T, p *Pass, card *processing.Card) *processing.TapRequest {
@@ -97,10 +99,6 @@ func Update(t *testing.T, p *Pass, up Updater) {
 
 func ValidatePass(t *testing.T, p *Pass, parent *Pass, ingress *Pass, isFirst bool) {
 	ctx := context.Background()
-	passDB, err := ps.GetPass(ctx, &pass.PassRequest{
-		Id: p.id,
-	})
-	require.NoError(t, err)
 
 	expectPass := &pass.Pass{
 		Id:                p.id,
@@ -183,11 +181,29 @@ func ValidatePass(t *testing.T, p *Pass, parent *Pass, ingress *Pass, isFirst bo
 
 	expectPass.IsComplexTimeout = global.IsComplexTimeout(global.UnixNanoToLocalizedTime(expectPass.CreatedAtCarrier))
 
+	passDB, err := ps.GetPass(ctx, &pass.PassRequest{
+		Id: p.id,
+	})
+
+	isEqual := assert.ObjectsAreEqual(expectPass, passDB)
+	counter := 0
+	for !isEqual {
+		time.Sleep(TimeAfterRequest)
+		passDB, err = ps.GetPass(ctx, &pass.PassRequest{
+			Id: p.id,
+		})
+		isEqual = assert.ObjectsAreEqual(expectPass, passDB)
+		counter++
+		if counter > 200 {
+			break
+		}
+	}
+
 	require.Equal(t, expectPass, passDB)
 	require.NoError(t, err)
 }
 
-func AuthStatus(t *testing.T, p *Pass) {
+func GetAuthStatus(p *Pass) (*processing.AuthResponse, *processing.AuthResponse, error) {
 	req, resp := AuthStatusRequest(p)
 	u := "/" + p.Carrier.String() + "/twirp/sirocco.ProcessingAPI/AuthStatus"
 	r := httpProcessingApi.POST(u).WithJSON(req).
@@ -199,11 +215,30 @@ func AuthStatus(t *testing.T, p *Pass) {
 
 	response := &processing.AuthResponse{}
 	err := jsonpb.Unmarshal(strings.NewReader(object), response)
-	require.NoError(t, err)
 
 	resp.Created = response.Created
 	resp.Info = response.Info
+
+	return resp, response, err
+}
+
+func AuthStatus(t *testing.T, p *Pass) {
+	resp, response, err := GetAuthStatus(p)
+
+	isEqual := assert.ObjectsAreEqual(resp, response)
+	counter := 0
+	for !isEqual {
+		time.Sleep(TimeAfterRequest)
+		resp, response, err = GetAuthStatus(p)
+		isEqual = assert.ObjectsAreEqual(resp, response)
+		counter++
+		if counter > 200 {
+			break
+		}
+	}
+
 	require.Equal(t, resp, response)
+	require.NoError(t, err)
 }
 
 func AbsGetRegistryApi(t *testing.T, registry *AbsGetRegistry) {

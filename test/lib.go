@@ -16,6 +16,7 @@ import (
 var (
 	httpProcessingApi *httpexpect.Expect
 	httpApmApi        *httpexpect.Expect
+	httpWebApi        *httpexpect.Expect
 	ps                passService.PassService
 )
 
@@ -24,8 +25,8 @@ func NanoToMicro(tm uint64) uint64 {
 }
 
 func getRequestType(t *testing.T, p *Pass) RequestType {
-	if globalRequestType != RequestTypeNone {
-		return globalRequestType
+	if GlobalRequestType != RequestTypeNone {
+		return GlobalRequestType
 	}
 
 	if p.RequestType == RequestTypeNone {
@@ -86,7 +87,7 @@ func RunPass(t *testing.T, p *Pass, scenario *Case, carrierID string, card *proc
 	p.ingress = ingress
 	p.aggregate = aggregate
 
-	time.Sleep(time.Millisecond * 400)
+	time.Sleep(TimeAfterRequest)
 
 	ValidatePass(t, p, p.parent, p.ingress, true)
 	if !isAggregate(p) {
@@ -111,6 +112,7 @@ func RunPass(t *testing.T, p *Pass, scenario *Case, carrierID string, card *proc
 func Run(t *testing.T, cases Cases) {
 	httpProcessingApi = httpexpect.New(t, ProcessingApiUrl)
 	httpApmApi = httpexpect.New(t, ApmApiUrl)
+	httpWebApi = httpexpect.New(t, WebApiUrl)
 	type NCase struct {
 		c         *Case
 		card      *processing.Card
@@ -206,6 +208,16 @@ func Run(t *testing.T, cases Cases) {
 
 					CompleteApi(t, start, passes, cm.Sum)
 				}
+
+				wgw, ok := step.(*WebAPIPasses)
+				if ok {
+					var passes []*Pass
+					for _, v := range wgw.Passes {
+						passes = append(passes, (scenario.T[v-1]).(*Pass))
+					}
+
+					WebAPI(t, ncc.card, passes)
+				}
 			})
 			if t.Failed() {
 				break
@@ -221,7 +233,7 @@ func Run(t *testing.T, cases Cases) {
 			fmt.Println("name check: " + ncc.c.N)
 			fmt.Println(ncc.card.String())
 			scenario := ncc.c
-			time.Sleep(time.Millisecond * 1000)
+			time.Sleep(TimeBeforeRecheck)
 			for N, step := range scenario.T {
 				fmt.Println(fmt.Sprintf("check = %d", N+1))
 				t.Run("case check: "+scenario.N, func(t *testing.T) {
@@ -235,7 +247,7 @@ func Run(t *testing.T, cases Cases) {
 						}
 						TapBySubCarrier(t, p, ncc.card)
 						PassBySubCarrier(t, p.tapRequest, p)
-						time.Sleep(time.Millisecond * 400)
+						time.Sleep(TimeAfterRequest)
 						ValidatePass(t, p, p.parent, p.ingress, false)
 						if !isAggregate(p) {
 							AuthStatus(t, p)

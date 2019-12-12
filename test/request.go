@@ -6,6 +6,7 @@ import (
 	"github.com/gavv/httpexpect"
 	"lab.siroccotechnology.ru/tp/common/messages/carriers"
 	"lab.siroccotechnology.ru/tp/common/messages/processing"
+	webApi "lab.siroccotechnology.ru/tp/web-api-gateway/proto"
 )
 
 func PassOfflineRequest(tap *processing.TapRequest, p *Pass) (*processing.OfflinePassRequest, *processing.OfflinePassResponse) {
@@ -96,6 +97,12 @@ func ParkingRequest(card *processing.Card, pr *Parking) (*processing.CheckParkin
 	}
 
 	return pr.R, response
+}
+
+func WebAPIRequest(card *processing.Card) *webApi.PassesRequest {
+	return &webApi.PassesRequest{
+		Hash: card.Pan,
+	}
 }
 
 func CompleteRequest(pass *Pass, passes []*Pass, sum int) (*processing.CompleteRequest, *processing.CompleteResponse) {

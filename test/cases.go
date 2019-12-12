@@ -117,6 +117,10 @@ type (
 		Passes    []int
 		Sum       int
 	}
+
+	WebAPIPasses struct {
+		Passes []int
+	}
 )
 
 const (

@@ -600,7 +600,7 @@ var CasesOfflineMetroComplexMCD = test.Cases{
 		},
 	},
 	{
-		N: "МЦД МО - ММ -  МЦК - ММ - МMTS",
+		N: "3. МЦД МО - ММ -  МЦК - ММ - МMTS",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -1176,7 +1176,7 @@ var CasesOfflineMetroComplexMCD = test.Cases{
 		},
 	},
 	{
-		N: "МЦД МО - ММ -  МЦК - ММ - МMTS",
+		N: "4.МЦД МО - ММ -  МЦК - ММ - МMTS",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,

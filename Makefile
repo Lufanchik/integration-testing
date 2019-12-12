@@ -19,5 +19,5 @@ simple:
 	./bin/test -test.run ^TestSimple$
 
 local: simple
-test: simple
+test: full
 stage: full

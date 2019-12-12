@@ -6,8 +6,10 @@ import (
 	"lab.siroccotechnology.ru/tp/integration-testing/passes"
 	"lab.siroccotechnology.ru/tp/integration-testing/passes/mcd"
 	"lab.siroccotechnology.ru/tp/integration-testing/passes/mck"
+	"lab.siroccotechnology.ru/tp/integration-testing/passes/mgt"
 	"lab.siroccotechnology.ru/tp/integration-testing/passes/mm"
 	"lab.siroccotechnology.ru/tp/integration-testing/passes/mmts"
+	"lab.siroccotechnology.ru/tp/integration-testing/passes/mtppk"
 )
 
 func init() {
@@ -15,10 +17,9 @@ func init() {
 	//общие кейсы проходов
 	AddP(passes.CasesCancel)
 	AddP(passes.CasesSimpleComplexPass)
-	AddP(passes.CasesSimplePass)
 
 	//МТППК
-	//AddP(mtppk.CasesMTPPKPasses)
+	AddP(mtppk.CasesMTPPKPasses)
 
 	//ММТС
 	AddP(mmts.CasesComplexPassMMTS1)
@@ -36,7 +37,6 @@ func init() {
 	AddP(mm.CasesOfflineMetroComplexMM)
 
 	//МЦК
-	AddP(mck.CasesMetroComplexMCK)
 	AddP(mck.CasesMetroComplexMCK1)
 	AddP(mck.CasesMetroComplexMCK2)
 	AddP(mck.CasesMetroComplexMCK3)
@@ -44,7 +44,6 @@ func init() {
 	AddP(mck.CasesOfflineMetroComplexMCK)
 
 	//МЦД
-	AddP(mcd.CasesComplexMCD)
 	AddP(mcd.CasesMetroComplexMCDMSK1)
 	AddP(mcd.CasesMetroComplexMCDMSK2)
 	AddP(mcd.CasesMetroComplexMCDMSK3)
@@ -56,8 +55,13 @@ func init() {
 	AddP(mcd.CasesComplexMCDMOPartFour)
 	AddP(mcd.CasesComplexMCDMOPartFife)
 	AddP(mcd.CasesOfflineMetroComplexMCD)
+	AddP(mcd.CasesOfflineMetroComplexMCDMO)
+
 	//APM
 	AddP(apm.CasesApmGateway)
+
+	//МГТ
+	AddP(mgt.CasesMGT2)
 
 	//Parking
 	AddP(parking.CasesParkingPass)
@@ -71,6 +75,4 @@ func init() {
 	//AddP(mcd.CasesComplexTimeMCD)
 	//Add(mmts.CasesComplexTimeMMTS)
 	//AddP(mcd.CasesComplexTimeMCD)
-
-	//Add(passes.CasesCancel)
 }

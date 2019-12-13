@@ -175,8 +175,16 @@ func ValidatePass(t *testing.T, p *Pass, parent *Pass, ingress *Pass, isFirst bo
 		expectPass.IsAuth = true
 	}
 
-	if p.PaymentType == PaymentTypeAggregate && p.AuthType == AuthTypeCorrect && !isFirst {
+	if p.PaymentType == PaymentTypeAggregate && p.aggregate.AuthType == AuthTypeCorrect && !isFirst {
+		expectPass.IsAuth = true
+	}
+
+	if p.PaymentType == PaymentTypeAggregate && p.aggregate.AuthType == AuthTypeCorrect && !isFirst {
 		expectPass.AggregateId = p.aggregate.id
+	}
+
+	if p.PaymentType == PaymentTypeStartAggregate && p.AuthType == AuthTypeCorrect && !isFirst {
+		expectPass.AggregateId = expectPass.Id
 	}
 
 	expectPass.IsComplexTimeout = global.IsComplexTimeout(global.UnixNanoToLocalizedTime(expectPass.CreatedAtCarrier))

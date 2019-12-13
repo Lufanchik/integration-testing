@@ -87,7 +87,7 @@ func RunPass(t *testing.T, p *Pass, scenario *Case, carrierID string, card *proc
 	p.ingress = ingress
 	p.aggregate = aggregate
 
-	time.Sleep(TimeAfterRequest)
+	//time.Sleep(TimeAfterRequest)
 
 	ValidatePass(t, p, p.parent, p.ingress, true)
 	if !isAggregate(p) {
@@ -233,13 +233,13 @@ func Run(t *testing.T, cases Cases) {
 			fmt.Println("name check: " + ncc.c.N)
 			fmt.Println(ncc.card.String())
 			scenario := ncc.c
-			time.Sleep(TimeBeforeRecheck)
+			//time.Sleep(TimeBeforeRecheck)
 			for N, step := range scenario.T {
-				fmt.Println(fmt.Sprintf("check = %d", N+1))
 				t.Run("case check: "+scenario.N, func(t *testing.T) {
 					//Pass
 					p, ok := step.(*Pass)
 					if ok && !p.isCancel {
+						fmt.Println(fmt.Sprintf("check = %d", N+1))
 						ConfigurePass(t, p, ncc.carrierId, ncc.card)
 						ValidatePass(t, p, p.parent, p.ingress, false)
 						if !isAggregate(p) {
@@ -247,7 +247,7 @@ func Run(t *testing.T, cases Cases) {
 						}
 						TapBySubCarrier(t, p, ncc.card)
 						PassBySubCarrier(t, p.tapRequest, p)
-						time.Sleep(TimeAfterRequest)
+						//time.Sleep(TimeAfterRequest)
 						ValidatePass(t, p, p.parent, p.ingress, false)
 						if !isAggregate(p) {
 							AuthStatus(t, p)

@@ -61,9 +61,13 @@ func PassOnlineRequest(tap *processing.TapRequest, p *Pass) (*processing.OnlineP
 		responseOR.Status = processing.AuthStatus_SUCCESS_AUTH
 	case PaymentTypeFree:
 		responseOR.Status = processing.AuthStatus_SUCCESS_FREE
+	case PaymentTypeStartAggregate:
+		responseOR.Status = processing.AuthStatus_SUCCESS_AUTH
+	case PaymentTypeAggregate:
+		responseOR.Status = processing.AuthStatus_SUCCESS_AGGREGATE
 	}
 
-	if p.AuthType == AuthTypeIncorrect {
+	if p.AuthType == AuthTypeIncorrect && p.PaymentType != PaymentTypeStartAggregate && p.PaymentType != PaymentTypeAggregate {
 		responseOR.Status = processing.AuthStatus_FAILURE_ISSUER
 	}
 

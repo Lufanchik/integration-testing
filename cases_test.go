@@ -9,6 +9,7 @@ import (
 	"lab.siroccotechnology.ru/tp/integration-testing/passes/mgt"
 	"lab.siroccotechnology.ru/tp/integration-testing/passes/mm"
 	"lab.siroccotechnology.ru/tp/integration-testing/passes/mmts"
+	"lab.siroccotechnology.ru/tp/integration-testing/passes/mtppk"
 	"lab.siroccotechnology.ru/tp/integration-testing/webapi"
 )
 
@@ -19,7 +20,7 @@ func init() {
 	AddP(passes.CasesSimpleComplexPass)
 
 	//МТППК
-	//AddP(mtppk.CasesMTPPKPasses)
+	AddP(mtppk.CasesMTPPKPasses)
 
 	//ММТС
 	AddP(mmts.CasesComplexPassMMTS1)

@@ -62,9 +62,18 @@ func PassOnlineRequest(tap *processing.TapRequest, p *Pass) (*processing.OnlineP
 	case PaymentTypeFree:
 		responseOR.Status = processing.AuthStatus_SUCCESS_FREE
 	case PaymentTypeStartAggregate:
-		responseOR.Status = processing.AuthStatus_SUCCESS_AUTH
+		responseOR.Status = processing.AuthStatus_SUCCESS_AGGREGATE
 	case PaymentTypeAggregate:
 		responseOR.Status = processing.AuthStatus_SUCCESS_AGGREGATE
+	}
+
+	if p.isComplete {
+		switch p.PaymentType {
+		case PaymentTypeStartAggregate:
+			responseOR.Status = processing.AuthStatus_SUCCESS_AUTH
+		case PaymentTypeAggregate:
+			responseOR.Status = processing.AuthStatus_SUCCESS_AUTH
+		}
 	}
 
 	if p.AuthType == AuthTypeIncorrect && p.PaymentType != PaymentTypeStartAggregate && p.PaymentType != PaymentTypeAggregate {
@@ -147,15 +156,46 @@ func AuthStatusRequest(p *Pass) (*processing.AuthRequest, *processing.AuthRespon
 		response.Resolution = processing.AuthResponse_AUTHORIZED
 	case PaymentTypeFree:
 		response.Status = processing.AuthResponse_SUCCESS_FREE
+	case PaymentTypeStartAggregate:
+		response.Status = processing.AuthResponse_SUCCESS_AGGREGATE
+		response.Auth = &processing.Auth{
+			Sum:  p.ExpectedSum,
+			Type: processing.Auth_AGGREGATE,
+		}
+	case PaymentTypeAggregate:
+		response.Status = processing.AuthResponse_SUCCESS_AGGREGATE
+		response.Auth = &processing.Auth{
+			Sum:  p.ExpectedSum,
+			Type: processing.Auth_AGGREGATE,
+		}
+	}
+
+	if p.isComplete {
+		switch p.PaymentType {
+		case PaymentTypeStartAggregate:
+			response.Status = processing.AuthResponse_SUCCESS_STATUS
+			response.Auth = &processing.Auth{
+				Sum:  p.completeSum,
+				Type: processing.Auth_AGGREGATE,
+			}
+			response.Resolution = processing.AuthResponse_AUTHORIZED
+		case PaymentTypeAggregate:
+			response.Status = processing.AuthResponse_SUCCESS_STATUS
+			response.Auth = &processing.Auth{
+				Sum:  p.completeSum,
+				Type: processing.Auth_AGGREGATE,
+			}
+			response.Resolution = processing.AuthResponse_AUTHORIZED
+		}
 	}
 
 	if p.AuthType == AuthTypeIncorrect {
 		response.Resolution = processing.AuthResponse_FAILURE
 	}
 
-	if isAggregate(p) {
-		response.Auth = &processing.Auth{}
-	}
+	//if isAggregate(p) {
+	//	response.Auth = &processing.Auth{}
+	//}
 
 	return request, response
 }

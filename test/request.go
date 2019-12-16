@@ -6,6 +6,7 @@ import (
 	"github.com/gavv/httpexpect"
 	"lab.siroccotechnology.ru/tp/common/messages/carriers"
 	"lab.siroccotechnology.ru/tp/common/messages/processing"
+	webApi "lab.siroccotechnology.ru/tp/web-api-gateway/proto"
 )
 
 func PassOfflineRequest(tap *processing.TapRequest, p *Pass) (*processing.OfflinePassRequest, *processing.OfflinePassResponse) {
@@ -60,9 +61,13 @@ func PassOnlineRequest(tap *processing.TapRequest, p *Pass) (*processing.OnlineP
 		responseOR.Status = processing.AuthStatus_SUCCESS_AUTH
 	case PaymentTypeFree:
 		responseOR.Status = processing.AuthStatus_SUCCESS_FREE
+	case PaymentTypeStartAggregate:
+		responseOR.Status = processing.AuthStatus_SUCCESS_AUTH
+	case PaymentTypeAggregate:
+		responseOR.Status = processing.AuthStatus_SUCCESS_AGGREGATE
 	}
 
-	if p.AuthType == AuthTypeIncorrect {
+	if p.AuthType == AuthTypeIncorrect && p.PaymentType != PaymentTypeStartAggregate && p.PaymentType != PaymentTypeAggregate {
 		responseOR.Status = processing.AuthStatus_FAILURE_ISSUER
 	}
 
@@ -96,6 +101,12 @@ func ParkingRequest(card *processing.Card, pr *Parking) (*processing.CheckParkin
 	}
 
 	return pr.R, response
+}
+
+func WebAPIRequest(card *processing.Card) *webApi.PassesRequest {
+	return &webApi.PassesRequest{
+		Hash: card.Pan,
+	}
 }
 
 func CompleteRequest(pass *Pass, passes []*Pass, sum int) (*processing.CompleteRequest, *processing.CompleteResponse) {

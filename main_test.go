@@ -5,8 +5,8 @@ import (
 	"github.com/jinzhu/copier"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 	"github.com/stretchr/testify/require"
-	"lab.siroccotechnology.ru/tp/integration-testing/passes/mgt"
 	"lab.siroccotechnology.ru/tp/integration-testing/test"
+	"lab.siroccotechnology.ru/tp/integration-testing/webapi"
 	"net/http"
 	"net/http/pprof"
 	"testing"
@@ -104,8 +104,6 @@ func TestFull(t *testing.T) {
 }
 
 func TestSimple(t *testing.T) {
-	//test.Run(t, webapi.CasesWEBAPI)
-	test.Run(t, mgt.CasesMGT)
-	test.Run(t, mgt.CasesMGT1)
-	test.Run(t, mgt.CasesMGT2)
+	test.Run(t, webapi.CasesWEBAPI)
+
 }

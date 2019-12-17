@@ -10,7 +10,6 @@ import (
 	"lab.siroccotechnology.ru/tp/integration-testing/passes/mm"
 	"lab.siroccotechnology.ru/tp/integration-testing/passes/mmts"
 	"lab.siroccotechnology.ru/tp/integration-testing/passes/mtppk"
-	"lab.siroccotechnology.ru/tp/integration-testing/webapi"
 )
 
 func init() {
@@ -68,7 +67,7 @@ func init() {
 	AddP(parking.CasesParkingPass)
 
 	//WebAPI
-	AddP(webapi.CasesWEBAPI)
+	//AddP(webapi.CasesWEBAPI)
 
 	//черновики, которые пока что не запускаются
 	//AddP(passes.CasesWrongTimeComplexPass)

@@ -69,6 +69,8 @@ type (
 		isParent    bool
 		timeToWait  time.Duration
 		isCancel    bool
+		isComplete  bool
+		completeSum uint32
 	}
 
 	//генерация прохода

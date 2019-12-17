@@ -13,7 +13,7 @@ import (
 	"time"
 )
 
-const Workers = 18
+const Workers = 10
 
 var (
 	Cases         []test.Cases
@@ -106,5 +106,5 @@ func TestFull(t *testing.T) {
 }
 
 func TestSimple(t *testing.T) {
-	test.Run(t, mtppk.CasesMTPPKPasses, test.RequestTypeOnline)
+	test.Run(t, mtppk.CasesMTPPKPasses, test.RequestTypeOffline)
 }

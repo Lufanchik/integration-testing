@@ -73,22 +73,22 @@ func RunPass(t *testing.T, p *Pass, scenario *Case, carrierID string, card *proc
 	//time.Sleep(TimeAfterRequest)
 
 	ValidatePass(t, p, p.parent, p.ingress, true)
-	if !isAggregate(p) {
-		AuthStatus(t, p)
-	}
+	//if !isAggregate(p) {
+	AuthStatus(t, p)
+	//}
 
 	if parent != nil {
 		ValidatePass(t, parent, parent.parent, parent.ingress, false)
-		if !isAggregate(parent) {
-			AuthStatus(t, parent)
-		}
+		//if !isAggregate(parent) {
+		AuthStatus(t, parent)
+		//}
 	}
 
 	if ingress != nil {
 		ValidatePass(t, ingress, ingress.parent, ingress.ingress, false)
-		if !isAggregate(ingress) {
-			AuthStatus(t, ingress)
-		}
+		//if !isAggregate(ingress) {
+		AuthStatus(t, ingress)
+		//}
 	}
 }
 func getRequestType(t *testing.T, p *Pass) RequestType {
@@ -196,9 +196,14 @@ func Run(t *testing.T, cases Cases, rt RequestType) {
 						t.Fail()
 					}
 
+					start.isComplete = true
+					start.completeSum = uint32(cm.Sum)
 					var passes []*Pass
 					for _, v := range cm.Passes {
-						passes = append(passes, (scenario.T[v-1]).(*Pass))
+						ps := (scenario.T[v-1]).(*Pass)
+						ps.isComplete = true
+						ps.completeSum = uint32(cm.Sum)
+						passes = append(passes, ps)
 					}
 
 					CompleteApi(t, start, passes, cm.Sum)
@@ -236,15 +241,15 @@ func Run(t *testing.T, cases Cases, rt RequestType) {
 						fmt.Println(fmt.Sprintf("check 1 = %d", N+1))
 						ConfigurePass(t, p, ncc.carrierId, ncc.card)
 						ValidatePass(t, p, p.parent, p.ingress, false)
-						if !isAggregate(p) {
-							AuthStatus(t, p)
-						}
+						//if !isAggregate(p) {
+						AuthStatus(t, p)
+						//}
 						TapBySubCarrier(t, p, ncc.card)
 						PassBySubCarrier(t, p.tapRequest, p)
 						ValidatePass(t, p, p.parent, p.ingress, false)
-						if !isAggregate(p) {
-							AuthStatus(t, p)
-						}
+						//if !isAggregate(p) {
+						AuthStatus(t, p)
+						//}
 					}
 				})
 				if t.Failed() {
@@ -270,15 +275,15 @@ func Run(t *testing.T, cases Cases, rt RequestType) {
 						fmt.Println(fmt.Sprintf("check 2 = %d", N+1))
 						ConfigurePass(t, p, ncc.carrierId, ncc.card)
 						ValidatePass(t, p, p.parent, p.ingress, false)
-						if !isAggregate(p) {
-							AuthStatus(t, p)
-						}
+						//if !isAggregate(p) {
+						AuthStatus(t, p)
+						//}
 						TapBySubCarrier(t, p, ncc.card)
 						PassBySubCarrier(t, p.tapRequest, p)
 						ValidatePass(t, p, p.parent, p.ingress, false)
-						if !isAggregate(p) {
-							AuthStatus(t, p)
-						}
+						//if !isAggregate(p) {
+						AuthStatus(t, p)
+						//}
 					}
 				})
 				if t.Failed() {

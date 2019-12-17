@@ -5,7 +5,7 @@ import (
 	"github.com/jinzhu/copier"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 	"github.com/stretchr/testify/require"
-	"lab.siroccotechnology.ru/tp/integration-testing/passes/mtppk"
+	"lab.siroccotechnology.ru/tp/integration-testing/passes/mgt"
 	"lab.siroccotechnology.ru/tp/integration-testing/test"
 	"net/http"
 	"net/http/pprof"
@@ -65,7 +65,7 @@ func TestFull(t *testing.T) {
 	for i := 0; i < Workers; i++ {
 		go func(tasks chan test.Cases, err chan error, done chan struct{}, w int) {
 			for v := range tasks {
-				test.Run(t, v)
+				test.Run(t, v, test.RequestTypeOnline)
 				done <- struct{}{}
 			}
 		}(tasks, err, done, i)
@@ -104,5 +104,8 @@ func TestFull(t *testing.T) {
 }
 
 func TestSimple(t *testing.T) {
-	test.Run(t, mtppk.CasesMTPPKPasses, test.RequestTypeOnline)
+	//test.Run(t, mtppk.CasesMTPPKPasses, test.RequestTypeOnline)
+	test.Run(t, mgt.CasesMGT, test.RequestTypeOnline)
+
 }
+

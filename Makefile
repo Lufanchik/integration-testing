@@ -17,4 +17,4 @@ simple:
 	./bin/test -test.run ^TestSimple$
 
 local: full
-test: full
+test: simple

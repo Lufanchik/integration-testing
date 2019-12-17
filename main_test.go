@@ -13,7 +13,7 @@ import (
 	"time"
 )
 
-const Workers = 18
+const Workers = 20
 
 var (
 	Cases         []test.Cases
@@ -65,7 +65,9 @@ func TestFull(t *testing.T) {
 	for i := 0; i < Workers; i++ {
 		go func(tasks chan test.Cases, err chan error, done chan struct{}, w int) {
 			for v := range tasks {
-				test.Run(t, v)
+				test.Run(t, v, test.RequestTypeOnline)
+				//test.Run(t, v, test.RequestTypeOffline)
+				//test.Run(t, v, test.RequestType(gofakeit.Number(1, 2)))
 				done <- struct{}{}
 			}
 		}(tasks, err, done, i)
@@ -104,5 +106,5 @@ func TestFull(t *testing.T) {
 }
 
 func TestSimple(t *testing.T) {
-	test.Run(t, mtppk.CasesMTPPKPasses, test.RequestTypeOnline)
+	test.Run(t, mtppk.CasesMTPPKPasses, test.RequestTypeOffline)
 }

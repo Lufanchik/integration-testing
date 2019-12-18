@@ -9,7 +9,7 @@ var (
 	ProcessingApiUrl  = os.Getenv("PROCESSING_API_URL")
 	PassUrl           = os.Getenv("PASS_URL")
 	ApmApiUrl         = os.Getenv("APM_API_URL")
-	GlobalRequestType = RequestTypeOffline
-	TimeAfterRequest  = time.Millisecond * 500
-	TimeBeforeRecheck = time.Millisecond * 1000
+	WebApiUrl         = os.Getenv("WEB_API_URL")
+	GlobalRequestType = RequestTypeOnline
+	TimeAfterRequest  = time.Millisecond * 50
 )

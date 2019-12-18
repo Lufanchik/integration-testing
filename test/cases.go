@@ -69,6 +69,8 @@ type (
 		isParent    bool
 		timeToWait  time.Duration
 		isCancel    bool
+		isComplete  bool
+		completeSum uint32
 	}
 
 	//генерация прохода
@@ -116,6 +118,10 @@ type (
 		StartPass int
 		Passes    []int
 		Sum       int
+	}
+
+	WebAPIPasses struct {
+		Passes []int
 	}
 )
 

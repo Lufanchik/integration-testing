@@ -6,7 +6,6 @@ import (
 	"github.com/gavv/httpexpect"
 	"github.com/google/uuid"
 	"lab.siroccotechnology.ru/tp/common/messages/processing"
-	"math/rand"
 	"testing"
 	"time"
 
@@ -16,6 +15,7 @@ import (
 var (
 	httpProcessingApi *httpexpect.Expect
 	httpApmApi        *httpexpect.Expect
+	httpWebApi        *httpexpect.Expect
 	ps                passService.PassService
 )
 
@@ -23,27 +23,11 @@ func NanoToMicro(tm uint64) uint64 {
 	return tm / uint64(time.Microsecond) * 1000
 }
 
-func getRequestType(t *testing.T, p *Pass) RequestType {
-	if GlobalRequestType != RequestTypeNone {
-		return GlobalRequestType
-	}
-
-	if p.RequestType == RequestTypeNone {
-		return RequestType(gofakeit.Number(1, 2))
-	}
-
-	return p.RequestType
-}
-
 func ConfigurePass(t *testing.T, p *Pass, carrierID string, card *processing.Card) {
 	if p.Now != nil {
 		Now = p.Now
 	} else {
 		Now = NowBackup
-	}
-	if p.RequestType == RequestTypeNone {
-		rand.Seed(time.Now().UnixNano())
-		p.RequestType = getRequestType(t, p)
 	}
 	GenerateEmv(card, p)
 	p.carrierID = carrierID
@@ -86,31 +70,43 @@ func RunPass(t *testing.T, p *Pass, scenario *Case, carrierID string, card *proc
 	p.ingress = ingress
 	p.aggregate = aggregate
 
-	time.Sleep(TimeAfterRequest)
+	//time.Sleep(TimeAfterRequest)
 
 	ValidatePass(t, p, p.parent, p.ingress, true)
-	if !isAggregate(p) {
-		AuthStatus(t, p)
-	}
+	//if !isAggregate(p) {
+	AuthStatus(t, p)
+	//}
 
 	if parent != nil {
 		ValidatePass(t, parent, parent.parent, parent.ingress, false)
-		if !isAggregate(parent) {
-			AuthStatus(t, parent)
-		}
+		//if !isAggregate(parent) {
+		AuthStatus(t, parent)
+		//}
 	}
 
 	if ingress != nil {
 		ValidatePass(t, ingress, ingress.parent, ingress.ingress, false)
-		if !isAggregate(ingress) {
-			AuthStatus(t, ingress)
-		}
+		//if !isAggregate(ingress) {
+		AuthStatus(t, ingress)
+		//}
 	}
 }
+func getRequestType(t *testing.T, p *Pass) RequestType {
+	if GlobalRequestType != RequestTypeNone {
+		return GlobalRequestType
+	}
 
-func Run(t *testing.T, cases Cases) {
+	if p.RequestType == RequestTypeNone {
+		return RequestType(gofakeit.Number(1, 2))
+	}
+
+	return p.RequestType
+}
+
+func Run(t *testing.T, cases Cases, rt RequestType) {
 	httpProcessingApi = httpexpect.New(t, ProcessingApiUrl)
 	httpApmApi = httpexpect.New(t, ApmApiUrl)
+	httpWebApi = httpexpect.New(t, WebApiUrl)
 	type NCase struct {
 		c         *Case
 		card      *processing.Card
@@ -136,6 +132,7 @@ func Run(t *testing.T, cases Cases) {
 				//Pass
 				p, ok := step.(*Pass)
 				if ok {
+					p.RequestType = rt
 					RunPass(t, p, scenario, ncc.carrierId, ncc.card)
 				}
 
@@ -199,12 +196,27 @@ func Run(t *testing.T, cases Cases) {
 						t.Fail()
 					}
 
+					start.isComplete = true
+					start.completeSum = uint32(cm.Sum)
 					var passes []*Pass
 					for _, v := range cm.Passes {
-						passes = append(passes, (scenario.T[v-1]).(*Pass))
+						ps := (scenario.T[v-1]).(*Pass)
+						ps.isComplete = true
+						ps.completeSum = uint32(cm.Sum)
+						passes = append(passes, ps)
 					}
 
 					CompleteApi(t, start, passes, cm.Sum)
+				}
+
+				wgw, ok := step.(*WebAPIPasses)
+				if ok {
+					var passes []*Pass
+					for _, v := range wgw.Passes {
+						passes = append(passes, (scenario.T[v-1]).(*Pass))
+					}
+
+					WebAPI(t, ncc.card, passes)
 				}
 			})
 			if t.Failed() {
@@ -218,28 +230,60 @@ func Run(t *testing.T, cases Cases) {
 
 	if !t.Failed() {
 		for _, ncc := range nc {
-			fmt.Println("name check: " + ncc.c.N)
+			fmt.Println("name check 1: " + ncc.c.N)
 			fmt.Println(ncc.card.String())
 			scenario := ncc.c
-			time.Sleep(TimeBeforeRecheck)
 			for N, step := range scenario.T {
-				fmt.Println(fmt.Sprintf("check = %d", N+1))
-				t.Run("case check: "+scenario.N, func(t *testing.T) {
+				t.Run("case check 1: "+scenario.N, func(t *testing.T) {
 					//Pass
 					p, ok := step.(*Pass)
 					if ok && !p.isCancel {
+						fmt.Println(fmt.Sprintf("check 1 = %d", N+1))
 						ConfigurePass(t, p, ncc.carrierId, ncc.card)
 						ValidatePass(t, p, p.parent, p.ingress, false)
-						if !isAggregate(p) {
-							AuthStatus(t, p)
-						}
+						//if !isAggregate(p) {
+						AuthStatus(t, p)
+						//}
 						TapBySubCarrier(t, p, ncc.card)
 						PassBySubCarrier(t, p.tapRequest, p)
-						time.Sleep(TimeAfterRequest)
 						ValidatePass(t, p, p.parent, p.ingress, false)
-						if !isAggregate(p) {
-							AuthStatus(t, p)
-						}
+						//if !isAggregate(p) {
+						AuthStatus(t, p)
+						//}
+					}
+				})
+				if t.Failed() {
+					break
+				}
+			}
+			if t.Failed() {
+				break
+			}
+		}
+	}
+
+	if !t.Failed() {
+		for _, ncc := range nc {
+			fmt.Println("name check 2: " + ncc.c.N)
+			fmt.Println(ncc.card.String())
+			scenario := ncc.c
+			for N, step := range scenario.T {
+				t.Run("case check 2: "+scenario.N, func(t *testing.T) {
+					//Pass
+					p, ok := step.(*Pass)
+					if ok && !p.isCancel {
+						fmt.Println(fmt.Sprintf("check 2 = %d", N+1))
+						ConfigurePass(t, p, ncc.carrierId, ncc.card)
+						ValidatePass(t, p, p.parent, p.ingress, false)
+						//if !isAggregate(p) {
+						AuthStatus(t, p)
+						//}
+						TapBySubCarrier(t, p, ncc.card)
+						PassBySubCarrier(t, p.tapRequest, p)
+						ValidatePass(t, p, p.parent, p.ingress, false)
+						//if !isAggregate(p) {
+						AuthStatus(t, p)
+						//}
 					}
 				})
 				if t.Failed() {

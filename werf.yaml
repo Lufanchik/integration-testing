@@ -4,8 +4,66 @@ deploy:
  helmRelease: "[[ project ]]-[[ env ]]"
  namespace: "[[ env ]]"
 ---
-image: test
+artifact: build-artifact
 from: golang:stretch
+git:
+  - add: /
+    to: /app
+    excludePaths:
+    - .werffiles
+    - .helm
+    stageDependencies:
+      install:
+        - Makefile
+        - go.sum
+        - go.mod
+      setup:
+        - "**/*"
+mount:
+- from: build_dir
+  to: /var/cache/apt/
+- from: tmp_dir
+  to: /var/lib/apt/lists
+ansible:
+  beforeInstall:
+  - name: Install essential utils
+    apt:
+      update_cache: yes
+      name: [
+        tzdata,
+        git,
+        make,
+        curl,
+        unzip
+      ]
+  - name: "Remove old timezone symlink"
+    file:
+      state: absent
+      path: "/etc/localtime"
+  - name: "Set timezone"
+    file:
+      src: /usr/share/zoneinfo/Europe/Moscow
+      dest: /etc/localtime
+      owner: root
+      group: root
+      state: link
+  install:
+  - name: "Private repo git hack"
+    shell: git config --global url.https://{{ env "RUNNER_GIT_ACCESS_USER" }}:{{ env "RUNNER_GIT_ACCESS_TOKEN" }}@lab.siroccotechnology.ru.insteadOf https://lab.siroccotechnology.ru
+  setup:
+  - name: "Build test"
+    shell: go test -c -o ./bin/test
+    args:
+      executable: /bin/sh
+      chdir: /app
+---
+image: test
+from: debian:stretch-slim
+import:
+  - artifact: build-artifact
+    add: /app
+    to: /app
+    after: install
 docker:
   WORKDIR: /app
   ENV:
@@ -47,8 +105,6 @@ ansible:
     timezone:
       name: "Europe/Moscow"
   setup:
-  - name: "Private repo git hack"
-    shell: git config --global url.https://{{ env "RUNNER_GIT_ACCESS_USER" }}:{{ env "RUNNER_GIT_ACCESS_TOKEN" }}@lab.siroccotechnology.ru.insteadOf https://lab.siroccotechnology.ru
   - name: "Change rights for scripts"
     file:
       path: "{{`{{ item }}`}}"

@@ -21,6 +21,28 @@
   tags:
     - werf
 
+stages:
+  - build
+  - deploy
+  - qa
+  - dev
+  - staging
+  - production
+  - cleanup
+
+Build:
+  stage: build
+  script:
+    - type multiwerf && source <(multiwerf use ${WERF_VERSION})
+    - werf version
+    - type werf && source <(werf ci-env gitlab --tagging-strategy tag-or-branch --verbose)
+    - werf build-and-publish
+      --stages-storage :local
+  tags:
+    - werf
+  except:
+    - schedules
+
 Run tests on test:
   <<: *base_tests
   stage: qa

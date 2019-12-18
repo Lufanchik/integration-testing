@@ -13,7 +13,7 @@ import (
 	"time"
 )
 
-const Workers = 10
+const Workers = 20
 
 var (
 	Cases         []test.Cases

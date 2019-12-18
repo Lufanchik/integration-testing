@@ -43,7 +43,7 @@ Build:
   except:
     - schedules
 
-Run tests on test:
+Run full tests on test:
   <<: *base_tests
   stage: qa
   environment:
@@ -56,18 +56,46 @@ Run tests on test:
     - tags
   when: manual
 
-Run tests on stage:
+Run full tests on stage:
   <<: *base_tests
   stage: qa
   environment:
     name: staging
   variables:
     KUBE_CONTEXT: k8s
+    TEST_MODE: simple
   except:
     - schedules
   only:
     - tags
   when: manual
+
+# Run simple tests on test:
+#   <<: *base_tests
+#   stage: qa
+#   environment:
+#     name: test
+#   variables:
+#     KUBE_CONTEXT: k8s
+#   except:
+#     - schedules
+#   only:
+#     - tags
+#   when: manual
+
+# Run simple tests on stage:
+#   <<: *base_tests
+#   stage: qa
+#   environment:
+#     name: staging
+#   variables:
+#     KUBE_CONTEXT: k8s
+#     TEST_MODE: simple
+#   except:
+#     - schedules
+#   only:
+#     - tags
+#   when: manual
 
 # Run tests on production:
 #   <<: *production_deploy

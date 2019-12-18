@@ -75,14 +75,6 @@ mount:
 - from: tmp_dir
   to: /var/lib/apt/lists
 git:
-- add: /
-  to: /app
-  excludePaths:
-  - .werffiles
-  - .helm
-  stageDependencies:
-    install:
-      - "**/*"
 - add: /.werffiles/start_full.sh
   to: /start_full.sh
 - add: /.werffiles/start_simple.sh

@@ -6,6 +6,9 @@ import (
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 	"github.com/stretchr/testify/require"
 	"lab.siroccotechnology.ru/tp/integration-testing/passes"
+	"lab.siroccotechnology.ru/tp/integration-testing/passes/mcd"
+	"lab.siroccotechnology.ru/tp/integration-testing/passes/mck"
+	"lab.siroccotechnology.ru/tp/integration-testing/passes/mgt"
 	"lab.siroccotechnology.ru/tp/integration-testing/passes/mm"
 	"lab.siroccotechnology.ru/tp/integration-testing/passes/mmts"
 	"lab.siroccotechnology.ru/tp/integration-testing/passes/mtppk"
@@ -111,28 +114,28 @@ func TestFull(t *testing.T) {
 
 func TestSimple(t *testing.T) {
 	test.Run(t, webapi.CasesWEBAPI, test.RequestTypeOnline)
-	//test.Run(t, mck.CasesMetroComplexMCK1, test.RequestTypeOffline)
-	//test.Run(t, mck.CasesMetroComplexMCK2, test.RequestTypeOffline)
-	//test.Run(t, mck.CasesMetroComplexMCK3, test.RequestTypeOffline)
-	//test.Run(t, mck.CasesMetroComplexMCK4, test.RequestTypeOffline)
-	//test.Run(t, mck.CasesComplexTimeMCK, test.RequestTypeOffline)
-	//test.Run(t, mck.CasesOfflineMetroComplexMCK, test.RequestTypeOffline)
-	//test.Run(t, mcd.CasesComplexMCDMOPartOne, test.RequestTypeOffline)
-	//test.Run(t, mcd.CasesComplexMCDMOPartTwo, test.RequestTypeOffline)
-	//test.Run(t, mcd.CasesComplexMCDMOPartThree, test.RequestTypeOffline)
-	//test.Run(t, mcd.CasesComplexMCDMOPartFour, test.RequestTypeOffline)
-	//test.Run(t, mcd.CasesComplexMCDMOPartFife, test.RequestTypeOffline)
-	//test.Run(t, mcd.CasesMetroComplexMCDMSK1, test.RequestTypeOffline)
-	//test.Run(t, mcd.CasesMetroComplexMCDMSK2, test.RequestTypeOffline)
-	//test.Run(t, mcd.CasesMetroComplexMCDMSK3, test.RequestTypeOffline)
-	//test.Run(t, mcd.CasesMetroComplexMCDMSK4, test.RequestTypeOffline)
-	//test.Run(t, mcd.CasesMetroComplexMCDMSK5, test.RequestTypeOffline)
-	//test.Run(t, mcd.CasesComplexTimeMCD, test.RequestTypeOffline)
-	//test.Run(t, mcd.CasesOfflineMetroComplexMCD, test.RequestTypeOffline)
-	//test.Run(t, mcd.CasesOfflineMetroComplexMCDMO, test.RequestTypeOffline)
-	//test.Run(t, mgt.CasesMGT, test.RequestTypeOffline)
-	//test.Run(t, mgt.CasesMGT2, test.RequestTypeOffline)
-	//test.Run(t, mgt.CasesMGT3, test.RequestTypeOffline)
+	test.Run(t, mck.CasesMetroComplexMCK1, test.RequestTypeOffline)
+	test.Run(t, mck.CasesMetroComplexMCK2, test.RequestTypeOffline)
+	test.Run(t, mck.CasesMetroComplexMCK3, test.RequestTypeOffline)
+	test.Run(t, mck.CasesMetroComplexMCK4, test.RequestTypeOffline)
+	test.Run(t, mck.CasesComplexTimeMCK, test.RequestTypeOffline)
+	test.Run(t, mck.CasesOfflineMetroComplexMCK, test.RequestTypeOffline)
+	test.Run(t, mcd.CasesComplexMCDMOPartOne, test.RequestTypeOffline)
+	test.Run(t, mcd.CasesComplexMCDMOPartTwo, test.RequestTypeOffline)
+	test.Run(t, mcd.CasesComplexMCDMOPartThree, test.RequestTypeOffline)
+	test.Run(t, mcd.CasesComplexMCDMOPartFour, test.RequestTypeOffline)
+	test.Run(t, mcd.CasesComplexMCDMOPartFife, test.RequestTypeOffline)
+	test.Run(t, mcd.CasesMetroComplexMCDMSK1, test.RequestTypeOffline)
+	test.Run(t, mcd.CasesMetroComplexMCDMSK2, test.RequestTypeOffline)
+	test.Run(t, mcd.CasesMetroComplexMCDMSK3, test.RequestTypeOffline)
+	test.Run(t, mcd.CasesMetroComplexMCDMSK4, test.RequestTypeOffline)
+	test.Run(t, mcd.CasesMetroComplexMCDMSK5, test.RequestTypeOffline)
+	test.Run(t, mcd.CasesComplexTimeMCD, test.RequestTypeOffline)
+	test.Run(t, mcd.CasesOfflineMetroComplexMCD, test.RequestTypeOffline)
+	test.Run(t, mcd.CasesOfflineMetroComplexMCDMO, test.RequestTypeOffline)
+	test.Run(t, mgt.CasesMGT, test.RequestTypeOffline)
+	test.Run(t, mgt.CasesMGT2, test.RequestTypeOffline)
+	test.Run(t, mgt.CasesMGT3, test.RequestTypeOffline)
 	test.Run(t, mm.CasesMetroComplexMM1, test.RequestTypeOffline)
 	test.Run(t, mm.CasesMetroComplexMM2, test.RequestTypeOffline)
 	test.Run(t, mm.CasesMetroComplexMM3, test.RequestTypeOffline)

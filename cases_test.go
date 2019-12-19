@@ -1,4 +1,4 @@
-package main
+package integration_testing
 
 import (
 	"lab.siroccotechnology.ru/tp/integration-testing/apm"
@@ -18,8 +18,6 @@ func init() {
 	//общие кейсы проходов
 	AddP(passes.CasesCancel)
 	AddP(passes.CasesSimpleComplexPass)
-	AddP(passes.CasesWrongTimeComplexPass)
-	AddP(passes.CasesScopeCheckPass)
 
 	//МТППК
 	AddP(mtppk.CasesMTPPKPasses)
@@ -31,7 +29,6 @@ func init() {
 	AddP(mmts.CasesComplexPassMMTS4)
 	AddP(mmts.CasesComplexPassMMTS5)
 	AddP(mmts.CasesOfflineMetroComplexMMTS)
-	Add(mmts.CasesComplexTimeMMTS)
 
 	//MM
 	AddP(mm.CasesMetroComplexMM1)
@@ -39,10 +36,8 @@ func init() {
 	AddP(mm.CasesMetroComplexMM3)
 	AddP(mm.CasesMetroComplexMM4)
 	AddP(mm.CasesOfflineMetroComplexMM)
-	AddP(mm.CasesComplexTimeMM)
 
 	//МЦК
-	AddP(mck.CasesComplexTimeMCK)
 	AddP(mck.CasesMetroComplexMCK1)
 	AddP(mck.CasesMetroComplexMCK2)
 	AddP(mck.CasesMetroComplexMCK3)
@@ -50,7 +45,6 @@ func init() {
 	AddP(mck.CasesOfflineMetroComplexMCK)
 
 	//МЦД
-	//AddP(mcd.CasesComplexMCD)
 	AddP(mcd.CasesMetroComplexMCDMSK1)
 	AddP(mcd.CasesMetroComplexMCDMSK2)
 	AddP(mcd.CasesMetroComplexMCDMSK3)
@@ -68,9 +62,7 @@ func init() {
 	AddP(apm.CasesApmGateway)
 
 	//МГТ
-	AddP(mgt.CasesMGT)
 	AddP(mgt.CasesMGT2)
-	AddP(mgt.CasesMGT3)
 
 	//Parking
 	AddP(parking.CasesParkingPass)

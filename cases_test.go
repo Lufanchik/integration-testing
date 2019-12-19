@@ -20,6 +20,7 @@ func init() {
 
 	//МТППК
 	AddP(mtppk.CasesMTPPKPasses)
+	AddP(mtppk.CasesMTPPK_MGT)
 
 	//ММТС
 	AddP(mmts.CasesComplexPassMMTS1)

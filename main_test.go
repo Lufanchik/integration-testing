@@ -5,6 +5,10 @@ import (
 	"github.com/jinzhu/copier"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 	"github.com/stretchr/testify/require"
+	"lab.siroccotechnology.ru/tp/integration-testing/passes"
+	"lab.siroccotechnology.ru/tp/integration-testing/passes/mm"
+	"lab.siroccotechnology.ru/tp/integration-testing/passes/mmts"
+	"lab.siroccotechnology.ru/tp/integration-testing/passes/mtppk"
 	"lab.siroccotechnology.ru/tp/integration-testing/test"
 	"lab.siroccotechnology.ru/tp/integration-testing/webapi"
 	"net/http"
@@ -97,6 +101,7 @@ func TestFull(t *testing.T) {
 		for _, s := range v {
 			steps += len(s.T)
 		}
+		//test.Run(t, v)
 	}
 
 	t2 := time.Now()
@@ -106,4 +111,44 @@ func TestFull(t *testing.T) {
 
 func TestSimple(t *testing.T) {
 	test.Run(t, webapi.CasesWEBAPI, test.RequestTypeOnline)
+	//test.Run(t, mck.CasesMetroComplexMCK1, test.RequestTypeOffline)
+	//test.Run(t, mck.CasesMetroComplexMCK2, test.RequestTypeOffline)
+	//test.Run(t, mck.CasesMetroComplexMCK3, test.RequestTypeOffline)
+	//test.Run(t, mck.CasesMetroComplexMCK4, test.RequestTypeOffline)
+	//test.Run(t, mck.CasesComplexTimeMCK, test.RequestTypeOffline)
+	//test.Run(t, mck.CasesOfflineMetroComplexMCK, test.RequestTypeOffline)
+	//test.Run(t, mcd.CasesComplexMCDMOPartOne, test.RequestTypeOffline)
+	//test.Run(t, mcd.CasesComplexMCDMOPartTwo, test.RequestTypeOffline)
+	//test.Run(t, mcd.CasesComplexMCDMOPartThree, test.RequestTypeOffline)
+	//test.Run(t, mcd.CasesComplexMCDMOPartFour, test.RequestTypeOffline)
+	//test.Run(t, mcd.CasesComplexMCDMOPartFife, test.RequestTypeOffline)
+	//test.Run(t, mcd.CasesMetroComplexMCDMSK1, test.RequestTypeOffline)
+	//test.Run(t, mcd.CasesMetroComplexMCDMSK2, test.RequestTypeOffline)
+	//test.Run(t, mcd.CasesMetroComplexMCDMSK3, test.RequestTypeOffline)
+	//test.Run(t, mcd.CasesMetroComplexMCDMSK4, test.RequestTypeOffline)
+	//test.Run(t, mcd.CasesMetroComplexMCDMSK5, test.RequestTypeOffline)
+	//test.Run(t, mcd.CasesComplexTimeMCD, test.RequestTypeOffline)
+	//test.Run(t, mcd.CasesOfflineMetroComplexMCD, test.RequestTypeOffline)
+	//test.Run(t, mcd.CasesOfflineMetroComplexMCDMO, test.RequestTypeOffline)
+	//test.Run(t, mgt.CasesMGT, test.RequestTypeOffline)
+	//test.Run(t, mgt.CasesMGT2, test.RequestTypeOffline)
+	//test.Run(t, mgt.CasesMGT3, test.RequestTypeOffline)
+	test.Run(t, mm.CasesMetroComplexMM1, test.RequestTypeOffline)
+	test.Run(t, mm.CasesMetroComplexMM2, test.RequestTypeOffline)
+	test.Run(t, mm.CasesMetroComplexMM3, test.RequestTypeOffline)
+	test.Run(t, mm.CasesMetroComplexMM4, test.RequestTypeOffline)
+	test.Run(t, mm.CasesComplexTimeMM, test.RequestTypeOffline)
+	test.Run(t, mm.CasesOfflineMetroComplexMM, test.RequestTypeOffline)
+	test.Run(t, mmts.CasesComplexPassMMTS1, test.RequestTypeOffline)
+	test.Run(t, mmts.CasesComplexPassMMTS2, test.RequestTypeOffline)
+	test.Run(t, mmts.CasesComplexPassMMTS3, test.RequestTypeOffline)
+	test.Run(t, mmts.CasesComplexPassMMTS4, test.RequestTypeOffline)
+	test.Run(t, mmts.CasesComplexPassMMTS5, test.RequestTypeOffline)
+	test.Run(t, mmts.CasesComplexTimeMMTS, test.RequestTypeOffline)
+	test.Run(t, mmts.CasesOfflineMetroComplexMMTS, test.RequestTypeOffline)
+	test.Run(t, mtppk.CasesMTPPKPasses, test.RequestTypeOffline)
+	test.Run(t, passes.CasesCancel, test.RequestTypeOffline)
+	test.Run(t, passes.CasesWrongTimeComplexPass, test.RequestTypeOffline)
+	test.Run(t, passes.CasesScopeCheckPass, test.RequestTypeOffline)
+	test.Run(t, passes.CasesSimpleComplexPass, test.RequestTypeOffline)
 }

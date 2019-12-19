@@ -1,4 +1,4 @@
-package integration_testing
+package main
 
 import (
 	"lab.siroccotechnology.ru/tp/integration-testing/apm"
@@ -6,6 +6,7 @@ import (
 	"lab.siroccotechnology.ru/tp/integration-testing/passes"
 	"lab.siroccotechnology.ru/tp/integration-testing/passes/mcd"
 	"lab.siroccotechnology.ru/tp/integration-testing/passes/mck"
+	"lab.siroccotechnology.ru/tp/integration-testing/passes/mgt"
 	"lab.siroccotechnology.ru/tp/integration-testing/passes/mm"
 	"lab.siroccotechnology.ru/tp/integration-testing/passes/mmts"
 	"lab.siroccotechnology.ru/tp/integration-testing/passes/mtppk"
@@ -17,7 +18,8 @@ func init() {
 	//общие кейсы проходов
 	AddP(passes.CasesCancel)
 	AddP(passes.CasesSimpleComplexPass)
-	AddP(passes.CasesSimplePass)
+	AddP(passes.CasesWrongTimeComplexPass)
+	AddP(passes.CasesScopeCheckPass)
 
 	//МТППК
 	AddP(mtppk.CasesMTPPKPasses)
@@ -37,8 +39,10 @@ func init() {
 	AddP(mm.CasesMetroComplexMM3)
 	AddP(mm.CasesMetroComplexMM4)
 	AddP(mm.CasesOfflineMetroComplexMM)
+	AddP(mm.CasesComplexTimeMM)
 
 	//МЦК
+	AddP(mck.CasesComplexTimeMCK)
 	AddP(mck.CasesMetroComplexMCK1)
 	AddP(mck.CasesMetroComplexMCK2)
 	AddP(mck.CasesMetroComplexMCK3)
@@ -46,17 +50,27 @@ func init() {
 	AddP(mck.CasesOfflineMetroComplexMCK)
 
 	//МЦД
+	//AddP(mcd.CasesComplexMCD)
 	AddP(mcd.CasesMetroComplexMCDMSK1)
 	AddP(mcd.CasesMetroComplexMCDMSK2)
 	AddP(mcd.CasesMetroComplexMCDMSK3)
 	AddP(mcd.CasesMetroComplexMCDMSK4)
 	AddP(mcd.CasesMetroComplexMCDMSK5)
-	AddP(mcd.CasesComplexTimeMCD)
+	AddP(mcd.CasesComplexMCDMOPartOne)
+	AddP(mcd.CasesComplexMCDMOPartTwo)
+	AddP(mcd.CasesComplexMCDMOPartThree)
+	AddP(mcd.CasesComplexMCDMOPartFour)
+	AddP(mcd.CasesComplexMCDMOPartFife)
 	AddP(mcd.CasesOfflineMetroComplexMCD)
 	AddP(mcd.CasesOfflineMetroComplexMCDMO)
 
 	//APM
 	AddP(apm.CasesApmGateway)
+
+	//МГТ
+	AddP(mgt.CasesMGT)
+	AddP(mgt.CasesMGT2)
+	AddP(mgt.CasesMGT3)
 
 	//Parking
 	AddP(parking.CasesParkingPass)
@@ -67,7 +81,10 @@ func init() {
 	//черновики, которые пока что не запускаются
 	//AddP(passes.CasesWrongTimeComplexPass)
 	//AddP(passes.CasesScopeCheckPass)
-	//AddP(mm.CasesComplexTimeMM)
 
-	//Add(passes.CasesCancel)
+	//тесты с нестандартным временем - надо придумать как с ними работать
+	//AddP(mm.CasesComplexTimeMM)
+	//AddP(mcd.CasesComplexTimeMCD)
+	//Add(mmts.CasesComplexTimeMMTS)
+	//AddP(mcd.CasesComplexTimeMCD)
 }

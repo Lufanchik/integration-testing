@@ -19,7 +19,7 @@ spec:
 {{ tuple "test" . | include "werf_container_image" | indent 8 }}
         workingDir: /app
         command: ["/bin/bash"]
-{{- if (eq .Values.global.test_mode "full")}}
+{{- if (eq .Values.global.tests_mode "full")}}
         args: ["-c", "/start_full.sh"]
 {{- else }}
         args: ["-c", "/start_simple.sh"]

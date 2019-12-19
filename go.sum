@@ -112,6 +112,7 @@ github.com/gojuno/minimock/v3 v3.0.6/go.mod h1:v61ZjAKHr+WnEkND63nQPCZ/DTfQgJdvb
 github.com/golang/glog v0.0.0-20160126235308-23def4e6c14b/go.mod h1:SBH7ygxi8pfUlaOkMMuAQtPIUF8ecWP5IEl/CR7VP2Q=
 github.com/golang/groupcache v0.0.0-20190129154638-5b532d6fd5ef/go.mod h1:cIg4eruTrX1D+g88fzRXU5OdNfaM+9IcxsU14FzY7Hc=
 github.com/golang/mock v1.1.1/go.mod h1:oTYuIxOrZwtPieC+H1uAHpcLFnEyAGVDL/k47Jfbm0A=
+github.com/golang/mock v1.3.1/go.mod h1:sBzyDLLjw3U8JLTeZvSv8jJB+tU5PVekmnlKIyFUx0Y=
 github.com/golang/protobuf v1.2.0/go.mod h1:6lQm79b+lXiMfvg/cZm0SGofjICqVBUtrP5yJMmIC1U=
 github.com/golang/protobuf v1.3.1/go.mod h1:6lQm79b+lXiMfvg/cZm0SGofjICqVBUtrP5yJMmIC1U=
 github.com/golang/protobuf v1.3.2 h1:6nsPYzhq5kReh6QImI3k5qWzO4PEbvbIW2cwSfR/6xs=
@@ -494,6 +495,7 @@ golang.org/x/tools v0.0.0-20190311212946-11955173bddd/go.mod h1:LCzVGOaR6xXOjkQ3
 golang.org/x/tools v0.0.0-20190311215038-5c2858a9cfe5/go.mod h1:LCzVGOaR6xXOjkQ3onu1FJEFr0SW1gC7cKk1uF8kGRs=
 golang.org/x/tools v0.0.0-20190322203728-c1a832b0ad89/go.mod h1:LCzVGOaR6xXOjkQ3onu1FJEFr0SW1gC7cKk1uF8kGRs=
 golang.org/x/tools v0.0.0-20190328211700-ab21143f2384/go.mod h1:LCzVGOaR6xXOjkQ3onu1FJEFr0SW1gC7cKk1uF8kGRs=
+golang.org/x/tools v0.0.0-20190425150028-36563e24a262/go.mod h1:RgjU9mgBXZiqYHBnxXauZ1Gv1EHHAz9KjViQ78xBX0Q=
 golang.org/x/tools v0.0.0-20190521203540-521d6ed310dd/go.mod h1:RgjU9mgBXZiqYHBnxXauZ1Gv1EHHAz9KjViQ78xBX0Q=
 golang.org/x/tools v0.0.0-20190614205625-5aca471b1d59/go.mod h1:/rFqwRUd4F7ZHNgwSSTFct+R/Kf4OFW1sUzUTQQTgfc=
 golang.org/x/tools v0.0.0-20190621195816-6e04913cbbac/go.mod h1:/rFqwRUd4F7ZHNgwSSTFct+R/Kf4OFW1sUzUTQQTgfc=
@@ -568,12 +570,14 @@ lab.siroccotechnology.ru/tp/common v0.0.105/go.mod h1:OlZ1Or7QSZ5tYJLwcFGvrLQ8JD
 lab.siroccotechnology.ru/tp/common v0.0.114/go.mod h1:WgJ11KO7VOUf+JAEbYEpyNAJAP/FjB1dx2KE1/xnQ2Y=
 lab.siroccotechnology.ru/tp/common v0.0.123/go.mod h1:WgJ11KO7VOUf+JAEbYEpyNAJAP/FjB1dx2KE1/xnQ2Y=
 lab.siroccotechnology.ru/tp/common v0.0.132/go.mod h1:H0W3gsxeQQV7EaGHsPjLznavcrdDZSEkyK0olo/H7v4=
+lab.siroccotechnology.ru/tp/common v0.0.135/go.mod h1:H0W3gsxeQQV7EaGHsPjLznavcrdDZSEkyK0olo/H7v4=
 lab.siroccotechnology.ru/tp/common v0.0.136/go.mod h1:H0W3gsxeQQV7EaGHsPjLznavcrdDZSEkyK0olo/H7v4=
 lab.siroccotechnology.ru/tp/common v0.0.141/go.mod h1:H0W3gsxeQQV7EaGHsPjLznavcrdDZSEkyK0olo/H7v4=
 lab.siroccotechnology.ru/tp/common v0.0.150/go.mod h1:H0W3gsxeQQV7EaGHsPjLznavcrdDZSEkyK0olo/H7v4=
 lab.siroccotechnology.ru/tp/common v0.0.159/go.mod h1:C2wAUIFg27EH3GNMIiJvrVuwPkFqgbqH8mOmEi2hpHk=
 lab.siroccotechnology.ru/tp/common v0.0.171 h1:Ahwyo+Cttc9C292ON4raxXrpm/X+LUZstiK/19PTwgo=
 lab.siroccotechnology.ru/tp/common v0.0.171/go.mod h1:C2wAUIFg27EH3GNMIiJvrVuwPkFqgbqH8mOmEi2hpHk=
+lab.siroccotechnology.ru/tp/common v0.0.173/go.mod h1:C2wAUIFg27EH3GNMIiJvrVuwPkFqgbqH8mOmEi2hpHk=
 lab.siroccotechnology.ru/tp/common v0.0.183/go.mod h1:NuF7t+Yx/LCb72GH11vbJz2zatfP01fxk+cCAZKgJXM=
 lab.siroccotechnology.ru/tp/common v0.0.205/go.mod h1:p+Vvrq6pGatI/hGh1O4FOEYYhF/CsK8cagVArhptVQk=
 lab.siroccotechnology.ru/tp/common v0.0.208/go.mod h1:p+Vvrq6pGatI/hGh1O4FOEYYhF/CsK8cagVArhptVQk=
@@ -608,6 +612,7 @@ lab.siroccotechnology.ru/tp/request-service v0.0.3/go.mod h1:euE2UsGjGeskEfHknxH
 lab.siroccotechnology.ru/tp/tidpool-service v0.0.3/go.mod h1:LjqDP24fYOAkZEUT16FHzSH1qVZebkVrMjYO1Hj9xC0=
 lab.siroccotechnology.ru/tp/tidpool-service v0.0.5/go.mod h1:LjqDP24fYOAkZEUT16FHzSH1qVZebkVrMjYO1Hj9xC0=
 lab.siroccotechnology.ru/tp/tidpool-service v0.0.14/go.mod h1:f0d/rtmxFJYTzeOHkoSLgWwuvFwSLyCg7GLA5yvGMIE=
+lab.siroccotechnology.ru/tp/user-service v0.0.9/go.mod h1:hfCz0817MWAFGp79kWz/WHjfJjKBi7/iKXnBDHSDdDg=
 lab.siroccotechnology.ru/tp/web-api-gateway v0.0.2 h1:fE7TH9fouyEd3IvKotMA7zpybkukci9WbFE8kdzF9Kg=
 lab.siroccotechnology.ru/tp/web-api-gateway v0.0.2/go.mod h1:g0gZGcbbKigVum7oPYH0jzUcZiTwgFphNLJ4GqE/0z4=
 lab.siroccotechnology.ru/tp/web-api-gateway v0.0.3 h1:ePQxywTqVrPnxSu7Cb0TT7wJLz4P8j1ICpxlE6dxZOQ=

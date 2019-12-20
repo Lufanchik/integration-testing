@@ -5,8 +5,12 @@ import (
 	"github.com/jinzhu/copier"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 	"github.com/stretchr/testify/require"
+<<<<<<< HEAD
 	"lab.siroccotechnology.ru/tp/integration-testing/passes/mtppk"
+=======
+>>>>>>> ad44b720ad61f1d8a25ac96741a215a3696dba39
 	"lab.siroccotechnology.ru/tp/integration-testing/test"
+	"lab.siroccotechnology.ru/tp/integration-testing/webapi"
 	"net/http"
 	"net/http/pprof"
 	"testing"
@@ -104,5 +108,9 @@ func TestFull(t *testing.T) {
 }
 
 func TestSimple(t *testing.T) {
+<<<<<<< HEAD
 	test.Run(t, mtppk.CasesMTPPKPasses)
+=======
+	test.Run(t, webapi.CasesWEBAPI)
+>>>>>>> ad44b720ad61f1d8a25ac96741a215a3696dba39
 }

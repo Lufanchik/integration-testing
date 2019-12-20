@@ -1,4 +1,4 @@
- package mmts
+ package mmts_mtppk
 
 import (
 	"lab.siroccotechnology.ru/tp/common/messages/carriers"
@@ -6,10 +6,35 @@ import (
 	"lab.siroccotechnology.ru/tp/integration-testing/test"
 )
 
-var CasesComplexPassMMTS1 = test.Cases{
+var CasesComplexPassMMTS1MTPPK = test.Cases{
 	{
-		N: "1. MMTS - MM - MM",
+		N: "1. MTPPK - MTPPK  MMTS - MM - MM",
 		T: test.T{
+			&test.Pass{
+				PaymentType: test.PaymentTypeStartAggregate,
+				AuthType:    test.AuthTypeCorrect,
+				Carrier:     carriers.Carrier_MTPPK,
+				ExpectedSum: 4200,
+			},
+			&test.Pass{
+				PaymentType: test.PaymentTypeAggregate,
+				Carrier:     carriers.Carrier_MTPPK,
+				Aggregate:   1,
+				ExpectedSum: 4200,
+			},
+			&test.Pass{
+				PaymentType: test.PaymentTypeAggregate,
+				Carrier:     carriers.Carrier_MTPPK,
+				Aggregate:   1,
+				ExpectedSum: 4200,
+			},
+			&test.Complete{
+				StartPass: 1,
+				Passes: []int{
+					2,3,
+				},
+				Sum: 12600,
+			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
@@ -28,7 +53,9 @@ var CasesComplexPassMMTS1 = test.Cases{
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				ExpectedSum: 4200,
 			},
+
 		},
+
 	},
 	{
 		N: "2. MMТС - MM - MЦK - MM - ММ",

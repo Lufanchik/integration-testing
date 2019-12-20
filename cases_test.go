@@ -9,6 +9,8 @@ import (
 	"lab.siroccotechnology.ru/tp/integration-testing/passes/mgt"
 	"lab.siroccotechnology.ru/tp/integration-testing/passes/mm"
 	"lab.siroccotechnology.ru/tp/integration-testing/passes/mmts"
+	"lab.siroccotechnology.ru/tp/integration-testing/passes/mmts_mtppk"
+	"lab.siroccotechnology.ru/tp/integration-testing/webapi"
 	"lab.siroccotechnology.ru/tp/integration-testing/passes/mtppk"
 )
 
@@ -57,6 +59,10 @@ func init() {
 	AddP(mcd.CasesOfflineMetroComplexMCD)
 	AddP(mcd.CasesOfflineMetroComplexMCDMO)
 
+
+	//MMTS_MTPPK
+	Add(mmts_mtppk.CasesComplexPassMMTS1MTPPK)
+
 	//APM
 	AddP(apm.CasesApmGateway)
 
@@ -65,6 +71,9 @@ func init() {
 
 	//Parking
 	AddP(parking.CasesParkingPass)
+
+	//WebAPI
+	AddP(webapi.CasesWEBAPI)
 
 	//черновики, которые пока что не запускаются
 	//AddP(passes.CasesWrongTimeComplexPass)

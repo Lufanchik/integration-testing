@@ -519,6 +519,7 @@ var CasesMGT3 = test.Cases{
 	},
 	{
 		N: ".73  MGT-> MM -> MGT ->MCK ->MGT -> MSK_MO2 -> MGT",
+
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,

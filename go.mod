@@ -28,4 +28,5 @@ require (
 	github.com/yudai/pp v2.0.1+incompatible // indirect
 	lab.siroccotechnology.ru/tp/common v0.0.213
 	lab.siroccotechnology.ru/tp/pass-service v0.0.105
+	lab.siroccotechnology.ru/tp/web-api-gateway v0.0.2
 )

@@ -8,7 +8,7 @@ import (
 
 var CasesMTPPKPasses = test.Cases{
 	{
-		N:          "1. MTPPK, VISA IS AGGREGATE",
+		N:          "1. MTPPK_, VISA IS AGGREGATE",
 		CardSystem: processing.CardSystem_VISA,
 		T: test.T{
 			&test.Pass{

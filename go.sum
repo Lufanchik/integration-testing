@@ -578,9 +578,6 @@ lab.siroccotechnology.ru/tp/common v0.0.183/go.mod h1:NuF7t+Yx/LCb72GH11vbJz2zat
 lab.siroccotechnology.ru/tp/common v0.0.205/go.mod h1:p+Vvrq6pGatI/hGh1O4FOEYYhF/CsK8cagVArhptVQk=
 lab.siroccotechnology.ru/tp/common v0.0.208/go.mod h1:p+Vvrq6pGatI/hGh1O4FOEYYhF/CsK8cagVArhptVQk=
 lab.siroccotechnology.ru/tp/common v0.0.209/go.mod h1:p+Vvrq6pGatI/hGh1O4FOEYYhF/CsK8cagVArhptVQk=
-lab.siroccotechnology.ru/tp/common v0.0.210/go.mod h1:p+Vvrq6pGatI/hGh1O4FOEYYhF/CsK8cagVArhptVQk=
-lab.siroccotechnology.ru/tp/common v0.0.226 h1:vQKfr5UE4+LTumTO04QBOIOb4M2bkiIsI+1a3A7cwDQ=
-lab.siroccotechnology.ru/tp/common v0.0.226/go.mod h1:p+Vvrq6pGatI/hGh1O4FOEYYhF/CsK8cagVArhptVQk=
 lab.siroccotechnology.ru/tp/common v0.0.227/go.mod h1:p+Vvrq6pGatI/hGh1O4FOEYYhF/CsK8cagVArhptVQk=
 lab.siroccotechnology.ru/tp/common v0.0.228 h1:6DnpsT0YeqKJc5uEDuAcRhk3/uP49Pneb/jkMtWVJII=
 lab.siroccotechnology.ru/tp/common v0.0.228/go.mod h1:p+Vvrq6pGatI/hGh1O4FOEYYhF/CsK8cagVArhptVQk=
@@ -598,9 +595,6 @@ lab.siroccotechnology.ru/tp/pass-service v0.0.91/go.mod h1:P25YfF/jAzVOjckC/0vmQ
 lab.siroccotechnology.ru/tp/pass-service v0.0.92/go.mod h1:QWR+xSxjJAwJ0zCbabaHs1ch1WTvSTQbreNp36IHo30=
 lab.siroccotechnology.ru/tp/pass-service v0.0.99/go.mod h1:e+lAlYSIXf8ktDUpYF4n90sVjlInP/mIxwGBEJBIm48=
 lab.siroccotechnology.ru/tp/pass-service v0.0.100/go.mod h1:08ipsyC3PLDukD0MPBX2GLF6XPOV0pVg1e6xVNsCVhA=
-lab.siroccotechnology.ru/tp/pass-service v0.0.103/go.mod h1:iDkEGGe196j593mxImPUku6mi9PyTPveuszMylea4D8=
-lab.siroccotechnology.ru/tp/pass-service v0.0.105 h1:/+uIByB6l3mV3jtVTKR/sspGGGk1SM0bn+fMt4zHCVE=
-lab.siroccotechnology.ru/tp/pass-service v0.0.105/go.mod h1:iDkEGGe196j593mxImPUku6mi9PyTPveuszMylea4D8=
 lab.siroccotechnology.ru/tp/pass-service v0.0.110 h1:nHmc51Pcrgda+89Y0P0fMiAX4QUBNp8/3HB6md5bKOg=
 lab.siroccotechnology.ru/tp/pass-service v0.0.110/go.mod h1:o/Y/5epLON0al4oyIfQ+67j3SDN+Gnja3WqsIntWR74=
 lab.siroccotechnology.ru/tp/request-service v0.0.2/go.mod h1:AAIFzaxftj/dGNrv+UKxPfmiP1F4JcXuAH9puHfrxxs=
@@ -608,10 +602,6 @@ lab.siroccotechnology.ru/tp/request-service v0.0.3/go.mod h1:euE2UsGjGeskEfHknxH
 lab.siroccotechnology.ru/tp/tidpool-service v0.0.3/go.mod h1:LjqDP24fYOAkZEUT16FHzSH1qVZebkVrMjYO1Hj9xC0=
 lab.siroccotechnology.ru/tp/tidpool-service v0.0.5/go.mod h1:LjqDP24fYOAkZEUT16FHzSH1qVZebkVrMjYO1Hj9xC0=
 lab.siroccotechnology.ru/tp/tidpool-service v0.0.14/go.mod h1:f0d/rtmxFJYTzeOHkoSLgWwuvFwSLyCg7GLA5yvGMIE=
-lab.siroccotechnology.ru/tp/web-api-gateway v0.0.2 h1:fE7TH9fouyEd3IvKotMA7zpybkukci9WbFE8kdzF9Kg=
-lab.siroccotechnology.ru/tp/web-api-gateway v0.0.2/go.mod h1:g0gZGcbbKigVum7oPYH0jzUcZiTwgFphNLJ4GqE/0z4=
-lab.siroccotechnology.ru/tp/web-api-gateway v0.0.3 h1:ePQxywTqVrPnxSu7Cb0TT7wJLz4P8j1ICpxlE6dxZOQ=
-lab.siroccotechnology.ru/tp/web-api-gateway v0.0.3/go.mod h1:g0gZGcbbKigVum7oPYH0jzUcZiTwgFphNLJ4GqE/0z4=
 lab.siroccotechnology.ru/tp/web-api-gateway v0.0.5 h1:qmRUqZv1g/wt7OUy14PhoZ5R9jPkf9bLlZqZTsNPnQY=
 lab.siroccotechnology.ru/tp/web-api-gateway v0.0.5/go.mod h1:4RX+PZSu3VtcwQbTrgdwh22drCFz+AewJLiu0xWhWys=
 mvdan.cc/interfacer v0.0.0-20180901003855-c20040233aed h1:WX1yoOaKQfddO/mLzdV4wptyWgoH/6hwLs7QHTixo0I=

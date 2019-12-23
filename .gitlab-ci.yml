@@ -1,5 +1,5 @@
 include:
   - project: 'infra/pipeline'
-    file: '/.gitlab-ci.yml'
-  - project: 'infra/pipeline'
-    file: '/tests.yml'
+    file: '/base-tests.yml'
+  # - project: 'infra/pipeline'
+  #   file: '/tests.yml'

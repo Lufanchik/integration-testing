@@ -1,116 +1,87 @@
 package integration_testing
 
 import (
-	"fmt"
-	"github.com/jinzhu/copier"
-	"github.com/prometheus/client_golang/prometheus/promhttp"
-	"github.com/stretchr/testify/require"
-<<<<<<< HEAD
+	"lab.siroccotechnology.ru/tp/integration-testing/apm"
+	"lab.siroccotechnology.ru/tp/integration-testing/parking"
+	"lab.siroccotechnology.ru/tp/integration-testing/passes"
+	"lab.siroccotechnology.ru/tp/integration-testing/passes/mcd"
+	"lab.siroccotechnology.ru/tp/integration-testing/passes/mck"
+	"lab.siroccotechnology.ru/tp/integration-testing/passes/mgt"
+	"lab.siroccotechnology.ru/tp/integration-testing/passes/mm"
+	"lab.siroccotechnology.ru/tp/integration-testing/passes/mmts"
 	"lab.siroccotechnology.ru/tp/integration-testing/passes/mtppk"
-=======
->>>>>>> ad44b720ad61f1d8a25ac96741a215a3696dba39
 	"lab.siroccotechnology.ru/tp/integration-testing/test"
 	"lab.siroccotechnology.ru/tp/integration-testing/webapi"
-	"net/http"
-	"net/http/pprof"
-	"testing"
-	"time"
 )
 
-const Workers = 18
+func init() {
+	//параллельный запуск
+	//общие кейсы проходов
+	AddP(passes.CasesCancel)
+	AddP(passes.CasesSimpleComplexPass)
 
-var (
-	Cases         []test.Cases
-	CasesParallel []test.Cases
-)
+	//МТППК
+	AddP(mtppk.CasesMTPPKPasses)
 
-func Add(c test.Cases) {
-	Cases = append(Cases, c)
+	//ММТС
+	AddP(mmts.CasesComplexPassMMTS1)
+	AddP(mmts.CasesComplexPassMMTS2)
+	AddP(mmts.CasesComplexPassMMTS3)
+	AddP(mmts.CasesComplexPassMMTS4)
+	AddP(mmts.CasesComplexPassMMTS5)
+	AddP(mmts.CasesOfflineMetroComplexMMTS)
+
+	//MM
+	AddP(mm.CasesMetroComplexMM1)
+	AddP(mm.CasesMetroComplexMM2)
+	AddP(mm.CasesMetroComplexMM3)
+	AddP(mm.CasesMetroComplexMM4)
+	AddP(mm.CasesOfflineMetroComplexMM)
+
+	//МЦК
+	AddP(mck.CasesMetroComplexMCK1)
+	AddP(mck.CasesMetroComplexMCK2)
+	AddP(mck.CasesMetroComplexMCK3)
+	AddP(mck.CasesMetroComplexMCK4)
+	AddP(mck.CasesOfflineMetroComplexMCK)
+
+	//МЦД
+	AddP(mcd.CasesMetroComplexMCDMSK1)
+	AddP(mcd.CasesMetroComplexMCDMSK2)
+	AddP(mcd.CasesMetroComplexMCDMSK3)
+	AddP(mcd.CasesMetroComplexMCDMSK4)
+	AddP(mcd.CasesMetroComplexMCDMSK5)
+	AddP(mcd.CasesComplexMCDMOPartOne)
+	AddP(mcd.CasesComplexMCDMOPartTwo)
+	AddP(mcd.CasesComplexMCDMOPartThree)
+	AddP(mcd.CasesComplexMCDMOPartFour)
+	AddP(mcd.CasesComplexMCDMOPartFife)
+	AddP(mcd.CasesOfflineMetroComplexMCD)
+	AddP(mcd.CasesOfflineMetroComplexMCDMO)
+
+	//APM
+	AddP(apm.CasesApmGateway)
+
+	//МГТ
+	AddP(mgt.CasesMGT2)
+
+	//Parking
+	AddP(parking.CasesParkingPass)
+
+	//WebAPI
+	AddP(webapi.CasesWEBAPI)
+
+	//черновики, которые пока что не запускаются
+	//AddP(passes.CasesWrongTimeComplexPass)
+	//AddP(passes.CasesScopeCheckPass)
+
+	//тесты с нестандартным временем - надо придумать как с ними работать
+	//AddP(mm.CasesComplexTimeMM)
+	//AddP(mcd.CasesComplexTimeMCD)
+	//Add(mmts.CasesComplexTimeMMTS)
+	//AddP(mcd.CasesComplexTimeMCD)
 }
 
-func AddP(c test.Cases) {
-	nCases := test.Cases{}
-	err := copier.Copy(&nCases, &c)
-	if err != nil {
-		panic(err)
-	}
-	CasesParallel = append(CasesParallel, nCases)
-}
-
-func status(listenAddr string) *http.Server {
-	router := http.NewServeMux()
-	router.Handle("/debug/pprof/", http.HandlerFunc(pprof.Index))
-	router.Handle("/debug/pprof/cmdline", http.HandlerFunc(pprof.Cmdline))
-	router.Handle("/debug/pprof/profile", http.HandlerFunc(pprof.Profile))
-	router.Handle("/debug/pprof/symbol", http.HandlerFunc(pprof.Symbol))
-	router.Handle("/debug/pprof/trace", http.HandlerFunc(pprof.Trace))
-	router.Handle("/metrics", promhttp.Handler())
-
-	return &http.Server{
-		Addr:    listenAddr,
-		Handler: router,
-	}
-}
-
-func TestFull(t *testing.T) {
-	statusServer := status(":9096")
-
-	go func() {
-		if err := statusServer.ListenAndServe(); err != nil && err != http.ErrServerClosed {
-			require.NoError(t, err)
-		}
-	}()
-
-	tasks := make(chan test.Cases, len(CasesParallel))
-	err := make(chan error)
-	done := make(chan struct{})
-	t1 := time.Now()
-
-	for i := 0; i < Workers; i++ {
-		go func(tasks chan test.Cases, err chan error, done chan struct{}, w int) {
-			for v := range tasks {
-				test.Run(t, v)
-				done <- struct{}{}
-			}
-		}(tasks, err, done, i)
-	}
-
-	for _, v := range CasesParallel {
-		tasks <- v
-	}
-	close(tasks)
-	scenarios := 0
-	cases := 0
-	steps := 0
-
-	for _, v := range CasesParallel {
-		scenarios++
-		cases += len(v)
-		for _, s := range v {
-			steps += len(s.T)
-		}
-
-		<-done
-	}
-
-	for _, v := range Cases {
-		scenarios++
-		cases += len(v)
-		for _, s := range v {
-			steps += len(s.T)
-		}
-		test.Run(t, v)
-	}
-
-	t2 := time.Now()
-	d := t2.Sub(t1)
-	fmt.Println(fmt.Sprintf("scenarios: %d, cases: %d, steps: %d, time: %d minutes, %d seconds", scenarios, cases, steps, int(d.Minutes()), int(d.Seconds())))
-}
-
-func TestSimple(t *testing.T) {
-<<<<<<< HEAD
-	test.Run(t, mtppk.CasesMTPPKPasses)
-=======
-	test.Run(t, webapi.CasesWEBAPI)
->>>>>>> ad44b720ad61f1d8a25ac96741a215a3696dba39
+func AddP(cases test.Cases) {
+	
 }

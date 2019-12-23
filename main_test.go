@@ -13,7 +13,7 @@ import (
 	"time"
 )
 
-const Workers = 10
+const Workers = 20
 
 var (
 	Cases         []test.Cases
@@ -97,7 +97,6 @@ func TestFull(t *testing.T) {
 		for _, s := range v {
 			steps += len(s.T)
 		}
-		//test.Run(t, v)
 	}
 
 	t2 := time.Now()

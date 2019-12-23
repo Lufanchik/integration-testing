@@ -5,8 +5,8 @@ import (
 	"github.com/jinzhu/copier"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 	"github.com/stretchr/testify/require"
-	"lab.siroccotechnology.ru/tp/integration-testing/passes/mtppk"
 	"lab.siroccotechnology.ru/tp/integration-testing/test"
+	"lab.siroccotechnology.ru/tp/integration-testing/webapi"
 	"net/http"
 	"net/http/pprof"
 	"testing"
@@ -97,7 +97,6 @@ func TestFull(t *testing.T) {
 		for _, s := range v {
 			steps += len(s.T)
 		}
-		//test.Run(t, v)
 	}
 
 	t2 := time.Now()
@@ -106,5 +105,5 @@ func TestFull(t *testing.T) {
 }
 
 func TestSimple(t *testing.T) {
-	test.Run(t, mtppk.CasesMTPPKPasses, test.RequestTypeOffline)
+	test.Run(t, webapi.CasesWEBAPI, test.RequestTypeOnline)
 }

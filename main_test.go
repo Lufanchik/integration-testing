@@ -106,5 +106,6 @@ func TestFull(t *testing.T) {
 }
 
 func TestSimple(t *testing.T) {
-	test.Run(t, mtppk.CasesMTPPKPasses, test.RequestTypeOnline)
+	test.Run(t, mtppk.CaseMTPPK_mck, test.RequestTypeOffline)
+
 }

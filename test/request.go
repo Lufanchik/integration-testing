@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"github.com/brianvoe/gofakeit"
 	"github.com/gavv/httpexpect"
+	authService "lab.siroccotechnology.ru/tp/common/messages/auth"
 	"lab.siroccotechnology.ru/tp/common/messages/carriers"
 	"lab.siroccotechnology.ru/tp/common/messages/processing"
 	webApi "lab.siroccotechnology.ru/tp/web-api-gateway/proto"
@@ -117,9 +118,20 @@ func ParkingRequest(card *processing.Card, pr *Parking) (*processing.CheckParkin
 	return pr.R, response
 }
 
-func WebAPIRequest(card *processing.Card) *webApi.PassesRequest {
+func WebAPIPassesRequest(card *processing.Card) *webApi.PassesRequest {
 	return &webApi.PassesRequest{
 		Hash: card.Pan,
+	}
+}
+
+func WebAPIRegisterRequest(fcl *FaceCreateLink, card *processing.Card) *authService.FaceIdRegisterRequest {
+	return &authService.FaceIdRegisterRequest{
+		Id: card.Pan,
+		Urls: &authService.FaceIdRegisterUrls{
+			Approve: fcl.Approve,
+			Cancel:  fcl.Cancel,
+			Decline: fcl.Decline,
+		},
 	}
 }
 

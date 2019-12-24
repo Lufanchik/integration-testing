@@ -117,8 +117,13 @@ func Run(t *testing.T, cases Cases, rt RequestType) {
 	for k, _ := range cases {
 		nc[k] = &NCase{
 			c:         &cases[k],
-			card:      Card(cases[k].CardSystem),
 			carrierId: uuid.New().String(),
+		}
+
+		if cases[k].FaceId != "" {
+			nc[k].card = FaceCard(cases[k].CardSystem, cases[k].FaceId)
+		} else {
+			nc[k].card = Card(cases[k].CardSystem)
 		}
 	}
 
@@ -133,6 +138,7 @@ func Run(t *testing.T, cases Cases, rt RequestType) {
 				p, ok := step.(*Pass)
 				if ok {
 					p.RequestType = rt
+					p.faceId = ncc.c.FaceId
 					RunPass(t, p, scenario, ncc.carrierId, ncc.card)
 				}
 
@@ -207,6 +213,26 @@ func Run(t *testing.T, cases Cases, rt RequestType) {
 					}
 
 					CompleteApi(t, start, passes, cm.Sum)
+				}
+
+				fcl, ok := step.(*FaceCreateLink)
+				if ok {
+					FaceApiGetRegisterLink(t, ncc.card, fcl)
+				}
+
+				face, ok := step.(*FacePass)
+				if ok {
+					//var links []*FaceCreateLink
+					//for _, v := range face.CreateLinks {
+					//	links = append(links, (scenario.T[v-1]).(*FaceCreateLink))
+					//}
+
+					var passes []*Pass
+					for _, v := range face.Passes {
+						passes = append(passes, (scenario.T[v-1]).(*Pass))
+					}
+
+					FaceApi(t, ncc.card, passes)
 				}
 
 				wgw, ok := step.(*WebAPIPasses)

@@ -106,7 +106,6 @@ func TestFull(t *testing.T) {
 }
 
 func TestSimple(t *testing.T) {
-<<<<<<< main_test.go
 	test.Run(t, webapi.CasesWEBAPI, test.RequestTypeOnline)
 	//test.Run(t, mck.CasesMetroComplexMCK1, test.RequestTypeOffline)
 	//test.Run(t, mck.CasesMetroComplexMCK2, test.RequestTypeOffline)

@@ -15,7 +15,7 @@ var CasesMTPPKPasses = test.Cases{
 				PaymentType: test.PaymentTypeStartAggregate,
 				AuthType:    test.AuthTypeCorrect,
 				Carrier:     carriers.Carrier_MTPPK,
-				ExpectedSum: 16800,
+				ExpectedSum: 1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeAggregate,
@@ -37,19 +37,19 @@ var CasesMTPPKPasses = test.Cases{
 				Passes: []int{
 					2, 3, 4,
 				},
-				Sum: 16800,
+				Sum: 1,
 			},
 		},
 	},
 	{
-		N:          "1. MTPPK, VISA",
+		N:          "2. MTPPK, VISA",
 		CardSystem: processing.CardSystem_VISA,
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypeStartAggregate,
 				AuthType:    test.AuthTypeCorrect,
 				Carrier:     carriers.Carrier_MTPPK,
-				ExpectedSum: 16800,
+				ExpectedSum: 2,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeAggregate,
@@ -71,19 +71,19 @@ var CasesMTPPKPasses = test.Cases{
 				Passes: []int{
 					2, 3, 4,
 				},
-				Sum: 16800,
+				Sum: 2,
 			},
 		},
 	},
 	{
-		N:          "2. MTPPK, MASTERCARD",
+		N:          "3. MTPPK, MASTERCARD",
 		CardSystem: processing.CardSystem_MASTERCARD,
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypeStartAggregate,
 				AuthType:    test.AuthTypeCorrect,
 				Carrier:     carriers.Carrier_MTPPK,
-				ExpectedSum: 16800,
+				ExpectedSum: 3,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeAggregate,
@@ -105,19 +105,19 @@ var CasesMTPPKPasses = test.Cases{
 				Passes: []int{
 					2, 3, 4,
 				},
-				Sum: 16800,
+				Sum: 3,
 			},
 		},
 	},
 	{
-		N:          "3. MTPPK, FAIL",
-		CardSystem: processing.CardSystem_VISA,
+		N:          "4. MTPPK, FAIL",
+		CardSystem: processing.CardSystem_MASTERCARD,
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypeStartAggregate,
 				AuthType:    test.AuthTypeIncorrect,
 				Carrier:     carriers.Carrier_MTPPK,
-				ExpectedSum: 16800,
+				ExpectedSum: 4,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeAggregate,
@@ -139,12 +139,12 @@ var CasesMTPPKPasses = test.Cases{
 				Passes: []int{
 					2, 3, 4,
 				},
-				Sum: 16800,
+				Sum: 4,
 			},
 		},
 	},
 	{
-		N: "7. MM - MTPPK - MЦK - MTPPK - MМТС - MTPPK - ММ - MTPPK	- COMPLETE", //online
+		N: "5. MM - MTPPK - MЦK - MTPPK - MМТС - MTPPK - ММ - MTPPK	- COMPLETE",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -156,7 +156,7 @@ var CasesMTPPKPasses = test.Cases{
 				PaymentType: test.PaymentTypeStartAggregate,
 				AuthType:    test.AuthTypeCorrect,
 				Carrier:     carriers.Carrier_MTPPK,
-				ExpectedSum: 16800,
+				ExpectedSum: 5,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -196,12 +196,12 @@ var CasesMTPPKPasses = test.Cases{
 				Passes: []int{
 					4, 6, 8,
 				},
-				Sum: 16800,
+				Sum: 5,
 			},
 		},
 	},
 	{
-		N: "8. MM - MTPPK - MCK - MTPPK - MMTS - MTPPK - MM - MTPPK	- COMPLETE", //offline
+		N: "6. MM - MTPPK - MCK - MTPPK - MMTS - MTPPK - MM - MTPPK	- COMPLETE",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -215,7 +215,7 @@ var CasesMTPPKPasses = test.Cases{
 				RequestType: test.RequestTypeOffline,
 				AuthType:    test.AuthTypeCorrect,
 				Carrier:     carriers.Carrier_MTPPK,
-				ExpectedSum: 16800,
+				ExpectedSum: 6,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -261,12 +261,12 @@ var CasesMTPPKPasses = test.Cases{
 				Passes: []int{
 					4, 6, 8,
 				},
-				Sum: 16800,
+				Sum: 6,
 			},
 		},
 	},
 	{
-		N: "9. MM - MTPPK - MCK - MTPPK - MCK-MCK - MTPPK - MCK-MCK2 - MTPPK - MCK-MO - MTPPK - COMPLETE",
+		N: "7. MM - MTPPK - MCK - MTPPK - MCK-MCK - MTPPK - MCK-MCK2 - MTPPK - MCK-MO - MTPPK - COMPLETE",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -279,7 +279,7 @@ var CasesMTPPKPasses = test.Cases{
 				RequestType: test.RequestTypeOffline,
 				AuthType:    test.AuthTypeCorrect,
 				Carrier:     carriers.Carrier_MTPPK,
-				ExpectedSum: 21000,
+				ExpectedSum: 7,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -377,7 +377,7 @@ var CasesMTPPKPasses = test.Cases{
 				Passes: []int{
 					4, 7, 10, 13,
 				},
-				Sum: 21000,
+				Sum: 7,
 			},
 		},
 	},

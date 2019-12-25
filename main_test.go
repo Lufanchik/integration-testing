@@ -6,7 +6,6 @@ import (
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 	"github.com/stretchr/testify/require"
 	"lab.siroccotechnology.ru/tp/integration-testing/passes/mtppk"
-	"lab.siroccotechnology.ru/tp/integration-testing/passes/face"
 	"lab.siroccotechnology.ru/tp/integration-testing/test"
 	"net/http"
 	"net/http/pprof"
@@ -66,8 +65,8 @@ func TestFull(t *testing.T) {
 	for i := 0; i < Workers; i++ {
 		go func(tasks chan test.Cases, err chan error, done chan struct{}, w int) {
 			for v := range tasks {
-				test.Run(t, v, test.RequestTypeOnline)
-				//test.Run(t, v, test.RequestTypeOffline)
+				//test.Run(t, v, test.RequestTypeOnline)
+				test.Run(t, v, test.RequestTypeOffline)
 				//test.Run(t, v, test.RequestType(gofakeit.Number(1, 2)))
 				done <- struct{}{}
 			}
@@ -106,7 +105,7 @@ func TestFull(t *testing.T) {
 }
 
 func TestSimple(t *testing.T) {
-	test.Run(t, webapi.CasesWEBAPI, test.RequestTypeOnline)
+	//test.Run(t, webapi.CasesWEBAPI, test.RequestTypeOnline)
 	//test.Run(t, mck.CasesMetroComplexMCK1, test.RequestTypeOffline)
 	//test.Run(t, mck.CasesMetroComplexMCK2, test.RequestTypeOffline)
 	//test.Run(t, mck.CasesMetroComplexMCK3, test.RequestTypeOffline)
@@ -142,12 +141,12 @@ func TestSimple(t *testing.T) {
 	//test.Run(t, mmts.CasesComplexPassMMTS5, test.RequestTypeOffline)
 	//test.Run(t, mmts.CasesComplexTimeMMTS, test.RequestTypeOffline)
 	//test.Run(t, mmts.CasesOfflineMetroComplexMMTS, test.RequestTypeOffline)
-	//test.Run(t, mtppk.CasesMTPPKPasses, test.RequestTypeOffline)
+	test.Run(t, mtppk.CasesMTPPKPasses, test.RequestTypeOffline)
 	//test.Run(t, passes.CasesCancel, test.RequestTypeOffline)
 	//test.Run(t, passes.CasesWrongTimeComplexPass, test.RequestTypeOffline)
 	//test.Run(t, passes.CasesScopeCheckPass, test.RequestTypeOffline)
 	//test.Run(t, passes.CasesSimpleComplexPass, test.RequestTypeOffline)
 	//test.Run(t, mtppk.CasesMTPPKPasses, test.RequestTypeOffline)
-	test.Run(t, face.CasesAuthWithFace, test.RequestTypeOffline)
+	//test.Run(t, face.CasesAuthWithFace, test.RequestTypeOffline)
 	//test.Run(t, mm.CasesMetroComplexMM1, test.RequestTypeOffline)
 }

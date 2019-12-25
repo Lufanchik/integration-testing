@@ -5,14 +5,9 @@ import (
 	"github.com/jinzhu/copier"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 	"github.com/stretchr/testify/require"
-	_ "lab.siroccotechnology.ru/tp/integration-testing/passes"
-	_ "lab.siroccotechnology.ru/tp/integration-testing/passes/mcd"
-	_ "lab.siroccotechnology.ru/tp/integration-testing/passes/mck"
-	_ "lab.siroccotechnology.ru/tp/integration-testing/passes/mm"
 	"lab.siroccotechnology.ru/tp/integration-testing/passes/mtppk"
-	_ "lab.siroccotechnology.ru/tp/integration-testing/passes/mtppk"
 	"lab.siroccotechnology.ru/tp/integration-testing/test"
-	_ "lab.siroccotechnology.ru/tp/integration-testing/webapi"
+	"lab.siroccotechnology.ru/tp/integration-testing/webapi"
 	"net/http"
 	"net/http/pprof"
 	"testing"
@@ -157,6 +152,4 @@ func TestSimple(t *testing.T) {
 	//test.Run(t, mtppk.CasesMTPPKPasses, test.RequestTypeOffline)
 	//test.Run(t, face.CasesAuthWithFace, test.RequestTypeOffline)
 	//test.Run(t, mm.CasesMetroComplexMM1, test.RequestTypeOffline)
-	test.Run(t, mtppk.CasesMTPPKPasses, test.RequestTypeOffline)
-
 }

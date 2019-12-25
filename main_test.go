@@ -105,9 +105,6 @@ func TestFull(t *testing.T) {
 }
 
 func TestSimple(t *testing.T) {
-<<<<<<< HEAD
-	test.Run(t, mtppk.CaseMTPPK_mck, test.RequestTypeOnline)
-=======
 	//test.Run(t, webapi.CasesWEBAPI, test.RequestTypeOnline)
 	//test.Run(t, mck.CasesMetroComplexMCK1, test.RequestTypeOffline)
 	//test.Run(t, mck.CasesMetroComplexMCK2, test.RequestTypeOffline)
@@ -144,7 +141,7 @@ func TestSimple(t *testing.T) {
 	//test.Run(t, mmts.CasesComplexPassMMTS5, test.RequestTypeOffline)
 	//test.Run(t, mmts.CasesComplexTimeMMTS, test.RequestTypeOffline)
 	//test.Run(t, mmts.CasesOfflineMetroComplexMMTS, test.RequestTypeOffline)
-	test.Run(t, mtppk.CasesMTPPKPasses, test.RequestTypeOffline)
+	test.Run(t, mtppk.CasesMTPPK_mck, test.RequestTypeOffline)
 	//test.Run(t, passes.CasesCancel, test.RequestTypeOffline)
 	//test.Run(t, passes.CasesWrongTimeComplexPass, test.RequestTypeOffline)
 	//test.Run(t, passes.CasesScopeCheckPass, test.RequestTypeOffline)
@@ -152,5 +149,4 @@ func TestSimple(t *testing.T) {
 	//test.Run(t, mtppk.CasesMTPPKPasses, test.RequestTypeOffline)
 	//test.Run(t, face.CasesAuthWithFace, test.RequestTypeOffline)
 	//test.Run(t, mm.CasesMetroComplexMM1, test.RequestTypeOffline)
->>>>>>> 0b40228e14408155a9c7ffe7c0c5d668227a7a1e
 }

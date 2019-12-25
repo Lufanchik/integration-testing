@@ -581,6 +581,8 @@ lab.siroccotechnology.ru/tp/common v0.0.209/go.mod h1:p+Vvrq6pGatI/hGh1O4FOEYYhF
 lab.siroccotechnology.ru/tp/common v0.0.227/go.mod h1:p+Vvrq6pGatI/hGh1O4FOEYYhF/CsK8cagVArhptVQk=
 lab.siroccotechnology.ru/tp/common v0.0.228 h1:6DnpsT0YeqKJc5uEDuAcRhk3/uP49Pneb/jkMtWVJII=
 lab.siroccotechnology.ru/tp/common v0.0.228/go.mod h1:p+Vvrq6pGatI/hGh1O4FOEYYhF/CsK8cagVArhptVQk=
+lab.siroccotechnology.ru/tp/common v0.0.230 h1:5XMSU1almaUcQjDGwgREjxWwOXsBTpSrKTk3/he1dbw=
+lab.siroccotechnology.ru/tp/common v0.0.230/go.mod h1:p+Vvrq6pGatI/hGh1O4FOEYYhF/CsK8cagVArhptVQk=
 lab.siroccotechnology.ru/tp/common v0.0.234 h1:zoCcZa707EBcpYFdNjFla7p9nu2VpZrpQNeK9UedSfE=
 lab.siroccotechnology.ru/tp/common v0.0.234/go.mod h1:p+Vvrq6pGatI/hGh1O4FOEYYhF/CsK8cagVArhptVQk=
 lab.siroccotechnology.ru/tp/goosev2 v0.0.0-20191121101708-2b2395d00eba/go.mod h1:ojDsOvLgzQO/8tUrAhK+3+Hai6RIwNbQejxDiKYbY04=

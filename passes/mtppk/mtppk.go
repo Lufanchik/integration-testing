@@ -15,236 +15,136 @@ var CasesMTPPKPasses = test.Cases{
 				PaymentType: test.PaymentTypeStartAggregate,
 				AuthType:    test.AuthTypeCorrect,
 				Carrier:     carriers.Carrier_MTPPK,
-				ExpectedSum: 0,
+				ExpectedSum: 1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeAggregate,
 				Carrier:     carriers.Carrier_MTPPK,
 				Aggregate:   1,
-				ExpectedSum: 0,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeAggregate,
 				Carrier:     carriers.Carrier_MTPPK,
 				Aggregate:   1,
-				ExpectedSum: 0,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeAggregate,
 				Carrier:     carriers.Carrier_MTPPK,
 				Aggregate:   1,
-				ExpectedSum: 0,
 			},
 			&test.Complete{
 				StartPass: 1,
 				Passes: []int{
 					2, 3, 4,
 				},
-				Sum: 16800,
+				Sum: 1,
 			},
 		},
 	},
 	{
-		N:          "1. MTPPK, VISA",
+		N:          "2. MTPPK, VISA",
 		CardSystem: processing.CardSystem_VISA,
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypeStartAggregate,
 				AuthType:    test.AuthTypeCorrect,
 				Carrier:     carriers.Carrier_MTPPK,
-				ExpectedSum: 0,
+				ExpectedSum: 2,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeAggregate,
 				Carrier:     carriers.Carrier_MTPPK,
 				Aggregate:   1,
-				ExpectedSum: 0,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeAggregate,
 				Carrier:     carriers.Carrier_MTPPK,
 				Aggregate:   1,
-				ExpectedSum: 0,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeAggregate,
 				Carrier:     carriers.Carrier_MTPPK,
 				Aggregate:   1,
-				ExpectedSum: 0,
 			},
 			&test.Complete{
 				StartPass: 1,
 				Passes: []int{
 					2, 3, 4,
 				},
-				Sum: 16800,
+				Sum: 2,
 			},
 		},
 	},
 	{
-		N:          "2. MTPPK, MASTERCARD",
+		N:          "3. MTPPK, MASTERCARD",
 		CardSystem: processing.CardSystem_MASTERCARD,
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypeStartAggregate,
 				AuthType:    test.AuthTypeCorrect,
 				Carrier:     carriers.Carrier_MTPPK,
-				ExpectedSum: 0,
+				ExpectedSum: 3,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeAggregate,
 				Carrier:     carriers.Carrier_MTPPK,
 				Aggregate:   1,
-				ExpectedSum: 0,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeAggregate,
 				Carrier:     carriers.Carrier_MTPPK,
 				Aggregate:   1,
-				ExpectedSum: 0,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeAggregate,
 				Carrier:     carriers.Carrier_MTPPK,
 				Aggregate:   1,
-				ExpectedSum: 0,
 			},
 			&test.Complete{
 				StartPass: 1,
 				Passes: []int{
 					2, 3, 4,
 				},
-				Sum: 16800,
+				Sum: 3,
 			},
 		},
 	},
 	{
-		N:          "3. MTPPK, FAIL",
+		N:          "4. MTPPK, FAIL",
 		CardSystem: processing.CardSystem_MASTERCARD,
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypeStartAggregate,
 				AuthType:    test.AuthTypeIncorrect,
 				Carrier:     carriers.Carrier_MTPPK,
-				ExpectedSum: 0,
+				ExpectedSum: 4,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeAggregate,
 				Carrier:     carriers.Carrier_MTPPK,
 				Aggregate:   1,
-				ExpectedSum: 0,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeAggregate,
 				Carrier:     carriers.Carrier_MTPPK,
 				Aggregate:   1,
-				ExpectedSum: 0,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeAggregate,
 				Carrier:     carriers.Carrier_MTPPK,
 				Aggregate:   1,
-				ExpectedSum: 0,
 			},
 			&test.Complete{
 				StartPass: 1,
 				Passes: []int{
 					2, 3, 4,
 				},
-				Sum: 16800,
+				Sum: 4,
 			},
 		},
 	},
 	{
-		N:          "4. MTPPK - MTPPK - COMPLETE (VISA)", //Закрытие периода агрегации, где в роли Родительской транзакции выступает дочерняя.
-		CardSystem: processing.CardSystem_VISA,
-		T: test.T{
-			&test.Pass{
-				PaymentType: test.PaymentTypeAggregate,
-				Carrier:     carriers.Carrier_MTPPK,
-				Aggregate:   1,
-				ExpectedSum: 4200,
-			},
-			&test.Pass{
-				PaymentType: test.PaymentTypeAggregate,
-				Carrier:     carriers.Carrier_MTPPK,
-				Aggregate:   1,
-				ExpectedSum: 4200,
-			},
-			&test.Complete{
-				StartPass: 1,
-				Passes: []int{
-					2,
-				},
-				Sum: 8400,
-			},
-		},
-	},
-	{
-		N:          "5. MTPPK - MTPPK - COMPLETE (MASTER_CARD)", //Закрытие периода агрегации, где в роли Родительской транзакции выступает дочерняя.
-		CardSystem: processing.CardSystem_MASTERCARD,
-		T: test.T{
-			&test.Pass{
-				PaymentType: test.PaymentTypeAggregate,
-				Carrier:     carriers.Carrier_MTPPK,
-				Aggregate:   1,
-				ExpectedSum: 4200,
-			},
-			&test.Pass{
-				PaymentType: test.PaymentTypeAggregate,
-				Carrier:     carriers.Carrier_MTPPK,
-				Aggregate:   1,
-				ExpectedSum: 4200,
-			},
-			&test.Complete{
-				StartPass: 1,
-				Passes: []int{
-					2,
-				},
-				Sum: 8400,
-			},
-		},
-	},
-	//{
-	//	N:          "6. MTPPK",  //Проверка 2 статуса обработки операции прохода (по операции уже выполнено списание средств)
-	//	CardSystem: processing.CardSystem_VISA,
-	//	T: test.T{
-	//		&test.Pass{
-	//			PaymentType: test.PaymentTypeStartAggregate,
-	//			AuthType:    test.AuthTypeCorrect,
-	//			Carrier:     carriers.Carrier_MTPPK,
-	//			ExpectedSum: 4200,
-	//		},
-	//		&test.Pass{
-	//			PaymentType: test.PaymentTypeStartAggregate,
-	//			AuthType:    test.AuthTypeCorrect,
-	//			Carrier:     carriers.Carrier_MTPPK,
-	//			ExpectedSum: 4200,
-	//		},
-	//		&test.Pass{
-	//			PaymentType: test.PaymentTypeAggregate,
-	//			Carrier:     carriers.Carrier_MTPPK,
-	//			Aggregate:   1,
-	//			ExpectedSum: 4200,
-	//		},
-	//		&test.Complete{
-	//			StartPass: 1,
-	//			Passes: []int{
-	//				3,
-	//			},
-	//			Sum: 8400,
-	//		},
-	//		&test.Complete{
-	//			StartPass: 2,
-	//			Passes: []int{
-	//				3,
-	//			},
-	//			Sum: 8400,
-	//		},
-	//	},
-	//},
-	{
-		N: "7. MM - MTPPK - MЦK - MTPPK - MМТС - MTPPK - ММ - MTPPK	- COMPLETE", //online
+		N: "5. MM - MTPPK - MЦK - MTPPK - MМТС - MTPPK - ММ - MTPPK	- COMPLETE",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -256,7 +156,7 @@ var CasesMTPPKPasses = test.Cases{
 				PaymentType: test.PaymentTypeStartAggregate,
 				AuthType:    test.AuthTypeCorrect,
 				Carrier:     carriers.Carrier_MTPPK,
-				ExpectedSum: 4200,
+				ExpectedSum: 5,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -268,7 +168,6 @@ var CasesMTPPKPasses = test.Cases{
 				PaymentType: test.PaymentTypeAggregate,
 				Carrier:     carriers.Carrier_MTPPK,
 				Aggregate:   2,
-				ExpectedSum: 4200,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -280,7 +179,6 @@ var CasesMTPPKPasses = test.Cases{
 				PaymentType: test.PaymentTypeAggregate,
 				Carrier:     carriers.Carrier_MTPPK,
 				Aggregate:   2,
-				ExpectedSum: 4200,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -292,19 +190,18 @@ var CasesMTPPKPasses = test.Cases{
 				PaymentType: test.PaymentTypeAggregate,
 				Carrier:     carriers.Carrier_MTPPK,
 				Aggregate:   2,
-				ExpectedSum: 4200,
 			},
 			&test.Complete{
 				StartPass: 2,
 				Passes: []int{
 					4, 6, 8,
 				},
-				Sum: 16800,
+				Sum: 5,
 			},
 		},
 	},
 	{
-		N: "8. MM - MTPPK - MCK - MTPPK - MMTS - MTPPK - MM - MTPPK	- COMPLETE", //offline
+		N: "6. MM - MTPPK - MCK - MTPPK - MMTS - MTPPK - MM - MTPPK	- COMPLETE",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -318,7 +215,7 @@ var CasesMTPPKPasses = test.Cases{
 				RequestType: test.RequestTypeOffline,
 				AuthType:    test.AuthTypeCorrect,
 				Carrier:     carriers.Carrier_MTPPK,
-				ExpectedSum: 4200,
+				ExpectedSum: 6,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -332,7 +229,6 @@ var CasesMTPPKPasses = test.Cases{
 				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MTPPK,
 				Aggregate:   2,
-				ExpectedSum: 4200,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -346,7 +242,6 @@ var CasesMTPPKPasses = test.Cases{
 				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MTPPK,
 				Aggregate:   2,
-				ExpectedSum: 4200,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -360,19 +255,18 @@ var CasesMTPPKPasses = test.Cases{
 				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MTPPK,
 				Aggregate:   2,
-				ExpectedSum: 4200,
 			},
 			&test.Complete{
 				StartPass: 2,
 				Passes: []int{
 					4, 6, 8,
 				},
-				Sum: 16800,
+				Sum: 6,
 			},
 		},
 	},
 	{
-		N: "9. MM - MTPPK - MCK - MTPPK - MCK-MCK - MTPPK - MCK-MCK2 - MTPPK - MCK-MO - MTPPK - COMPLETE",
+		N: "7. MM - MTPPK - MCK - MTPPK - MCK-MCK - MTPPK - MCK-MCK2 - MTPPK - MCK-MO - MTPPK - COMPLETE",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -385,7 +279,7 @@ var CasesMTPPKPasses = test.Cases{
 				RequestType: test.RequestTypeOffline,
 				AuthType:    test.AuthTypeCorrect,
 				Carrier:     carriers.Carrier_MTPPK,
-				ExpectedSum: 4200,
+				ExpectedSum: 7,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -398,7 +292,6 @@ var CasesMTPPKPasses = test.Cases{
 				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MTPPK,
 				Aggregate:   2,
-				ExpectedSum: 4200,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -425,7 +318,6 @@ var CasesMTPPKPasses = test.Cases{
 				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MTPPK,
 				Aggregate:   2,
-				ExpectedSum: 4200,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -452,7 +344,6 @@ var CasesMTPPKPasses = test.Cases{
 				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MTPPK,
 				Aggregate:   2,
-				ExpectedSum: 4200,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -480,14 +371,13 @@ var CasesMTPPKPasses = test.Cases{
 				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MTPPK,
 				Aggregate:   2,
-				ExpectedSum: 4200,
 			},
 			&test.Complete{
 				StartPass: 2,
 				Passes: []int{
 					4, 7, 10, 13,
 				},
-				Sum: 21000,
+				Sum: 7,
 			},
 		},
 	},

@@ -15,7 +15,7 @@ var CasesMTPPK_MGT = test.Cases{
 				PaymentType: test.PaymentTypeStartAggregate,
 				AuthType:    test.AuthTypeCorrect,
 				Carrier:     carriers.Carrier_MTPPK,
-				ExpectedSum: 4200,
+				ExpectedSum: 42,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -27,13 +27,11 @@ var CasesMTPPK_MGT = test.Cases{
 				PaymentType: test.PaymentTypeAggregate,
 				Carrier:     carriers.Carrier_MTPPK,
 				Aggregate:   1,
-				ExpectedSum: 4200,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeAggregate,
 				Carrier:     carriers.Carrier_MTPPK,
 				Aggregate:   1,
-				ExpectedSum: 4200,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -45,14 +43,13 @@ var CasesMTPPK_MGT = test.Cases{
 				PaymentType: test.PaymentTypeAggregate,
 				Carrier:     carriers.Carrier_MTPPK,
 				Aggregate:   1,
-				ExpectedSum: 4200,
 			},
 			&test.Complete{
 				StartPass: 1,
 				Passes: []int{
 					3, 4, 6,
 				},
-				Sum: 16800,
+				Sum: 42,
 			},
 		},
 	},
@@ -77,7 +74,7 @@ var CasesMTPPK_MGT = test.Cases{
 				AuthType:    test.AuthTypeCorrect,
 				Carrier:     carriers.Carrier_MTPPK,
 				RequestType: test.RequestTypeOffline,
-				ExpectedSum: 4200,
+				ExpectedSum: 777,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -90,14 +87,12 @@ var CasesMTPPK_MGT = test.Cases{
 				Carrier:     carriers.Carrier_MTPPK,
 				RequestType: test.RequestTypeOffline,
 				Aggregate:   3,
-				ExpectedSum: 4200,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeAggregate,
 				Carrier:     carriers.Carrier_MTPPK,
 				RequestType: test.RequestTypeOnline,
 				Aggregate:   3,
-				ExpectedSum: 4200,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -110,7 +105,6 @@ var CasesMTPPK_MGT = test.Cases{
 				Carrier:     carriers.Carrier_MTPPK,
 				RequestType: test.RequestTypeOnline,
 				Aggregate:   3,
-				ExpectedSum: 4200,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -123,35 +117,33 @@ var CasesMTPPK_MGT = test.Cases{
 				AuthType:    test.AuthTypeCorrect,
 				Carrier:     carriers.Carrier_MTPPK,
 				RequestType: test.RequestTypeOnline,
-				ExpectedSum: 4200,
+				ExpectedSum: 123,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeAggregate,
 				Carrier:     carriers.Carrier_MTPPK,
 				RequestType: test.RequestTypeOffline,
 				Aggregate:   10,
-				ExpectedSum: 4200,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeAggregate,
 				Carrier:     carriers.Carrier_MTPPK,
 				RequestType: test.RequestTypeOnline,
 				Aggregate:   10,
-				ExpectedSum: 4200,
 			},
 			&test.Complete{
 				StartPass: 10,
 				Passes: []int{
 					11, 12,
 				},
-				Sum: 12600,
+				Sum: 123,
 			},
 			&test.Complete{
 				StartPass: 3,
 				Passes: []int{
 					5, 6, 8,
 				},
-				Sum: 16800,
+				Sum: 777,
 			},
 		},
 	},

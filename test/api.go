@@ -3,9 +3,11 @@ package test
 import (
 	"context"
 	"github.com/golang/protobuf/jsonpb"
+	"github.com/prometheus/common/log"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"lab.siroccotechnology.ru/tp/common/global"
+	authService "lab.siroccotechnology.ru/tp/common/messages/auth"
 	"lab.siroccotechnology.ru/tp/common/messages/pass"
 	"lab.siroccotechnology.ru/tp/common/messages/processing"
 	"lab.siroccotechnology.ru/tp/common/messages/registries"
@@ -175,11 +177,11 @@ func ValidatePass(t *testing.T, p *Pass, parent *Pass, ingress *Pass, isFirst bo
 		expectPass.IsAuth = true
 	}
 
-	if p.PaymentType == PaymentTypeAggregate && p.aggregate.AuthType == AuthTypeCorrect && !isFirst {
+	if p.aggregate != nil && p.PaymentType == PaymentTypeAggregate && p.aggregate.AuthType == AuthTypeCorrect && !isFirst {
 		expectPass.IsAuth = true
 	}
 
-	if p.PaymentType == PaymentTypeAggregate && p.aggregate.AuthType == AuthTypeCorrect && !isFirst {
+	if p.aggregate != nil && p.PaymentType == PaymentTypeAggregate && p.aggregate.AuthType == AuthTypeCorrect && !isFirst {
 		expectPass.AggregateId = p.aggregate.id
 	}
 
@@ -235,6 +237,10 @@ func GetAuthStatus(p *Pass) (*processing.AuthResponse, *processing.AuthResponse,
 }
 
 func AuthStatus(t *testing.T, p *Pass) {
+	if p.faceId != "" {
+		return
+	}
+
 	resp, response, err := GetAuthStatus(p)
 
 	isEqual := assert.ObjectsAreEqual(resp, response)
@@ -331,7 +337,9 @@ func CompleteApi(t *testing.T, pass *Pass, passes []*Pass, sum int) {
 }
 
 func WebAPI(t *testing.T, card *processing.Card, passes []*Pass) {
-	req := WebAPIRequest(card)
+	log.Infof(card.Pan)
+
+	req := WebAPIPassesRequest(card)
 	u := "/twirp/proto.WebAPIGateway/GetPasses"
 	r := httpWebApi.POST(u).WithJSON(req).
 		Expect().
@@ -354,6 +362,58 @@ func WebAPI(t *testing.T, card *processing.Card, passes []*Pass) {
 			require.Empty(t, p.AuthTime)
 		}
 
+		responsePassesMap[p.Id] = struct{}{}
+	}
+
+	for _, p := range passes {
+		_, ok := responsePassesMap[p.id]
+		require.True(t, ok, "pass not found: %s", p.id)
+	}
+}
+
+func FaceApiGetRegisterLink(t *testing.T, card *processing.Card, fcl *FaceCreateLink) {
+	req := WebAPIRegisterRequest(fcl, card)
+	u := "/twirp/proto.WebAPIGateway/RegisterFaceId"
+	r := httpWebApi.POST(u).WithJSON(req).
+		Expect().
+		Status(http.StatusOK)
+
+	object := r.Body().Raw()
+	logRequest(u, r)
+
+	response := &authService.FaceIdRegisterResponse{}
+	err := jsonpb.Unmarshal(strings.NewReader(object), response)
+	require.NoError(t, err)
+
+	require.NotEmpty(t, response.Redirect)
+	log.Infof("Redirect URL: %s", response.Redirect)
+
+	fcl.RedirectURL = response.Redirect
+
+	log.Infof("Sleeping for 1 minute to be sure that card_uid was registered")
+	time.Sleep(time.Minute)
+}
+
+func FaceApi(t *testing.T, card *processing.Card, passes []*Pass) {
+	log.Infof("FaceID: %v", card.Pan)
+	req := WebAPIPassesRequest(card)
+	u := "/twirp/proto.WebAPIGateway/GetPasses"
+	r := httpWebApi.POST(u).WithJSON(req).
+		Expect().
+		Status(http.StatusOK)
+
+	object := r.Body().Raw()
+	logRequest(u, r)
+
+	response := &webApi.PassesResponse{}
+	err := jsonpb.Unmarshal(strings.NewReader(object), response)
+	require.NoError(t, err)
+
+	require.Equal(t, len(passes), len(response.Passes), "passes count doesn't match")
+
+	responsePassesMap := map[string]struct{}{}
+	for _, p := range response.Passes {
+		require.Equal(t, p.Status, webApi.PassStatus_PAID)
 		responsePassesMap[p.Id] = struct{}{}
 	}
 

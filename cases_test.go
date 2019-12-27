@@ -16,7 +16,6 @@ import (
 func init() {
 	//параллельный запуск
 	//общие кейсы проходов
-	Add(mgt.CasesMGT)
 	AddP(passes.CasesCancel)
 	AddP(passes.CasesSimpleComplexPass)
 

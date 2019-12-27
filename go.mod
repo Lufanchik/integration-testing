@@ -2,6 +2,8 @@ module lab.siroccotechnology.ru/tp/integration-testing
 
 go 1.12
 
+replace lab.siroccotechnology.ru/tp/common => ../common
+
 require (
 	github.com/ajg/form v1.5.1 // indirect
 	github.com/brianvoe/gofakeit v3.18.0+incompatible

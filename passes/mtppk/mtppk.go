@@ -15,7 +15,7 @@ var CasesMTPPKPasses = test.Cases{
 				PaymentType: test.PaymentTypeStartAggregate,
 				AuthType:    test.AuthTypeCorrect,
 				Carrier:     carriers.Carrier_MTPPK,
-				ExpectedSum: 1,
+				ExpectedSum: 1000,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeAggregate,
@@ -37,7 +37,7 @@ var CasesMTPPKPasses = test.Cases{
 				Passes: []int{
 					2, 3, 4,
 				},
-				Sum: 1,
+				Sum: 1000,
 			},
 		},
 	},

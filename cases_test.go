@@ -72,6 +72,9 @@ func init() {
 	//WebAPI
 	AddP(webapi.CasesWEBAPI)
 
+	//Face
+	//AddP(face.CasesAuthWithFace)
+
 	//черновики, которые пока что не запускаются
 	//AddP(passes.CasesWrongTimeComplexPass)
 	//AddP(passes.CasesScopeCheckPass)

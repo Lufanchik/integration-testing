@@ -189,6 +189,15 @@ func ValidatePass(t *testing.T, p *Pass, parent *Pass, ingress *Pass, isFirst bo
 		expectPass.AggregateId = expectPass.Id
 	}
 
+	if p.PaymentType == PaymentTypeStartAggregate && isFirst {
+		expectPass.Sum = 0
+	}
+
+	if p.PaymentType == PaymentTypeStartAggregate && !isFirst {
+		expectPass.Sum = 0
+		expectPass.SumAggregate = p.ExpectedSum
+	}
+
 	if p.PaymentType == PaymentTypeStartAggregate {
 		expectPass.IsInitAggregate = true
 	}
@@ -321,7 +330,7 @@ func ParkingApi(t *testing.T, card *processing.Card, pr *Parking) {
 
 func CompleteApi(t *testing.T, pass *Pass, passes []*Pass, sum int) {
 	req, resp := CompleteRequest(pass, passes, sum)
-	u := "/twirp/sirocco.ProcessingAPI/ProcessComplete"
+	u := "/" + pass.Carrier.String() + "/twirp/sirocco.ProcessingAPI/ProcessComplete"
 	r := httpProcessingApi.POST(u).WithJSON(req).
 		Expect().
 		Status(http.StatusOK)

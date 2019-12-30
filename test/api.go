@@ -371,7 +371,7 @@ func WebAPI(t *testing.T, card *processing.Card, passes []*Pass) {
 	}
 }
 
-func FaceApiGetRegisterLink(t *testing.T, card *processing.Card, fcl *FaceCreateLink) {
+func FaceApiGetRegisterLink(t *testing.T, card *processing.Card, fcl *RegisterFaceId) {
 	req := WebAPIRegisterRequest(fcl, card)
 	u := "/twirp/proto.WebAPIGateway/RegisterFaceId"
 	r := httpWebApi.POST(u).WithJSON(req).

@@ -13,20 +13,15 @@ var CasesAuthWithFace = test.Cases{
 		CardSystem: processing.CardSystem_VISA,
 		FaceId:     uuid.New().String(),
 		T: test.T{
-			&test.FaceCreateLink{
-				Approve: "https://test.ru",
-				Decline: "https://test.ru",
-				Cancel:  "https://test.ru",
-			},
+			&test.RegisterFaceId{},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				ExpectedSum: 4200,
 			},
-			&test.FacePass{
-				CreateLinks: []int{1},
-				Passes:      []int{2},
+			&test.WebAPIPasses{
+				Passes: []int{2},
 			},
 		},
 	},

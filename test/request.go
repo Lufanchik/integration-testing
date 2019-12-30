@@ -193,7 +193,7 @@ func AuthStatusRequest(p *Pass) (*processing.AuthRequest, *processing.AuthRespon
 		case PaymentTypeStartAggregate:
 			response.Status = processing.AuthResponse_SUCCESS_STATUS
 			response.Auth = &processing.Auth{
-				Sum:  0,
+				Sum:  p.ExpectedSum,
 				Type: processing.Auth_AGGREGATE,
 			}
 			response.Resolution = processing.AuthResponse_AUTHORIZED
@@ -201,7 +201,7 @@ func AuthStatusRequest(p *Pass) (*processing.AuthRequest, *processing.AuthRespon
 			if p.aggregate != nil && p.aggregate.AuthType == AuthTypeCorrect {
 				response.Status = processing.AuthResponse_SUCCESS_STATUS
 				response.Auth = &processing.Auth{
-					Sum:  0,
+					Sum:  p.aggregate.ExpectedSum,
 					Type: processing.Auth_AGGREGATE,
 				}
 				response.Resolution = processing.AuthResponse_AUTHORIZED

@@ -21,8 +21,9 @@ func init() {
 
 	//МТППК
 	AddP(mtppk.CasesMTPPKPasses)
-	AddP(mtppk.CasesMTPPK_MGT)
-	AddP(mtppk.CasesMTPPK_MCD_MO)
+	AddP(mtppk.CasesMTPPKMGT)
+	AddP(mtppk.CasesMTPPKMCDMO)
+	AddP(mtppk.CasesMTPPKMCK)
 
 	//ММТС
 	AddP(mmts.CasesComplexPassMMTS1)
@@ -64,7 +65,10 @@ func init() {
 	AddP(apm.CasesApmGateway)
 
 	//МГТ
+	AddP(mgt.CasesMGT)
+	AddP(mgt.CasesMGT1)
 	AddP(mgt.CasesMGT2)
+	AddP(mgt.CasesMGT3)
 
 	//Parking
 	AddP(parking.CasesParkingPass)

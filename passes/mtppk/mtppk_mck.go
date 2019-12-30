@@ -6,7 +6,7 @@ import (
 	"lab.siroccotechnology.ru/tp/integration-testing/test"
 )
 
-var CasesMTPPK_mck = test.Cases{
+var CasesMTPPKMCK = test.Cases{
 	{
 		N:          "1. MTPPK - MCK - MM - MCK - MTPPK",
 		CardSystem: processing.CardSystem_VISA,

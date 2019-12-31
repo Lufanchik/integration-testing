@@ -130,11 +130,6 @@ type (
 		FaceId      string
 		RedirectURL string
 	}
-
-	FacePass struct {
-		CreateLinks []int
-		Passes      []int
-	}
 )
 
 const (

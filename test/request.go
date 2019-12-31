@@ -7,6 +7,7 @@ import (
 	authService "lab.siroccotechnology.ru/tp/common/messages/auth"
 	"lab.siroccotechnology.ru/tp/common/messages/carriers"
 	"lab.siroccotechnology.ru/tp/common/messages/processing"
+	"lab.siroccotechnology.ru/tp/common/messages/response"
 	webApi "lab.siroccotechnology.ru/tp/web-api-gateway/proto"
 )
 
@@ -154,6 +155,10 @@ func CompleteRequest(pass *Pass, passes []*Pass, sum int) (*processing.CompleteR
 	}
 
 	return request, response
+}
+
+func FaceForceCheckRequest() (*response.EmptyMessage, *response.EmptyMessage) {
+	return &response.EmptyMessage{}, &response.EmptyMessage{}
 }
 
 func AuthStatusRequest(p *Pass) (*processing.AuthRequest, *processing.AuthResponse) {

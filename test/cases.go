@@ -126,11 +126,8 @@ type (
 		Passes []int
 	}
 
-	FaceCreateLink struct {
+	RegisterFaceId struct {
 		FaceId      string
-		Approve     string
-		Decline     string
-		Cancel      string
 		RedirectURL string
 	}
 

@@ -215,18 +215,13 @@ func Run(t *testing.T, cases Cases, rt RequestType) {
 					CompleteApi(t, start, passes, cm.Sum)
 				}
 
-				fcl, ok := step.(*FaceCreateLink)
+				fcl, ok := step.(*RegisterFaceId)
 				if ok {
 					FaceApiGetRegisterLink(t, ncc.card, fcl)
 				}
 
 				face, ok := step.(*FacePass)
 				if ok {
-					//var links []*FaceCreateLink
-					//for _, v := range face.CreateLinks {
-					//	links = append(links, (scenario.T[v-1]).(*FaceCreateLink))
-					//}
-
 					var passes []*Pass
 					for _, v := range face.Passes {
 						passes = append(passes, (scenario.T[v-1]).(*Pass))

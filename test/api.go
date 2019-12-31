@@ -348,18 +348,34 @@ func CompleteApi(t *testing.T, pass *Pass, passes []*Pass, sum int) {
 func WebAPI(t *testing.T, card *processing.Card, passes []*Pass) {
 	log.Infof(card.Pan)
 
-	req := WebAPIPassesRequest(card)
-	u := "/twirp/proto.WebAPIGateway/GetPasses"
-	r := httpWebApi.POST(u).WithJSON(req).
-		Expect().
-		Status(http.StatusOK)
+	counter := 0
+	var response *webApi.PassesResponse
+	for {
+		req := WebAPIPassesRequest(card)
+		u := "/twirp/proto.WebAPIGateway/GetPasses"
+		r := httpWebApi.POST(u).WithJSON(req).
+			Expect().
+			Status(http.StatusOK)
 
-	object := r.Body().Raw()
-	logRequest(u, r)
+		object := r.Body().Raw()
+		logRequest(u, r)
 
-	response := &webApi.PassesResponse{}
-	err := jsonpb.Unmarshal(strings.NewReader(object), response)
-	require.NoError(t, err)
+		response = &webApi.PassesResponse{}
+		err := jsonpb.Unmarshal(strings.NewReader(object), response)
+		require.NoError(t, err)
+
+		if len(response.Passes) == 0 {
+			time.Sleep(TimeAfterRequest)
+			counter++
+			if counter > 200 {
+				break
+			} else {
+				continue
+			}
+		}
+
+		break
+	}
 
 	require.Equal(t, len(passes), len(response.Passes), "passes count doesn't match")
 
@@ -399,35 +415,21 @@ func FaceApiGetRegisterLink(t *testing.T, card *processing.Card, fcl *RegisterFa
 
 	fcl.RedirectURL = response.Redirect
 
-	log.Infof("Sleeping for 1 minute to be sure that card_uid was registered")
-	time.Sleep(time.Minute)
+	err = faceForceCheck()
+	require.NoError(t, err)
+	time.Sleep(time.Second)
 }
 
-func FaceApi(t *testing.T, card *processing.Card, passes []*Pass) {
-	log.Infof("FaceID: %v", card.Pan)
-	req := WebAPIPassesRequest(card)
-	u := "/twirp/proto.WebAPIGateway/GetPasses"
-	r := httpWebApi.POST(u).WithJSON(req).
+func faceForceCheck() error {
+	req, _ := FaceForceCheckRequest()
+	u := "/twirp/sirocco.AuthAPI/FaceForceCheck"
+	r := httpAuthService.POST(u).WithJSON(req).
 		Expect().
 		Status(http.StatusOK)
 
 	object := r.Body().Raw()
 	logRequest(u, r)
 
-	response := &webApi.PassesResponse{}
-	err := jsonpb.Unmarshal(strings.NewReader(object), response)
-	require.NoError(t, err)
-
-	require.Equal(t, len(passes), len(response.Passes), "passes count doesn't match")
-
-	responsePassesMap := map[string]struct{}{}
-	for _, p := range response.Passes {
-		require.Equal(t, p.Status, webApi.PassStatus_PAID)
-		responsePassesMap[p.Id] = struct{}{}
-	}
-
-	for _, p := range passes {
-		_, ok := responsePassesMap[p.id]
-		require.True(t, ok, "pass not found: %s", p.id)
-	}
+	response := &processing.AuthResponse{}
+	return jsonpb.Unmarshal(strings.NewReader(object), response)
 }

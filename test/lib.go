@@ -16,6 +16,7 @@ var (
 	httpProcessingApi *httpexpect.Expect
 	httpApmApi        *httpexpect.Expect
 	httpWebApi        *httpexpect.Expect
+	httpAuthService   *httpexpect.Expect
 	ps                passService.PassService
 )
 
@@ -107,6 +108,7 @@ func Run(t *testing.T, cases Cases, rt RequestType) {
 	httpProcessingApi = httpexpect.New(t, ProcessingApiUrl)
 	httpApmApi = httpexpect.New(t, ApmApiUrl)
 	httpWebApi = httpexpect.New(t, WebApiUrl)
+	httpAuthService = httpexpect.New(t, AuthServiceUrl)
 	type NCase struct {
 		c         *Case
 		card      *processing.Card
@@ -218,16 +220,6 @@ func Run(t *testing.T, cases Cases, rt RequestType) {
 				fcl, ok := step.(*RegisterFaceId)
 				if ok {
 					FaceApiGetRegisterLink(t, ncc.card, fcl)
-				}
-
-				face, ok := step.(*FacePass)
-				if ok {
-					var passes []*Pass
-					for _, v := range face.Passes {
-						passes = append(passes, (scenario.T[v-1]).(*Pass))
-					}
-
-					FaceApi(t, ncc.card, passes)
 				}
 
 				wgw, ok := step.(*WebAPIPasses)

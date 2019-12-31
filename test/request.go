@@ -125,13 +125,13 @@ func WebAPIPassesRequest(card *processing.Card) *webApi.PassesRequest {
 	}
 }
 
-func WebAPIRegisterRequest(fcl *FaceCreateLink, card *processing.Card) *authService.FaceIdRegisterRequest {
+func WebAPIRegisterRequest(fcl *RegisterFaceId, card *processing.Card) *authService.FaceIdRegisterRequest {
 	return &authService.FaceIdRegisterRequest{
 		Id: card.Pan,
 		Urls: &authService.FaceIdRegisterUrls{
-			Approve: fcl.Approve,
-			Cancel:  fcl.Cancel,
-			Decline: fcl.Decline,
+			Approve: gofakeit.URL(),
+			Cancel:  gofakeit.URL(),
+			Decline: gofakeit.URL(),
 		},
 	}
 }

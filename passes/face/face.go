@@ -39,9 +39,6 @@ var CasesAuthWithFace = test.Cases{
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				ExpectedSum: 4200,
 			},
-			&test.WebAPIPasses{
-				Passes: []int{2},
-			},
 		},
 	},
 	//{

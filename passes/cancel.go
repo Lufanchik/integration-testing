@@ -35,7 +35,7 @@ var CasesCancel = test.Cases{
 			},
 			&test.Cancel{
 				Target: 1,
-				Reason: processing.CancelPassRequest_CSS,
+				Reason: processing.CancelPassRequest_OTHER,
 			},
 		},
 	},
@@ -51,7 +51,7 @@ var CasesCancel = test.Cases{
 			},
 			&test.Cancel{
 				Target: 1,
-				Reason: processing.CancelPassRequest_CSS,
+				Reason: processing.CancelPassRequest_TERMINAL,
 			},
 		},
 	},
@@ -86,7 +86,7 @@ var CasesCancel = test.Cases{
 			},
 			&test.Cancel{
 				Target: 2,
-				Reason: processing.CancelPassRequest_CSS,
+				Reason: processing.CancelPassRequest_TERMINAL,
 			},
 		},
 	},
@@ -118,11 +118,11 @@ var CasesCancel = test.Cases{
 			},
 			&test.Cancel{
 				Target: 1,
-				Reason: processing.CancelPassRequest_CSS,
+				Reason: processing.CancelPassRequest_OTHER,
 			},
 			&test.Cancel{
 				Target: 2,
-				Reason: processing.CancelPassRequest_CSS,
+				Reason: processing.CancelPassRequest_NONE,
 			},
 		},
 	},
@@ -157,7 +157,7 @@ var CasesCancel = test.Cases{
 			},
 			&test.Cancel{
 				Target: 2,
-				Reason: processing.CancelPassRequest_CSS,
+				Reason: processing.CancelPassRequest_OTHER,
 			},
 		},
 	},
@@ -188,11 +188,11 @@ var CasesCancel = test.Cases{
 			},
 			&test.Cancel{
 				Target: 1,
-				Reason: processing.CancelPassRequest_CSS,
+				Reason: processing.CancelPassRequest_TERMINAL,
 			},
 			&test.Cancel{
 				Target: 2,
-				Reason: processing.CancelPassRequest_CSS,
+				Reason: processing.CancelPassRequest_TERMINAL,
 			},
 		},
 	},
@@ -227,7 +227,7 @@ var CasesCancel = test.Cases{
 			},
 			&test.Cancel{
 				Target: 2,
-				Reason: processing.CancelPassRequest_CSS,
+				Reason: processing.CancelPassRequest_OTHER,
 			},
 		},
 	},
@@ -259,11 +259,11 @@ var CasesCancel = test.Cases{
 			},
 			&test.Cancel{
 				Target: 1,
-				Reason: processing.CancelPassRequest_CSS,
+				Reason: processing.CancelPassRequest_OTHER,
 			},
 			&test.Cancel{
 				Target: 2,
-				Reason: processing.CancelPassRequest_CSS,
+				Reason: processing.CancelPassRequest_NONE,
 			},
 		},
 	},
@@ -294,11 +294,11 @@ var CasesCancel = test.Cases{
 			},
 			&test.Cancel{
 				Target: 1,
-				Reason: processing.CancelPassRequest_CSS,
+				Reason: processing.CancelPassRequest_NONE,
 			},
 			&test.Cancel{
 				Target: 2,
-				Reason: processing.CancelPassRequest_CSS,
+				Reason: processing.CancelPassRequest_NONE,
 			},
 		},
 	},
@@ -333,7 +333,7 @@ var CasesCancel = test.Cases{
 			},
 			&test.Cancel{
 				Target: 2,
-				Reason: processing.CancelPassRequest_CSS,
+				Reason: processing.CancelPassRequest_TERMINAL,
 			},
 		},
 	},
@@ -360,7 +360,7 @@ var CasesCancel = test.Cases{
 			},
 			&test.Cancel{
 				Target: 3,
-				Reason: processing.CancelPassRequest_CSS,
+				Reason: processing.CancelPassRequest_TERMINAL,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -382,7 +382,7 @@ var CasesCancel = test.Cases{
 			},
 			&test.Cancel{
 				Target: 7,
-				Reason: processing.CancelPassRequest_CSS,
+				Reason: processing.CancelPassRequest_OTHER,
 			},
 		},
 	},
@@ -419,7 +419,7 @@ var CasesCancel = test.Cases{
 			},
 			&test.Cancel{
 				Target: 1,
-				Reason: processing.CancelPassRequest_CSS,
+				Reason: processing.CancelPassRequest_OTHER,
 			},
 		},
 	},
@@ -436,7 +436,7 @@ var CasesCancel = test.Cases{
 			},
 			&test.Cancel{
 				Target: 1,
-				Reason: processing.CancelPassRequest_CSS,
+				Reason: processing.CancelPassRequest_TERMINAL,
 			},
 		},
 	},
@@ -472,7 +472,7 @@ var CasesCancel = test.Cases{
 			},
 			&test.Cancel{
 				Target: 2,
-				Reason: processing.CancelPassRequest_CSS,
+				Reason: processing.CancelPassRequest_TERMINAL,
 			},
 		},
 	},
@@ -506,11 +506,11 @@ var CasesCancel = test.Cases{
 			},
 			&test.Cancel{
 				Target: 1,
-				Reason: processing.CancelPassRequest_CSS,
+				Reason: processing.CancelPassRequest_OTHER,
 			},
 			&test.Cancel{
 				Target: 2,
-				Reason: processing.CancelPassRequest_CSS,
+				Reason: processing.CancelPassRequest_OTHER,
 			},
 		},
 	},
@@ -542,11 +542,11 @@ var CasesCancel = test.Cases{
 			},
 			&test.Cancel{
 				Target: 1,
-				Reason: processing.CancelPassRequest_CSS,
+				Reason: processing.CancelPassRequest_OTHER,
 			},
 			&test.Cancel{
 				Target: 2,
-				Reason: processing.CancelPassRequest_CSS,
+				Reason: processing.CancelPassRequest_TERMINAL,
 			},
 		},
 	},
@@ -578,11 +578,11 @@ var CasesCancel = test.Cases{
 			},
 			&test.Cancel{
 				Target: 1,
-				Reason: processing.CancelPassRequest_CSS,
+				Reason: processing.CancelPassRequest_TERMINAL,
 			},
 			&test.Cancel{
 				Target: 2,
-				Reason: processing.CancelPassRequest_CSS,
+				Reason: processing.CancelPassRequest_OTHER,
 			},
 		},
 	},
@@ -652,11 +652,11 @@ var CasesCancel = test.Cases{
 			},
 			&test.Cancel{
 				Target: 1,
-				Reason: processing.CancelPassRequest_CSS,
+				Reason: processing.CancelPassRequest_OTHER,
 			},
 			&test.Cancel{
 				Target: 2,
-				Reason: processing.CancelPassRequest_CSS,
+				Reason: processing.CancelPassRequest_TERMINAL,
 			},
 		},
 	},
@@ -688,7 +688,7 @@ var CasesCancel = test.Cases{
 			},
 			&test.Cancel{
 				Target: 1,
-				Reason: processing.CancelPassRequest_CSS,
+				Reason: processing.CancelPassRequest_TERMINAL,
 			},
 			&test.Cancel{
 				Target: 2,
@@ -728,7 +728,7 @@ var CasesCancel = test.Cases{
 			},
 			&test.Cancel{
 				Target: 2,
-				Reason: processing.CancelPassRequest_CSS,
+				Reason: processing.CancelPassRequest_OTHER,
 			},
 		},
 	},
@@ -757,7 +757,7 @@ var CasesCancel = test.Cases{
 			},
 			&test.Cancel{
 				Target: 3,
-				Reason: processing.CancelPassRequest_CSS,
+				Reason: processing.CancelPassRequest_OTHER,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -769,7 +769,7 @@ var CasesCancel = test.Cases{
 			},
 			&test.Cancel{
 				Target: 5,
-				Reason: processing.CancelPassRequest_CSS,
+				Reason: processing.CancelPassRequest_TERMINAL,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -818,11 +818,11 @@ var CasesCancel = test.Cases{
 			},
 			&test.Cancel{
 				Target: 2,
-				Reason: processing.CancelPassRequest_CSS,
+				Reason: processing.CancelPassRequest_OTHER,
 			},
 			&test.Cancel{
 				Target: 3,
-				Reason: processing.CancelPassRequest_CSS,
+				Reason: processing.CancelPassRequest_TERMINAL,
 			},
 		},
 	},

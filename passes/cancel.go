@@ -122,7 +122,7 @@ var CasesCancel = test.Cases{
 			},
 			&test.Cancel{
 				Target: 2,
-				Reason: processing.CancelPassRequest_NONE,
+				Reason: processing.CancelPassRequest_CSS,
 			},
 		},
 	},
@@ -263,7 +263,7 @@ var CasesCancel = test.Cases{
 			},
 			&test.Cancel{
 				Target: 2,
-				Reason: processing.CancelPassRequest_NONE,
+				Reason: processing.CancelPassRequest_CSS,
 			},
 		},
 	},
@@ -294,11 +294,11 @@ var CasesCancel = test.Cases{
 			},
 			&test.Cancel{
 				Target: 1,
-				Reason: processing.CancelPassRequest_NONE,
+				Reason: processing.CancelPassRequest_OTHER,
 			},
 			&test.Cancel{
 				Target: 2,
-				Reason: processing.CancelPassRequest_NONE,
+				Reason: processing.CancelPassRequest_OTHER,
 			},
 		},
 	},

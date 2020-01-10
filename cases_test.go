@@ -68,10 +68,9 @@ func init() {
 	AddP(apm.CasesApmGateway)
 
 	//МГТ
-	AddP(mgt.CasesMGT)
-	AddP(mgt.CasesMGT1)
-	AddP(mgt.CasesMGT2)
-	AddP(mgt.CasesMGT3)
+	AddP(mgt.CasesMGT_1)
+	AddP(mgt.CasesMGT_2)
+	AddP(mgt.CasesMGT_3)
 
 	//Parking
 	AddP(parking.CasesParkingPass)

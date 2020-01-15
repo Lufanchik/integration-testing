@@ -548,6 +548,7 @@ lab.siroccotechnology.ru/tp/auth-service v0.0.61/go.mod h1:JqXcdBM653OLM9sgL4V9h
 lab.siroccotechnology.ru/tp/auth-service v0.0.92/go.mod h1:tg4zZc3CWMMUC2KpoqJKaBe2qiXbWekT7vbSves3kEQ=
 lab.siroccotechnology.ru/tp/auth-service v0.0.93/go.mod h1:tg4zZc3CWMMUC2KpoqJKaBe2qiXbWekT7vbSves3kEQ=
 lab.siroccotechnology.ru/tp/auth-service v0.0.101/go.mod h1:BqID1wKTSyrM+fVvxzS7yoy2raRqCr/NLlGKN9iAfm0=
+lab.siroccotechnology.ru/tp/auth-service v0.0.134/go.mod h1:RIUei5gjAelEzTKCmgIS6lkH8xQotjzQaPE+G2bOthY=
 lab.siroccotechnology.ru/tp/calculator-service v0.0.21/go.mod h1:QQui767BWJaaGTolxbdc0lJAYmnNX0L6P8y9fxGZdgM=
 lab.siroccotechnology.ru/tp/calculator-service v0.0.22/go.mod h1:g79L7VmL9uEGdujwY6nB/gxL5B4BV/GqUorpiVoPip4=
 lab.siroccotechnology.ru/tp/calculator-service v0.0.31/go.mod h1:aDhjXgMoUQJqOl2I6kEu1UGdllQRk/aOSp7vTGSHOWU=
@@ -587,6 +588,14 @@ lab.siroccotechnology.ru/tp/common v0.0.234 h1:zoCcZa707EBcpYFdNjFla7p9nu2VpZrpQ
 lab.siroccotechnology.ru/tp/common v0.0.234/go.mod h1:p+Vvrq6pGatI/hGh1O4FOEYYhF/CsK8cagVArhptVQk=
 lab.siroccotechnology.ru/tp/common v0.0.237 h1:tenRUsWViCThu7fF0+rVb+aIVqLzKlhA0l1n5a5+Xy8=
 lab.siroccotechnology.ru/tp/common v0.0.237/go.mod h1:p+Vvrq6pGatI/hGh1O4FOEYYhF/CsK8cagVArhptVQk=
+lab.siroccotechnology.ru/tp/common v0.0.238/go.mod h1:p+Vvrq6pGatI/hGh1O4FOEYYhF/CsK8cagVArhptVQk=
+lab.siroccotechnology.ru/tp/common v0.0.239-dev-1/go.mod h1:p+Vvrq6pGatI/hGh1O4FOEYYhF/CsK8cagVArhptVQk=
+lab.siroccotechnology.ru/tp/common v0.0.239-dev-2 h1:GPBXlcGw7tF2myXi80YmbvHZN/i8W4Es+/KHUlSVKZ8=
+lab.siroccotechnology.ru/tp/common v0.0.239-dev-2/go.mod h1:p+Vvrq6pGatI/hGh1O4FOEYYhF/CsK8cagVArhptVQk=
+lab.siroccotechnology.ru/tp/common v0.0.240/go.mod h1:p+Vvrq6pGatI/hGh1O4FOEYYhF/CsK8cagVArhptVQk=
+lab.siroccotechnology.ru/tp/common v0.0.241/go.mod h1:p+Vvrq6pGatI/hGh1O4FOEYYhF/CsK8cagVArhptVQk=
+lab.siroccotechnology.ru/tp/common v0.0.242 h1:U1aXe0gjCkqoOvu7viZVZ4LvMSjIpkLXTtjqfMnZnuc=
+lab.siroccotechnology.ru/tp/common v0.0.242/go.mod h1:p+Vvrq6pGatI/hGh1O4FOEYYhF/CsK8cagVArhptVQk=
 lab.siroccotechnology.ru/tp/goosev2 v0.0.0-20191121101708-2b2395d00eba/go.mod h1:ojDsOvLgzQO/8tUrAhK+3+Hai6RIwNbQejxDiKYbY04=
 lab.siroccotechnology.ru/tp/goosev2 v0.0.0-20191126130026-3a8bba2c5874/go.mod h1:ojDsOvLgzQO/8tUrAhK+3+Hai6RIwNbQejxDiKYbY04=
 lab.siroccotechnology.ru/tp/pass-service v0.0.24/go.mod h1:S212PdJFE55gKHls2bJ+hi7pnuskczOlNLb8Rbq3vX0=
@@ -601,6 +610,8 @@ lab.siroccotechnology.ru/tp/pass-service v0.0.99/go.mod h1:e+lAlYSIXf8ktDUpYF4n9
 lab.siroccotechnology.ru/tp/pass-service v0.0.100/go.mod h1:08ipsyC3PLDukD0MPBX2GLF6XPOV0pVg1e6xVNsCVhA=
 lab.siroccotechnology.ru/tp/pass-service v0.0.110 h1:nHmc51Pcrgda+89Y0P0fMiAX4QUBNp8/3HB6md5bKOg=
 lab.siroccotechnology.ru/tp/pass-service v0.0.110/go.mod h1:o/Y/5epLON0al4oyIfQ+67j3SDN+Gnja3WqsIntWR74=
+lab.siroccotechnology.ru/tp/pass-service v0.0.121 h1:4mSAB1lx+D/JXlInIpRVc4qbfgWs4dPCI6ZOIQeFoMg=
+lab.siroccotechnology.ru/tp/pass-service v0.0.121/go.mod h1:wC8OlF+WwyoBW0NT3GkCPinQPqAD6ccfjhWGxSK4F/c=
 lab.siroccotechnology.ru/tp/request-service v0.0.2/go.mod h1:AAIFzaxftj/dGNrv+UKxPfmiP1F4JcXuAH9puHfrxxs=
 lab.siroccotechnology.ru/tp/request-service v0.0.3/go.mod h1:euE2UsGjGeskEfHknxHY5c+ha0wDMXXyssyQl2GHRPY=
 lab.siroccotechnology.ru/tp/tidpool-service v0.0.3/go.mod h1:LjqDP24fYOAkZEUT16FHzSH1qVZebkVrMjYO1Hj9xC0=
@@ -608,6 +619,8 @@ lab.siroccotechnology.ru/tp/tidpool-service v0.0.5/go.mod h1:LjqDP24fYOAkZEUT16F
 lab.siroccotechnology.ru/tp/tidpool-service v0.0.14/go.mod h1:f0d/rtmxFJYTzeOHkoSLgWwuvFwSLyCg7GLA5yvGMIE=
 lab.siroccotechnology.ru/tp/web-api-gateway v0.0.5 h1:qmRUqZv1g/wt7OUy14PhoZ5R9jPkf9bLlZqZTsNPnQY=
 lab.siroccotechnology.ru/tp/web-api-gateway v0.0.5/go.mod h1:4RX+PZSu3VtcwQbTrgdwh22drCFz+AewJLiu0xWhWys=
+lab.siroccotechnology.ru/tp/web-api-gateway v0.0.12 h1:lbfdXfT2Ib3fLXtvf6s+I3dkQn+mLKMBCeV/w8Adsjg=
+lab.siroccotechnology.ru/tp/web-api-gateway v0.0.12/go.mod h1:XIFjxJB3RSKZVT9vEvoz92HFDgU+jV/npAJmd43+7OU=
 mvdan.cc/interfacer v0.0.0-20180901003855-c20040233aed h1:WX1yoOaKQfddO/mLzdV4wptyWgoH/6hwLs7QHTixo0I=
 mvdan.cc/interfacer v0.0.0-20180901003855-c20040233aed/go.mod h1:Xkxe497xwlCKkIaQYRfC7CSLworTXY9RMqwhhCm+8Nc=
 mvdan.cc/lint v0.0.0-20170908181259-adc824a0674b h1:DxJ5nJdkhDlLok9K6qO+5290kphDJbHOQO1DFFFTeBo=

@@ -406,7 +406,7 @@ func FaceApiGetRegisterLink(t *testing.T, card *processing.Card, fcl *RegisterFa
 	object := r.Body().Raw()
 	logRequest(u, r)
 
-	response := &authService.FaceIdRegisterResponse{}
+	response := &authService.CreateTWPGOrderResponse{}
 	err := jsonpb.Unmarshal(strings.NewReader(object), response)
 	require.NoError(t, err)
 

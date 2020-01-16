@@ -129,7 +129,7 @@ func WebAPIPassesRequest(card *processing.Card) *webApi.PassesRequest {
 func WebAPIRegisterRequest(fcl *RegisterFaceId, card *processing.Card) *authService.FaceIdRegisterRequest {
 	return &authService.FaceIdRegisterRequest{
 		Id: card.Pan,
-		Urls: &authService.FaceIdRegisterUrls{
+		Urls: &authService.TWPGUrls{
 			Approve: gofakeit.URL(),
 			Cancel:  gofakeit.URL(),
 			Decline: gofakeit.URL(),

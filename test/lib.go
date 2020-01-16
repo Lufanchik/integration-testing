@@ -250,7 +250,7 @@ func Run(t *testing.T, cases Cases, rt RequestType) {
 				t.Run("case check 1: "+scenario.N, func(t *testing.T) {
 					//Pass
 					p, ok := step.(*Pass)
-					if ok && !p.isCancel {
+					if ok && !p.isCancel && p.faceId == "" {
 						fmt.Println(fmt.Sprintf("check 1 = %d", N+1))
 						ConfigurePass(t, p, ncc.carrierId, ncc.card)
 						ValidatePass(t, p, p.parent, p.ingress, false)
@@ -284,7 +284,7 @@ func Run(t *testing.T, cases Cases, rt RequestType) {
 				t.Run("case check 2: "+scenario.N, func(t *testing.T) {
 					//Pass
 					p, ok := step.(*Pass)
-					if ok && !p.isCancel {
+					if ok && !p.isCancel && p.faceId == "" {
 						fmt.Println(fmt.Sprintf("check 2 = %d", N+1))
 						ConfigurePass(t, p, ncc.carrierId, ncc.card)
 						ValidatePass(t, p, p.parent, p.ingress, false)

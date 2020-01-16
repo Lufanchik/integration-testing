@@ -84,10 +84,6 @@ var CasesCancel = test.Cases{
 				Target: 1,
 				Reason: processing.CancelPassRequest_CSS,
 			},
-			&test.Cancel{
-				Target: 2,
-				Reason: processing.CancelPassRequest_TERMINAL,
-			},
 		},
 	},
 	{
@@ -120,10 +116,6 @@ var CasesCancel = test.Cases{
 				Target: 1,
 				Reason: processing.CancelPassRequest_OTHER,
 			},
-			&test.Cancel{
-				Target: 2,
-				Reason: processing.CancelPassRequest_CSS,
-			},
 		},
 	},
 	{
@@ -155,10 +147,6 @@ var CasesCancel = test.Cases{
 				Target: 1,
 				Reason: processing.CancelPassRequest_CSS,
 			},
-			&test.Cancel{
-				Target: 2,
-				Reason: processing.CancelPassRequest_OTHER,
-			},
 		},
 	},
 	{
@@ -188,10 +176,6 @@ var CasesCancel = test.Cases{
 			},
 			&test.Cancel{
 				Target: 1,
-				Reason: processing.CancelPassRequest_TERMINAL,
-			},
-			&test.Cancel{
-				Target: 2,
 				Reason: processing.CancelPassRequest_TERMINAL,
 			},
 		},
@@ -225,10 +209,6 @@ var CasesCancel = test.Cases{
 				Target: 1,
 				Reason: processing.CancelPassRequest_CSS,
 			},
-			&test.Cancel{
-				Target: 2,
-				Reason: processing.CancelPassRequest_OTHER,
-			},
 		},
 	},
 	{
@@ -261,10 +241,6 @@ var CasesCancel = test.Cases{
 				Target: 1,
 				Reason: processing.CancelPassRequest_OTHER,
 			},
-			&test.Cancel{
-				Target: 2,
-				Reason: processing.CancelPassRequest_CSS,
-			},
 		},
 	},
 	{
@@ -294,10 +270,6 @@ var CasesCancel = test.Cases{
 			},
 			&test.Cancel{
 				Target: 1,
-				Reason: processing.CancelPassRequest_OTHER,
-			},
-			&test.Cancel{
-				Target: 2,
 				Reason: processing.CancelPassRequest_OTHER,
 			},
 		},
@@ -331,14 +303,10 @@ var CasesCancel = test.Cases{
 				Target: 1,
 				Reason: processing.CancelPassRequest_CSS,
 			},
-			&test.Cancel{
-				Target: 2,
-				Reason: processing.CancelPassRequest_TERMINAL,
-			},
 		},
 	},
 	{
-		N: "12. МЦК ММ успешная авторизация + Отмена",
+		N: "12. ММ успешная авторизация + Отмена",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -470,10 +438,6 @@ var CasesCancel = test.Cases{
 				Target: 1,
 				Reason: processing.CancelPassRequest_CSS,
 			},
-			&test.Cancel{
-				Target: 2,
-				Reason: processing.CancelPassRequest_TERMINAL,
-			},
 		},
 	},
 	{
@@ -544,10 +508,6 @@ var CasesCancel = test.Cases{
 				Target: 1,
 				Reason: processing.CancelPassRequest_OTHER,
 			},
-			&test.Cancel{
-				Target: 2,
-				Reason: processing.CancelPassRequest_TERMINAL,
-			},
 		},
 	},
 	{
@@ -580,10 +540,6 @@ var CasesCancel = test.Cases{
 				Target: 1,
 				Reason: processing.CancelPassRequest_TERMINAL,
 			},
-			&test.Cancel{
-				Target: 2,
-				Reason: processing.CancelPassRequest_OTHER,
-			},
 		},
 	},
 	{
@@ -614,10 +570,6 @@ var CasesCancel = test.Cases{
 			},
 			&test.Cancel{
 				Target: 1,
-				Reason: processing.CancelPassRequest_CSS,
-			},
-			&test.Cancel{
-				Target: 2,
 				Reason: processing.CancelPassRequest_CSS,
 			},
 		},
@@ -690,10 +642,6 @@ var CasesCancel = test.Cases{
 				Target: 1,
 				Reason: processing.CancelPassRequest_TERMINAL,
 			},
-			&test.Cancel{
-				Target: 2,
-				Reason: processing.CancelPassRequest_CSS,
-			},
 		},
 	},
 	{
@@ -726,70 +674,13 @@ var CasesCancel = test.Cases{
 				Target: 1,
 				Reason: processing.CancelPassRequest_CSS,
 			},
-			&test.Cancel{
-				Target: 2,
-				Reason: processing.CancelPassRequest_OTHER,
-			},
-		},
-	},
-	{
-		N: "24. МЦК ММ неуспешная авторизация + Отмена",
-		T: test.T{
-			&test.Pass{
-				PaymentType: test.PaymentTypePayment,
-				RequestType: test.RequestTypeOnline,
-				Carrier:     carriers.Carrier_MM,
-				SubCarrier:  carriers.SubCarrier_MM_SUB,
-				AuthType:    test.AuthTypeIncorrect,
-				ExpectedSum: 4200,
-			},
-			&test.Cancel{
-				Target: 1,
-				Reason: processing.CancelPassRequest_CSS,
-			},
-			&test.Pass{
-				PaymentType: test.PaymentTypePayment,
-				RequestType: test.RequestTypeOnline,
-				Carrier:     carriers.Carrier_MM,
-				SubCarrier:  carriers.SubCarrier_MM_SUB,
-				AuthType:    test.AuthTypeIncorrect,
-				ExpectedSum: 4200,
-			},
-			&test.Cancel{
-				Target: 3,
-				Reason: processing.CancelPassRequest_OTHER,
-			},
-			&test.Pass{
-				PaymentType: test.PaymentTypePayment,
-				RequestType: test.RequestTypeOnline,
-				Carrier:     carriers.Carrier_MM,
-				SubCarrier:  carriers.SubCarrier_MM_SUB,
-				AuthType:    test.AuthTypeIncorrect,
-				ExpectedSum: 4200,
-			},
-			&test.Cancel{
-				Target: 5,
-				Reason: processing.CancelPassRequest_TERMINAL,
-			},
-			&test.Pass{
-				PaymentType: test.PaymentTypePayment,
-				RequestType: test.RequestTypeOnline,
-				Carrier:     carriers.Carrier_MM,
-				SubCarrier:  carriers.SubCarrier_MM_SUB,
-				AuthType:    test.AuthTypeIncorrect,
-				ExpectedSum: 4200,
-			},
-			&test.Cancel{
-				Target: 7,
-				Reason: processing.CancelPassRequest_CSS,
-			},
 		},
 	},
 
 	//ОТМЕНА ПРОХОДА В КОМПЛЕКСНОЙ ПОЕЗДКЕ
 
 	{
-		N: "1. ММ - МЦК - ММТС успешная авторизация + Отмена всех",
+		N: "24. ММ - МЦК - ММТС успешная авторизация + Отмена всех",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,

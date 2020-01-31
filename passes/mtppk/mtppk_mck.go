@@ -49,9 +49,9 @@ var CasesMTPPKMCK = test.Cases{
 			},
 		},
 	},
-
 	{
-		N: "2. MCK - MM - MTPPK-MTPPK - MCK - MM ",
+		N:          "2. MCK - MM - MTPPK-MTPPK - MCK - MM ",
+		CardSystem: processing.CardSystem_MASTERCARD,
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -83,66 +83,21 @@ var CasesMTPPKMCK = test.Cases{
 				},
 				Sum: 8400,
 			},
-			&test.Pass{
-				PaymentType: test.PaymentTypePayment,
-				Carrier:     carriers.Carrier_MM,
-				SubCarrier:  carriers.SubCarrier_MCK_SUB,
-				ExpectedSum: 4200,
-			},
-			&test.Pass{
-				PaymentType: test.PaymentTypeFree,
-				Carrier:     carriers.Carrier_MM,
-				SubCarrier:  carriers.SubCarrier_MM_SUB,
-				Parent:      6,
-			},
 		},
 	},
-
 	{
-		N: "3. MTPPK - MCD1_MO - MCK - MM - MMTS - MTPPK",
+		N: "3. MTPPK - MCK - MTPPK",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypeStartAggregate,
 				AuthType:    test.AuthTypeCorrect,
 				Carrier:     carriers.Carrier_MTPPK,
-				ExpectedSum: 8400,
-			},
-			&test.Pass{
-				PaymentType: test.PaymentTypePayment,
-				Carrier:     carriers.Carrier_MCD,
-				SubCarrier:  carriers.SubCarrier_MCD1_MO,
-				Terminal: &processing.Terminal{
-					Station:   "2000055", //ОДИНЦОВО
-					Direction: processing.TerminalDirection_INGRESS,
-				},
-				ExpectedSum: 4900,
-			},
-			&test.Pass{
-				PaymentType: test.PaymentTypeFree,
-				Carrier:     carriers.Carrier_MCD,
-				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
-				Terminal: &processing.Terminal{
-					Station:   "2001060", //БЕГОВАЯ
-					Direction: processing.TerminalDirection_EGRESS,
-				},
-				Ingress: 2,
+				ExpectedSum: 400,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
-				Parent:      2,
-			},
-			&test.Pass{
-				PaymentType: test.PaymentTypeFree,
-				Carrier:     carriers.Carrier_MM,
-				SubCarrier:  carriers.SubCarrier_MM_SUB,
-				Parent:      2,
-			},
-			&test.Pass{
-				PaymentType: test.PaymentTypeFree,
-				Carrier:     carriers.Carrier_MM,
-				SubCarrier:  carriers.SubCarrier_MMTS_SUB,
 				Parent:      2,
 			},
 			&test.Pass{
@@ -153,13 +108,12 @@ var CasesMTPPKMCK = test.Cases{
 			&test.Complete{
 				StartPass: 1,
 				Passes: []int{
-					7,
+					3,
 				},
-				Sum: 8400,
+				Sum: 400,
 			},
 		},
 	},
-
 	{
 		N: "4. MTPPK - MGT - MCK - MTPPK - MMTS",
 		T: test.T{
@@ -200,7 +154,6 @@ var CasesMTPPKMCK = test.Cases{
 			},
 		},
 	},
-
 	{
 		N: "5. MTPPk - MCK - MTPPK - MCK - MTPPK - MCK",
 		T: test.T{
@@ -247,7 +200,6 @@ var CasesMTPPKMCK = test.Cases{
 			},
 		},
 	},
-
 	{
 		N: "6. MCK - MTPPK - MM - MTPPK - MCD_MSK - MTPPK - MMTS - MTPPK - MMTS",
 		T: test.T{
@@ -325,7 +277,6 @@ var CasesMTPPKMCK = test.Cases{
 			},
 		},
 	},
-
 	{
 		N: "7. MTPPK - MCK - MMTS - MCK - MTPPK",
 		T: test.T{

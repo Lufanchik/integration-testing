@@ -42,8 +42,8 @@ var CasesMTPPKPasses = test.Cases{
 		},
 	},
 	{
-		N:          "2. MTPPK, VISA",
-		CardSystem: processing.CardSystem_VISA,
+		N:          "2. MTPPK, MASTERCARD",
+		CardSystem: processing.CardSystem_MASTERCARD,
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypeStartAggregate,
@@ -76,41 +76,7 @@ var CasesMTPPKPasses = test.Cases{
 		},
 	},
 	{
-		N:          "3. MTPPK, MASTERCARD",
-		CardSystem: processing.CardSystem_MASTERCARD,
-		T: test.T{
-			&test.Pass{
-				PaymentType: test.PaymentTypeStartAggregate,
-				AuthType:    test.AuthTypeCorrect,
-				Carrier:     carriers.Carrier_MTPPK,
-				ExpectedSum: 3,
-			},
-			&test.Pass{
-				PaymentType: test.PaymentTypeAggregate,
-				Carrier:     carriers.Carrier_MTPPK,
-				Aggregate:   1,
-			},
-			&test.Pass{
-				PaymentType: test.PaymentTypeAggregate,
-				Carrier:     carriers.Carrier_MTPPK,
-				Aggregate:   1,
-			},
-			&test.Pass{
-				PaymentType: test.PaymentTypeAggregate,
-				Carrier:     carriers.Carrier_MTPPK,
-				Aggregate:   1,
-			},
-			&test.Complete{
-				StartPass: 1,
-				Passes: []int{
-					2, 3, 4,
-				},
-				Sum: 3,
-			},
-		},
-	},
-	{
-		N:          "4. MTPPK, FAIL",
+		N:          "3. MTPPK, FAIL",
 		CardSystem: processing.CardSystem_MASTERCARD,
 		T: test.T{
 			&test.Pass{
@@ -144,7 +110,8 @@ var CasesMTPPKPasses = test.Cases{
 		},
 	},
 	{
-		N: "5. MM - MTPPK - MЦK - MTPPK - MМТС - MTPPK - ММ - MTPPK	- COMPLETE",
+		N: "4. MM - MTPPK - MЦK - MTPPK - MМТС - MTPPK - ММ - MTPPK	- COMPLETE",
+		CardSystem: processing.CardSystem_MASTERCARD,
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -201,7 +168,8 @@ var CasesMTPPKPasses = test.Cases{
 		},
 	},
 	{
-		N: "6. MM - MTPPK - MCK - MTPPK - MMTS - MTPPK - MM - MTPPK	- COMPLETE",
+		N: "5. MM - MTPPK - MCK - MTPPK - MMTS - MTPPK - MM - MTPPK	- COMPLETE",
+		CardSystem: processing.CardSystem_MIR,
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -266,7 +234,8 @@ var CasesMTPPKPasses = test.Cases{
 		},
 	},
 	{
-		N: "7. MM - MTPPK - MCK - MTPPK - MCK-MCK - MTPPK - MCK-MCK2 - MTPPK - MCK-MO - MTPPK - COMPLETE",
+		N:          "6. MM - MTPPK - MCK - MTPPK - MCK-MCK - MTPPK - MCK-MCK2 - MTPPK - MCK-MO - MTPPK - COMPLETE",
+		CardSystem: processing.CardSystem_UNKNOWN_SYSTEM,
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,

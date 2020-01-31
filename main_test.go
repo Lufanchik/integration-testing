@@ -5,7 +5,8 @@ import (
 	"github.com/jinzhu/copier"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 	"github.com/stretchr/testify/require"
-	"lab.siroccotechnology.ru/tp/integration-testing/passes/face"
+	"lab.siroccotechnology.ru/tp/integration-testing/passes/mgt"
+	"lab.siroccotechnology.ru/tp/integration-testing/passes/mtppk"
 	"lab.siroccotechnology.ru/tp/integration-testing/test"
 	"net/http"
 	"net/http/pprof"
@@ -125,9 +126,9 @@ func TestSimple(t *testing.T) {
 	//test.Run(t, mcd.CasesComplexTimeMCD, test.RequestTypeOffline)
 	//test.Run(t, mcd.CasesOfflineMetroComplexMCD, test.RequestTypeOffline)
 	//test.Run(t, mcd.CasesOfflineMetroComplexMCDMO, test.RequestTypeOffline)
-	//test.Run(t, mgt.CasesMGT, test.RequestTypeOffline)
-	//test.Run(t, mgt.CasesMGT2, test.RequestTypeOffline)
-	//test.Run(t, mgt.CasesMGT3, test.RequestTypeOffline)
+	test.Run(t, mgt.CasesMGT_1, test.RequestTypeOffline)
+	test.Run(t, mgt.CasesMGT_2, test.RequestTypeOffline)
+	test.Run(t, mgt.CasesMGT_3, test.RequestTypeOffline)
 	//test.Run(t, mm.CasesMetroComplexMM1, test.RequestTypeOffline)
 	//test.Run(t, mm.CasesMetroComplexMM2, test.RequestTypeOffline)
 	//test.Run(t, mm.CasesMetroComplexMM3, test.RequestTypeOffline)
@@ -141,16 +142,18 @@ func TestSimple(t *testing.T) {
 	//test.Run(t, mmts.CasesComplexPassMMTS5, test.RequestTypeOffline)
 	//test.Run(t, mmts.CasesComplexTimeMMTS, test.RequestTypeOffline)
 	//test.Run(t, mmts.CasesOfflineMetroComplexMMTS, test.RequestTypeOffline)
-	//test.Run(t, mtppk.CasesMTPPK1, test.RequestTypeOffline)
 	//test.Run(t, mtppk.CasesMTPPKPasses, test.RequestTypeOffline)
-	//test.Run(t, mtppk.CasesMTPPK_MGT, test.RequestTypeOnline)
+	//test.Run(t, mtppk.CasesMTPPK_single, test.RequestTypeOffline)
 	//test.Run(t, mtppk.CasesMTPPK_MCD_MO, test.RequestTypeOnline)
+	test.Run(t, mtppk.CasesMTPPK_MCD_MSK, test.RequestTypeOnline)
+	//test.Run(t, mtppk.CasesMTPPKMCK, test.RequestTypeOnline)
+	//test.Run(t, mtppk.CasesMTPPK_MGT, test.RequestTypeOnline)
 	//test.Run(t, passes.CasesCancel, test.RequestTypeOffline)
 	//test.Run(t, passes.CasesWrongTimeComplexPass, test.RequestTypeOffline)
 	//test.Run(t, passes.CasesScopeCheckPass, test.RequestTypeOffline)
 	//test.Run(t, passes.CasesSimpleComplexPass, test.RequestTypeOffline)
 	//test.Run(t, mtppk.CasesMTPPKPasses, test.RequestTypeOffline)
-	test.Run(t, face.CasesAuthWithFace, test.RequestTypeOffline)
+	//test.Run(t, face.CasesAuthWithFace, test.RequestTypeOffline)
 	//test.Run(t, mm.CasesMetroComplexMM1, test.RequestTypeOffline)
 	//test.Run(t, face.CasesAuthWithFace, test.RequestTypeOffline)
 }

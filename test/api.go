@@ -6,6 +6,7 @@ import (
 	"github.com/prometheus/common/log"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
+	"lab.siroccotechnology.ru/tp/calculator-service/calculator/rates"
 	"lab.siroccotechnology.ru/tp/common/global"
 	authService "lab.siroccotechnology.ru/tp/common/messages/auth"
 	"lab.siroccotechnology.ru/tp/common/messages/pass"
@@ -123,7 +124,7 @@ func ValidatePass(t *testing.T, p *Pass, parent *Pass, ingress *Pass, isFirst bo
 		IsPass:            true,
 		IsFree:            false,
 		CarrierCodeSub:    p.SubCarrier,
-		Sum:               p.ExpectedSum,
+		Sum:               uint32(p.ExpectedSum),
 		IsAuth:            false,
 	}
 
@@ -195,7 +196,7 @@ func ValidatePass(t *testing.T, p *Pass, parent *Pass, ingress *Pass, isFirst bo
 
 	if p.PaymentType == PaymentTypeStartAggregate && !isFirst {
 		expectPass.Sum = 0
-		expectPass.SumAggregate = p.ExpectedSum
+		expectPass.SumAggregate = uint32(p.ExpectedSum)
 	}
 
 	if p.PaymentType == PaymentTypeStartAggregate {
@@ -290,7 +291,7 @@ func LoginApi(t *testing.T, lg *Login) {
 
 func PassCheckApi(t *testing.T, pc *PassCheck, target *Pass, parent *Pass) {
 	target.PaymentType = pc.PaymentType
-	target.ExpectedSum = pc.ExpectedSum
+	target.ExpectedSum = rates.Price(pc.ExpectedSum)
 	ValidatePass(t, target, parent, nil, true)
 	AuthStatus(t, target)
 }

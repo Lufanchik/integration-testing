@@ -1,6 +1,7 @@
 package webapi
 
 import (
+	"lab.siroccotechnology.ru/tp/calculator-service/calculator/rates"
 	"lab.siroccotechnology.ru/tp/common/messages/carriers"
 	"lab.siroccotechnology.ru/tp/common/messages/processing"
 	"lab.siroccotechnology.ru/tp/integration-testing/test"
@@ -15,7 +16,7 @@ var (
 					PaymentType: test.PaymentTypePayment,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MM_SUB,
-					ExpectedSum: 4200,
+					ExpectedSum: rates.MmSubRate,
 					AuthType:    test.AuthTypeCorrect,
 					Terminal: &processing.Terminal{
 						Id:         "1",
@@ -28,7 +29,7 @@ var (
 					PaymentType: test.PaymentTypePayment,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MM_SUB,
-					ExpectedSum: 4200,
+					ExpectedSum: rates.MmSubRate,
 					AuthType:    test.AuthTypeIncorrect,
 					Terminal: &processing.Terminal{
 						Id:         "1",
@@ -49,7 +50,7 @@ var (
 					PaymentType: test.PaymentTypePayment,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MCK_SUB,
-					ExpectedSum: 4200,
+					ExpectedSum: rates.MmSubRate,
 					AuthType:    test.AuthTypeCorrect,
 					Terminal: &processing.Terminal{
 						Id:         "1",
@@ -62,7 +63,7 @@ var (
 					PaymentType: test.PaymentTypePayment,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MCK_SUB,
-					ExpectedSum: 4200,
+					ExpectedSum: rates.MmSubRate,
 					AuthType:    test.AuthTypeIncorrect,
 					Terminal: &processing.Terminal{
 						Id:         "1",
@@ -83,7 +84,7 @@ var (
 					PaymentType: test.PaymentTypePayment,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MMTS_SUB,
-					ExpectedSum: 4200,
+					ExpectedSum: rates.MmSubRate,
 					AuthType:    test.AuthTypeCorrect,
 					Terminal: &processing.Terminal{
 						Id:         "1",
@@ -96,7 +97,7 @@ var (
 					PaymentType: test.PaymentTypePayment,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MMTS_SUB,
-					ExpectedSum: 4200,
+					ExpectedSum: rates.MmSubRate,
 					AuthType:    test.AuthTypeIncorrect,
 					Terminal: &processing.Terminal{
 						Id:         "1",
@@ -178,7 +179,7 @@ var (
 					PaymentType: test.PaymentTypePayment,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MCK_SUB,
-					ExpectedSum: 4200,
+					ExpectedSum: rates.MmSubRate,
 					AuthType:    test.AuthTypeCorrect,
 					Terminal: &processing.Terminal{
 						Id:         "1",
@@ -320,7 +321,7 @@ var (
 					PaymentType: test.PaymentTypePayment,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MCK_SUB,
-					ExpectedSum: 4200,
+					ExpectedSum: rates.MmSubRate,
 				},
 				&test.Pass{
 					PaymentType: test.PaymentTypeFree,
@@ -346,7 +347,7 @@ var (
 					PaymentType: test.PaymentTypePayment,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MCK_SUB,
-					ExpectedSum: 4200,
+					ExpectedSum: rates.MmSubRate,
 				},
 				&test.WebAPIPasses{
 					Passes: []int{1, 2, 3, 4},
@@ -409,7 +410,7 @@ var (
 					PaymentType: test.PaymentTypePayment,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MMTS_SUB,
-					ExpectedSum: 4200,
+					ExpectedSum: rates.MmSubRate,
 				},
 				&test.Pass{
 					PaymentType: test.PaymentTypeFree,
@@ -421,7 +422,7 @@ var (
 					PaymentType: test.PaymentTypePayment,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MCK_SUB,
-					ExpectedSum: 4200,
+					ExpectedSum: rates.MmSubRate,
 				},
 				&test.WebAPIPasses{
 					Passes: []int{1, 2, 3},

@@ -1,6 +1,7 @@
 package test
 
 import (
+	"lab.siroccotechnology.ru/tp/calculator-service/calculator/rates"
 	"lab.siroccotechnology.ru/tp/common/messages/carriers"
 	"lab.siroccotechnology.ru/tp/common/messages/pass"
 	"lab.siroccotechnology.ru/tp/common/messages/processing"
@@ -39,7 +40,7 @@ type (
 		//данные об авторизации
 		Auth *processing.Auth
 		//сумма, на которую мы ожидаем авторизацию
-		ExpectedSum uint32
+		ExpectedSum rates.Price
 		//ссылка на проход в нашем кейсе, которую мы считаем стартовой
 		Parent int
 		//ссылка на вход, для валидации связи

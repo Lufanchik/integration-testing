@@ -1,6 +1,7 @@
 package mcd
 
 import (
+	"lab.siroccotechnology.ru/tp/calculator-service/calculator/rates"
 	"lab.siroccotechnology.ru/tp/common/messages/carriers"
 	"lab.siroccotechnology.ru/tp/common/messages/processing"
 	"lab.siroccotechnology.ru/tp/integration-testing/test"
@@ -111,21 +112,21 @@ var (
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MM_SUB,
 					Now:         test.NowFullDate(2019, 12, 2, 10, 00, 00),
-					ExpectedSum: 4200,
+					ExpectedSum: rates.MmSubRate,
 				},
 				&test.Pass{
 					PaymentType: test.PaymentTypePayment,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MCK_SUB,
 					Now:         test.NowFullDate(2019, 12, 2, 11, 31, 00),
-					ExpectedSum: 4200,
+					ExpectedSum: rates.MmSubRate,
 				},
 				&test.Pass{
 					PaymentType: test.PaymentTypePayment,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MMTS_SUB,
 					Now:         test.NowFullDate(2019, 12, 2, 13, 02, 00),
-					ExpectedSum: 4200,
+					ExpectedSum: rates.MmSubRate,
 				},
 				&test.Pass{
 					PaymentType: test.PaymentTypePayment,
@@ -286,21 +287,21 @@ var (
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MM_SUB,
 					Now:         test.NowFullDate(2019, 12, 01, 01, 01, 00),
-					ExpectedSum: 4200,
+					ExpectedSum: rates.MmSubRate,
 				},
 				&test.Pass{
 					PaymentType: test.PaymentTypePayment,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MCK_SUB,
 					Now:         test.NowFullDate(2019, 12, 01, 02, 32, 00),
-					ExpectedSum: 4200,
+					ExpectedSum: rates.MmSubRate,
 				},
 				&test.Pass{
 					PaymentType: test.PaymentTypePayment,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MMTS_SUB,
 					Now:         test.NowFullDate(2019, 12, 01, 04, 03, 00),
-					ExpectedSum: 4200,
+					ExpectedSum: rates.MmSubRate,
 				},
 				&test.Pass{
 					PaymentType: test.PaymentTypePayment,
@@ -377,7 +378,7 @@ var (
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MMTS_SUB,
 					Now:         test.NowFullDate(2019, 12, 01, 10, 11, 00),
-					ExpectedSum: 4200,
+					ExpectedSum: rates.MmSubRate,
 				},
 				&test.Pass{
 					PaymentType: test.PaymentTypeFree,

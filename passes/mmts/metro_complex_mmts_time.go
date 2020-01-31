@@ -17,7 +17,7 @@ var (
 					Carrier:          carriers.Carrier_MM,
 					SubCarrier:       carriers.SubCarrier_MMTS_SUB,
 					Now:              test.NowFullDate(2019, 12, 01, 10, 30, 00),
-					ExpectedSum:      4200,
+					ExpectedSum:      rates.MmSubRate,
 					IsComplexTimeout: true,
 				},
 				&test.Pass{
@@ -25,7 +25,7 @@ var (
 					Carrier:          carriers.Carrier_MM,
 					SubCarrier:       carriers.SubCarrier_MMTS_SUB,
 					Now:              test.NowFullDate(2019, 12, 01, 12, 00, 01),
-					ExpectedSum:      4200,
+					ExpectedSum:      rates.MmSubRate,
 					IsComplexTimeout: true,
 				},
 			},
@@ -39,7 +39,7 @@ var (
 					SubCarrier:       carriers.SubCarrier_MMTS_SUB,
 					Now:              test.NowFullDate(2019, 11, 01, 23, 50, 00),
 					IsComplexTimeout: true,
-					ExpectedSum:      4200,
+					ExpectedSum:      rates.MmSubRate,
 				},
 				&test.Pass{
 					PaymentType:      test.PaymentTypeFree,
@@ -59,7 +59,7 @@ var (
 					Carrier:          carriers.Carrier_MM,
 					SubCarrier:       carriers.SubCarrier_MMTS_SUB,
 					Now:              test.NowFullDate(2019, 12, 01, 8, 30, 00),
-					ExpectedSum:      4200,
+					ExpectedSum:      rates.MmSubRate,
 					IsComplexTimeout: true,
 				},
 				&test.Pass{
@@ -67,7 +67,7 @@ var (
 					Carrier:          carriers.Carrier_MM,
 					SubCarrier:       carriers.SubCarrier_MCK_SUB,
 					Now:              test.NowFullDate(2019, 12, 01, 10, 00, 01),
-					ExpectedSum:      4200,
+					ExpectedSum:      rates.MmSubRate,
 					IsComplexTimeout: true,
 				},
 			},
@@ -80,7 +80,7 @@ var (
 					Carrier:          carriers.Carrier_MM,
 					SubCarrier:       carriers.SubCarrier_MMTS_SUB,
 					Now:              test.NowFullDate(2019, 12, 01, 10, 30, 00),
-					ExpectedSum:      4200,
+					ExpectedSum:      rates.MmSubRate,
 					IsComplexTimeout: true,
 				},
 				&test.Pass{
@@ -101,7 +101,7 @@ var (
 					Carrier:          carriers.Carrier_MM,
 					SubCarrier:       carriers.SubCarrier_MMTS_SUB,
 					Now:              test.NowFullDate(2019, 12, 05, 17, 30, 00),
-					ExpectedSum:      4200,
+					ExpectedSum:      rates.MmSubRate,
 					IsComplexTimeout: true,
 				},
 				&test.Pass{
@@ -109,7 +109,7 @@ var (
 					Carrier:          carriers.Carrier_MM,
 					SubCarrier:       carriers.SubCarrier_MMTS_SUB,
 					Now:              test.NowFullDate(2019, 12, 05, 19, 00, 01),
-					ExpectedSum:      4200,
+					ExpectedSum:      rates.MmSubRate,
 					IsComplexTimeout: true,
 				},
 			},
@@ -122,7 +122,7 @@ var (
 					Carrier:          carriers.Carrier_MM,
 					SubCarrier:       carriers.SubCarrier_MMTS_SUB,
 					Now:              test.NowFullDate(2019, 12, 2, 8, 15, 04),
-					ExpectedSum:      4200,
+					ExpectedSum:      rates.MmSubRate,
 					IsComplexTimeout: true,
 				},
 				&test.Pass{
@@ -161,7 +161,7 @@ var (
 					Carrier:          carriers.Carrier_MM,
 					SubCarrier:       carriers.SubCarrier_MMTS_SUB,
 					Now:              test.NowFullDate(2019, 12, 2, 6, 15, 04),
-					ExpectedSum:      4200,
+					ExpectedSum:      rates.MmSubRate,
 					IsComplexTimeout: true,
 				},
 				&test.Pass{
@@ -200,7 +200,7 @@ var (
 					Carrier:          carriers.Carrier_MM,
 					SubCarrier:       carriers.SubCarrier_MMTS_SUB,
 					Now:              test.NowFullDate(2019, 12, 01, 10, 30, 00),
-					ExpectedSum:      4200,
+					ExpectedSum:      rates.MmSubRate,
 					IsComplexTimeout: true,
 				},
 				&test.Pass{
@@ -238,7 +238,7 @@ var (
 					Carrier:          carriers.Carrier_MM,
 					SubCarrier:       carriers.SubCarrier_MMTS_SUB,
 					Now:              test.NowFullDate(2019, 12, 01, 9, 00, 00),
-					ExpectedSum:      4200,
+					ExpectedSum:      rates.MmSubRate,
 					IsComplexTimeout: true,
 				},
 				&test.Pass{
@@ -276,7 +276,7 @@ var (
 					Carrier:          carriers.Carrier_MM,
 					SubCarrier:       carriers.SubCarrier_MMTS_SUB,
 					Now:              test.NowFullDate(2019, 12, 01, 05, 20, 00),
-					ExpectedSum:      4200,
+					ExpectedSum:      rates.MmSubRate,
 					IsComplexTimeout: true,
 				},
 				&test.Pass{
@@ -315,7 +315,7 @@ var (
 					Carrier:          carriers.Carrier_MM,
 					SubCarrier:       carriers.SubCarrier_MMTS_SUB,
 					Now:              test.NowFullDate(2019, 12, 01, 03, 30, 00),
-					ExpectedSum:      4200,
+					ExpectedSum:      rates.MmSubRate,
 					IsComplexTimeout: true,
 				},
 				&test.Pass{
@@ -354,7 +354,7 @@ var (
 					Carrier:          carriers.Carrier_MM,
 					SubCarrier:       carriers.SubCarrier_MMTS_SUB,
 					Now:              test.NowFullDate(2019, 12, 31, 00, 05, 00),
-					ExpectedSum:      4200,
+					ExpectedSum:      rates.MmSubRate,
 					IsComplexTimeout: true,
 				},
 				&test.Pass{
@@ -392,7 +392,7 @@ var (
 					Carrier:          carriers.Carrier_MM,
 					SubCarrier:       carriers.SubCarrier_MMTS_SUB,
 					Now:              test.NowFullDate(2019, 12, 31, 00, 00, 00),
-					ExpectedSum:      4200,
+					ExpectedSum:      rates.MmSubRate,
 					IsComplexTimeout: true,
 				},
 				&test.Pass{

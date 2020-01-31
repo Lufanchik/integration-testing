@@ -5,8 +5,8 @@ import (
 	"github.com/jinzhu/copier"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 	"github.com/stretchr/testify/require"
+	"lab.siroccotechnology.ru/tp/integration-testing/passes/mck"
 	"lab.siroccotechnology.ru/tp/integration-testing/test"
-	"lab.siroccotechnology.ru/tp/integration-testing/webapi"
 	"net/http"
 	"net/http/pprof"
 	"testing"
@@ -106,7 +106,7 @@ func TestFull(t *testing.T) {
 
 func TestSimple(t *testing.T) {
 	//test.Run(t, webapi.CasesWEBAPI, test.RequestTypeOnline)
-	//test.Run(t, mck.CasesMetroComplexMCK1, test.RequestTypeOffline)
+	test.Run(t, mck.CasesMetroComplexMCK1, test.RequestTypeOffline)
 	//test.Run(t, mck.CasesMetroComplexMCK2, test.RequestTypeOffline)
 	//test.Run(t, mck.CasesMetroComplexMCK3, test.RequestTypeOffline)
 	//test.Run(t, mck.CasesMetroComplexMCK4, test.RequestTypeOffline)
@@ -150,7 +150,7 @@ func TestSimple(t *testing.T) {
 	//test.Run(t, passes.CasesScopeCheckPass, test.RequestTypeOffline)
 	//test.Run(t, passes.CasesSimpleComplexPass, test.RequestTypeOffline)
 	//test.Run(t, mtppk.CasesMTPPKPasses, test.RequestTypeOffline)
-	test.Run(t, webapi.CasesWEBAPI, test.RequestTypeOffline)
+	//test.Run(t, webapi.CasesWEBAPI, test.RequestTypeOffline)
 	//test.Run(t, mm.CasesMetroComplexMM1, test.RequestTypeOffline)
 	//test.Run(t, face.CasesAuthWithFace, test.RequestTypeOffline)
 }

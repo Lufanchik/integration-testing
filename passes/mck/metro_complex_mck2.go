@@ -1,7 +1,6 @@
 package mck
 
 import (
-	"lab.siroccotechnology.ru/tp/calculator-service/calculator/rates"
 	"lab.siroccotechnology.ru/tp/common/messages/carriers"
 	"lab.siroccotechnology.ru/tp/common/messages/processing"
 	"lab.siroccotechnology.ru/tp/integration-testing/test"
@@ -15,7 +14,6 @@ var CasesMetroComplexMCK2 = test.Cases{ //gusmanov test case
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
-				ExpectedSum: rates.MmSubRate,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -68,7 +66,6 @@ var CasesMetroComplexMCK2 = test.Cases{ //gusmanov test case
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
-				ExpectedSum: rates.MmSubRate,
 			},
 		},
 	},
@@ -80,7 +77,6 @@ var CasesMetroComplexMCK2 = test.Cases{ //gusmanov test case
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
-				ExpectedSum: rates.MmSubRate,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -133,7 +129,6 @@ var CasesMetroComplexMCK2 = test.Cases{ //gusmanov test case
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
-				ExpectedSum: rates.MmSubRate,
 			},
 		},
 	},
@@ -145,7 +140,6 @@ var CasesMetroComplexMCK2 = test.Cases{ //gusmanov test case
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
-				ExpectedSum: rates.MmSubRate,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -198,7 +192,6 @@ var CasesMetroComplexMCK2 = test.Cases{ //gusmanov test case
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MMTS_SUB,
-				ExpectedSum: rates.MmSubRate,
 			},
 		},
 	},
@@ -210,7 +203,6 @@ var CasesMetroComplexMCK2 = test.Cases{ //gusmanov test case
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
-				ExpectedSum: rates.MmSubRate,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -289,7 +281,6 @@ var CasesMetroComplexMCK2 = test.Cases{ //gusmanov test case
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
-				ExpectedSum: rates.MmSubRate,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -369,7 +360,6 @@ var CasesMetroComplexMCK2 = test.Cases{ //gusmanov test case
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
-				ExpectedSum: rates.MmSubRate,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -402,7 +392,6 @@ var CasesMetroComplexMCK2 = test.Cases{ //gusmanov test case
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
-				ExpectedSum: rates.MmSubRate,
 			},
 		},
 	},
@@ -414,7 +403,6 @@ var CasesMetroComplexMCK2 = test.Cases{ //gusmanov test case
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
-				ExpectedSum: rates.MmSubRate,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -447,7 +435,6 @@ var CasesMetroComplexMCK2 = test.Cases{ //gusmanov test case
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
-				ExpectedSum: rates.MmSubRate,
 			},
 		},
 	},
@@ -459,7 +446,6 @@ var CasesMetroComplexMCK2 = test.Cases{ //gusmanov test case
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
-				ExpectedSum: rates.MmSubRate,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -492,7 +478,6 @@ var CasesMetroComplexMCK2 = test.Cases{ //gusmanov test case
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MMTS_SUB,
-				ExpectedSum: rates.MmSubRate,
 			},
 		},
 	},
@@ -504,7 +489,6 @@ var CasesMetroComplexMCK2 = test.Cases{ //gusmanov test case
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
-				ExpectedSum: rates.MmSubRate,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -563,7 +547,6 @@ var CasesMetroComplexMCK2 = test.Cases{ //gusmanov test case
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
-				ExpectedSum: rates.MmSubRate,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -623,13 +606,11 @@ var CasesMetroComplexMCK2 = test.Cases{ //gusmanov test case
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
-				ExpectedSum: rates.MmSubRate,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
-				ExpectedSum: rates.MmSubRate,
 			},
 		},
 	},
@@ -641,7 +622,6 @@ var CasesMetroComplexMCK2 = test.Cases{ //gusmanov test case
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
-				ExpectedSum: rates.MmSubRate,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -653,7 +633,6 @@ var CasesMetroComplexMCK2 = test.Cases{ //gusmanov test case
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
-				ExpectedSum: rates.MmSubRate,
 			},
 		},
 	},
@@ -665,7 +644,6 @@ var CasesMetroComplexMCK2 = test.Cases{ //gusmanov test case
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
-				ExpectedSum: rates.MmSubRate,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -677,7 +655,6 @@ var CasesMetroComplexMCK2 = test.Cases{ //gusmanov test case
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
-				ExpectedSum: rates.MmSubRate,
 			},
 		},
 	},
@@ -689,7 +666,6 @@ var CasesMetroComplexMCK2 = test.Cases{ //gusmanov test case
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
-				ExpectedSum: rates.MmSubRate,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -701,7 +677,6 @@ var CasesMetroComplexMCK2 = test.Cases{ //gusmanov test case
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MMTS_SUB,
-				ExpectedSum: rates.MmSubRate,
 			},
 		},
 	},
@@ -713,7 +688,6 @@ var CasesMetroComplexMCK2 = test.Cases{ //gusmanov test case
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
-				ExpectedSum: rates.MmSubRate,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -751,7 +725,6 @@ var CasesMetroComplexMCK2 = test.Cases{ //gusmanov test case
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
-				ExpectedSum: rates.MmSubRate,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -790,7 +763,6 @@ var CasesMetroComplexMCK2 = test.Cases{ //gusmanov test case
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
-				ExpectedSum: rates.MmSubRate,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -822,7 +794,6 @@ var CasesMetroComplexMCK2 = test.Cases{ //gusmanov test case
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
-				ExpectedSum: rates.MmSubRate,
 			},
 		},
 	},
@@ -834,7 +805,6 @@ var CasesMetroComplexMCK2 = test.Cases{ //gusmanov test case
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
-				ExpectedSum: rates.MmSubRate,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -866,7 +836,6 @@ var CasesMetroComplexMCK2 = test.Cases{ //gusmanov test case
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
-				ExpectedSum: rates.MmSubRate,
 			},
 		},
 	},
@@ -878,7 +847,6 @@ var CasesMetroComplexMCK2 = test.Cases{ //gusmanov test case
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
-				ExpectedSum: rates.MmSubRate,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -916,7 +884,6 @@ var CasesMetroComplexMCK2 = test.Cases{ //gusmanov test case
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
-				ExpectedSum: rates.MmSubRate,
 			},
 		},
 	},
@@ -928,7 +895,6 @@ var CasesMetroComplexMCK2 = test.Cases{ //gusmanov test case
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
-				ExpectedSum: rates.MmSubRate,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -966,7 +932,6 @@ var CasesMetroComplexMCK2 = test.Cases{ //gusmanov test case
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
-				ExpectedSum: rates.MmSubRate,
 			},
 		},
 	},
@@ -978,7 +943,6 @@ var CasesMetroComplexMCK2 = test.Cases{ //gusmanov test case
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
-				ExpectedSum: rates.MmSubRate,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -1016,7 +980,6 @@ var CasesMetroComplexMCK2 = test.Cases{ //gusmanov test case
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MMTS_SUB,
-				ExpectedSum: rates.MmSubRate,
 			},
 		},
 	},
@@ -1028,7 +991,6 @@ var CasesMetroComplexMCK2 = test.Cases{ //gusmanov test case
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
-				ExpectedSum: rates.MmSubRate,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -1092,7 +1054,6 @@ var CasesMetroComplexMCK2 = test.Cases{ //gusmanov test case
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
-				ExpectedSum: rates.MmSubRate,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -1157,7 +1118,6 @@ var CasesMetroComplexMCK2 = test.Cases{ //gusmanov test case
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
-				ExpectedSum: rates.MmSubRate,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -1209,7 +1169,6 @@ var CasesMetroComplexMCK2 = test.Cases{ //gusmanov test case
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
-				ExpectedSum: rates.MmSubRate,
 			},
 		},
 	},
@@ -1221,7 +1180,6 @@ var CasesMetroComplexMCK2 = test.Cases{ //gusmanov test case
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
-				ExpectedSum: rates.MmSubRate,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -1273,7 +1231,6 @@ var CasesMetroComplexMCK2 = test.Cases{ //gusmanov test case
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
-				ExpectedSum: rates.MmSubRate,
 			},
 		},
 	},
@@ -1285,7 +1242,6 @@ var CasesMetroComplexMCK2 = test.Cases{ //gusmanov test case
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
-				ExpectedSum: rates.MmSubRate,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -1337,7 +1293,6 @@ var CasesMetroComplexMCK2 = test.Cases{ //gusmanov test case
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MMTS_SUB,
-				ExpectedSum: rates.MmSubRate,
 			},
 		},
 	},

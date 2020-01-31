@@ -1,7 +1,6 @@
 package passes
 
 import (
-	"lab.siroccotechnology.ru/tp/calculator-service/calculator/rates"
 	"lab.siroccotechnology.ru/tp/common/messages/carriers"
 	"lab.siroccotechnology.ru/tp/integration-testing/test"
 	"time"
@@ -15,7 +14,7 @@ var CasesWrongTimeComplexPass = test.Cases{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
-				ExpectedSum: 4200,
+
 				Now: func() uint64 {
 					return uint64(time.Date(
 						2019, 11, 13, 21, 34, 58, 651387237, time.UTC).UnixNano())
@@ -35,7 +34,7 @@ var CasesWrongTimeComplexPass = test.Cases{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
-				ExpectedSum: rates.MmSubRate,
+
 				Now: func() uint64 {
 					return uint64(time.Date(
 						2019, 11, 13, 21, 36, 56, 651387237, time.UTC).UnixNano())
@@ -59,7 +58,7 @@ var CasesWrongTimeComplexPass = test.Cases{
 			//	RequestType: RequestTypeOnline,
 			//	Carrier:     carriers.Carrier_MM,
 			//	SubCarrier:  carriers.SubCarrier_MCK_SUB,
-			//	ExpectedSum: rates.MmSubRate,
+			//
 			//},
 		},
 	},

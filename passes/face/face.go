@@ -38,7 +38,6 @@ var CasesAuthWithFace = test.Cases{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
-				ExpectedSum: rates.MmSubRate,
 			},
 		},
 	},

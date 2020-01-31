@@ -1,7 +1,6 @@
 package mck
 
 import (
-	"lab.siroccotechnology.ru/tp/calculator-service/calculator/rates"
 	"lab.siroccotechnology.ru/tp/common/messages/carriers"
 	"lab.siroccotechnology.ru/tp/integration-testing/test"
 )
@@ -15,14 +14,12 @@ var CasesOfflineMetroComplexMCK = test.Cases{
 				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
-				ExpectedSum: rates.MmSubRate,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
-				ExpectedSum: rates.MmSubRate,
 			},
 		},
 	},
@@ -34,7 +31,6 @@ var CasesOfflineMetroComplexMCK = test.Cases{
 				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
-				ExpectedSum: rates.MmSubRate,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -48,7 +44,6 @@ var CasesOfflineMetroComplexMCK = test.Cases{
 				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
-				ExpectedSum: rates.MmSubRate,
 			},
 		},
 	},
@@ -60,7 +55,6 @@ var CasesOfflineMetroComplexMCK = test.Cases{
 				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
-				ExpectedSum: rates.MmSubRate,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -74,7 +68,6 @@ var CasesOfflineMetroComplexMCK = test.Cases{
 				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
-				ExpectedSum: rates.MmSubRate,
 			},
 		},
 	},
@@ -86,7 +79,6 @@ var CasesOfflineMetroComplexMCK = test.Cases{
 				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
-				ExpectedSum: rates.MmSubRate,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -100,7 +92,6 @@ var CasesOfflineMetroComplexMCK = test.Cases{
 				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
-				ExpectedSum: rates.MmSubRate,
 			},
 		},
 	},
@@ -112,7 +103,6 @@ var CasesOfflineMetroComplexMCK = test.Cases{
 				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
-				ExpectedSum: rates.MmSubRate,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -126,7 +116,6 @@ var CasesOfflineMetroComplexMCK = test.Cases{
 				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
-				ExpectedSum: rates.MmSubRate,
 			},
 		},
 	},
@@ -139,7 +128,6 @@ var CasesOfflineMetroComplexMCK = test.Cases{
 				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
-				ExpectedSum: rates.MmSubRate,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -153,7 +141,6 @@ var CasesOfflineMetroComplexMCK = test.Cases{
 				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MMTS_SUB,
-				ExpectedSum: rates.MmSubRate,
 			},
 		},
 	},
@@ -165,7 +152,6 @@ var CasesOfflineMetroComplexMCK = test.Cases{
 				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
-				ExpectedSum: rates.MmSubRate,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -186,7 +172,6 @@ var CasesOfflineMetroComplexMCK = test.Cases{
 				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
-				ExpectedSum: rates.MmSubRate,
 			},
 		},
 	},
@@ -199,7 +184,6 @@ var CasesOfflineMetroComplexMCK = test.Cases{
 				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
-				ExpectedSum: rates.MmSubRate,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -220,7 +204,6 @@ var CasesOfflineMetroComplexMCK = test.Cases{
 				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
-				ExpectedSum: rates.MmSubRate,
 			},
 		},
 	},
@@ -232,7 +215,6 @@ var CasesOfflineMetroComplexMCK = test.Cases{
 				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
-				ExpectedSum: rates.MmSubRate,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -253,7 +235,6 @@ var CasesOfflineMetroComplexMCK = test.Cases{
 				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MMTS_SUB,
-				ExpectedSum: rates.MmSubRate,
 			},
 		},
 	},
@@ -267,15 +248,14 @@ var CasesOfflineMetroComplexMCK = test.Cases{
 				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
-				ExpectedSum: rates.MmSubRate,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
-				ExpectedSum: rates.MmSubRate,
-				AuthType:    test.AuthTypeIncorrect,
+
+				AuthType: test.AuthTypeIncorrect,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -296,7 +276,6 @@ var CasesOfflineMetroComplexMCK = test.Cases{
 				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
-				ExpectedSum: rates.MmSubRate,
 			},
 		},
 	},
@@ -308,15 +287,14 @@ var CasesOfflineMetroComplexMCK = test.Cases{
 				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
-				ExpectedSum: rates.MmSubRate,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
-				ExpectedSum: rates.MmSubRate,
-				AuthType:    test.AuthTypeIncorrect,
+
+				AuthType: test.AuthTypeIncorrect,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -335,8 +313,8 @@ var CasesOfflineMetroComplexMCK = test.Cases{
 				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
-				ExpectedSum: rates.MmSubRate,
-				AuthType:    test.AuthTypeIncorrect,
+
+				AuthType: test.AuthTypeIncorrect,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,

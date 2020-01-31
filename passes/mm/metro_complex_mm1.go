@@ -1,7 +1,6 @@
 package mm
 
 import (
-	"lab.siroccotechnology.ru/tp/calculator-service/calculator/rates"
 	"lab.siroccotechnology.ru/tp/common/messages/carriers"
 	"lab.siroccotechnology.ru/tp/common/messages/processing"
 	"lab.siroccotechnology.ru/tp/integration-testing/test"
@@ -15,13 +14,11 @@ var CasesMetroComplexMM1 = test.Cases{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
-				ExpectedSum: rates.MmSubRate,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
-				ExpectedSum: rates.MmSubRate,
 			},
 		},
 	},
@@ -32,7 +29,6 @@ var CasesMetroComplexMM1 = test.Cases{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
-				ExpectedSum: rates.MmSubRate,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -55,7 +51,6 @@ var CasesMetroComplexMM1 = test.Cases{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
-				ExpectedSum: rates.MmSubRate,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -78,7 +73,6 @@ var CasesMetroComplexMM1 = test.Cases{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
-				ExpectedSum: rates.MmSubRate,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -96,7 +90,6 @@ var CasesMetroComplexMM1 = test.Cases{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
-				ExpectedSum: rates.MmSubRate,
 			},
 		},
 	},
@@ -107,7 +100,6 @@ var CasesMetroComplexMM1 = test.Cases{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
-				ExpectedSum: rates.MmSubRate,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -125,7 +117,6 @@ var CasesMetroComplexMM1 = test.Cases{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
-				ExpectedSum: rates.MmSubRate,
 			},
 		},
 	},
@@ -136,7 +127,6 @@ var CasesMetroComplexMM1 = test.Cases{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
-				ExpectedSum: rates.MmSubRate,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -154,7 +144,6 @@ var CasesMetroComplexMM1 = test.Cases{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MMTS_SUB,
-				ExpectedSum: rates.MmSubRate,
 			},
 		},
 	},
@@ -165,7 +154,6 @@ var CasesMetroComplexMM1 = test.Cases{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
-				ExpectedSum: rates.MmSubRate,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -187,7 +175,6 @@ var CasesMetroComplexMM1 = test.Cases{
 					Station:   "2000155", //ФИЛИ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: rates.MmSubRate,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -208,7 +195,6 @@ var CasesMetroComplexMM1 = test.Cases{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
-				ExpectedSum: rates.MmSubRate,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -230,7 +216,6 @@ var CasesMetroComplexMM1 = test.Cases{
 					Station:   "2000155", //ФИЛИ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: rates.MmSubRate,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -252,7 +237,6 @@ var CasesMetroComplexMM1 = test.Cases{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
-				ExpectedSum: rates.MmSubRate,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -290,7 +274,6 @@ var CasesMetroComplexMM1 = test.Cases{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MMTS_SUB,
-				ExpectedSum: rates.MmSubRate,
 			},
 		},
 	},
@@ -301,7 +284,6 @@ var CasesMetroComplexMM1 = test.Cases{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
-				ExpectedSum: rates.MmSubRate,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -339,7 +321,6 @@ var CasesMetroComplexMM1 = test.Cases{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
-				ExpectedSum: rates.MmSubRate,
 			},
 		},
 	},
@@ -350,7 +331,6 @@ var CasesMetroComplexMM1 = test.Cases{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
-				ExpectedSum: rates.MmSubRate,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -388,7 +368,6 @@ var CasesMetroComplexMM1 = test.Cases{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MMTS_SUB,
-				ExpectedSum: rates.MmSubRate,
 			},
 		},
 	},
@@ -399,7 +378,6 @@ var CasesMetroComplexMM1 = test.Cases{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
-				ExpectedSum: rates.MmSubRate,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -441,7 +419,6 @@ var CasesMetroComplexMM1 = test.Cases{
 					Station:   "2000006", //БЕЛОРУССКАЯ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: rates.MmSubRate,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -462,7 +439,6 @@ var CasesMetroComplexMM1 = test.Cases{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
-				ExpectedSum: rates.MmSubRate,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -504,7 +480,6 @@ var CasesMetroComplexMM1 = test.Cases{
 					Station:   "2000006", //БЕЛОРУССКАЯ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: rates.MmSubRate,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -526,7 +501,6 @@ var CasesMetroComplexMM1 = test.Cases{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
-				ExpectedSum: rates.MmSubRate,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -564,7 +538,6 @@ var CasesMetroComplexMM1 = test.Cases{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
-				ExpectedSum: rates.MmSubRate,
 			},
 		},
 	},
@@ -575,7 +548,6 @@ var CasesMetroComplexMM1 = test.Cases{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
-				ExpectedSum: rates.MmSubRate,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -613,7 +585,6 @@ var CasesMetroComplexMM1 = test.Cases{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
-				ExpectedSum: rates.MmSubRate,
 			},
 		},
 	},
@@ -624,7 +595,6 @@ var CasesMetroComplexMM1 = test.Cases{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
-				ExpectedSum: rates.MmSubRate,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -662,7 +632,6 @@ var CasesMetroComplexMM1 = test.Cases{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
-				ExpectedSum: rates.MmSubRate,
 			},
 		},
 	},
@@ -673,7 +642,6 @@ var CasesMetroComplexMM1 = test.Cases{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
-				ExpectedSum: rates.MmSubRate,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -711,7 +679,6 @@ var CasesMetroComplexMM1 = test.Cases{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MMTS_SUB,
-				ExpectedSum: rates.MmSubRate,
 			},
 		},
 	},
@@ -722,7 +689,6 @@ var CasesMetroComplexMM1 = test.Cases{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
-				ExpectedSum: rates.MmSubRate,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -764,7 +730,6 @@ var CasesMetroComplexMM1 = test.Cases{
 					Station:   "2000155", //ФИЛИ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: rates.MmSubRate,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -785,7 +750,6 @@ var CasesMetroComplexMM1 = test.Cases{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
-				ExpectedSum: rates.MmSubRate,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -827,7 +791,6 @@ var CasesMetroComplexMM1 = test.Cases{
 					Station:   "2000155", //ФИЛИ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: rates.MmSubRate,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -849,7 +812,6 @@ var CasesMetroComplexMM1 = test.Cases{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
-				ExpectedSum: rates.MmSubRate,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -901,7 +863,6 @@ var CasesMetroComplexMM1 = test.Cases{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
-				ExpectedSum: rates.MmSubRate,
 			},
 		},
 	},
@@ -912,7 +873,6 @@ var CasesMetroComplexMM1 = test.Cases{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
-				ExpectedSum: rates.MmSubRate,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -964,7 +924,6 @@ var CasesMetroComplexMM1 = test.Cases{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
-				ExpectedSum: rates.MmSubRate,
 			},
 		},
 	},
@@ -975,7 +934,6 @@ var CasesMetroComplexMM1 = test.Cases{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
-				ExpectedSum: rates.MmSubRate,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -1027,7 +985,6 @@ var CasesMetroComplexMM1 = test.Cases{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MMTS_SUB,
-				ExpectedSum: rates.MmSubRate,
 			},
 		},
 	},
@@ -1038,7 +995,6 @@ var CasesMetroComplexMM1 = test.Cases{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
-				ExpectedSum: rates.MmSubRate,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -1094,7 +1050,6 @@ var CasesMetroComplexMM1 = test.Cases{
 					Station:   "2000245", //РАБОЧИЙ ПОСЕЛОК
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: rates.MmSubRate,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -1115,7 +1070,6 @@ var CasesMetroComplexMM1 = test.Cases{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
-				ExpectedSum: rates.MmSubRate,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -1171,7 +1125,6 @@ var CasesMetroComplexMM1 = test.Cases{
 					Station:   "2001240", //БЕСКУДНИКОВО
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: rates.MmSubRate,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -1193,7 +1146,6 @@ var CasesMetroComplexMM1 = test.Cases{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
-				ExpectedSum: rates.MmSubRate,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -1229,7 +1181,6 @@ var CasesMetroComplexMM1 = test.Cases{
 					Station:   "2000155", //ФИЛИ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: rates.MmSubRate,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,

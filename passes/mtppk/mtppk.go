@@ -1,7 +1,6 @@
 package mtppk
 
 import (
-	"lab.siroccotechnology.ru/tp/calculator-service/calculator/rates"
 	"lab.siroccotechnology.ru/tp/common/messages/carriers"
 	"lab.siroccotechnology.ru/tp/common/messages/processing"
 	"lab.siroccotechnology.ru/tp/integration-testing/test"
@@ -151,7 +150,6 @@ var CasesMTPPKPasses = test.Cases{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
-				ExpectedSum: rates.MmSubRate,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeStartAggregate,
@@ -185,7 +183,6 @@ var CasesMTPPKPasses = test.Cases{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
-				ExpectedSum: rates.MmSubRate,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeAggregate,
@@ -209,7 +206,6 @@ var CasesMTPPKPasses = test.Cases{
 				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
-				ExpectedSum: rates.MmSubRate,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeStartAggregate,
@@ -249,7 +245,6 @@ var CasesMTPPKPasses = test.Cases{
 				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
-				ExpectedSum: rates.MmSubRate,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeAggregate,
@@ -273,7 +268,6 @@ var CasesMTPPKPasses = test.Cases{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
-				ExpectedSum: rates.MmSubRate,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeStartAggregate, //  2

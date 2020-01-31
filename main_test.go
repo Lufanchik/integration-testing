@@ -105,6 +105,12 @@ func TestFull(t *testing.T) {
 }
 
 func TestSimple(t *testing.T) {
+	//test.Run(t, mtppk.CasesMTPPKPasses, test.RequestTypeOffline)
+	//test.Run(t, mtppk.CasesMTPPKMGT, test.RequestTypeOffline)
+	//test.Run(t, mtppk.CasesMTPPKMCDMO, test.RequestTypeOffline)
+	//test.Run(t, mtppk.CasesMTPPKMCK, test.RequestTypeOffline)
+	//test.Run(t, mtppk.CasesMTPPK1, test.RequestTypeOffline)
+
 	//test.Run(t, webapi.CasesWEBAPI, test.RequestTypeOnline)
 	test.Run(t, mck.CasesMetroComplexMCK1, test.RequestTypeOffline)
 	//test.Run(t, mck.CasesMetroComplexMCK2, test.RequestTypeOffline)

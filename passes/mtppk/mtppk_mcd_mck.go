@@ -58,7 +58,7 @@ var CasesMTPPK_MCD_MSK = test.Cases{
 	},
 	{
 		N:          "2. МТППК - МЦД-МСК2 VISA",
-		CardSystem: processing.CardSystem_VISA,
+		CardSystem: processing.CardSystem_MASTERCARD,
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,

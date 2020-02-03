@@ -1,5 +1,6 @@
 include:
   - project: 'infra/pipeline'
     file: '/tests-ci.yml'
+    ref: flant_add_tests
   # - project: 'infra/pipeline'
   #   file: '/tests.yml'

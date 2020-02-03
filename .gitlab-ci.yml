@@ -1,5 +1,5 @@
 include:
   - project: 'infra/pipeline'
-    file: '/base-tests.yml'
+    file: '/tests-ci.yml'
   # - project: 'infra/pipeline'
   #   file: '/tests.yml'

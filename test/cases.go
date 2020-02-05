@@ -22,6 +22,7 @@ type (
 		T T
 		//платежная система
 		CardSystem processing.CardSystem
+		FaceId     string
 	}
 	//генерация прохода
 	Pass struct {
@@ -57,6 +58,7 @@ type (
 		IsComplex bool
 		//вышли ли мы за пределы таймаута комплексной поездки
 		IsComplexTimeout bool
+		faceId           string
 
 		id          string
 		carrierID   string
@@ -69,6 +71,8 @@ type (
 		isParent    bool
 		timeToWait  time.Duration
 		isCancel    bool
+		isComplete  bool
+		completeSum uint32
 	}
 
 	//генерация прохода
@@ -120,6 +124,11 @@ type (
 
 	WebAPIPasses struct {
 		Passes []int
+	}
+
+	RegisterFaceId struct {
+		FaceId      string
+		RedirectURL string
 	}
 )
 

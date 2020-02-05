@@ -3,9 +3,11 @@ package test
 import (
 	"context"
 	"github.com/golang/protobuf/jsonpb"
+	"github.com/prometheus/common/log"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"lab.siroccotechnology.ru/tp/common/global"
+	authService "lab.siroccotechnology.ru/tp/common/messages/auth"
 	"lab.siroccotechnology.ru/tp/common/messages/pass"
 	"lab.siroccotechnology.ru/tp/common/messages/processing"
 	"lab.siroccotechnology.ru/tp/common/messages/registries"
@@ -175,8 +177,29 @@ func ValidatePass(t *testing.T, p *Pass, parent *Pass, ingress *Pass, isFirst bo
 		expectPass.IsAuth = true
 	}
 
-	if p.PaymentType == PaymentTypeAggregate && p.AuthType == AuthTypeCorrect && !isFirst {
+	if p.aggregate != nil && p.PaymentType == PaymentTypeAggregate && p.aggregate.AuthType == AuthTypeCorrect && !isFirst {
+		expectPass.IsAuth = true
+	}
+
+	if p.aggregate != nil && p.PaymentType == PaymentTypeAggregate && p.aggregate.AuthType == AuthTypeCorrect && !isFirst {
 		expectPass.AggregateId = p.aggregate.id
+	}
+
+	if p.PaymentType == PaymentTypeStartAggregate && p.AuthType == AuthTypeCorrect && !isFirst {
+		expectPass.AggregateId = expectPass.Id
+	}
+
+	if p.PaymentType == PaymentTypeStartAggregate && isFirst {
+		expectPass.Sum = 0
+	}
+
+	if p.PaymentType == PaymentTypeStartAggregate && !isFirst {
+		expectPass.Sum = 0
+		expectPass.SumAggregate = p.ExpectedSum
+	}
+
+	if p.PaymentType == PaymentTypeStartAggregate {
+		expectPass.IsInitAggregate = true
 	}
 
 	expectPass.IsComplexTimeout = global.IsComplexTimeout(global.UnixNanoToLocalizedTime(expectPass.CreatedAtCarrier))
@@ -223,6 +246,10 @@ func GetAuthStatus(p *Pass) (*processing.AuthResponse, *processing.AuthResponse,
 }
 
 func AuthStatus(t *testing.T, p *Pass) {
+	if p.faceId != "" {
+		return
+	}
+
 	resp, response, err := GetAuthStatus(p)
 
 	isEqual := assert.ObjectsAreEqual(resp, response)
@@ -303,7 +330,7 @@ func ParkingApi(t *testing.T, card *processing.Card, pr *Parking) {
 
 func CompleteApi(t *testing.T, pass *Pass, passes []*Pass, sum int) {
 	req, resp := CompleteRequest(pass, passes, sum)
-	u := "/twirp/sirocco.ProcessingAPI/ProcessComplete"
+	u := "/" + pass.Carrier.String() + "/twirp/sirocco.ProcessingAPI/ProcessComplete"
 	r := httpProcessingApi.POST(u).WithJSON(req).
 		Expect().
 		Status(http.StatusOK)
@@ -319,18 +346,36 @@ func CompleteApi(t *testing.T, pass *Pass, passes []*Pass, sum int) {
 }
 
 func WebAPI(t *testing.T, card *processing.Card, passes []*Pass) {
-	req := WebAPIRequest(card)
-	u := "/twirp/proto.WebAPIGateway/GetPasses"
-	r := httpWebApi.POST(u).WithJSON(req).
-		Expect().
-		Status(http.StatusOK)
+	log.Infof(card.Pan)
 
-	object := r.Body().Raw()
-	logRequest(u, r)
+	counter := 0
+	var response *webApi.PassesResponse
+	for {
+		req := WebAPIPassesRequest(card)
+		u := "/twirp/proto.WebAPIGateway/GetPasses"
+		r := httpWebApi.POST(u).WithJSON(req).
+			Expect().
+			Status(http.StatusOK)
 
-	response := &webApi.PassesResponse{}
-	err := jsonpb.Unmarshal(strings.NewReader(object), response)
-	require.NoError(t, err)
+		object := r.Body().Raw()
+		logRequest(u, r)
+
+		response = &webApi.PassesResponse{}
+		err := jsonpb.Unmarshal(strings.NewReader(object), response)
+		require.NoError(t, err)
+
+		if len(response.Passes) == 0 {
+			time.Sleep(TimeAfterRequest)
+			counter++
+			if counter > 200 {
+				break
+			} else {
+				continue
+			}
+		}
+
+		break
+	}
 
 	require.Equal(t, len(passes), len(response.Passes), "passes count doesn't match")
 
@@ -349,4 +394,42 @@ func WebAPI(t *testing.T, card *processing.Card, passes []*Pass) {
 		_, ok := responsePassesMap[p.id]
 		require.True(t, ok, "pass not found: %s", p.id)
 	}
+}
+
+func FaceApiGetRegisterLink(t *testing.T, card *processing.Card, fcl *RegisterFaceId) {
+	req := WebAPIRegisterRequest(fcl, card)
+	u := "/twirp/proto.WebAPIGateway/RegisterFaceId"
+	r := httpWebApi.POST(u).WithJSON(req).
+		Expect().
+		Status(http.StatusOK)
+
+	object := r.Body().Raw()
+	logRequest(u, r)
+
+	response := &authService.CreateTWPGOrderResponse{}
+	err := jsonpb.Unmarshal(strings.NewReader(object), response)
+	require.NoError(t, err)
+
+	require.NotEmpty(t, response.Redirect)
+	log.Infof("Redirect URL: %s", response.Redirect)
+
+	fcl.RedirectURL = response.Redirect
+
+	err = faceForceCheck()
+	require.NoError(t, err)
+	time.Sleep(time.Second)
+}
+
+func faceForceCheck() error {
+	req, _ := FaceForceCheckRequest()
+	u := "/twirp/sirocco.AuthAPI/FaceForceCheck"
+	r := httpAuthService.POST(u).WithJSON(req).
+		Expect().
+		Status(http.StatusOK)
+
+	object := r.Body().Raw()
+	logRequest(u, r)
+
+	response := &processing.AuthResponse{}
+	return jsonpb.Unmarshal(strings.NewReader(object), response)
 }

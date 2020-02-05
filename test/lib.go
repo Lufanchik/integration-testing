@@ -254,15 +254,15 @@ func Run(t *testing.T, cases Cases, rt RequestType) {
 						fmt.Println(fmt.Sprintf("check 1 = %d", N+1))
 						ConfigurePass(t, p, ncc.carrierId, ncc.card)
 						ValidatePass(t, p, p.parent, p.ingress, false)
-						//if !isAggregate(p) {
-						AuthStatus(t, p)
-						//}
+						if !isAggregate(p) {
+							AuthStatus(t, p)
+						}
 						TapBySubCarrier(t, p, ncc.card)
 						PassBySubCarrier(t, p.tapRequest, p)
 						ValidatePass(t, p, p.parent, p.ingress, false)
-						//if !isAggregate(p) {
-						AuthStatus(t, p)
-						//}
+						if !isAggregate(p) {
+							AuthStatus(t, p)
+						}
 					}
 				})
 				if t.Failed() {
@@ -288,15 +288,15 @@ func Run(t *testing.T, cases Cases, rt RequestType) {
 						fmt.Println(fmt.Sprintf("check 2 = %d", N+1))
 						ConfigurePass(t, p, ncc.carrierId, ncc.card)
 						ValidatePass(t, p, p.parent, p.ingress, false)
-						//if !isAggregate(p) {
-						AuthStatus(t, p)
-						//}
+						if !isAggregate(p) {
+							AuthStatus(t, p)
+						}
 						TapBySubCarrier(t, p, ncc.card)
 						PassBySubCarrier(t, p.tapRequest, p)
 						ValidatePass(t, p, p.parent, p.ingress, false)
-						//if !isAggregate(p) {
-						AuthStatus(t, p)
-						//}
+						if !isAggregate(p) {
+							AuthStatus(t, p)
+						}
 					}
 				})
 				if t.Failed() {

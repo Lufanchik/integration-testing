@@ -15,8 +15,8 @@ var CasesComplexTimeMCK = test.Cases{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
-				ExpectedSum: 4200,
-				Now:         test.NowCustom(10, 00),
+
+				Now: test.NowCustom(10, 00),
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -229,8 +229,8 @@ var CasesComplexTimeMCK = test.Cases{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
-				ExpectedSum: 4200,
-				Now:         test.NowCustom(10, 00),
+
+				Now: test.NowCustom(10, 00),
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -256,8 +256,8 @@ var CasesComplexTimeMCK = test.Cases{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
-				ExpectedSum: 4200,
-				Now:         test.NowCustom(10, 00),
+
+				Now: test.NowCustom(10, 00),
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -270,8 +270,8 @@ var CasesComplexTimeMCK = test.Cases{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
-				ExpectedSum: 4200,
-				Now:         test.NowCustom(22, 30),
+
+				Now: test.NowCustom(22, 30),
 			},
 		},
 	},
@@ -283,8 +283,8 @@ var CasesComplexTimeMCK = test.Cases{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
-				ExpectedSum: 4200,
-				Now:         test.NowCustom(10, 00),
+
+				Now: test.NowCustom(10, 00),
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -297,15 +297,15 @@ var CasesComplexTimeMCK = test.Cases{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MMTS_SUB,
-				ExpectedSum: 4200,
-				Now:         test.NowCustom(11, 40),
+
+				Now: test.NowCustom(11, 40),
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MMTS_SUB,
-				ExpectedSum: 4200,
-				Now:         test.NowCustom(13, 00),
+
+				Now: test.NowCustom(13, 00),
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -348,8 +348,8 @@ var CasesComplexTimeMCK = test.Cases{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
-				ExpectedSum: 4200,
-				Now:         test.NowCustom(14, 06),
+
+				Now: test.NowCustom(14, 06),
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,

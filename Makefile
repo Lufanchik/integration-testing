@@ -19,8 +19,4 @@ simple:
 	./bin/test -test.run ^TestSimple$
 
 local: full
-test: full
-<<<<<<< HEAD
-stage: full
-=======
->>>>>>> ad44b720ad61f1d8a25ac96741a215a3696dba39
+test: simple

@@ -1,0 +1,41 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: {{ .Chart.Name }}-{{ date "20060102150405" now }}
+  labels:
+    app: {{ .Chart.Name }}
+spec:
+  activeDeadlineSeconds: 600
+  backoffLimit: 1
+  template:
+    metadata:
+      labels:
+        app: {{ .Chart.Name }}
+    spec:
+      imagePullSecrets:
+      - name: "registrysecret"
+      containers:
+      - name: test
+{{ tuple "test" . | include "werf_container_image" | indent 8 }}
+        workingDir: /app
+        command: ["/bin/bash"]
+{{- if (eq .Values.global.tests_mode "full")}}
+        args: ["-c", "/start_full.sh"]
+{{- else }}
+        args: ["-c", "/start_simple.sh"]
+{{- end }}
+        lifecycle:
+          preStop:
+            exec:
+              command: [ "/bin/bash", "-c", "sleep 5" ]
+        env:
+{{ tuple "test" . | include "werf_container_env" | indent 8 }}
+        - name: PROCESSING_API_URL
+          value: {{ pluck .Values.global.env .Values.processing_api | first }}
+        - name: PASS_URL
+          value: {{ pluck .Values.global.env .Values.pass | first }}
+        - name: APM_API_URL
+          value: {{ pluck .Values.global.env .Values.apm_api | first }}
+        - name: WEB_API_URL
+          value: {{ pluck .Values.global.env .Values.web_api | first }}
+      restartPolicy: Never

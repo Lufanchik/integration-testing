@@ -15,8 +15,8 @@ var (
 					PaymentType: test.PaymentTypePayment,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MM_SUB,
-					ExpectedSum: 4200,
-					AuthType:    test.AuthTypeIncorrect,
+
+					AuthType: test.AuthTypeIncorrect,
 					Terminal: &processing.Terminal{
 						Id:         "1",
 						Station:    "1234",

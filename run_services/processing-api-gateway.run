@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+cd ../../processing-api-gateway && make run | tee ../logs/processing-api-gateway.logs | tee -a ../logs/all.logs

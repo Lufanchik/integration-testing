@@ -10,6 +10,7 @@ import (
 	"lab.siroccotechnology.ru/tp/integration-testing/passes/mm"
 	"lab.siroccotechnology.ru/tp/integration-testing/passes/mmts"
 	"lab.siroccotechnology.ru/tp/integration-testing/passes/mtppk"
+	"lab.siroccotechnology.ru/tp/integration-testing/registry"
 	"lab.siroccotechnology.ru/tp/integration-testing/webapi"
 )
 
@@ -77,6 +78,8 @@ func init() {
 	//WebAPI
 	AddP(webapi.CasesWEBAPI)
 
+	//Revise
+	AddP(registry.CasesReviseGetTaskList)
 	//Face
 	//AddP(face.CasesAuthWithFace)
 

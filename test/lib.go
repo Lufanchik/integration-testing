@@ -154,13 +154,13 @@ func Run(t *testing.T, cases Cases, rt RequestType) {
 					Update(t, pu, u)
 				}
 
-				//AbsGetRegistry
-				agr, ok := step.(*AbsGetRegistry)
+				//ReviseRegistry
+				rev, ok := step.(*Revise)
 				if ok {
-					AbsGetRegistryApi(t, agr)
+					ReviseTestApi(t, rev)
 				}
 
-				//AbsGetRegistry
+				//Login
 				lg, ok := step.(*Login)
 				if ok {
 					LoginApi(t, lg)

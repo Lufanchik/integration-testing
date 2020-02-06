@@ -1,4 +1,4 @@
-package resolve_test
+package registry
 
 import (
 	"github.com/gavv/httpexpect"

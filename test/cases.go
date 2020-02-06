@@ -99,6 +99,14 @@ type (
 	AbsGetRegistry struct {
 	}
 
+	//Сверки по проходам
+	Revise struct {
+		Url      string
+		Status   int
+		Request  interface{}
+		Response interface{}
+	}
+
 	//логин
 	Login struct {
 	}

@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+cd ../../revise-service && make task_watcher | tee  ../logs/revise-task-watcher.logs | tee -a ../logs/all.logs

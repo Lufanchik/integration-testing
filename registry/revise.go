@@ -1,4 +1,4 @@
-package resolve_test
+package registry
 
 import (
 	"github.com/gavv/httpexpect"
@@ -8,6 +8,7 @@ import (
 	"lab.siroccotechnology.ru/tp/common/messages/carriers"
 	"lab.siroccotechnology.ru/tp/common/messages/crud"
 	"lab.siroccotechnology.ru/tp/common/messages/registries"
+	"lab.siroccotechnology.ru/tp/common/messages/response"
 	"lab.siroccotechnology.ru/tp/integration-testing/test"
 	"lab.siroccotechnology.ru/tp/integration-testing/user"
 	"net/http"
@@ -16,6 +17,20 @@ import (
 	"testing"
 	"time"
 )
+
+var CasesReviseGetTaskList = test.Cases{
+	{
+		N: "200 get service schema",
+		T: test.T{
+			&test.Revise{
+				Url:      "/twirp/proto.ApmAPIGateway/ReviseGetSchema",
+				Status:   http.StatusOK,
+				Request:  &response.EmptyMessage{},
+				Response: &crud.ServiceSchema{},
+			},
+		},
+	},
+}
 
 func TestReviseGetTaskList(t *testing.T) {
 	var (

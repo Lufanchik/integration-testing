@@ -268,6 +268,13 @@ func AuthStatus(t *testing.T, p *Pass) {
 	require.NoError(t, err)
 }
 
+func ReviseTestApi(t *testing.T, _case *Revise) {
+	r := httpApmApi.POST(_case.Url).WithJSON(_case.Request).
+		Expect().
+		Status(_case.Status)
+	logRequest(_case.Url, r)
+}
+
 func AbsGetRegistryApi(t *testing.T, registry *AbsGetRegistry) {
 	req := registries.AbsRegistryRequest{}
 	u := "/twirp/proto.ApmAPIGateway/AbsGetRegistry"

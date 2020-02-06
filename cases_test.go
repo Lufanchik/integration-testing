@@ -21,9 +21,9 @@ func init() {
 
 	//МТППК
 	AddP(mtppk.CasesMTPPKPasses)
-	AddP(mtppk.CasesMTPPKMGT)
-	AddP(mtppk.CasesMTPPKMCDMO)
-	AddP(mtppk.CasesMTPPKMCK)
+	AddP(mtppk.CasesMTPPK_MGT)
+	AddP(mtppk.CasesMTPPK_MCD_MO)
+	AddP(mtppk.CasesMTPPK_MCK)
 	AddP(mtppk.CasesMTPPK1)
 
 	//ММТС

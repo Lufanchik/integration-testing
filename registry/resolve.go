@@ -7,7 +7,6 @@ import (
 	"lab.siroccotechnology.ru/tp/common/messages/crud"
 	"lab.siroccotechnology.ru/tp/common/messages/registries"
 	"lab.siroccotechnology.ru/tp/integration-testing/test"
-	"lab.siroccotechnology.ru/tp/integration-testing/user"
 	"net/http"
 	"testing"
 )
@@ -17,7 +16,7 @@ func TestResolveGetTaskList(t *testing.T) {
 		AT  string
 		err error
 	)
-	if AT, err = user.GetAccessToken(t); err != nil {
+	if AT, err = test.GetAccessToken(t); err != nil {
 		log.Error("Error to get Access Token")
 		t.Error(err)
 		return
@@ -53,7 +52,7 @@ func TestResolveCreateTask(t *testing.T) {
 		AT  string
 		err error
 	)
-	if AT, err = user.GetAccessToken(t); err != nil {
+	if AT, err = test.GetAccessToken(t); err != nil {
 		log.Error("Error to get Access Token")
 		t.Error(err)
 		return

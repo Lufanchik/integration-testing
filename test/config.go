@@ -11,6 +11,8 @@ var (
 	PassUrl           = os.Getenv("PASS_URL")
 	ApmApiUrl         = os.Getenv("APM_API_URL")
 	WebApiUrl         = os.Getenv("WEB_API_URL")
+	ReviseApiUrl      = os.Getenv("REVISE_SERVICE_URL")
+	ResolveApiUrl     = os.Getenv("RESOLVE_SERVICE_URL")
 	GlobalRequestType = RequestTypeOnline
 	TimeAfterRequest  = time.Millisecond * 50
 )

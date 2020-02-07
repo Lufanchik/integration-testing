@@ -2,6 +2,7 @@ package test
 
 import (
 	"context"
+	"github.com/gavv/httpexpect"
 	"github.com/golang/protobuf/jsonpb"
 	"github.com/prometheus/common/log"
 	"github.com/stretchr/testify/assert"
@@ -269,9 +270,68 @@ func AuthStatus(t *testing.T, p *Pass) {
 }
 
 func ReviseTestApi(t *testing.T, _case *Revise) {
-	r := httpApmApi.POST(_case.Url).WithJSON(_case.Request).
-		Expect().
-		Status(_case.Status)
+	var r *httpexpect.Response
+
+	switch _case.Url {
+	//GetSchema
+	case "/twirp/proto.ReviseHttp/GetServiceSchema":
+		r = httpReviseService.POST(_case.Url).
+			WithJSON(_case.Request).
+			Expect().
+			Status(_case.Status)
+		r.JSON().Object().
+			ContainsKey("tables").
+			ContainsKey("relations")
+	case "/twirp/proto.ReviseHttp/GetTasks":
+		r = httpReviseService.POST(_case.Url).
+			WithJSON(_case.Request).
+			Expect().
+			Status(_case.Status)
+		r.JSON().Object().
+			ContainsKey("rows")
+	case "/twirp/proto.ReviseHttp/GetExpiresLink":
+		r = httpReviseService.POST(_case.Url).
+			WithJSON(_case.Request).
+			Expect().
+			Status(_case.Status)
+		r.JSON().Object().
+			ContainsKey("link_expires")
+	case "/twirp/proto.ReviseHttp/ResetTask":
+		r = httpReviseService.POST(_case.Url).
+			WithJSON(_case.Request).
+			Expect().
+			Status(_case.Status)
+		r.JSON().Object().NotContainsKey("meta")
+	case "/twirp/proto.ReviseHttp/GetStages":
+		r = httpReviseService.POST(_case.Url).
+			WithJSON(_case.Request).
+			Expect().
+			Status(_case.Status)
+
+		r.JSON().Object().ContainsKey("stages")
+	case "/twirp/proto.ReviseHttp/GetTaskStatus":
+		r = httpReviseService.POST(_case.Url).
+			WithJSON(_case.Request).
+			Expect().
+			Status(_case.Status)
+		r.JSON().Object().NotContainsKey("meta")
+	case "/twirp/proto.ReviseHttp/GetLastByOrderFileInfo":
+		r = httpReviseService.POST(_case.Url).
+			WithJSON(_case.Request).
+			Expect().
+			Status(_case.Status)
+		r.JSON().Object().ContainsKey("file")
+	case "/twirp/proto.ReviseHttp/Playground":
+		r = httpReviseService.POST(_case.Url).
+			WithJSON(_case.Request).
+			Expect().
+			Status(_case.Status)
+		r.JSON().Object().ContainsKey("query").ContainsKey("values")
+	default:
+		t.Error("Error to find test handler for url:", _case.Url)
+		return
+	}
+
 	logRequest(_case.Url, r)
 }
 

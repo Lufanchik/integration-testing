@@ -79,7 +79,7 @@ func init() {
 	AddP(webapi.CasesWEBAPI)
 
 	//Revise
-	AddP(registry.CasesReviseGetTaskList)
+	AddAR(registry.CasesReviseGetTaskList)
 	//Face
 	//AddP(face.CasesAuthWithFace)
 

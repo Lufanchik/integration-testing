@@ -21,3 +21,15 @@ web_api:
   test: http://web-api-gateway.test.svc.cluster.local:1344
   stage: http://web-api-gateway.test.svc.cluster.local:1344
   prod: ttp://web-api-gateway.test.svc.cluster.local:1344
+
+revise_api:
+  local: http://localhost:1338
+  test: http://revise-service.test.svc.cluster.local:1338
+  stage: http://revise-service.test.svc.cluster.local:1338
+  prod: ttp://revise-service.test.svc.cluster.local:1338
+
+resolve_api:
+  local: http://localhost:1335
+  test: http://resolve-service.test.svc.cluster.local:1335
+  stage: http://resolve-service.test.svc.cluster.local:1335
+  prod: ttp://resolve-service.test.svc.cluster.local:1335

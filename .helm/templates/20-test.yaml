@@ -38,4 +38,8 @@ spec:
           value: {{ pluck .Values.global.env .Values.apm_api | first }}
         - name: WEB_API_URL
           value: {{ pluck .Values.global.env .Values.web_api | first }}
+        - name: REVISE_SERVICE_URL
+          value: {{ pluck .Values.global.env .Values.revise_api | first }}
+        - name: RESOLVE_SERVICE_URL
+          value: {{ pluck .Values.global.env .Values.resolve_api | first }}
       restartPolicy: Never

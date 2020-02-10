@@ -269,6 +269,41 @@ func AuthStatus(t *testing.T, p *Pass) {
 	require.NoError(t, err)
 }
 
+func ResolveTestApi(t *testing.T, _case *Resolve) {
+	var r *httpexpect.Response
+
+	switch _case.Url {
+	//GetSchema
+	case "/twirp/proto.ResolveHttp/GetServiceSchema":
+		r = httpResolveService.POST(_case.Url).
+			WithJSON(_case.Request).
+			Expect().
+			Status(_case.Status)
+		r.JSON().Object().
+			ContainsKey("tables").
+			ContainsKey("relations")
+	case "/twirp/proto.ResolveHttp/GetExpiresLink":
+		r = httpResolveService.POST(_case.Url).
+			WithJSON(_case.Request).
+			Expect().
+			Status(_case.Status)
+		r.JSON().Object().
+			ContainsKey("link_expires")
+	case "/twirp/proto.ResolveHttp/GetTasks":
+		r = httpResolveService.POST(_case.Url).
+			WithJSON(_case.Request).
+			Expect().
+			Status(_case.Status)
+		r.JSON().Object().
+			ContainsKey("rows")
+	default:
+		t.Error("Error to find test handler for url:", _case.Url)
+		return
+	}
+
+	logRequest(_case.Url, r)
+}
+
 func ReviseTestApi(t *testing.T, _case *Revise) {
 	var r *httpexpect.Response
 

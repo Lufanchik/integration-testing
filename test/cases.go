@@ -107,6 +107,14 @@ type (
 		Response interface{}
 	}
 
+	//автосверка
+	Resolve struct {
+		Url      string
+		Status   int
+		Request  interface{}
+		Response interface{}
+	}
+
 	//логин
 	Login struct {
 	}

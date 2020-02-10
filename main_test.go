@@ -147,6 +147,7 @@ func TestSimple(t *testing.T) {
 	//test.Run(t, webapi.CasesWEBAPI, test.RequestTypeOnline)
 	//test.Run(t, mck.CasesMetroComplexMCK1, test.RequestTypeOffline)
 	test.RunApiRequest(t, registry.CasesReviseGetTaskList, test.RequestTypeOffline)
+	test.RunApiRequest(t, registry.CasesResolveGetTaskList, test.RequestTypeOffline)
 	//test.Run(t, mck.CasesMetroComplexMCK2, test.RequestTypeOffline)
 	//test.Run(t, mck.CasesMetroComplexMCK3, test.RequestTypeOffline)
 	//test.Run(t, mck.CasesMetroComplexMCK4, test.RequestTypeOffline)

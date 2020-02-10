@@ -120,6 +120,12 @@ func RunApiRequest(t *testing.T, cases Cases, rt RequestType) {
 		t.Run("name: "+v.N, func(t *testing.T) {
 			for _, step := range v.T {
 				//ReviseRegistry
+				res, ok := step.(*Resolve)
+				if ok {
+					ResolveTestApi(t, res)
+				}
+
+				//ReviseRegistry
 				rev, ok := step.(*Revise)
 				if ok {
 					ReviseTestApi(t, rev)

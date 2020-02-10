@@ -1,4 +1,4 @@
-cat /dev/null > ../logs/all.logs
+cat /dev/null > ../../logs/all.logs
 #user-service
 gnome-terminal --tab --title=user-service --command "bash -c 'echo \"Run user-service...\";./user-service.run;bash'" > /dev/null
 #apm-gateway

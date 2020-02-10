@@ -80,6 +80,8 @@ func init() {
 
 	//Revise
 	AddAR(registry.CasesReviseGetTaskList)
+	//Resolve
+	AddAR(registry.CasesResolveGetTaskList)
 	//Face
 	//AddP(face.CasesAuthWithFace)
 

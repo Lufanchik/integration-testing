@@ -123,7 +123,7 @@ func ValidatePass(t *testing.T, p *Pass, parent *Pass, ingress *Pass, isFirst bo
 		IsPass:            true,
 		IsFree:            false,
 		CarrierCodeSub:    p.SubCarrier,
-		Sum:               p.ExpectedSum,
+		Sum:               getSumByCarrier(p),
 		IsAuth:            false,
 	}
 
@@ -195,7 +195,7 @@ func ValidatePass(t *testing.T, p *Pass, parent *Pass, ingress *Pass, isFirst bo
 
 	if p.PaymentType == PaymentTypeStartAggregate && !isFirst {
 		expectPass.Sum = 0
-		expectPass.SumAggregate = p.ExpectedSum
+		expectPass.SumAggregate = getSumByCarrier(p)
 	}
 
 	if p.PaymentType == PaymentTypeStartAggregate {

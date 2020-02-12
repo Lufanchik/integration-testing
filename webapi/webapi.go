@@ -1,7 +1,6 @@
 package webapi
 
 import (
-	"github.com/google/uuid"
 	"lab.siroccotechnology.ru/tp/common/messages/carriers"
 	"lab.siroccotechnology.ru/tp/common/messages/processing"
 	"lab.siroccotechnology.ru/tp/integration-testing/test"
@@ -16,8 +15,8 @@ var (
 					PaymentType: test.PaymentTypePayment,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MM_SUB,
-					ExpectedSum: 4200,
-					AuthType:    test.AuthTypeCorrect,
+
+					AuthType: test.AuthTypeCorrect,
 					Terminal: &processing.Terminal{
 						Id:         "1",
 						Station:    "1234",
@@ -29,8 +28,8 @@ var (
 					PaymentType: test.PaymentTypePayment,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MM_SUB,
-					ExpectedSum: 4200,
-					AuthType:    test.AuthTypeIncorrect,
+
+					AuthType: test.AuthTypeIncorrect,
 					Terminal: &processing.Terminal{
 						Id:         "1",
 						Station:    "1234",
@@ -50,8 +49,8 @@ var (
 					PaymentType: test.PaymentTypePayment,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MCK_SUB,
-					ExpectedSum: 4200,
-					AuthType:    test.AuthTypeCorrect,
+
+					AuthType: test.AuthTypeCorrect,
 					Terminal: &processing.Terminal{
 						Id:         "1",
 						Station:    "1234",
@@ -63,8 +62,8 @@ var (
 					PaymentType: test.PaymentTypePayment,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MCK_SUB,
-					ExpectedSum: 4200,
-					AuthType:    test.AuthTypeIncorrect,
+
+					AuthType: test.AuthTypeIncorrect,
 					Terminal: &processing.Terminal{
 						Id:         "1",
 						Station:    "1234",
@@ -84,8 +83,8 @@ var (
 					PaymentType: test.PaymentTypePayment,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MMTS_SUB,
-					ExpectedSum: 4200,
-					AuthType:    test.AuthTypeCorrect,
+
+					AuthType: test.AuthTypeCorrect,
 					Terminal: &processing.Terminal{
 						Id:         "1",
 						Station:    "1234",
@@ -97,8 +96,8 @@ var (
 					PaymentType: test.PaymentTypePayment,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MMTS_SUB,
-					ExpectedSum: 4200,
-					AuthType:    test.AuthTypeIncorrect,
+
+					AuthType: test.AuthTypeIncorrect,
 					Terminal: &processing.Terminal{
 						Id:         "1",
 						Station:    "1234",
@@ -179,8 +178,8 @@ var (
 					PaymentType: test.PaymentTypePayment,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MCK_SUB,
-					ExpectedSum: 4200,
-					AuthType:    test.AuthTypeCorrect,
+
+					AuthType: test.AuthTypeCorrect,
 					Terminal: &processing.Terminal{
 						Id:         "1",
 						Station:    "1234",
@@ -321,7 +320,6 @@ var (
 					PaymentType: test.PaymentTypePayment,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MCK_SUB,
-					ExpectedSum: 4200,
 				},
 				&test.Pass{
 					PaymentType: test.PaymentTypeFree,
@@ -347,7 +345,6 @@ var (
 					PaymentType: test.PaymentTypePayment,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MCK_SUB,
-					ExpectedSum: 4200,
 				},
 				&test.WebAPIPasses{
 					Passes: []int{1, 2, 3, 4},
@@ -410,7 +407,6 @@ var (
 					PaymentType: test.PaymentTypePayment,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MMTS_SUB,
-					ExpectedSum: 4200,
 				},
 				&test.Pass{
 					PaymentType: test.PaymentTypeFree,
@@ -422,29 +418,28 @@ var (
 					PaymentType: test.PaymentTypePayment,
 					Carrier:     carriers.Carrier_MM,
 					SubCarrier:  carriers.SubCarrier_MCK_SUB,
-					ExpectedSum: 4200,
 				},
 				&test.WebAPIPasses{
 					Passes: []int{1, 2, 3},
 				},
 			},
 		},
-		{
-			N:          "11. Face Auth Test with WebAPI / mm",
-			CardSystem: processing.CardSystem_VISA,
-			FaceId:     uuid.New().String(),
-			T: test.T{
-				&test.RegisterFaceId{},
-				&test.Pass{
-					PaymentType: test.PaymentTypePayment,
-					Carrier:     carriers.Carrier_MM,
-					SubCarrier:  carriers.SubCarrier_MM_SUB,
-					ExpectedSum: 4200,
-				},
-				&test.WebAPIPasses{
-					Passes: []int{2},
-				},
-			},
-		},
+		//{
+		//	N:          "11. Face Auth Test with WebAPI / mm",
+		//	CardSystem: processing.CardSystem_VISA,
+		//	FaceId:     uuid.New().String(),
+		//	T: test.T{
+		//		&test.RegisterFaceId{},
+		//		&test.Pass{
+		//			PaymentType: test.PaymentTypePayment,
+		//			Carrier:     carriers.Carrier_MM,
+		//			SubCarrier:  carriers.SubCarrier_MM_SUB,
+		//			ExpectedSum: 4200,
+		//		},
+		//		&test.WebAPIPasses{
+		//			Passes: []int{2},
+		//		},
+		//	},
+		//},
 	}
 )

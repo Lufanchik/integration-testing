@@ -5,13 +5,15 @@ import (
 	"github.com/jinzhu/copier"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 	"github.com/stretchr/testify/require"
+	"lab.siroccotechnology.ru/tp/integration-testing/passes/face"
+	_ "lab.siroccotechnology.ru/tp/integration-testing/passes/mck"
 	"lab.siroccotechnology.ru/tp/integration-testing/passes/mgt"
 	"lab.siroccotechnology.ru/tp/integration-testing/passes/mtppk"
-	"lab.siroccotechnology.ru/tp/integration-testing/passes/mcd"
-	"lab.siroccotechnology.ru/tp/integration-testing/passes/mck"
-	"lab.siroccotechnology.ru/tp/integration-testing/passes/mm"
-	"lab.siroccotechnology.ru/tp/integration-testing/passes/mmts"
+	_ "lab.siroccotechnology.ru/tp/integration-testing/passes/mcd"
+	_ "lab.siroccotechnology.ru/tp/integration-testing/passes/mm"
+	_ "lab.siroccotechnology.ru/tp/integration-testing/passes/mmts"
 	"lab.siroccotechnology.ru/tp/integration-testing/test"
+	"lab.siroccotechnology.ru/tp/integration-testing/webapi"
 	"net/http"
 	"net/http/pprof"
 	"testing"
@@ -110,7 +112,7 @@ func TestFull(t *testing.T) {
 }
 
 func TestSimple(t *testing.T) {
-	//test.Run(t, webapi.CasesWEBAPI, test.RequestTypeOnline)
+	test.Run(t, webapi.CasesWEBAPI, test.RequestTypeOnline)
 	//test.Run(t, mck.CasesMetroComplexMCK1, test.RequestTypeOffline)
 	//test.Run(t, mck.CasesMetroComplexMCK2, test.RequestTypeOffline)
 	//test.Run(t, mck.CasesMetroComplexMCK3, test.RequestTypeOffline)

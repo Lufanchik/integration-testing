@@ -5,7 +5,7 @@ import (
 	"github.com/jinzhu/copier"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 	"github.com/stretchr/testify/require"
-	"lab.siroccotechnology.ru/tp/integration-testing/passes/face"
+	"lab.siroccotechnology.ru/tp/integration-testing/passes/mck"
 	"lab.siroccotechnology.ru/tp/integration-testing/test"
 	"net/http"
 	"net/http/pprof"
@@ -105,8 +105,14 @@ func TestFull(t *testing.T) {
 }
 
 func TestSimple(t *testing.T) {
+	//test.Run(t, mtppk.CasesMTPPKPasses, test.RequestTypeOffline)
+	//test.Run(t, mtppk.CasesMTPPKMGT, test.RequestTypeOffline)
+	//test.Run(t, mtppk.CasesMTPPKMCDMO, test.RequestTypeOffline)
+	//test.Run(t, mtppk.CasesMTPPKMCK, test.RequestTypeOffline)
+	//test.Run(t, mtppk.CasesMTPPK1, test.RequestTypeOffline)
+
 	//test.Run(t, webapi.CasesWEBAPI, test.RequestTypeOnline)
-	//test.Run(t, mck.CasesMetroComplexMCK1, test.RequestTypeOffline)
+	test.Run(t, mck.CasesMetroComplexMCK1, test.RequestTypeOffline)
 	//test.Run(t, mck.CasesMetroComplexMCK2, test.RequestTypeOffline)
 	//test.Run(t, mck.CasesMetroComplexMCK3, test.RequestTypeOffline)
 	//test.Run(t, mck.CasesMetroComplexMCK4, test.RequestTypeOffline)
@@ -150,7 +156,7 @@ func TestSimple(t *testing.T) {
 	//test.Run(t, passes.CasesScopeCheckPass, test.RequestTypeOffline)
 	//test.Run(t, passes.CasesSimpleComplexPass, test.RequestTypeOffline)
 	//test.Run(t, mtppk.CasesMTPPKPasses, test.RequestTypeOffline)
-	test.Run(t, face.CasesAuthWithFace, test.RequestTypeOffline)
+	//test.Run(t, webapi.CasesWEBAPI, test.RequestTypeOffline)
 	//test.Run(t, mm.CasesMetroComplexMM1, test.RequestTypeOffline)
 	//test.Run(t, face.CasesAuthWithFace, test.RequestTypeOffline)
 }

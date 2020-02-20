@@ -35,7 +35,7 @@ func auth(p *Pass) *processing.Auth {
 		return p.Auth
 	} else {
 		na := &processing.Auth{
-			Sum:  p.ExpectedSum,
+			Sum:  getSumByCarrier(p),
 			Type: processing.Auth_CLASSIC,
 		}
 		if p.PaymentType == PaymentTypeStartAggregate {
@@ -44,6 +44,46 @@ func auth(p *Pass) *processing.Auth {
 		}
 		return na
 	}
+}
+
+func getSumByCarrier(p *Pass) uint32 {
+	if p.ExpectedSum > 0 {
+		return p.ExpectedSum
+	}
+	if p.PaymentType == PaymentTypeFree {
+		return 0
+	}
+	if p.SubCarrier == carriers.SubCarrier_MM_SUB {
+		return 4400
+	}
+	if p.SubCarrier == carriers.SubCarrier_MCK_SUB {
+		return 4400
+	}
+	if p.SubCarrier == carriers.SubCarrier_MMTS_SUB {
+		return 4400
+	}
+	if p.SubCarrier == carriers.SubCarrier_MCD1_MSK {
+		return 4200
+	}
+	if p.SubCarrier == carriers.SubCarrier_MCD2_MSK {
+		return 4200
+	}
+	if p.SubCarrier == carriers.SubCarrier_MCD1_MO {
+		return 4900
+	}
+	if p.SubCarrier == carriers.SubCarrier_MCD2_MO {
+		return 4900
+	}
+	if p.Carrier == carriers.Carrier_MM {
+		return 4400
+	}
+	if p.Carrier == carriers.Carrier_MGT {
+		return 4200
+	}
+	if p.Carrier == carriers.Carrier_MTPPK {
+		return p.ExpectedSum
+	}
+	return 999
 }
 
 func PassOnlineRequest(tap *processing.TapRequest, p *Pass) (*processing.OnlinePassRequest, *processing.OnlinePassResponse) {
@@ -129,7 +169,7 @@ func WebAPIPassesRequest(card *processing.Card) *webApi.PassesRequest {
 func WebAPIRegisterRequest(fcl *RegisterFaceId, card *processing.Card) *authService.FaceIdRegisterRequest {
 	return &authService.FaceIdRegisterRequest{
 		Id: card.Pan,
-		Urls: &authService.FaceIdRegisterUrls{
+		Urls: &authService.TWPGUrls{
 			Approve: gofakeit.URL(),
 			Cancel:  gofakeit.URL(),
 			Decline: gofakeit.URL(),
@@ -173,7 +213,7 @@ func AuthStatusRequest(p *Pass) (*processing.AuthRequest, *processing.AuthRespon
 	case PaymentTypePayment:
 		response.Status = processing.AuthResponse_SUCCESS_STATUS
 		response.Auth = &processing.Auth{
-			Sum:  p.ExpectedSum,
+			Sum:  getSumByCarrier(p),
 			Type: processing.Auth_CLASSIC,
 		}
 		response.Resolution = processing.AuthResponse_AUTHORIZED
@@ -188,7 +228,7 @@ func AuthStatusRequest(p *Pass) (*processing.AuthRequest, *processing.AuthRespon
 	case PaymentTypeAggregate:
 		response.Status = processing.AuthResponse_SUCCESS_AGGREGATE
 		response.Auth = &processing.Auth{
-			Sum:  p.ExpectedSum,
+			Sum:  getSumByCarrier(p),
 			Type: processing.Auth_AGGREGATE,
 		}
 	}
@@ -198,7 +238,7 @@ func AuthStatusRequest(p *Pass) (*processing.AuthRequest, *processing.AuthRespon
 		case PaymentTypeStartAggregate:
 			response.Status = processing.AuthResponse_SUCCESS_STATUS
 			response.Auth = &processing.Auth{
-				Sum:  p.ExpectedSum,
+				Sum:  getSumByCarrier(p),
 				Type: processing.Auth_AGGREGATE,
 			}
 			response.Resolution = processing.AuthResponse_AUTHORIZED
@@ -206,7 +246,7 @@ func AuthStatusRequest(p *Pass) (*processing.AuthRequest, *processing.AuthRespon
 			if p.aggregate != nil && p.aggregate.AuthType == AuthTypeCorrect {
 				response.Status = processing.AuthResponse_SUCCESS_STATUS
 				response.Auth = &processing.Auth{
-					Sum:  p.aggregate.ExpectedSum,
+					Sum:  getSumByCarrier(p),
 					Type: processing.Auth_AGGREGATE,
 				}
 				response.Resolution = processing.AuthResponse_AUTHORIZED

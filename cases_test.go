@@ -18,7 +18,7 @@ func init() {
 	//общие кейсы проходов
 	AddP(passes.CasesCancel)
 	AddP(passes.CasesSimpleComplexPass)
-
+	//
 	//МТППК
 	AddP(mtppk.CasesMTPPKPasses)
 	AddP(mtppk.CasesMTPPK_MGT)
@@ -86,8 +86,8 @@ func init() {
 	//AddP(passes.CasesScopeCheckPass)
 
 	//тесты с нестандартным временем - надо придумать как с ними работать
-	//AddP(mm.CasesComplexTimeMM)
-	//AddP(mcd.CasesComplexTimeMCD)
-	//Add(mmts.CasesComplexTimeMMTS)
-	//AddP(mcd.CasesComplexTimeMCD)
+	AddP(mm.CasesComplexTimeMM)
+	AddP(mcd.CasesComplexTimeMCD)
+	Add(mmts.CasesComplexTimeMMTS)
+	AddP(mcd.CasesComplexTimeMCD)
 }

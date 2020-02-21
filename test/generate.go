@@ -37,6 +37,10 @@ func CardEmvIncorrect() string {
 	return "WovYAaagxXfxea2U/5cMzTN1MEQIJZAUTovU5NDItD4qB6PyP0rzjg3nnXjKH3XVaVMjUSHJ5YiIJ2Ji4jX3E5bj+Ufe5BntEUhjqyphe8HQz+jJdhWfld+Bm61C8yeeq3qhYbf7zgswrh3d2Gd5L6h4PlKVbbCuGLI8KOmTmfoqQXX5dtF+ZHum7l5BUIvGn3nFj1Fbkye0iKcxHXyToZd/l/M9FuRy9/klAgKYPScYlYWRSwH2I5HZs5qDKJi/cXscLjYoF6h9xxRJMsXJr68BQ5E1bx9sG5mlBb3Pzeytns8Qct9pziuUdDUnFEd2xgx07ul7jNu40k9BARcyfQ=="
 }
 
+func CardEmvRefund() string {
+	return "DYloYwM7siugRNTwXR+X844n1gM0vxQdmRloE3tREdgIMvJMHNzkK6G0P55vYSqLa7W3FkbjL0Rwu2XyiqFmumoyGAY/cMxMgHTVDCp7wuEpkPZo8PhRDwISBcvR1Roh8bh2omooXgSnjI2QvQFvV+bcjc3uI2XJ84mHnkOyQzO+pS/Ow67PykL8W7RLYsLDhnoa4556p7aUWKhPlaxxVs0M2HtermZZfsFnjRR0FpNiCxQvj28kHNjK2oiw/rqP0b6eBsWwBCZiTuhptJ99QJCtQ7zBA4iTk91Wze/qZgMyWrDNYOEOw9jW1wguDwsPHb5Bk2QrLCARfZgwkFjnLQ=="
+}
+
 func Card(system processing.CardSystem) *processing.Card {
 	gofakeit.Seed(time.Now().UnixNano())
 	card := &processing.Card{
@@ -79,5 +83,7 @@ func GenerateEmv(card *processing.Card, p *Pass) {
 		card.Emv = CardEmvCorrect()
 	case AuthTypeIncorrect:
 		card.Emv = CardEmvIncorrect()
+	case AuthTypeRefund:
+		card.Emv = CardEmvRefund()
 	}
 }

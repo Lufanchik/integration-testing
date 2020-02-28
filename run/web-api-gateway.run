@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+cd ../../web-api-gateway && make run &> ../logs/web-api-gateway.logs

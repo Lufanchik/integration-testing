@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
 
-cd ../../auth-service && make run &> ../logs/auth-service.logs
+echo "auth-service"
+cd ../../auth-service && make run | tee ../logs/auth-service.logs

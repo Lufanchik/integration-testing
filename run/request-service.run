@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
 
-cd ../../request-service && make run &> ../logs/request-service.logs
+echo "request-service"
+cd ../../request-service && make run | tee ../logs/request-service.logs

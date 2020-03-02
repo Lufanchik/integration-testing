@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
 
-cd ../../web-api-gateway && make run &> ../logs/web-api-gateway.logs
+echo "web-api-gateway"
+cd ../../web-api-gateway && make run | tee ../logs/web-api-gateway.logs

@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
 
-cd ../../user-service && make run &> ../logs/user-service.logs
+echo "user-service"
+cd ../../user-service && make run | tee ../logs/user-service.logs

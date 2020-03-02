@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
 
-cd ../../apm-api-gateway && make run &> ../logs/apm-api-gateway.logs
+echo "apm-api-gateway"
+cd /go/src/lab.siroccotechnology.ru/tp/apm-api-gateway && make run | tee ../logs/apm-api-gateway.logs

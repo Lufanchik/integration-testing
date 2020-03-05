@@ -27,7 +27,7 @@ require (
 	github.com/yudai/golcs v0.0.0-20170316035057-ecda9a501e82 // indirect
 	github.com/yudai/pp v2.0.1+incompatible // indirect
 	lab.siroccotechnology.ru/tp/calculator-service v0.0.74
-	lab.siroccotechnology.ru/tp/common v0.0.277
+	lab.siroccotechnology.ru/tp/common v0.0.279
 	lab.siroccotechnology.ru/tp/pass-service v0.0.143
 	lab.siroccotechnology.ru/tp/web-api-gateway v0.0.13
 )

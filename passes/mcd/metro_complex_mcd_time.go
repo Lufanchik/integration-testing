@@ -9,41 +9,41 @@ import (
 
 var (
 	CasesComplexTimeMCD = test.Cases{
-		{
-			N: "1. МО-МСК - ММ",
-			T: test.T{
-				&test.Pass{
-					PaymentType: test.PaymentTypePayment,
-					Carrier:     carriers.Carrier_MCD,
-					SubCarrier:  carriers.SubCarrier_MCD1_MO,
-					Terminal: &processing.Terminal{
-						Station:   "2000055", //ОДИНЦОВО
-						Direction: processing.TerminalDirection_INGRESS,
-					},
-					Now:         test.NowFullDate(2019, 12, 05, 10, 30, 00),
-					ExpectedSum: 4900,
-					TimeToWait:  35 * time.Minute,
-				},
-				&test.Pass{
-					PaymentType: test.PaymentTypeFree,
-					Carrier:     carriers.Carrier_MCD,
-					SubCarrier:  carriers.SubCarrier_MCD1_MSK,
-					Terminal: &processing.Terminal{
-						Station:   "2001140", //КУНЦЕВСКАЯ
-						Direction: processing.TerminalDirection_EGRESS,
-					},
-					Ingress: 1,
-					Now:     test.NowFullDate(2019, 12, 05, 11, 22, 00),
-				},
-				&test.Pass{
-					PaymentType: test.PaymentTypeFree,
-					Carrier:     carriers.Carrier_MM,
-					SubCarrier:  carriers.SubCarrier_MM_SUB,
-					Now:         test.NowFullDate(2019, 12, 05, 12, 35, 00),
-					Parent:      1,
-				},
-			},
-		},
+		//{
+		//	N: "1. МО-МСК - ММ",
+		//	T: test.T{
+		//		&test.Pass{
+		//			PaymentType: test.PaymentTypePayment,
+		//			Carrier:     carriers.Carrier_MCD,
+		//			SubCarrier:  carriers.SubCarrier_MCD1_MO,
+		//			Terminal: &processing.Terminal{
+		//				Station:   "2000055", //ОДИНЦОВО
+		//				Direction: processing.TerminalDirection_INGRESS,
+		//			},
+		//			Now:         test.NowFullDate(2019, 12, 05, 10, 30, 00),
+		//			ExpectedSum: 4900,
+		//			TimeToWait:  35 * time.Minute,
+		//		},
+		//		&test.Pass{
+		//			PaymentType: test.PaymentTypeFree,
+		//			Carrier:     carriers.Carrier_MCD,
+		//			SubCarrier:  carriers.SubCarrier_MCD1_MSK,
+		//			Terminal: &processing.Terminal{
+		//				Station:   "2001140", //КУНЦЕВСКАЯ
+		//				Direction: processing.TerminalDirection_EGRESS,
+		//			},
+		//			Ingress: 1,
+		//			Now:     test.NowFullDate(2019, 12, 05, 11, 22, 00),
+		//		},
+		//		&test.Pass{
+		//			PaymentType: test.PaymentTypeFree,
+		//			Carrier:     carriers.Carrier_MM,
+		//			SubCarrier:  carriers.SubCarrier_MM_SUB,
+		//			Now:         test.NowFullDate(2019, 12, 05, 12, 35, 00),
+		//			Parent:      1,
+		//		},
+		//	},
+		//},
 		{
 			N: "2. МО-МСК2 - ММ",
 			T: test.T{

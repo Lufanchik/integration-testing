@@ -8,7 +8,7 @@ import (
 
 var CasesComplexMCDMOPartThree = test.Cases{
 	{
-		N: "МЦД МО 1 - ММ - МЦД МСК 2 -ММ - МMTS", //30
+		N: "51. МЦД МО 1 - ММ - МЦД МСК 2 -ММ - МMTS", //30
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -70,7 +70,7 @@ var CasesComplexMCDMOPartThree = test.Cases{
 		},
 	},
 	{
-		N: "МЦД МО 1 - ММ - МЦД МСК 2 -ММ - МЦД МСК 1", //31
+		N: "52. МЦД МО 1 - ММ - МЦД МСК 2 -ММ - МЦД МСК 1", //31
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -147,7 +147,7 @@ var CasesComplexMCDMOPartThree = test.Cases{
 		},
 	},
 	{
-		N: "МЦД МО 1 - ММ - МЦД МСК 2 -ММ - МЦД МО 1", //32
+		N: "53. МЦД МО 1 - ММ - МЦД МСК 2 -ММ - МЦД МО 1", //32
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -224,7 +224,7 @@ var CasesComplexMCDMOPartThree = test.Cases{
 		},
 	},
 	{
-		N: "МЦД МО 1 - ММ - МЦД МСК 2 -МЦК - ММ", //33
+		N: "54. МЦД МО 1 - ММ - МЦД МСК 2 -МЦК - ММ", //33
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -286,7 +286,7 @@ var CasesComplexMCDMOPartThree = test.Cases{
 		},
 	},
 	{
-		N: "МЦД МО 1 - ММ - МЦД МСК 2 -МЦК - МЦК", //34
+		N: "55. МЦД МО 1 - ММ - МЦД МСК 2 -МЦК - МЦК", //34
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -348,7 +348,7 @@ var CasesComplexMCDMOPartThree = test.Cases{
 		},
 	},
 	{
-		N: "МЦД МО 1 - ММ - МЦД МСК 2 -МЦК - ММТС", //35
+		N: "56. МЦД МО 1 - ММ - МЦД МСК 2 -МЦК - ММТС", //35
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -410,7 +410,7 @@ var CasesComplexMCDMOPartThree = test.Cases{
 		},
 	},
 	{
-		N: "МЦД МО/МСК 1 - ММ - МЦД МСК 2 - МЦК - МЦД МСК 1", //36
+		N: "57. МЦД МО/МСК 1 - ММ - МЦД МСК 2 - МЦК - МЦД МСК 1", //36
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -487,7 +487,7 @@ var CasesComplexMCDMOPartThree = test.Cases{
 		},
 	},
 	{
-		N: "МЦД МО/МСК 1 - ММ - МЦД МСК 2 - МЦК - МЦД МСК/МО 1", //37
+		N: "58. МЦД МО/МСК 1 - ММ - МЦД МСК 2 - МЦК - МЦД МСК/МО 1", //37
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -565,7 +565,7 @@ var CasesComplexMCDMOPartThree = test.Cases{
 		},
 	},
 	{
-		N: "МЦД МО 1 - ММ - МЦД МСК 2 -ММТС - ММ", //38
+		N: "59. МЦД МО 1 - ММ - МЦД МСК 2 -ММТС - ММ", //38
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -627,7 +627,7 @@ var CasesComplexMCDMOPartThree = test.Cases{
 		},
 	},
 	{
-		N: "МЦД МО 1 - ММ - МЦД МСК 2 -ММТС - МЦК", //39
+		N: "60. МЦД МО 1 - ММ - МЦД МСК 2 -ММТС - МЦК", //39
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -689,7 +689,7 @@ var CasesComplexMCDMOPartThree = test.Cases{
 		},
 	},
 	{
-		N: "МЦД МО 1 - ММ - МЦД МСК 2 - ММТС - ММТС", //40
+		N: "61. МЦД МО 1 - ММ - МЦД МСК 2 - ММТС - ММТС", //40
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -751,7 +751,7 @@ var CasesComplexMCDMOPartThree = test.Cases{
 		},
 	},
 	{
-		N: "МЦД МО/МСК 1 - ММ - МЦД МСК 2 - ММТС - МЦД МСК 1", //41
+		N: "62. МЦД МО/МСК 1 - ММ - МЦД МСК 2 - ММТС - МЦД МСК 1", //41
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -828,7 +828,7 @@ var CasesComplexMCDMOPartThree = test.Cases{
 		},
 	},
 	{
-		N: "МЦД МО/МСК 1 - ММ - МЦД МСК 2 - ММТС - МЦД МСК/МО 1", //42
+		N: "63. МЦД МО/МСК 1 - ММ - МЦД МСК 2 - ММТС - МЦД МСК/МО 1", //42
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -906,7 +906,7 @@ var CasesComplexMCDMOPartThree = test.Cases{
 		},
 	},
 	{
-		N: "МЦД МО/МСК 1 - ММ - МЦД МСК 2 - ММ", //43
+		N: "64. МЦД МО/МСК 1 - ММ - МЦД МСК 2 - ММ", //43
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -963,7 +963,7 @@ var CasesComplexMCDMOPartThree = test.Cases{
 		},
 	},
 	{
-		N: "МЦД МО/МСК 1 - ММ - МЦД МСК 2 - МЦК", //44
+		N: "65. МЦД МО/МСК 1 - ММ - МЦД МСК 2 - МЦК", //44
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -1020,7 +1020,7 @@ var CasesComplexMCDMOPartThree = test.Cases{
 		},
 	},
 	{
-		N: "МЦД МО/МСК 1 - ММ - МЦД МСК 2 - ММТС", //45
+		N: "66. МЦД МО/МСК 1 - ММ - МЦД МСК 2 - ММТС", //45
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -1077,7 +1077,7 @@ var CasesComplexMCDMOPartThree = test.Cases{
 		},
 	},
 	{
-		N: "МЦД МО/МСК 1 - ММ - МЦД МСК 2 - МЦД_МСК_1", //46
+		N: "67. МЦД МО/МСК 1 - ММ - МЦД МСК 2 - МЦД_МСК_1", //46
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -1148,7 +1148,7 @@ var CasesComplexMCDMOPartThree = test.Cases{
 		},
 	},
 	{
-		N: "МЦД МО/МСК 1 - ММ - МЦД МСК 2 - МЦД_МСК/МО_1", //47
+		N: "68. МЦД МО/МСК 1 - ММ - МЦД МСК 2 - МЦД_МСК/МО_1",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -1220,7 +1220,7 @@ var CasesComplexMCDMOPartThree = test.Cases{
 		},
 	},
 	//{
-	//	N: "МЦД МО/МСК 1 - ММ - МЦД МСК 2 - МЦД_МСК/МО_1", //47
+	//	N: "69. МЦД МО/МСК 1 - ММ - МЦД МСК 2 - МЦД_МСК/МО_1",
 	//	T: T{
 	//		&Pass{
 	//			PaymentType: PaymentTypePayment,
@@ -1292,7 +1292,7 @@ var CasesComplexMCDMOPartThree = test.Cases{
 	//	},
 	//},
 	{
-		N: "МЦД МО/МСК 1 - ММ - МЦД_МСК/МО_2 - ММ", //48
+		N: "70. МЦД МО/МСК 1 - ММ - МЦД_МСК/МО_2 - ММ",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -1348,7 +1348,7 @@ var CasesComplexMCDMOPartThree = test.Cases{
 		},
 	},
 	{
-		N: "МЦД МО/МСК 1 - ММ - МЦД_МСК/МО_2 - МЦК", //49
+		N: "71. МЦД МО/МСК 1 - ММ - МЦД_МСК/МО_2 - МЦК",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -1404,7 +1404,7 @@ var CasesComplexMCDMOPartThree = test.Cases{
 		},
 	},
 	{
-		N: "МЦД МО/МСК 1 - ММ - МЦД_МСК/МО_2 - ММТС", //50
+		N: "72. МЦД МО/МСК 1 - ММ - МЦД_МСК/МО_2 - ММТС",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -1460,7 +1460,7 @@ var CasesComplexMCDMOPartThree = test.Cases{
 		},
 	},
 	{
-		N: "51 МЦД МО/МСК 1 - ММ - МЦД_МСК/МО_2 - МЦД МСК 1", //51
+		N: "73. МЦД МО/МСК 1 - ММ - МЦД_МСК/МО_2 - МЦД МСК 1",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -1531,7 +1531,7 @@ var CasesComplexMCDMOPartThree = test.Cases{
 		},
 	},
 	{
-		N: "52 МЦД МО/МСК 1 - ММ - МЦД_МСК/МО_2 - МЦД МСК/МО 1", //52
+		N: "74. МЦД МО/МСК 1 - ММ - МЦД_МСК/МО_2 - МЦД МСК/МО 1",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -1603,7 +1603,7 @@ var CasesComplexMCDMOPartThree = test.Cases{
 		},
 	},
 	{
-		N: "МЦД МО/МСК 1 - МЦК - ММ - ММ", //53
+		N: "75. МЦД МО/МСК 1 - МЦК - ММ - ММ",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -1645,7 +1645,7 @@ var CasesComplexMCDMOPartThree = test.Cases{
 		},
 	},
 	{
-		N: "МЦД МО/МСК 1 - МЦК - ММ - МЦК", //54
+		N: "76. МЦД МО/МСК 1 - МЦК - ММ - МЦК", //54
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -1687,55 +1687,7 @@ var CasesComplexMCDMOPartThree = test.Cases{
 		},
 	},
 	{
-		N: "МЦД МО/МСК 1 - МЦК - ММ - ММТС - ММ", //55
-		T: test.T{
-			&test.Pass{
-				PaymentType: test.PaymentTypePayment,
-				Carrier:     carriers.Carrier_MCD,
-				SubCarrier:  carriers.SubCarrier_MCD1_MO,
-				Terminal: &processing.Terminal{
-					Station:   "2000115", //ЛОБНЯ
-					Direction: processing.TerminalDirection_INGRESS,
-				},
-				ExpectedSum: 4900,
-			},
-			&test.Pass{
-				PaymentType: test.PaymentTypeFree,
-				Carrier:     carriers.Carrier_MCD,
-				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
-				Terminal: &processing.Terminal{
-					Station:   "2000009", //САВЕЛОВСКИЙ ВОКЗАЛ
-					Direction: processing.TerminalDirection_EGRESS,
-				},
-				Ingress: 1,
-			},
-			&test.Pass{
-				PaymentType: test.PaymentTypeFree,
-				Carrier:     carriers.Carrier_MM,
-				SubCarrier:  carriers.SubCarrier_MCK_SUB,
-				Parent:      1,
-			},
-			&test.Pass{
-				PaymentType: test.PaymentTypeFree,
-				Carrier:     carriers.Carrier_MM,
-				SubCarrier:  carriers.SubCarrier_MM_SUB,
-				Parent:      1,
-			},
-			&test.Pass{
-				PaymentType: test.PaymentTypeFree,
-				Carrier:     carriers.Carrier_MM,
-				SubCarrier:  carriers.SubCarrier_MMTS_SUB,
-				Parent:      1,
-			},
-			&test.Pass{
-				PaymentType: test.PaymentTypePayment,
-				Carrier:     carriers.Carrier_MM,
-				SubCarrier:  carriers.SubCarrier_MM_SUB,
-			},
-		},
-	},
-	{
-		N: "МЦД МО/МСК 1 - МЦК - ММ - ММТС - МЦК", //56
+		N: "77. МЦД МО/МСК 1 - МЦК - ММ - ММТС - ММ", //55
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -1778,12 +1730,60 @@ var CasesComplexMCDMOPartThree = test.Cases{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
+				SubCarrier:  carriers.SubCarrier_MM_SUB,
+			},
+		},
+	},
+	{
+		N: "78. МЦД МО/МСК 1 - МЦК - ММ - ММТС - МЦК", //56
+		T: test.T{
+			&test.Pass{
+				PaymentType: test.PaymentTypePayment,
+				Carrier:     carriers.Carrier_MCD,
+				SubCarrier:  carriers.SubCarrier_MCD1_MO,
+				Terminal: &processing.Terminal{
+					Station:   "2000115", //ЛОБНЯ
+					Direction: processing.TerminalDirection_INGRESS,
+				},
+				ExpectedSum: 4900,
+			},
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
+				Carrier:     carriers.Carrier_MCD,
+				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
+				Terminal: &processing.Terminal{
+					Station:   "2000009", //САВЕЛОВСКИЙ ВОКЗАЛ
+					Direction: processing.TerminalDirection_EGRESS,
+				},
+				Ingress: 1,
+			},
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
+				Carrier:     carriers.Carrier_MM,
+				SubCarrier:  carriers.SubCarrier_MCK_SUB,
+				Parent:      1,
+			},
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
+				Carrier:     carriers.Carrier_MM,
+				SubCarrier:  carriers.SubCarrier_MM_SUB,
+				Parent:      1,
+			},
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
+				Carrier:     carriers.Carrier_MM,
+				SubCarrier:  carriers.SubCarrier_MMTS_SUB,
+				Parent:      1,
+			},
+			&test.Pass{
+				PaymentType: test.PaymentTypePayment,
+				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
 			},
 		},
 	},
 	{
-		N: "МЦД МО/МСК 1 - МЦК - ММ - ММТС - ММТС", //57
+		N: "79. МЦД МО/МСК 1 - МЦК - ММ - ММТС - ММТС", //57
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -1831,7 +1831,7 @@ var CasesComplexMCDMOPartThree = test.Cases{
 		},
 	},
 	{
-		N: "МЦД МО/МСК 1 - МЦК - ММ - ММТС - МЦД МСК 1", //58
+		N: "80. МЦД МО/МСК 1 - МЦК - ММ - ММТС - МЦД МСК 1", //58
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -1894,7 +1894,7 @@ var CasesComplexMCDMOPartThree = test.Cases{
 		},
 	},
 	{
-		N: "МЦД_МО/МСК_1 - МЦК - ММ - ММТС - МЦД_МСК/МО_1", //59
+		N: "81. МЦД_МО/МСК_1 - МЦК - ММ - ММТС - МЦД_МСК/МО_1", //59
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -1958,7 +1958,7 @@ var CasesComplexMCDMOPartThree = test.Cases{
 		},
 	},
 	{
-		N: "МЦД_МО/МСК_1 - МЦК - ММ - МЦД_МСК_2 - ММ", //60
+		N: "82. МЦД_МО/МСК_1 - МЦК - ММ - МЦД_МСК_2 - ММ", //60
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -2020,7 +2020,7 @@ var CasesComplexMCDMOPartThree = test.Cases{
 		},
 	},
 	{
-		N: "МЦД_МО/МСК_1 - МЦК - ММ - МЦД_МСК_2 - МЦК", //61
+		N: "83. МЦД_МО/МСК_1 - МЦК - ММ - МЦД_МСК_2 - МЦК", //61
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -2082,7 +2082,7 @@ var CasesComplexMCDMOPartThree = test.Cases{
 		},
 	},
 	{
-		N: "МЦД_МО/МСК_1 - МЦК - ММ - МЦД_МСК_2 - ММТС", //62
+		N: "84. МЦД_МО/МСК_1 - МЦК - ММ - МЦД_МСК_2 - ММТС", //62
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,

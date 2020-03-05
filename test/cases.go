@@ -28,6 +28,8 @@ type (
 	Pass struct {
 		//тип оплаты
 		PaymentType PaymentType
+		//тип карты
+		PassType pass.PassType
 		//тип прохода
 		RequestType RequestType
 		//тип авторизации

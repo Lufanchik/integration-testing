@@ -126,6 +126,7 @@ func ValidatePass(t *testing.T, p *Pass, parent *Pass, ingress *Pass, isFirst bo
 		CarrierCodeSub:    p.SubCarrier,
 		Sum:               getSumByCarrier(p),
 		IsAuth:            false,
+		PassType:          GetPassType(p),
 	}
 
 	if p.timeToWait != 0 {

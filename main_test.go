@@ -5,7 +5,7 @@ import (
 	"github.com/jinzhu/copier"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 	"github.com/stretchr/testify/require"
-	"lab.siroccotechnology.ru/tp/integration-testing/passes/mck"
+	"lab.siroccotechnology.ru/tp/integration-testing/registry"
 	"lab.siroccotechnology.ru/tp/integration-testing/test"
 	"net/http"
 	"net/http/pprof"
@@ -13,24 +13,51 @@ import (
 	"time"
 )
 
-const Workers = 20
+const (
+	Workers = 20
+
+	SimpleApiRequest CaseType = 1
+	PassApiRequest   CaseType = 2
+)
 
 var (
 	Cases         []test.Cases
-	CasesParallel []test.Cases
+	CasesParallel []CaseSet
 )
+
+type (
+	CaseType int32
+	CaseSet  struct {
+		Type  CaseType
+		Cases test.Cases
+	}
+)
+
+func AddAR(c test.Cases) {
+	caseSet := CaseSet{
+		Type: SimpleApiRequest,
+	}
+	err := copier.Copy(&caseSet.Cases, &c)
+	if err != nil {
+		panic(err)
+	}
+
+	CasesParallel = append(CasesParallel, caseSet)
+}
 
 func Add(c test.Cases) {
 	Cases = append(Cases, c)
 }
 
 func AddP(c test.Cases) {
-	nCases := test.Cases{}
-	err := copier.Copy(&nCases, &c)
+	caseSet := CaseSet{
+		Type: PassApiRequest,
+	}
+	err := copier.Copy(&caseSet.Cases, &c)
 	if err != nil {
 		panic(err)
 	}
-	CasesParallel = append(CasesParallel, nCases)
+	CasesParallel = append(CasesParallel, caseSet)
 }
 
 func status(listenAddr string) *http.Server {
@@ -57,16 +84,22 @@ func TestFull(t *testing.T) {
 		}
 	}()
 
-	tasks := make(chan test.Cases, len(CasesParallel))
+	tasks := make(chan CaseSet, len(CasesParallel))
 	err := make(chan error)
 	done := make(chan struct{})
 	t1 := time.Now()
 
 	for i := 0; i < Workers; i++ {
-		go func(tasks chan test.Cases, err chan error, done chan struct{}, w int) {
+		go func(tasks chan CaseSet, err chan error, done chan struct{}, w int) {
 			for v := range tasks {
 				//test.Run(t, v, test.RequestTypeOnline)
-				test.Run(t, v, test.RequestTypeOffline)
+				switch v.Type {
+				case PassApiRequest:
+					test.Run(t, v.Cases, test.RequestTypeOffline)
+				case SimpleApiRequest:
+					test.RunApiRequest(t, v.Cases, test.RequestTypeOffline)
+				}
+
 				//test.Run(t, v, test.RequestType(gofakeit.Number(1, 2)))
 				done <- struct{}{}
 			}
@@ -83,8 +116,8 @@ func TestFull(t *testing.T) {
 
 	for _, v := range CasesParallel {
 		scenarios++
-		cases += len(v)
-		for _, s := range v {
+		cases += len(v.Cases)
+		for _, s := range v.Cases {
 			steps += len(s.T)
 		}
 
@@ -112,7 +145,9 @@ func TestSimple(t *testing.T) {
 	//test.Run(t, mtppk.CasesMTPPK1, test.RequestTypeOffline)
 
 	//test.Run(t, webapi.CasesWEBAPI, test.RequestTypeOnline)
-	test.Run(t, mck.CasesMetroComplexMCK1, test.RequestTypeOffline)
+	//test.Run(t, mck.CasesMetroComplexMCK1, test.RequestTypeOffline)
+	test.RunApiRequest(t, registry.CasesReviseGetTaskList, test.RequestTypeOffline)
+	test.RunApiRequest(t, registry.CasesResolveGetTaskList, test.RequestTypeOffline)
 	//test.Run(t, mck.CasesMetroComplexMCK2, test.RequestTypeOffline)
 	//test.Run(t, mck.CasesMetroComplexMCK3, test.RequestTypeOffline)
 	//test.Run(t, mck.CasesMetroComplexMCK4, test.RequestTypeOffline)

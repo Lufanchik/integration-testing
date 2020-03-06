@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+cd ../../user-service && make run | tee ../logs/user-service.logs | tee -a ../logs/all.logs

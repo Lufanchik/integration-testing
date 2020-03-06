@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
 
-cd ../../tidpool-service && make run &> ../logs/tidpool-service.logs
+echo "tidpool-service"
+cd ../../tidpool-service && make run | tee ../logs/tidpool-service.logs

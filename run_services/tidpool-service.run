@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+cd ../../tidpool-service && make run | tee ../logs/tidpool-service.logs | tee -a ../logs/all.logs

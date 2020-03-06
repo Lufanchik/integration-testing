@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
 
-cd ../../processing-api-gateway && make run &> ../logs/processing-api-gateway.logs
+echo "processing-api-gateway"
+cd ../../processing-api-gateway && make run | tee ../logs/processing-api-gateway.logs

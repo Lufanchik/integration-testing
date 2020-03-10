@@ -8,7 +8,7 @@ import (
 
 var CasesComplexMCDMOPartFour = test.Cases{
 	{
-		N: "МЦД_МО/МСК_1-МЦК-ММ-МЦД_МСК_2-МЦД_МСК_1", //63
+		N: "63.МЦД_МО/МСК_1-МЦК-ММ-МЦД_МСК_2-МЦД_МСК_1", //63
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -85,7 +85,7 @@ var CasesComplexMCDMOPartFour = test.Cases{
 		},
 	},
 	{
-		N: "МЦД_МО/МСК_1-МЦК-ММ-МЦД_МСК_2-МЦД_МСК/МО_1", //64
+		N: "64.МЦД_МО/МСК_1-МЦК-ММ-МЦД_МСК_2-МЦД_МСК/МО_1", //64
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,

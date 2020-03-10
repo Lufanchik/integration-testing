@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+cd ../../resolve-service && make http | tee ../logs/resolve-http.logs | tee -a ../logs/all.logs

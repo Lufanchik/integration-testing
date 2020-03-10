@@ -6,6 +6,7 @@ import (
 	"github.com/gavv/httpexpect"
 	authService "lab.siroccotechnology.ru/tp/common/messages/auth"
 	"lab.siroccotechnology.ru/tp/common/messages/carriers"
+	"lab.siroccotechnology.ru/tp/common/messages/pass"
 	"lab.siroccotechnology.ru/tp/common/messages/processing"
 	"lab.siroccotechnology.ru/tp/common/messages/response"
 	webApi "lab.siroccotechnology.ru/tp/web-api-gateway/proto"
@@ -84,6 +85,13 @@ func getSumByCarrier(p *Pass) uint32 {
 		return p.ExpectedSum
 	}
 	return 999
+}
+
+func GetPassType(p *Pass) pass.PassType {
+	//if p != nil {
+	//	return p.PassType
+	//}
+	return pass.PassType_PASS_BBK
 }
 
 func PassOnlineRequest(tap *processing.TapRequest, p *Pass) (*processing.OnlinePassRequest, *processing.OnlinePassResponse) {

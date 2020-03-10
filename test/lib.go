@@ -13,11 +13,13 @@ import (
 )
 
 var (
-	httpProcessingApi *httpexpect.Expect
-	httpApmApi        *httpexpect.Expect
-	httpWebApi        *httpexpect.Expect
-	httpAuthService   *httpexpect.Expect
-	ps                passService.PassService
+	httpProcessingApi  *httpexpect.Expect
+	httpApmApi         *httpexpect.Expect
+	httpWebApi         *httpexpect.Expect
+	httpAuthService    *httpexpect.Expect
+	httpReviseService  *httpexpect.Expect
+	httpResolveService *httpexpect.Expect
+	ps                 passService.PassService
 )
 
 func NanoToMicro(tm uint64) uint64 {
@@ -104,11 +106,49 @@ func getRequestType(t *testing.T, p *Pass) RequestType {
 	return p.RequestType
 }
 
+//ApiRequest simple api request
+func RunApiRequest(t *testing.T, cases Cases, rt RequestType) {
+	httpProcessingApi = httpexpect.New(t, ProcessingApiUrl)
+	httpApmApi = httpexpect.New(t, ApmApiUrl)
+	httpWebApi = httpexpect.New(t, WebApiUrl)
+	httpAuthService = httpexpect.New(t, AuthServiceUrl)
+	httpReviseService = httpexpect.New(t, ReviseApiUrl)
+	httpResolveService = httpexpect.New(t, ResolveApiUrl)
+
+	for _, v := range cases {
+		fmt.Println("name: " + v.N)
+		t.Run("name: "+v.N, func(t *testing.T) {
+			for _, step := range v.T {
+				//ReviseRegistry
+				res, ok := step.(*Resolve)
+				if ok {
+					ResolveTestApi(t, res)
+				}
+
+				//ReviseRegistry
+				rev, ok := step.(*Revise)
+				if ok {
+					ReviseTestApi(t, rev)
+				}
+
+				//Login
+				lg, ok := step.(*Login)
+				if ok {
+					LoginApi(t, lg)
+				}
+			}
+		})
+	}
+}
+
 func Run(t *testing.T, cases Cases, rt RequestType) {
 	httpProcessingApi = httpexpect.New(t, ProcessingApiUrl)
 	httpApmApi = httpexpect.New(t, ApmApiUrl)
 	httpWebApi = httpexpect.New(t, WebApiUrl)
 	httpAuthService = httpexpect.New(t, AuthServiceUrl)
+	httpReviseService = httpexpect.New(t, ReviseApiUrl)
+	httpResolveService = httpexpect.New(t, ResolveApiUrl)
+
 	type NCase struct {
 		c         *Case
 		card      *processing.Card
@@ -152,18 +192,6 @@ func Run(t *testing.T, cases Cases, rt RequestType) {
 						t.Fail()
 					}
 					Update(t, pu, u)
-				}
-
-				//AbsGetRegistry
-				agr, ok := step.(*AbsGetRegistry)
-				if ok {
-					AbsGetRegistryApi(t, agr)
-				}
-
-				//AbsGetRegistry
-				lg, ok := step.(*Login)
-				if ok {
-					LoginApi(t, lg)
 				}
 
 				//PassCheck

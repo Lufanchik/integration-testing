@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
-cd ../../pass-service && sed -i 's/MCD/MTPPK/g' config.local.yml && sed -i 's/13385/13386/g' config.local.yml && \
-./bin/app -f config.local.yml &> ../logs/pass-service-mtppk.logs
+echo "pass-service-mtppk"
+cd ../../pass-service && sed -i 's/MCD/MTPPK/g' config.local.yml && sed -i 's/13385/13386/g' config.local.yml && ./bin/app -f config.local.yml | tee ../logs/pass-service-mtppk.logs

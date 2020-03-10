@@ -4,12 +4,14 @@ import (
 	"lab.siroccotechnology.ru/tp/integration-testing/apm"
 	"lab.siroccotechnology.ru/tp/integration-testing/parking"
 	"lab.siroccotechnology.ru/tp/integration-testing/passes"
+	"lab.siroccotechnology.ru/tp/integration-testing/passes/face"
 	"lab.siroccotechnology.ru/tp/integration-testing/passes/mcd"
 	"lab.siroccotechnology.ru/tp/integration-testing/passes/mck"
 	"lab.siroccotechnology.ru/tp/integration-testing/passes/mgt"
 	"lab.siroccotechnology.ru/tp/integration-testing/passes/mm"
 	"lab.siroccotechnology.ru/tp/integration-testing/passes/mmts"
 	"lab.siroccotechnology.ru/tp/integration-testing/passes/mtppk"
+	"lab.siroccotechnology.ru/tp/integration-testing/registry"
 	"lab.siroccotechnology.ru/tp/integration-testing/webapi"
 )
 
@@ -17,7 +19,6 @@ func init() {
 	//параллельный запуск
 	//общие кейсы проходов
 	AddP(passes.CasesCancel)
-	AddP(passes.CasesSimpleComplexPass)
 
 	//МТППК
 	AddP(mtppk.CasesMTPPKPasses)
@@ -77,8 +78,12 @@ func init() {
 	//WebAPI
 	AddP(webapi.CasesWEBAPI)
 
+	//Revise
+	AddAR(registry.CasesReviseGetTaskList)
+	//Resolve
+	AddAR(registry.CasesResolveGetTaskList)
 	//Face
-	//AddP(face.CasesAuthWithFace)
+	AddP(face.CasesAuthWithFace)
 
 	//черновики, которые пока что не запускаются
 	//AddP(passes.CasesWrongTimeComplexPass)

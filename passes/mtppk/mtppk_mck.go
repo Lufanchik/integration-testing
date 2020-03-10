@@ -37,6 +37,7 @@ var CasesMTPPK_MCK = test.Cases{
 				PaymentType: test.PaymentTypeAggregate,
 				Carrier:     carriers.Carrier_MTPPK,
 				Aggregate:   1,
+				ExpectedSum: 8400,
 			},
 			&test.Complete{
 				StartPass: 1,
@@ -72,6 +73,7 @@ var CasesMTPPK_MCK = test.Cases{
 				PaymentType: test.PaymentTypeAggregate,
 				Carrier:     carriers.Carrier_MTPPK,
 				Aggregate:   3,
+				ExpectedSum: 8400,
 			},
 			&test.Complete{
 				StartPass: 3,
@@ -145,6 +147,7 @@ var CasesMTPPK_MCK = test.Cases{
 				PaymentType: test.PaymentTypeAggregate,
 				Carrier:     carriers.Carrier_MTPPK,
 				Aggregate:   1,
+				ExpectedSum: 8400,
 			},
 			&test.Complete{
 				StartPass: 1,
@@ -179,6 +182,7 @@ var CasesMTPPK_MCK = test.Cases{
 				PaymentType: test.PaymentTypeAggregate,
 				Carrier:     carriers.Carrier_MTPPK,
 				Aggregate:   1,
+				ExpectedSum: 8400,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -214,6 +218,7 @@ var CasesMTPPK_MCK = test.Cases{
 				PaymentType: test.PaymentTypeAggregate,
 				Carrier:     carriers.Carrier_MTPPK,
 				Aggregate:   1,
+				ExpectedSum: 12600,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -224,6 +229,7 @@ var CasesMTPPK_MCK = test.Cases{
 				PaymentType: test.PaymentTypeAggregate,
 				Carrier:     carriers.Carrier_MTPPK,
 				Aggregate:   1,
+				ExpectedSum: 12600,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -264,6 +270,7 @@ var CasesMTPPK_MCK = test.Cases{
 				PaymentType: test.PaymentTypeAggregate,
 				Carrier:     carriers.Carrier_MTPPK,
 				Aggregate:   2,
+				ExpectedSum: 16800,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -289,6 +296,7 @@ var CasesMTPPK_MCK = test.Cases{
 				PaymentType: test.PaymentTypeAggregate,
 				Carrier:     carriers.Carrier_MTPPK,
 				Aggregate:   2,
+				ExpectedSum: 16800,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -300,6 +308,7 @@ var CasesMTPPK_MCK = test.Cases{
 				PaymentType: test.PaymentTypeAggregate,
 				Carrier:     carriers.Carrier_MTPPK,
 				Aggregate:   2,
+				ExpectedSum: 16800,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -345,6 +354,7 @@ var CasesMTPPK_MCK = test.Cases{
 				PaymentType: test.PaymentTypeAggregate,
 				Carrier:     carriers.Carrier_MTPPK,
 				Aggregate:   1,
+				ExpectedSum: 8400,
 			},
 			&test.Complete{
 				StartPass: 1,

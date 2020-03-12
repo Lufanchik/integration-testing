@@ -5,7 +5,7 @@ import (
 	"github.com/jinzhu/copier"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 	"github.com/stretchr/testify/require"
-	"lab.siroccotechnology.ru/tp/integration-testing/registry"
+	"lab.siroccotechnology.ru/tp/integration-testing/passes/mcd"
 	"lab.siroccotechnology.ru/tp/integration-testing/test"
 	"net/http"
 	"net/http/pprof"
@@ -146,14 +146,14 @@ func TestSimple(t *testing.T) {
 
 	//test.Run(t, webapi.CasesWEBAPI, test.RequestTypeOnline)
 	//test.Run(t, mck.CasesMetroComplexMCK1, test.RequestTypeOffline)
-	test.RunApiRequest(t, registry.CasesReviseGetTaskList, test.RequestTypeOffline)
-	test.RunApiRequest(t, registry.CasesResolveGetTaskList, test.RequestTypeOffline)
+	//test.RunApiRequest(t, registry.CasesReviseGetTaskList, test.RequestTypeOffline)
+	//test.RunApiRequest(t, registry.CasesResolveGetTaskList, test.RequestTypeOffline)
 	//test.Run(t, mck.CasesMetroComplexMCK2, test.RequestTypeOffline)
 	//test.Run(t, mck.CasesMetroComplexMCK3, test.RequestTypeOffline)
 	//test.Run(t, mck.CasesMetroComplexMCK4, test.RequestTypeOffline)
 	//test.Run(t, mck.CasesComplexTimeMCK, test.RequestTypeOffline)
 	//test.Run(t, mck.CasesOfflineMetroComplexMCK, test.RequestTypeOffline)
-	//test.Run(t, mcd.CasesComplexMCDMOPartOne, test.RequestTypeOffline)
+	test.Run(t, mcd.CasesComplexMCDMOPartOne, test.RequestTypeOffline)
 	//test.Run(t, mcd.CasesComplexMCDMOPartTwo, test.RequestTypeOffline)
 	//test.Run(t, mcd.CasesComplexMCDMOPartThree, test.RequestTypeOffline)
 	//test.Run(t, mcd.CasesComplexMCDMOPartFour, test.RequestTypeOffline)

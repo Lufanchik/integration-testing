@@ -88,9 +88,9 @@ func getSumByCarrier(p *Pass) uint32 {
 }
 
 func GetPassType(p *Pass) pass.PassType {
-	//if p != nil {
-	//	return p.PassType
-	//}
+	if p != nil {
+		return p.PassType
+	}
 	return pass.PassType_PASS_BBK
 }
 

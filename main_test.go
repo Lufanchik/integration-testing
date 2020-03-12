@@ -5,7 +5,6 @@ import (
 	"github.com/jinzhu/copier"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 	"github.com/stretchr/testify/require"
-	"lab.siroccotechnology.ru/tp/integration-testing/registry"
 	"lab.siroccotechnology.ru/tp/integration-testing/test"
 	"net/http"
 	"net/http/pprof"
@@ -139,15 +138,15 @@ func TestFull(t *testing.T) {
 
 func TestSimple(t *testing.T) {
 	//test.Run(t, mtppk.CasesMTPPKPasses, test.RequestTypeOffline)
-	//test.Run(t, mtppk.CasesMTPPKMGT, test.RequestTypeOffline)
-	//test.Run(t, mtppk.CasesMTPPKMCDMO, test.RequestTypeOffline)
-	//test.Run(t, mtppk.CasesMTPPKMCK, test.RequestTypeOffline)
+	//test.Run(t, mtppk.CasesMTPPK_MGT, test.RequestTypeOffline)
+	//test.Run(t, mtppk.CasesMTPPK_MCD_MO, test.RequestTypeOffline)
+	//test.Run(t, mtppk.CasesMTPPK_MCK, test.RequestTypeOffline)
 	//test.Run(t, mtppk.CasesMTPPK1, test.RequestTypeOffline)
-
+	//
 	//test.Run(t, webapi.CasesWEBAPI, test.RequestTypeOnline)
 	//test.Run(t, mck.CasesMetroComplexMCK1, test.RequestTypeOffline)
-	test.RunApiRequest(t, registry.CasesReviseGetTaskList, test.RequestTypeOffline)
-	test.RunApiRequest(t, registry.CasesResolveGetTaskList, test.RequestTypeOffline)
+	//test.RunApiRequest(t, registry.CasesReviseGetTaskList, test.RequestTypeOffline)
+	//test.RunApiRequest(t, registry.CasesResolveGetTaskList, test.RequestTypeOffline)
 	//test.Run(t, mck.CasesMetroComplexMCK2, test.RequestTypeOffline)
 	//test.Run(t, mck.CasesMetroComplexMCK3, test.RequestTypeOffline)
 	//test.Run(t, mck.CasesMetroComplexMCK4, test.RequestTypeOffline)
@@ -189,7 +188,6 @@ func TestSimple(t *testing.T) {
 	//test.Run(t, passes.CasesCancel, test.RequestTypeOffline)
 	//test.Run(t, passes.CasesWrongTimeComplexPass, test.RequestTypeOffline)
 	//test.Run(t, passes.CasesScopeCheckPass, test.RequestTypeOffline)
-	//test.Run(t, passes.CasesSimpleComplexPass, test.RequestTypeOffline)
 	//test.Run(t, mtppk.CasesMTPPKPasses, test.RequestTypeOffline)
 	//test.Run(t, webapi.CasesWEBAPI, test.RequestTypeOffline)
 	//test.Run(t, mm.CasesMetroComplexMM1, test.RequestTypeOffline)

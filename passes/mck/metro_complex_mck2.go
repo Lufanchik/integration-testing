@@ -8,69 +8,6 @@ import (
 
 var CasesMetroComplexMCK2 = test.Cases{ //gusmanov test case
 	{
-		N: "25. MCK - MM - MCD_MSK1 - MCD2_MO - MM", //25
-		T: test.T{
-			&test.Pass{
-				PaymentType: test.PaymentTypePayment,
-				Carrier:     carriers.Carrier_MM,
-				SubCarrier:  carriers.SubCarrier_MCK_SUB,
-			},
-			&test.Pass{
-				PaymentType: test.PaymentTypeFree,
-				Carrier:     carriers.Carrier_MM,
-				SubCarrier:  carriers.SubCarrier_MM_SUB,
-				Parent:      1,
-			},
-			&test.Pass{
-				PaymentType: test.PaymentTypeFree,
-				Carrier:     carriers.Carrier_MCD,
-				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
-				Terminal: &processing.Terminal{
-					Station:   "2001060", //БЕГОВАЯ
-					Direction: processing.TerminalDirection_INGRESS,
-				},
-				Parent: 1,
-			},
-			&test.Pass{
-				PaymentType: test.PaymentTypeFree,
-				Carrier:     carriers.Carrier_MCD,
-				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
-				Terminal: &processing.Terminal{
-					Station:   "2001270", //ОКРУЖНАЯ
-					Direction: processing.TerminalDirection_EGRESS,
-				},
-				Ingress: 3,
-			},
-			&test.Pass{
-				PaymentType: test.PaymentTypeFree,
-				Carrier:     carriers.Carrier_MCD,
-				SubCarrier:  carriers.SubCarrier_MCD2_MSK,
-				Terminal: &processing.Terminal{
-					Station:   "2000235", //ДМИТРОВСКАЯ
-					Direction: processing.TerminalDirection_INGRESS,
-				},
-				Parent: 1,
-			},
-			&test.Pass{
-				PaymentType: test.PaymentTypePayment,
-				Carrier:     carriers.Carrier_MCD,
-				SubCarrier:  carriers.SubCarrier_MCD2_MO,
-				Terminal: &processing.Terminal{
-					Station:   "2000480", //КРАСНОГОРСКАЯ
-					Direction: processing.TerminalDirection_EGRESS,
-				},
-				Ingress:     5,
-				ExpectedSum: 700,
-			},
-			&test.Pass{
-				PaymentType: test.PaymentTypePayment,
-				Carrier:     carriers.Carrier_MM,
-				SubCarrier:  carriers.SubCarrier_MM_SUB,
-			},
-		},
-	},
-
-	{
 		N: "26. MCK - MM - MCD_MSK1 - MCD2_MO - MCK", //26
 		T: test.T{
 			&test.Pass{

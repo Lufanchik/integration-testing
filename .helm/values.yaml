@@ -1,0 +1,35 @@
+processing_api:
+  local: http://localhost:9090
+  test: http://processing-api-gateway.test.svc.cluster.local:9090
+  stage: http://processing-api-gateway.stage.svc.cluster.local:9090
+  prod: http://processing-api-gateway.production.svc.cluster.local:9090
+
+pass:
+  local: http://localhost:13380
+  test: http://pass-service.test.svc.cluster.local:13380
+  stage: http://pass-service.stage.svc.cluster.local:13380
+  prod: http://pass-service.production.svc.cluster.local:13380
+
+apm_api:
+  local: http://localhost:1340
+  test: http://apm-api-gateway-public.test.svc.cluster.local:1340
+  stage: http://apm-api-gateway-public.stage.svc.cluster.local:1340
+  prod: ttp://apm-api-gateway-public.production.svc.cluster.local:1340
+
+web_api:
+  local: http://localhost:1344
+  test: http://web-api-gateway.test.svc.cluster.local:1344
+  stage: http://web-api-gateway.test.svc.cluster.local:1344
+  prod: ttp://web-api-gateway.test.svc.cluster.local:1344
+
+revise_api:
+  local: http://localhost:1338
+  test: http://revise-service.test.svc.cluster.local:1338
+  stage: http://revise-service.test.svc.cluster.local:1338
+  prod: ttp://revise-service.test.svc.cluster.local:1338
+
+resolve_api:
+  local: http://localhost:1335
+  test: http://resolve-service.test.svc.cluster.local:1335
+  stage: http://resolve-service.test.svc.cluster.local:1335
+  prod: ttp://resolve-service.test.svc.cluster.local:1335

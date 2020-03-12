@@ -8,7 +8,7 @@ import (
 
 var CasesMTPPK_MCK = test.Cases{
 	{
-		N:          "1.MTPPK-MCK-MM-MCK-MTPPK",
+		N: "1.MTPPK-MCK-MM-MCK-MTPPK",
 		CardSystem: processing.CardSystem_VISA,
 		T: test.T{
 			&test.Pass{

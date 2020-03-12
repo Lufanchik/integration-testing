@@ -5,6 +5,7 @@ import (
 	"github.com/brianvoe/gofakeit"
 	"github.com/gavv/httpexpect"
 	"github.com/google/uuid"
+	"lab.siroccotechnology.ru/tp/common/messages/pass"
 	"lab.siroccotechnology.ru/tp/common/messages/processing"
 	"testing"
 	"time"
@@ -164,6 +165,8 @@ func Run(t *testing.T, cases Cases, rt RequestType) {
 
 		if cases[k].FaceId != "" {
 			nc[k].card = FaceCard(cases[k].CardSystem, cases[k].FaceId)
+		} else if cases[k].PassType == pass.PassType_PASS_MT {
+			nc[k].card = MTCard(cases[k].CardSystem)
 		} else {
 			nc[k].card = Card(cases[k].CardSystem)
 		}
@@ -181,6 +184,14 @@ func Run(t *testing.T, cases Cases, rt RequestType) {
 				if ok {
 					p.RequestType = rt
 					p.faceId = ncc.c.FaceId
+					//Если PassType в начале кейса не указан, дефолтим PassType_PASS_BBK, иначе используется предустановленный
+					if ncc.c.PassType == pass.PassType_PASS_NONE {
+						p.PassType = pass.PassType_PASS_BBK
+					} else {
+						p.PassType = ncc.c.PassType
+					}
+
+					fmt.Printf("name: %s; pass-type: %d\n", ncc.c.N, ncc.c.PassType)
 					RunPass(t, p, scenario, ncc.carrierId, ncc.card)
 				}
 

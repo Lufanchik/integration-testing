@@ -118,6 +118,8 @@ func RunApiRequest(t *testing.T, cases Cases, rt RequestType) {
 	httpResolveService = httpexpect.New(t, ResolveApiUrl)
 	httpTWPGService = httpexpect.New(t, TWPGApiUrl)
 
+	fmt.Printf("%v: %s\n", httpTWPGService, TWPGApiUrl)
+
 	for _, v := range cases {
 		fmt.Println("name: " + v.N)
 		t.Run("name: "+v.N, func(t *testing.T) {
@@ -151,6 +153,7 @@ func Run(t *testing.T, cases Cases, rt RequestType) {
 	httpAuthService = httpexpect.New(t, AuthServiceUrl)
 	httpReviseService = httpexpect.New(t, ReviseApiUrl)
 	httpResolveService = httpexpect.New(t, ResolveApiUrl)
+	httpTWPGService = httpexpect.New(t, TWPGApiUrl)
 
 	type NCase struct {
 		c         *Case

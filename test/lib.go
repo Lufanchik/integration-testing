@@ -20,6 +20,7 @@ var (
 	httpAuthService    *httpexpect.Expect
 	httpReviseService  *httpexpect.Expect
 	httpResolveService *httpexpect.Expect
+	httpTWPGService    *httpexpect.Expect
 	ps                 passService.PassService
 )
 
@@ -115,6 +116,7 @@ func RunApiRequest(t *testing.T, cases Cases, rt RequestType) {
 	httpAuthService = httpexpect.New(t, AuthServiceUrl)
 	httpReviseService = httpexpect.New(t, ReviseApiUrl)
 	httpResolveService = httpexpect.New(t, ResolveApiUrl)
+	httpTWPGService = httpexpect.New(t, TWPGApiUrl)
 
 	for _, v := range cases {
 		fmt.Println("name: " + v.N)

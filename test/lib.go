@@ -191,7 +191,14 @@ func Run(t *testing.T, cases Cases, rt RequestType) {
 					p.faceId = ncc.c.FaceId
 					//Если PassType в начале кейса не указан, дефолтим PassType_PASS_BBK, иначе используется предустановленный
 					if ncc.c.PassType == pass.PassType_PASS_NONE {
-						p.PassType = pass.PassType_PASS_BBK
+						//Если фейс айди заполнен, то вместо BBK используем PassType_FACE_ID
+						if ncc.c.FaceId != "" {
+							p.PassType = pass.PassType_PASS_FACE_ID
+						} else {
+							p.PassType = pass.PassType_PASS_BBK
+						}
+					} else if ncc.c.FaceId != "" {
+
 					} else {
 						p.PassType = ncc.c.PassType
 					}

@@ -79,7 +79,7 @@ func getSumByCarrier(p *Pass) uint32 {
 		return 4400
 	}
 	if p.Carrier == carriers.Carrier_MGT {
-		return 4200
+		return 4400
 	}
 	if p.Carrier == carriers.Carrier_MTPPK {
 		return p.ExpectedSum

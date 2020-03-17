@@ -73,6 +73,24 @@ func FaceCard(system processing.CardSystem, pan string) *processing.Card {
 	return card
 }
 
+func MTCard(system processing.CardSystem) *processing.Card {
+	gofakeit.Seed(time.Now().UnixNano())
+	card := &processing.Card{
+		System: processing.CardSystem_VISA,
+		Type:   processing.CardType_MT,
+		Pan:    CardPan(),
+		Bin:    CardBin(),
+		Exp:    CardExp(),
+		Token: &processing.Token{
+			Type: processing.Token_SAMSUNG_PAY,
+		},
+	}
+	if system != processing.CardSystem_NONE_SYSTEM {
+		card.System = system
+	}
+	return card
+}
+
 func GenerateEmv(card *processing.Card, p *Pass) {
 	switch p.AuthType {
 	case AuthTypeCorrect:

@@ -22,7 +22,9 @@ type (
 		T T
 		//платежная система
 		CardSystem processing.CardSystem
-		FaceId     string
+		//тип прохода
+		PassType pass.PassType
+		FaceId   string
 	}
 	//генерация прохода
 	Pass struct {

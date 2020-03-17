@@ -152,7 +152,7 @@ func TestSimple(t *testing.T) {
 	//test.Run(t, mck.CasesMetroComplexMCK4, test.RequestTypeOffline)
 	//test.Run(t, mck.CasesComplexTimeMCK, test.RequestTypeOffline)
 	//test.Run(t, mck.CasesOfflineMetroComplexMCK, test.RequestTypeOffline)
-	//test.Run(t, mcd.CasesComplexMCDMOPartOne, test.RequestTypeOffline)
+	test.Run(t, mcd.CasesComplexMCDMOPartOne, test.RequestTypeOffline)
 	//test.Run(t, mcd.CasesComplexMCDMOPartTwo, test.RequestTypeOffline)
 	//test.Run(t, mcd.CasesComplexMCDMOPartThree, test.RequestTypeOffline)
 	//test.Run(t, mcd.CasesComplexMCDMOPartFour, test.RequestTypeOffline)

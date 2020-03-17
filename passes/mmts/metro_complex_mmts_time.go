@@ -10,7 +10,7 @@ import (
 var (
 	CasesComplexTimeMMTS = test.Cases{
 		{
-			N: "1. ММТС - ММТС",
+			N: "1.ММТС-ММТС",
 			T: test.T{
 				&test.Pass{
 					PaymentType: test.PaymentTypePayment,
@@ -31,7 +31,7 @@ var (
 			},
 		},
 		{
-			N: "2. ММТС - МЦК / Втечение 90 мин",
+			N: "2.ММТС-МЦК", //Втечение 90 мин
 			T: test.T{
 				&test.Pass{
 					PaymentType:      test.PaymentTypePayment,
@@ -51,7 +51,7 @@ var (
 			},
 		},
 		{
-			N: "3. ММТС - МЦК / После 90 мин",
+			N: "3.ММТС-МЦК", //После90мин
 			T: test.T{
 				&test.Pass{
 					PaymentType: test.PaymentTypePayment,
@@ -72,7 +72,7 @@ var (
 			},
 		},
 		{
-			N: "4. ММТС - ММ / Втечение 90 мин",
+			N: "4.ММТС-ММ", //Втечение 90 мин
 			T: test.T{
 				&test.Pass{
 					PaymentType: test.PaymentTypePayment,
@@ -93,7 +93,7 @@ var (
 			},
 		},
 		{
-			N: "5. ММТС - ММ / После 90 мин",
+			N: "5.ММТС-ММ", //После 90 мин
 			T: test.T{
 				&test.Pass{
 					PaymentType: test.PaymentTypePayment,
@@ -114,7 +114,7 @@ var (
 			},
 		},
 		{
-			N: "6. ММТС - МСК-МСК / Втечение 90 мин",
+			N: "6.ММТС-МСК-МСК", //Втечение 90 мин
 			T: test.T{
 				&test.Pass{
 					PaymentType: test.PaymentTypePayment,
@@ -142,7 +142,7 @@ var (
 					Carrier:     carriers.Carrier_MCD,
 					SubCarrier:  carriers.SubCarrier_MCD1_MO,
 					Terminal: &processing.Terminal{
-						Station:   "2001101", //ИННОВАЦИОННЫЙ ЦЕНТР
+						Station:   "2001101", //ИННОВАЦИОННЫЙЦЕНТР
 						Direction: processing.TerminalDirection_EGRESS,
 					},
 					Ingress:          2,
@@ -153,7 +153,7 @@ var (
 			},
 		},
 		{
-			N: "7. ММТС - МСК-МСК / После 90 мин",
+			N: "7.ММТС-МСК-МСК", //После90мин
 			T: test.T{
 				&test.Pass{
 					PaymentType: test.PaymentTypePayment,
@@ -181,7 +181,7 @@ var (
 					Carrier:     carriers.Carrier_MCD,
 					SubCarrier:  carriers.SubCarrier_MCD1_MO,
 					Terminal: &processing.Terminal{
-						Station:   "2001101", //ИННОВАЦИОННЫЙ ЦЕНТР
+						Station:   "2001101", //ИННОВАЦИОННЫЙЦЕНТР
 						Direction: processing.TerminalDirection_EGRESS,
 					},
 					Ingress:          2,
@@ -192,7 +192,7 @@ var (
 			},
 		},
 		{
-			N: "8. ММТС - МСК-МСК2 / Втечение 90 мин",
+			N: "8.ММТС-МСК-МСК2", //Втечение 90 мин
 			T: test.T{
 				&test.Pass{
 					PaymentType: test.PaymentTypePayment,
@@ -230,7 +230,7 @@ var (
 			},
 		},
 		{
-			N: "9. ММТС - МСК-МСК2 / После 90 мин",
+			N: "9.ММТС-МСК-МСК2", //После 90 мин
 			T: test.T{
 				&test.Pass{
 					PaymentType: test.PaymentTypePayment,
@@ -268,7 +268,7 @@ var (
 			},
 		},
 		{
-			N: "10. ММТС - МСК-МО / Втечение 90 мин",
+			N: "10.ММТС-МСК-МО", //Втечение 90 мин
 			T: test.T{
 				&test.Pass{
 					PaymentType: test.PaymentTypePayment,
@@ -296,7 +296,7 @@ var (
 					Carrier:     carriers.Carrier_MCD,
 					SubCarrier:  carriers.SubCarrier_MCD1_MO,
 					Terminal: &processing.Terminal{
-						Station:   "2001101", //ИННОВАЦИОННЫЙ ЦЕНТР
+						Station:   "2001101", //ИННОВАЦИОННЫЙЦЕНТР
 						Direction: processing.TerminalDirection_EGRESS,
 					},
 					Ingress:          2,
@@ -307,7 +307,7 @@ var (
 			},
 		},
 		{
-			N: "11. ММТС - МСК-МО / После 90 мин",
+			N: "11.ММТС-МСК-МО", //После 90 мин
 			T: test.T{
 				&test.Pass{
 					PaymentType: test.PaymentTypePayment,
@@ -335,7 +335,7 @@ var (
 					Carrier:     carriers.Carrier_MCD,
 					SubCarrier:  carriers.SubCarrier_MCD1_MO,
 					Terminal: &processing.Terminal{
-						Station:   "2001101", //ИННОВАЦИОННЫЙ ЦЕНТР
+						Station:   "2001101", //ИННОВАЦИОННЫЙЦЕНТР
 						Direction: processing.TerminalDirection_EGRESS,
 					},
 					Ingress:          4,
@@ -346,7 +346,7 @@ var (
 			},
 		},
 		{
-			N: "10. ММТС - МСК-МО2 / Втечение 90 мин",
+			N: "10.ММТС-МСК-МО2", //Втечение 90 мин
 			T: test.T{
 				&test.Pass{
 					PaymentType: test.PaymentTypePayment,
@@ -384,7 +384,7 @@ var (
 			},
 		},
 		{
-			N: "11. ММТС - МСК-МО2 / После 90 мин",
+			N: "11.ММТС-МСК-МО2", //После 90 мин
 			T: test.T{
 				&test.Pass{
 					PaymentType: test.PaymentTypePayment,

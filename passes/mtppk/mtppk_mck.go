@@ -8,7 +8,7 @@ import (
 
 var CasesMTPPK_MCK = test.Cases{
 	{
-		N:          "1. MTPPK - MCK - MM - MCK - MTPPK",
+		N: "1.MTPPK-MCK-MM-MCK-MTPPK",
 		CardSystem: processing.CardSystem_VISA,
 		T: test.T{
 			&test.Pass{
@@ -50,7 +50,7 @@ var CasesMTPPK_MCK = test.Cases{
 	},
 
 	{
-		N: "2. MCK - MM - MTPPK-MTPPK - MCK - MM ",
+		N: "2.MCK-MM-MTPPK-MTPPK-MCK-MM",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -97,7 +97,7 @@ var CasesMTPPK_MCK = test.Cases{
 	},
 
 	{
-		N: "3. MTPPK - MCD1_MO - MCK - MM - MMTS - MTPPK",
+		N: "3.MTPPK-MCD1_MO-MCK-MM-MMTS-MTPPK",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypeStartAggregate,
@@ -160,7 +160,7 @@ var CasesMTPPK_MCK = test.Cases{
 	},
 
 	{
-		N: "4. MTPPK - MGT - MCK - MTPPK - MMTS",
+		N: "4.MTPPK-MGT-MCK-MTPPK-MMTS",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypeStartAggregate,
@@ -201,7 +201,7 @@ var CasesMTPPK_MCK = test.Cases{
 	},
 
 	{
-		N: "5. MTPPk - MCK - MTPPK - MCK - MTPPK - MCK",
+		N: "5.MTPPk-MCK-MTPPK-MCK-MTPPK-MCK",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypeStartAggregate,
@@ -247,7 +247,7 @@ var CasesMTPPK_MCK = test.Cases{
 	},
 
 	{
-		N: "6. MCK - MTPPK - MM - MTPPK - MCD_MSK - MTPPK - MMTS - MTPPK - MMTS",
+		N: "6.MCK-MTPPK-MM-MTPPK-MCD_MSK-MTPPK-MMTS-MTPPK-MMTS",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -326,7 +326,7 @@ var CasesMTPPK_MCK = test.Cases{
 	},
 
 	{
-		N: "7. MTPPK - MCK - MMTS - MCK - MTPPK",
+		N: "7.MTPPK-MCK-MMTS-MCK-MTPPK",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypeStartAggregate,

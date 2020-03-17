@@ -8,7 +8,7 @@ import (
 
 var CasesMGT2 = test.Cases{
 	{
-		N: "36. МГТ -> МО-МСК 1 -> МГТ -> ММ -> МГТ -> МЦК -> МГТ -> ММТС -> МГТ",
+		N: "36.МГТ-МО-МСК1-МГТ-ММ-МГТ-МЦК-МГТ-ММТС-МГТ",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -76,7 +76,7 @@ var CasesMGT2 = test.Cases{
 		},
 	},
 	{
-		N: "37. МГТ -> МО-МСК 2 -> МГТ -> ММ -> МГТ -> МЦК -> МГТ -> ММТС -> МГТ",
+		N: "37.МГТ-МО-МСК2-МГТ-ММ-МГТ-МЦК-МГТ-ММТС-МГТ",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -144,7 +144,7 @@ var CasesMGT2 = test.Cases{
 		},
 	},
 	{
-		N: "38. МГТ -> МО-МСК 1 -> МГТ -> ММ -> МГТ -> МЦК -> МГТ -> ММ -> МГТ",
+		N: "38.МГТ-МО-МСК1-МГТ-ММ-МГТ-МЦК-МГТ-ММ-МГТ",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -212,7 +212,7 @@ var CasesMGT2 = test.Cases{
 		},
 	},
 	{
-		N: "39. МГТ -> МО-МСК 2 -> МГТ -> ММ -> МГТ -> МЦК -> МГТ -> ММ -> МГТ",
+		N: "39.МГТ-МО-МСК2-МГТ-ММ-МГТ-МЦК-МГТ-ММ-МГТ",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -280,7 +280,7 @@ var CasesMGT2 = test.Cases{
 		},
 	},
 	{
-		N: "40. МГТ -> МО-МСК 1 -> МГТ -> МЦК -> МГТ",
+		N: "40.МГТ-МО-МСК1-МГТ-МЦК-МГТ",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -326,7 +326,7 @@ var CasesMGT2 = test.Cases{
 		},
 	},
 	{
-		N: "41. МГТ -> МО-МСК 2 -> МГТ -> МЦК -> МГТ",
+		N: "41.МГТ-МО-МСК2-МГТ-МЦК-МГТ",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -372,7 +372,7 @@ var CasesMGT2 = test.Cases{
 		},
 	},
 	{
-		N: "42. МГТ -> МО-МСК 1 -> МГТ -> МЦК -> МГТ -> ММТС -> МГТ",
+		N: "42.МГТ-МО-МСК1-МГТ-МЦК-МГТ-ММТС-МГТ",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -429,7 +429,7 @@ var CasesMGT2 = test.Cases{
 		},
 	},
 	{
-		N: "43. МГТ -> МО-МСК 2 -> МГТ -> МЦК -> МГТ -> ММТС -> МГТ",
+		N: "43.МГТ-МО-МСК2-МГТ-МЦК-МГТ-ММТС-МГТ",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -486,7 +486,7 @@ var CasesMGT2 = test.Cases{
 		},
 	},
 	{
-		N: "44. МГТ -> МО-МСК 1 -> МГТ -> МЦК -> МГТ -> ММ -> МГТ -> ММТС -> МГТ",
+		N: "44.МГТ-МО-МСК1-МГТ-МЦК-МГТ-ММ-МГТ-ММТС-МГТ",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -554,7 +554,7 @@ var CasesMGT2 = test.Cases{
 		},
 	},
 	{
-		N: "45. МГТ -> МО-МСК 2 -> МГТ -> МЦК -> МГТ -> ММ -> МГТ -> ММТС -> МГТ",
+		N: "45.МГТ-МО-МСК2-МГТ-МЦК-МГТ-ММ-МГТ-ММТС-МГТ",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -622,7 +622,7 @@ var CasesMGT2 = test.Cases{
 		},
 	},
 	{
-		N: "46. МГТ -> МСК-МСК 1 -> МГТ -> МСК-МСК 2 -> МГТ",
+		N: "46.МГТ-МСК-МСК1-МГТ-МСК-МСК2-МГТ",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -659,7 +659,7 @@ var CasesMGT2 = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD2_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2001250", //МОСКВА ТОВАРНАЯ
+					Station:   "2001250", //МОСКВАТОВАРНАЯ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
 				Parent: 2,
@@ -682,7 +682,7 @@ var CasesMGT2 = test.Cases{
 		},
 	},
 	{
-		N: "47. МГТ -> МСК-МСК 2 -> МГТ -> МСК-МСК 1 -> МГТ",
+		N: "47.МГТ-МСК-МСК2-МГТ-МСК-МСК1-МГТ",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -694,7 +694,7 @@ var CasesMGT2 = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD2_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2001250", //МОСКВА ТОВАРНАЯ
+					Station:   "2001250", //МОСКВАТОВАРНАЯ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
 				ExpectedSum: 4200,
@@ -742,7 +742,7 @@ var CasesMGT2 = test.Cases{
 		},
 	},
 	{
-		N: "48. МГТ -> МСК-МСК 1 -> МГТ -> ММ -> МГТ -> МСК-МСК2 -> МГТ",
+		N: "48.МГТ-МСК-МСК1-МГТ-ММ-МГТ-МСК-МСК2-МГТ",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -790,7 +790,7 @@ var CasesMGT2 = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD2_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2001250", //МОСКВА ТОВАРНАЯ
+					Station:   "2001250", //МОСКВАТОВАРНАЯ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
 				Parent: 2,
@@ -813,7 +813,7 @@ var CasesMGT2 = test.Cases{
 		},
 	},
 	{
-		N: "49. МГТ -> МСК-МСК 2 -> МГТ -> ММ -> МГТ -> МСК-МСК 1 -> МГТ",
+		N: "49.МГТ-МСК-МСК2-МГТ-ММ-МГТ-МСК-МСК1-МГТ",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -825,7 +825,7 @@ var CasesMGT2 = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD2_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2001250", //МОСКВА ТОВАРНАЯ
+					Station:   "2001250", //МОСКВАТОВАРНАЯ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
 				ExpectedSum: 4200,
@@ -884,7 +884,7 @@ var CasesMGT2 = test.Cases{
 		},
 	},
 	{
-		N: "50. МГТ -> МСК-МСК 1 -> МГТ -> ММ -> МГТ -> МЦК -> МГТ -> МСК - МСК 2 -> МГТ",
+		N: "50.МГТ-МСК-МСК1-МГТ-ММ-МГТ-МЦК-МГТ-МСК-МСК2-МГТ",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -943,7 +943,7 @@ var CasesMGT2 = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD2_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2001250", //МОСКВА ТОВАРНАЯ
+					Station:   "2001250", //МОСКВАТОВАРНАЯ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
 				Parent: 2,
@@ -966,7 +966,7 @@ var CasesMGT2 = test.Cases{
 		},
 	},
 	{
-		N: "51. МГТ -> МСК - МСК 2 -> МГТ -> ММ -> МГТ -> МЦК -> МГТ -> МСК - МСК 1 -> МГТ",
+		N: "51.МГТ-МСК-МСК2-МГТ-ММ-МГТ-МЦК-МГТ-МСК-МСК1-МГТ",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -978,7 +978,7 @@ var CasesMGT2 = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD2_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2001250", //МОСКВА ТОВАРНАЯ
+					Station:   "2001250", //МОСКВАТОВАРНАЯ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
 				ExpectedSum: 4200,
@@ -1048,7 +1048,7 @@ var CasesMGT2 = test.Cases{
 		},
 	},
 	{
-		N: "52. МГТ -> МСК - МСК 1 -> МГТ -> МЦК -> МГТ -> ММ -> МГТ -> МСК - МСК 2 -> МГТ",
+		N: "52.МГТ-МСК-МСК1-МГТ-МЦК-МГТ-ММ-МГТ-МСК-МСК2-МГТ",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -1107,7 +1107,7 @@ var CasesMGT2 = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD2_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2001250", //МОСКВА ТОВАРНАЯ
+					Station:   "2001250", //МОСКВАТОВАРНАЯ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
 				Parent: 2,
@@ -1130,7 +1130,7 @@ var CasesMGT2 = test.Cases{
 		},
 	},
 	{
-		N: "53. МГТ -> МСК - МСК 2 -> МГТ -> МЦК -> МГТ -> ММ -> МГТ -> МСК - МСК 1 -> МГТ",
+		N: "53.МГТ-МСК-МСК2-МГТ-МЦК-МГТ-ММ-МГТ-МСК-МСК1-МГТ",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -1142,7 +1142,7 @@ var CasesMGT2 = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD2_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2001250", //МОСКВА ТОВАРНАЯ
+					Station:   "2001250", //МОСКВАТОВАРНАЯ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
 				ExpectedSum: 4200,
@@ -1212,7 +1212,7 @@ var CasesMGT2 = test.Cases{
 		},
 	},
 	{
-		N: "54. МГТ -> ММТС -> МГТ -> МСК - МСК 1 -> МГТ -> ММ -> МГТ -> МЦК -> МГТ",
+		N: "54.МГТ-ММТС-МГТ-МСК-МСК1-МГТ-ММ-МГТ-МЦК-МГТ",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -1279,7 +1279,7 @@ var CasesMGT2 = test.Cases{
 		},
 	},
 	{
-		N: "55. МГТ -> ММТС -> МГТ -> МСК - МСК 2 -> МГТ -> ММ -> МГТ -> МЦК -> МГТ",
+		N: "55.МГТ-ММТС-МГТ-МСК-МСК2-МГТ-ММ-МГТ-МЦК-МГТ",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -1301,7 +1301,7 @@ var CasesMGT2 = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD2_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2001250", //МОСКВА ТОВАРНАЯ
+					Station:   "2001250", //МОСКВАТОВАРНАЯ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
 				Parent: 2,
@@ -1346,7 +1346,7 @@ var CasesMGT2 = test.Cases{
 		},
 	},
 	{
-		N: "56. МГТ -> ММТС -> МГТ -> МСК - МСК 1 -> МГТ -> МЦК -> МГТ -> ММ -> МГТ",
+		N: "56.МГТ-ММТС-МГТ-МСК-МСК1-МГТ-МЦК-МГТ-ММ-МГТ",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -1413,7 +1413,7 @@ var CasesMGT2 = test.Cases{
 		},
 	},
 	{
-		N: "57. МГТ -> ММТС -> МГТ -> МСК - МСК 2 -> МГТ -> МЦК -> МГТ -> ММ -> МГТ",
+		N: "57.МГТ-ММТС-МГТ-МСК-МСК2-МГТ-МЦК-МГТ-ММ-МГТ",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -1435,7 +1435,7 @@ var CasesMGT2 = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD2_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2001250", //МОСКВА ТОВАРНАЯ
+					Station:   "2001250", //МОСКВАТОВАРНАЯ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
 				Parent: 2,
@@ -1480,7 +1480,7 @@ var CasesMGT2 = test.Cases{
 		},
 	},
 	{
-		N: "58. МГТ -> ММТС -> МГТ -> МСК - МО 1 -> МГТ",
+		N: "58.МГТ-ММТС-МГТ-МСК-МО1-МГТ",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -1526,7 +1526,7 @@ var CasesMGT2 = test.Cases{
 		},
 	},
 	{
-		N: "59. МГТ -> ММТС -> МГТ -> МСК - МО 2 -> МГТ",
+		N: "59.МГТ-ММТС-МГТ-МСК-МО2-МГТ",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -1548,7 +1548,7 @@ var CasesMGT2 = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD2_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2001250", //МОСКВА ТОВАРНАЯ
+					Station:   "2001250", //МОСКВАТОВАРНАЯ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
 				Parent: 2,
@@ -1572,7 +1572,7 @@ var CasesMGT2 = test.Cases{
 		},
 	},
 	{
-		N: "60. МГТ -> ММТС -> МГТ -> ММ -> МГТ -> МЦК -> МГТ -> МСК - МО 1 -> МГТ",
+		N: "60.МГТ-ММТС-МГТ-ММ-МГТ-МЦК-МГТ-МСК-МО1-МГТ",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -1640,7 +1640,7 @@ var CasesMGT2 = test.Cases{
 		},
 	},
 	{
-		N: "61. МГТ -> ММТС -> МГТ -> ММ -> МГТ -> МЦК -> МГТ -> МСК - МО 2 -> МГТ",
+		N: "61.МГТ-ММТС-МГТ-ММ-МГТ-МЦК-МГТ-МСК-МО2-МГТ",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -1684,7 +1684,7 @@ var CasesMGT2 = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD2_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2001250", //МОСКВА ТОВАРНАЯ
+					Station:   "2001250", //МОСКВАТОВАРНАЯ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
 				Parent: 2,
@@ -1708,7 +1708,7 @@ var CasesMGT2 = test.Cases{
 		},
 	},
 	{
-		N: "62. МГТ -> ММТС -> МГТ -> МЦК -> МГТ -> ММ -> МГТ -> МСК - МО 1 -> МГТ",
+		N: "62.МГТ-ММТС-МГТ-МЦК-МГТ-ММ-МГТ-МСК-МО1-МГТ",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -1776,7 +1776,7 @@ var CasesMGT2 = test.Cases{
 		},
 	},
 	{
-		N: "63. МГТ -> ММТС -> МГТ -> МЦК -> МГТ -> ММ -> МГТ -> МСК - МО 2 -> МГТ",
+		N: "63.МГТ-ММТС-МГТ-МЦК-МГТ-ММ-МГТ-МСК-МО2-МГТ",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -1820,7 +1820,7 @@ var CasesMGT2 = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD2_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2001250", //МОСКВА ТОВАРНАЯ
+					Station:   "2001250", //МОСКВАТОВАРНАЯ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
 				Parent: 2,

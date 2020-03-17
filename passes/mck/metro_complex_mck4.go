@@ -6,9 +6,9 @@ import (
 	"lab.siroccotechnology.ru/tp/integration-testing/test"
 )
 
-var CasesMetroComplexMCK4 = test.Cases{ //gusmanov test case
+var CasesMetroComplexMCK4 = test.Cases{ //gusmanovtestcase
 	{
-		N: "76. MCK - MCD1_MSK - MCD2_MO - MCD1_MSK",
+		N: "76.MCK-MCD1_MSK-MCD2_MO-MCD1_MSK",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -80,7 +80,7 @@ var CasesMetroComplexMCK4 = test.Cases{ //gusmanov test case
 	},
 
 	{
-		N: "77. MCK - MCD1_MSK - MCD2_MO - MCD1_MO",
+		N: "77.MCK-MCD1_MSK-MCD2_MO-MCD1_MO",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -153,7 +153,7 @@ var CasesMetroComplexMCK4 = test.Cases{ //gusmanov test case
 	},
 
 	{
-		N: "78. MCK - MCD1_MO - MM",
+		N: "78.MCK-MCD1_MO-MM",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -190,7 +190,7 @@ var CasesMetroComplexMCK4 = test.Cases{ //gusmanov test case
 	},
 
 	{
-		N: "79. MCK - MCD1_MO - MCK",
+		N: "79.MCK-MCD1_MO-MCK",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -227,7 +227,7 @@ var CasesMetroComplexMCK4 = test.Cases{ //gusmanov test case
 	},
 
 	{
-		N: "80. MCK - MCD1_MO - MMTS",
+		N: "80.MCK-MCD1_MO-MMTS",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -239,7 +239,7 @@ var CasesMetroComplexMCK4 = test.Cases{ //gusmanov test case
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2000245", //РАБОЧИЙ ПОСЕЛОК
+					Station:   "2000245", //РАБОЧИЙПОСЕЛОК
 					Direction: processing.TerminalDirection_INGRESS,
 				},
 				Parent: 1,
@@ -264,7 +264,7 @@ var CasesMetroComplexMCK4 = test.Cases{ //gusmanov test case
 	},
 
 	{
-		N: "81. MCK - MCD1_MO - MCD1_MSK",
+		N: "81.MCK-MCD1_MO-MCD1_MSK",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -276,7 +276,7 @@ var CasesMetroComplexMCK4 = test.Cases{ //gusmanov test case
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2000245", //РАБОЧИЙ ПОСЕЛОК
+					Station:   "2000245", //РАБОЧИЙПОСЕЛОК
 					Direction: processing.TerminalDirection_INGRESS,
 				},
 				Parent: 1,
@@ -316,7 +316,7 @@ var CasesMetroComplexMCK4 = test.Cases{ //gusmanov test case
 	},
 
 	{
-		N: "82. MCK - MCD1_MO - MCD1_MO",
+		N: "82.MCK-MCD1_MO-MCD1_MO",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -328,7 +328,7 @@ var CasesMetroComplexMCK4 = test.Cases{ //gusmanov test case
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2000245", //РАБОЧИЙ ПОСЕЛОК
+					Station:   "2000245", //РАБОЧИЙПОСЕЛОК
 					Direction: processing.TerminalDirection_INGRESS,
 				},
 				Parent: 1,

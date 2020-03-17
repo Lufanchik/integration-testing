@@ -8,7 +8,7 @@ import (
 
 var CasesMGT3 = test.Cases{
 	{
-		N: "64 MGT-> MM -> MGT ->MSK_MO1 ->MGT",
+		N: "64.MGT-MM-MGT-MSK_MO1-MGT",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -55,7 +55,7 @@ var CasesMGT3 = test.Cases{
 		},
 	},
 	{
-		N: "65 MGT-> MM -> MGT ->MSK_MO2 ->MGT",
+		N: "65.MGT-MM-MGT-MSK_MO2-MGT",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -102,7 +102,7 @@ var CasesMGT3 = test.Cases{
 		},
 	},
 	{
-		N: "66  MGT-> MM -> MGT ->MCK ->MGT -> MSK_MO1 -> MGT",
+		N: "66.MGT-MM-MGT-MCK-MGT-MSK_MO1-MGT",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -160,7 +160,7 @@ var CasesMGT3 = test.Cases{
 		},
 	},
 	{
-		N: "67.  MGT-> MM -> MGT ->MCK ->MGT -> MSK_MO2 -> MGT",
+		N: "67.MGT-MM-MGT-MCK-MGT-MSK_MO2-MGT",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -219,7 +219,7 @@ var CasesMGT3 = test.Cases{
 	},
 
 	{
-		N: "68.  MGT-> MM -> MGT ->MCK ->MGT -> MM-> MGT -> MSK_MO1 -> MGT",
+		N: "68.MGT-MM-MGT-MCK-MGT-MM-MGT-MSK_MO1-MGT",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -288,7 +288,7 @@ var CasesMGT3 = test.Cases{
 		},
 	},
 	{
-		N: "69.  MGT-> MM -> MGT ->MCK ->MGT -> MM-> MGT -> MSK_MO2 -> MGT",
+		N: "69.MGT-MM-MGT-MCK-MGT-MM-MGT-MSK_MO2-MGT",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -333,7 +333,7 @@ var CasesMGT3 = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD2_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2000590", //ПОКРОВСКОЕ СТРЕШНЕВО (в будущем - Щукинская)
+					Station:   "2000590", //ПОКРОВСКОЕСТРЕШНЕВО(вбудущем-Щукинская)
 					Direction: processing.TerminalDirection_INGRESS,
 				},
 				Parent: 2,
@@ -357,7 +357,7 @@ var CasesMGT3 = test.Cases{
 		},
 	},
 	{
-		N: "70.MGT-> MCK -> MGT ->MSK_MO1 ->MGT",
+		N: "70.MGT-MCK-MGT-MSK_MO1-MGT",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -404,7 +404,7 @@ var CasesMGT3 = test.Cases{
 		},
 	},
 	{
-		N: "71.MGT-> MCK -> MGT ->MSK_MO2 ->MGT",
+		N: "71.MGT-MCK-MGT-MSK_MO2-MGT",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -427,7 +427,7 @@ var CasesMGT3 = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD2_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2001085", //Стрешнево (бывш. ЛЕНИНГРАДСКАЯ)
+					Station:   "2001085", //Стрешнево(бывш.ЛЕНИНГРАДСКАЯ)
 					Direction: processing.TerminalDirection_INGRESS,
 				},
 				Parent: 2,
@@ -451,7 +451,7 @@ var CasesMGT3 = test.Cases{
 		},
 	},
 	{
-		N: ".72  MGT-> MM -> MGT ->MCK ->MGT -> MSK_MO1 -> MGT",
+		N: "72.MGT-MM-MGT-MCK-MGT-MSK_MO1-MGT",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -509,7 +509,7 @@ var CasesMGT3 = test.Cases{
 		},
 	},
 	{
-		N: ".73  MGT-> MM -> MGT ->MCK ->MGT -> MSK_MO2 -> MGT",
+		N: "73.MGT-MM-MGT-MCK-MGT-MSK_MO2-MGT",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,

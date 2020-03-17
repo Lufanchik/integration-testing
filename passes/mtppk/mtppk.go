@@ -8,7 +8,7 @@ import (
 
 var CasesMTPPKPasses = test.Cases{
 	{
-		N:          "1. MTPPK, VISA",
+		N:          "1.MTPPK,VISA",
 		CardSystem: processing.CardSystem_VISA,
 		T: test.T{
 			&test.Pass{
@@ -45,7 +45,7 @@ var CasesMTPPKPasses = test.Cases{
 		},
 	},
 	{
-		N:          "2. MTPPK, VISA",
+		N:          "2.MTPPK,VISA",
 		CardSystem: processing.CardSystem_VISA,
 		T: test.T{
 			&test.Pass{
@@ -82,7 +82,7 @@ var CasesMTPPKPasses = test.Cases{
 		},
 	},
 	{
-		N:          "3. MTPPK, MASTERCARD",
+		N:          "3.MTPPK,MASTERCARD",
 		CardSystem: processing.CardSystem_MASTERCARD,
 		T: test.T{
 			&test.Pass{
@@ -119,7 +119,7 @@ var CasesMTPPKPasses = test.Cases{
 		},
 	},
 	{
-		N:          "4. MTPPK, FAIL",
+		N:          "4.MTPPK,FAIL",
 		CardSystem: processing.CardSystem_MASTERCARD,
 		T: test.T{
 			&test.Pass{
@@ -156,7 +156,7 @@ var CasesMTPPKPasses = test.Cases{
 		},
 	},
 	{
-		N: "5. MM - MTPPK - MЦK - MTPPK - MМТС - MTPPK - ММ - MTPPK	- COMPLETE",
+		N: "5.MM-MTPPK-MЦK-MTPPK-MМТС-MTPPK-ММ-MTPPK-COMPLETE",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -214,7 +214,7 @@ var CasesMTPPKPasses = test.Cases{
 		},
 	},
 	{
-		N: "6. MM - MTPPK - MCK - MTPPK - MMTS - MTPPK - MM - MTPPK	- COMPLETE",
+		N: "6.MM-MTPPK-MCK-MTPPK-MMTS-MTPPK-MM-MTPPK-COMPLETE",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -280,7 +280,7 @@ var CasesMTPPKPasses = test.Cases{
 		},
 	},
 	{
-		N: "7. MM - MTPPK - MCK - MTPPK - MCK-MCK - MTPPK - MCK-MCK2 - MTPPK - MCK-MO - MTPPK - COMPLETE",
+		N: "7.MM-MTPPK-MCK-MTPPK-MCK-MCK-MTPPK-MCK-MCK2-MTPPK-MCK-MO-MTPPK-COMPLETE",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -322,13 +322,13 @@ var CasesMTPPKPasses = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2000245", //РАБОЧИЙ ПОСЕЛОК
+					Station:   "2000245", //РАБОЧИЙПОСЕЛОК
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 5,
 			},
 			&test.Pass{
-				PaymentType: test.PaymentTypeAggregate, // 7
+				PaymentType: test.PaymentTypeAggregate, //7
 				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MTPPK,
 				Aggregate:   2,

@@ -3,7 +3,6 @@ package face
 import (
 	"github.com/google/uuid"
 	"lab.siroccotechnology.ru/tp/common/messages/carriers"
-	"lab.siroccotechnology.ru/tp/common/messages/pass"
 	"lab.siroccotechnology.ru/tp/common/messages/processing"
 	"lab.siroccotechnology.ru/tp/integration-testing/test"
 )
@@ -32,7 +31,6 @@ var CasesAuthWithFace = test.Cases{
 		N:          "2. Face Auth Test / mm",
 		CardSystem: processing.CardSystem_VISA,
 		FaceId:     uuid.New().String(),
-		PassType:   pass.PassType_PASS_FACE_ID,
 		T: test.T{
 			&test.RegisterFaceId{},
 			&test.Pass{

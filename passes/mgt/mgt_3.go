@@ -13,7 +13,7 @@ var CasesMGT3 = test.Cases{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
-				ExpectedSum: 4200,
+				//ExpectedSum: 4200,
 			},
 
 			&test.Pass{
@@ -24,7 +24,7 @@ var CasesMGT3 = test.Cases{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
-				ExpectedSum: 4200,
+				//ExpectedSum: 4200,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -50,7 +50,7 @@ var CasesMGT3 = test.Cases{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
-				ExpectedSum: 4200,
+				//ExpectedSum: 4200,
 			},
 		},
 	},

@@ -174,6 +174,10 @@ func ValidatePass(t *testing.T, p *Pass, parent *Pass, ingress *Pass, isFirst bo
 
 	if p.isCancel {
 		expectPass.IsCancel = true
+
+		if p.AuthType == AuthTypeRefund {
+			expectPass.CancelType = processing.CancelType_CANCEL_REFUND
+		}
 	}
 
 	if p.PaymentType == PaymentTypeStartAggregate && p.AuthType == AuthTypeCorrect && !isFirst {

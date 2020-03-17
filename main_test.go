@@ -189,7 +189,7 @@ func TestSimple(t *testing.T) {
 	//test.Run(t, passes.CasesWrongTimeComplexPass, test.RequestTypeOffline)
 	//test.Run(t, passes.CasesScopeCheckPass, test.RequestTypeOffline)
 	//test.Run(t, mtppk.CasesMTPPKPasses, test.RequestTypeOffline)
-	//test.Run(t, webapi.CasesWEBAPI, test.RequestTypeOffline)
+	//test.Run(t, face.CasesAuthWithFace, test.RequestTypeOffline)
 	//test.Run(t, mm.CasesMetroComplexMM1, test.RequestTypeOffline)
 	//test.Run(t, face.CasesAuthWithFace, test.RequestTypeOffline)
 }

@@ -140,14 +140,14 @@ var CasesMTPPK_MGT = test.Cases{
 			&test.Complete{
 				StartPass: 10,
 				Passes: []int{
-					11, 12,
+					5, 8,
 				},
 				Sum: 123,
 			},
 			&test.Complete{
 				StartPass: 3,
 				Passes: []int{
-					5, 6, 8,
+					11, 6, 12,
 				},
 				Sum: 777,
 			},

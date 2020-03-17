@@ -6,7 +6,7 @@ import (
 	"lab.siroccotechnology.ru/tp/integration-testing/test"
 )
 
-var CasesMTPPK1 = test.Cases{
+var CasesMTPPK_single = test.Cases{
 	{
 		N:          "99. Just one pass",
 		CardSystem: processing.CardSystem_VISA,

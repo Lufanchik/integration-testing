@@ -25,7 +25,8 @@ func init() {
 	AddP(mtppk.CasesMTPPK_MGT)
 	AddP(mtppk.CasesMTPPK_MCD_MO)
 	AddP(mtppk.CasesMTPPK_MCK)
-	AddP(mtppk.CasesMTPPK1)
+	AddP(mtppk.CasesMTPPK_MCD_MSK)
+	AddP(mtppk.CasesMTPPK_single)
 
 	//ММТС
 	AddP(mmts.CasesComplexPassMMTS1)
@@ -68,9 +69,9 @@ func init() {
 
 	//МГТ
 	AddP(mgt.CasesMGT)
-	AddP(mgt.CasesMGT1)
-	AddP(mgt.CasesMGT2)
-	AddP(mgt.CasesMGT3)
+	AddP(mgt.CasesMGT_1)
+	AddP(mgt.CasesMGT_2)
+	AddP(mgt.CasesMGT_3)
 
 	//Parking
 	AddP(parking.CasesParkingPass)
@@ -90,8 +91,8 @@ func init() {
 	//AddP(passes.CasesScopeCheckPass)
 
 	//тесты с нестандартным временем - надо придумать как с ними работать
-	//AddP(mm.CasesComplexTimeMM)
-	//AddP(mcd.CasesComplexTimeMCD)
-	//Add(mmts.CasesComplexTimeMMTS)
-	//AddP(mcd.CasesComplexTimeMCD)
+	AddP(mm.CasesComplexTimeMM)
+	AddP(mcd.CasesComplexTimeMCD)
+	Add(mmts.CasesComplexTimeMMTS)
+	AddP(mcd.CasesComplexTimeMCD)
 }

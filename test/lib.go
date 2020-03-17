@@ -5,6 +5,7 @@ import (
 	"github.com/brianvoe/gofakeit"
 	"github.com/gavv/httpexpect"
 	"github.com/google/uuid"
+	"lab.siroccotechnology.ru/tp/common/messages/pass"
 	"lab.siroccotechnology.ru/tp/common/messages/processing"
 	"testing"
 	"time"
@@ -13,11 +14,14 @@ import (
 )
 
 var (
-	httpProcessingApi *httpexpect.Expect
-	httpApmApi        *httpexpect.Expect
-	httpWebApi        *httpexpect.Expect
-	httpAuthService   *httpexpect.Expect
-	ps                passService.PassService
+	httpProcessingApi  *httpexpect.Expect
+	httpApmApi         *httpexpect.Expect
+	httpWebApi         *httpexpect.Expect
+	httpAuthService    *httpexpect.Expect
+	httpReviseService  *httpexpect.Expect
+	httpResolveService *httpexpect.Expect
+	httpTWPGService    *httpexpect.Expect
+	ps                 passService.PassService
 )
 
 func NanoToMicro(tm uint64) uint64 {
@@ -104,11 +108,53 @@ func getRequestType(t *testing.T, p *Pass) RequestType {
 	return p.RequestType
 }
 
+//ApiRequest simple api request
+func RunApiRequest(t *testing.T, cases Cases, rt RequestType) {
+	httpProcessingApi = httpexpect.New(t, ProcessingApiUrl)
+	httpApmApi = httpexpect.New(t, ApmApiUrl)
+	httpWebApi = httpexpect.New(t, WebApiUrl)
+	httpAuthService = httpexpect.New(t, AuthServiceUrl)
+	httpReviseService = httpexpect.New(t, ReviseApiUrl)
+	httpResolveService = httpexpect.New(t, ResolveApiUrl)
+	httpTWPGService = httpexpect.New(t, TWPGApiUrl)
+
+	fmt.Printf("%v: %s\n", httpTWPGService, TWPGApiUrl)
+
+	for _, v := range cases {
+		fmt.Println("name: " + v.N)
+		t.Run("name: "+v.N, func(t *testing.T) {
+			for _, step := range v.T {
+				//ReviseRegistry
+				res, ok := step.(*Resolve)
+				if ok {
+					ResolveTestApi(t, res)
+				}
+
+				//ReviseRegistry
+				rev, ok := step.(*Revise)
+				if ok {
+					ReviseTestApi(t, rev)
+				}
+
+				//Login
+				lg, ok := step.(*Login)
+				if ok {
+					LoginApi(t, lg)
+				}
+			}
+		})
+	}
+}
+
 func Run(t *testing.T, cases Cases, rt RequestType) {
 	httpProcessingApi = httpexpect.New(t, ProcessingApiUrl)
 	httpApmApi = httpexpect.New(t, ApmApiUrl)
 	httpWebApi = httpexpect.New(t, WebApiUrl)
 	httpAuthService = httpexpect.New(t, AuthServiceUrl)
+	httpReviseService = httpexpect.New(t, ReviseApiUrl)
+	httpResolveService = httpexpect.New(t, ResolveApiUrl)
+	httpTWPGService = httpexpect.New(t, TWPGApiUrl)
+
 	type NCase struct {
 		c         *Case
 		card      *processing.Card
@@ -124,6 +170,8 @@ func Run(t *testing.T, cases Cases, rt RequestType) {
 
 		if cases[k].FaceId != "" {
 			nc[k].card = FaceCard(cases[k].CardSystem, cases[k].FaceId)
+		} else if cases[k].PassType == pass.PassType_PASS_MT {
+			nc[k].card = MTCard(cases[k].CardSystem)
 		} else {
 			nc[k].card = Card(cases[k].CardSystem)
 		}
@@ -141,6 +189,21 @@ func Run(t *testing.T, cases Cases, rt RequestType) {
 				if ok {
 					p.RequestType = rt
 					p.faceId = ncc.c.FaceId
+					//Если PassType в начале кейса не указан, дефолтим PassType_PASS_BBK, иначе используется предустановленный
+					if ncc.c.PassType == pass.PassType_PASS_NONE {
+						//Если фейс айди заполнен, то вместо BBK используем PassType_FACE_ID
+						if ncc.c.FaceId != "" {
+							p.PassType = pass.PassType_PASS_FACE_ID
+						} else {
+							p.PassType = pass.PassType_PASS_BBK
+						}
+					} else if ncc.c.FaceId != "" {
+
+					} else {
+						p.PassType = ncc.c.PassType
+					}
+
+					fmt.Printf("name: %s; pass-type: %d\n", ncc.c.N, ncc.c.PassType)
 					RunPass(t, p, scenario, ncc.carrierId, ncc.card)
 				}
 
@@ -152,18 +215,6 @@ func Run(t *testing.T, cases Cases, rt RequestType) {
 						t.Fail()
 					}
 					Update(t, pu, u)
-				}
-
-				//AbsGetRegistry
-				agr, ok := step.(*AbsGetRegistry)
-				if ok {
-					AbsGetRegistryApi(t, agr)
-				}
-
-				//AbsGetRegistry
-				lg, ok := step.(*Login)
-				if ok {
-					LoginApi(t, lg)
 				}
 
 				//PassCheck

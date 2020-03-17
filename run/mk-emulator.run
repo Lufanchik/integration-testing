@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
 
-cd ../../mk-emulator && make run &> ../logs/mk-emulator.logs
+echo "mk-emulator"
+cd ../../mk-emulator && make run | tee ../logs/mk-emulator.logs

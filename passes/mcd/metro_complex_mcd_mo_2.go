@@ -711,7 +711,7 @@ var CasesComplexMCDMOPartTwo = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2000009", //САВЕЛОВСКИЙ ВОКЗАЛ
+					Station:   "2000009", //САВЕЛОВСКИЙВОКЗАЛ
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 1,
@@ -734,7 +734,7 @@ var CasesComplexMCDMOPartTwo = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD2_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2000001", //КУРСКИЙ ВОКЗАЛ
+					Station:   "2000001", //КУРСКИЙВОКЗАЛ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
 				Parent: 1,
@@ -754,7 +754,7 @@ var CasesComplexMCDMOPartTwo = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2000009", //САВЕЛОВСКИЙ ВОКЗАЛ
+					Station:   "2000009", //САВЕЛОВСКИЙВОКЗАЛ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
 				ExpectedSum: 4200,
@@ -790,7 +790,7 @@ var CasesComplexMCDMOPartTwo = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2000009", //САВЕЛОВСКИЙ ВОКЗАЛ
+					Station:   "2000009", //САВЕЛОВСКИЙВОКЗАЛ
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 1,
@@ -813,7 +813,7 @@ var CasesComplexMCDMOPartTwo = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD2_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2000001", //КУРСКИЙ ВОКЗАЛ
+					Station:   "2000001", //КУРСКИЙВОКЗАЛ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
 				Parent: 1,
@@ -853,7 +853,7 @@ var CasesComplexMCDMOPartTwo = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2000009", //САВЕЛОВСКИЙ ВОКЗАЛ
+					Station:   "2000009", //САВЕЛОВСКИЙВОКЗАЛ
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 1,
@@ -876,7 +876,7 @@ var CasesComplexMCDMOPartTwo = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD2_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2000001", //КУРСКИЙ ВОКЗАЛ
+					Station:   "2000001", //КУРСКИЙВОКЗАЛ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
 				Parent: 1,
@@ -916,7 +916,7 @@ var CasesComplexMCDMOPartTwo = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2000009", //САВЕЛОВСКИЙ ВОКЗАЛ
+					Station:   "2000009", //САВЕЛОВСКИЙВОКЗАЛ
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 1,
@@ -939,7 +939,7 @@ var CasesComplexMCDMOPartTwo = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD2_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2000001", //КУРСКИЙ ВОКЗАЛ
+					Station:   "2000001", //КУРСКИЙВОКЗАЛ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
 				Parent: 1,
@@ -979,7 +979,7 @@ var CasesComplexMCDMOPartTwo = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2000009", //САВЕЛОВСКИЙ ВОКЗАЛ
+					Station:   "2000009", //САВЕЛОВСКИЙВОКЗАЛ
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 1,
@@ -1001,7 +1001,7 @@ var CasesComplexMCDMOPartTwo = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD2_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2000001", //КУРСКИЙ ВОКЗАЛ
+					Station:   "2000001", //КУРСКИЙВОКЗАЛ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
 				Parent: 1,
@@ -1056,7 +1056,7 @@ var CasesComplexMCDMOPartTwo = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2000009", //САВЕЛОВСКИЙ ВОКЗАЛ
+					Station:   "2000009", //САВЕЛОВСКИЙВОКЗАЛ
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 1,
@@ -1078,7 +1078,7 @@ var CasesComplexMCDMOPartTwo = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD2_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2000001", //КУРСКИЙ ВОКЗАЛ
+					Station:   "2000001", //КУРСКИЙВОКЗАЛ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
 				Parent: 1,
@@ -1134,7 +1134,7 @@ var CasesComplexMCDMOPartTwo = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2000009", //САВЕЛОВСКИЙ ВОКЗАЛ
+					Station:   "2000009", //САВЕЛОВСКИЙВОКЗАЛ
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 1,
@@ -1176,7 +1176,7 @@ var CasesComplexMCDMOPartTwo = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2000009", //САВЕЛОВСКИЙ ВОКЗАЛ
+					Station:   "2000009", //САВЕЛОВСКИЙВОКЗАЛ
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 1,
@@ -1218,7 +1218,7 @@ var CasesComplexMCDMOPartTwo = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2000009", //САВЕЛОВСКИЙ ВОКЗАЛ
+					Station:   "2000009", //САВЕЛОВСКИЙВОКЗАЛ
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 1,
@@ -1260,7 +1260,7 @@ var CasesComplexMCDMOPartTwo = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2000009", //САВЕЛОВСКИЙ ВОКЗАЛ
+					Station:   "2000009", //САВЕЛОВСКИЙВОКЗАЛ
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 1,
@@ -1292,7 +1292,7 @@ var CasesComplexMCDMOPartTwo = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2000009", //САВЕЛОВСКИЙ ВОКЗАЛ
+					Station:   "2000009", //САВЕЛОВСКИЙВОКЗАЛ
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 5,
@@ -1317,7 +1317,7 @@ var CasesComplexMCDMOPartTwo = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2000009", //САВЕЛОВСКИЙ ВОКЗАЛ
+					Station:   "2000009", //САВЕЛОВСКИЙВОКЗАЛ
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 1,
@@ -1349,7 +1349,7 @@ var CasesComplexMCDMOPartTwo = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2000009", //САВЕЛОВСКИЙ ВОКЗАЛ
+					Station:   "2000009", //САВЕЛОВСКИЙВОКЗАЛ
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 5,
@@ -1374,7 +1374,7 @@ var CasesComplexMCDMOPartTwo = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2000009", //САВЕЛОВСКИЙ ВОКЗАЛ
+					Station:   "2000009", //САВЕЛОВСКИЙВОКЗАЛ
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 1,
@@ -1436,7 +1436,7 @@ var CasesComplexMCDMOPartTwo = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2000009", //САВЕЛОВСКИЙ ВОКЗАЛ
+					Station:   "2000009", //САВЕЛОВСКИЙВОКЗАЛ
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 1,

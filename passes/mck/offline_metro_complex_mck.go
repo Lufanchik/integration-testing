@@ -7,7 +7,7 @@ import (
 
 var CasesOfflineMetroComplexMCK = test.Cases{
 	{
-		N: "MCK - MCK",
+		N: "MCK-MCK",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -24,31 +24,7 @@ var CasesOfflineMetroComplexMCK = test.Cases{
 		},
 	},
 	{
-		N: "MCK - MM - MM",
-		T: test.T{
-			&test.Pass{
-				PaymentType: test.PaymentTypePayment,
-				RequestType: test.RequestTypeOffline,
-				Carrier:     carriers.Carrier_MM,
-				SubCarrier:  carriers.SubCarrier_MCK_SUB,
-			},
-			&test.Pass{
-				PaymentType: test.PaymentTypeFree,
-				RequestType: test.RequestTypeOffline,
-				Carrier:     carriers.Carrier_MM,
-				SubCarrier:  carriers.SubCarrier_MM_SUB,
-				Parent:      1,
-			},
-			&test.Pass{
-				PaymentType: test.PaymentTypePayment,
-				RequestType: test.RequestTypeOffline,
-				Carrier:     carriers.Carrier_MM,
-				SubCarrier:  carriers.SubCarrier_MM_SUB,
-			},
-		},
-	},
-	{
-		N: "MCK - MM - MCK",
+		N: "MCK-MM-MM",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -67,12 +43,36 @@ var CasesOfflineMetroComplexMCK = test.Cases{
 				PaymentType: test.PaymentTypePayment,
 				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
+				SubCarrier:  carriers.SubCarrier_MM_SUB,
+			},
+		},
+	},
+	{
+		N: "MCK-MM-MCK",
+		T: test.T{
+			&test.Pass{
+				PaymentType: test.PaymentTypePayment,
+				RequestType: test.RequestTypeOffline,
+				Carrier:     carriers.Carrier_MM,
+				SubCarrier:  carriers.SubCarrier_MCK_SUB,
+			},
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
+				Carrier:     carriers.Carrier_MM,
+				SubCarrier:  carriers.SubCarrier_MM_SUB,
+				Parent:      1,
+			},
+			&test.Pass{
+				PaymentType: test.PaymentTypePayment,
+				RequestType: test.RequestTypeOffline,
+				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
 			},
 		},
 	},
 	{
-		N: "MCK - MMTS - MM",
+		N: "MCK-MMTS-MM",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -96,7 +96,7 @@ var CasesOfflineMetroComplexMCK = test.Cases{
 		},
 	},
 	{
-		N: "MCK - MMTS - MCK",
+		N: "MCK-MMTS-MCK",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -121,7 +121,7 @@ var CasesOfflineMetroComplexMCK = test.Cases{
 	},
 
 	{
-		N: "MCK - MMTS - MMTS",
+		N: "MCK-MMTS-MMTS",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -145,7 +145,7 @@ var CasesOfflineMetroComplexMCK = test.Cases{
 		},
 	},
 	{
-		N: "MCK - MM - MMTS - MM",
+		N: "MCK-MM-MMTS-MM",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -177,7 +177,7 @@ var CasesOfflineMetroComplexMCK = test.Cases{
 	},
 
 	{
-		N: "MCK - MM -MMTS -MCK",
+		N: "MCK-MM-MMTS-MCK",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -208,7 +208,7 @@ var CasesOfflineMetroComplexMCK = test.Cases{
 		},
 	},
 	{
-		N: "MCK - MM - MMTS - MMTS",
+		N: "MCK-MM-MMTS-MMTS",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -239,9 +239,9 @@ var CasesOfflineMetroComplexMCK = test.Cases{
 		},
 	},
 	//
-	//// Кейсы включающие транзакции с некорректной авторизацией
+	////Кейсывключающиетранзакцииснекорректнойавторизацией
 	{
-		N: "MCK - MCK (test.AuthTypeIncorrect) - MM - MMTS -MM", //(Если было две одинаковые поездки и последняя из них неоплачена, комплексная поездка должна создаваться и привязываться к последней)
+		N: "MCK-MCK(test.AuthTypeIncorrect)-MM-MMTS-MM", //(Если было две одинаковые поездкии последняя из них неоплачена, комплексная поездка должна создаваться и привязываться к последней)
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -280,7 +280,7 @@ var CasesOfflineMetroComplexMCK = test.Cases{
 		},
 	},
 	{
-		N: "MCK - MCK (test.AuthTypeIncorrect) - MMTS", //(Если было две одинаковые поездки и последняя из них неоплачена, комплексная поездка должна создаваться и привязываться к последней)
+		N: "MCK-MCK(test.AuthTypeIncorrect)-MMTS", //(Еслибылодвеодинаковыепоездкиипоследняяизнихнеоплачена,комплекснаяпоездкадолжнасоздаватьсяипривязыватьсякпоследней)
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -306,7 +306,7 @@ var CasesOfflineMetroComplexMCK = test.Cases{
 		},
 	},
 	{
-		N: "MCK (test.AuthTypeIncorrect) - MM - MMTS", //(Если было две одинаковые поездки и последняя из них неоплачена, комплексная поездка должна создаваться и привязываться к последней)
+		N: "MCK(test.AuthTypeIncorrect)-MM-MMTS", //(Еслибылодвеодинаковыепоездкиипоследняяизнихнеоплачена,комплекснаяпоездкадолжнасоздаватьсяипривязыватьсякпоследней)
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,

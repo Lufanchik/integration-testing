@@ -1,0 +1,11 @@
+version: "3"
+services:
+  apm-api-gateway:
+    build: .
+    ports:
+      - "6831:6831"
+    volumes:
+      - ../../../../../src:/go/src
+      - ~/.ssh:/root/.ssh
+    command: /go/src/lab.siroccotechnology.ru/tp/integration-testing/run/apm-api-gateway.run
+    network_mode: host

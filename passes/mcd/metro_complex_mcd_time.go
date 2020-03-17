@@ -9,43 +9,43 @@ import (
 
 var (
 	CasesComplexTimeMCD = test.Cases{
-		//{
-		//	N: "1. МО-МСК - ММ",
-		//	T: test.T{
-		//		&test.Pass{
-		//			PaymentType: test.PaymentTypePayment,
-		//			Carrier:     carriers.Carrier_MCD,
-		//			SubCarrier:  carriers.SubCarrier_MCD1_MO,
-		//			Terminal: &processing.Terminal{
-		//				Station:   "2000055", //ОДИНЦОВО
-		//				Direction: processing.TerminalDirection_INGRESS,
-		//			},
-		//			Now:         test.NowFullDate(2019, 12, 05, 10, 30, 00),
-		//			ExpectedSum: 4900,
-		//			TimeToWait:  35 * time.Minute,
-		//		},
-		//		&test.Pass{
-		//			PaymentType: test.PaymentTypeFree,
-		//			Carrier:     carriers.Carrier_MCD,
-		//			SubCarrier:  carriers.SubCarrier_MCD1_MSK,
-		//			Terminal: &processing.Terminal{
-		//				Station:   "2001140", //КУНЦЕВСКАЯ
-		//				Direction: processing.TerminalDirection_EGRESS,
-		//			},
-		//			Ingress: 1,
-		//			Now:     test.NowFullDate(2019, 12, 05, 11, 22, 00),
-		//		},
-		//		&test.Pass{
-		//			PaymentType: test.PaymentTypeFree,
-		//			Carrier:     carriers.Carrier_MM,
-		//			SubCarrier:  carriers.SubCarrier_MM_SUB,
-		//			Now:         test.NowFullDate(2019, 12, 05, 12, 35, 00),
-		//			Parent:      1,
-		//		},
-		//	},
-		//},
 		{
-			N: "2. МО-МСК2 - ММ",
+			N: "1.МО-МСК-ММ",
+			T: test.T{
+				&test.Pass{
+					PaymentType: test.PaymentTypePayment,
+					Carrier:     carriers.Carrier_MCD,
+					SubCarrier:  carriers.SubCarrier_MCD1_MO,
+					Terminal: &processing.Terminal{
+						Station:   "2000055", //ОДИНЦОВО
+						Direction: processing.TerminalDirection_INGRESS,
+					},
+					Now:         test.NowFullDate(2019, 12, 05, 10, 30, 00),
+					ExpectedSum: 4900,
+					TimeToWait:  35 * time.Minute,
+				},
+				&test.Pass{
+					PaymentType: test.PaymentTypeFree,
+					Carrier:     carriers.Carrier_MCD,
+					SubCarrier:  carriers.SubCarrier_MCD1_MSK,
+					Terminal: &processing.Terminal{
+						Station:   "2001140", //КУНЦЕВСКАЯ
+						Direction: processing.TerminalDirection_EGRESS,
+					},
+					Ingress: 1,
+					Now:     test.NowFullDate(2019, 12, 05, 11, 22, 00),
+				},
+				&test.Pass{
+					PaymentType: test.PaymentTypeFree,
+					Carrier:     carriers.Carrier_MM,
+					SubCarrier:  carriers.SubCarrier_MM_SUB,
+					Now:         test.NowFullDate(2019, 12, 05, 12, 35, 00),
+					Parent:      1,
+				},
+			},
+		},
+		{
+			N: "2.МО-МСК2-ММ",
 			T: test.T{
 				&test.Pass{
 					PaymentType: test.PaymentTypePayment,
@@ -80,7 +80,7 @@ var (
 			},
 		},
 		{
-			N: "3. МСК-МСК - ММ - МЦК - ММТС -МСК-МО",
+			N: "3.МСК-МСК-ММ-МЦК-ММТС-МСК-МО",
 			T: test.T{
 				&test.Pass{
 					PaymentType: test.PaymentTypePayment,
@@ -99,7 +99,7 @@ var (
 					Carrier:     carriers.Carrier_MCD,
 					SubCarrier:  carriers.SubCarrier_MCD1_MO,
 					Terminal: &processing.Terminal{
-						Station:   "2001101", //ИННОВАЦИОННЫЙ ЦЕНТР
+						Station:   "2001101", //ИННОВАЦИОННЫЙЦЕНТР
 						Direction: processing.TerminalDirection_EGRESS,
 					},
 					Ingress:     1,
@@ -141,7 +141,7 @@ var (
 					Carrier:     carriers.Carrier_MCD,
 					SubCarrier:  carriers.SubCarrier_MCD1_MO,
 					Terminal: &processing.Terminal{
-						Station:   "2001101", //ИННОВАЦИОННЫЙ ЦЕНТР
+						Station:   "2001101", //ИННОВАЦИОННЫЙЦЕНТР
 						Direction: processing.TerminalDirection_EGRESS,
 					},
 					Ingress:     4,
@@ -151,7 +151,7 @@ var (
 			},
 		},
 		{
-			N: "4. МО-МСК2 - МСК-МО",
+			N: "4.МО-МСК2-МСК-МО",
 			T: test.T{
 				&test.Pass{
 					PaymentType: test.PaymentTypePayment,
@@ -202,7 +202,7 @@ var (
 			},
 		},
 		{
-			N: "5. МО-МСК2 - МСК-МО2", //Поездка на границе нового года, месяца, дня
+			N: "5.МО-МСК2-МСК-МО2", //Поездканаграниценовогогода,месяца,дня
 			T: test.T{
 				&test.Pass{
 					PaymentType: test.PaymentTypePayment,
@@ -221,7 +221,7 @@ var (
 					Carrier:     carriers.Carrier_MCD,
 					SubCarrier:  carriers.SubCarrier_MCD2_MSK,
 					Terminal: &processing.Terminal{
-						Station:   "2001425", //КРАСНЫЙ БАЛТИЕЦ
+						Station:   "2001425", //КРАСНЫЙБАЛТИЕЦ
 						Direction: processing.TerminalDirection_EGRESS,
 					},
 					Ingress: 1,
@@ -253,7 +253,7 @@ var (
 			},
 		},
 		{
-			N: "6. МСК-МСК - ММ - МЦК - ММТС - МСК-МО - МО-МО2 - МСК-МСК - ММТС - МСК-МСК2 - ММ,",
+			N: "6.МСК-МСК-ММ-МЦК-ММТС-МСК-МО-МО-МО2-МСК-МСК-ММТС-МСК-МСК2-ММ,",
 			T: test.T{
 				&test.Pass{
 					PaymentType: test.PaymentTypePayment,
@@ -272,7 +272,7 @@ var (
 					Carrier:     carriers.Carrier_MCD,
 					SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 					Terminal: &processing.Terminal{
-						Station:   "2000245", //РАБОЧИЙ ПОСЕЛОК
+						Station:   "2000245", //РАБОЧИЙПОСЕЛОК
 						Direction: processing.TerminalDirection_EGRESS,
 					},
 					Ingress: 1,
@@ -313,7 +313,7 @@ var (
 					Carrier:     carriers.Carrier_MCD,
 					SubCarrier:  carriers.SubCarrier_MCD1_MO,
 					Terminal: &processing.Terminal{
-						Station:   "2001101", //ИННОВАЦИОННЫЙ ЦЕНТР
+						Station:   "2001101", //ИННОВАЦИОННЫЙЦЕНТР
 						Direction: processing.TerminalDirection_EGRESS,
 					},
 					Ingress:     4,
@@ -360,7 +360,7 @@ var (
 					Carrier:     carriers.Carrier_MCD,
 					SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 					Terminal: &processing.Terminal{
-						Station:   "2000245", //РАБОЧИЙ ПОСЕЛОК
+						Station:   "2000245", //РАБОЧИЙПОСЕЛОК
 						Direction: processing.TerminalDirection_EGRESS,
 					},
 					Ingress: 8,
@@ -405,7 +405,7 @@ var (
 			},
 		},
 		{
-			N: "7. МО-МСК - МСК-МО2",
+			N: "7.МО-МСК-МСК-МО2",
 			T: test.T{
 				&test.Pass{
 					PaymentType: test.PaymentTypePayment,
@@ -456,7 +456,7 @@ var (
 			},
 		},
 		{
-			N: "8. МСК-МСК2 - МСК-МСК",
+			N: "8.МСК-МСК2-МСК-МСК",
 			T: test.T{
 				&test.Pass{
 					PaymentType: test.PaymentTypePayment,
@@ -489,7 +489,7 @@ var (
 						Station:   "2000700", //ТЕСТОВСКАЯ
 						Direction: processing.TerminalDirection_INGRESS,
 					},
-					//ExpectedSum: 4200,
+					//ExpectedSum:4200,
 					Now:        test.NowFullDate(2020, 01, 01, 00, 30, 00),
 					TimeToWait: 10 * time.Minute,
 					Parent:     1,
@@ -499,7 +499,7 @@ var (
 					Carrier:     carriers.Carrier_MCD,
 					SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 					Terminal: &processing.Terminal{
-						Station:   "2000245", //РАБОЧИЙ ПОСЕЛОК
+						Station:   "2000245", //РАБОЧИЙПОСЕЛОК
 						Direction: processing.TerminalDirection_EGRESS,
 					},
 					Ingress: 3,
@@ -508,7 +508,7 @@ var (
 			},
 		},
 		{
-			N: "9. МСК-МО2 - МО-МСК2",
+			N: "9.МСК-МО2-МО-МСК2",
 			T: test.T{
 				&test.Pass{
 					PaymentType: test.PaymentTypePayment,

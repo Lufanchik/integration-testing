@@ -13,7 +13,7 @@ var CasesMGT_2 = test.Cases{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
-				ExpectedSum: 4200,
+				//ExpectedSum: 4200,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -24,7 +24,7 @@ var CasesMGT_2 = test.Cases{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
-				ExpectedSum: 4200,
+				//ExpectedSum: 4200,
 			},
 		},
 	},
@@ -35,7 +35,7 @@ var CasesMGT_2 = test.Cases{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
-				ExpectedSum: 4200,
+				//ExpectedSum: 4200,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -46,7 +46,7 @@ var CasesMGT_2 = test.Cases{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
-				ExpectedSum: 4200,
+				//ExpectedSum: 4200,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -57,7 +57,7 @@ var CasesMGT_2 = test.Cases{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
-				ExpectedSum: 4200,
+				//ExpectedSum: 4200,
 			},
 		},
 	},
@@ -1094,7 +1094,7 @@ var CasesMGT_2 = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD2_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2001250", //МОСКВА ТОВАРНАЯ
+					Station:   "2001250", //МОСКВАТОВАРНАЯ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
 				Parent: 2,
@@ -1225,7 +1225,7 @@ var CasesMGT_2 = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD2_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2001250", //МОСКВА ТОВАРНАЯ
+					Station:   "2001250", //МОСКВАТОВАРНАЯ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
 				Parent: 2,
@@ -1378,7 +1378,7 @@ var CasesMGT_2 = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD2_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2001250", //МОСКВА ТОВАРНАЯ
+					Station:   "2001250", //МОСКВАТОВАРНАЯ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
 				Parent: 2,

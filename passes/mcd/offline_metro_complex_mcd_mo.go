@@ -8,7 +8,7 @@ import (
 
 var CasesOfflineMetroComplexMCDMO = test.Cases{
 	{
-		N: "1. ММ - МЦК - МО-МО2 - МО-МО1",
+		N: "1.ММ-МЦК-МО-МО2-МО-МО1",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -70,7 +70,7 @@ var CasesOfflineMetroComplexMCDMO = test.Cases{
 		},
 	},
 	{
-		N: "2. МО-МСК1 - ММ - МЦК - ММ - MM",
+		N: "2.МО-МСК1-ММ-МЦК-ММ-MM",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -124,7 +124,7 @@ var CasesOfflineMetroComplexMCDMO = test.Cases{
 		},
 	},
 	{
-		N: "3. МО-МСК1 - ММ -  МЦК - МMTS - MMTS",
+		N: "3.МО-МСК1-ММ-МЦК-МMTS-MMTS",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -178,7 +178,7 @@ var CasesOfflineMetroComplexMCDMO = test.Cases{
 		},
 	},
 	{
-		N: "4. МО-МСК1 - ММ - МЦК - ММ - МО-МСК1",
+		N: "4.МО-МСК1-ММ-МЦК-ММ-МО-МСК1",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -248,7 +248,7 @@ var CasesOfflineMetroComplexMCDMO = test.Cases{
 		},
 	},
 	{
-		N: "5. МО-МСК1 - ММ -  МЦК - МСК-МСК2 - МСК-МО1",
+		N: "5.МО-МСК1-ММ-МЦК-МСК-МСК2-МСК-МО1",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -267,7 +267,7 @@ var CasesOfflineMetroComplexMCDMO = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2000009", //САВЕЛОВСКИЙ ВОКЗАЛ
+					Station:   "2000009", //САВЕЛОВСКИЙВОКЗАЛ
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 1,
@@ -293,7 +293,7 @@ var CasesOfflineMetroComplexMCDMO = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD2_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2000001", //КУРСКИЙ ВОКЗАЛ
+					Station:   "2000001", //КУРСКИЙВОКЗАЛ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
 				Parent: 1,
@@ -315,7 +315,7 @@ var CasesOfflineMetroComplexMCDMO = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2000009", //САВЕЛОВСКИЙ ВОКЗАЛ
+					Station:   "2000009", //САВЕЛОВСКИЙВОКЗАЛ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
 				ExpectedSum: 4200,
@@ -335,7 +335,7 @@ var CasesOfflineMetroComplexMCDMO = test.Cases{
 		},
 	},
 	{
-		N: "6. МО_МСК1 - ММ - МСК-МСК2 - ММ - МЦК",
+		N: "6.МО_МСК1-ММ-МСК-МСК2-ММ-МЦК",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -354,7 +354,7 @@ var CasesOfflineMetroComplexMCDMO = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2000009", //САВЕЛОВСКИЙ ВОКЗАЛ
+					Station:   "2000009", //САВЕЛОВСКИЙВОКЗАЛ
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 1,
@@ -404,7 +404,7 @@ var CasesOfflineMetroComplexMCDMO = test.Cases{
 		},
 	},
 	{
-		N: "7. МО-МСК1 - ММ - МСК-МСК2 - ММ - МСК-МСК1",
+		N: "7.МО-МСК1-ММ-МСК-МСК2-ММ-МСК-МСК1",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -423,7 +423,7 @@ var CasesOfflineMetroComplexMCDMO = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2000009", //САВЕЛОВСКИЙ ВОКЗАЛ
+					Station:   "2000009", //САВЕЛОВСКИЙВОКЗАЛ
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 1,
@@ -481,7 +481,7 @@ var CasesOfflineMetroComplexMCDMO = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2000009", //САВЕЛОВСКИЙ ВОКЗАЛ
+					Station:   "2000009", //САВЕЛОВСКИЙВОКЗАЛ
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 7,
@@ -489,7 +489,7 @@ var CasesOfflineMetroComplexMCDMO = test.Cases{
 		},
 	},
 	{
-		N: "8. МО-МСК1 - МЦК - ММ - МСК-МСК2 - МСК-МСК1",
+		N: "8.МО-МСК1-МЦК-ММ-МСК-МСК2-МСК-МСК1",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -508,7 +508,7 @@ var CasesOfflineMetroComplexMCDMO = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2000009", //САВЕЛОВСКИЙ ВОКЗАЛ
+					Station:   "2000009", //САВЕЛОВСКИЙВОКЗАЛ
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 1,
@@ -555,7 +555,7 @@ var CasesOfflineMetroComplexMCDMO = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2000009", //САВЕЛОВСКИЙ ВОКЗАЛ
+					Station:   "2000009", //САВЕЛОВСКИЙВОКЗАЛ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
 				ExpectedSum: 4200,
@@ -566,7 +566,7 @@ var CasesOfflineMetroComplexMCDMO = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2000245", //РАБОЧИЙ ПОСЕЛОК
+					Station:   "2000245", //РАБОЧИЙПОСЕЛОК
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 7,
@@ -574,7 +574,7 @@ var CasesOfflineMetroComplexMCDMO = test.Cases{
 		},
 	},
 	{
-		N: "9. МО-МСК1 - МЦК - МСК-МСК2 - ММ - ММ",
+		N: "9.МО-МСК1-МЦК-МСК-МСК2-ММ-ММ",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -593,7 +593,7 @@ var CasesOfflineMetroComplexMCDMO = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2000009", //САВЕЛОВСКИЙ ВОКЗАЛ
+					Station:   "2000009", //САВЕЛОВСКИЙВОКЗАЛ
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 1,
@@ -643,7 +643,7 @@ var CasesOfflineMetroComplexMCDMO = test.Cases{
 		},
 	},
 	{
-		N: "10. МО-МСК1 - МСК-МСК2 - ММ - МЦК - ММ",
+		N: "10.МО-МСК1-МСК-МСК2-ММ-МЦК-ММ",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -662,7 +662,7 @@ var CasesOfflineMetroComplexMCDMO = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2000009", //САВЕЛОВСКИЙ ВОКЗАЛ
+					Station:   "2000009", //САВЕЛОВСКИЙВОКЗАЛ
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 1,
@@ -712,7 +712,7 @@ var CasesOfflineMetroComplexMCDMO = test.Cases{
 		},
 	},
 	{
-		N: "11. MО-МСК1 - MСК-MСК2 - ММ - ММТС - MЦK",
+		N: "11.MО-МСК1-MСК-MСК2-ММ-ММТС-MЦK",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -731,7 +731,7 @@ var CasesOfflineMetroComplexMCDMO = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2000009", //САВЕЛОВСКИЙ ВОКЗАЛ
+					Station:   "2000009", //САВЕЛОВСКИЙВОКЗАЛ
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 1,
@@ -742,7 +742,7 @@ var CasesOfflineMetroComplexMCDMO = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD2_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2000590", //ПОКРОВСКОЕ СТРЕШНЕВО (в будущем - Щукинская)
+					Station:   "2000590", //ПОКРОВСКОЕСТРЕШНЕВО(вбудущем-Щукинская)
 					Direction: processing.TerminalDirection_INGRESS,
 				},
 				Parent: 1,
@@ -753,7 +753,7 @@ var CasesOfflineMetroComplexMCDMO = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD2_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2000001", //КУРСКИЙ ВОКЗАЛ
+					Station:   "2000001", //КУРСКИЙВОКЗАЛ
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 3,
@@ -781,7 +781,7 @@ var CasesOfflineMetroComplexMCDMO = test.Cases{
 		},
 	},
 	{
-		N: "12. МО-МСК1 - MСК-MSK2 - MCK - MM - MСК-МО1",
+		N: "12.МО-МСК1-MСК-MSK2-MCK-MM-MСК-МО1",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -800,7 +800,7 @@ var CasesOfflineMetroComplexMCDMO = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2000009", //САВЕЛОВСКИЙ ВОКЗАЛ
+					Station:   "2000009", //САВЕЛОВСКИЙВОКЗАЛ
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 1,
@@ -811,7 +811,7 @@ var CasesOfflineMetroComplexMCDMO = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD2_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2000590", //ПОКРОВСКОЕ СТРЕШНЕВО (в будущем - Щукинская)
+					Station:   "2000590", //ПОКРОВСКОЕСТРЕШНЕВО(вбудущем-Щукинская)
 					Direction: processing.TerminalDirection_INGRESS,
 				},
 				Parent: 1,
@@ -822,7 +822,7 @@ var CasesOfflineMetroComplexMCDMO = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD2_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2000001", //КУРСКИЙ ВОКЗАЛ
+					Station:   "2000001", //КУРСКИЙВОКЗАЛ
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 3,

@@ -1,4 +1,4 @@
-package user
+package test
 
 import (
 	"bytes"
@@ -7,7 +7,6 @@ import (
 	"github.com/prometheus/common/log"
 	"io/ioutil"
 	"lab.siroccotechnology.ru/tp/common/messages/user"
-	"lab.siroccotechnology.ru/tp/integration-testing/test"
 	"net/http"
 	"testing"
 )
@@ -26,7 +25,7 @@ func GetAccessToken(t *testing.T) (AT string, err error) {
 	loginData := bytes.NewReader(data)
 
 	//пробуем залогиниться
-	resp, err := httpClient.Post(test.ApmApiUrl+"/twirp/proto.ApmAPIGatewayPublic/Login", "application/json", loginData)
+	resp, err := httpClient.Post(ApmApiUrl+"/twirp/proto.ApmAPIGatewayPublic/Login", "application/json", loginData)
 	//неизвестная ошибка
 	if resp == nil {
 		return "", errors.New("Login Resp is nil")
@@ -63,7 +62,7 @@ func GetAccessToken(t *testing.T) (AT string, err error) {
 	data, _ = json.Marshal(rqReg)
 	registerData := bytes.NewReader(data)
 
-	resp, err = httpClient.Post(test.ApmApiUrl+"/twirp/proto.ApmAPIGatewayPublic/Register", "application/json", registerData)
+	resp, err = httpClient.Post(ApmApiUrl+"/twirp/proto.ApmAPIGatewayPublic/Register", "application/json", registerData)
 	//ошибка регистрации
 	if resp == nil {
 		return "", errors.New("Error Register resp is nil")

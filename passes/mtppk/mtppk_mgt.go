@@ -39,7 +39,7 @@ var CasesMTPPK_MGT = test.Cases{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
 				RequestType: test.RequestTypeOffline,
-				//ExpectedSum: 4200,
+				//ExpectedSum: 4400,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeAggregate,
@@ -140,14 +140,14 @@ var CasesMTPPK_MGT = test.Cases{
 			&test.Complete{
 				StartPass: 10,
 				Passes: []int{
-					5, 8,
+					11, 12,
 				},
 				Sum: 123,
 			},
 			&test.Complete{
 				StartPass: 3,
 				Passes: []int{
-					11, 6, 12,
+					5, 6, 8,
 				},
 				Sum: 777,
 			},

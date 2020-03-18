@@ -798,54 +798,54 @@ var CasesCancel = test.Cases{
 			},
 		},
 	},
-	{
-		N: "25. ММ успешная авторизация + Отмена Refund",
-		T: test.T{
-			&test.Pass{
-				PaymentType: test.PaymentTypePayment,
-				RequestType: test.RequestTypeOnline,
-				Carrier:     carriers.Carrier_MM,
-				SubCarrier:  carriers.SubCarrier_MM_SUB,
-				AuthType:    test.AuthTypeRefund,
-			},
-			&test.Cancel{
-				Target: 1,
-				Reason: processing.CancelPassRequest_CSS,
-			},
-		},
-	},
-	{
-		N: "26. МЦК успешная авторизация + Отмена Refund",
-		T: test.T{
-			&test.Pass{
-				PaymentType: test.PaymentTypePayment,
-				RequestType: test.RequestTypeOnline,
-				Carrier:     carriers.Carrier_MM,
-				SubCarrier:  carriers.SubCarrier_MCK_SUB,
-				AuthType:    test.AuthTypeRefund,
-			},
-			&test.Cancel{
-				Target: 1,
-				Reason: processing.CancelPassRequest_CSS,
-			},
-		},
-	},
-	{
-		N: "27. ММТС успешная авторизация + Отмена Refund",
-		T: test.T{
-			&test.Pass{
-				PaymentType: test.PaymentTypePayment,
-				RequestType: test.RequestTypeOnline,
-				Carrier:     carriers.Carrier_MM,
-				SubCarrier:  carriers.SubCarrier_MMTS_SUB,
-				AuthType:    test.AuthTypeRefund,
-			},
-			&test.Cancel{
-				Target: 1,
-				Reason: processing.CancelPassRequest_CSS,
-			},
-		},
-	},
+	//{
+	//	N: "25. ММ успешная авторизация + Отмена Refund",
+	//	T: test.T{
+	//		&test.Pass{
+	//			PaymentType: test.PaymentTypePayment,
+	//			RequestType: test.RequestTypeOnline,
+	//			Carrier:     carriers.Carrier_MM,
+	//			SubCarrier:  carriers.SubCarrier_MM_SUB,
+	//			AuthType:    test.AuthTypeRefund,
+	//		},
+	//		&test.Cancel{
+	//			Target: 1,
+	//			Reason: processing.CancelPassRequest_CSS,
+	//		},
+	//	},
+	//},
+	//{
+	//	N: "26. МЦК успешная авторизация + Отмена Refund",
+	//	T: test.T{
+	//		&test.Pass{
+	//			PaymentType: test.PaymentTypePayment,
+	//			RequestType: test.RequestTypeOnline,
+	//			Carrier:     carriers.Carrier_MM,
+	//			SubCarrier:  carriers.SubCarrier_MCK_SUB,
+	//			AuthType:    test.AuthTypeRefund,
+	//		},
+	//		&test.Cancel{
+	//			Target: 1,
+	//			Reason: processing.CancelPassRequest_CSS,
+	//		},
+	//	},
+	//},
+	//{
+	//	N: "27. ММТС успешная авторизация + Отмена Refund",
+	//	T: test.T{
+	//		&test.Pass{
+	//			PaymentType: test.PaymentTypePayment,
+	//			RequestType: test.RequestTypeOnline,
+	//			Carrier:     carriers.Carrier_MM,
+	//			SubCarrier:  carriers.SubCarrier_MMTS_SUB,
+	//			AuthType:    test.AuthTypeRefund,
+	//		},
+	//		&test.Cancel{
+	//			Target: 1,
+	//			Reason: processing.CancelPassRequest_CSS,
+	//		},
+	//	},
+	//},
 	//ОТМЕНА ПРОХОДА В КОМПЛЕКСНОЙ ПОЕЗДКЕ
 
 	{
@@ -856,7 +856,7 @@ var CasesCancel = test.Cases{
 				RequestType: test.RequestTypeOnline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
-				ExpectedSum: 4200,
+				//ExpectedSum: 4200,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,

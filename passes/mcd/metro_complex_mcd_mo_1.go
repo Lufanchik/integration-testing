@@ -904,7 +904,8 @@ var CasesComplexMCDMOPartOne = test.Cases{
 		},
 	},
 	{
-		N: "22. MCD MSK1 - MCD MSK2 - MCD MO2", //
+		N:          "22. MCD MSK1 - MCD MSK2 - MCD MO2", //
+		CardSystem: processing.CardSystem_VISA,
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -944,7 +945,7 @@ var CasesComplexMCDMOPartOne = test.Cases{
 					Station:   "2000460",
 					Direction: processing.TerminalDirection_EGRESS,
 				},
-				Ingress:     5,
+				Ingress:     3,
 				ExpectedSum: 700,
 			},
 		},

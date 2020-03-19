@@ -279,7 +279,7 @@ var CasesComplexPassMMTS1 = test.Cases{
 		},
 	},
 	{
-		N: "9.ММТС-ММ-МЦК-МСК-МСК-ММ",
+		N: "9. ММТС - ММ - МЦК - МСК-МСК - ММ",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -313,7 +313,7 @@ var CasesComplexPassMMTS1 = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2000245", //РАБОЧИЙПОСЕЛОК
+					Station:   "2000245", //РАБОЧИЙ ПОСЕЛОК
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 4,

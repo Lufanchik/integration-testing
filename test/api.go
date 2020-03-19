@@ -12,6 +12,7 @@ import (
 	"lab.siroccotechnology.ru/tp/common/messages/pass"
 	"lab.siroccotechnology.ru/tp/common/messages/processing"
 	"lab.siroccotechnology.ru/tp/common/messages/registries"
+	protoResponse "lab.siroccotechnology.ru/tp/common/messages/response"
 	"lab.siroccotechnology.ru/tp/common/messages/user"
 	webApi "lab.siroccotechnology.ru/tp/web-api-gateway/proto"
 	"net/http"
@@ -173,6 +174,10 @@ func ValidatePass(t *testing.T, p *Pass, parent *Pass, ingress *Pass, isFirst bo
 
 	if p.isCancel {
 		expectPass.IsCancel = true
+
+		if p.AuthType == AuthTypeRefund {
+			expectPass.CancelType = processing.CancelType_CANCEL_REFUND
+		}
 	}
 
 	if p.PaymentType == PaymentTypeStartAggregate && p.AuthType == AuthTypeCorrect && !isFirst {
@@ -195,7 +200,16 @@ func ValidatePass(t *testing.T, p *Pass, parent *Pass, ingress *Pass, isFirst bo
 		expectPass.Sum = 0
 	}
 
+	if p.PassType == pass.PassType_PASS_MT {
+		expectPass.IsFree = true
+	}
+
 	if p.PaymentType == PaymentTypeStartAggregate && !isFirst {
+		expectPass.Sum = getSumByCarrier(p)
+		expectPass.SumAggregate = getSumByCarrier(p)
+	}
+
+	if p.PaymentType == PaymentTypeStartAggregate && !isFirst && p.AuthType == AuthTypeIncorrect {
 		expectPass.Sum = 0
 		expectPass.SumAggregate = getSumByCarrier(p)
 	}
@@ -525,14 +539,14 @@ func FaceApiGetRegisterLink(t *testing.T, card *processing.Card, fcl *RegisterFa
 
 func faceForceCheck() error {
 	req, _ := FaceForceCheckRequest()
-	u := "/twirp/sirocco.AuthAPI/FaceForceCheck"
-	r := httpAuthService.POST(u).WithJSON(req).
+	u := "/twirp/proto.TWPGService/FaceForceCheck"
+	r := httpTWPGService.POST(u).WithJSON(req).
 		Expect().
 		Status(http.StatusOK)
 
 	object := r.Body().Raw()
 	logRequest(u, r)
 
-	response := &processing.AuthResponse{}
+	response := &protoResponse.EmptyMessage{}
 	return jsonpb.Unmarshal(strings.NewReader(object), response)
 }

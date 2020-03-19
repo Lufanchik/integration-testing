@@ -18,6 +18,7 @@ import (
 func init() {
 	//параллельный запуск
 	//общие кейсы проходов
+	//CasesCancel 25 26 27 пока на доработке
 	AddP(passes.CasesCancel)
 
 	//МТППК
@@ -61,8 +62,6 @@ func init() {
 	AddP(mcd.CasesComplexMCDMOPartThree)
 	AddP(mcd.CasesComplexMCDMOPartFour)
 	AddP(mcd.CasesComplexMCDMOPartFife)
-	AddP(mcd.CasesOfflineMetroComplexMCD)
-	AddP(mcd.CasesOfflineMetroComplexMCDMO)
 
 	//APM
 	AddP(apm.CasesApmGateway)

@@ -9,14 +9,14 @@ import (
 var CasesMTPPK_single = test.Cases{
 	{
 		N:          "1. ММТС - MTППК - ММТС - MTPPK - MMTS - MTPPK - COMPLETE",
-		CardSystem: processing.CardSystem_MIR,
+		CardSystem: processing.CardSystem_VISA,
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MMTS_SUB,
-				ExpectedSum: 4200,
+				//ExpectedSum: 4200,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeStartAggregate,
@@ -26,43 +26,47 @@ var CasesMTPPK_single = test.Cases{
 				ExpectedSum: 6,
 			},
 			&test.Pass{
-				PaymentType: test.PaymentTypePayment,
+				PaymentType: test.PaymentTypeFree,
 				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
-				ExpectedSum: 4200,
+				Parent:      1,
+				//ExpectedSum: 4400,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeAggregate,
 				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MTPPK,
 				Aggregate:   2,
+				ExpectedSum: 6,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MMTS_SUB,
-				ExpectedSum: 4200,
+				//ExpectedSum: 4200,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeAggregate,
 				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MTPPK,
 				Aggregate:   2,
+				ExpectedSum: 6,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MMTS_SUB,
-				ExpectedSum: 4200,
+				//ExpectedSum: 4200,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeAggregate,
 				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MTPPK,
 				Aggregate:   2,
+				ExpectedSum: 6,
 			},
 			&test.Complete{
 				StartPass: 2,

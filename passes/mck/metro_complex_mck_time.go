@@ -9,7 +9,7 @@ import (
 
 var CasesComplexTimeMCK = test.Cases{
 	{
-		N: "1. MCK -  MCD1_MSK - MM - MCD2_MSK - MCD2_MO",
+		N: "1.MCK-MCD1_MSK-MM-MCD2_MSK-MCD2_MO",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -99,7 +99,7 @@ var CasesComplexTimeMCK = test.Cases{
 	},
 
 	{
-		N: "2. MCD_MO - MCK - MM - MMTS - MCD_MO",
+		N: "2.MCD_MO-MCK-MM-MMTS-MCD_MO",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -173,7 +173,7 @@ var CasesComplexTimeMCK = test.Cases{
 	},
 
 	{
-		N: "3. MCD2_MO - MCK - MM - MMTS", //поездка началась через 4ч:59м после первого тапа
+		N: "3.MCD2_MO-MCK-MM-MMTS", //поездканачаласьчерез4ч:59мпослепервоготапа
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -223,7 +223,7 @@ var CasesComplexTimeMCK = test.Cases{
 	},
 
 	{
-		N: "4. MCK - MM - MMTS", //проверка комплекса пересадок в рамках 90 минут
+		N: "4.MCK-MM-MMTS", //проверкакомплексапересадокврамках90минут
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -250,7 +250,7 @@ var CasesComplexTimeMCK = test.Cases{
 	},
 
 	{
-		N: "5. MM - MMTS - MCK ",
+		N: "5.MM-MMTS-MCK",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -277,7 +277,7 @@ var CasesComplexTimeMCK = test.Cases{
 	},
 
 	{
-		N: "6. MCK - MM - MMTS - MMTS - MM - MCK - MCD1_MSK - MM - MCD2_MO", //сформированно 3 комплекса пересадок
+		N: "6.MCK-MM-MMTS-MMTS-MM-MCK-MCD1_MSK-MM-MCD2_MO", //сформированно3комплексапересадок
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,

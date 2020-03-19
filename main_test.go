@@ -163,8 +163,6 @@ func TestSimple(t *testing.T) {
 	//test.Run(t, mcd.CasesMetroComplexMCDMSK4, test.RequestTypeOffline)
 	//test.Run(t, mcd.CasesMetroComplexMCDMSK5, test.RequestTypeOffline)
 	//test.Run(t, mcd.CasesComplexTimeMCD, test.RequestTypeOffline)
-	//test.Run(t, mcd.CasesOfflineMetroComplexMCD, test.RequestTypeOffline)
-	//test.Run(t, mcd.CasesOfflineMetroComplexMCDMO, test.RequestTypeOffline)
 	//test.Run(t, mgt.CasesMGT, test.RequestTypeOffline)
 	//test.Run(t, mgt.CasesMGT2, test.RequestTypeOffline)
 	//test.Run(t, mgt.CasesMGT3, test.RequestTypeOffline)

@@ -18,6 +18,7 @@ import (
 func init() {
 	//параллельный запуск
 	//общие кейсы проходов
+	//CasesCancel 25 26 27 пока на доработке
 	AddP(passes.CasesCancel)
 
 	//МТППК
@@ -25,7 +26,8 @@ func init() {
 	AddP(mtppk.CasesMTPPK_MGT)
 	AddP(mtppk.CasesMTPPK_MCD_MO)
 	AddP(mtppk.CasesMTPPK_MCK)
-	AddP(mtppk.CasesMTPPK1)
+	AddP(mtppk.CasesMTPPK_MCD_MSK)
+	AddP(mtppk.CasesMTPPK_single)
 
 	//ММТС
 	AddP(mmts.CasesComplexPassMMTS1)
@@ -60,17 +62,15 @@ func init() {
 	AddP(mcd.CasesComplexMCDMOPartThree)
 	AddP(mcd.CasesComplexMCDMOPartFour)
 	AddP(mcd.CasesComplexMCDMOPartFife)
-	AddP(mcd.CasesOfflineMetroComplexMCD)
-	AddP(mcd.CasesOfflineMetroComplexMCDMO)
 
 	//APM
 	AddP(apm.CasesApmGateway)
 
 	//МГТ
 	AddP(mgt.CasesMGT)
-	AddP(mgt.CasesMGT1)
-	AddP(mgt.CasesMGT2)
-	AddP(mgt.CasesMGT3)
+	AddP(mgt.CasesMGT_1)
+	AddP(mgt.CasesMGT_2)
+	AddP(mgt.CasesMGT_3)
 
 	//Parking
 	AddP(parking.CasesParkingPass)

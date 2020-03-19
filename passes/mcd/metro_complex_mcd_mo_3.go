@@ -8,7 +8,7 @@ import (
 
 var CasesComplexMCDMOPartThree = test.Cases{
 	{
-		N: "51.МЦД МО 1 - ММ - МЦД МСК 2 -ММ - МMTS", //30
+		N: "51. МЦД МО 1 - ММ - МЦД МСК 2 -ММ - МMTS", //
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -25,7 +25,7 @@ var CasesComplexMCDMOPartThree = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2000009", //САВЕЛОВСКИЙ ВОКЗАЛ
+					Station:   "2000009", //САВЕЛОВСКИЙВОКЗАЛ
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 1,
@@ -70,7 +70,7 @@ var CasesComplexMCDMOPartThree = test.Cases{
 		},
 	},
 	{
-		N: "52.МЦД МО 1 - ММ - МЦД МСК 2 -ММ - МЦД МСК 1", //31
+		N: "52. МЦД МО 1 - ММ - МЦД МСК 2 -ММ - МЦД МСК 1", //
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -87,7 +87,7 @@ var CasesComplexMCDMOPartThree = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2000009", //САВЕЛОВСКИЙ ВОКЗАЛ
+					Station:   "2000009", //САВЕЛОВСКИЙВОКЗАЛ
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 1,
@@ -139,7 +139,7 @@ var CasesComplexMCDMOPartThree = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2000009", //САВЕЛОВСКИЙ ВОКЗАЛ
+					Station:   "2000009", //САВЕЛОВСКИЙВОКЗАЛ
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 7,
@@ -147,7 +147,7 @@ var CasesComplexMCDMOPartThree = test.Cases{
 		},
 	},
 	{
-		N: "53.МЦД МО 1 - ММ - МЦД МСК 2 -ММ - МЦД МО 1", //32
+		N: "53. МЦД МО 1 - ММ - МЦД МСК 2 -ММ - МЦД МО 1", //
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -164,7 +164,7 @@ var CasesComplexMCDMOPartThree = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2000009", //САВЕЛОВСКИЙ ВОКЗАЛ
+					Station:   "2000009", //САВЕЛОВСКИЙВОКЗАЛ
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 1,
@@ -216,7 +216,7 @@ var CasesComplexMCDMOPartThree = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2000009", //САВЕЛОВСКИЙ ВОКЗАЛ
+					Station:   "2000009", //САВЕЛОВСКИЙВОКЗАЛ
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 7,
@@ -224,7 +224,7 @@ var CasesComplexMCDMOPartThree = test.Cases{
 		},
 	},
 	{
-		N: "54.МЦД МО 1 - ММ - МЦД МСК 2 -МЦК - ММ", //33
+		N: "54. МЦД МО 1 - ММ - МЦД МСК 2 -МЦК - ММ", //
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -241,7 +241,7 @@ var CasesComplexMCDMOPartThree = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2000009", //САВЕЛОВСКИЙ ВОКЗАЛ
+					Station:   "2000009", //САВЕЛОВСКИЙВОКЗАЛ
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 1,
@@ -286,7 +286,7 @@ var CasesComplexMCDMOPartThree = test.Cases{
 		},
 	},
 	{
-		N: "55.МЦД МО 1 - ММ - МЦД МСК 2 -МЦК - МЦК", //34
+		N: "55. МЦД МО 1 - ММ - МЦД МСК 2 -МЦК - МЦК", //
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -303,7 +303,7 @@ var CasesComplexMCDMOPartThree = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2000009", //САВЕЛОВСКИЙ ВОКЗАЛ
+					Station:   "2000009", //САВЕЛОВСКИЙВОКЗАЛ
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 1,
@@ -348,7 +348,7 @@ var CasesComplexMCDMOPartThree = test.Cases{
 		},
 	},
 	{
-		N: "56.МЦД МО 1 - ММ - МЦД МСК 2 -МЦК - ММТС", //35
+		N: "56. МЦД МО 1 - ММ - МЦД МСК 2 -МЦК - ММТС", //
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -365,7 +365,7 @@ var CasesComplexMCDMOPartThree = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2000009", //САВЕЛОВСКИЙ ВОКЗАЛ
+					Station:   "2000009", //САВЕЛОВСКИЙВОКЗАЛ
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 1,
@@ -410,7 +410,7 @@ var CasesComplexMCDMOPartThree = test.Cases{
 		},
 	},
 	{
-		N: "57.МЦД МО/МСК 1 - ММ - МЦД МСК 2 - МЦК - МЦД МСК 1", //36
+		N: "57. МЦД МО/МСК 1 - ММ - МЦД МСК 2 - МЦК - МЦД МСК 1", //
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -427,7 +427,7 @@ var CasesComplexMCDMOPartThree = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2000009", //САВЕЛОВСКИЙ ВОКЗАЛ
+					Station:   "2000009", //САВЕЛОВСКИЙВОКЗАЛ
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 1,
@@ -479,7 +479,7 @@ var CasesComplexMCDMOPartThree = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2000009", //САВЕЛОВСКИЙ ВОКЗАЛ
+					Station:   "2000009", //САВЕЛОВСКИЙВОКЗАЛ
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 7,
@@ -487,7 +487,7 @@ var CasesComplexMCDMOPartThree = test.Cases{
 		},
 	},
 	{
-		N: "58.МЦД МО/МСК 1 - ММ - МЦД МСК 2 - МЦК - МЦД МСК/МО 1", //37
+		N: "58. МЦД МО/МСК 1 - ММ - МЦД МСК 2 - МЦК - МЦД МСК/МО 1", //
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -504,7 +504,7 @@ var CasesComplexMCDMOPartThree = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2000009", //САВЕЛОВСКИЙ ВОКЗАЛ
+					Station:   "2000009", //САВЕЛОВСКИЙВОКЗАЛ
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 1,
@@ -546,7 +546,7 @@ var CasesComplexMCDMOPartThree = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2000009", //ЛОБНЯ 2000009
+					Station:   "2000009", //ЛОБНЯ2000009
 					Direction: processing.TerminalDirection_INGRESS,
 				},
 				ExpectedSum: 4200,
@@ -556,7 +556,7 @@ var CasesComplexMCDMOPartThree = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MO,
 				Terminal: &processing.Terminal{
-					Station:   "2000115", //САВЕЛОВСКИЙ ВОКЗАЛ 2000115
+					Station:   "2000115", //САВЕЛОВСКИЙВОКЗАЛ2000115
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     7,
@@ -565,7 +565,7 @@ var CasesComplexMCDMOPartThree = test.Cases{
 		},
 	},
 	{
-		N: "59.МЦД МО 1 - ММ - МЦД МСК 2 -ММТС - ММ", //38
+		N: "59. МЦД МО 1 - ММ - МЦД МСК 2 -ММТС - ММ", //
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -582,7 +582,7 @@ var CasesComplexMCDMOPartThree = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2000009", //САВЕЛОВСКИЙ ВОКЗАЛ
+					Station:   "2000009", //САВЕЛОВСКИЙВОКЗАЛ
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 1,
@@ -627,7 +627,7 @@ var CasesComplexMCDMOPartThree = test.Cases{
 		},
 	},
 	{
-		N: "60.МЦД МО 1 - ММ - МЦД МСК 2 -ММТС - МЦК", //39
+		N: "60. МЦД МО 1 - ММ - МЦД МСК 2 -ММТС - МЦК", //
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -644,7 +644,7 @@ var CasesComplexMCDMOPartThree = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2000009", //САВЕЛОВСКИЙ ВОКЗАЛ
+					Station:   "2000009", //САВЕЛОВСКИЙВОКЗАЛ
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 1,
@@ -689,7 +689,7 @@ var CasesComplexMCDMOPartThree = test.Cases{
 		},
 	},
 	{
-		N: "61.МЦД МО 1 - ММ - МЦД МСК 2 - ММТС - ММТС", //40
+		N: "61. МЦД МО 1 - ММ - МЦД МСК 2 - ММТС - ММТС", //
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -706,7 +706,7 @@ var CasesComplexMCDMOPartThree = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2000009", //САВЕЛОВСКИЙ ВОКЗАЛ
+					Station:   "2000009", //САВЕЛОВСКИЙВОКЗАЛ
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 1,
@@ -751,7 +751,7 @@ var CasesComplexMCDMOPartThree = test.Cases{
 		},
 	},
 	{
-		N: "62.МЦД МО/МСК 1 - ММ - МЦД МСК 2 - ММТС - МЦД МСК 1", //41
+		N: "62. МЦД МО/МСК 1 - ММ - МЦД МСК 2 - ММТС - МЦД МСК 1", //
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -768,7 +768,7 @@ var CasesComplexMCDMOPartThree = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2000009", //САВЕЛОВСКИЙ ВОКЗАЛ
+					Station:   "2000009", //САВЕЛОВСКИЙВОКЗАЛ
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 1,
@@ -820,7 +820,7 @@ var CasesComplexMCDMOPartThree = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2000009", //САВЕЛОВСКИЙ ВОКЗАЛ
+					Station:   "2000009", //САВЕЛОВСКИЙВОКЗАЛ
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 7,
@@ -828,7 +828,7 @@ var CasesComplexMCDMOPartThree = test.Cases{
 		},
 	},
 	{
-		N: "63.МЦД МО/МСК 1 - ММ - МЦД МСК 2 - ММТС - МЦД МСК/МО 1", //42
+		N: "63. МЦД МО/МСК 1 - ММ - МЦД МСК 2 - ММТС - МЦД МСК/МО 1", //
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -845,7 +845,7 @@ var CasesComplexMCDMOPartThree = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2000009", //САВЕЛОВСКИЙ ВОКЗАЛ
+					Station:   "2000009", //САВЕЛОВСКИЙВОКЗАЛ
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 1,
@@ -887,7 +887,7 @@ var CasesComplexMCDMOPartThree = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2000009", //ЛОБНЯ 2000009
+					Station:   "2000009", //ЛОБНЯ2000009
 					Direction: processing.TerminalDirection_INGRESS,
 				},
 				ExpectedSum: 4200,
@@ -897,7 +897,7 @@ var CasesComplexMCDMOPartThree = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MO,
 				Terminal: &processing.Terminal{
-					Station:   "2000115", //САВЕЛОВСКИЙ ВОКЗАЛ 2000115
+					Station:   "2000115", //САВЕЛОВСКИЙВОКЗАЛ2000115
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     7,
@@ -906,7 +906,7 @@ var CasesComplexMCDMOPartThree = test.Cases{
 		},
 	},
 	{
-		N: "64.МЦД МО/МСК 1 - ММ - МЦД МСК 2 - ММ", //43
+		N: "64. МЦД МО/МСК 1 - ММ - МЦД МСК 2 - ММ", //
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -923,7 +923,7 @@ var CasesComplexMCDMOPartThree = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2000009", //САВЕЛОВСКИЙ ВОКЗАЛ
+					Station:   "2000009", //САВЕЛОВСКИЙВОКЗАЛ
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 1,
@@ -963,7 +963,7 @@ var CasesComplexMCDMOPartThree = test.Cases{
 		},
 	},
 	{
-		N: "65.МЦД МО/МСК 1 - ММ - МЦД МСК 2 - МЦК", //44
+		N: "65. МЦД МО/МСК 1 - ММ - МЦД МСК 2 - МЦК", //
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -980,7 +980,7 @@ var CasesComplexMCDMOPartThree = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2000009", //САВЕЛОВСКИЙ ВОКЗАЛ
+					Station:   "2000009", //САВЕЛОВСКИЙВОКЗАЛ
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 1,
@@ -1020,7 +1020,7 @@ var CasesComplexMCDMOPartThree = test.Cases{
 		},
 	},
 	{
-		N: "66.МЦД МО/МСК 1 - ММ - МЦД МСК 2 - ММТС", //45
+		N: "66. МЦД МО/МСК 1 - ММ - МЦД МСК 2 - ММТС", //
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -1037,7 +1037,7 @@ var CasesComplexMCDMOPartThree = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2000009", //САВЕЛОВСКИЙ ВОКЗАЛ
+					Station:   "2000009", //САВЕЛОВСКИЙВОКЗАЛ
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 1,
@@ -1077,7 +1077,7 @@ var CasesComplexMCDMOPartThree = test.Cases{
 		},
 	},
 	{
-		N: "67.МЦД МО/МСК 1 - ММ - МЦД МСК 2 - МЦД_МСК_1", //46
+		N: "67. МЦД МО/МСК 1 - ММ - МЦД МСК 2 - МЦД_МСК_1", //
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -1094,7 +1094,7 @@ var CasesComplexMCDMOPartThree = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2000009", //САВЕЛОВСКИЙ ВОКЗАЛ
+					Station:   "2000009", //САВЕЛОВСКИЙВОКЗАЛ
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 1,
@@ -1148,7 +1148,7 @@ var CasesComplexMCDMOPartThree = test.Cases{
 		},
 	},
 	{
-		N: "68.МЦД МО/МСК 1 - ММ - МЦД МСК 2 - МЦД_МСК/МО_1", //47
+		N: "68. МЦД МО/МСК 1 - ММ - МЦД МСК 2 - МЦД_МСК/МО_1",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -1165,7 +1165,7 @@ var CasesComplexMCDMOPartThree = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2000009", //САВЕЛОВСКИЙ ВОКЗАЛ
+					Station:   "2000009", //САВЕЛОВСКИЙВОКЗАЛ
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 1,
@@ -1201,7 +1201,7 @@ var CasesComplexMCDMOPartThree = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2000009", //САВЕЛОВСКИЙ ВОКЗАЛ 2000009
+					Station:   "2000009", //САВЕЛОВСКИЙВОКЗАЛ2000009
 					Direction: processing.TerminalDirection_INGRESS,
 				},
 				ExpectedSum: 4200,
@@ -1211,7 +1211,7 @@ var CasesComplexMCDMOPartThree = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MO,
 				Terminal: &processing.Terminal{
-					Station:   "2000115", //ЛОБНЯ 2000115
+					Station:   "2000115", //ЛОБНЯ2000115
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     6,
@@ -1219,8 +1219,80 @@ var CasesComplexMCDMOPartThree = test.Cases{
 			},
 		},
 	},
+	//{
+	//	N: "69. МЦД МО/МСК 1 - ММ - МЦД МСК 2 - МЦД_МСК/МО_1",
+	//	T: T{
+	//		&Pass{
+	//			PaymentType: PaymentTypePayment,
+	//			Carrier:     carriers.Carrier_MCD,
+	//			SubCarrier:  carriers.SubCarrier_MCD1_MO,
+	//			Terminal: &processing.Terminal{
+	//				Station:   "2000115", //ЛОБНЯ
+	//				Direction: processing.TerminalDirection_INGRESS,
+	//			},
+	//			ExpectedSum: 4900,
+	//		},
+	//		&Pass{
+	//			PaymentType: PaymentTypeFree,
+	//			Carrier:     carriers.Carrier_MCD,
+	//			SubCarrier:  carriers.SubCarrier_MCD1_MSK,
+	//			Terminal: &processing.Terminal{
+	//				Station:   "2000009", //САВЕЛОВСКИЙ ВОКЗАЛ
+	//				Direction: processing.TerminalDirection_EGRESS,
+	//			},
+	//			Ingress: 1,
+	//		},
+	//		&Pass{
+	//			PaymentType: PaymentTypeFree,
+	//			Carrier:     carriers.Carrier_MM,
+	//			SubCarrier:  carriers.SubCarrier_MM_SUB,
+	//			Parent:      1,
+	//		},
+	//		&Pass{
+	//			PaymentType: PaymentTypeFree,
+	//			Carrier:     carriers.Carrier_MCD,
+	//			SubCarrier:  carriers.SubCarrier_MCD2_MSK,
+	//			Terminal: &processing.Terminal{
+	//				Station:   "2000075", //ТУШИНО
+	//				Direction: processing.TerminalDirection_INGRESS,
+	//			},
+	//			Parent: 1,
+	//		},
+	//		&Pass{
+	//			PaymentType: PaymentTypeFree,
+	//			Carrier:     carriers.Carrier_MCD,
+	//			SubCarrier:  carriers.SubCarrier_MCD2_MSK,
+	//			Terminal: &processing.Terminal{
+	//				Station:   "2000200", //КАЛИТНИКИ
+	//				Direction: processing.TerminalDirection_EGRESS,
+	//			},
+	//			Ingress: 4,
+	//		},
+	//		&Pass{
+	//			PaymentType: PaymentTypePayment,
+	//			Carrier:     carriers.Carrier_MCD,
+	//			SubCarrier:  carriers.SubCarrier_MCD1_MSK,
+	//			Terminal: &processing.Terminal{
+	//				Station:   "2000009", //САВЕЛОВСКИЙ ВОКЗАЛ 2000009
+	//				Direction: processing.TerminalDirection_INGRESS,
+	//			},
+	//			ExpectedSum: 4200,
+	//		},
+	//		&Pass{
+	//			PaymentType: PaymentTypePayment,
+	//			Carrier:     carriers.Carrier_MCD,
+	//			SubCarrier:  carriers.SubCarrier_MCD1_MO,
+	//			Terminal: &processing.Terminal{
+	//				Station:   "2000115", //ЛОБНЯ 2000115
+	//				Direction: processing.TerminalDirection_EGRESS,
+	//			},
+	//			Ingress:     6,
+	//			ExpectedSum: 700,
+	//		},
+	//	},
+	//},
 	{
-		N: "69.МЦД МО/МСК 1 - ММ - МЦД МСК 2 - МЦД_МСК/МО_1", //47
+		N: "70. МЦД МО/МСК 1 - ММ - МЦД_МСК/МО_2 - ММ",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -1237,7 +1309,7 @@ var CasesComplexMCDMOPartThree = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2000009", //САВЕЛОВСКИЙ ВОКЗАЛ
+					Station:   "2000009", //САВЕЛОВСКИЙВОКЗАЛ
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 1,
@@ -1253,79 +1325,7 @@ var CasesComplexMCDMOPartThree = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD2_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2000075", //ТУШИНО
-					Direction: processing.TerminalDirection_INGRESS,
-				},
-				Parent: 1,
-			},
-			&test.Pass{
-				PaymentType: test.PaymentTypeFree,
-				Carrier:     carriers.Carrier_MCD,
-				SubCarrier:  carriers.SubCarrier_MCD2_MSK,
-				Terminal: &processing.Terminal{
-					Station:   "2000200", //КАЛИТНИКИ
-					Direction: processing.TerminalDirection_EGRESS,
-				},
-				Ingress: 4,
-			},
-			&test.Pass{
-				PaymentType: test.PaymentTypePayment,
-				Carrier:     carriers.Carrier_MCD,
-				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
-				Terminal: &processing.Terminal{
-					Station:   "2000009", //САВЕЛОВСКИЙ ВОКЗАЛ 2000009
-					Direction: processing.TerminalDirection_INGRESS,
-				},
-				ExpectedSum: 4200,
-			},
-			&test.Pass{
-				PaymentType: test.PaymentTypePayment,
-				Carrier:     carriers.Carrier_MCD,
-				SubCarrier:  carriers.SubCarrier_MCD1_MO,
-				Terminal: &processing.Terminal{
-					Station:   "2000115", //ЛОБНЯ 2000115
-					Direction: processing.TerminalDirection_EGRESS,
-				},
-				Ingress:     6,
-				ExpectedSum: 700,
-			},
-		},
-	},
-	{
-		N: "70.МЦД МО/МСК 1 - ММ - МЦД_МСК/МО_2 - ММ", //48
-		T: test.T{
-			&test.Pass{
-				PaymentType: test.PaymentTypePayment,
-				Carrier:     carriers.Carrier_MCD,
-				SubCarrier:  carriers.SubCarrier_MCD1_MO,
-				Terminal: &processing.Terminal{
-					Station:   "2000115", //ЛОБНЯ
-					Direction: processing.TerminalDirection_INGRESS,
-				},
-				ExpectedSum: 4900,
-			},
-			&test.Pass{
-				PaymentType: test.PaymentTypeFree,
-				Carrier:     carriers.Carrier_MCD,
-				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
-				Terminal: &processing.Terminal{
-					Station:   "2000009", //САВЕЛОВСКИЙ ВОКЗАЛ
-					Direction: processing.TerminalDirection_EGRESS,
-				},
-				Ingress: 1,
-			},
-			&test.Pass{
-				PaymentType: test.PaymentTypeFree,
-				Carrier:     carriers.Carrier_MM,
-				SubCarrier:  carriers.SubCarrier_MM_SUB,
-				Parent:      1,
-			},
-			&test.Pass{
-				PaymentType: test.PaymentTypeFree,
-				Carrier:     carriers.Carrier_MCD,
-				SubCarrier:  carriers.SubCarrier_MCD2_MSK,
-				Terminal: &processing.Terminal{
-					Station:   "2001840", //ТРИКОТАЖНАЯ 2001840
+					Station:   "2001840", //ТРИКОТАЖНАЯ2001840
 					Direction: processing.TerminalDirection_INGRESS,
 				},
 				Parent: 1,
@@ -1335,7 +1335,7 @@ var CasesComplexMCDMOPartThree = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD2_MO,
 				Terminal: &processing.Terminal{
-					Station:   "2002952", //СИЛИКАТНАЯ 2002952
+					Station:   "2002952", //СИЛИКАТНАЯ2002952
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 4,
@@ -1348,7 +1348,7 @@ var CasesComplexMCDMOPartThree = test.Cases{
 		},
 	},
 	{
-		N: "71.МЦД МО/МСК 1 - ММ - МЦД_МСК/МО_2 - МЦК", //49
+		N: "71. МЦД МО/МСК 1 - ММ - МЦД_МСК/МО_2 - МЦК",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -1365,7 +1365,7 @@ var CasesComplexMCDMOPartThree = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2000009", //САВЕЛОВСКИЙ ВОКЗАЛ
+					Station:   "2000009", //САВЕЛОВСКИЙВОКЗАЛ
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 1,
@@ -1381,7 +1381,7 @@ var CasesComplexMCDMOPartThree = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD2_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2001840", //ТРИКОТАЖНАЯ 2001840
+					Station:   "2001840", //ТРИКОТАЖНАЯ2001840
 					Direction: processing.TerminalDirection_INGRESS,
 				},
 				Parent: 1,
@@ -1391,7 +1391,7 @@ var CasesComplexMCDMOPartThree = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD2_MO,
 				Terminal: &processing.Terminal{
-					Station:   "2002952", //СИЛИКАТНАЯ 2002952
+					Station:   "2002952", //СИЛИКАТНАЯ2002952
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 4,
@@ -1404,7 +1404,7 @@ var CasesComplexMCDMOPartThree = test.Cases{
 		},
 	},
 	{
-		N: "72.МЦД МО/МСК 1 - ММ - МЦД_МСК/МО_2 - ММТС", //50
+		N: "72. МЦД МО/МСК 1 - ММ - МЦД_МСК/МО_2 - ММТС",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -1421,7 +1421,7 @@ var CasesComplexMCDMOPartThree = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2000009", //САВЕЛОВСКИЙ ВОКЗАЛ
+					Station:   "2000009", //САВЕЛОВСКИЙВОКЗАЛ
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 1,
@@ -1437,7 +1437,7 @@ var CasesComplexMCDMOPartThree = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD2_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2001840", //ТРИКОТАЖНАЯ 2001840
+					Station:   "2001840", //ТРИКОТАЖНАЯ2001840
 					Direction: processing.TerminalDirection_INGRESS,
 				},
 				Parent: 1,
@@ -1447,7 +1447,7 @@ var CasesComplexMCDMOPartThree = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD2_MO,
 				Terminal: &processing.Terminal{
-					Station:   "2002952", //СИЛИКАТНАЯ 2002952
+					Station:   "2002952", //СИЛИКАТНАЯ2002952
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 4,
@@ -1460,7 +1460,7 @@ var CasesComplexMCDMOPartThree = test.Cases{
 		},
 	},
 	{
-		N: "73.МЦД МО/МСК 1 - ММ - МЦД_МСК/МО_2 - МЦД МСК 1", //51
+		N: "73. МЦД МО/МСК 1 - ММ - МЦД_МСК/МО_2 - МЦД МСК 1",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -1477,7 +1477,7 @@ var CasesComplexMCDMOPartThree = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2000009", //САВЕЛОВСКИЙ ВОКЗАЛ
+					Station:   "2000009", //САВЕЛОВСКИЙВОКЗАЛ
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 1,
@@ -1493,7 +1493,7 @@ var CasesComplexMCDMOPartThree = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD2_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2001840", //ТРИКОТАЖНАЯ 2001840
+					Station:   "2001840", //ТРИКОТАЖНАЯ2001840
 					Direction: processing.TerminalDirection_INGRESS,
 				},
 				Parent: 1,
@@ -1503,7 +1503,7 @@ var CasesComplexMCDMOPartThree = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD2_MO,
 				Terminal: &processing.Terminal{
-					Station:   "2002952", //СИЛИКАТНАЯ 2002952
+					Station:   "2002952", //СИЛИКАТНАЯ2002952
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 4,
@@ -1513,7 +1513,7 @@ var CasesComplexMCDMOPartThree = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2000275", //СЕТУНЬ 2000275
+					Station:   "2000275", //СЕТУНЬ2000275
 					Direction: processing.TerminalDirection_INGRESS,
 				},
 				ExpectedSum: 4200,
@@ -1523,7 +1523,7 @@ var CasesComplexMCDMOPartThree = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2000009", //САВЕЛОВСКИЙ ВОКЗАЛ
+					Station:   "2000009", //САВЕЛОВСКИЙВОКЗАЛ
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 6,
@@ -1531,7 +1531,7 @@ var CasesComplexMCDMOPartThree = test.Cases{
 		},
 	},
 	{
-		N: "74.МЦД МО/МСК 1 - ММ - МЦД_МСК/МО_2 - МЦД МСК/МО 1", //52
+		N: "74. МЦД МО/МСК 1 - ММ - МЦД_МСК/МО_2 - МЦД МСК/МО 1",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -1548,7 +1548,7 @@ var CasesComplexMCDMOPartThree = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2000009", //САВЕЛОВСКИЙ ВОКЗАЛ
+					Station:   "2000009", //САВЕЛОВСКИЙВОКЗАЛ
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 1,
@@ -1564,7 +1564,7 @@ var CasesComplexMCDMOPartThree = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD2_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2001840", //ТРИКОТАЖНАЯ 2001840
+					Station:   "2001840", //ТРИКОТАЖНАЯ2001840
 					Direction: processing.TerminalDirection_INGRESS,
 				},
 				Parent: 1,
@@ -1574,7 +1574,7 @@ var CasesComplexMCDMOPartThree = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD2_MO,
 				Terminal: &processing.Terminal{
-					Station:   "2002952", //СИЛИКАТНАЯ 2002952
+					Station:   "2002952", //СИЛИКАТНАЯ2002952
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 4,
@@ -1584,7 +1584,7 @@ var CasesComplexMCDMOPartThree = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2000009", //САВЕЛОВСКИЙ ВОКЗАЛ 2000009
+					Station:   "2000009", //САВЕЛОВСКИЙВОКЗАЛ2000009
 					Direction: processing.TerminalDirection_INGRESS,
 				},
 				ExpectedSum: 4200,
@@ -1603,7 +1603,7 @@ var CasesComplexMCDMOPartThree = test.Cases{
 		},
 	},
 	{
-		N: "75.МЦД МО/МСК 1 - МЦК - ММ - ММ", //53
+		N: "75. МЦД МО/МСК 1 - МЦК - ММ - ММ",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -1620,7 +1620,7 @@ var CasesComplexMCDMOPartThree = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2000009", //САВЕЛОВСКИЙ ВОКЗАЛ
+					Station:   "2000009", //САВЕЛОВСКИЙВОКЗАЛ
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 1,
@@ -1645,7 +1645,7 @@ var CasesComplexMCDMOPartThree = test.Cases{
 		},
 	},
 	{
-		N: "76.МЦД МО/МСК 1 - МЦК - ММ - МЦК", //54
+		N: "76. МЦД МО/МСК 1 - МЦК - ММ - МЦК", //
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -1662,7 +1662,7 @@ var CasesComplexMCDMOPartThree = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2000009", //САВЕЛОВСКИЙ ВОКЗАЛ
+					Station:   "2000009", //САВЕЛОВСКИЙВОКЗАЛ
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 1,
@@ -1687,7 +1687,7 @@ var CasesComplexMCDMOPartThree = test.Cases{
 		},
 	},
 	{
-		N: "77.МЦД МО/МСК 1 - МЦК - ММ - ММТС - ММ", //55
+		N: "77. МЦД МО/МСК 1 - МЦК - ММ - ММТС - ММ", //
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -1704,55 +1704,7 @@ var CasesComplexMCDMOPartThree = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2000009", //САВЕЛОВСКИЙ ВОКЗАЛ
-					Direction: processing.TerminalDirection_EGRESS,
-				},
-				Ingress: 1,
-			},
-			&test.Pass{
-				PaymentType: test.PaymentTypeFree,
-				Carrier:     carriers.Carrier_MM,
-				SubCarrier:  carriers.SubCarrier_MCK_SUB,
-				Parent:      1,
-			},
-			&test.Pass{
-				PaymentType: test.PaymentTypeFree,
-				Carrier:     carriers.Carrier_MM,
-				SubCarrier:  carriers.SubCarrier_MM_SUB,
-				Parent:      1,
-			},
-			&test.Pass{
-				PaymentType: test.PaymentTypeFree,
-				Carrier:     carriers.Carrier_MM,
-				SubCarrier:  carriers.SubCarrier_MMTS_SUB,
-				Parent:      1,
-			},
-			&test.Pass{
-				PaymentType: test.PaymentTypePayment,
-				Carrier:     carriers.Carrier_MM,
-				SubCarrier:  carriers.SubCarrier_MM_SUB,
-			},
-		},
-	},
-	{
-		N: "78.МЦД МО/МСК 1 - МЦК - ММ - ММТС - МЦК", //56
-		T: test.T{
-			&test.Pass{
-				PaymentType: test.PaymentTypePayment,
-				Carrier:     carriers.Carrier_MCD,
-				SubCarrier:  carriers.SubCarrier_MCD1_MO,
-				Terminal: &processing.Terminal{
-					Station:   "2000115", //ЛОБНЯ
-					Direction: processing.TerminalDirection_INGRESS,
-				},
-				ExpectedSum: 4900,
-			},
-			&test.Pass{
-				PaymentType: test.PaymentTypeFree,
-				Carrier:     carriers.Carrier_MCD,
-				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
-				Terminal: &processing.Terminal{
-					Station:   "2000009", //САВЕЛОВСКИЙ ВОКЗАЛ
+					Station:   "2000009", //САВЕЛОВСКИЙВОКЗАЛ
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 1,
@@ -1778,12 +1730,12 @@ var CasesComplexMCDMOPartThree = test.Cases{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
-				SubCarrier:  carriers.SubCarrier_MCK_SUB,
+				SubCarrier:  carriers.SubCarrier_MM_SUB,
 			},
 		},
 	},
 	{
-		N: "79.МЦД МО/МСК 1 - МЦК - ММ - ММТС - ММТС", //57
+		N: "78. МЦД МО/МСК 1 - МЦК - ММ - ММТС - МЦК", //
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -1800,7 +1752,55 @@ var CasesComplexMCDMOPartThree = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2000009", //САВЕЛОВСКИЙ ВОКЗАЛ
+					Station:   "2000009", //САВЕЛОВСКИЙВОКЗАЛ
+					Direction: processing.TerminalDirection_EGRESS,
+				},
+				Ingress: 1,
+			},
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
+				Carrier:     carriers.Carrier_MM,
+				SubCarrier:  carriers.SubCarrier_MCK_SUB,
+				Parent:      1,
+			},
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
+				Carrier:     carriers.Carrier_MM,
+				SubCarrier:  carriers.SubCarrier_MM_SUB,
+				Parent:      1,
+			},
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
+				Carrier:     carriers.Carrier_MM,
+				SubCarrier:  carriers.SubCarrier_MMTS_SUB,
+				Parent:      1,
+			},
+			&test.Pass{
+				PaymentType: test.PaymentTypePayment,
+				Carrier:     carriers.Carrier_MM,
+				SubCarrier:  carriers.SubCarrier_MCK_SUB,
+			},
+		},
+	},
+	{
+		N: "79. МЦД МО/МСК 1 - МЦК - ММ - ММТС - ММТС", //
+		T: test.T{
+			&test.Pass{
+				PaymentType: test.PaymentTypePayment,
+				Carrier:     carriers.Carrier_MCD,
+				SubCarrier:  carriers.SubCarrier_MCD1_MO,
+				Terminal: &processing.Terminal{
+					Station:   "2000115", //ЛОБНЯ
+					Direction: processing.TerminalDirection_INGRESS,
+				},
+				ExpectedSum: 4900,
+			},
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
+				Carrier:     carriers.Carrier_MCD,
+				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
+				Terminal: &processing.Terminal{
+					Station:   "2000009", //САВЕЛОВСКИЙВОКЗАЛ
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 1,
@@ -1831,7 +1831,7 @@ var CasesComplexMCDMOPartThree = test.Cases{
 		},
 	},
 	{
-		N: "80.МЦД МО/МСК 1 - МЦК - ММ - ММТС - МЦД МСК 1", //58
+		N: "80. МЦД МО/МСК 1 - МЦК - ММ - ММТС - МЦД МСК 1", //
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -1848,7 +1848,7 @@ var CasesComplexMCDMOPartThree = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2000009", //САВЕЛОВСКИЙ ВОКЗАЛ
+					Station:   "2000009", //САВЕЛОВСКИЙВОКЗАЛ
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 1,
@@ -1886,7 +1886,7 @@ var CasesComplexMCDMOPartThree = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2000009", //САВЕЛОВСКИЙ ВОКЗАЛ
+					Station:   "2000009", //САВЕЛОВСКИЙВОКЗАЛ
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 6,
@@ -1894,7 +1894,7 @@ var CasesComplexMCDMOPartThree = test.Cases{
 		},
 	},
 	{
-		N: "81.МЦД_МО/МСК_1 - МЦК - ММ - ММТС - МЦД_МСК/МО_1", //59
+		N: "81. МЦД_МО/МСК_1 - МЦК - ММ - ММТС - МЦД_МСК/МО_1", //
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -1911,7 +1911,7 @@ var CasesComplexMCDMOPartThree = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2000009", //САВЕЛОВСКИЙ ВОКЗАЛ
+					Station:   "2000009", //САВЕЛОВСКИЙВОКЗАЛ
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 1,
@@ -1949,7 +1949,7 @@ var CasesComplexMCDMOPartThree = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MO,
 				Terminal: &processing.Terminal{
-					Station:   "2000115", //САВЕЛОВСКИЙ ВОКЗАЛ
+					Station:   "2000115", //САВЕЛОВСКИЙВОКЗАЛ
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     6,
@@ -1958,7 +1958,7 @@ var CasesComplexMCDMOPartThree = test.Cases{
 		},
 	},
 	{
-		N: "82.МЦД_МО/МСК_1 - МЦК - ММ - МЦД_МСК_2 - ММ", //60
+		N: "82. МЦД_МО/МСК_1 - МЦК - ММ - МЦД_МСК_2 - ММ", //
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -1975,7 +1975,7 @@ var CasesComplexMCDMOPartThree = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2000009", //САВЕЛОВСКИЙ ВОКЗАЛ
+					Station:   "2000009", //САВЕЛОВСКИЙВОКЗАЛ
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 1,
@@ -2020,7 +2020,7 @@ var CasesComplexMCDMOPartThree = test.Cases{
 		},
 	},
 	{
-		N: "83.МЦД_МО/МСК_1 - МЦК - ММ - МЦД_МСК_2 - МЦК", //61
+		N: "83. МЦД_МО/МСК_1 - МЦК - ММ - МЦД_МСК_2 - МЦК", //
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -2037,7 +2037,7 @@ var CasesComplexMCDMOPartThree = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2000009", //САВЕЛОВСКИЙ ВОКЗАЛ
+					Station:   "2000009", //САВЕЛОВСКИЙВОКЗАЛ
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 1,
@@ -2082,7 +2082,7 @@ var CasesComplexMCDMOPartThree = test.Cases{
 		},
 	},
 	{
-		N: "84.МЦД_МО/МСК_1 - МЦК - ММ - МЦД_МСК_2 - ММТС", //62
+		N: "84. МЦД_МО/МСК_1 - МЦК - ММ - МЦД_МСК_2 - ММТС", //
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -2099,7 +2099,7 @@ var CasesComplexMCDMOPartThree = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2000009", //САВЕЛОВСКИЙ ВОКЗАЛ
+					Station:   "2000009", //САВЕЛОВСКИЙВОКЗАЛ
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 1,

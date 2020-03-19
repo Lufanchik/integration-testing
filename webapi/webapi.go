@@ -357,7 +357,7 @@ var (
 				&test.Pass{
 					PaymentType: test.PaymentTypePayment,
 					Carrier:     carriers.Carrier_MGT,
-					ExpectedSum: 4200,
+					//ExpectedSum: 4200,
 				},
 				&test.Pass{
 					PaymentType: test.PaymentTypePayment,
@@ -382,7 +382,7 @@ var (
 				&test.Pass{
 					PaymentType: test.PaymentTypePayment,
 					Carrier:     carriers.Carrier_MGT,
-					ExpectedSum: 4200,
+					//ExpectedSum: 4200,
 				},
 				&test.Pass{
 					PaymentType: test.PaymentTypeFree,
@@ -393,7 +393,7 @@ var (
 				&test.Pass{
 					PaymentType: test.PaymentTypePayment,
 					Carrier:     carriers.Carrier_MGT,
-					ExpectedSum: 4200,
+					//ExpectedSum: 4200,
 				},
 				&test.WebAPIPasses{
 					Passes: []int{1, 2, 3, 4, 5, 6},
@@ -424,22 +424,5 @@ var (
 				},
 			},
 		},
-		//{
-		//	N:          "11. Face Auth Test with WebAPI / mm",
-		//	CardSystem: processing.CardSystem_VISA,
-		//	FaceId:     uuid.New().String(),
-		//	T: test.T{
-		//		&test.RegisterFaceId{},
-		//		&test.Pass{
-		//			PaymentType: test.PaymentTypePayment,
-		//			Carrier:     carriers.Carrier_MM,
-		//			SubCarrier:  carriers.SubCarrier_MM_SUB,
-		//			ExpectedSum: 4200,
-		//		},
-		//		&test.WebAPIPasses{
-		//			Passes: []int{2},
-		//		},
-		//	},
-		//},
 	}
 )

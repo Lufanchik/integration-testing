@@ -156,6 +156,9 @@ func ValidatePass(t *testing.T, p *Pass, parent *Pass, ingress *Pass, isFirst bo
 	case PaymentTypePayment:
 		expectPass.IsFree = false
 		expectPass.IsAuth = true
+	case PaymentTypePrepayed:
+		expectPass.IsFree = false
+		expectPass.IsAuth = false
 	}
 
 	if isAggregate(p) {
@@ -197,6 +200,10 @@ func ValidatePass(t *testing.T, p *Pass, parent *Pass, ingress *Pass, isFirst bo
 	}
 
 	if p.PaymentType == PaymentTypeStartAggregate && isFirst {
+		expectPass.Sum = 0
+	}
+
+	if p.PaymentType == PaymentTypePrepayed {
 		expectPass.Sum = 0
 	}
 

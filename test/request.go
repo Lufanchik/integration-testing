@@ -117,6 +117,8 @@ func PassOnlineRequest(tap *processing.TapRequest, p *Pass) (*processing.OnlineP
 		responseOR.Status = processing.AuthStatus_SUCCESS_AUTH
 	case PaymentTypeAggregate:
 		responseOR.Status = processing.AuthStatus_SUCCESS_AGGREGATE
+	case PaymentTypePrepayed:
+		responseOR.Status = processing.AuthStatus_NONE_AUTH
 
 	}
 

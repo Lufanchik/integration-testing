@@ -200,7 +200,7 @@ func Run(t *testing.T, cases Cases, rt RequestType) {
 					} else if ncc.c.FaceId != "" {
 						p.PassType = pass.PassType_PASS_FACE_ID
 					} else {
-						p.PassType = pass.PassType_PASS_MT
+						p.PassType = ncc.c.PassType
 					}
 
 					fmt.Printf("name: %s; pass-type: %d\n", ncc.c.N, ncc.c.PassType)

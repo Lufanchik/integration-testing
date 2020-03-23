@@ -207,10 +207,6 @@ func ValidatePass(t *testing.T, p *Pass, parent *Pass, ingress *Pass, isFirst bo
 		expectPass.Sum = 0
 	}
 
-	if p.PassType == pass.PassType_PASS_MT {
-		expectPass.IsFree = true
-	}
-
 	if p.PaymentType == PaymentTypeStartAggregate && !isFirst {
 		expectPass.Sum = getSumByCarrier(p)
 		expectPass.SumAggregate = getSumByCarrier(p)
@@ -270,6 +266,10 @@ func GetAuthStatus(p *Pass) (*processing.AuthResponse, *processing.AuthResponse,
 
 func AuthStatus(t *testing.T, p *Pass) {
 	if p.faceId != "" {
+		return
+	}
+	//Чтобы всегда при проходах по МТ игнорировать проверку AuthStatus
+	if p.PassType == pass.PassType_PASS_MT {
 		return
 	}
 

@@ -156,6 +156,9 @@ func ValidatePass(t *testing.T, p *Pass, parent *Pass, ingress *Pass, isFirst bo
 	case PaymentTypePayment:
 		expectPass.IsFree = false
 		expectPass.IsAuth = true
+	case PaymentTypePrepayed:
+		expectPass.IsFree = false
+		expectPass.IsAuth = false
 	}
 
 	if isAggregate(p) {
@@ -171,6 +174,10 @@ func ValidatePass(t *testing.T, p *Pass, parent *Pass, ingress *Pass, isFirst bo
 	if p.AuthType == AuthTypeIncorrect {
 		expectPass.IsAuth = false
 	}
+
+	//if p.PassType == pass.PassType_PASS_FACE_ID {
+	//	expectPass.IsAuth = false
+	//}
 
 	if p.isCancel {
 		expectPass.IsCancel = true
@@ -200,8 +207,8 @@ func ValidatePass(t *testing.T, p *Pass, parent *Pass, ingress *Pass, isFirst bo
 		expectPass.Sum = 0
 	}
 
-	if p.PassType == pass.PassType_PASS_MT {
-		expectPass.IsFree = true
+	if p.PaymentType == PaymentTypePrepayed {
+		expectPass.Sum = 0
 	}
 
 	if p.PaymentType == PaymentTypeStartAggregate && !isFirst {
@@ -263,6 +270,10 @@ func GetAuthStatus(p *Pass) (*processing.AuthResponse, *processing.AuthResponse,
 
 func AuthStatus(t *testing.T, p *Pass) {
 	if p.faceId != "" {
+		return
+	}
+	//Чтобы всегда при проходах по МТ игнорировать проверку AuthStatus
+	if p.PassType == pass.PassType_PASS_MT {
 		return
 	}
 

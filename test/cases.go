@@ -157,6 +157,7 @@ const (
 	PaymentTypePayment
 	PaymentTypeStartAggregate
 	PaymentTypeAggregate
+	PaymentTypePrepayed
 )
 
 const (

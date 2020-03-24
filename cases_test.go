@@ -1,7 +1,6 @@
 package integration_testing
 
 import (
-	"lab.siroccotechnology.ru/tp/integration-testing/apm"
 	"lab.siroccotechnology.ru/tp/integration-testing/parking"
 	"lab.siroccotechnology.ru/tp/integration-testing/passes"
 	"lab.siroccotechnology.ru/tp/integration-testing/passes/mcd"
@@ -9,6 +8,7 @@ import (
 	"lab.siroccotechnology.ru/tp/integration-testing/passes/mgt"
 	"lab.siroccotechnology.ru/tp/integration-testing/passes/mm"
 	"lab.siroccotechnology.ru/tp/integration-testing/passes/mmts"
+	"lab.siroccotechnology.ru/tp/integration-testing/passes/mt"
 	"lab.siroccotechnology.ru/tp/integration-testing/passes/mtppk"
 	"lab.siroccotechnology.ru/tp/integration-testing/registry"
 	"lab.siroccotechnology.ru/tp/integration-testing/webapi"
@@ -34,21 +34,18 @@ func init() {
 	AddP(mmts.CasesComplexPassMMTS3)
 	AddP(mmts.CasesComplexPassMMTS4)
 	AddP(mmts.CasesComplexPassMMTS5)
-	AddP(mmts.CasesOfflineMetroComplexMMTS)
 
 	//MM
 	AddP(mm.CasesMetroComplexMM1)
 	AddP(mm.CasesMetroComplexMM2)
 	AddP(mm.CasesMetroComplexMM3)
 	AddP(mm.CasesMetroComplexMM4)
-	AddP(mm.CasesOfflineMetroComplexMM)
 
 	//МЦК
 	AddP(mck.CasesMetroComplexMCK1)
 	AddP(mck.CasesMetroComplexMCK2)
 	AddP(mck.CasesMetroComplexMCK3)
 	AddP(mck.CasesMetroComplexMCK4)
-	AddP(mck.CasesOfflineMetroComplexMCK)
 
 	//МЦД
 	AddP(mcd.CasesMetroComplexMCDMSK1)
@@ -62,8 +59,11 @@ func init() {
 	AddP(mcd.CasesComplexMCDMOPartFour)
 	AddP(mcd.CasesComplexMCDMOPartFife)
 
+	//Мобильная тройка
+	AddP(mt.CasesMetroComplexMT)
+
 	//APM
-	AddP(apm.CasesApmGateway)
+	//AddP(apm.CasesApmGateway)
 
 	//МГТ
 	AddP(mgt.CasesMGT)

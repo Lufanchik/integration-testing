@@ -977,7 +977,6 @@ var CasesMetroComplexMCDMSK5 = test.Cases{
 					Station:   "2000155", //ФИЛИ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4200,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -1039,7 +1038,6 @@ var CasesMetroComplexMCDMSK5 = test.Cases{
 					Station:   "2000155", //ФИЛИ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4200,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -1101,7 +1099,6 @@ var CasesMetroComplexMCDMSK5 = test.Cases{
 					Station:   "2000155", //ФИЛИ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4200,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -1163,7 +1160,6 @@ var CasesMetroComplexMCDMSK5 = test.Cases{
 					Station:   "2000155", //ФИЛИ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4200,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,

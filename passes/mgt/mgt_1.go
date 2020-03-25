@@ -8,7 +8,7 @@ import (
 
 var CasesMGT_1 = test.Cases{
 	{
-		N: "26. MGT - MMTS - MGT",
+		N: "26. MGT-MMTS-MGT",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -27,36 +27,7 @@ var CasesMGT_1 = test.Cases{
 	},
 
 	{
-		N: "27. MGT - MMTS - MGT - MM - MGT",
-		T: test.T{
-			&test.Pass{
-				PaymentType: test.PaymentTypePayment,
-				Carrier:     carriers.Carrier_MGT,
-			},
-			&test.Pass{
-				PaymentType: test.PaymentTypePayment,
-				Carrier:     carriers.Carrier_MM,
-				SubCarrier:  carriers.SubCarrier_MMTS_SUB,
-			},
-			&test.Pass{
-				PaymentType: test.PaymentTypePayment,
-				Carrier:     carriers.Carrier_MGT,
-			},
-			&test.Pass{
-				PaymentType: test.PaymentTypeFree,
-				Carrier:     carriers.Carrier_MM,
-				SubCarrier:  carriers.SubCarrier_MM_SUB,
-				Parent:      2,
-			},
-			&test.Pass{
-				PaymentType: test.PaymentTypePayment,
-				Carrier:     carriers.Carrier_MGT,
-			},
-		},
-	},
-
-	{
-		N: "28. MGT - MMTS - MGT - MM - MGT - MCK - MGT",
+		N: "27. MGT-MMTS-MGT-MM-MGT",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -81,21 +52,11 @@ var CasesMGT_1 = test.Cases{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
 			},
-			&test.Pass{
-				PaymentType: test.PaymentTypeFree,
-				Carrier:     carriers.Carrier_MM,
-				SubCarrier:  carriers.SubCarrier_MCK_SUB,
-				Parent:      2,
-			},
-			&test.Pass{
-				PaymentType: test.PaymentTypePayment,
-				Carrier:     carriers.Carrier_MGT,
-			},
 		},
 	},
 
 	{
-		N: "29. MGT - MMTS - MGT - MM - MGT - MCK - MGT - MM - MGT",
+		N: "28. MGT-MMTS-MGT-MM-MGT-MCK-MGT",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -130,6 +91,45 @@ var CasesMGT_1 = test.Cases{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
 			},
+		},
+	},
+
+	{
+		N: "29. MGT-MMTS-MGT-MM-MGT-MCK-MGT-MM-MGT",
+		T: test.T{
+			&test.Pass{
+				PaymentType: test.PaymentTypePayment,
+				Carrier:     carriers.Carrier_MGT,
+			},
+			&test.Pass{
+				PaymentType: test.PaymentTypePayment,
+				Carrier:     carriers.Carrier_MM,
+				SubCarrier:  carriers.SubCarrier_MMTS_SUB,
+			},
+			&test.Pass{
+				PaymentType: test.PaymentTypePayment,
+				Carrier:     carriers.Carrier_MGT,
+			},
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
+				Carrier:     carriers.Carrier_MM,
+				SubCarrier:  carriers.SubCarrier_MM_SUB,
+				Parent:      2,
+			},
+			&test.Pass{
+				PaymentType: test.PaymentTypePayment,
+				Carrier:     carriers.Carrier_MGT,
+			},
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
+				Carrier:     carriers.Carrier_MM,
+				SubCarrier:  carriers.SubCarrier_MCK_SUB,
+				Parent:      2,
+			},
+			&test.Pass{
+				PaymentType: test.PaymentTypePayment,
+				Carrier:     carriers.Carrier_MGT,
+			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
 				Carrier:     carriers.Carrier_MM,
@@ -144,7 +144,7 @@ var CasesMGT_1 = test.Cases{
 	},
 
 	{
-		N: "30. MGT - MMTS - MGT - MCK - MGT - MM - MGT",
+		N: "30. MGT-MMTS-MGT-MCK-MGT-MM-MGT",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -183,7 +183,7 @@ var CasesMGT_1 = test.Cases{
 	},
 
 	{
-		N: "31. MGT - MCD1_MO - MGT",
+		N: "31. MGT-MCD1_MO-MGT",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -216,7 +216,7 @@ var CasesMGT_1 = test.Cases{
 	},
 
 	{
-		N: "32. MGT - MCD2_MO - MGT",
+		N: "32. MGT-MCD2_MO-MGT",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -250,7 +250,7 @@ var CasesMGT_1 = test.Cases{
 	},
 
 	{
-		N: "33. MGT - MCD1_MSK - MGT",
+		N: "33. MGT-MCD1_MSK-MGT",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -284,7 +284,7 @@ var CasesMGT_1 = test.Cases{
 	},
 
 	{
-		N: "34. MGT - MCD2_MSK - MGT",
+		N: "34. MGT-MCD2_MSK-MGT",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -318,7 +318,7 @@ var CasesMGT_1 = test.Cases{
 	},
 
 	{
-		N: "35. MGT - MCD1_MO-MSK - MGT - MM - MGT - MCD1_MSK-MO - MGT",
+		N: "35. MGT-MCD1_MO-MSK-MGT-MM-MGT-MCD1_MSK-MO-MGT",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -387,7 +387,7 @@ var CasesMGT_1 = test.Cases{
 	},
 
 	{
-		N: "36. MGT - MCD2_MO-MSK - MGT - MM - MGT - MCD2_MSK-MO - MGT",
+		N: "36. MGT-MCD2_MO-MSK-MGT-MM-MGT-MCD2_MSK-MO-MGT",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -456,7 +456,7 @@ var CasesMGT_1 = test.Cases{
 	},
 
 	{
-		N: "37. MGT - MCD1_MO-MSK - MGT - MCK - MGT - MCD1_MSK-MO - MGT",
+		N: "37. MGT-MCD1_MO-MSK-MGT-MCK-MGT-MCD1_MSK-MO-MGT",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -525,7 +525,7 @@ var CasesMGT_1 = test.Cases{
 	},
 
 	{
-		N: "38. MGT - MCD2_MO-MSK - MGT - MCK - MGT - MCD2_MSK-MO - MGT",
+		N: "38. MGT-MCD2_MO-MSK-MGT-MCK-MGT-MCD2_MSK-MO-MGT",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -594,7 +594,7 @@ var CasesMGT_1 = test.Cases{
 	},
 
 	{
-		N: "39. MGT - MCD1_MO-MSK - MGT - MM - MGT - MCK - MGT - MM - MGT",
+		N: "39. MGT-MCD1_MO-MSK-MGT-MM-MGT-MCK-MGT-MM-MGT",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -658,7 +658,7 @@ var CasesMGT_1 = test.Cases{
 	},
 
 	{
-		N: "40. MGT - MCD2_MO-MSK - MGT - MM - MGT - MCK - MGT - MM - MGT",
+		N: "40. MGT-MCD2_MO-MSK-MGT-MM-MGT-MCK-MGT-MM-MGT",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -722,7 +722,7 @@ var CasesMGT_1 = test.Cases{
 	},
 
 	{
-		N: "41. MGT - MCD1_MO-MSK - MGT - MMTS - MGT",
+		N: "41. MGT-MCD1_MO-MSK-MGT-MMTS-MGT",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -766,7 +766,7 @@ var CasesMGT_1 = test.Cases{
 	},
 
 	{
-		N: "42. MGT - MCD2_MO-MSK - MGT - MMTS - MGT",
+		N: "42. MGT-MCD2_MO-MSK-MGT-MMTS-MGT",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -810,7 +810,7 @@ var CasesMGT_1 = test.Cases{
 	},
 
 	{
-		N: "43. MGT - MCD1_MO-MSK - MGT - MM - MGT - MMTS - MGT",
+		N: "43. MGT-MCD1_MO-MSK-MGT-MM-MGT-MMTS-MGT",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -864,7 +864,7 @@ var CasesMGT_1 = test.Cases{
 	},
 
 	{
-		N: "44. MGT - MCD2_MO-MSK - MGT - MM - MGT - MMTS - MGT",
+		N: "44. MGT-MCD2_MO-MSK-MGT-MM-MGT-MMTS-MgiGT",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,

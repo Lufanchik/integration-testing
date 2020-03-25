@@ -203,6 +203,10 @@ func Run(t *testing.T, cases Cases, rt RequestType) {
 						p.PassType = ncc.c.PassType
 					}
 
+					if p.PassType == pass.PassType_PASS_MT {
+						p.PaymentType = PaymentTypePrepayed
+					}
+
 					fmt.Printf("name: %s; pass-type: %d\n", ncc.c.N, ncc.c.PassType)
 					RunPass(t, p, scenario, ncc.carrierId, ncc.card)
 				}

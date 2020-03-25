@@ -12,14 +12,12 @@ var CasesMetroComplexMT = test.Cases{
 		PassType: pass.PassType_PASS_MT,
 		T: test.T{
 			&test.Pass{
-				PaymentType: test.PaymentTypePrepayed,
-				Carrier:     carriers.Carrier_MM,
-				SubCarrier:  carriers.SubCarrier_MM_SUB,
+				Carrier:    carriers.Carrier_MM,
+				SubCarrier: carriers.SubCarrier_MM_SUB,
 			},
 			&test.Pass{
-				PaymentType: test.PaymentTypePrepayed,
-				Carrier:     carriers.Carrier_MM,
-				SubCarrier:  carriers.SubCarrier_MM_SUB,
+				Carrier:    carriers.Carrier_MM,
+				SubCarrier: carriers.SubCarrier_MM_SUB,
 			},
 		},
 	},
@@ -28,14 +26,12 @@ var CasesMetroComplexMT = test.Cases{
 		PassType: pass.PassType_PASS_MT,
 		T: test.T{
 			&test.Pass{
-				PaymentType: test.PaymentTypePrepayed,
-				Carrier:     carriers.Carrier_MM,
-				SubCarrier:  carriers.SubCarrier_MCK_SUB,
+				Carrier:    carriers.Carrier_MM,
+				SubCarrier: carriers.SubCarrier_MCK_SUB,
 			},
 			&test.Pass{
-				PaymentType: test.PaymentTypePrepayed,
-				Carrier:     carriers.Carrier_MM,
-				SubCarrier:  carriers.SubCarrier_MCK_SUB,
+				Carrier:    carriers.Carrier_MM,
+				SubCarrier: carriers.SubCarrier_MCK_SUB,
 			},
 		},
 	},
@@ -44,14 +40,12 @@ var CasesMetroComplexMT = test.Cases{
 		PassType: pass.PassType_PASS_MT,
 		T: test.T{
 			&test.Pass{
-				PaymentType: test.PaymentTypePrepayed,
-				Carrier:     carriers.Carrier_MM,
-				SubCarrier:  carriers.SubCarrier_MMTS_SUB,
+				Carrier:    carriers.Carrier_MM,
+				SubCarrier: carriers.SubCarrier_MMTS_SUB,
 			},
 			&test.Pass{
-				PaymentType: test.PaymentTypePrepayed,
-				Carrier:     carriers.Carrier_MM,
-				SubCarrier:  carriers.SubCarrier_MMTS_SUB,
+				Carrier:    carriers.Carrier_MM,
+				SubCarrier: carriers.SubCarrier_MMTS_SUB,
 			},
 		},
 	},
@@ -60,14 +54,12 @@ var CasesMetroComplexMT = test.Cases{
 		PassType: pass.PassType_PASS_MT,
 		T: test.T{
 			&test.Pass{
-				PaymentType: test.PaymentTypePrepayed,
-				Carrier:     carriers.Carrier_MM,
-				SubCarrier:  carriers.SubCarrier_MM_SUB,
+				Carrier:    carriers.Carrier_MM,
+				SubCarrier: carriers.SubCarrier_MM_SUB,
 			},
 			&test.Pass{
-				PaymentType: test.PaymentTypePrepayed,
-				Carrier:     carriers.Carrier_MM,
-				SubCarrier:  carriers.SubCarrier_MCK_SUB,
+				Carrier:    carriers.Carrier_MM,
+				SubCarrier: carriers.SubCarrier_MCK_SUB,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePrepayed,
@@ -81,19 +73,16 @@ var CasesMetroComplexMT = test.Cases{
 		PassType: pass.PassType_PASS_MT,
 		T: test.T{
 			&test.Pass{
-				PaymentType: test.PaymentTypePrepayed,
-				Carrier:     carriers.Carrier_MM,
-				SubCarrier:  carriers.SubCarrier_MMTS_SUB,
+				Carrier:    carriers.Carrier_MM,
+				SubCarrier: carriers.SubCarrier_MMTS_SUB,
 			},
 			&test.Pass{
-				PaymentType: test.PaymentTypePrepayed,
-				Carrier:     carriers.Carrier_MM,
-				SubCarrier:  carriers.SubCarrier_MCK_SUB,
+				Carrier:    carriers.Carrier_MM,
+				SubCarrier: carriers.SubCarrier_MCK_SUB,
 			},
 			&test.Pass{
-				PaymentType: test.PaymentTypePrepayed,
-				Carrier:     carriers.Carrier_MM,
-				SubCarrier:  carriers.SubCarrier_MM_SUB,
+				Carrier:    carriers.Carrier_MM,
+				SubCarrier: carriers.SubCarrier_MM_SUB,
 			},
 		},
 	},
@@ -102,19 +91,16 @@ var CasesMetroComplexMT = test.Cases{
 		PassType: pass.PassType_PASS_MT,
 		T: test.T{
 			&test.Pass{
-				PaymentType: test.PaymentTypePrepayed,
-				Carrier:     carriers.Carrier_MM,
-				SubCarrier:  carriers.SubCarrier_MCK_SUB,
+				Carrier:    carriers.Carrier_MM,
+				SubCarrier: carriers.SubCarrier_MCK_SUB,
 			},
 			&test.Pass{
-				PaymentType: test.PaymentTypePrepayed,
-				Carrier:     carriers.Carrier_MM,
-				SubCarrier:  carriers.SubCarrier_MM_SUB,
+				Carrier:    carriers.Carrier_MM,
+				SubCarrier: carriers.SubCarrier_MM_SUB,
 			},
 			&test.Pass{
-				PaymentType: test.PaymentTypePrepayed,
-				Carrier:     carriers.Carrier_MM,
-				SubCarrier:  carriers.SubCarrier_MMTS_SUB,
+				Carrier:    carriers.Carrier_MM,
+				SubCarrier: carriers.SubCarrier_MMTS_SUB,
 			},
 		},
 	},
@@ -123,19 +109,16 @@ var CasesMetroComplexMT = test.Cases{
 		PassType: pass.PassType_PASS_MT,
 		T: test.T{
 			&test.Pass{
-				PaymentType: test.PaymentTypePrepayed,
-				Carrier:     carriers.Carrier_MM,
-				SubCarrier:  carriers.SubCarrier_MCK_SUB,
+				Carrier:    carriers.Carrier_MM,
+				SubCarrier: carriers.SubCarrier_MCK_SUB,
 			},
 			&test.Pass{
-				PaymentType: test.PaymentTypePrepayed,
-				Carrier:     carriers.Carrier_MM,
-				SubCarrier:  carriers.SubCarrier_MMTS_SUB,
+				Carrier:    carriers.Carrier_MM,
+				SubCarrier: carriers.SubCarrier_MMTS_SUB,
 			},
 			&test.Pass{
-				PaymentType: test.PaymentTypePrepayed,
-				Carrier:     carriers.Carrier_MM,
-				SubCarrier:  carriers.SubCarrier_MM_SUB,
+				Carrier:    carriers.Carrier_MM,
+				SubCarrier: carriers.SubCarrier_MM_SUB,
 			},
 		},
 	},
@@ -144,19 +127,16 @@ var CasesMetroComplexMT = test.Cases{
 		PassType: pass.PassType_PASS_MT,
 		T: test.T{
 			&test.Pass{
-				PaymentType: test.PaymentTypePrepayed,
-				Carrier:     carriers.Carrier_MM,
-				SubCarrier:  carriers.SubCarrier_MCK_SUB,
+				Carrier:    carriers.Carrier_MM,
+				SubCarrier: carriers.SubCarrier_MCK_SUB,
 			},
 			&test.Pass{
-				PaymentType: test.PaymentTypePrepayed,
-				Carrier:     carriers.Carrier_MM,
-				SubCarrier:  carriers.SubCarrier_MMTS_SUB,
+				Carrier:    carriers.Carrier_MM,
+				SubCarrier: carriers.SubCarrier_MMTS_SUB,
 			},
 			&test.Pass{
-				PaymentType: test.PaymentTypePrepayed,
-				Carrier:     carriers.Carrier_MM,
-				SubCarrier:  carriers.SubCarrier_MMTS_SUB,
+				Carrier:    carriers.Carrier_MM,
+				SubCarrier: carriers.SubCarrier_MMTS_SUB,
 			},
 		},
 	},
@@ -165,19 +145,16 @@ var CasesMetroComplexMT = test.Cases{
 		PassType: pass.PassType_PASS_MT,
 		T: test.T{
 			&test.Pass{
-				PaymentType: test.PaymentTypePrepayed,
-				Carrier:     carriers.Carrier_MM,
-				SubCarrier:  carriers.SubCarrier_MCK_SUB,
+				Carrier:    carriers.Carrier_MM,
+				SubCarrier: carriers.SubCarrier_MCK_SUB,
 			},
 			&test.Pass{
-				PaymentType: test.PaymentTypePrepayed,
-				Carrier:     carriers.Carrier_MM,
-				SubCarrier:  carriers.SubCarrier_MM_SUB,
+				Carrier:    carriers.Carrier_MM,
+				SubCarrier: carriers.SubCarrier_MM_SUB,
 			},
 			&test.Pass{
-				PaymentType: test.PaymentTypePrepayed,
-				Carrier:     carriers.Carrier_MM,
-				SubCarrier:  carriers.SubCarrier_MM_SUB,
+				Carrier:    carriers.Carrier_MM,
+				SubCarrier: carriers.SubCarrier_MM_SUB,
 			},
 		},
 	},

@@ -6,7 +6,7 @@ import (
 	"lab.siroccotechnology.ru/tp/integration-testing/test"
 )
 
-var CasesMTPPKMGT = test.Cases{
+var CasesMTPPK_MGT = test.Cases{
 	{
 		N:          "1. МТППК - МГТ, VISA",
 		CardSystem: processing.CardSystem_VISA,
@@ -21,28 +21,31 @@ var CasesMTPPKMGT = test.Cases{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
 				RequestType: test.RequestTypeOffline,
-				ExpectedSum: 4200,
+				//ExpectedSum: 4400,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeAggregate,
 				Carrier:     carriers.Carrier_MTPPK,
 				Aggregate:   1,
+				ExpectedSum: 42,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeAggregate,
 				Carrier:     carriers.Carrier_MTPPK,
 				Aggregate:   1,
+				ExpectedSum: 42,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
 				RequestType: test.RequestTypeOffline,
-				ExpectedSum: 4200,
+				//ExpectedSum: 4400,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeAggregate,
 				Carrier:     carriers.Carrier_MTPPK,
 				Aggregate:   1,
+				ExpectedSum: 42,
 			},
 			&test.Complete{
 				StartPass: 1,
@@ -61,17 +64,16 @@ var CasesMTPPKMGT = test.Cases{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
 				RequestType: test.RequestTypeOffline,
-				ExpectedSum: 4200,
+				ExpectedSum: 4400,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
 				RequestType: test.RequestTypeOnline,
-				ExpectedSum: 4200,
+				//ExpectedSum: 4200,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeStartAggregate,
-				AuthType:    test.AuthTypeCorrect,
 				Carrier:     carriers.Carrier_MTPPK,
 				RequestType: test.RequestTypeOffline,
 				ExpectedSum: 777,
@@ -80,41 +82,43 @@ var CasesMTPPKMGT = test.Cases{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
 				RequestType: test.RequestTypeOnline,
-				ExpectedSum: 4200,
+				//ExpectedSum: 4200,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeAggregate,
 				Carrier:     carriers.Carrier_MTPPK,
 				RequestType: test.RequestTypeOffline,
 				Aggregate:   3,
-			},
-			&test.Pass{
-				PaymentType: test.PaymentTypeAggregate,
-				Carrier:     carriers.Carrier_MTPPK,
-				RequestType: test.RequestTypeOnline,
-				Aggregate:   3,
-			},
-			&test.Pass{
-				PaymentType: test.PaymentTypePayment,
-				Carrier:     carriers.Carrier_MGT,
-				RequestType: test.RequestTypeOffline,
-				ExpectedSum: 4200,
+				ExpectedSum: 777,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeAggregate,
 				Carrier:     carriers.Carrier_MTPPK,
 				RequestType: test.RequestTypeOnline,
 				Aggregate:   3,
+				ExpectedSum: 777,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
 				RequestType: test.RequestTypeOffline,
-				ExpectedSum: 4200,
+				//ExpectedSum: 4200,
+			},
+			&test.Pass{
+				PaymentType: test.PaymentTypeAggregate,
+				Carrier:     carriers.Carrier_MTPPK,
+				RequestType: test.RequestTypeOnline,
+				Aggregate:   3,
+				ExpectedSum: 777,
+			},
+			&test.Pass{
+				PaymentType: test.PaymentTypePayment,
+				Carrier:     carriers.Carrier_MGT,
+				RequestType: test.RequestTypeOffline,
+				//ExpectedSum: 4200,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeStartAggregate,
-				AuthType:    test.AuthTypeCorrect,
 				Carrier:     carriers.Carrier_MTPPK,
 				RequestType: test.RequestTypeOnline,
 				ExpectedSum: 123,
@@ -124,24 +128,26 @@ var CasesMTPPKMGT = test.Cases{
 				Carrier:     carriers.Carrier_MTPPK,
 				RequestType: test.RequestTypeOffline,
 				Aggregate:   10,
+				ExpectedSum: 123,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeAggregate,
 				Carrier:     carriers.Carrier_MTPPK,
 				RequestType: test.RequestTypeOnline,
 				Aggregate:   10,
+				ExpectedSum: 123,
 			},
 			&test.Complete{
 				StartPass: 10,
 				Passes: []int{
-					5, 8,
+					11, 12,
 				},
 				Sum: 123,
 			},
 			&test.Complete{
 				StartPass: 3,
 				Passes: []int{
-					11, 6, 12,
+					5, 6, 8,
 				},
 				Sum: 777,
 			},

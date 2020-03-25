@@ -15,6 +15,8 @@ var CasesCancel = test.Cases{
 				RequestType: test.RequestTypeOnline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
+				AuthType:    test.AuthTypeCorrect,
+				ExpectedSum: 4400,
 			},
 			&test.Cancel{
 				Target: 1,
@@ -30,6 +32,8 @@ var CasesCancel = test.Cases{
 				RequestType: test.RequestTypeOnline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
+				AuthType:    test.AuthTypeCorrect,
+				ExpectedSum: 4400,
 			},
 			&test.Cancel{
 				Target: 1,
@@ -45,6 +49,8 @@ var CasesCancel = test.Cases{
 				RequestType: test.RequestTypeOnline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MMTS_SUB,
+				AuthType:    test.AuthTypeCorrect,
+				ExpectedSum: 4400,
 			},
 			&test.Cancel{
 				Target: 1,
@@ -60,17 +66,18 @@ var CasesCancel = test.Cases{
 				RequestType: test.RequestTypeOnline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD2_MSK,
+				AuthType:    test.AuthTypeCorrect,
 				Terminal: &processing.Terminal{
 					Station:   "2000075", //ТУШИНО
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4200,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
 				RequestType: test.RequestTypeOnline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD2_MSK,
+				AuthType:    test.AuthTypeCorrect,
 				Terminal: &processing.Terminal{
 					Station:   "2000235", //ДМИТРОВСКАЯ
 					Direction: processing.TerminalDirection_EGRESS,
@@ -95,17 +102,18 @@ var CasesCancel = test.Cases{
 				RequestType: test.RequestTypeOnline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD2_MSK,
+				AuthType:    test.AuthTypeCorrect,
 				Terminal: &processing.Terminal{
 					Station:   "2000075", //ТУШИНО
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4200,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				RequestType: test.RequestTypeOnline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD2_MO,
+				AuthType:    test.AuthTypeCorrect,
 				Terminal: &processing.Terminal{
 					Station:   "2000460", //НАХАБИНО
 					Direction: processing.TerminalDirection_EGRESS,
@@ -131,6 +139,7 @@ var CasesCancel = test.Cases{
 				RequestType: test.RequestTypeOnline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD2_MO,
+				AuthType:    test.AuthTypeCorrect,
 				Terminal: &processing.Terminal{
 					Station:   "2000460", //НАХАБИНО
 					Direction: processing.TerminalDirection_INGRESS,
@@ -142,6 +151,7 @@ var CasesCancel = test.Cases{
 				RequestType: test.RequestTypeOnline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD2_MSK,
+				AuthType:    test.AuthTypeCorrect,
 				Terminal: &processing.Terminal{
 					Station:   "2000075", //ТУШИНО
 					Direction: processing.TerminalDirection_EGRESS,
@@ -166,6 +176,7 @@ var CasesCancel = test.Cases{
 				RequestType: test.RequestTypeOnline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD2_MO,
+				AuthType:    test.AuthTypeCorrect,
 				Terminal: &processing.Terminal{
 					Station:   "2000460", //НАХАБИНО
 					Direction: processing.TerminalDirection_INGRESS,
@@ -177,6 +188,7 @@ var CasesCancel = test.Cases{
 				RequestType: test.RequestTypeOnline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD2_MO,
+				AuthType:    test.AuthTypeCorrect,
 				Terminal: &processing.Terminal{
 					Station:   "2002952", //СИЛИКАТНАЯ
 					Direction: processing.TerminalDirection_EGRESS,
@@ -201,17 +213,18 @@ var CasesCancel = test.Cases{
 				RequestType: test.RequestTypeOnline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
+				AuthType:    test.AuthTypeCorrect,
 				Terminal: &processing.Terminal{
 					Station:   "2000155", //ФИЛИ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4200,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
 				RequestType: test.RequestTypeOnline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
+				AuthType:    test.AuthTypeCorrect,
 				Terminal: &processing.Terminal{
 					Station:   "2003965", //ТИМИРЯЗЕВСКАЯ
 					Direction: processing.TerminalDirection_EGRESS,
@@ -236,17 +249,18 @@ var CasesCancel = test.Cases{
 				RequestType: test.RequestTypeOnline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
+				AuthType:    test.AuthTypeCorrect,
 				Terminal: &processing.Terminal{
 					Station:   "2000155", //ФИЛИ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4200,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				RequestType: test.RequestTypeOnline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MO,
+				AuthType:    test.AuthTypeCorrect,
 				Terminal: &processing.Terminal{
 					Station:   "2000685", //БАКОВКА
 					Direction: processing.TerminalDirection_EGRESS,
@@ -272,17 +286,18 @@ var CasesCancel = test.Cases{
 				RequestType: test.RequestTypeOnline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MO,
+				AuthType:    test.AuthTypeCorrect,
 				Terminal: &processing.Terminal{
 					Station:   "2000685", //БАКОВКА
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4900,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
 				RequestType: test.RequestTypeOnline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
+				AuthType:    test.AuthTypeCorrect,
 				Terminal: &processing.Terminal{
 					Station:   "2000155", //ФИЛИ
 					Direction: processing.TerminalDirection_EGRESS,
@@ -307,6 +322,7 @@ var CasesCancel = test.Cases{
 				RequestType: test.RequestTypeOnline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MO,
+				AuthType:    test.AuthTypeCorrect,
 				Terminal: &processing.Terminal{
 					Station:   "2001101", //ИННОВАЦИОННЫЙ ЦЕНТР
 					Direction: processing.TerminalDirection_INGRESS,
@@ -318,6 +334,7 @@ var CasesCancel = test.Cases{
 				RequestType: test.RequestTypeOnline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MO,
+				AuthType:    test.AuthTypeCorrect,
 				Terminal: &processing.Terminal{
 					Station:   "2000600", //НОВОДАЧНАЯ
 					Direction: processing.TerminalDirection_EGRESS,
@@ -342,6 +359,8 @@ var CasesCancel = test.Cases{
 				RequestType: test.RequestTypeOnline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
+				AuthType:    test.AuthTypeCorrect,
+				ExpectedSum: 4400,
 			},
 			&test.Cancel{
 				Target: 1,
@@ -352,6 +371,8 @@ var CasesCancel = test.Cases{
 				RequestType: test.RequestTypeOnline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
+				AuthType:    test.AuthTypeCorrect,
+				ExpectedSum: 4400,
 			},
 			&test.Cancel{
 				Target: 3,
@@ -362,6 +383,8 @@ var CasesCancel = test.Cases{
 				RequestType: test.RequestTypeOnline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
+				AuthType:    test.AuthTypeCorrect,
+				ExpectedSum: 4400,
 			},
 			&test.Cancel{
 				Target: 5,
@@ -372,6 +395,8 @@ var CasesCancel = test.Cases{
 				RequestType: test.RequestTypeOnline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
+				AuthType:    test.AuthTypeCorrect,
+				ExpectedSum: 4400,
 			},
 			&test.Cancel{
 				Target: 7,
@@ -391,6 +416,7 @@ var CasesCancel = test.Cases{
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				AuthType:    test.AuthTypeIncorrect,
+				ExpectedSum: 4400,
 			},
 			&test.Cancel{
 				Target: 1,
@@ -407,6 +433,7 @@ var CasesCancel = test.Cases{
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
 				AuthType:    test.AuthTypeIncorrect,
+				ExpectedSum: 4400,
 			},
 			&test.Cancel{
 				Target: 1,
@@ -423,6 +450,7 @@ var CasesCancel = test.Cases{
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MMTS_SUB,
 				AuthType:    test.AuthTypeIncorrect,
+				ExpectedSum: 4400,
 			},
 			&test.Cancel{
 				Target: 1,
@@ -437,13 +465,12 @@ var CasesCancel = test.Cases{
 				PaymentType: test.PaymentTypePayment,
 				RequestType: test.RequestTypeOnline,
 				Carrier:     carriers.Carrier_MCD,
-				SubCarrier:  carriers.SubCarrier_MCD2_MSK,
+				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				AuthType:    test.AuthTypeIncorrect,
 				Terminal: &processing.Terminal{
-					Station:   "2000075", //ТУШИНО
+					Station:   "2002077", //ТУШИНО
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4200,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -451,7 +478,7 @@ var CasesCancel = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD2_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2000235", //ДМИТРОВСКАЯ
+					Station:   "2002780", //ДМИТРОВСКАЯ
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 1,
@@ -731,6 +758,7 @@ var CasesCancel = test.Cases{
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				AuthType:    test.AuthTypeIncorrect,
+				ExpectedSum: 4400,
 			},
 			&test.Cancel{
 				Target: 1,
@@ -742,6 +770,7 @@ var CasesCancel = test.Cases{
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				AuthType:    test.AuthTypeIncorrect,
+				ExpectedSum: 4400,
 			},
 			&test.Cancel{
 				Target: 3,
@@ -753,6 +782,7 @@ var CasesCancel = test.Cases{
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				AuthType:    test.AuthTypeIncorrect,
+				ExpectedSum: 4400,
 			},
 			&test.Cancel{
 				Target: 5,
@@ -764,6 +794,7 @@ var CasesCancel = test.Cases{
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				AuthType:    test.AuthTypeIncorrect,
+				ExpectedSum: 4400,
 			},
 			&test.Cancel{
 				Target: 7,
@@ -771,7 +802,54 @@ var CasesCancel = test.Cases{
 			},
 		},
 	},
-
+	//{
+	//	N: "25. ММ успешная авторизация + Отмена Refund",
+	//	T: test.T{
+	//		&test.Pass{
+	//			PaymentType: test.PaymentTypePayment,
+	//			RequestType: test.RequestTypeOnline,
+	//			Carrier:     carriers.Carrier_MM,
+	//			SubCarrier:  carriers.SubCarrier_MM_SUB,
+	//			AuthType:    test.AuthTypeRefund,
+	//		},
+	//		&test.Cancel{
+	//			Target: 1,
+	//			Reason: processing.CancelPassRequest_CSS,
+	//		},
+	//	},
+	//},
+	//{
+	//	N: "26. МЦК успешная авторизация + Отмена Refund",
+	//	T: test.T{
+	//		&test.Pass{
+	//			PaymentType: test.PaymentTypePayment,
+	//			RequestType: test.RequestTypeOnline,
+	//			Carrier:     carriers.Carrier_MM,
+	//			SubCarrier:  carriers.SubCarrier_MCK_SUB,
+	//			AuthType:    test.AuthTypeRefund,
+	//		},
+	//		&test.Cancel{
+	//			Target: 1,
+	//			Reason: processing.CancelPassRequest_CSS,
+	//		},
+	//	},
+	//},
+	//{
+	//	N: "27. ММТС успешная авторизация + Отмена Refund",
+	//	T: test.T{
+	//		&test.Pass{
+	//			PaymentType: test.PaymentTypePayment,
+	//			RequestType: test.RequestTypeOnline,
+	//			Carrier:     carriers.Carrier_MM,
+	//			SubCarrier:  carriers.SubCarrier_MMTS_SUB,
+	//			AuthType:    test.AuthTypeRefund,
+	//		},
+	//		&test.Cancel{
+	//			Target: 1,
+	//			Reason: processing.CancelPassRequest_CSS,
+	//		},
+	//	},
+	//},
 	//ОТМЕНА ПРОХОДА В КОМПЛЕКСНОЙ ПОЕЗДКЕ
 
 	{
@@ -782,6 +860,7 @@ var CasesCancel = test.Cases{
 				RequestType: test.RequestTypeOnline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
+				//ExpectedSum: 4200,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,

@@ -41,11 +41,13 @@ var CasesMTPPK_MCD_MSK = test.Cases{
 				PaymentType: test.PaymentTypeAggregate,
 				Carrier:     carriers.Carrier_MTPPK,
 				Aggregate:   3,
+				ExpectedSum: 8800,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeAggregate,
 				Carrier:     carriers.Carrier_MTPPK,
 				Aggregate:   3,
+				ExpectedSum: 8800,
 			},
 			&test.Complete{
 				StartPass: 3,
@@ -84,19 +86,20 @@ var CasesMTPPK_MCD_MSK = test.Cases{
 				PaymentType: test.PaymentTypeStartAggregate,
 				AuthType:    test.AuthTypeCorrect,
 				Carrier:     carriers.Carrier_MTPPK,
-				ExpectedSum: 88800,
+				ExpectedSum: 100,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeAggregate,
 				Carrier:     carriers.Carrier_MTPPK,
 				Aggregate:   3,
+				ExpectedSum: 100,
 			},
 			&test.Complete{
 				StartPass: 3,
 				Passes: []int{
 					4,
 				},
-				Sum: 88800,
+				Sum: 100,
 			},
 		},
 	},

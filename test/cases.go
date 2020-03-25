@@ -22,12 +22,16 @@ type (
 		T T
 		//платежная система
 		CardSystem processing.CardSystem
-		FaceId     string
+		//тип прохода
+		PassType pass.PassType
+		FaceId   string
 	}
 	//генерация прохода
 	Pass struct {
 		//тип оплаты
 		PaymentType PaymentType
+		//тип карты
+		PassType pass.PassType
 		//тип прохода
 		RequestType RequestType
 		//тип авторизации
@@ -99,6 +103,22 @@ type (
 	AbsGetRegistry struct {
 	}
 
+	//Сверки по проходам
+	Revise struct {
+		Url      string
+		Status   int
+		Request  interface{}
+		Response interface{}
+	}
+
+	//автосверка
+	Resolve struct {
+		Url      string
+		Status   int
+		Request  interface{}
+		Response interface{}
+	}
+
 	//логин
 	Login struct {
 	}
@@ -137,6 +157,7 @@ const (
 	PaymentTypePayment
 	PaymentTypeStartAggregate
 	PaymentTypeAggregate
+	PaymentTypePrepayed
 )
 
 const (
@@ -148,6 +169,7 @@ const (
 const (
 	AuthTypeCorrect AuthType = iota
 	AuthTypeIncorrect
+	AuthTypeRefund
 )
 
 var Now func() uint64

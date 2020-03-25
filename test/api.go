@@ -2,6 +2,7 @@ package test
 
 import (
 	"context"
+	"github.com/gavv/httpexpect"
 	"github.com/golang/protobuf/jsonpb"
 	"github.com/prometheus/common/log"
 	"github.com/stretchr/testify/assert"
@@ -11,6 +12,7 @@ import (
 	"lab.siroccotechnology.ru/tp/common/messages/pass"
 	"lab.siroccotechnology.ru/tp/common/messages/processing"
 	"lab.siroccotechnology.ru/tp/common/messages/registries"
+	protoResponse "lab.siroccotechnology.ru/tp/common/messages/response"
 	"lab.siroccotechnology.ru/tp/common/messages/user"
 	webApi "lab.siroccotechnology.ru/tp/web-api-gateway/proto"
 	"net/http"
@@ -125,6 +127,7 @@ func ValidatePass(t *testing.T, p *Pass, parent *Pass, ingress *Pass, isFirst bo
 		CarrierCodeSub:    p.SubCarrier,
 		Sum:               getSumByCarrier(p),
 		IsAuth:            false,
+		PassType:          GetPassType(p),
 	}
 
 	if p.timeToWait != 0 {
@@ -153,6 +156,9 @@ func ValidatePass(t *testing.T, p *Pass, parent *Pass, ingress *Pass, isFirst bo
 	case PaymentTypePayment:
 		expectPass.IsFree = false
 		expectPass.IsAuth = true
+	case PaymentTypePrepayed:
+		expectPass.IsFree = false
+		expectPass.IsAuth = false
 	}
 
 	if isAggregate(p) {
@@ -169,8 +175,16 @@ func ValidatePass(t *testing.T, p *Pass, parent *Pass, ingress *Pass, isFirst bo
 		expectPass.IsAuth = false
 	}
 
+	//if p.PassType == pass.PassType_PASS_FACE_ID {
+	//	expectPass.IsAuth = false
+	//}
+
 	if p.isCancel {
 		expectPass.IsCancel = true
+
+		if p.AuthType == AuthTypeRefund {
+			expectPass.CancelType = processing.CancelType_CANCEL_REFUND
+		}
 	}
 
 	if p.PaymentType == PaymentTypeStartAggregate && p.AuthType == AuthTypeCorrect && !isFirst {
@@ -193,7 +207,16 @@ func ValidatePass(t *testing.T, p *Pass, parent *Pass, ingress *Pass, isFirst bo
 		expectPass.Sum = 0
 	}
 
+	if p.PaymentType == PaymentTypePrepayed {
+		expectPass.Sum = 0
+	}
+
 	if p.PaymentType == PaymentTypeStartAggregate && !isFirst {
+		expectPass.Sum = getSumByCarrier(p)
+		expectPass.SumAggregate = getSumByCarrier(p)
+	}
+
+	if p.PaymentType == PaymentTypeStartAggregate && !isFirst && p.AuthType == AuthTypeIncorrect {
 		expectPass.Sum = 0
 		expectPass.SumAggregate = getSumByCarrier(p)
 	}
@@ -249,6 +272,10 @@ func AuthStatus(t *testing.T, p *Pass) {
 	if p.faceId != "" {
 		return
 	}
+	//Чтобы всегда при проходах по МТ игнорировать проверку AuthStatus
+	if p.PassType == pass.PassType_PASS_MT {
+		return
+	}
 
 	resp, response, err := GetAuthStatus(p)
 
@@ -266,6 +293,107 @@ func AuthStatus(t *testing.T, p *Pass) {
 
 	require.Equal(t, resp, response)
 	require.NoError(t, err)
+}
+
+func ResolveTestApi(t *testing.T, _case *Resolve) {
+	var r *httpexpect.Response
+
+	switch _case.Url {
+	//GetSchema
+	case "/twirp/proto.ResolveHttp/GetServiceSchema":
+		r = httpResolveService.POST(_case.Url).
+			WithJSON(_case.Request).
+			Expect().
+			Status(_case.Status)
+		r.JSON().Object().
+			ContainsKey("tables").
+			ContainsKey("relations")
+	case "/twirp/proto.ResolveHttp/GetExpiresLink":
+		r = httpResolveService.POST(_case.Url).
+			WithJSON(_case.Request).
+			Expect().
+			Status(_case.Status)
+		r.JSON().Object().
+			ContainsKey("link_expires")
+	case "/twirp/proto.ResolveHttp/GetTasks":
+		r = httpResolveService.POST(_case.Url).
+			WithJSON(_case.Request).
+			Expect().
+			Status(_case.Status)
+		r.JSON().Object().
+			ContainsKey("rows")
+	default:
+		t.Error("Error to find test handler for url:", _case.Url)
+		return
+	}
+
+	logRequest(_case.Url, r)
+}
+
+func ReviseTestApi(t *testing.T, _case *Revise) {
+	var r *httpexpect.Response
+
+	switch _case.Url {
+	//GetSchema
+	case "/twirp/proto.ReviseHttp/GetServiceSchema":
+		r = httpReviseService.POST(_case.Url).
+			WithJSON(_case.Request).
+			Expect().
+			Status(_case.Status)
+		r.JSON().Object().
+			ContainsKey("tables").
+			ContainsKey("relations")
+	case "/twirp/proto.ReviseHttp/GetTasks":
+		r = httpReviseService.POST(_case.Url).
+			WithJSON(_case.Request).
+			Expect().
+			Status(_case.Status)
+		r.JSON().Object().
+			ContainsKey("rows")
+	case "/twirp/proto.ReviseHttp/GetExpiresLink":
+		r = httpReviseService.POST(_case.Url).
+			WithJSON(_case.Request).
+			Expect().
+			Status(_case.Status)
+		r.JSON().Object().
+			ContainsKey("link_expires")
+	case "/twirp/proto.ReviseHttp/ResetTask":
+		r = httpReviseService.POST(_case.Url).
+			WithJSON(_case.Request).
+			Expect().
+			Status(_case.Status)
+		r.JSON().Object().NotContainsKey("meta")
+	case "/twirp/proto.ReviseHttp/GetStages":
+		r = httpReviseService.POST(_case.Url).
+			WithJSON(_case.Request).
+			Expect().
+			Status(_case.Status)
+
+		r.JSON().Object().ContainsKey("stages")
+	case "/twirp/proto.ReviseHttp/GetTaskStatus":
+		r = httpReviseService.POST(_case.Url).
+			WithJSON(_case.Request).
+			Expect().
+			Status(_case.Status)
+		r.JSON().Object().NotContainsKey("meta")
+	case "/twirp/proto.ReviseHttp/GetLastByOrderFileInfo":
+		r = httpReviseService.POST(_case.Url).
+			WithJSON(_case.Request).
+			Expect().
+			Status(_case.Status)
+		r.JSON().Object().ContainsKey("file")
+	case "/twirp/proto.ReviseHttp/Playground":
+		r = httpReviseService.POST(_case.Url).
+			WithJSON(_case.Request).
+			Expect().
+			Status(_case.Status)
+		r.JSON().Object().ContainsKey("query").ContainsKey("values")
+	default:
+		t.Error("Error to find test handler for url:", _case.Url)
+		return
+	}
+
+	logRequest(_case.Url, r)
 }
 
 func AbsGetRegistryApi(t *testing.T, registry *AbsGetRegistry) {
@@ -422,14 +550,14 @@ func FaceApiGetRegisterLink(t *testing.T, card *processing.Card, fcl *RegisterFa
 
 func faceForceCheck() error {
 	req, _ := FaceForceCheckRequest()
-	u := "/twirp/sirocco.AuthAPI/FaceForceCheck"
-	r := httpAuthService.POST(u).WithJSON(req).
+	u := "/twirp/proto.TWPGService/FaceForceCheck"
+	r := httpTWPGService.POST(u).WithJSON(req).
 		Expect().
 		Status(http.StatusOK)
 
 	object := r.Body().Raw()
 	logRequest(u, r)
 
-	response := &processing.AuthResponse{}
+	response := &protoResponse.EmptyMessage{}
 	return jsonpb.Unmarshal(strings.NewReader(object), response)
 }

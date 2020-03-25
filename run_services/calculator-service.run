@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+cd ../../calculator-service && make run | tee ../logs/calculator-service.logs | tee -a ../logs/all.logs

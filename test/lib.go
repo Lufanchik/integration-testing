@@ -277,6 +277,12 @@ func Run(t *testing.T, cases Cases, rt RequestType) {
 					FaceApiGetRegisterLink(t, ncc.card, fcl)
 				}
 
+				faceCheck, ok := step.(*FaceIdRegistrationStatus)
+				if ok {
+					faceCheck.Id = ncc.card.Pan
+					FaceApiCheckStatus(t, faceCheck)
+				}
+
 				wgw, ok := step.(*WebAPIPasses)
 				if ok {
 					var passes []*Pass

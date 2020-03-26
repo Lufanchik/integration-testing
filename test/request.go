@@ -9,6 +9,7 @@ import (
 	"lab.siroccotechnology.ru/tp/common/messages/pass"
 	"lab.siroccotechnology.ru/tp/common/messages/processing"
 	"lab.siroccotechnology.ru/tp/common/messages/response"
+	"lab.siroccotechnology.ru/tp/common/messages/twpg"
 	webApi "lab.siroccotechnology.ru/tp/web-api-gateway/proto"
 )
 
@@ -185,6 +186,22 @@ func WebAPIRegisterRequest(fcl *RegisterFaceId, card *processing.Card) *authServ
 			Decline: gofakeit.URL(),
 		},
 	}
+}
+
+func WebAPIFaceStatusRequest(faceCheck *FaceIdRegistrationStatus) (*twpg.RegistrationStatusRequest, *twpg.RegistrationStatusResponse) {
+	req := &twpg.RegistrationStatusRequest{
+		Id: faceCheck.Id,
+	}
+
+	resp := &twpg.RegistrationStatusResponse{
+		Status: twpg.RegistrationStatusResponse_SUCCESS,
+		Card: &twpg.CardInfo{
+			Pan: "4150********0900",
+			Exp: "2101",
+		},
+	}
+
+	return req, resp
 }
 
 func CompleteRequest(pass *Pass, passes []*Pass, sum int) (*processing.CompleteRequest, *processing.CompleteResponse) {

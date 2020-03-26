@@ -88,6 +88,10 @@ var CasesCancel = test.Cases{
 				Target: 1,
 				Reason: processing.CancelPassRequest_CSS,
 			},
+			&test.Cancel{
+				Target: 2,
+				Reason: processing.CancelPassRequest_CSS,
+			},
 		},
 	},
 	{

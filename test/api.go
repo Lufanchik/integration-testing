@@ -13,6 +13,7 @@ import (
 	"lab.siroccotechnology.ru/tp/common/messages/processing"
 	"lab.siroccotechnology.ru/tp/common/messages/registries"
 	protoResponse "lab.siroccotechnology.ru/tp/common/messages/response"
+	"lab.siroccotechnology.ru/tp/common/messages/twpg"
 	"lab.siroccotechnology.ru/tp/common/messages/user"
 	webApi "lab.siroccotechnology.ru/tp/web-api-gateway/proto"
 	"net/http"
@@ -518,6 +519,24 @@ func WebAPI(t *testing.T, card *processing.Card, passes []*Pass) {
 		_, ok := responsePassesMap[p.id]
 		require.True(t, ok, "pass not found: %s", p.id)
 	}
+}
+
+func FaceApiCheckStatus(t *testing.T, faceCheck *FaceIdRegistrationStatus) {
+	req, expectedResponse := WebAPIFaceStatusRequest(faceCheck)
+	u := "/twirp/proto.WebAPIGateway/FaceIdRegistrationStatus"
+
+	r := httpWebApi.POST(u).WithJSON(req).
+		Expect().
+		Status(http.StatusOK)
+
+	object := r.Body().Raw()
+	logRequest(u, r)
+
+	actualResponse := &twpg.RegistrationStatusResponse{}
+	err := jsonpb.Unmarshal(strings.NewReader(object), actualResponse)
+	require.NoError(t, err)
+
+	require.Equal(t, expectedResponse, actualResponse)
 }
 
 func FaceApiGetRegisterLink(t *testing.T, card *processing.Card, fcl *RegisterFaceId) {

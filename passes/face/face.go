@@ -33,6 +33,7 @@ var CasesAuthWithFace = test.Cases{
 		FaceId:     uuid.New().String(),
 		T: test.T{
 			&test.RegisterFaceId{},
+			&test.FaceIdRegistrationStatus{},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,

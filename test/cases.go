@@ -150,6 +150,10 @@ type (
 		FaceId      string
 		RedirectURL string
 	}
+
+	FaceIdRegistrationStatus struct {
+		Id string
+	}
 )
 
 const (

@@ -202,6 +202,9 @@ func Run(t *testing.T, cases Cases, rt RequestType) {
 					} else {
 						p.PassType = ncc.c.PassType
 					}
+					if p.PaymentType == PaymentTypePrepayed {
+						p.PassType = pass.PassType_PASS_MT
+					}
 
 					if p.PassType == pass.PassType_PASS_MT {
 						p.PaymentType = PaymentTypePrepayed

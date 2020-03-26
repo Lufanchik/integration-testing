@@ -176,10 +176,6 @@ func ValidatePass(t *testing.T, p *Pass, parent *Pass, ingress *Pass, isFirst bo
 		expectPass.IsAuth = false
 	}
 
-	//if p.PassType == pass.PassType_PASS_FACE_ID {
-	//	expectPass.IsAuth = false
-	//}
-
 	if p.isCancel {
 		expectPass.IsCancel = true
 

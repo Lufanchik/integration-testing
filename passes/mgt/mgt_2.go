@@ -6,14 +6,14 @@ import (
 	"lab.siroccotechnology.ru/tp/integration-testing/test"
 )
 
-var CasesMGT_2 = test.Cases{
+var CasesMGT2 = test.Cases{
 	{
-		N: "36. МГТ -> МО-МСК 1 -> МГТ -> ММ -> МГТ -> МЦК -> МГТ -> ММТС -> МГТ",
+		N: "36. MGT-MCD1_MO-MSK1_MSK-MGT-ММ-MGT-МCK-МGT-MMTS-MGT",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
-				//ExpectedSum: 4200,
+				ExpectedSum: 4200,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -38,7 +38,7 @@ var CasesMGT_2 = test.Cases{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
-				//ExpectedSum: 4200,
+				ExpectedSum: 4200,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -49,7 +49,6 @@ var CasesMGT_2 = test.Cases{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
-				//ExpectedSum: 4200,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -60,7 +59,6 @@ var CasesMGT_2 = test.Cases{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
-				//ExpectedSum: 4200,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -71,17 +69,15 @@ var CasesMGT_2 = test.Cases{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
-				//ExpectedSum: 4200,
 			},
 		},
 	},
 	{
-		N: "37. МГТ -> МО-МСК 2 -> МГТ -> ММ -> МГТ -> МЦК -> МГТ -> ММТС -> МГТ",
+		N: "37. MGT-MSK2_MO-MGT-ММ-МGT-МCK-МGT-MMTS-MGT",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
-				//ExpectedSum: 4200,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -106,7 +102,6 @@ var CasesMGT_2 = test.Cases{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
-				//ExpectedSum: 4200,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -117,7 +112,6 @@ var CasesMGT_2 = test.Cases{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
-				//ExpectedSum: 4200,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -128,7 +122,6 @@ var CasesMGT_2 = test.Cases{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
-				//ExpectedSum: 4200,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -139,17 +132,15 @@ var CasesMGT_2 = test.Cases{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
-				//ExpectedSum: 4200,
 			},
 		},
 	},
 	{
-		N: "38. МГТ -> МО-МСК 1 -> МГТ -> ММ -> МГТ -> МЦК -> МГТ -> ММ -> МГТ",
+		N: "38. MGT-МSK1_MO-МGT-ММ-МGT-МCК-МGT-ММ-МGT",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
-				//ExpectedSum: 4200,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -174,7 +165,6 @@ var CasesMGT_2 = test.Cases{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
-				//ExpectedSum: 4200,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -185,7 +175,6 @@ var CasesMGT_2 = test.Cases{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
-				//ExpectedSum: 4200,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -196,7 +185,6 @@ var CasesMGT_2 = test.Cases{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
-				//ExpectedSum: 4200,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -207,17 +195,16 @@ var CasesMGT_2 = test.Cases{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
-				//ExpectedSum: 4200,
 			},
 		},
 	},
 	{
-		N: "39. МГТ -> МО-МСК 2 -> МГТ -> ММ -> МГТ -> МЦК -> МГТ -> ММ -> МГТ",
+		N: "39. МGT-MCD2_MO-МCD2_MSK-МGТ-ММ-МGТ-МCК-МGТ-ММ-МGТ",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
-				//ExpectedSum: 4200,
+				ExpectedSum: 4200,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -242,7 +229,6 @@ var CasesMGT_2 = test.Cases{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
-				//ExpectedSum: 4200,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -253,7 +239,6 @@ var CasesMGT_2 = test.Cases{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
-				//ExpectedSum: 4200,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -264,7 +249,6 @@ var CasesMGT_2 = test.Cases{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
-				//ExpectedSum: 4200,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -275,17 +259,15 @@ var CasesMGT_2 = test.Cases{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
-				//ExpectedSum: 4200,
 			},
 		},
 	},
 	{
-		N: "40. МГТ -> МО-МСК 1 -> МГТ -> МЦК -> МГТ",
+		N: "40. МGТ-MCD1_MO-МSК1_MO-МGТ-МCК-МGТ",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
-				//ExpectedSum: 4200,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -310,7 +292,6 @@ var CasesMGT_2 = test.Cases{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
-				//ExpectedSum: 4200,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -321,17 +302,15 @@ var CasesMGT_2 = test.Cases{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
-				//ExpectedSum: 4200,
 			},
 		},
 	},
 	{
-		N: "41. МГТ -> МО-МСК 2 -> МГТ -> МЦК -> МГТ",
+		N: "41. МGТ-МCD2_MO-МCD2_MSK-МGТ-МCК-МGТ",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
-				//ExpectedSum: 4200,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -356,7 +335,6 @@ var CasesMGT_2 = test.Cases{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
-				//ExpectedSum: 4200,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -367,17 +345,15 @@ var CasesMGT_2 = test.Cases{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
-				//ExpectedSum: 4200,
 			},
 		},
 	},
 	{
-		N: "42. МГТ -> МО-МСК 1 -> МГТ -> МЦК -> МГТ -> ММТС -> МГТ",
+		N: "42. МGТ-МCD1_MO-MCD1_MSK-МGТ-МCК-МGТ-ММТS-МГТ",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
-				//ExpectedSum: 4200,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -402,7 +378,6 @@ var CasesMGT_2 = test.Cases{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
-				//ExpectedSum: 4200,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -413,7 +388,6 @@ var CasesMGT_2 = test.Cases{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
-				//ExpectedSum: 4200,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -424,17 +398,15 @@ var CasesMGT_2 = test.Cases{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
-				//ExpectedSum: 4200,
 			},
 		},
 	},
 	{
-		N: "43. МГТ -> МО-МСК 2 -> МГТ -> МЦК -> МГТ -> ММТС -> МГТ",
+		N: "43. МGТ-МCD2_MO-МCD2_MSK-МGТ-МCК-МGТ-MMTS-МGТ",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
-				//ExpectedSum: 4200,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -459,7 +431,6 @@ var CasesMGT_2 = test.Cases{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
-				//ExpectedSum: 4200,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -470,7 +441,6 @@ var CasesMGT_2 = test.Cases{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
-				//ExpectedSum: 4200,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -481,17 +451,15 @@ var CasesMGT_2 = test.Cases{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
-				//ExpectedSum: 4200,
 			},
 		},
 	},
 	{
-		N: "44. МГТ -> МО-МСК 1 -> МГТ -> МЦК -> МГТ -> ММ -> МГТ -> ММТС -> МГТ",
+		N: "44. МGT-MCD1_МО-MCD1_МСК-МGТ-МCК-МGТ-ММ-МGТ-ММТS-МGТ",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
-				//ExpectedSum: 4200,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -516,7 +484,6 @@ var CasesMGT_2 = test.Cases{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
-				//ExpectedSum: 4200,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -527,7 +494,6 @@ var CasesMGT_2 = test.Cases{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
-				//ExpectedSum: 4200,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -538,7 +504,6 @@ var CasesMGT_2 = test.Cases{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
-				//ExpectedSum: 4200,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -549,17 +514,15 @@ var CasesMGT_2 = test.Cases{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
-				//ExpectedSum: 4200,
 			},
 		},
 	},
 	{
-		N: "45. МГТ -> МО-МСК 2 -> МГТ -> МЦК -> МГТ -> ММ -> МГТ -> ММТС -> МГТ",
+		N: "45. МGТ-МCD2_MО-MCD2_МСК-МGТ-МCК-МGТ-ММ-МGТ-ММТS-МGТ",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
-				//ExpectedSum: 4200,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -584,7 +547,7 @@ var CasesMGT_2 = test.Cases{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
-				//ExpectedSum: 4200,
+				ExpectedSum: 4200,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -595,7 +558,6 @@ var CasesMGT_2 = test.Cases{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
-				//ExpectedSum: 4200,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -606,7 +568,6 @@ var CasesMGT_2 = test.Cases{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
-				//ExpectedSum: 4200,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -617,17 +578,15 @@ var CasesMGT_2 = test.Cases{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
-				//ExpectedSum: 4200,
 			},
 		},
 	},
 	{
-		N: "46. МГТ -> МСК-МСК 1 -> МГТ -> МСК-МСК 2 -> МГТ",
+		N: "46. МGТ-MCD1_MSK-MCD1_MSK-МGТ-MCD1_MSK-MCD1_MSK-МGТ",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
-				//ExpectedSum: 4200,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -652,7 +611,6 @@ var CasesMGT_2 = test.Cases{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
-				//ExpectedSum: 4200,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -677,17 +635,15 @@ var CasesMGT_2 = test.Cases{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
-				//ExpectedSum: 4200,
 			},
 		},
 	},
 	{
-		N: "47. МГТ -> МСК-МСК 2 -> МГТ -> МСК-МСК 1 -> МГТ",
+		N: "47. МGТ-MCD2_MSK-MCD2_MSK-МGТ-MCD1_MSK-MCD1_MSK-МGТ",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
-				//ExpectedSum: 4200,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -712,7 +668,6 @@ var CasesMGT_2 = test.Cases{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
-				//ExpectedSum: 4200,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -737,17 +692,15 @@ var CasesMGT_2 = test.Cases{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
-				//ExpectedSum: 4200,
 			},
 		},
 	},
 	{
-		N: "48. МГТ -> МСК-МСК 1 -> МГТ -> ММ -> МГТ -> МСК-МСК2 -> МГТ",
+		N: "48. МGТ-MCD1_МSК-MCD1_МSК-МGТ-ММ-МGТ-MCD2_МSК-MCD2_МSК-МGТ",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
-				//ExpectedSum: 4200,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -772,7 +725,6 @@ var CasesMGT_2 = test.Cases{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
-				//ExpectedSum: 4200,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -783,7 +735,6 @@ var CasesMGT_2 = test.Cases{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
-				//ExpectedSum: 4200,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -808,17 +759,15 @@ var CasesMGT_2 = test.Cases{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
-				//ExpectedSum: 4200,
 			},
 		},
 	},
 	{
-		N: "49. МГТ -> МСК-МСК 2 -> МГТ -> ММ -> МГТ -> МСК-МСК 1 -> МГТ",
+		N: "49. МGТ-MCD2_МSК-MCD2_МSК-МGТ-ММ-МGТ-MCK1_МSК-MCK1_МSК-МGТ",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
-				//ExpectedSum: 4200,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -843,7 +792,6 @@ var CasesMGT_2 = test.Cases{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
-				//ExpectedSum: 4200,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -854,7 +802,6 @@ var CasesMGT_2 = test.Cases{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
-				//ExpectedSum: 4200,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -879,17 +826,15 @@ var CasesMGT_2 = test.Cases{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
-				//ExpectedSum: 4200,
 			},
 		},
 	},
 	{
-		N: "50. МГТ -> МСК-МСК 1 -> МГТ -> ММ -> МГТ -> МЦК -> МГТ -> МСК - МСК 2 -> МГТ",
+		N: "50. МGТ-MCD1_МСК-MCD1_МСК-МGТ-ММ-МGТ-МCК-МGТ-MCD2_МСК-MCD2_МСК-МGТ",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
-				//ExpectedSum: 4200,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -914,7 +859,6 @@ var CasesMGT_2 = test.Cases{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
-				//ExpectedSum: 4200,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -925,7 +869,6 @@ var CasesMGT_2 = test.Cases{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
-				//ExpectedSum: 4200,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -936,7 +879,6 @@ var CasesMGT_2 = test.Cases{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
-				//ExpectedSum: 4200,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -961,17 +903,15 @@ var CasesMGT_2 = test.Cases{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
-				//ExpectedSum: 4200,
 			},
 		},
 	},
 	{
-		N: "51. МГТ -> МСК - МСК 2 -> МГТ -> ММ -> МГТ -> МЦК -> МГТ -> МСК - МСК 1 -> МГТ",
+		N: "51. МGТ-MCD2_МSК-MCD2_МСК-МGТ-ММ-МGТ-МCК-МGТ-MCD1_МSК-MCD1_МСК-МGТ",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
-				//ExpectedSum: 4200,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -996,7 +936,6 @@ var CasesMGT_2 = test.Cases{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
-				//ExpectedSum: 4200,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -1007,7 +946,6 @@ var CasesMGT_2 = test.Cases{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
-				//ExpectedSum: 4200,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -1018,7 +956,6 @@ var CasesMGT_2 = test.Cases{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
-				//ExpectedSum: 4200,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -1043,17 +980,15 @@ var CasesMGT_2 = test.Cases{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
-				//ExpectedSum: 4200,
 			},
 		},
 	},
 	{
-		N: "52. МГТ -> МСК - МСК 1 -> МГТ -> МЦК -> МГТ -> ММ -> МГТ -> МСК - МСК 2 -> МГТ",
+		N: "52. МGТ-MCD1_МSК-MCD1_МSК-МGТ-МCК-МGТ-ММ-МGТ-MCD2_МSК-MCD2_МSК-МGТ",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
-				//ExpectedSum: 4200,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -1078,7 +1013,6 @@ var CasesMGT_2 = test.Cases{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
-				//ExpectedSum: 4200,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -1089,7 +1023,6 @@ var CasesMGT_2 = test.Cases{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
-				//ExpectedSum: 4200,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -1100,7 +1033,6 @@ var CasesMGT_2 = test.Cases{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
-				//ExpectedSum: 4200,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -1125,17 +1057,15 @@ var CasesMGT_2 = test.Cases{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
-				//ExpectedSum: 4200,
 			},
 		},
 	},
 	{
-		N: "53. МГТ -> МСК - МСК 2 -> МГТ -> МЦК -> МГТ -> ММ -> МГТ -> МСК - МСК 1 -> МГТ",
+		N: "53. МGТ-МCD2_МSК-МCD2_МSК-МGТ-МCК-МGТ-ММ-МGТ-МCD1_МSК-МCD1_МSК-МGТ",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
-				//ExpectedSum: 4200,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -1160,7 +1090,6 @@ var CasesMGT_2 = test.Cases{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
-				//ExpectedSum: 4200,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -1171,7 +1100,6 @@ var CasesMGT_2 = test.Cases{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
-				//ExpectedSum: 4200,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -1182,7 +1110,6 @@ var CasesMGT_2 = test.Cases{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
-				//ExpectedSum: 4200,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -1207,17 +1134,15 @@ var CasesMGT_2 = test.Cases{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
-				//ExpectedSum: 4200,
 			},
 		},
 	},
 	{
-		N: "54. МГТ -> ММТС -> МГТ -> МСК - МСК 1 -> МГТ -> ММ -> МГТ -> МЦК -> МГТ",
+		N: "54. МGТ-ММТS-МGТ-MCD1_МSК-MCD1_МСК-МGТ-ММ-МGТ-МCК-МGТ",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
-				//ExpectedSum: 4200,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -1227,7 +1152,6 @@ var CasesMGT_2 = test.Cases{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
-				//ExpectedSum: 4200,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -1252,7 +1176,6 @@ var CasesMGT_2 = test.Cases{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
-				//ExpectedSum: 4200,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -1263,7 +1186,7 @@ var CasesMGT_2 = test.Cases{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
-				//ExpectedSum: 4200,
+				ExpectedSum: 4200,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -1274,17 +1197,15 @@ var CasesMGT_2 = test.Cases{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
-				//ExpectedSum: 4200,
 			},
 		},
 	},
 	{
-		N: "55. МГТ -> ММТС -> МГТ -> МСК - МСК 2 -> МГТ -> ММ -> МГТ -> МЦК -> МГТ",
+		N: "55. МGТ-ММТС-МGТ-MCD2_МSК-MCD2_МSК-МGТ-ММ-МGТ-МCК-МGТ",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
-				//ExpectedSum: 4200,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -1294,7 +1215,6 @@ var CasesMGT_2 = test.Cases{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
-				//ExpectedSum: 4200,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -1319,7 +1239,6 @@ var CasesMGT_2 = test.Cases{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
-				//ExpectedSum: 4200,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -1330,7 +1249,6 @@ var CasesMGT_2 = test.Cases{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
-				//ExpectedSum: 4200,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -1341,17 +1259,15 @@ var CasesMGT_2 = test.Cases{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
-				//ExpectedSum: 4200,
 			},
 		},
 	},
 	{
-		N: "56. МГТ -> ММТС -> МГТ -> МСК - МСК 1 -> МГТ -> МЦК -> МГТ -> ММ -> МГТ",
+		N: "56. МGТ-ММТS-МGТ-MCD1_МSК-MCD1_МСК-МGТ-МCК-МGТ-ММ-МGТ",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
-				//ExpectedSum: 4200,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -1361,7 +1277,6 @@ var CasesMGT_2 = test.Cases{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
-				//ExpectedSum: 4200,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -1386,7 +1301,6 @@ var CasesMGT_2 = test.Cases{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
-				//ExpectedSum: 4200,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -1397,7 +1311,6 @@ var CasesMGT_2 = test.Cases{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
-				//ExpectedSum: 4200,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -1408,17 +1321,15 @@ var CasesMGT_2 = test.Cases{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
-				//ExpectedSum: 4200,
 			},
 		},
 	},
 	{
-		N: "57. МГТ -> ММТС -> МГТ -> МСК - МСК 2 -> МГТ -> МЦК -> МГТ -> ММ -> МГТ",
+		N: "57. МGТ-ММТS-МGТ-MCD2_МSК-MCD2_МСК-МGТ-МCК-МGТ-ММ-МGТ",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
-				//ExpectedSum: 4200,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -1428,7 +1339,6 @@ var CasesMGT_2 = test.Cases{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
-				//ExpectedSum: 4200,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -1453,7 +1363,6 @@ var CasesMGT_2 = test.Cases{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
-				//ExpectedSum: 4200,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -1464,7 +1373,6 @@ var CasesMGT_2 = test.Cases{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
-				//ExpectedSum: 4200,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -1475,17 +1383,15 @@ var CasesMGT_2 = test.Cases{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
-				//ExpectedSum: 4200,
 			},
 		},
 	},
 	{
-		N: "58. МГТ -> ММТС -> МГТ -> МСК - МО 1 -> МГТ",
+		N: "58. МGТ-ММТС-МGТ-MCD1_МSК-MCD1_МО-МGТ",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
-				//ExpectedSum: 4200,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -1495,7 +1401,6 @@ var CasesMGT_2 = test.Cases{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
-				//ExpectedSum: 4200,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -1521,17 +1426,15 @@ var CasesMGT_2 = test.Cases{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
-				//ExpectedSum: 4200,
 			},
 		},
 	},
 	{
-		N: "59. МГТ -> ММТС -> МГТ -> МСК - МО 2 -> МГТ",
+		N: "59. МGТ-ММТS-МGТ-MCD2_МSК-MCD2_МО-МGТ",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
-				//ExpectedSum: 4200,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -1541,7 +1444,6 @@ var CasesMGT_2 = test.Cases{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
-				//ExpectedSum: 4200,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -1567,17 +1469,15 @@ var CasesMGT_2 = test.Cases{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
-				//ExpectedSum: 4200,
 			},
 		},
 	},
 	{
-		N: "60. МГТ -> ММТС -> МГТ -> ММ -> МГТ -> МЦК -> МГТ -> МСК - МО 1 -> МГТ",
+		N: "60. МGТ-ММТС-МGТ-ММ-МGТ-МCК-МGТ-MCD1_МSК-MCD1_МО-МGТ",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
-				//ExpectedSum: 4200,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -1587,7 +1487,6 @@ var CasesMGT_2 = test.Cases{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
-				//ExpectedSum: 4200,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -1598,7 +1497,6 @@ var CasesMGT_2 = test.Cases{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
-				//ExpectedSum: 4200,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -1609,7 +1507,6 @@ var CasesMGT_2 = test.Cases{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
-				//ExpectedSum: 4200,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -1635,17 +1532,15 @@ var CasesMGT_2 = test.Cases{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
-				//ExpectedSum: 4200,
 			},
 		},
 	},
 	{
-		N: "61. МГТ -> ММТС -> МГТ -> ММ -> МГТ -> МЦК -> МГТ -> МСК - МО 2 -> МГТ",
+		N: "61. МGТ-ММТS-МGТ-ММ-МGТ-МCК-МGТ-MCD2_МSК-MCD2_МО-МGТ",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
-				//ExpectedSum: 4200,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -1655,7 +1550,6 @@ var CasesMGT_2 = test.Cases{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
-				//ExpectedSum: 4200,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -1666,7 +1560,6 @@ var CasesMGT_2 = test.Cases{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
-				//ExpectedSum: 4200,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -1677,7 +1570,6 @@ var CasesMGT_2 = test.Cases{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
-				//ExpectedSum: 4200,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -1703,17 +1595,15 @@ var CasesMGT_2 = test.Cases{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
-				//ExpectedSum: 4200,
 			},
 		},
 	},
 	{
-		N: "62. МГТ -> ММТС -> МГТ -> МЦК -> МГТ -> ММ -> МГТ -> МСК - МО 1 -> МГТ",
+		N: "62. МGТ-ММТS-МGТ-МCК-МGТ-ММ-МGТ-MCD1_МSК-MCD1_МО-МGТ",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
-				//ExpectedSum: 4200,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -1723,7 +1613,6 @@ var CasesMGT_2 = test.Cases{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
-				//ExpectedSum: 4200,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -1734,7 +1623,6 @@ var CasesMGT_2 = test.Cases{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
-				//ExpectedSum: 4200,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -1745,7 +1633,6 @@ var CasesMGT_2 = test.Cases{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
-				//ExpectedSum: 4200,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -1771,17 +1658,15 @@ var CasesMGT_2 = test.Cases{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
-				//ExpectedSum: 4200,
 			},
 		},
 	},
 	{
-		N: "63. МГТ -> ММТС -> МГТ -> МЦК -> МГТ -> ММ -> МГТ -> МСК - МО 2 -> МГТ",
+		N: "63. МGТ-ММТS-МGТ-МCК-МGТ-ММ-МGT-MCD2_МСК-MCD2_МО-МGТ",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
-				//ExpectedSum: 4200,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -1791,7 +1676,6 @@ var CasesMGT_2 = test.Cases{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
-				//ExpectedSum: 4200,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -1802,7 +1686,6 @@ var CasesMGT_2 = test.Cases{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
-				//ExpectedSum: 4200,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -1813,7 +1696,6 @@ var CasesMGT_2 = test.Cases{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
-				//ExpectedSum: 4200,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -1839,7 +1721,6 @@ var CasesMGT_2 = test.Cases{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
-				//ExpectedSum: 4200,
 			},
 		},
 	},

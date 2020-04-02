@@ -6,7 +6,7 @@ import (
 	"lab.siroccotechnology.ru/tp/integration-testing/test"
 )
 
-var CasesMGT2 = test.Cases{
+var CasesMGT_2 = test.Cases{
 	{
 		N: "36. MGT-MCD1_MO-MSK1_MSK-MGT-ММ-MGT-МCK-МGT-MMTS-MGT",
 		T: test.T{

@@ -1771,6 +1771,56 @@ var CasesMetroComplexMM4 = test.Cases{
 		},
 	},
 	{
+		N: "104.MM-MCD1_MSK_MSK-MCD1_MSK-MO",
+		T: test.T{
+			&test.Pass{
+				PaymentType: test.PaymentTypePayment,
+				Carrier:     carriers.Carrier_MM,
+				SubCarrier:  carriers.SubCarrier_MM_SUB,
+			},
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
+				Carrier:     carriers.Carrier_MCD,
+				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
+				Terminal: &processing.Terminal{
+					Station:   "2000700", //ТЕСТОВСКАЯ
+					Direction: processing.TerminalDirection_INGRESS,
+				},
+				Parent: 1,
+			},
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
+				Carrier:     carriers.Carrier_MCD,
+				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
+				Terminal: &processing.Terminal{
+					Station:   "2000245", //РАБОЧИЙПОСЕЛОК
+					Direction: processing.TerminalDirection_EGRESS,
+				},
+				Ingress: 2,
+			},
+			&test.Pass{
+				PaymentType: test.PaymentTypePayment,
+				Carrier:     carriers.Carrier_MCD,
+				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
+				Terminal: &processing.Terminal{
+					Station:   "2000700", //ТЕСТОВСКАЯ
+					Direction: processing.TerminalDirection_INGRESS,
+				},
+			},
+			&test.Pass{
+				PaymentType: test.PaymentTypePayment,
+				Carrier:     carriers.Carrier_MCD,
+				SubCarrier:  carriers.SubCarrier_MCD1_MO,
+				Terminal: &processing.Terminal{
+					Station:   "2002910", //НЕМЧИНОВКА
+					Direction: processing.TerminalDirection_EGRESS,
+				},
+				Ingress:     4,
+				ExpectedSum: 700,
+			},
+		},
+	},
+	{
 		N: "105.MM-MCD1_MSK_MSK-MCD1_MSK-MO",
 		T: test.T{
 			&test.Pass{

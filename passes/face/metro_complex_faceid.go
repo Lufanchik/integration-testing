@@ -226,4 +226,38 @@ var MetroComplexFaceID = test.Cases{
 			},
 		},
 	},
+	{
+		N:          "6. Face/MGT-MMTS-MCK-MGT",
+		CardSystem: processing.CardSystem_VISA,
+		FaceId:     uuid.New().String(),
+		T: test.T{
+			&test.RegisterFaceId{},
+			&test.FaceIdRegistrationStatus{},
+			&test.Pass{
+				PaymentType: test.PaymentTypePayment,
+				Carrier:     carriers.Carrier_MGT,
+			},
+			&test.RegisterFaceId{},
+			&test.FaceIdRegistrationStatus{},
+			&test.Pass{
+				PaymentType: test.PaymentTypePayment,
+				Carrier:     carriers.Carrier_MM,
+				SubCarrier:  carriers.SubCarrier_MMTS_SUB,
+			},
+			&test.RegisterFaceId{},
+			&test.FaceIdRegistrationStatus{},
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
+				Carrier:     carriers.Carrier_MM,
+				SubCarrier:  carriers.SubCarrier_MCK_SUB,
+				Parent:      9,
+			},
+			&test.RegisterFaceId{},
+			&test.FaceIdRegistrationStatus{},
+			&test.Pass{
+				PaymentType: test.PaymentTypePayment,
+				Carrier:     carriers.Carrier_MGT,
+			},
+		},
+	},
 }

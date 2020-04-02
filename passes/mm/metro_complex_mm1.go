@@ -59,10 +59,9 @@ var CasesMetroComplexMM1 = test.Cases{
 				Parent:      1,
 			},
 			&test.Pass{
-				PaymentType: test.PaymentTypeFree,
+				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
-				Parent:      1,
 			},
 		},
 	},

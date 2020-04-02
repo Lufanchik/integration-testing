@@ -1178,7 +1178,7 @@ var CasesMetroComplexMM2 = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2001140", //КУНЦЕВСКАЯ
+					Station:   "2000275",
 					Direction: processing.TerminalDirection_INGRESS,
 				},
 				Parent: 1,
@@ -1188,7 +1188,7 @@ var CasesMetroComplexMM2 = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2002910", //НЕМЧИНОВКА
+					Station:   "2002077", //
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 2,

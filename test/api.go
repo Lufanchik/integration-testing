@@ -345,8 +345,7 @@ func ReviseTestApi(t *testing.T, _case *Revise) {
 			WithJSON(_case.Request).
 			Expect().
 			Status(_case.Status)
-		r.JSON().Object().
-			ContainsKey("rows")
+		r.JSON().Object()
 	case "/twirp/proto.ReviseHttp/GetExpiresLink":
 		r = httpReviseService.POST(_case.Url).
 			WithJSON(_case.Request).

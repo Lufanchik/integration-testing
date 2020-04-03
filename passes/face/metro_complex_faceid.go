@@ -250,7 +250,7 @@ var MetroComplexFaceID = test.Cases{
 				PaymentType: test.PaymentTypeFree,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
-				Parent:      9,
+				Parent:      6,
 			},
 			&test.RegisterFaceId{},
 			&test.FaceIdRegistrationStatus{},

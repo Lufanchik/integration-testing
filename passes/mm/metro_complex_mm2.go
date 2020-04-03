@@ -325,14 +325,14 @@ var CasesMetroComplexMM2 = test.Cases{
 				ExpectedSum: 700,
 			},
 			&test.Pass{
-				PaymentType: test.PaymentTypeFree,
+				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
 					Station:   "2000155", //ФИЛИ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				Parent: 1,
+				//Parent: 1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -1087,7 +1087,7 @@ var CasesMetroComplexMM2 = test.Cases{
 					Station:   "2001140", //КУНЦЕВСКАЯ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				Parent:    1,
+				Parent: 1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,

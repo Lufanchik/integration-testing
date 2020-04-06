@@ -2,8 +2,8 @@ package test
 
 import (
 	"github.com/brianvoe/gofakeit"
-	"lab.siroccotechnology.ru/tp/common/messages/processing"
-	passService "lab.siroccotechnology.ru/tp/pass-service/proto"
+	"lab.dt.multicarta.ru/tp/common/messages/processing"
+	passService "lab.dt.multicarta.ru/tp/pass-service/proto"
 	"net/http"
 	"strconv"
 	"time"

@@ -49,7 +49,7 @@ ansible:
       state: link
   install:
   - name: "Private repo git hack"
-    shell: git config --global url.https://{{ env "RUNNER_GIT_ACCESS_USER" }}:{{ env "RUNNER_GIT_ACCESS_TOKEN" }}@lab.siroccotechnology.ru.insteadOf https://lab.siroccotechnology.ru
+    shell: git config --global url.https://{{ env "RUNNER_GIT_ACCESS_USER" }}:{{ env "RUNNER_GIT_ACCESS_TOKEN" }}@lab.dt.multicarta.ru.insteadOf https://lab.dt.multicarta.ru
   setup:
   - name: "Build test"
     shell: go test -c -o ./bin/test

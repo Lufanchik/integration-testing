@@ -4,13 +4,13 @@ import (
 	"fmt"
 	"github.com/brianvoe/gofakeit"
 	"github.com/gavv/httpexpect"
-	authService "lab.siroccotechnology.ru/tp/common/messages/auth"
-	"lab.siroccotechnology.ru/tp/common/messages/carriers"
-	"lab.siroccotechnology.ru/tp/common/messages/pass"
-	"lab.siroccotechnology.ru/tp/common/messages/processing"
-	"lab.siroccotechnology.ru/tp/common/messages/response"
-	"lab.siroccotechnology.ru/tp/common/messages/twpg"
-	webApi "lab.siroccotechnology.ru/tp/web-api-gateway/proto"
+	authService "lab.dt.multicarta.ru/tp/common/messages/auth"
+	"lab.dt.multicarta.ru/tp/common/messages/carriers"
+	"lab.dt.multicarta.ru/tp/common/messages/pass"
+	"lab.dt.multicarta.ru/tp/common/messages/processing"
+	"lab.dt.multicarta.ru/tp/common/messages/response"
+	"lab.dt.multicarta.ru/tp/common/messages/twpg"
+	webApi "lab.dt.multicarta.ru/tp/web-api-gateway/proto"
 )
 
 func PassOfflineRequest(tap *processing.TapRequest, p *Pass) (*processing.OfflinePassRequest, *processing.OfflinePassResponse) {

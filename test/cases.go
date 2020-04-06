@@ -1,9 +1,9 @@
 package test
 
 import (
-	"lab.siroccotechnology.ru/tp/common/messages/carriers"
-	"lab.siroccotechnology.ru/tp/common/messages/pass"
-	"lab.siroccotechnology.ru/tp/common/messages/processing"
+	"lab.dt.multicarta.ru/tp/common/messages/carriers"
+	"lab.dt.multicarta.ru/tp/common/messages/pass"
+	"lab.dt.multicarta.ru/tp/common/messages/processing"
 	"time"
 )
 

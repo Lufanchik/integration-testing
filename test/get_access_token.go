@@ -6,7 +6,7 @@ import (
 	"github.com/pkg/errors"
 	"github.com/prometheus/common/log"
 	"io/ioutil"
-	"lab.siroccotechnology.ru/tp/common/messages/user"
+	"lab.dt.multicarta.ru/tp/common/messages/user"
 	"net/http"
 	"testing"
 )

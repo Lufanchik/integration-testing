@@ -1,19 +1,19 @@
 package integration_testing
 
 import (
-	"lab.siroccotechnology.ru/tp/integration-testing/apm"
-	"lab.siroccotechnology.ru/tp/integration-testing/parking"
-	"lab.siroccotechnology.ru/tp/integration-testing/passes"
-	"lab.siroccotechnology.ru/tp/integration-testing/passes/face"
-	"lab.siroccotechnology.ru/tp/integration-testing/passes/mcd"
-	"lab.siroccotechnology.ru/tp/integration-testing/passes/mck"
-	"lab.siroccotechnology.ru/tp/integration-testing/passes/mgt"
-	"lab.siroccotechnology.ru/tp/integration-testing/passes/mm"
-	"lab.siroccotechnology.ru/tp/integration-testing/passes/mmts"
-	"lab.siroccotechnology.ru/tp/integration-testing/passes/mt"
-	"lab.siroccotechnology.ru/tp/integration-testing/passes/mtppk"
-	"lab.siroccotechnology.ru/tp/integration-testing/registry"
-	"lab.siroccotechnology.ru/tp/integration-testing/webapi"
+	"lab.dt.multicarta.ru/tp/integration-testing/apm"
+	"lab.dt.multicarta.ru/tp/integration-testing/parking"
+	"lab.dt.multicarta.ru/tp/integration-testing/passes"
+	"lab.dt.multicarta.ru/tp/integration-testing/passes/face"
+	"lab.dt.multicarta.ru/tp/integration-testing/passes/mcd"
+	"lab.dt.multicarta.ru/tp/integration-testing/passes/mck"
+	"lab.dt.multicarta.ru/tp/integration-testing/passes/mgt"
+	"lab.dt.multicarta.ru/tp/integration-testing/passes/mm"
+	"lab.dt.multicarta.ru/tp/integration-testing/passes/mmts"
+	"lab.dt.multicarta.ru/tp/integration-testing/passes/mt"
+	"lab.dt.multicarta.ru/tp/integration-testing/passes/mtppk"
+	"lab.dt.multicarta.ru/tp/integration-testing/registry"
+	"lab.dt.multicarta.ru/tp/integration-testing/webapi"
 )
 
 func init() {

@@ -5,12 +5,12 @@ import (
 	"github.com/brianvoe/gofakeit"
 	"github.com/gavv/httpexpect"
 	"github.com/google/uuid"
-	"lab.siroccotechnology.ru/tp/common/messages/pass"
-	"lab.siroccotechnology.ru/tp/common/messages/processing"
+	"lab.dt.multicarta.ru/tp/common/messages/pass"
+	"lab.dt.multicarta.ru/tp/common/messages/processing"
 	"testing"
 	"time"
 
-	passService "lab.siroccotechnology.ru/tp/pass-service/proto"
+	passService "lab.dt.multicarta.ru/tp/pass-service/proto"
 )
 
 var (

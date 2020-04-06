@@ -7,5 +7,5 @@ services:
     volumes:
       - ../../../../../src:/go/src
       - ~/.ssh:/root/.ssh
-    command: /go/src/lab.siroccotechnology.ru/tp/integration-testing/run/apm-api-gateway.run
+    command: /go/src/lab.dt.multicarta.ru/tp/integration-testing/run/apm-api-gateway.run
     network_mode: host

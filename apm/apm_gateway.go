@@ -1,7 +1,7 @@
 package apm
 
 import (
-	"lab.siroccotechnology.ru/tp/integration-testing/test"
+	"lab.dt.multicarta.ru/tp/integration-testing/test"
 )
 
 var (

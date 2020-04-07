@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
 echo "pass-service"
-cd ../../pass-service && make run | tee ../logs/pass-service.logs
+cd ../../pass-service && make build

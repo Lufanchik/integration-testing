@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+echo "revise-service"
+cd ../../revise-service && make build

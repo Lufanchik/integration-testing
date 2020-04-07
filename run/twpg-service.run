@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+echo "twpg-service"
+cd ../../twpg-service && make build

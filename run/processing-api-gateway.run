@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
 echo "processing-api-gateway"
-cd ../../processing-api-gateway && make run | tee ../logs/processing-api-gateway.logs
+cd ../../processing-api-gateway && make build

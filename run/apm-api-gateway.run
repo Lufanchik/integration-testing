@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
 echo "apm-api-gateway"
-cd /go/src/lab.dt.multicarta.ru/tp/apm-api-gateway && make run | tee ../logs/apm-api-gateway.logs
+cd ../../apm-api-gateway && make build

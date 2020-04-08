@@ -5,6 +5,7 @@ import (
 	"github.com/brianvoe/gofakeit"
 	"github.com/gavv/httpexpect"
 	"github.com/google/uuid"
+	"github.com/stretchr/testify/require"
 	"lab.dt.multicarta.ru/tp/common/messages/pass"
 	"lab.dt.multicarta.ru/tp/common/messages/processing"
 	"testing"
@@ -177,7 +178,9 @@ func Run(t *testing.T, cases Cases, rt RequestType) {
 		}
 	}
 
-	for _, ncc := range nc {
+	results := make([][]*Pass, len(nc))
+
+	for casesNum, ncc := range nc {
 		fmt.Println("name: " + ncc.c.N)
 		fmt.Println(ncc.card.String())
 		scenario := ncc.c
@@ -185,34 +188,40 @@ func Run(t *testing.T, cases Cases, rt RequestType) {
 			fmt.Println(N + 1)
 			t.Run("case: "+scenario.N, func(t *testing.T) {
 				//Pass
-				p, ok := step.(*Pass)
+				firstPass, ok := step.(*Pass)
 				if ok {
-					p.RequestType = rt
-					p.faceId = ncc.c.FaceId
+					firstPass.RequestType = rt
+					firstPass.faceId = ncc.c.FaceId
 					//Если PassType в начале кейса не указан, дефолтим PassType_PASS_BBK, иначе используется предустановленный
 					if ncc.c.PassType == pass.PassType_PASS_NONE {
 						//Если фейс айди заполнен, то вместо BBK используем PassType_FACE_ID
 						if ncc.c.FaceId != "" {
-							p.PassType = pass.PassType_PASS_FACE_ID
+							firstPass.PassType = pass.PassType_PASS_FACE_ID
 						} else {
-							p.PassType = pass.PassType_PASS_BBK
+							firstPass.PassType = pass.PassType_PASS_BBK
 						}
 					} else if ncc.c.FaceId != "" {
-						p.PassType = pass.PassType_PASS_FACE_ID
+						firstPass.PassType = pass.PassType_PASS_FACE_ID
 					} else {
-						p.PassType = ncc.c.PassType
+						firstPass.PassType = ncc.c.PassType
 					}
-					if p.PaymentType == PaymentTypePrepayed {
-						p.PassType = pass.PassType_PASS_MT
+					if firstPass.PaymentType == PaymentTypePrepayed {
+						firstPass.PassType = pass.PassType_PASS_MT
 					}
 
-					if p.PassType == pass.PassType_PASS_MT {
-						p.PaymentType = PaymentTypePrepayed
+					if firstPass.PassType == pass.PassType_PASS_MT {
+						firstPass.PaymentType = PaymentTypePrepayed
 					}
 
 					fmt.Printf("name: %s; pass-type: %d\n", ncc.c.N, ncc.c.PassType)
-					RunPass(t, p, scenario, ncc.carrierId, ncc.card)
+					RunPass(t, firstPass, scenario, ncc.carrierId, ncc.card)
 				}
+
+				if results[casesNum] == nil {
+					results[casesNum] = make([]*Pass, len(scenario.T))
+				}
+
+				results[casesNum][N] = firstPass
 
 				//Updater
 				u, ok := step.(Updater)
@@ -306,26 +315,28 @@ func Run(t *testing.T, cases Cases, rt RequestType) {
 	}
 
 	if !t.Failed() {
-		for _, ncc := range nc {
+		for casesNum, ncc := range nc {
 			fmt.Println("name check 1: " + ncc.c.N)
 			fmt.Println(ncc.card.String())
 			scenario := ncc.c
 			for N, step := range scenario.T {
 				t.Run("case check 1: "+scenario.N, func(t *testing.T) {
 					//Pass
-					p, ok := step.(*Pass)
-					if ok && !p.isCancel && p.faceId == "" {
+					secondPass, ok := step.(*Pass)
+					if ok && !secondPass.isCancel && secondPass.faceId == "" {
 						fmt.Println(fmt.Sprintf("check 1 = %d", N+1))
-						ConfigurePass(t, p, ncc.carrierId, ncc.card)
-						ValidatePass(t, p, p.parent, p.ingress, false)
-						if !isAggregate(p) {
-							AuthStatus(t, p)
+						ConfigurePass(t, secondPass, ncc.carrierId, ncc.card)
+						ValidatePass(t, secondPass, secondPass.parent, secondPass.ingress, false)
+						if !isAggregate(secondPass) {
+							AuthStatus(t, secondPass)
 						}
-						TapBySubCarrier(t, p, ncc.card)
-						PassBySubCarrier(t, p.tapRequest, p)
-						ValidatePass(t, p, p.parent, p.ingress, false)
-						if !isAggregate(p) {
-							AuthStatus(t, p)
+						TapBySubCarrier(t, secondPass, ncc.card)
+						PassBySubCarrier(t, secondPass.tapRequest, secondPass)
+						oldPass := results[casesNum][N]
+						require.Equal(t, secondPass.id, oldPass.id)
+						ValidatePass(t, secondPass, secondPass.parent, secondPass.ingress, false)
+						if !isAggregate(secondPass) {
+							AuthStatus(t, secondPass)
 						}
 					}
 				})
@@ -347,19 +358,19 @@ func Run(t *testing.T, cases Cases, rt RequestType) {
 			for N, step := range scenario.T {
 				t.Run("case check 2: "+scenario.N, func(t *testing.T) {
 					//Pass
-					p, ok := step.(*Pass)
-					if ok && !p.isCancel && p.faceId == "" {
+					thirdPass, ok := step.(*Pass)
+					if ok && !thirdPass.isCancel && thirdPass.faceId == "" {
 						fmt.Println(fmt.Sprintf("check 2 = %d", N+1))
-						ConfigurePass(t, p, ncc.carrierId, ncc.card)
-						ValidatePass(t, p, p.parent, p.ingress, false)
-						if !isAggregate(p) {
-							AuthStatus(t, p)
+						ConfigurePass(t, thirdPass, ncc.carrierId, ncc.card)
+						ValidatePass(t, thirdPass, thirdPass.parent, thirdPass.ingress, false)
+						if !isAggregate(thirdPass) {
+							AuthStatus(t, thirdPass)
 						}
-						TapBySubCarrier(t, p, ncc.card)
-						PassBySubCarrier(t, p.tapRequest, p)
-						ValidatePass(t, p, p.parent, p.ingress, false)
-						if !isAggregate(p) {
-							AuthStatus(t, p)
+						TapBySubCarrier(t, thirdPass, ncc.card)
+						PassBySubCarrier(t, thirdPass.tapRequest, thirdPass)
+						ValidatePass(t, thirdPass, thirdPass.parent, thirdPass.ingress, false)
+						if !isAggregate(thirdPass) {
+							AuthStatus(t, thirdPass)
 						}
 					}
 				})

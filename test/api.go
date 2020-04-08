@@ -317,8 +317,6 @@ func ResolveTestApi(t *testing.T, _case *Resolve) {
 			WithJSON(_case.Request).
 			Expect().
 			Status(_case.Status)
-		r.JSON().Object().
-			ContainsKey("rows")
 	default:
 		t.Error("Error to find test handler for url:", _case.Url)
 		return

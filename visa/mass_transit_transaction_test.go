@@ -1,0 +1,739 @@
+package visa
+
+import (
+	"encoding/json"
+	"fmt"
+	"github.com/gavv/httpexpect"
+	"github.com/golang/protobuf/jsonpb"
+	"github.com/stretchr/testify/require"
+	"lab.dt.multicarta.ru/tp/common/messages/auth"
+	"lab.dt.multicarta.ru/tp/common/messages/processing"
+	"net/http"
+	"strconv"
+	"strings"
+	"testing"
+	"time"
+)
+
+const (
+	//passUrl = "http://localhost:9090"
+	//authUrl = "http://localhost:9091"
+	passUrl = "http://processing-api-gateway.test.svc.cluster.local:9090"
+	authUrl = "http://auth-service.test.svc.cluster.local:9091"
+
+	onlinePass   = "/mtppk/twirp/sirocco.ProcessingAPI/ProcessOnlinePass"
+	complete     = "/mtppk/twirp/sirocco.ProcessingAPI/ProcessComplete"
+	cancel       = "/mtppk/twirp/sirocco.ProcessingAPI/CancelPass"
+	activeReAuth = "/twirp/sirocco.AuthAPI/ActiveReAuth"
+
+	// 17.02.2020
+	//emv = "nOK9Iah6LQpqHTPB7zmtdqtfAvQ0UYLmKQc52V6MrDCqsmorbH2HppQs7eRNQDZAHWGv77r60q6wr2WjR90eixyjL+84wpRVWhMLN9+pJQ0C74D6/fcIJErYCek9SwxhLgi2Sp0fJqUj3G40EeupmVST1CeX5HcprnrDnueaOPc2fUbUm/Q1RpM63bbxY2dX/JF2RaoSogTos7xbQKnzb1sJs4ISrw7+4UIl68mg7yN3cB2CnnydKWjCfaQkIwieGDyXfm4Z0XuEZeyqz1gik+dgc/xrfSdlaBfnVeSCyxX94yMTw8s1KwgVrrnM0KJuptRYyFBKvjmgI2sZMHW1Ew=="
+
+	// 18.02.2020
+	emv = "SM9Y3VWP81jHw3JeLVxy9f3s3gcUNCk5meuQ0rb4SFBl4rph4Wo90gYXETNce6Ofn7WV1pF5XJOE7yNEtb6tfTQReFNOt84WpPONyCiUO6y82GguE8if+TvyJc+bg+bsUXc9MPfR6hYfNM+hArFTi1+NWZdsMBjrytOp4IzkuBCW3D92coqq0SX8/CgsWuNW0Hk5dtkSIFOxoT3RQZLZXdi4s/BFeouipDTV14NCEXVC6yJruPUqBTqK68eW2vvoQTivFZtfzwYjxQU3z5xhxTZIPipXHAaHIME7V1POUJ7I4lQ6ss+gz10Zw1etVvJ0WiBLY9fw4eBouTn2zS/r+Q=="
+)
+
+func Test_1_1(t *testing.T) {
+	response := &processing.OnlinePassResponse{}
+
+	//Онлайн проход по 1 карте (первый успешный в месяце, выполняется чеккард)
+	{
+		httpService := httpexpect.New(t, passUrl)
+		now := int(time.Now().UnixNano())
+		req := []byte(`{
+		"id": "89898981212349",
+			"created": ` + strconv.Itoa(now) + `,
+			"tap": {
+			"created": ` + strconv.Itoa(now) + `,
+				"resolution": 1,
+				"sign": "test",
+				"terminal": {
+				"id": "multicard",
+					"station": "BAZINGA",
+					"direction": 1
+			},
+			"card": {
+				"system": 2,
+					"type": 2,
+					"pan": "61312C7296E8F21FC86A237E632C34FD10FE7C532A130F98EBFA4E037DB672FD",
+					"bin": 47617310,
+					"exp": "1224",
+					"emv": "` + emv + `",
+					"token": {
+					"type": 1
+				}
+			}
+		},
+		"auth": {
+			"sum": 4200,
+				"type": 2
+		}
+	}`)
+		fmt.Println(string(req))
+		request := &processing.OnlinePassRequest{}
+		err := json.Unmarshal(req, request)
+		require.NoError(t, err)
+
+		r := httpService.POST(onlinePass).WithJSON(request).
+			Expect().
+			Status(http.StatusOK)
+
+		logRequest(r)
+
+		err = jsonpb.Unmarshal(strings.NewReader(r.Body().Raw()), response)
+		require.NoError(t, err)
+
+		fmt.Println(response)
+	}
+
+	time.Sleep(time.Second * 3)
+
+	//Онлайн проход по 1 карте (первый успешный в месяце, выполняется чеккард)
+	{
+		httpService := httpexpect.New(t, passUrl)
+		now := int(time.Now().UnixNano())
+		req := []byte(`{
+		"id": "89898981212349",
+			"created": ` + strconv.Itoa(now) + `,
+			"tap": {
+			"created": ` + strconv.Itoa(now) + `,
+				"resolution": 1,
+				"sign": "test",
+				"terminal": {
+				"id": "multicard",
+					"station": "BAZINGA",
+					"direction": 1
+			},
+			"card": {
+				"system": 2,
+					"type": 2,
+					"pan": "61312C7296E8F21FC86A237E632C34FD10FE7C532A130F98EBFA4E037DB672FD",
+					"bin": 47617310,
+					"exp": "1224",
+					"emv": "` + emv + `",
+					"token": {
+					"type": 1
+				}
+			}
+		},
+		"auth": {
+			"sum": 4200,
+				"type": 2
+		}
+	}`)
+		fmt.Println(string(req))
+		request := &processing.OnlinePassRequest{}
+		err := json.Unmarshal(req, request)
+		require.NoError(t, err)
+
+		r := httpService.POST(onlinePass).WithJSON(request).
+			Expect().
+			Status(http.StatusOK)
+
+		logRequest(r)
+
+		err = jsonpb.Unmarshal(strings.NewReader(r.Body().Raw()), response)
+		require.NoError(t, err)
+
+		fmt.Println(response)
+	}
+
+	time.Sleep(time.Second * 3)
+
+	//Комплит по этому проходу в этот же день.
+	{
+		httpService := httpexpect.New(t, passUrl)
+		now := int(time.Now().UnixNano())
+		req := []byte(`{
+		"id": "` + response.Id + `",
+		"created": ` + strconv.Itoa(now) + `,
+		"amount": 8800
+	}`)
+
+		fmt.Println(string(req))
+		requestComplete := &processing.CompleteRequest{}
+		err := json.Unmarshal(req, requestComplete)
+		require.NoError(t, err)
+
+		r := httpService.POST(complete).WithJSON(requestComplete).
+			Expect().
+			Status(http.StatusOK)
+
+		logRequest(r)
+
+		responseComplete := &processing.CompleteResponse{}
+		err = jsonpb.Unmarshal(strings.NewReader(r.Body().Raw()), responseComplete)
+		require.NoError(t, err)
+
+		fmt.Println(responseComplete)
+	}
+}
+
+func Test_1_2(t *testing.T) {
+	response := &processing.OnlinePassResponse{}
+
+	//Онлайн проход по 1 карте (не первый успешный в месяце, без чеккарда)
+	{
+		httpService := httpexpect.New(t, passUrl)
+		now := int(time.Now().UnixNano())
+		req := []byte(`{
+		"id": "89898981212349",
+			"created": ` + strconv.Itoa(now) + `,
+			"tap": {
+			"created": ` + strconv.Itoa(now) + `,
+				"resolution": 1,
+				"sign": "test",
+				"terminal": {
+				"id": "multicard",
+					"station": "BAZINGA",
+					"direction": 1
+			},
+			"card": {
+				"system": 2,
+					"type": 2,
+					"pan": "61312C7296E8F21FC86A237E632C34FD10FE7C532A130F98EBFA4E037DB672FD",
+					"bin": 47617310,
+					"exp": "1224",
+					"emv": "` + emv + `",
+					"token": {
+					"type": 1
+				}
+			}
+		},
+		"auth": {
+			"sum": 4200,
+				"type": 2
+		}
+	}`)
+		fmt.Println(string(req))
+		request := &processing.OnlinePassRequest{}
+		err := json.Unmarshal(req, request)
+		require.NoError(t, err)
+
+		r := httpService.POST(onlinePass).WithJSON(request).
+			Expect().
+			Status(http.StatusOK)
+
+		logRequest(r)
+
+		err = jsonpb.Unmarshal(strings.NewReader(r.Body().Raw()), response)
+		require.NoError(t, err)
+
+		fmt.Println(response)
+	}
+
+	time.Sleep(time.Second * 3)
+
+	//Неудачный комплит, нехватка денег, сумма больше 126р.
+	{
+		httpService := httpexpect.New(t, passUrl)
+		now := int(time.Now().UnixNano())
+		req := []byte(`{
+		"id": "` + response.Id + `",
+		"created": ` + strconv.Itoa(now) + `,
+		"amount": 41000
+	}`)
+
+		fmt.Println(string(req))
+		requestComplete := &processing.CompleteRequest{}
+		err := json.Unmarshal(req, requestComplete)
+		require.NoError(t, err)
+
+		r := httpService.POST(complete).WithJSON(requestComplete).
+			Expect().
+			Status(http.StatusOK)
+
+		logRequest(r)
+
+		responseComplete := &processing.CompleteResponse{}
+		err = jsonpb.Unmarshal(strings.NewReader(r.Body().Raw()), responseComplete)
+		require.NoError(t, err)
+
+		fmt.Println(responseComplete)
+	}
+
+	time.Sleep(time.Second * 3)
+
+	//Удачная доавторизация.
+	{
+		httpService := httpexpect.New(t, authUrl)
+		req := []byte(`{
+		"pass_id": "` + response.Id + `"
+	}`)
+
+		fmt.Println(string(req))
+		request := &auth.CardByPassIDRequest{}
+		err := json.Unmarshal(req, request)
+		require.NoError(t, err)
+
+		r := httpService.POST(activeReAuth).WithJSON(request).
+			Expect().
+			Status(http.StatusOK)
+
+		logRequest(r)
+
+		raw := r.Body().Raw()
+		response := &auth.AuthResponseEvent{}
+		err = jsonpb.Unmarshal(strings.NewReader(raw), response)
+		require.NoError(t, err)
+
+		fmt.Println(response)
+	}
+}
+
+func Test_CLEARING(t *testing.T) {
+	response := &processing.OnlinePassResponse{}
+
+	//Онлайн проход по 1 карте (не первый успешный в месяце, без чеккарда)
+	{
+		httpService := httpexpect.New(t, passUrl)
+		now := int(time.Now().UnixNano())
+		req := []byte(`{
+		"id": "89898981212349",
+			"created": ` + strconv.Itoa(now) + `,
+			"tap": {
+			"created": ` + strconv.Itoa(now) + `,
+				"resolution": 1,
+				"sign": "test",
+				"terminal": {
+				"id": "multicard",
+					"station": "BAZINGA",
+					"direction": 1
+			},
+			"card": {
+				"system": 2,
+					"type": 2,
+					"pan": "61312C7296E8F21FC86A237E632C34FD10FE7C532A130F98EBFA4E037DB672FD",
+					"bin": 47617310,
+					"exp": "1224",
+					"emv": "` + emv + `",
+					"token": {
+					"type": 1
+				}
+			}
+		},
+		"auth": {
+			"sum": 4200,
+				"type": 2
+		}
+	}`)
+		fmt.Println(string(req))
+		request := &processing.OnlinePassRequest{}
+		err := json.Unmarshal(req, request)
+		require.NoError(t, err)
+
+		r := httpService.POST(onlinePass).WithJSON(request).
+			Expect().
+			Status(http.StatusOK)
+
+		logRequest(r)
+
+		err = jsonpb.Unmarshal(strings.NewReader(r.Body().Raw()), response)
+		require.NoError(t, err)
+
+		fmt.Println(response)
+	}
+
+	time.Sleep(time.Second * 3)
+
+	//Неудачный комплит, нехватка денег, сумма меньше 126р.
+	{
+		httpService := httpexpect.New(t, passUrl)
+		now := int(time.Now().UnixNano())
+		req := []byte(`{
+		"id": "` + response.Id + `",
+		"created": ` + strconv.Itoa(now) + `,
+		"amount": 41000
+	}`)
+
+		fmt.Println(string(req))
+		requestComplete := &processing.CompleteRequest{}
+		err := json.Unmarshal(req, requestComplete)
+		require.NoError(t, err)
+
+		r := httpService.POST(complete).WithJSON(requestComplete).
+			Expect().
+			Status(http.StatusOK)
+
+		logRequest(r)
+
+		responseComplete := &processing.CompleteResponse{}
+		err = jsonpb.Unmarshal(strings.NewReader(r.Body().Raw()), responseComplete)
+		require.NoError(t, err)
+
+		fmt.Println(responseComplete)
+	}
+
+	time.Sleep(time.Second * 3)
+
+	//Удачная доавторизация.
+	{
+		httpService := httpexpect.New(t, authUrl)
+		req := []byte(`{
+		"pass_id": "` + response.Id + `"
+	}`)
+
+		fmt.Println(string(req))
+		request := &auth.CardByPassIDRequest{}
+		err := json.Unmarshal(req, request)
+		require.NoError(t, err)
+
+		r := httpService.POST(activeReAuth).WithJSON(request).
+			Expect().
+			Status(http.StatusOK)
+
+		logRequest(r)
+
+		raw := r.Body().Raw()
+		response := &auth.AuthResponseEvent{}
+		err = jsonpb.Unmarshal(strings.NewReader(raw), response)
+		require.NoError(t, err)
+
+		fmt.Println(response)
+	}
+
+	//Отмена
+	{
+		httpService := httpexpect.New(t, passUrl)
+		now := int(time.Now().UnixNano())
+		req := []byte(`{
+		"id": "` + response.Id + `",
+		"created": ` + strconv.Itoa(now) + `,
+		"reason": 1
+	}`)
+
+		fmt.Println(string(req))
+		request := &processing.CancelPassRequest{}
+		err := json.Unmarshal(req, request)
+		require.NoError(t, err)
+
+		time.Sleep(time.Second * 3)
+		r := httpService.POST(cancel).WithJSON(request).
+			Expect().
+			Status(http.StatusOK)
+
+		logRequest(r)
+
+		response := &processing.CancelPassResponse{}
+		raw := r.Body().Raw()
+		err = jsonpb.Unmarshal(strings.NewReader(raw), response)
+		require.NoError(t, err)
+
+		fmt.Println(response)
+	}
+}
+
+func Test_1_4(t *testing.T) {
+	response := &processing.OnlinePassResponse{}
+
+	//Онлайн проход по 1 карте (не первый успешный в месяце, без чеккарда)
+	{
+		httpService := httpexpect.New(t, passUrl)
+		now := int(time.Now().UnixNano())
+		req := []byte(`{
+		"id": "89898981212349",
+			"created": ` + strconv.Itoa(now) + `,
+			"tap": {
+			"created": ` + strconv.Itoa(now) + `,
+				"resolution": 1,
+				"sign": "test",
+				"terminal": {
+				"id": "multicard",
+					"station": "BAZINGA",
+					"direction": 1
+			},
+			"card": {
+				"system": 2,
+					"type": 2,
+					"pan": "61312C7296E8F21FC86A237E632C34FD10FE7C532A130F98EBFA4E037DB672FD",
+					"bin": 47617310,
+					"exp": "1224",
+					"emv": "` + emv + `",
+					"token": {
+					"type": 1
+				}
+			}
+		},
+		"auth": {
+			"sum": 4200,
+				"type": 2
+		}
+	}`)
+		fmt.Println(string(req))
+		request := &processing.OnlinePassRequest{}
+		err := json.Unmarshal(req, request)
+		require.NoError(t, err)
+
+		r := httpService.POST(onlinePass).WithJSON(request).
+			Expect().
+			Status(http.StatusOK)
+
+		logRequest(r)
+
+		err = jsonpb.Unmarshal(strings.NewReader(r.Body().Raw()), response)
+		require.NoError(t, err)
+
+		fmt.Println(response)
+	}
+
+	time.Sleep(time.Second * 3)
+
+	//Неудачный комплит, нехватка денег, сумма больше 126р.
+	{
+		httpService := httpexpect.New(t, passUrl)
+		now := int(time.Now().UnixNano())
+		req := []byte(`{
+		"id": "` + response.Id + `",
+		"created": ` + strconv.Itoa(now) + `,
+		"amount": 41000
+	}`)
+
+		fmt.Println(string(req))
+		requestComplete := &processing.CompleteRequest{}
+		err := json.Unmarshal(req, requestComplete)
+		require.NoError(t, err)
+
+		r := httpService.POST(complete).WithJSON(requestComplete).
+			Expect().
+			Status(http.StatusOK)
+
+		logRequest(r)
+
+		responseComplete := &processing.CompleteResponse{}
+		err = jsonpb.Unmarshal(strings.NewReader(r.Body().Raw()), responseComplete)
+		require.NoError(t, err)
+
+		fmt.Println(responseComplete)
+	}
+
+	time.Sleep(time.Second * 3)
+
+	//Удачная доавторизация.
+	{
+		httpService := httpexpect.New(t, authUrl)
+		req := []byte(`{
+		"pass_id": "` + response.Id + `"
+	}`)
+
+		fmt.Println(string(req))
+		request := &auth.CardByPassIDRequest{}
+		err := json.Unmarshal(req, request)
+		require.NoError(t, err)
+
+		r := httpService.POST(activeReAuth).WithJSON(request).
+			Expect().
+			Status(http.StatusOK)
+
+		logRequest(r)
+
+		raw := r.Body().Raw()
+		response := &auth.AuthResponseEvent{}
+		err = jsonpb.Unmarshal(strings.NewReader(raw), response)
+		require.NoError(t, err)
+
+		fmt.Println(response)
+	}
+}
+
+func Test_1_6(t *testing.T) {
+	response := &processing.OnlinePassResponse{}
+
+	//Онлайн проход по 1 карте (первый успешный в месяце, выполняется чеккард)
+	{
+		httpService := httpexpect.New(t, passUrl)
+		now := int(time.Now().UnixNano())
+		req := []byte(`{
+		"id": "89898981212349",
+			"created": ` + strconv.Itoa(now) + `,
+			"tap": {
+			"created": ` + strconv.Itoa(now) + `,
+				"resolution": 1,
+				"sign": "test",
+				"terminal": {
+				"id": "multicard",
+					"station": "BAZINGA",
+					"direction": 1
+			},
+			"card": {
+				"system": 2,
+					"type": 2,
+					"pan": "61312C7296E8F21FC86A237E632C34FD10FE7C532A130F98EBFA4E037DB672FD",
+					"bin": 47617310,
+					"exp": "1224",
+					"emv": "` + emv + `",
+					"token": {
+					"type": 1
+				}
+			}
+		},
+		"auth": {
+			"sum": 4200,
+				"type": 2
+		}
+	}`)
+		fmt.Println(string(req))
+		request := &processing.OnlinePassRequest{}
+		err := json.Unmarshal(req, request)
+		require.NoError(t, err)
+
+		r := httpService.POST(onlinePass).WithJSON(request).
+			Expect().
+			Status(http.StatusOK)
+
+		logRequest(r)
+
+		err = jsonpb.Unmarshal(strings.NewReader(r.Body().Raw()), response)
+		require.NoError(t, err)
+
+		fmt.Println(response)
+	}
+
+	//Комплит по этому проходу в этот же день.
+	{
+		httpService := httpexpect.New(t, passUrl)
+		now := int(time.Now().UnixNano())
+		req := []byte(`{
+		"id": "` + response.Id + `",
+		"created": ` + strconv.Itoa(now) + `,
+		"amount": 41000
+	}`)
+
+		fmt.Println(string(req))
+		requestComplete := &processing.CompleteRequest{}
+		err := json.Unmarshal(req, requestComplete)
+		require.NoError(t, err)
+
+		r := httpService.POST(complete).WithJSON(requestComplete).
+			Expect().
+			Status(http.StatusOK)
+
+		logRequest(r)
+
+		responseComplete := &processing.CompleteResponse{}
+		err = jsonpb.Unmarshal(strings.NewReader(r.Body().Raw()), responseComplete)
+		require.NoError(t, err)
+
+		fmt.Println(responseComplete)
+	}
+}
+
+func Test_1_7(t *testing.T) {
+	response := &processing.OnlinePassResponse{}
+
+	//Онлайн проход по 1 карте (первый успешный в месяце, выполняется чеккард)
+	{
+		httpService := httpexpect.New(t, passUrl)
+		now := int(time.Now().UnixNano())
+		req := []byte(`{
+		"id": "89898981212349",
+			"created": ` + strconv.Itoa(now) + `,
+			"tap": {
+			"created": ` + strconv.Itoa(now) + `,
+				"resolution": 1,
+				"sign": "test",
+				"terminal": {
+				"id": "multicard",
+					"station": "BAZINGA",
+					"direction": 1
+			},
+			"card": {
+				"system": 2,
+					"type": 2,
+					"pan": "61312C7296E8F21FC86A237E632C34FD10FE7C532A130F98EBFA4E037DB672FD",
+					"bin": 47617310,
+					"exp": "1224",
+					"emv": "` + emv + `",
+					"token": {
+					"type": 1
+				}
+			}
+		},
+		"auth": {
+			"sum": 4200,
+				"type": 2
+		}
+	}`)
+		fmt.Println(string(req))
+		request := &processing.OnlinePassRequest{}
+		err := json.Unmarshal(req, request)
+		require.NoError(t, err)
+
+		r := httpService.POST(onlinePass).WithJSON(request).
+			Expect().
+			Status(http.StatusOK)
+
+		logRequest(r)
+
+		err = jsonpb.Unmarshal(strings.NewReader(r.Body().Raw()), response)
+		require.NoError(t, err)
+
+		fmt.Println(response)
+	}
+
+	time.Sleep(time.Second * 3)
+
+	//Комплит по эт"ому проходу в этот же день.
+	{
+		httpService := httpexpect.New(t, passUrl)
+		now := int(time.Now().UnixNano())
+		req := []byte(`{
+		"id": "` + response.Id + `",
+		"created": ` + strconv.Itoa(now) + `,
+		"amount": 41000
+	}`)
+
+		fmt.Println(string(req))
+		requestComplete := &processing.CompleteRequest{}
+		err := json.Unmarshal(req, requestComplete)
+		require.NoError(t, err)
+
+		r := httpService.POST(complete).WithJSON(requestComplete).
+			Expect().
+			Status(http.StatusOK)
+
+		logRequest(r)
+
+		responseComplete := &processing.CompleteResponse{}
+		err = jsonpb.Unmarshal(strings.NewReader(r.Body().Raw()), responseComplete)
+		require.NoError(t, err)
+
+		fmt.Println(responseComplete)
+	}
+
+	time.Sleep(time.Second * 3)
+
+	//Отмена
+	{
+		httpService := httpexpect.New(t, passUrl)
+		now := int(time.Now().UnixNano())
+		req := []byte(`{
+		"id": "` + response.Id + `",
+		"created": ` + strconv.Itoa(now) + `,
+		"reason": 1
+	}`)
+
+		fmt.Println(string(req))
+		request := &processing.CancelPassRequest{}
+		err := json.Unmarshal(req, request)
+		require.NoError(t, err)
+
+		time.Sleep(time.Second * 3)
+		r := httpService.POST(cancel).WithJSON(request).
+			Expect().
+			Status(http.StatusOK)
+
+		logRequest(r)
+
+		response := &processing.CancelPassResponse{}
+		raw := r.Body().Raw()
+		err = jsonpb.Unmarshal(strings.NewReader(raw), response)
+		require.NoError(t, err)
+
+		fmt.Println(response)
+	}
+}
+
+func logRequest(r *httpexpect.Response) {
+	trace := r.Header("X-Trace-ID")
+	fmt.Println(fmt.Sprintf("trace id: %s", trace.Raw()))
+}

@@ -188,6 +188,37 @@ func WebAPIRegisterRequest(fcl *RegisterFaceId, card *processing.Card) *authServ
 	}
 }
 
+func TWPGCreatePaymentLinkTest(pay *TWPGCreateAndPayOrderStep) *twpg.CreateTWPGPOrderRequest {
+	return &twpg.CreateTWPGPOrderRequest{
+		Id: pay.CustomerId,
+		Urls: &twpg.TWPGUrls{
+			Approve: gofakeit.URL(),
+			Cancel:  gofakeit.URL(),
+			Decline: gofakeit.URL(),
+		},
+		PaymentPurpose: twpg.CreateTWPGPOrderRequest_MT,
+		Amount:         300,
+	}
+}
+
+func TWPGOrderStatusRequest(os *TWPGOrderStatus) (*twpg.OrderStatusRequest, *twpg.OrderStatusResponse) {
+	req := &twpg.OrderStatusRequest{
+		OrderId: os.OrderId,
+	}
+	resp := &twpg.OrderStatusResponse{
+		Status: os.OrderStatus,
+	}
+
+	return req, resp
+}
+
+func TWPGReverseOrderRequest(os *TWPGReverseOrder) *twpg.ReverseOrderRequest {
+	req := &twpg.ReverseOrderRequest{
+		OrderId: os.OrderId,
+	}
+	return req
+}
+
 func WebAPIFaceStatusRequest(faceCheck *FaceIdRegistrationStatus) (*twpg.RegistrationStatusRequest, *twpg.RegistrationStatusResponse) {
 	req := &twpg.RegistrationStatusRequest{
 		Id: faceCheck.Id,
@@ -224,7 +255,7 @@ func CompleteRequest(pass *Pass, passes []*Pass, sum int) (*processing.CompleteR
 	return request, response
 }
 
-func FaceForceCheckRequest() (*response.EmptyMessage, *response.EmptyMessage) {
+func TWPGForceCheckRequest() (*response.EmptyMessage, *response.EmptyMessage) {
 	return &response.EmptyMessage{}, &response.EmptyMessage{}
 }
 

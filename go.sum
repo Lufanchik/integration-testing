@@ -496,6 +496,8 @@ lab.dt.multicarta.ru/tp/common v0.0.303/go.mod h1:13FR4zpvHH2tDG8tgvUyJOrJeWEmkY
 lab.dt.multicarta.ru/tp/common v0.0.304/go.mod h1:thhCwit1n/QmqWCtswV42/75REfp7/+HAkuY8XzaknM=
 lab.dt.multicarta.ru/tp/common v0.0.306 h1:yoBw3LzFEuzcp5F+3O1RkJEACisSNsmQ0WLXwCcLafE=
 lab.dt.multicarta.ru/tp/common v0.0.306/go.mod h1:thhCwit1n/QmqWCtswV42/75REfp7/+HAkuY8XzaknM=
+lab.dt.multicarta.ru/tp/common v0.0.315-dev-1 h1:T/9gKXbPF3PXW7zHL+mrmjOSW/iZ3CV25anYrnSe5pQ=
+lab.dt.multicarta.ru/tp/common v0.0.315-dev-1/go.mod h1:thhCwit1n/QmqWCtswV42/75REfp7/+HAkuY8XzaknM=
 lab.dt.multicarta.ru/tp/pass-service v0.0.158/go.mod h1:OWyH/2PFUD4VwTp2LJbaNNv2SnKimMBigpmpWOksfhE=
 lab.dt.multicarta.ru/tp/pass-service v0.0.160 h1:lyuyx6K4EiuNPmNo/e5Oc2r5dWd1I3VicPy7iCrEFzM=
 lab.dt.multicarta.ru/tp/pass-service v0.0.160/go.mod h1:1lQB/b6CTgl+vWB5/K0xBjtN0z8Ek6vUOTWbxw2meis=

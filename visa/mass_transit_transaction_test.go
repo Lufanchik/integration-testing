@@ -30,7 +30,13 @@ const (
 	//emv = "nOK9Iah6LQpqHTPB7zmtdqtfAvQ0UYLmKQc52V6MrDCqsmorbH2HppQs7eRNQDZAHWGv77r60q6wr2WjR90eixyjL+84wpRVWhMLN9+pJQ0C74D6/fcIJErYCek9SwxhLgi2Sp0fJqUj3G40EeupmVST1CeX5HcprnrDnueaOPc2fUbUm/Q1RpM63bbxY2dX/JF2RaoSogTos7xbQKnzb1sJs4ISrw7+4UIl68mg7yN3cB2CnnydKWjCfaQkIwieGDyXfm4Z0XuEZeyqz1gik+dgc/xrfSdlaBfnVeSCyxX94yMTw8s1KwgVrrnM0KJuptRYyFBKvjmgI2sZMHW1Ew=="
 
 	// 18.02.2020
-	emv = "SM9Y3VWP81jHw3JeLVxy9f3s3gcUNCk5meuQ0rb4SFBl4rph4Wo90gYXETNce6Ofn7WV1pF5XJOE7yNEtb6tfTQReFNOt84WpPONyCiUO6y82GguE8if+TvyJc+bg+bsUXc9MPfR6hYfNM+hArFTi1+NWZdsMBjrytOp4IzkuBCW3D92coqq0SX8/CgsWuNW0Hk5dtkSIFOxoT3RQZLZXdi4s/BFeouipDTV14NCEXVC6yJruPUqBTqK68eW2vvoQTivFZtfzwYjxQU3z5xhxTZIPipXHAaHIME7V1POUJ7I4lQ6ss+gz10Zw1etVvJ0WiBLY9fw4eBouTn2zS/r+Q=="
+	//emv = "SM9Y3VWP81jHw3JeLVxy9f3s3gcUNCk5meuQ0rb4SFBl4rph4Wo90gYXETNce6Ofn7WV1pF5XJOE7yNEtb6tfTQReFNOt84WpPONyCiUO6y82GguE8if+TvyJc+bg+bsUXc9MPfR6hYfNM+hArFTi1+NWZdsMBjrytOp4IzkuBCW3D92coqq0SX8/CgsWuNW0Hk5dtkSIFOxoT3RQZLZXdi4s/BFeouipDTV14NCEXVC6yJruPUqBTqK68eW2vvoQTivFZtfzwYjxQU3z5xhxTZIPipXHAaHIME7V1POUJ7I4lQ6ss+gz10Zw1etVvJ0WiBLY9fw4eBouTn2zS/r+Q=="
+
+	// 15.04.2020
+	//emv ="NhIdUq5lxb9vE5sHixNo/AOswgAh0cvJM0ntZdNhYkz4/y5JAAGImUEvtR8FkOMW5V6C5ney0qVScYH7hEWmPxxMDiZ0Q35QkAni1b8ojXhYvTswj53QuSp1s7mbb+CbfhBkM0Y1zHPNmgGorApsJiedUg573nlD5nFmjVsSUCLe7MDiU/hyGkQN/Hb7BDZFZVaRGqYCNVghIMoCxijFYq7XaX5XlqREqM75Jtc0L2U4QmFxD3vzpbWPSwbvUAySyLw0Z30/fbyrheOiXy7zrC8TyNpPV97D6Dl29D08bCB8nHpfKITQRsf+6mEGSx4gn7kOm0Crwmbc/Mk3lN5dIA=="
+
+	// 16.04.2020
+	emv = "in1srhBjh8bW0dzKnHiAyBZp/rDjhb8JhppE+FgISzUbuvuQAsjaECUiGtEjkVz16Jc2EPB6ULI2jAAtnmjLEEOFWPb+e3mSCRrlluK65oyyswYPxKpGzzf57fn7iLiK/7BcmckG8tx3v0PsT/kXPrN9WKf074T4bwnoUJqhSBPOMkeLneTtJQycqCFs9kno6P9f0nfUEJR8oBeb8CugJWh7ym0OQtUQLzyvhu3QJ3DjmSy7Nu6LZ0VQdhas/T+T8xCBE+KC3GH5zOJGXyQp8q4GlgbComP7wXBVl9srEEo9PavjAeVviHlfpXTUPhy14H+7mET5UMIIrnNbXbWsoA=="
 )
 
 func Test_1_1(t *testing.T) {
@@ -278,6 +284,36 @@ func Test_1_2(t *testing.T) {
 		require.NoError(t, err)
 
 		fmt.Println(response)
+	}
+}
+
+func Test_1_4_ECOM(t *testing.T) {
+	//Комплит по этому проходу в этот же день.
+	{
+		httpService := httpexpect.New(t, passUrl)
+		now := int(time.Now().UnixNano())
+		req := []byte(`{
+		"id": "02c0350b-fb0a-4438-9009-16f5fee7c42a",
+		"created": ` + strconv.Itoa(now) + `,
+		"amount": 8800
+	}`)
+
+		fmt.Println(string(req))
+		requestComplete := &processing.CompleteRequest{}
+		err := json.Unmarshal(req, requestComplete)
+		require.NoError(t, err)
+
+		r := httpService.POST(complete).WithJSON(requestComplete).
+			Expect().
+			Status(http.StatusOK)
+
+		logRequest(r)
+
+		responseComplete := &processing.CompleteResponse{}
+		err = jsonpb.Unmarshal(strings.NewReader(r.Body().Raw()), responseComplete)
+		require.NoError(t, err)
+
+		fmt.Println(responseComplete)
 	}
 }
 

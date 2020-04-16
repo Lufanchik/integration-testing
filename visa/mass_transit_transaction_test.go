@@ -36,57 +36,57 @@ const (
 func Test_1_1(t *testing.T) {
 	response := &processing.OnlinePassResponse{}
 
-	//Онлайн проход по 1 карте (первый успешный в месяце, выполняется чеккард)
-	{
-		httpService := httpexpect.New(t, passUrl)
-		now := int(time.Now().UnixNano())
-		req := []byte(`{
-		"id": "89898981212349",
-			"created": ` + strconv.Itoa(now) + `,
-			"tap": {
-			"created": ` + strconv.Itoa(now) + `,
-				"resolution": 1,
-				"sign": "test",
-				"terminal": {
-				"id": "multicard",
-					"station": "BAZINGA",
-					"direction": 1
-			},
-			"card": {
-				"system": 2,
-					"type": 2,
-					"pan": "61312C7296E8F21FC86A237E632C34FD10FE7C532A130F98EBFA4E037DB672FD",
-					"bin": 47617310,
-					"exp": "1224",
-					"emv": "` + emv + `",
-					"token": {
-					"type": 1
-				}
-			}
-		},
-		"auth": {
-			"sum": 4200,
-				"type": 2
-		}
-	}`)
-		fmt.Println(string(req))
-		request := &processing.OnlinePassRequest{}
-		err := json.Unmarshal(req, request)
-		require.NoError(t, err)
-
-		r := httpService.POST(onlinePass).WithJSON(request).
-			Expect().
-			Status(http.StatusOK)
-
-		logRequest(r)
-
-		err = jsonpb.Unmarshal(strings.NewReader(r.Body().Raw()), response)
-		require.NoError(t, err)
-
-		fmt.Println(response)
-	}
-
-	time.Sleep(time.Second * 3)
+	////Онлайн проход по 1 карте (первый успешный в месяце, выполняется чеккард)
+	//{
+	//	httpService := httpexpect.New(t, passUrl)
+	//	now := int(time.Now().UnixNano())
+	//	req := []byte(`{
+	//	"id": "89898981212349",
+	//		"created": ` + strconv.Itoa(now) + `,
+	//		"tap": {
+	//		"created": ` + strconv.Itoa(now) + `,
+	//			"resolution": 1,
+	//			"sign": "test",
+	//			"terminal": {
+	//			"id": "multicard",
+	//				"station": "BAZINGA",
+	//				"direction": 1
+	//		},
+	//		"card": {
+	//			"system": 2,
+	//				"type": 2,
+	//				"pan": "61312C7296E8F21FC86A237E632C34FD10FE7C532A130F98EBFA4E037DB672FD",
+	//				"bin": 47617310,
+	//				"exp": "1224",
+	//				"emv": "` + emv + `",
+	//				"token": {
+	//				"type": 1
+	//			}
+	//		}
+	//	},
+	//	"auth": {
+	//		"sum": 4200,
+	//			"type": 2
+	//	}
+	//}`)
+	//	fmt.Println(string(req))
+	//	request := &processing.OnlinePassRequest{}
+	//	err := json.Unmarshal(req, request)
+	//	require.NoError(t, err)
+	//
+	//	r := httpService.POST(onlinePass).WithJSON(request).
+	//		Expect().
+	//		Status(http.StatusOK)
+	//
+	//	logRequest(r)
+	//
+	//	err = jsonpb.Unmarshal(strings.NewReader(r.Body().Raw()), response)
+	//	require.NoError(t, err)
+	//
+	//	fmt.Println(response)
+	//}
+	//
+	//time.Sleep(time.Second * 3)
 
 	//Онлайн проход по 1 карте (первый успешный в месяце, выполняется чеккард)
 	{
@@ -343,7 +343,7 @@ func Test_CLEARING(t *testing.T) {
 		req := []byte(`{
 		"id": "` + response.Id + `",
 		"created": ` + strconv.Itoa(now) + `,
-		"amount": 41000
+		"amount": 4100
 	}`)
 
 		fmt.Println(string(req))
@@ -587,6 +587,8 @@ func Test_1_6(t *testing.T) {
 
 		fmt.Println(response)
 	}
+
+	time.Sleep(time.Second * 3)
 
 	//Комплит по этому проходу в этот же день.
 	{

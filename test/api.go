@@ -555,13 +555,67 @@ func FaceApiGetRegisterLink(t *testing.T, card *processing.Card, fcl *RegisterFa
 
 	fcl.RedirectURL = response.Redirect
 
-	err = faceForceCheck()
+	err = twpgForceCheck()
 	require.NoError(t, err)
 	time.Sleep(time.Second)
 }
 
-func faceForceCheck() error {
-	req, _ := FaceForceCheckRequest()
+func TWPGCreateAndPayOrder(t *testing.T, pay *TWPGCreateAndPayOrderStep) {
+	req := TWPGCreatePaymentLinkTest(pay)
+	u := "/twirp/proto.TWPGService/CreatePaymentLink"
+	r := httpTWPGService.POST(u).WithJSON(req).
+		Expect().
+		Status(http.StatusOK)
+
+	object := r.Body().Raw()
+	logRequest(u, r)
+
+	response := &twpg.CreateTWPGOrderResponse{}
+	err := jsonpb.Unmarshal(strings.NewReader(object), response)
+	require.NoError(t, err)
+
+	require.NotEmpty(t, response.Redirect)
+	log.Infof("Redirect URL: %s", response.Redirect)
+
+	pay.CustomerId = response.Redirect
+	pay.OrderId = response.Id
+
+	err = twpgForceCheck()
+	require.NoError(t, err)
+	time.Sleep(time.Second)
+}
+
+func TWPGCheckOrderStatus(t *testing.T, os *TWPGOrderStatus) {
+	req, expectedResponse := TWPGOrderStatusRequest(os)
+	u := "/twirp/proto.TWPGService/OrderStatus"
+	r := httpTWPGService.POST(u).WithJSON(req).
+		Expect().
+		Status(http.StatusOK)
+
+	object := r.Body().Raw()
+	logRequest(u, r)
+
+	response := &twpg.OrderStatusResponse{}
+	err := jsonpb.Unmarshal(strings.NewReader(object), response)
+	require.NoError(t, err)
+	require.Equal(t, expectedResponse, response)
+}
+
+func TWPGReverse(t *testing.T, os *TWPGReverseOrder) {
+	req := TWPGReverseOrderRequest(os)
+	u := "/twirp/proto.TWPGService/ReverseOrder"
+	r := httpTWPGService.POST(u).WithJSON(req).
+		Expect().
+		Status(http.StatusOK)
+
+	logRequest(u, r)
+	err := twpgForceCheck()
+	require.NoError(t, err)
+	time.Sleep(time.Second)
+}
+
+func twpgForceCheck() error {
+	req, _ := TWPGForceCheckRequest()
 	u := "/twirp/proto.TWPGService/FaceForceCheck"
 	r := httpTWPGService.POST(u).WithJSON(req).
 		Expect().

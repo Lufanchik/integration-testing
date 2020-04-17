@@ -13,6 +13,7 @@ import (
 	"lab.dt.multicarta.ru/tp/integration-testing/passes/mt"
 	"lab.dt.multicarta.ru/tp/integration-testing/passes/mtppk"
 	"lab.dt.multicarta.ru/tp/integration-testing/registry"
+	"lab.dt.multicarta.ru/tp/integration-testing/twpg"
 	"lab.dt.multicarta.ru/tp/integration-testing/webapi"
 )
 
@@ -85,6 +86,9 @@ func init() {
 	//Face
 	AddP(face.CasesAuthWithFace)
 	AddP(face.MetroComplexFaceID)
+
+	//Отмена оплаты в TWPG
+	AddP(twpg.CaseTWPGReverseOrder)
 
 	//черновики, которые пока что не запускаются
 	//AddP(passes.CasesWrongTimeComplexPass)

@@ -169,8 +169,8 @@ func Run(t *testing.T, cases Cases, rt RequestType) {
 			carrierId: uuid.New().String(),
 		}
 
-		if cases[k].FaceId != "" {
-			nc[k].card = FaceCard(cases[k].CardSystem, cases[k].FaceId)
+		if cases[k].CustomerId != "" {
+			nc[k].card = FaceCard(cases[k].CardSystem, cases[k].CustomerId)
 		} else if cases[k].PassType == pass.PassType_PASS_MT {
 			nc[k].card = MTCard(cases[k].CardSystem)
 		} else {
@@ -191,16 +191,16 @@ func Run(t *testing.T, cases Cases, rt RequestType) {
 				firstPass, ok := step.(*Pass)
 				if ok {
 					firstPass.RequestType = rt
-					firstPass.faceId = ncc.c.FaceId
+					firstPass.faceId = ncc.c.CustomerId
 					//Если PassType в начале кейса не указан, дефолтим PassType_PASS_BBK, иначе используется предустановленный
 					if ncc.c.PassType == pass.PassType_PASS_NONE {
 						//Если фейс айди заполнен, то вместо BBK используем PassType_FACE_ID
-						if ncc.c.FaceId != "" {
+						if ncc.c.CustomerId != "" {
 							firstPass.PassType = pass.PassType_PASS_FACE_ID
 						} else {
 							firstPass.PassType = pass.PassType_PASS_BBK
 						}
-					} else if ncc.c.FaceId != "" {
+					} else if ncc.c.CustomerId != "" {
 						firstPass.PassType = pass.PassType_PASS_FACE_ID
 					} else {
 						firstPass.PassType = ncc.c.PassType
@@ -293,6 +293,25 @@ func Run(t *testing.T, cases Cases, rt RequestType) {
 				if ok {
 					faceCheck.Id = ncc.card.Pan
 					FaceApiCheckStatus(t, faceCheck)
+				}
+
+				twpgPay, ok := step.(*TWPGCreateAndPayOrderStep)
+				if ok {
+					twpgPay.CustomerId = ncc.card.Pan
+					TWPGCreateAndPayOrder(t, twpgPay)
+					ncc.c.TWPGOrderId = twpgPay.OrderId
+				}
+
+				twpgOrderStatus, ok := step.(*TWPGOrderStatus)
+				if ok {
+					twpgOrderStatus.OrderId = ncc.c.TWPGOrderId
+					TWPGCheckOrderStatus(t, twpgOrderStatus)
+				}
+
+				twpgReverse, ok := step.(*TWPGReverseOrder)
+				if ok {
+					twpgReverse.OrderId = ncc.c.TWPGOrderId
+					TWPGReverse(t, twpgReverse)
 				}
 
 				wgw, ok := step.(*WebAPIPasses)

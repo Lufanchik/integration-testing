@@ -4,6 +4,7 @@ import (
 	"lab.dt.multicarta.ru/tp/common/messages/carriers"
 	"lab.dt.multicarta.ru/tp/common/messages/pass"
 	"lab.dt.multicarta.ru/tp/common/messages/processing"
+	"lab.dt.multicarta.ru/tp/common/messages/twpg"
 	"time"
 )
 
@@ -23,8 +24,9 @@ type (
 		//платежная система
 		CardSystem processing.CardSystem
 		//тип прохода
-		PassType pass.PassType
-		FaceId   string
+		PassType    pass.PassType
+		CustomerId  string
+		TWPGOrderId uint64
 	}
 	//генерация прохода
 	Pass struct {
@@ -149,6 +151,20 @@ type (
 	RegisterFaceId struct {
 		FaceId      string
 		RedirectURL string
+	}
+
+	TWPGCreateAndPayOrderStep struct {
+		CustomerId string
+		OrderId    uint64
+	}
+
+	TWPGOrderStatus struct {
+		OrderId     uint64
+		OrderStatus twpg.OrderStatus
+	}
+
+	TWPGReverseOrder struct {
+		OrderId uint64
 	}
 
 	FaceIdRegistrationStatus struct {

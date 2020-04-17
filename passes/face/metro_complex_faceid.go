@@ -11,7 +11,7 @@ var MetroComplexFaceID = test.Cases{
 	{
 		N:          "1. Face/MM-MCK-MMTS",
 		CardSystem: processing.CardSystem_VISA,
-		FaceId:     uuid.New().String(),
+		CustomerId: uuid.New().String(),
 		T: test.T{
 			&test.RegisterFaceId{},
 			&test.FaceIdRegistrationStatus{},
@@ -48,7 +48,7 @@ var MetroComplexFaceID = test.Cases{
 	{
 		N:          "2. Face/MMTS-MCK-MM",
 		CardSystem: processing.CardSystem_VISA,
-		FaceId:     uuid.New().String(),
+		CustomerId: uuid.New().String(),
 		T: test.T{
 			&test.RegisterFaceId{},
 			&test.FaceIdRegistrationStatus{},
@@ -85,7 +85,7 @@ var MetroComplexFaceID = test.Cases{
 	{
 		N:          "3. Face/MCK-MM-MMTS",
 		CardSystem: processing.CardSystem_VISA,
-		FaceId:     uuid.New().String(),
+		CustomerId: uuid.New().String(),
 		T: test.T{
 			&test.RegisterFaceId{},
 			&test.FaceIdRegistrationStatus{},
@@ -122,7 +122,7 @@ var MetroComplexFaceID = test.Cases{
 	{
 		N:          "4. Face/MCD_MO-MCD_MSK-MM-MCK-MMTS",
 		CardSystem: processing.CardSystem_VISA,
-		FaceId:     uuid.New().String(),
+		CustomerId: uuid.New().String(),
 		T: test.T{
 			&test.RegisterFaceId{},
 			&test.FaceIdRegistrationStatus{},
@@ -176,7 +176,7 @@ var MetroComplexFaceID = test.Cases{
 	{
 		N:          "5. Face/MCD_MO-MCD_MO-MMTS-MCK",
 		CardSystem: processing.CardSystem_VISA,
-		FaceId:     uuid.New().String(),
+		CustomerId: uuid.New().String(),
 		T: test.T{
 			&test.RegisterFaceId{},
 			&test.FaceIdRegistrationStatus{},
@@ -229,7 +229,7 @@ var MetroComplexFaceID = test.Cases{
 	{
 		N:          "6. Face/MGT-MMTS-MCK-MGT",
 		CardSystem: processing.CardSystem_VISA,
-		FaceId:     uuid.New().String(),
+		CustomerId: uuid.New().String(),
 		T: test.T{
 			&test.RegisterFaceId{},
 			&test.FaceIdRegistrationStatus{},

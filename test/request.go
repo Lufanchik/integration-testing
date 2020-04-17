@@ -4,8 +4,10 @@ import (
 	"fmt"
 	"github.com/brianvoe/gofakeit"
 	"github.com/gavv/httpexpect"
+	"github.com/google/uuid"
 	authService "lab.dt.multicarta.ru/tp/common/messages/auth"
 	"lab.dt.multicarta.ru/tp/common/messages/carriers"
+	"lab.dt.multicarta.ru/tp/common/messages/comments"
 	"lab.dt.multicarta.ru/tp/common/messages/pass"
 	"lab.dt.multicarta.ru/tp/common/messages/processing"
 	"lab.dt.multicarta.ru/tp/common/messages/response"
@@ -233,6 +235,36 @@ func WebAPIFaceStatusRequest(faceCheck *FaceIdRegistrationStatus) (*twpg.Registr
 	}
 
 	return req, resp
+}
+
+func AddCommentRequest(crud *CommentsCRUD) *comments.AddCommentRequest {
+	request := &comments.AddCommentRequest{
+		Comment: &comments.Comment{
+			Id:        uuid.New().String(),
+			EntityId:  uuid.New().String(),
+			UserId:    uuid.New().String(),
+			RepliesTo: "",
+			Body:      gofakeit.HackerPhrase(),
+		},
+	}
+
+	return request
+}
+
+func GetCommentsRequest(add *comments.AddCommentRequest) *comments.GetCommentsRequest {
+	request := &comments.GetCommentsRequest{
+		EntityId: add.Comment.EntityId,
+	}
+
+	return request
+}
+
+func DelCommentRequest(c *comments.Comment) *comments.DeleteCommentRequest {
+	request := &comments.DeleteCommentRequest{
+		CommentId: c.Id,
+	}
+
+	return request
 }
 
 func CompleteRequest(pass *Pass, passes []*Pass, sum int) (*processing.CompleteRequest, *processing.CompleteResponse) {

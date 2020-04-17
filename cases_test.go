@@ -2,6 +2,7 @@ package integration_testing
 
 import (
 	"lab.dt.multicarta.ru/tp/integration-testing/apm"
+	"lab.dt.multicarta.ru/tp/integration-testing/comments"
 	"lab.dt.multicarta.ru/tp/integration-testing/parking"
 	"lab.dt.multicarta.ru/tp/integration-testing/passes"
 	"lab.dt.multicarta.ru/tp/integration-testing/passes/face"
@@ -86,6 +87,9 @@ func init() {
 	//Face
 	AddP(face.CasesAuthWithFace)
 	AddP(face.MetroComplexFaceID)
+
+	//Comments CRUDs
+	AddP(comments.CasesCommentsCRUD)
 
 	//Отмена оплаты в TWPG
 	AddP(twpg.CaseTWPGReverseOrder)

@@ -2,6 +2,7 @@ package test
 
 import (
 	"context"
+	"fmt"
 	"github.com/gavv/httpexpect"
 	"github.com/golang/protobuf/jsonpb"
 	"github.com/prometheus/common/log"
@@ -9,6 +10,7 @@ import (
 	"github.com/stretchr/testify/require"
 	"lab.dt.multicarta.ru/tp/common/global"
 	authService "lab.dt.multicarta.ru/tp/common/messages/auth"
+	"lab.dt.multicarta.ru/tp/common/messages/comments"
 	"lab.dt.multicarta.ru/tp/common/messages/pass"
 	"lab.dt.multicarta.ru/tp/common/messages/processing"
 	"lab.dt.multicarta.ru/tp/common/messages/registries"
@@ -516,6 +518,65 @@ func WebAPI(t *testing.T, card *processing.Card, passes []*Pass) {
 		_, ok := responsePassesMap[p.id]
 		require.True(t, ok, "pass not found: %s", p.id)
 	}
+}
+
+func CommentsCheck(t *testing.T, crud *CommentsCRUD) {
+	//Add comment
+	addReq := AddCommentRequest(crud)
+	addCommentURL := "/twirp/proto.CommentsService/AddComment"
+	addR := httpCommentService.POST(addCommentURL).WithJSON(addReq).
+		Expect().
+		Status(http.StatusOK)
+	logRequest(addCommentURL, addR)
+
+	fmt.Printf("EntityID: %s\n", addReq.Comment.EntityId)
+
+	//Get comments
+	getReq := GetCommentsRequest(addReq)
+	getCommenstURL := "/twirp/proto.CommentsService/GetComments"
+	getR := httpCommentService.POST(getCommenstURL).WithJSON(getReq).
+		Expect().
+		Status(http.StatusOK)
+	object := getR.Body().Raw()
+	logRequest(getCommenstURL, getR)
+
+	getCommentsResponse := &comments.GetCommentsResponse{}
+	err := jsonpb.Unmarshal(strings.NewReader(object), getCommentsResponse)
+	require.NoError(t, err)
+
+	count := len(getCommentsResponse.Comments)
+	require.Equal(t, 1, count)
+	comment := getCommentsResponse.Comments[0]
+
+	require.Equal(t, addReq.Comment.Body, comment.Body)
+	require.Equal(t, addReq.Comment.EntityId, comment.EntityId)
+	require.Equal(t, addReq.Comment.UserId, comment.UserId)
+
+	//Delete comments
+	delReq := DelCommentRequest(comment)
+	delCommentURL := "/twirp/proto.CommentsService/DeleteComment"
+	delR := httpCommentService.POST(delCommentURL).WithJSON(delReq).
+		Expect().
+		Status(http.StatusOK)
+	logRequest(delCommentURL, delR)
+
+	//Check deletion
+	getR = httpCommentService.POST(getCommenstURL).WithJSON(getReq).
+		Expect().
+		Status(http.StatusOK)
+	object = getR.Body().Raw()
+	logRequest(getCommenstURL, getR)
+
+	getCommentsResponse = &comments.GetCommentsResponse{}
+	err = jsonpb.Unmarshal(strings.NewReader(object), getCommentsResponse)
+	require.NoError(t, err)
+
+	count = len(getCommentsResponse.Comments)
+	require.Equal(t, 1, count)
+	comment = getCommentsResponse.Comments[0]
+
+	require.Equal(t, "", comment.Body)
+	require.Equal(t, true, comment.IsDeleted)
 }
 
 func FaceApiCheckStatus(t *testing.T, faceCheck *FaceIdRegistrationStatus) {

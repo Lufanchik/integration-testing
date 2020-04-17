@@ -18,6 +18,7 @@ var (
 	httpProcessingApi  *httpexpect.Expect
 	httpApmApi         *httpexpect.Expect
 	httpWebApi         *httpexpect.Expect
+	httpCommentService *httpexpect.Expect
 	httpAuthService    *httpexpect.Expect
 	httpReviseService  *httpexpect.Expect
 	httpResolveService *httpexpect.Expect
@@ -114,6 +115,7 @@ func RunApiRequest(t *testing.T, cases Cases, rt RequestType) {
 	httpProcessingApi = httpexpect.New(t, ProcessingApiUrl)
 	httpApmApi = httpexpect.New(t, ApmApiUrl)
 	httpWebApi = httpexpect.New(t, WebApiUrl)
+	httpCommentService = httpexpect.New(t, CommentsURL)
 	httpAuthService = httpexpect.New(t, AuthServiceUrl)
 	httpReviseService = httpexpect.New(t, ReviseApiUrl)
 	httpResolveService = httpexpect.New(t, ResolveApiUrl)
@@ -151,6 +153,7 @@ func Run(t *testing.T, cases Cases, rt RequestType) {
 	httpProcessingApi = httpexpect.New(t, ProcessingApiUrl)
 	httpApmApi = httpexpect.New(t, ApmApiUrl)
 	httpWebApi = httpexpect.New(t, WebApiUrl)
+	httpCommentService = httpexpect.New(t, CommentsURL)
 	httpAuthService = httpexpect.New(t, AuthServiceUrl)
 	httpReviseService = httpexpect.New(t, ReviseApiUrl)
 	httpResolveService = httpexpect.New(t, ResolveApiUrl)
@@ -293,6 +296,11 @@ func Run(t *testing.T, cases Cases, rt RequestType) {
 				if ok {
 					faceCheck.Id = ncc.card.Pan
 					FaceApiCheckStatus(t, faceCheck)
+				}
+
+				commentsCRUD, ok := step.(*CommentsCRUD)
+				if ok {
+					CommentsCheck(t, commentsCRUD)
 				}
 
 				wgw, ok := step.(*WebAPIPasses)

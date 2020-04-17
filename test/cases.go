@@ -154,6 +154,9 @@ type (
 	FaceIdRegistrationStatus struct {
 		Id string
 	}
+
+	CommentsCRUD struct {
+	}
 )
 
 const (

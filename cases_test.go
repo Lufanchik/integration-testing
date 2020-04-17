@@ -14,6 +14,7 @@ import (
 	"lab.dt.multicarta.ru/tp/integration-testing/passes/mt"
 	"lab.dt.multicarta.ru/tp/integration-testing/passes/mtppk"
 	"lab.dt.multicarta.ru/tp/integration-testing/registry"
+	"lab.dt.multicarta.ru/tp/integration-testing/twpg"
 	"lab.dt.multicarta.ru/tp/integration-testing/webapi"
 )
 
@@ -89,6 +90,9 @@ func init() {
 
 	//Comments CRUDs
 	AddP(comments.CasesCommentsCRUD)
+
+	//Отмена оплаты в TWPG
+	AddP(twpg.CaseTWPGReverseOrder)
 
 	//черновики, которые пока что не запускаются
 	//AddP(passes.CasesWrongTimeComplexPass)

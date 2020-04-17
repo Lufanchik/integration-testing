@@ -11,7 +11,7 @@ var CasesAuthWithFace = test.Cases{
 	//{
 	//	N:          "1. Face Auth Test / mgt",
 	//	CardSystem: processing.CardSystem_VISA,
-	//	FaceId:     uuid.New().String(),
+	//	CustomerId:     uuid.New().String(),
 	//	T: test.T{
 	//		&test.RegisterFaceId{},
 	//		&test.Pass{
@@ -30,7 +30,7 @@ var CasesAuthWithFace = test.Cases{
 	{
 		N:          "2. Face Auth Test / mm",
 		CardSystem: processing.CardSystem_VISA,
-		FaceId:     uuid.New().String(),
+		CustomerId: uuid.New().String(),
 		T: test.T{
 			&test.RegisterFaceId{},
 			&test.FaceIdRegistrationStatus{},
@@ -44,7 +44,7 @@ var CasesAuthWithFace = test.Cases{
 	//{
 	//	N:          "3. Face Auth Test / mck",
 	//	CardSystem: processing.CardSystem_VISA,
-	//	FaceId:     uuid.New().String(),
+	//	CustomerId:     uuid.New().String(),
 	//	T: test.T{
 	//		&test.RegisterFaceId{},
 	//		&test.Pass{
@@ -62,7 +62,7 @@ var CasesAuthWithFace = test.Cases{
 	//{
 	//	N:          "4. Face Auth Test / mmts",
 	//	CardSystem: processing.CardSystem_VISA,
-	//	FaceId:     uuid.New().String(),
+	//	CustomerId:     uuid.New().String(),
 	//	T: test.T{
 	//		&test.RegisterFaceId{},
 	//		&test.Pass{
@@ -80,7 +80,7 @@ var CasesAuthWithFace = test.Cases{
 	//{
 	//	N:          "4. Face Auth Test / mcd_mo",
 	//	CardSystem: processing.CardSystem_VISA,
-	//	FaceId:     uuid.New().String(),
+	//	CustomerId:     uuid.New().String(),
 	//	T: test.T{
 	//		&test.RegisterFaceId{},
 	//		&test.Pass{

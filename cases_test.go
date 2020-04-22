@@ -85,7 +85,6 @@ func init() {
 	//Resolve
 	AddAR(registry.CasesResolveGetTaskList)
 	//Face
-	AddP(face.CasesAuthWithFace)
 	AddP(face.MetroComplexFaceID)
 
 	//Comments CRUDs

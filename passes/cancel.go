@@ -16,7 +16,6 @@ var CasesCancel = test.Cases{
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				AuthType:    test.AuthTypeCorrect,
-				ExpectedSum: 4400,
 			},
 			&test.Cancel{
 				Target: 1,
@@ -33,7 +32,6 @@ var CasesCancel = test.Cases{
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
 				AuthType:    test.AuthTypeCorrect,
-				ExpectedSum: 4400,
 			},
 			&test.Cancel{
 				Target: 1,
@@ -50,7 +48,6 @@ var CasesCancel = test.Cases{
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MMTS_SUB,
 				AuthType:    test.AuthTypeCorrect,
-				ExpectedSum: 4400,
 			},
 			&test.Cancel{
 				Target: 1,
@@ -360,7 +357,6 @@ var CasesCancel = test.Cases{
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				AuthType:    test.AuthTypeCorrect,
-				ExpectedSum: 4400,
 			},
 			&test.Cancel{
 				Target: 1,
@@ -372,7 +368,6 @@ var CasesCancel = test.Cases{
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				AuthType:    test.AuthTypeCorrect,
-				ExpectedSum: 4400,
 			},
 			&test.Cancel{
 				Target: 3,
@@ -384,7 +379,6 @@ var CasesCancel = test.Cases{
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				AuthType:    test.AuthTypeCorrect,
-				ExpectedSum: 4400,
 			},
 			&test.Cancel{
 				Target: 5,
@@ -396,7 +390,6 @@ var CasesCancel = test.Cases{
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				AuthType:    test.AuthTypeCorrect,
-				ExpectedSum: 4400,
 			},
 			&test.Cancel{
 				Target: 7,
@@ -416,7 +409,6 @@ var CasesCancel = test.Cases{
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				AuthType:    test.AuthTypeIncorrect,
-				ExpectedSum: 4400,
 			},
 			&test.Cancel{
 				Target: 1,
@@ -433,7 +425,6 @@ var CasesCancel = test.Cases{
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
 				AuthType:    test.AuthTypeIncorrect,
-				ExpectedSum: 4400,
 			},
 			&test.Cancel{
 				Target: 1,
@@ -450,7 +441,6 @@ var CasesCancel = test.Cases{
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MMTS_SUB,
 				AuthType:    test.AuthTypeIncorrect,
-				ExpectedSum: 4400,
 			},
 			&test.Cancel{
 				Target: 1,
@@ -506,7 +496,6 @@ var CasesCancel = test.Cases{
 					Station:   "2000075", //ТУШИНО
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4200,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -616,7 +605,6 @@ var CasesCancel = test.Cases{
 					Station:   "2000155", //ФИЛИ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4200,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -652,7 +640,6 @@ var CasesCancel = test.Cases{
 					Station:   "2000155", //ФИЛИ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4200,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -758,7 +745,6 @@ var CasesCancel = test.Cases{
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				AuthType:    test.AuthTypeIncorrect,
-				ExpectedSum: 4400,
 			},
 			&test.Cancel{
 				Target: 1,
@@ -770,7 +756,6 @@ var CasesCancel = test.Cases{
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				AuthType:    test.AuthTypeIncorrect,
-				ExpectedSum: 4400,
 			},
 			&test.Cancel{
 				Target: 3,
@@ -782,7 +767,6 @@ var CasesCancel = test.Cases{
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				AuthType:    test.AuthTypeIncorrect,
-				ExpectedSum: 4400,
 			},
 			&test.Cancel{
 				Target: 5,
@@ -794,7 +778,6 @@ var CasesCancel = test.Cases{
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				AuthType:    test.AuthTypeIncorrect,
-				ExpectedSum: 4400,
 			},
 			&test.Cancel{
 				Target: 7,
@@ -860,7 +843,6 @@ var CasesCancel = test.Cases{
 				RequestType: test.RequestTypeOnline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
-				//ExpectedSum: 4200,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,

@@ -574,7 +574,217 @@ var CasesTokensMC = test.Cases{
 		},
 	},
 	{
-		N:          "13. MCK success authorization + Cancel",
+		N:          "13. МТППК - МЦД-МО1 VISA",
+		CardSystem: processing.CardSystem_VISA,
+		T: test.T{
+			&test.Pass{
+				PaymentType: test.PaymentTypePayment,
+				Carrier:     carriers.Carrier_MCD,
+				SubCarrier:  carriers.SubCarrier_MCD1_MO,
+				Terminal: &processing.Terminal{
+					Station:   "2000115", //ЛОБНЯ
+					Direction: processing.TerminalDirection_INGRESS,
+				},
+				ExpectedSum: 4900,
+			},
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
+				Carrier:     carriers.Carrier_MCD,
+				SubCarrier:  carriers.SubCarrier_MCD1_MO,
+				Terminal: &processing.Terminal{
+					Station:   "2000055", //ОДИНЦОВО
+					Direction: processing.TerminalDirection_EGRESS,
+				},
+				Ingress: 1,
+			},
+			&test.Pass{
+				PaymentType: test.PaymentTypeStartAggregate,
+				AuthType:    test.AuthTypeCorrect,
+				Carrier:     carriers.Carrier_MTPPK,
+				ExpectedSum: 8800,
+			},
+			&test.Pass{
+				PaymentType: test.PaymentTypeAggregate,
+				Carrier:     carriers.Carrier_MTPPK,
+				Aggregate:   3,
+				ExpectedSum: 8800,
+			},
+			&test.Pass{
+				PaymentType: test.PaymentTypeAggregate,
+				Carrier:     carriers.Carrier_MTPPK,
+				Aggregate:   3,
+				ExpectedSum: 8800,
+			},
+			&test.Complete{
+				StartPass: 3,
+				Passes: []int{
+					4, 5,
+				},
+				Sum: 8800,
+			},
+		},
+	},
+	{
+		N:          "14. MTPPK-MCK-MM-MCK-MTPPK",
+		CardSystem: processing.CardSystem_VISA,
+		T: test.T{
+			&test.Pass{
+				PaymentType: test.PaymentTypeStartAggregate,
+				AuthType:    test.AuthTypeCorrect,
+				Carrier:     carriers.Carrier_MTPPK,
+				ExpectedSum: 8400,
+			},
+			&test.Pass{
+				PaymentType: test.PaymentTypePayment,
+				Carrier:     carriers.Carrier_MM,
+				SubCarrier:  carriers.SubCarrier_MCK_SUB,
+			},
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
+				Carrier:     carriers.Carrier_MM,
+				SubCarrier:  carriers.SubCarrier_MM_SUB,
+				Parent:      2,
+			},
+			&test.Pass{
+				PaymentType: test.PaymentTypePayment,
+				Carrier:     carriers.Carrier_MM,
+				SubCarrier:  carriers.SubCarrier_MCK_SUB,
+			},
+			&test.Pass{
+				PaymentType: test.PaymentTypeAggregate,
+				Carrier:     carriers.Carrier_MTPPK,
+				Aggregate:   1,
+				ExpectedSum: 8400,
+			},
+			&test.Complete{
+				StartPass: 1,
+				Passes: []int{
+					5,
+				},
+				Sum: 8400,
+			},
+		},
+	},
+	{
+		N:          "15. МТППК - МГТ, VISA",
+		CardSystem: processing.CardSystem_VISA,
+		T: test.T{
+			&test.Pass{
+				PaymentType: test.PaymentTypeStartAggregate,
+				AuthType:    test.AuthTypeCorrect,
+				Carrier:     carriers.Carrier_MTPPK,
+			},
+			&test.Pass{
+				PaymentType: test.PaymentTypePayment,
+				Carrier:     carriers.Carrier_MGT,
+				RequestType: test.RequestTypeOffline,
+				//ExpectedSum: 4400,
+			},
+			&test.Pass{
+				PaymentType: test.PaymentTypeAggregate,
+				Carrier:     carriers.Carrier_MTPPK,
+				Aggregate:   1,
+				ExpectedSum: 42,
+			},
+			&test.Pass{
+				PaymentType: test.PaymentTypeAggregate,
+				Carrier:     carriers.Carrier_MTPPK,
+				Aggregate:   1,
+				ExpectedSum: 42,
+			},
+			&test.Pass{
+				PaymentType: test.PaymentTypePayment,
+				Carrier:     carriers.Carrier_MGT,
+				RequestType: test.RequestTypeOffline,
+				//ExpectedSum: 4400,
+			},
+			&test.Pass{
+				PaymentType: test.PaymentTypeAggregate,
+				Carrier:     carriers.Carrier_MTPPK,
+				Aggregate:   1,
+				ExpectedSum: 42,
+			},
+			&test.Complete{
+				StartPass: 1,
+				Passes: []int{
+					3, 4, 6,
+				},
+				Sum: 42,
+			},
+		},
+	},
+	{
+		N:          "16. ММТС - MTППК - ММТС - MTPPK - MMTS - MTPPK - COMPLETE",
+		CardSystem: processing.CardSystem_VISA,
+		T: test.T{
+			&test.Pass{
+				PaymentType: test.PaymentTypePayment,
+				RequestType: test.RequestTypeOffline,
+				Carrier:     carriers.Carrier_MM,
+				SubCarrier:  carriers.SubCarrier_MMTS_SUB,
+				//ExpectedSum: 4200,
+			},
+			&test.Pass{
+				PaymentType: test.PaymentTypeStartAggregate,
+				RequestType: test.RequestTypeOffline,
+				AuthType:    test.AuthTypeCorrect,
+				Carrier:     carriers.Carrier_MTPPK,
+				ExpectedSum: 6,
+			},
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
+				RequestType: test.RequestTypeOffline,
+				Carrier:     carriers.Carrier_MM,
+				SubCarrier:  carriers.SubCarrier_MCK_SUB,
+				Parent:      1,
+				//ExpectedSum: 4400,
+			},
+			&test.Pass{
+				PaymentType: test.PaymentTypeAggregate,
+				RequestType: test.RequestTypeOffline,
+				Carrier:     carriers.Carrier_MTPPK,
+				Aggregate:   2,
+				ExpectedSum: 6,
+			},
+			&test.Pass{
+				PaymentType: test.PaymentTypePayment,
+				RequestType: test.RequestTypeOffline,
+				Carrier:     carriers.Carrier_MM,
+				SubCarrier:  carriers.SubCarrier_MMTS_SUB,
+				//ExpectedSum: 4200,
+			},
+			&test.Pass{
+				PaymentType: test.PaymentTypeAggregate,
+				RequestType: test.RequestTypeOffline,
+				Carrier:     carriers.Carrier_MTPPK,
+				Aggregate:   2,
+				ExpectedSum: 6,
+			},
+			&test.Pass{
+				PaymentType: test.PaymentTypePayment,
+				RequestType: test.RequestTypeOffline,
+				Carrier:     carriers.Carrier_MM,
+				SubCarrier:  carriers.SubCarrier_MMTS_SUB,
+				//ExpectedSum: 4200,
+			},
+			&test.Pass{
+				PaymentType: test.PaymentTypeAggregate,
+				RequestType: test.RequestTypeOffline,
+				Carrier:     carriers.Carrier_MTPPK,
+				Aggregate:   2,
+				ExpectedSum: 6,
+			},
+			&test.Complete{
+				StartPass: 2,
+				Passes: []int{
+					4, 6, 8,
+				},
+				Sum: 6,
+			},
+		},
+	},
+	{
+		N:          "17. MCK success authorization + Cancel",
 		CardSystem: processing.CardSystem_MASTERCARD,
 		T: test.T{
 			&test.Pass{

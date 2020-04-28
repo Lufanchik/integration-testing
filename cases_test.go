@@ -3,6 +3,7 @@ package integration_testing
 import (
 	"lab.dt.multicarta.ru/tp/integration-testing/apm"
 	"lab.dt.multicarta.ru/tp/integration-testing/comments"
+	"lab.dt.multicarta.ru/tp/integration-testing/mastercard"
 	"lab.dt.multicarta.ru/tp/integration-testing/parking"
 	"lab.dt.multicarta.ru/tp/integration-testing/passes"
 	"lab.dt.multicarta.ru/tp/integration-testing/passes/face"
@@ -92,6 +93,9 @@ func init() {
 
 	//Отмена оплаты в TWPG
 	AddP(twpg.CaseTWPGReverseOrder)
+
+	//Токен Мастеркард
+	AddP(mastercard.CasesTokensMC)
 
 	//черновики, которые пока что не запускаются
 	//AddP(passes.CasesWrongTimeComplexPass)

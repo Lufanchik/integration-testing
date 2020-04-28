@@ -678,7 +678,6 @@ var CasesTokensMC = test.Cases{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
 				RequestType: test.RequestTypeOffline,
-				//ExpectedSum: 4400,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeAggregate,
@@ -696,7 +695,6 @@ var CasesTokensMC = test.Cases{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
 				RequestType: test.RequestTypeOffline,
-				//ExpectedSum: 4400,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeAggregate,
@@ -722,7 +720,6 @@ var CasesTokensMC = test.Cases{
 				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MMTS_SUB,
-				//ExpectedSum: 4200,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeStartAggregate,
@@ -737,7 +734,6 @@ var CasesTokensMC = test.Cases{
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
 				Parent:      1,
-				//ExpectedSum: 4400,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeAggregate,
@@ -751,7 +747,6 @@ var CasesTokensMC = test.Cases{
 				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MMTS_SUB,
-				//ExpectedSum: 4200,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeAggregate,
@@ -765,7 +760,6 @@ var CasesTokensMC = test.Cases{
 				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MMTS_SUB,
-				//ExpectedSum: 4200,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeAggregate,
@@ -801,7 +795,7 @@ var CasesTokensMC = test.Cases{
 		},
 	},
 	{
-		N:          "14. MCK success authorization + Cancel",
+		N:          "18. MCK success authorization + Cancel",
 		CardSystem: processing.CardSystem_MASTERCARD,
 		T: test.T{
 			&test.Pass{
@@ -818,7 +812,7 @@ var CasesTokensMC = test.Cases{
 		},
 	},
 	{
-		N:          "15. MM - MCK - MMTS success authorization + Cancel averything",
+		N:          "19. MM - MCK - MMTS success authorization + Cancel averything",
 		CardSystem: processing.CardSystem_MASTERCARD,
 		T: test.T{
 			&test.Pass{

@@ -193,6 +193,8 @@ const (
 	AuthTypeCorrect AuthType = iota
 	AuthTypeIncorrect
 	AuthTypeRefund
+	AuthTypeMCTokenCorrect
+	AuthTypeMCTokenIncorrect
 )
 
 var Now func() uint64

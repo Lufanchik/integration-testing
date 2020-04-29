@@ -34,7 +34,7 @@ var CasesTokensMC = test.Cases{
 				RequestType: test.RequestTypeOnline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
-				AuthType:    test.AuthTypeIncorrect,
+				AuthType:    test.AuthTypeMCTokenIncorrect,
 			},
 			&test.Cancel{
 				Target: 1,
@@ -50,17 +50,20 @@ var CasesTokensMC = test.Cases{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
+				AuthType:    test.AuthTypeMCTokenCorrect,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
 				Parent:      1,
+				AuthType:    test.AuthTypeMCTokenCorrect,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
+				AuthType:    test.AuthTypeMCTokenCorrect,
 				Terminal: &processing.Terminal{
 					Station:   "2000155", //ФИЛИ
 					Direction: processing.TerminalDirection_INGRESS,
@@ -71,6 +74,7 @@ var CasesTokensMC = test.Cases{
 				PaymentType: test.PaymentTypeFree,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
+				AuthType:    test.AuthTypeMCTokenCorrect,
 				Terminal: &processing.Terminal{
 					Station:   "2000245", //РАБОЧИЙПОСЕЛОК
 					Direction: processing.TerminalDirection_EGRESS,
@@ -81,12 +85,14 @@ var CasesTokensMC = test.Cases{
 				PaymentType: test.PaymentTypeFree,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MMTS_SUB,
+				AuthType:    test.AuthTypeMCTokenCorrect,
 				Parent:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
+				AuthType:    test.AuthTypeMCTokenCorrect,
 			},
 		},
 	},
@@ -135,6 +141,7 @@ var CasesTokensMC = test.Cases{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
+				AuthType:    test.AuthTypeMCTokenCorrect,
 				Terminal: &processing.Terminal{
 					Station:   "2000275",
 					Direction: processing.TerminalDirection_INGRESS,
@@ -145,6 +152,7 @@ var CasesTokensMC = test.Cases{
 				PaymentType: test.PaymentTypeFree,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
+				AuthType:    test.AuthTypeMCTokenCorrect,
 				Terminal: &processing.Terminal{
 					Station:   "2001270",
 					Direction: processing.TerminalDirection_EGRESS,
@@ -155,6 +163,7 @@ var CasesTokensMC = test.Cases{
 				PaymentType: test.PaymentTypeFree,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD2_MSK,
+				AuthType:    test.AuthTypeMCTokenCorrect,
 				Terminal: &processing.Terminal{
 					Station:   "2000075",
 					Direction: processing.TerminalDirection_INGRESS,
@@ -165,6 +174,7 @@ var CasesTokensMC = test.Cases{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD2_MO,
+				AuthType:    test.AuthTypeMCTokenCorrect,
 				Terminal: &processing.Terminal{
 					Station:   "2000460",
 					Direction: processing.TerminalDirection_EGRESS,
@@ -182,6 +192,7 @@ var CasesTokensMC = test.Cases{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
+				AuthType:    test.AuthTypeMCTokenCorrect,
 				Terminal: &processing.Terminal{
 					Station:   "2000155", //ФИЛИ
 					Direction: processing.TerminalDirection_INGRESS,
@@ -192,6 +203,7 @@ var CasesTokensMC = test.Cases{
 				PaymentType: test.PaymentTypeFree,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
+				AuthType:    test.AuthTypeMCTokenCorrect,
 				Terminal: &processing.Terminal{
 					Station:   "2000185", //ЛИАНОЗОВО
 					Direction: processing.TerminalDirection_EGRESS,
@@ -202,18 +214,21 @@ var CasesTokensMC = test.Cases{
 				PaymentType: test.PaymentTypeFree,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
+				AuthType:    test.AuthTypeMCTokenCorrect,
 				Parent:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MMTS_SUB,
+				AuthType:    test.AuthTypeMCTokenCorrect,
 				Parent:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MMTS_SUB,
+				AuthType:    test.AuthTypeMCTokenCorrect,
 			},
 		},
 	},
@@ -225,11 +240,13 @@ var CasesTokensMC = test.Cases{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
+				AuthType:    test.AuthTypeMCTokenCorrect,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
+				AuthType:    test.AuthTypeMCTokenCorrect,
 				Terminal: &processing.Terminal{
 					Station:   "2000155", //ФИЛИ
 					Direction: processing.TerminalDirection_INGRESS,
@@ -240,6 +257,7 @@ var CasesTokensMC = test.Cases{
 				PaymentType: test.PaymentTypeFree,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
+				AuthType:    test.AuthTypeMCTokenCorrect,
 				Terminal: &processing.Terminal{
 					Station:   "2001270", //ОКРУЖНАЯ
 					Direction: processing.TerminalDirection_EGRESS,
@@ -250,12 +268,14 @@ var CasesTokensMC = test.Cases{
 				PaymentType: test.PaymentTypeFree,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
+				AuthType:    test.AuthTypeMCTokenCorrect,
 				Parent:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD2_MSK,
+				AuthType:    test.AuthTypeMCTokenCorrect,
 				Terminal: &processing.Terminal{
 					Station:   "2002780", //ДЕПО
 					Direction: processing.TerminalDirection_INGRESS,
@@ -266,6 +286,7 @@ var CasesTokensMC = test.Cases{
 				PaymentType: test.PaymentTypeFree,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD2_MSK,
+				AuthType:    test.AuthTypeMCTokenCorrect,
 				Terminal: &processing.Terminal{
 					Station:   "2000045", //ТЕКСТИЛЬЩИКИ
 					Direction: processing.TerminalDirection_EGRESS,
@@ -276,6 +297,7 @@ var CasesTokensMC = test.Cases{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
+				AuthType:    test.AuthTypeMCTokenCorrect,
 				Terminal: &processing.Terminal{
 					Station:   "2001060", //БЕГОВАЯ
 					Direction: processing.TerminalDirection_INGRESS,
@@ -286,6 +308,7 @@ var CasesTokensMC = test.Cases{
 				PaymentType: test.PaymentTypeFree,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
+				AuthType:    test.AuthTypeMCTokenCorrect,
 				Terminal: &processing.Terminal{
 					Station:   "2003965", //ТИМИРЯЗЕВСКАЯ
 					Direction: processing.TerminalDirection_EGRESS,
@@ -306,6 +329,7 @@ var CasesTokensMC = test.Cases{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD2_MO,
+				AuthType:    test.AuthTypeMCTokenCorrect,
 				Terminal: &processing.Terminal{
 					Station:   "2003960",
 					Direction: processing.TerminalDirection_INGRESS,
@@ -316,6 +340,7 @@ var CasesTokensMC = test.Cases{
 				PaymentType: test.PaymentTypeFree,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD2_MSK,
+				AuthType:    test.AuthTypeMCTokenCorrect,
 				Terminal: &processing.Terminal{
 					Station:   "2002780",
 					Direction: processing.TerminalDirection_EGRESS,
@@ -330,6 +355,7 @@ var CasesTokensMC = test.Cases{
 				PaymentType: test.PaymentTypeFree,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
+				AuthType:    test.AuthTypeMCTokenCorrect,
 				Parent:      2,
 			},
 			&test.Pass{
@@ -340,6 +366,7 @@ var CasesTokensMC = test.Cases{
 				PaymentType: test.PaymentTypeFree,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
+				AuthType:    test.AuthTypeMCTokenCorrect,
 				Parent:      2,
 			},
 			&test.Pass{
@@ -350,6 +377,7 @@ var CasesTokensMC = test.Cases{
 				PaymentType: test.PaymentTypeFree,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MMTS_SUB,
+				AuthType:    test.AuthTypeMCTokenCorrect,
 				Parent:      2,
 			},
 			&test.Pass{
@@ -366,11 +394,13 @@ var CasesTokensMC = test.Cases{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
+				AuthType:    test.AuthTypeMCTokenCorrect,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
+				AuthType:    test.AuthTypeMCTokenCorrect,
 				Terminal: &processing.Terminal{
 					Station:   "2000275", //
 					Direction: processing.TerminalDirection_INGRESS,
@@ -381,6 +411,7 @@ var CasesTokensMC = test.Cases{
 				PaymentType: test.PaymentTypeFree,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
+				AuthType:    test.AuthTypeMCTokenCorrect,
 				Terminal: &processing.Terminal{
 					Station:   "2002077", //
 					Direction: processing.TerminalDirection_EGRESS,
@@ -391,18 +422,21 @@ var CasesTokensMC = test.Cases{
 				PaymentType: test.PaymentTypeFree,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
+				AuthType:    test.AuthTypeMCTokenCorrect,
 				Parent:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MMTS_SUB,
+				AuthType:    test.AuthTypeMCTokenCorrect,
 				Parent:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
+				AuthType:    test.AuthTypeMCTokenCorrect,
 				Terminal: &processing.Terminal{
 					Station:   "2002077", //
 					Direction: processing.TerminalDirection_INGRESS,
@@ -412,6 +446,7 @@ var CasesTokensMC = test.Cases{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MO,
+				AuthType:    test.AuthTypeMCTokenCorrect,
 				Terminal: &processing.Terminal{
 					Station:   "2001101", //ИННОВАЦИОННЫЙЦЕНТР
 					Direction: processing.TerminalDirection_EGRESS,
@@ -429,11 +464,13 @@ var CasesTokensMC = test.Cases{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MMTS_SUB,
+				AuthType:    test.AuthTypeMCTokenCorrect,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
+				AuthType:    test.AuthTypeMCTokenCorrect,
 				Terminal: &processing.Terminal{
 					Station:   "2001140", //КУНЦЕВСКАЯ
 					Direction: processing.TerminalDirection_INGRESS,
@@ -444,6 +481,7 @@ var CasesTokensMC = test.Cases{
 				PaymentType: test.PaymentTypeFree,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
+				AuthType:    test.AuthTypeMCTokenCorrect,
 				Terminal: &processing.Terminal{
 					Station:   "2000009", //САВЕЛОВСКИЙВОКЗАЛ
 					Direction: processing.TerminalDirection_EGRESS,
@@ -454,18 +492,21 @@ var CasesTokensMC = test.Cases{
 				PaymentType: test.PaymentTypeFree,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
+				AuthType:    test.AuthTypeMCTokenCorrect,
 				Parent:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
+				AuthType:    test.AuthTypeMCTokenCorrect,
 				Parent:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
+				AuthType:    test.AuthTypeMCTokenCorrect,
 				Terminal: &processing.Terminal{
 					Station:   "2001140", //КУНЦЕВСКАЯ
 					Direction: processing.TerminalDirection_INGRESS,
@@ -476,6 +517,7 @@ var CasesTokensMC = test.Cases{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MO,
+				AuthType:    test.AuthTypeMCTokenCorrect,
 				Terminal: &processing.Terminal{
 					Station:   "2000055", //ОДИНЦОВО
 					Direction: processing.TerminalDirection_EGRESS,
@@ -491,24 +533,27 @@ var CasesTokensMC = test.Cases{
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypeStartAggregate,
-				AuthType:    test.AuthTypeCorrect,
+				AuthType:    test.AuthTypeMCTokenCorrect,
 				Carrier:     carriers.Carrier_MTPPK,
 				ExpectedSum: 2,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeAggregate,
-				Carrier:     carriers.Carrier_MTPPK,
-				Aggregate:   1,
-				ExpectedSum: 2,
-			},
-			&test.Pass{
-				PaymentType: test.PaymentTypeAggregate,
+				AuthType:    test.AuthTypeMCTokenCorrect,
 				Carrier:     carriers.Carrier_MTPPK,
 				Aggregate:   1,
 				ExpectedSum: 2,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeAggregate,
+				AuthType:    test.AuthTypeMCTokenCorrect,
+				Carrier:     carriers.Carrier_MTPPK,
+				Aggregate:   1,
+				ExpectedSum: 2,
+			},
+			&test.Pass{
+				PaymentType: test.PaymentTypeAggregate,
+				AuthType:    test.AuthTypeMCTokenCorrect,
 				Carrier:     carriers.Carrier_MTPPK,
 				Aggregate:   1,
 				ExpectedSum: 2,
@@ -530,6 +575,7 @@ var CasesTokensMC = test.Cases{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
+				AuthType:    test.AuthTypeMCTokenCorrect,
 				Terminal: &processing.Terminal{
 					Station:   "2001270", //ОКРУЖНАЯ
 					Direction: processing.TerminalDirection_INGRESS,
@@ -540,6 +586,7 @@ var CasesTokensMC = test.Cases{
 				PaymentType: test.PaymentTypeFree,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
+				AuthType:    test.AuthTypeMCTokenCorrect,
 				Terminal: &processing.Terminal{
 					Station:   "2000155", //ФИЛИ
 					Direction: processing.TerminalDirection_EGRESS,
@@ -548,18 +595,20 @@ var CasesTokensMC = test.Cases{
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeStartAggregate,
-				AuthType:    test.AuthTypeCorrect,
+				AuthType:    test.AuthTypeMCTokenCorrect,
 				Carrier:     carriers.Carrier_MTPPK,
 				ExpectedSum: 8800,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeAggregate,
+				AuthType:    test.AuthTypeMCTokenCorrect,
 				Carrier:     carriers.Carrier_MTPPK,
 				Aggregate:   3,
 				ExpectedSum: 8800,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeAggregate,
+				AuthType:    test.AuthTypeMCTokenCorrect,
 				Carrier:     carriers.Carrier_MTPPK,
 				Aggregate:   3,
 				ExpectedSum: 8800,
@@ -575,12 +624,13 @@ var CasesTokensMC = test.Cases{
 	},
 	{
 		N:          "13. МТППК - МЦД-МО1 VISA",
-		CardSystem: processing.CardSystem_VISA,
+		CardSystem: processing.CardSystem_MASTERCARD,
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MO,
+				AuthType:    test.AuthTypeMCTokenCorrect,
 				Terminal: &processing.Terminal{
 					Station:   "2000115", //ЛОБНЯ
 					Direction: processing.TerminalDirection_INGRESS,
@@ -591,6 +641,7 @@ var CasesTokensMC = test.Cases{
 				PaymentType: test.PaymentTypeFree,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MO,
+				AuthType:    test.AuthTypeMCTokenCorrect,
 				Terminal: &processing.Terminal{
 					Station:   "2000055", //ОДИНЦОВО
 					Direction: processing.TerminalDirection_EGRESS,
@@ -599,18 +650,20 @@ var CasesTokensMC = test.Cases{
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeStartAggregate,
-				AuthType:    test.AuthTypeCorrect,
+				AuthType:    test.AuthTypeMCTokenCorrect,
 				Carrier:     carriers.Carrier_MTPPK,
 				ExpectedSum: 8800,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeAggregate,
+				AuthType:    test.AuthTypeMCTokenCorrect,
 				Carrier:     carriers.Carrier_MTPPK,
 				Aggregate:   3,
 				ExpectedSum: 8800,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeAggregate,
+				AuthType:    test.AuthTypeMCTokenCorrect,
 				Carrier:     carriers.Carrier_MTPPK,
 				Aggregate:   3,
 				ExpectedSum: 8800,
@@ -626,32 +679,36 @@ var CasesTokensMC = test.Cases{
 	},
 	{
 		N:          "14. MTPPK-MCK-MM-MCK-MTPPK",
-		CardSystem: processing.CardSystem_VISA,
+		CardSystem: processing.CardSystem_MASTERCARD,
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypeStartAggregate,
-				AuthType:    test.AuthTypeCorrect,
+				AuthType:    test.AuthTypeMCTokenCorrect,
 				Carrier:     carriers.Carrier_MTPPK,
 				ExpectedSum: 8400,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
+				AuthType:    test.AuthTypeMCTokenCorrect,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
+				AuthType:    test.AuthTypeMCTokenCorrect,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				Parent:      2,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
+				AuthType:    test.AuthTypeMCTokenCorrect,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeAggregate,
+				AuthType:    test.AuthTypeMCTokenCorrect,
 				Carrier:     carriers.Carrier_MTPPK,
 				Aggregate:   1,
 				ExpectedSum: 8400,
@@ -667,37 +724,42 @@ var CasesTokensMC = test.Cases{
 	},
 	{
 		N:          "15. МТППК - МГТ, VISA",
-		CardSystem: processing.CardSystem_VISA,
+		CardSystem: processing.CardSystem_MASTERCARD,
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypeStartAggregate,
-				AuthType:    test.AuthTypeCorrect,
+				AuthType:    test.AuthTypeMCTokenCorrect,
 				Carrier:     carriers.Carrier_MTPPK,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
+				AuthType:    test.AuthTypeMCTokenCorrect,
 				Carrier:     carriers.Carrier_MGT,
 				RequestType: test.RequestTypeOffline,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeAggregate,
+				AuthType:    test.AuthTypeMCTokenCorrect,
 				Carrier:     carriers.Carrier_MTPPK,
 				Aggregate:   1,
 				ExpectedSum: 42,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeAggregate,
+				AuthType:    test.AuthTypeMCTokenCorrect,
 				Carrier:     carriers.Carrier_MTPPK,
 				Aggregate:   1,
 				ExpectedSum: 42,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
+				AuthType:    test.AuthTypeMCTokenCorrect,
 				Carrier:     carriers.Carrier_MGT,
 				RequestType: test.RequestTypeOffline,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeAggregate,
+				AuthType:    test.AuthTypeMCTokenCorrect,
 				Carrier:     carriers.Carrier_MTPPK,
 				Aggregate:   1,
 				ExpectedSum: 42,
@@ -713,10 +775,11 @@ var CasesTokensMC = test.Cases{
 	},
 	{
 		N:          "16. ММТС - MTППК - ММТС - MTPPK - MMTS - MTPPK - COMPLETE",
-		CardSystem: processing.CardSystem_VISA,
+		CardSystem: processing.CardSystem_MASTERCARD,
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
+				AuthType:    test.AuthTypeMCTokenCorrect,
 				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MMTS_SUB,
@@ -724,7 +787,7 @@ var CasesTokensMC = test.Cases{
 			&test.Pass{
 				PaymentType: test.PaymentTypeStartAggregate,
 				RequestType: test.RequestTypeOffline,
-				AuthType:    test.AuthTypeCorrect,
+				AuthType:    test.AuthTypeMCTokenCorrect,
 				Carrier:     carriers.Carrier_MTPPK,
 				ExpectedSum: 6,
 			},
@@ -733,36 +796,42 @@ var CasesTokensMC = test.Cases{
 				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
+				AuthType:    test.AuthTypeMCTokenCorrect,
 				Parent:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeAggregate,
 				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MTPPK,
+				AuthType:    test.AuthTypeMCTokenCorrect,
 				Aggregate:   2,
 				ExpectedSum: 6,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				RequestType: test.RequestTypeOffline,
+				AuthType:    test.AuthTypeMCTokenCorrect,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MMTS_SUB,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeAggregate,
 				RequestType: test.RequestTypeOffline,
+				AuthType:    test.AuthTypeMCTokenCorrect,
 				Carrier:     carriers.Carrier_MTPPK,
 				Aggregate:   2,
 				ExpectedSum: 6,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
+				AuthType:    test.AuthTypeMCTokenCorrect,
 				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MMTS_SUB,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeAggregate,
+				AuthType:    test.AuthTypeMCTokenCorrect,
 				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MTPPK,
 				Aggregate:   2,
@@ -786,7 +855,7 @@ var CasesTokensMC = test.Cases{
 				RequestType: test.RequestTypeOnline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
-				AuthType:    test.AuthTypeCorrect,
+				AuthType:    test.AuthTypeMCTokenCorrect,
 			},
 			&test.Cancel{
 				Target: 1,
@@ -803,7 +872,7 @@ var CasesTokensMC = test.Cases{
 				RequestType: test.RequestTypeOnline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MMTS_SUB,
-				AuthType:    test.AuthTypeCorrect,
+				AuthType:    test.AuthTypeMCTokenCorrect,
 			},
 			&test.Cancel{
 				Target: 1,
@@ -820,12 +889,14 @@ var CasesTokensMC = test.Cases{
 				RequestType: test.RequestTypeOnline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
+				AuthType:    test.AuthTypeMCTokenCorrect,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
 				RequestType: test.RequestTypeOnline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
+				AuthType:    test.AuthTypeMCTokenCorrect,
 				Parent:      1,
 			},
 			&test.Pass{
@@ -833,6 +904,7 @@ var CasesTokensMC = test.Cases{
 				RequestType: test.RequestTypeOnline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MMTS_SUB,
+				AuthType:    test.AuthTypeMCTokenCorrect,
 				Parent:      1,
 			},
 			&test.Cancel{

@@ -39,12 +39,12 @@ func CardEmvRefund() string {
 	return "DYloYwM7siugRNTwXR+X844n1gM0vxQdmRloE3tREdgIMvJMHNzkK6G0P55vYSqLa7W3FkbjL0Rwu2XyiqFmumoyGAY/cMxMgHTVDCp7wuEpkPZo8PhRDwISBcvR1Roh8bh2omooXgSnjI2QvQFvV+bcjc3uI2XJ84mHnkOyQzO+pS/Ow67PykL8W7RLYsLDhnoa4556p7aUWKhPlaxxVs0M2HtermZZfsFnjRR0FpNiCxQvj28kHNjK2oiw/rqP0b6eBsWwBCZiTuhptJ99QJCtQ7zBA4iTk91Wze/qZgMyWrDNYOEOw9jW1wguDwsPHb5Bk2QrLCARfZgwkFjnLQ=="
 }
 
-//func MasterCardTokenEmvCorrect() string {
-//	return "ufh9wgp7m4aSIqF/aMXqdjzvAFUO6pa9rHKTNjnaqTV3KdPKMPDEAjzqpZH6999H7Kh6YeyG5ix+HEJCLXizhxNvQ21LHHQwbM5df0ryWfNiDpyljLkxLI5dMl9qnPAYgaSPzswcqYQp9hlTbJdxp1ApDNhgTNHIQSsyiXxStIVqTVaGZuqias2SXFBTT6iaGv4wjyo6q600Otit1fGUQL4YcFu9eTWgnSMlKHJBMScLoFKx2uQkQOD2q7Ru4SBV7snTqJtOiPYPoW1Ed+3/iyvt3RwAA71dAp+vskHT3RDMbe/qO5Me4aMfs5H0mdiZ5HxIOHA1oIRnhApHEk/VhA=="
-//}
-//func MasterCardTokenEmvIncorrect() string {
-//	return "cEYXgoriIwrqygRbnY7uHYOypt0GepxG/FD+1XRKKA6xYnbGHIoi3oCt7Tp+oDFdGYKqxATJ4mt+T9+fMTxOBCf/0Gclzsmmj8EJZ2sscMlnLTzwwXLDPd/AnHKiE+ojLoAZupxjCkxJ23BFmTz1f1IWSrqxBKgXItMZLQXUYKgFlVLH7/5fmDXTS7+3dF3ncr894aU0PAPpUUE5N2xXNll36aKOusLWc4op/BkqRu0GZohheol+xc4PF6+ZiyTC+it9RcmriF5gm79dxASQhd03oSDFaqiwdsm4xlk1T5dg9tTJFj60zLkM6Q9Ylu34tUQLdS1WDVShcNH6K1+1FA=="
-//}
+func TokenMCCorrect() string {
+	return "ufh9wgp7m4aSIqF/aMXqdjzvAFUO6pa9rHKTNjnaqTV3KdPKMPDEAjzqpZH6999H7Kh6YeyG5ix+HEJCLXizhxNvQ21LHHQwbM5df0ryWfNiDpyljLkxLI5dMl9qnPAYgaSPzswcqYQp9hlTbJdxp1ApDNhgTNHIQSsyiXxStIVqTVaGZuqias2SXFBTT6iaGv4wjyo6q600Otit1fGUQL4YcFu9eTWgnSMlKHJBMScLoFKx2uQkQOD2q7Ru4SBV7snTqJtOiPYPoW1Ed+3/iyvt3RwAA71dAp+vskHT3RDMbe/qO5Me4aMfs5H0mdiZ5HxIOHA1oIRnhApHEk/VhA=="
+}
+func TokenMCIncorrect() string {
+	return "cEYXgoriIwrqygRbnY7uHYOypt0GepxG/FD+1XRKKA6xYnbGHIoi3oCt7Tp+oDFdGYKqxATJ4mt+T9+fMTxOBCf/0Gclzsmmj8EJZ2sscMlnLTzwwXLDPd/AnHKiE+ojLoAZupxjCkxJ23BFmTz1f1IWSrqxBKgXItMZLQXUYKgFlVLH7/5fmDXTS7+3dF3ncr894aU0PAPpUUE5N2xXNll36aKOusLWc4op/BkqRu0GZohheol+xc4PF6+ZiyTC+it9RcmriF5gm79dxASQhd03oSDFaqiwdsm4xlk1T5dg9tTJFj60zLkM6Q9Ylu34tUQLdS1WDVShcNH6K1+1FA=="
+}
 
 func Card(system processing.CardSystem) *processing.Card {
 	gofakeit.Seed(time.Now().UnixNano())
@@ -108,5 +108,9 @@ func GenerateEmv(card *processing.Card, p *Pass) {
 		card.Emv = CardEmvIncorrect()
 	case AuthTypeRefund:
 		card.Emv = CardEmvRefund()
+	case AuthTypeMCTokenCorrect:
+		card.Emv = TokenMCCorrect()
+	case AuthTypeMCTokenIncorrect:
+		card.Emv = TokenMCIncorrect()
 	}
 }

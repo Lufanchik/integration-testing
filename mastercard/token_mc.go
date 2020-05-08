@@ -528,7 +528,7 @@ var CasesTokensMC = test.Cases{
 		},
 	},
 	{
-		N:          "11. MTPPK",
+		N:          "11. MTPPK MASTER",
 		CardSystem: processing.CardSystem_MASTERCARD,
 		T: test.T{
 			&test.Pass{
@@ -568,7 +568,7 @@ var CasesTokensMC = test.Cases{
 		},
 	},
 	{
-		N:          "12. MTPPK - MCD-MSK1",
+		N:          "12. MTPPK - MCD-MSK1 MASTER",
 		CardSystem: processing.CardSystem_MASTERCARD,
 		T: test.T{
 			&test.Pass{
@@ -623,7 +623,7 @@ var CasesTokensMC = test.Cases{
 		},
 	},
 	{
-		N:          "13. МТППК - МЦД-МО1 VISA",
+		N:          "13. МТППК - МЦД-МО1 MASTER",
 		CardSystem: processing.CardSystem_MASTERCARD,
 		T: test.T{
 			&test.Pass{
@@ -678,7 +678,7 @@ var CasesTokensMC = test.Cases{
 		},
 	},
 	{
-		N:          "14. MTPPK-MCK-MM-MCK-MTPPK",
+		N:          "14. MTPPK-MCK-MM-MCK-MTPPK MASTER",
 		CardSystem: processing.CardSystem_MASTERCARD,
 		T: test.T{
 			&test.Pass{
@@ -723,13 +723,14 @@ var CasesTokensMC = test.Cases{
 		},
 	},
 	{
-		N:          "15. МТППК - МГТ, VISA",
+		N:          "15. МТППК - МГТ MASTER",
 		CardSystem: processing.CardSystem_MASTERCARD,
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypeStartAggregate,
 				AuthType:    test.AuthTypeMCTokenCorrect,
 				Carrier:     carriers.Carrier_MTPPK,
+				ExpectedSum: 42,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,

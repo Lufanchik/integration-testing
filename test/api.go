@@ -178,6 +178,10 @@ func ValidatePass(t *testing.T, p *Pass, parent *Pass, ingress *Pass, isFirst bo
 		expectPass.IsAuth = false
 	}
 
+	if p.AuthType == AuthTypeMCTokenIncorrect {
+		expectPass.IsAuth = false
+	}
+
 	if p.isCancel {
 		expectPass.IsCancel = true
 
@@ -190,7 +194,15 @@ func ValidatePass(t *testing.T, p *Pass, parent *Pass, ingress *Pass, isFirst bo
 		expectPass.IsAuth = true
 	}
 
+	if p.PaymentType == PaymentTypeStartAggregate && p.AuthType == AuthTypeMCTokenCorrect && !isFirst {
+		expectPass.IsAuth = true
+	}
+
 	if p.aggregate != nil && p.PaymentType == PaymentTypeAggregate && p.aggregate.AuthType == AuthTypeCorrect && !isFirst {
+		expectPass.IsAuth = true
+	}
+
+	if p.aggregate != nil && p.PaymentType == PaymentTypeAggregate && p.aggregate.AuthType == AuthTypeMCTokenCorrect && !isFirst {
 		expectPass.IsAuth = true
 	}
 
@@ -198,7 +210,15 @@ func ValidatePass(t *testing.T, p *Pass, parent *Pass, ingress *Pass, isFirst bo
 		expectPass.AggregateId = p.aggregate.id
 	}
 
+	if p.aggregate != nil && p.PaymentType == PaymentTypeAggregate && p.aggregate.AuthType == AuthTypeMCTokenCorrect && !isFirst {
+		expectPass.AggregateId = p.aggregate.id
+	}
+
 	if p.PaymentType == PaymentTypeStartAggregate && p.AuthType == AuthTypeCorrect && !isFirst {
+		expectPass.AggregateId = expectPass.Id
+	}
+
+	if p.PaymentType == PaymentTypeStartAggregate && p.AuthType == AuthTypeMCTokenCorrect && !isFirst {
 		expectPass.AggregateId = expectPass.Id
 	}
 
@@ -216,6 +236,11 @@ func ValidatePass(t *testing.T, p *Pass, parent *Pass, ingress *Pass, isFirst bo
 	}
 
 	if p.PaymentType == PaymentTypeStartAggregate && !isFirst && p.AuthType == AuthTypeIncorrect {
+		expectPass.Sum = 0
+		expectPass.SumAggregate = getSumByCarrier(p)
+	}
+
+	if p.PaymentType == PaymentTypeStartAggregate && !isFirst && p.AuthType == AuthTypeMCTokenIncorrect {
 		expectPass.Sum = 0
 		expectPass.SumAggregate = getSumByCarrier(p)
 	}

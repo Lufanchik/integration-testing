@@ -132,12 +132,19 @@ func PassOnlineRequest(tap *processing.TapRequest, p *Pass) (*processing.OnlineP
 			if p.AuthType == AuthTypeIncorrect {
 				responseOR.Status = processing.AuthStatus_FAILURE_ISSUER
 			}
+			if p.AuthType == AuthTypeMCTokenIncorrect {
+				responseOR.Status = processing.AuthStatus_FAILURE_ISSUER
+			}
 		case PaymentTypeAggregate:
 			responseOR.Status = processing.AuthStatus_SUCCESS_AGGREGATE
 		}
 	}
 
 	if p.AuthType == AuthTypeIncorrect && p.PaymentType != PaymentTypeStartAggregate {
+		responseOR.Status = processing.AuthStatus_FAILURE_ISSUER
+	}
+
+	if p.AuthType == AuthTypeMCTokenIncorrect && p.PaymentType != PaymentTypeStartAggregate {
 		responseOR.Status = processing.AuthStatus_FAILURE_ISSUER
 	}
 
@@ -349,6 +356,14 @@ func AuthStatusRequest(p *Pass) (*processing.AuthRequest, *processing.AuthRespon
 	}
 
 	if p.AuthType == AuthTypeIncorrect && p.isComplete && isAggregate(p) {
+		response.Resolution = processing.AuthResponse_FAILURE
+	}
+
+	if p.AuthType == AuthTypeMCTokenIncorrect && !isAggregate(p) {
+		response.Resolution = processing.AuthResponse_FAILURE
+	}
+
+	if p.AuthType == AuthTypeMCTokenIncorrect && p.isComplete && isAggregate(p) {
 		response.Resolution = processing.AuthResponse_FAILURE
 	}
 

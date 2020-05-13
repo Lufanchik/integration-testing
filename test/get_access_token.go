@@ -55,7 +55,6 @@ func GetAccessToken(t *testing.T) (AT string, err error) {
 	//регистрация
 	rqReg := &user.RegisterRequest{
 		Email:     "test@1234",
-		Password:  "test1234",
 		FirstName: "Tester",
 		LastName:  "Test",
 	}

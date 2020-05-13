@@ -25,7 +25,7 @@ require (
 	github.com/yudai/golcs v0.0.0-20170316035057-ecda9a501e82 // indirect
 	github.com/yudai/pp v2.0.1+incompatible // indirect
 	lab.dt.multicarta.ru/tp/common v0.0.338
-	lab.dt.multicarta.ru/tp/pass-service v0.0.160
+	lab.dt.multicarta.ru/tp/pass-service v0.0.164
 	lab.dt.multicarta.ru/tp/web-api-gateway v0.0.14
 	moul.io/http2curl v1.0.0 // indirect
 )

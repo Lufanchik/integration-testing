@@ -269,6 +269,10 @@ func ValidatePass(t *testing.T, p *Pass, parent *Pass, ingress *Pass, isFirst bo
 		}
 	}
 
+	if passDB != nil {
+		expectPass.Updated = passDB.Updated
+	}
+
 	require.Equal(t, expectPass, passDB)
 	require.NoError(t, err)
 }
@@ -296,7 +300,7 @@ func AuthStatus(t *testing.T, p *Pass) {
 	if p.faceId != "" {
 		return
 	}
-	//Чтобы всегда при проходах по МТ игнорировать проверку AuthStatus
+	// Чтобы всегда при проходах по МТ игнорировать проверку AuthStatus
 	if p.PassType == pass.PassType_PASS_MT {
 		return
 	}
@@ -323,7 +327,7 @@ func ResolveTestApi(t *testing.T, _case *Resolve) {
 	var r *httpexpect.Response
 
 	switch _case.Url {
-	//GetSchema
+	// GetSchema
 	case "/twirp/proto.ResolveHttp/GetServiceSchema":
 		r = httpResolveService.POST(_case.Url).
 			WithJSON(_case.Request).
@@ -356,7 +360,7 @@ func ReviseTestApi(t *testing.T, _case *Revise) {
 	var r *httpexpect.Response
 
 	switch _case.Url {
-	//GetSchema
+	// GetSchema
 	case "/twirp/proto.ReviseHttp/GetServiceSchema":
 		r = httpReviseService.POST(_case.Url).
 			WithJSON(_case.Request).
@@ -546,7 +550,7 @@ func WebAPI(t *testing.T, card *processing.Card, passes []*Pass) {
 }
 
 func CommentsCheck(t *testing.T, crud *CommentsCRUD) {
-	//Add comment
+	// Add comment
 	addReq := AddCommentRequest(crud)
 	addCommentURL := "/twirp/proto.CommentsService/AddComment"
 	addR := httpCommentService.POST(addCommentURL).WithJSON(addReq).
@@ -556,7 +560,7 @@ func CommentsCheck(t *testing.T, crud *CommentsCRUD) {
 
 	fmt.Printf("EntityID: %s\n", addReq.Comment.EntityId)
 
-	//Get comments
+	// Get comments
 	getReq := GetCommentsRequest(addReq)
 	getCommenstURL := "/twirp/proto.CommentsService/GetComments"
 	getR := httpCommentService.POST(getCommenstURL).WithJSON(getReq).
@@ -577,7 +581,7 @@ func CommentsCheck(t *testing.T, crud *CommentsCRUD) {
 	require.Equal(t, addReq.Comment.EntityId, comment.EntityId)
 	require.Equal(t, addReq.Comment.UserId, comment.UserId)
 
-	//Delete comments
+	// Delete comments
 	delReq := DelCommentRequest(comment)
 	delCommentURL := "/twirp/proto.CommentsService/DeleteComment"
 	delR := httpCommentService.POST(delCommentURL).WithJSON(delReq).
@@ -585,7 +589,7 @@ func CommentsCheck(t *testing.T, crud *CommentsCRUD) {
 		Status(http.StatusOK)
 	logRequest(delCommentURL, delR)
 
-	//Check deletion
+	// Check deletion
 	getR = httpCommentService.POST(getCommenstURL).WithJSON(getReq).
 		Expect().
 		Status(http.StatusOK)

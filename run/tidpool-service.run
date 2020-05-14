@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
 echo "tidpool-service"
-cd ../../tidpool-service && make build
+cd ../../tidpool-service && make generate && make build && make migrate_up

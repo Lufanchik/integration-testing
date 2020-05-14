@@ -111,3 +111,10 @@ services:
       - ../../twpg-service:/app
     command: /app/bin/app -f /app/config.local.yml
     network_mode: host
+
+  comment-service:
+    image: golang:1.14
+    volumes:
+      - ../../comment-service:/app
+    command: /app/bin/app -f /app/config.local.yml
+    network_mode: host

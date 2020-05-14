@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
 echo "mk-emulator"
-cd ../../mk-emulator && make build
+cd ../../mk-emulator && make generate && make build

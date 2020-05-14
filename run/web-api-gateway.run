@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
 echo "web-api-gateway"
-cd ../../web-api-gateway && make build
+cd ../../web-api-gateway && make generate && make build

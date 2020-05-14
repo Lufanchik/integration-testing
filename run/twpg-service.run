@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
 echo "twpg-service"
-cd ../../twpg-service && make build
+cd ../../twpg-service && make generate && make build && make migrate_up

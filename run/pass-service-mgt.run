@@ -1,4 +1,0 @@
-#!/usr/bin/env bash
-
-echo "pass-service-mgt"
-cd ../../pass-service && sed -i 's/MTPPK/MGT/g' config.local.yml && sed -i 's/13386/13387/g' config.local.yml && ./bin/app -f config.local.yml | tee ../logs/pass-service-mgt.logs

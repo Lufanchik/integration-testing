@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
 echo "revise-service"
-cd ../../revise-service && make build
+cd ../../revise-service && make generate && make build && make migrate_up

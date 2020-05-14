@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
 echo "apm-api-gateway"
-cd ../../apm-api-gateway && make build
+cd ../../apm-api-gateway && make generate && make build

@@ -195,6 +195,11 @@ const (
 	AuthTypeRefund
 	AuthTypeMCTokenCorrect
 	AuthTypeMCTokenIncorrect
+	AuthTypeMKEmulatorSuccess
+	AuthTypeMKEmulatorUnsuccess
+	AuthTypeMKEmulatorRandom
+	AuthTypeUnsuccessWithReauth
+	AuthTypeUnsuccessWithoutReauth
 )
 
 var Now func() uint64

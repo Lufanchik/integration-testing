@@ -46,6 +46,22 @@ func TokenMCIncorrect() string {
 	return "cEYXgoriIwrqygRbnY7uHYOypt0GepxG/FD+1XRKKA6xYnbGHIoi3oCt7Tp+oDFdGYKqxATJ4mt+T9+fMTxOBCf/0Gclzsmmj8EJZ2sscMlnLTzwwXLDPd/AnHKiE+ojLoAZupxjCkxJ23BFmTz1f1IWSrqxBKgXItMZLQXUYKgFlVLH7/5fmDXTS7+3dF3ncr894aU0PAPpUUE5N2xXNll36aKOusLWc4op/BkqRu0GZohheol+xc4PF6+ZiyTC+it9RcmriF5gm79dxASQhd03oSDFaqiwdsm4xlk1T5dg9tTJFj60zLkM6Q9Ylu34tUQLdS1WDVShcNH6K1+1FA=="
 }
 
+func MKEmulatorSuccess() string {
+	return "GmbAJzvwhXYTskIojGZoyPZg2APDklnLmeJe043iKmECaQM2d2osjhp6w4ggJESeV1H4praqEXQW62DvkbbcwmBmbaNNHA+0v9aqWpy7x/+qQ56TfIjRbJI9Dp0HeONLN0LkADMAuPInx+vOSLO0g+QnyKOUVLIwFg3v7ZyNNPBWOS5Y05ujzrCMlZL+3kdN4rqmtEwQEN+Yijy4hGLowYetPf4r9MKFrmGyV3u/ufRJFFdRWgDYhr/swYrulA5wfFGzbVbCnCUwa+7tXsmQ07GCHI5xDHbkeBa/L8vu4sZfyt1HuQqog8dN79L945z8BH/ty5me5BR72u66NKJlNw=="
+}
+func MKEmulatorUnsuccess() string {
+	return "DN1QUvKcya2IPuBQPGI6vR2zCqmfVcPCbOYn4Kts12gR/GlsJtEEwA/UR/iwTe/0AwmSb8nNtm4iTb26sNK32LrBeF8UevdTWNyC/USYGmbM2FnGtUS3OLzzXQRHGCizhpy1Qmi5JXKma7TKILUlH/PN2FG5f0eowK3Y+DljmseWQFiFlIE6M/jBrHUph8V/D4+ZFtphOc/A356r1W7qBVz09jbpACQ1UzIP5ufYhwB3G1cwWcmMXrGOmbCnolZkVY4FYUbZO2pNHv8JBZon29RRznPEKK/dcs3JJEoTO287X0OM7uC1hnFMrl05x/ymtbMVP6053QkMoL+kMN+l0A=="
+}
+func MKEmulatorUnsuccessWithReauth() string {
+	return "b2X1GbUBWsFcfaLtjS9myMw94DLWYPKgiVgkP7rxkm/N4H6wqZbe/mfmhVIX+rjU3M1ISY9zgpFHUkqNrZLTFv7UlG3/gARhZ4fB+hrJdv7mfWfnAfbm7OknmRZiJpZzrcOiLJAhHaSnA75L1JzZdqC0gySK7qdW9nJTlCxvotNIxvztxAIb4Y9YUE/X0F5HDH4Im0yXzWa9RZB1hekxKkask5mncqTO8SHqt15btJDXoJUogFDFGkGCYhUfQJ8qNYc++Y+77ZoSniaN0bBkTR2gYwVkgB/0RXTYWxbj7U5bocNH3ztHNcc9TGHdPzyzM2Jjiy+DvLy7w0uM2uRVGQ=="
+}
+func MKEmulatorUnsuccessWithoutReauth() string {
+	return "XOmg79U0VmKQdPWX58RWHpQsBWEJo2ELMettKURYIgLUF/BdAmIrAB4NJYyYqkbRhtzlU/ZGYq1ppdCZz7UjKs3GFf9c8Zt4dXMwicr33kaJtnRE36vQMWSYtgkVghCqYJ07S/A6LMq9WCJEHh9Jcz6SOyiOy0r4mbEbFzBIeLKgU0kN15rnxPhVG799uMFbieyFzxIswltKVtZK0sR+aNEef+iXGmATvz5bqKUlKtXBO6MZKVdJXt1Rtyem8hPjtUyuXUsxmklKvMEnYXySuAHxeXUXLTLc/lQPLrBhcrTMAzmCPHdEvqaHOG+XB1cEketZbgNENVLG03e7+khLOw=="
+}
+func MKEmulatorRandom() string {
+	return "VB/kqiqfJnQ1S5TH0mq6fFWPi7uyKmGPbSgHRyUj4jjEvSOGkGFrjNUNgaVXPxScQhO2EYyQa180v6hSdB4CBUoevoiVTSt9Vr5pEX/FZJf94EEJVrFmYQtPXRjNaqckbuiVkKkjhEVP2TAdiEvqZSqzFcMTJuRBDWIzmNajGoRQz/seehttEDQe7qhldlvnIEoLrwZ9gFcv9Q352KlFQALWgQ5O8g8w7Jhr5xtV7AYGYqFxOPTrI54d6VnYzg4MHkHUxKDkYZhYFVbkPSdi8HQnHn9KG3OvZY/GjIH0c0Lg4Yem5lRdSjCHZKKEzRA3l+UPSfYabMocuOq3VMgFHA=="
+}
+
 func Card(system processing.CardSystem) *processing.Card {
 	gofakeit.Seed(time.Now().UnixNano())
 	card := &processing.Card{
@@ -112,5 +128,15 @@ func GenerateEmv(card *processing.Card, p *Pass) {
 		card.Emv = TokenMCCorrect()
 	case AuthTypeMCTokenIncorrect:
 		card.Emv = TokenMCIncorrect()
+	case AuthTypeMKEmulatorSuccess:
+		card.Emv = MKEmulatorSuccess()
+	case AuthTypeMKEmulatorUnsuccess:
+		card.Emv = MKEmulatorUnsuccess()
+	case AuthTypeMKEmulatorRandom:
+		card.Emv = MKEmulatorRandom()
+	case AuthTypeUnsuccessWithReauth:
+		card.Emv = MKEmulatorUnsuccessWithReauth()
+	case AuthTypeUnsuccessWithoutReauth:
+		card.Emv = MKEmulatorUnsuccessWithoutReauth()
 	}
 }

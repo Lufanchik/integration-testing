@@ -4,6 +4,7 @@ import (
 	"lab.dt.multicarta.ru/tp/integration-testing/apm"
 	"lab.dt.multicarta.ru/tp/integration-testing/comments"
 	"lab.dt.multicarta.ru/tp/integration-testing/mastercard"
+	mk_emulator "lab.dt.multicarta.ru/tp/integration-testing/mk-emulator"
 	"lab.dt.multicarta.ru/tp/integration-testing/parking"
 	"lab.dt.multicarta.ru/tp/integration-testing/passes"
 	"lab.dt.multicarta.ru/tp/integration-testing/passes/face"
@@ -96,6 +97,9 @@ func init() {
 
 	//Токен Мастеркард
 	AddP(mastercard.CasesTokensMC)
+
+	//MK-emulator
+	AddP(mk_emulator.CasesEmulatorMK)
 
 	//черновики, которые пока что не запускаются
 	//AddP(passes.CasesWrongTimeComplexPass)

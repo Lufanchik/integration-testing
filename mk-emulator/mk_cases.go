@@ -72,17 +72,17 @@ var CasesEmulatorMK = test.Cases{
 			},
 		},
 	},
-	{
-		N:          "Switch ON Random mode",
-		CardSystem: processing.CardSystem_MASTERCARD,
-		T: test.T{
-			&test.Pass{
-				PaymentType: test.PaymentTypePayment,
-				RequestType: test.RequestTypeOnline,
-				Carrier:     carriers.Carrier_MM,
-				SubCarrier:  carriers.SubCarrier_MM_SUB,
-				AuthType:    test.AuthTypeMKEmulatorRandom,
-			},
-		},
-	},
+	//{
+	//	N:          "Switch ON Random mode",
+	//	CardSystem: processing.CardSystem_MASTERCARD,
+	//	T: test.T{
+	//		&test.Pass{
+	//			PaymentType: test.PaymentTypePayment,
+	//			RequestType: test.RequestTypeOnline,
+	//			Carrier:     carriers.Carrier_MM,
+	//			SubCarrier:  carriers.SubCarrier_MM_SUB,
+	//			AuthType:    test.AuthTypeMKEmulatorRandom,
+	//		},
+	//	},
+	//},
 }

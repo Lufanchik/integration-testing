@@ -182,7 +182,11 @@ func ValidatePass(t *testing.T, p *Pass, parent *Pass, ingress *Pass, isFirst bo
 		expectPass.IsAuth = false
 	}
 
-	if p.AuthType == AuthTypeMKEmulatorSuccess {
+	if p.AuthType == AuthTypeUnsuccessWithReauth {
+		expectPass.IsAuth = false
+	}
+
+	if p.AuthType == AuthTypeUnsuccessWithoutReauth {
 		expectPass.IsAuth = false
 	}
 

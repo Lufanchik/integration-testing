@@ -355,6 +355,14 @@ func AuthStatusRequest(p *Pass) (*processing.AuthRequest, *processing.AuthRespon
 		response.Resolution = processing.AuthResponse_FAILURE
 	}
 
+	if p.AuthType == AuthTypeUnsuccessWithReauth && !isAggregate(p) {
+		response.Resolution = processing.AuthResponse_FAILURE
+	}
+
+	if p.AuthType == AuthTypeUnsuccessWithoutReauth && !isAggregate(p) {
+		response.Resolution = processing.AuthResponse_FAILURE
+	}
+
 	if p.AuthType == AuthTypeIncorrect && p.isComplete && isAggregate(p) {
 		response.Resolution = processing.AuthResponse_FAILURE
 	}

@@ -1,6 +1,7 @@
 package test
 
 import (
+	"lab.dt.multicarta.ru/tp/common/messages/cards"
 	"lab.dt.multicarta.ru/tp/common/messages/carriers"
 	"lab.dt.multicarta.ru/tp/common/messages/pass"
 	"lab.dt.multicarta.ru/tp/common/messages/processing"
@@ -172,6 +173,18 @@ type (
 	}
 
 	CommentsCRUD struct {
+	}
+
+	CardStopList struct {
+		PassId         string
+		Pan            string
+		ExpectedStatus cards.CardStatus
+		Passes         []int
+	}
+
+	ForceReauth struct {
+		PassId string
+		Passes []int
 	}
 )
 

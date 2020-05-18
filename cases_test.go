@@ -2,6 +2,7 @@ package integration_testing
 
 import (
 	"lab.dt.multicarta.ru/tp/integration-testing/apm"
+	"lab.dt.multicarta.ru/tp/integration-testing/cards"
 	"lab.dt.multicarta.ru/tp/integration-testing/comments"
 	"lab.dt.multicarta.ru/tp/integration-testing/mastercard"
 	mk_emulator "lab.dt.multicarta.ru/tp/integration-testing/mk-emulator"
@@ -110,4 +111,6 @@ func init() {
 	//AddP(mcd.CasesComplexTimeMCD)
 	//Add(mmts.CasesComplexTimeMMTS)
 	//AddP(mcd.CasesComplexTimeMCD)
+
+	AddP(cards.CardsStopList)
 }

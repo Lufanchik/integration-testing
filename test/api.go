@@ -661,9 +661,8 @@ func ForceReauthCall(t *testing.T, fra *ForceReauth) {
 	u := "/twirp/sirocco.AuthAPI/ActiveReAuth"
 
 	r := httpAuthService.POST(u).WithJSON(req).
-		Expect()
-	//Expect().
-	//Status(http.StatusOK)
+		Expect().
+		Status(http.StatusOK)
 
 	fmt.Printf("pass_id: %s", fra.PassId)
 	object := r.Body().Raw()

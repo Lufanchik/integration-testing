@@ -9,8 +9,9 @@ import (
 
 var CardsStopList = test.Cases{
 	{
-		N:          "1. Stop list",
-		CardSystem: processing.CardSystem_VISA,
+		N:                    "1. Stop list",
+		CardSystem:           processing.CardSystem_VISA,
+		SkipIdempotencyCheck: true,
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,

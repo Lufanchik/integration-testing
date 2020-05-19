@@ -102,6 +102,9 @@ func init() {
 	//MK-emulator
 	AddP(mk_emulator.CasesEmulatorMK)
 
+	//Stop list add and remove card
+	AddP(cards.CardsStopList)
+
 	//черновики, которые пока что не запускаются
 	//AddP(passes.CasesWrongTimeComplexPass)
 	//AddP(passes.CasesScopeCheckPass)
@@ -111,6 +114,4 @@ func init() {
 	//AddP(mcd.CasesComplexTimeMCD)
 	//Add(mmts.CasesComplexTimeMMTS)
 	//AddP(mcd.CasesComplexTimeMCD)
-
-	AddP(cards.CardsStopList)
 }

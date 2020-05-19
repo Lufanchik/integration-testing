@@ -25,9 +25,10 @@ type (
 		//платежная система
 		CardSystem processing.CardSystem
 		//тип прохода
-		PassType    pass.PassType
-		CustomerId  string
-		TWPGOrderId uint64
+		PassType             pass.PassType
+		CustomerId           string
+		TWPGOrderId          uint64
+		SkipIdempotencyCheck bool
 	}
 	//генерация прохода
 	Pass struct {

@@ -379,9 +379,14 @@ func Run(t *testing.T, cases Cases, rt RequestType) {
 
 	if !t.Failed() {
 		for casesNum, ncc := range nc {
+			scenario := ncc.c
+			if scenario.SkipIdempotencyCheck {
+				break
+			}
+
 			fmt.Println("name check 1: " + ncc.c.N)
 			fmt.Println(ncc.card.String())
-			scenario := ncc.c
+
 			for N, step := range scenario.T {
 				t.Run("case check 1: "+scenario.N, func(t *testing.T) {
 					//Pass
@@ -402,11 +407,14 @@ func Run(t *testing.T, cases Cases, rt RequestType) {
 							AuthStatus(t, secondPass)
 						}
 					}
+
 				})
+
 				if t.Failed() {
 					break
 				}
 			}
+
 			if t.Failed() {
 				break
 			}
@@ -415,9 +423,14 @@ func Run(t *testing.T, cases Cases, rt RequestType) {
 
 	if !t.Failed() {
 		for _, ncc := range nc {
+			scenario := ncc.c
+
+			if scenario.SkipIdempotencyCheck {
+				break
+			}
+
 			fmt.Println("name check 2: " + ncc.c.N)
 			fmt.Println(ncc.card.String())
-			scenario := ncc.c
 			for N, step := range scenario.T {
 				t.Run("case check 2: "+scenario.N, func(t *testing.T) {
 					//Pass

@@ -1,6 +1,7 @@
 package test
 
 import (
+	"lab.dt.multicarta.ru/tp/common/messages/cards"
 	"lab.dt.multicarta.ru/tp/common/messages/carriers"
 	"lab.dt.multicarta.ru/tp/common/messages/pass"
 	"lab.dt.multicarta.ru/tp/common/messages/processing"
@@ -24,9 +25,10 @@ type (
 		//платежная система
 		CardSystem processing.CardSystem
 		//тип прохода
-		PassType    pass.PassType
-		CustomerId  string
-		TWPGOrderId uint64
+		PassType             pass.PassType
+		CustomerId           string
+		TWPGOrderId          uint64
+		SkipIdempotencyCheck bool
 	}
 	//генерация прохода
 	Pass struct {
@@ -172,6 +174,18 @@ type (
 	}
 
 	CommentsCRUD struct {
+	}
+
+	CardStopList struct {
+		PassId         string
+		Pan            string
+		ExpectedStatus cards.CardStatus
+		Passes         []int
+	}
+
+	ForceReauth struct {
+		PassId string
+		Passes []int
 	}
 )
 

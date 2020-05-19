@@ -6,6 +6,7 @@ import (
 	"github.com/gavv/httpexpect"
 	"github.com/google/uuid"
 	authService "lab.dt.multicarta.ru/tp/common/messages/auth"
+	"lab.dt.multicarta.ru/tp/common/messages/cards"
 	"lab.dt.multicarta.ru/tp/common/messages/carriers"
 	"lab.dt.multicarta.ru/tp/common/messages/comments"
 	"lab.dt.multicarta.ru/tp/common/messages/pass"
@@ -241,6 +242,31 @@ func WebAPIFaceStatusRequest(faceCheck *FaceIdRegistrationStatus) (*twpg.Registr
 		},
 	}
 
+	return req, resp
+}
+
+func CardCheckStopListRequest(cardCheck *CardStopList) (*cards.GetCardStatusRequest, *cards.GetCardStatusResponse) {
+	req := &cards.GetCardStatusRequest{
+		Pan: cardCheck.Pan,
+	}
+
+	resp := &cards.GetCardStatusResponse{
+		Status: cardCheck.ExpectedStatus,
+	}
+
+	return req, resp
+}
+
+func ForceReauthRequest(fra *ForceReauth) (*authService.CardByPassIDRequest, *authService.AuthResponseEvent) {
+	req := &authService.CardByPassIDRequest{
+		PassId: fra.PassId,
+	}
+	resp := &authService.AuthResponseEvent{
+		Response: &authService.AuthResponse{
+			AuthStatus: processing.AuthStatus_SUCCESS_AUTH,
+		},
+		PassId: fra.PassId,
+	}
 	return req, resp
 }
 

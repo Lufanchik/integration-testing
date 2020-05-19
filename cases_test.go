@@ -2,6 +2,7 @@ package integration_testing
 
 import (
 	"lab.dt.multicarta.ru/tp/integration-testing/apm"
+	"lab.dt.multicarta.ru/tp/integration-testing/cards"
 	"lab.dt.multicarta.ru/tp/integration-testing/comments"
 	"lab.dt.multicarta.ru/tp/integration-testing/mastercard"
 	mk_emulator "lab.dt.multicarta.ru/tp/integration-testing/mk-emulator"
@@ -100,6 +101,9 @@ func init() {
 
 	//MK-emulator
 	AddP(mk_emulator.CasesEmulatorMK)
+
+	//Stop list add and remove card
+	AddP(cards.CardsStopList)
 
 	//черновики, которые пока что не запускаются
 	//AddP(passes.CasesWrongTimeComplexPass)

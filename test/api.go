@@ -10,6 +10,7 @@ import (
 	"github.com/stretchr/testify/require"
 	"lab.dt.multicarta.ru/tp/common/global"
 	authService "lab.dt.multicarta.ru/tp/common/messages/auth"
+	"lab.dt.multicarta.ru/tp/common/messages/cards"
 	"lab.dt.multicarta.ru/tp/common/messages/comments"
 	"lab.dt.multicarta.ru/tp/common/messages/pass"
 	"lab.dt.multicarta.ru/tp/common/messages/processing"
@@ -27,6 +28,7 @@ import (
 func TapBySubCarrier(t *testing.T, p *Pass, card *processing.Card) *processing.TapRequest {
 	req, resp := TapRequest(p.SubCarrier, card, p)
 	u := "/" + p.Carrier.String() + "/twirp/sirocco.ProcessingAPI/ProcessTap"
+
 	r := httpProcessingApi.POST(u).WithJSON(req).
 		Expect().
 		Status(http.StatusOK)
@@ -265,20 +267,22 @@ func ValidatePass(t *testing.T, p *Pass, parent *Pass, ingress *Pass, isFirst bo
 
 	isEqual := assert.ObjectsAreEqual(expectPass, passDB)
 	counter := 0
+
 	for !isEqual {
 		time.Sleep(TimeAfterRequest)
 		passDB, err = ps.GetPass(ctx, &pass.PassRequest{
 			Id: p.id,
 		})
+
+		if passDB != nil {
+			expectPass.Updated = passDB.Updated
+		}
+
 		isEqual = assert.ObjectsAreEqual(expectPass, passDB)
 		counter++
 		if counter > 200 {
 			break
 		}
-	}
-
-	if passDB != nil {
-		expectPass.Updated = passDB.Updated
 	}
 
 	require.Equal(t, expectPass, passDB)
@@ -632,6 +636,44 @@ func FaceApiCheckStatus(t *testing.T, faceCheck *FaceIdRegistrationStatus) {
 	require.NoError(t, err)
 
 	require.Equal(t, expectedResponse, actualResponse)
+}
+
+func CardCheckStopList(t *testing.T, cardCheck *CardStopList) {
+	req, expectedResponse := CardCheckStopListRequest(cardCheck)
+	u := "/twirp/proto.CardService/GetCardStatus"
+
+	r := httpCardService.POST(u).WithJSON(req).
+		Expect().
+		Status(http.StatusOK)
+
+	object := r.Body().Raw()
+	logRequest(u, r)
+
+	actualResponse := &cards.GetCardStatusResponse{}
+	err := jsonpb.Unmarshal(strings.NewReader(object), actualResponse)
+	require.NoError(t, err)
+
+	require.Equal(t, expectedResponse, actualResponse)
+}
+
+func ForceReauthCall(t *testing.T, fra *ForceReauth) {
+	req, expectedResponse := ForceReauthRequest(fra)
+	u := "/twirp/sirocco.AuthAPI/ActiveReAuth"
+
+	r := httpAuthService.POST(u).WithJSON(req).
+		Expect().
+		Status(http.StatusOK)
+
+	fmt.Printf("pass_id: %s", fra.PassId)
+	object := r.Body().Raw()
+	fmt.Println(object)
+	logRequest(u, r)
+
+	actualResponse := &authService.AuthResponseEvent{}
+	err := jsonpb.Unmarshal(strings.NewReader(object), actualResponse)
+	require.NoError(t, err)
+
+	require.Equal(t, expectedResponse.Response.AuthStatus, actualResponse.Response.AuthStatus)
 }
 
 func FaceApiGetRegisterLink(t *testing.T, card *processing.Card, fcl *RegisterFaceId) {

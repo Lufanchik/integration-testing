@@ -18,6 +18,7 @@ var (
 	httpProcessingApi  *httpexpect.Expect
 	httpApmApi         *httpexpect.Expect
 	httpWebApi         *httpexpect.Expect
+	httpCardService    *httpexpect.Expect
 	httpCommentService *httpexpect.Expect
 	httpAuthService    *httpexpect.Expect
 	httpReviseService  *httpexpect.Expect
@@ -78,10 +79,10 @@ func RunPass(t *testing.T, p *Pass, scenario *Case, carrierID string, card *proc
 	p.aggregate = aggregate
 
 	//time.Sleep(TimeAfterRequest)
-
 	ValidatePass(t, p, p.parent, p.ingress, true)
 	//if !isAggregate(p) {
 	AuthStatus(t, p)
+
 	//}
 
 	if parent != nil {
@@ -116,6 +117,7 @@ func RunApiRequest(t *testing.T, cases Cases, rt RequestType) {
 	httpApmApi = httpexpect.New(t, ApmApiUrl)
 	httpWebApi = httpexpect.New(t, WebApiUrl)
 	httpCommentService = httpexpect.New(t, CommentsURL)
+	httpCardService = httpexpect.New(t, CardURL)
 	httpAuthService = httpexpect.New(t, AuthServiceUrl)
 	httpReviseService = httpexpect.New(t, ReviseApiUrl)
 	httpResolveService = httpexpect.New(t, ResolveApiUrl)
@@ -154,6 +156,7 @@ func Run(t *testing.T, cases Cases, rt RequestType) {
 	httpApmApi = httpexpect.New(t, ApmApiUrl)
 	httpWebApi = httpexpect.New(t, WebApiUrl)
 	httpCommentService = httpexpect.New(t, CommentsURL)
+	httpCardService = httpexpect.New(t, CardURL)
 	httpAuthService = httpexpect.New(t, AuthServiceUrl)
 	httpReviseService = httpexpect.New(t, ReviseApiUrl)
 	httpResolveService = httpexpect.New(t, ResolveApiUrl)
@@ -331,6 +334,39 @@ func Run(t *testing.T, cases Cases, rt RequestType) {
 
 					WebAPI(t, ncc.card, passes)
 				}
+
+				csl, ok := step.(*CardStopList)
+				if ok {
+					var reauthPass *Pass
+					for _, v := range csl.Passes {
+						p := (scenario.T[v-1]).(*Pass)
+						if p.AuthType == AuthTypeUnsuccessWithReauth {
+							reauthPass = p
+							break
+						}
+					}
+					require.NotNil(t, reauthPass)
+
+					csl.PassId = reauthPass.id
+					csl.Pan = ncc.card.Pan
+					CardCheckStopList(t, csl)
+				}
+
+				fra, ok := step.(*ForceReauth)
+				if ok {
+					var reauthPass *Pass
+					for _, v := range fra.Passes {
+						p := (scenario.T[v-1]).(*Pass)
+						if p.AuthType == AuthTypeUnsuccessWithReauth {
+							reauthPass = p
+							break
+						}
+					}
+					require.NotNil(t, reauthPass)
+
+					fra.PassId = reauthPass.id
+					ForceReauthCall(t, fra)
+				}
 			})
 			if t.Failed() {
 				break
@@ -343,9 +379,14 @@ func Run(t *testing.T, cases Cases, rt RequestType) {
 
 	if !t.Failed() {
 		for casesNum, ncc := range nc {
+			scenario := ncc.c
+			if scenario.SkipIdempotencyCheck {
+				break
+			}
+
 			fmt.Println("name check 1: " + ncc.c.N)
 			fmt.Println(ncc.card.String())
-			scenario := ncc.c
+
 			for N, step := range scenario.T {
 				t.Run("case check 1: "+scenario.N, func(t *testing.T) {
 					//Pass
@@ -366,11 +407,14 @@ func Run(t *testing.T, cases Cases, rt RequestType) {
 							AuthStatus(t, secondPass)
 						}
 					}
+
 				})
+
 				if t.Failed() {
 					break
 				}
 			}
+
 			if t.Failed() {
 				break
 			}
@@ -379,9 +423,14 @@ func Run(t *testing.T, cases Cases, rt RequestType) {
 
 	if !t.Failed() {
 		for _, ncc := range nc {
+			scenario := ncc.c
+
+			if scenario.SkipIdempotencyCheck {
+				break
+			}
+
 			fmt.Println("name check 2: " + ncc.c.N)
 			fmt.Println(ncc.card.String())
-			scenario := ncc.c
 			for N, step := range scenario.T {
 				t.Run("case check 2: "+scenario.N, func(t *testing.T) {
 					//Pass

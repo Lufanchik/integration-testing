@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+echo "card-service"
+cd ../../card-service && make generate && make build && make migrate_up

@@ -118,3 +118,10 @@ services:
       - ../../comment-service:/app
     command: /app/bin/app -f /app/config.local.yml
     network_mode: host
+
+  card-service:
+    image: golang:1.14
+    volumes:
+      - ../../card-service:/app
+    command: /app/bin/app -f /app/config.local.yml
+    network_mode: host

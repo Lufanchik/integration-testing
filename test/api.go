@@ -133,6 +133,7 @@ func ValidatePass(t *testing.T, p *Pass, parent *Pass, ingress *Pass, isFirst bo
 		Sum:               getSumByCarrier(p),
 		IsAuth:            false,
 		PassType:          GetPassType(p),
+		PaySystem:         p.card.System,
 	}
 
 	if p.timeToWait != 0 {

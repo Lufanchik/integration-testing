@@ -237,7 +237,7 @@ func WebAPIFaceStatusRequest(faceCheck *FaceIdRegistrationStatus) (*twpg.Registr
 	resp := &twpg.RegistrationStatusResponse{
 		Status: twpg.RegistrationStatusResponse_SUCCESS,
 		Card: &twpg.CardInfo{
-			Pan: "4150********0900",
+			Pan: "0900",
 			Exp: "2101",
 		},
 	}

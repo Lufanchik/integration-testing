@@ -139,7 +139,9 @@ func TestFull(t *testing.T) {
 
 func TestSimple(t *testing.T) {
 
+	//test.Run(t, cards.FaceList, test.RequestTypeOffline)
 	test.Run(t, face.MetroComplexFaceID, test.RequestTypeOffline)
+
 	//test.Run(t, mtppk.CasesMTPPKPasses, test.RequestTypeOffline)
 	//test.Run(t, mtppk.CasesMTPPK_MGT, test.RequestTypeOffline)
 	//test.Run(t, mtppk.CasesMTPPK_MCD_MO, test.RequestTypeOffline)

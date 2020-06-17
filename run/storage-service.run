@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+echo "storage-service"
+cd ../../storage-service && make generate && make build && make migrate_up

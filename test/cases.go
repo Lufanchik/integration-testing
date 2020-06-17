@@ -176,6 +176,11 @@ type (
 	CommentsCRUD struct {
 	}
 
+	CardGetFull struct {
+		Kind     cards.DiffExportKind
+		FileType cards.FileType
+	}
+
 	CardStopList struct {
 		PassId         string
 		Pan            string

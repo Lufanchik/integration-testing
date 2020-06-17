@@ -325,6 +325,11 @@ func Run(t *testing.T, cases Cases, rt RequestType) {
 					CommentsCheck(t, commentsCRUD)
 				}
 
+				cgf, ok := step.(*CardGetFull)
+				if ok {
+					CardApiGetFull(t, cgf)
+				}
+
 				wgw, ok := step.(*WebAPIPasses)
 				if ok {
 					var passes []*Pass

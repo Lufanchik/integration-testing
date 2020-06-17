@@ -191,7 +191,7 @@ func WebAPIRegisterRequest(fcl *RegisterFaceId, card *processing.Card) *authServ
 	return &authService.FaceIdRegisterRequest{
 		Id: card.Pan,
 		Urls: &authService.TWPGUrls{
-			Approve: gofakeit.URL(),
+			Approve: "CUSTOM_STATUS:PREAUTH-APPROVED",
 			Cancel:  gofakeit.URL(),
 			Decline: gofakeit.URL(),
 		},
@@ -241,6 +241,21 @@ func WebAPIFaceStatusRequest(faceCheck *FaceIdRegistrationStatus) (*twpg.Registr
 			Exp: "2101",
 		},
 	}
+
+	return req, resp
+}
+
+func CardGetFullRequest(c *CardGetFull) (*cards.GetFullRequest, *cards.GetFullResponse) {
+	req := &cards.GetFullRequest{
+		Requests: make([]*cards.FullRequest, 1),
+	}
+
+	req.Requests[0] = &cards.FullRequest{
+		Kind:     c.Kind,
+		FileType: c.FileType,
+	}
+
+	resp := &cards.GetFullResponse{}
 
 	return req, resp
 }

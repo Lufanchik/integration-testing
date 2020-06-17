@@ -639,6 +639,24 @@ func FaceApiCheckStatus(t *testing.T, faceCheck *FaceIdRegistrationStatus) {
 	require.Equal(t, expectedResponse, actualResponse)
 }
 
+func CardApiGetFull(t *testing.T, c *CardGetFull) {
+	req, expectedResponse := CardGetFullRequest(c)
+	u := "/twirp/proto.CardService/GetFull"
+
+	r := httpCardService.POST(u).WithJSON(req).
+		Expect().
+		Status(http.StatusOK)
+
+	object := r.Body().Raw()
+	logRequest(u, r)
+
+	actualResponse := &cards.GetCardStatusResponse{}
+	err := jsonpb.Unmarshal(strings.NewReader(object), actualResponse)
+	require.NoError(t, err)
+
+	require.Equal(t, expectedResponse, actualResponse)
+}
+
 func CardCheckStopList(t *testing.T, cardCheck *CardStopList) {
 	req, expectedResponse := CardCheckStopListRequest(cardCheck)
 	u := "/twirp/proto.CardService/GetCardStatus"

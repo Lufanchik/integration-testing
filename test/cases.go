@@ -181,6 +181,15 @@ type (
 		FileType cards.FileType
 	}
 
+	ReaderConfiguration struct {
+		FaceList *FaceList
+	}
+
+	FaceList struct {
+		Time     time.Time
+		FileType cards.FileType
+	}
+
 	CardStopList struct {
 		PassId         string
 		Pan            string

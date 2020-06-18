@@ -330,6 +330,11 @@ func Run(t *testing.T, cases Cases, rt RequestType) {
 					CardApiGetFull(t, cgf)
 				}
 
+				rc, ok := step.(*ReaderConfiguration)
+				if ok {
+					ReaderConfigurationSend(t, rc)
+				}
+
 				wgw, ok := step.(*WebAPIPasses)
 				if ok {
 					var passes []*Pass

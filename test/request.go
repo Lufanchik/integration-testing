@@ -260,6 +260,30 @@ func CardGetFullRequest(c *CardGetFull) (*cards.GetFullRequest, *cards.GetFullRe
 	return req, resp
 }
 
+func ReaderConfigurationRequest(c *ReaderConfiguration) (*webApi.ReaderRequest, *webApi.ReaderResponse) {
+	req := &webApi.ReaderRequest{
+		ServerStatus: &webApi.ServerStatus{
+			MemoryUsage: 1,
+			DiskUsage:   2,
+			FreeSpace:   3,
+			SystemTime:  4,
+			ReadOnly:    false,
+		},
+		ReaderId: "22",
+		Version:  "333",
+		Lists: &webApi.Lists{
+			FaceList: &webApi.FaceList{
+				Time:     uint64(c.FaceList.Time.UnixNano()),
+				FileType: c.FaceList.FileType,
+			},
+		},
+	}
+
+	resp := &webApi.ReaderResponse{}
+
+	return req, resp
+}
+
 func CardCheckStopListRequest(cardCheck *CardStopList) (*cards.GetCardStatusRequest, *cards.GetCardStatusResponse) {
 	req := &cards.GetCardStatusRequest{
 		Pan: cardCheck.Pan,

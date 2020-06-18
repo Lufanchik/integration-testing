@@ -639,6 +639,24 @@ func FaceApiCheckStatus(t *testing.T, faceCheck *FaceIdRegistrationStatus) {
 	require.Equal(t, expectedResponse, actualResponse)
 }
 
+func ReaderConfigurationSend(t *testing.T, c *ReaderConfiguration) {
+	req, _ := ReaderConfigurationRequest(c)
+	u := "/twirp/proto.WebAPIGateway/ReaderConfiguration"
+
+	r := httpWebApi.POST(u).WithJSON(req).
+		Expect().
+		Status(http.StatusOK)
+
+	object := r.Body().Raw()
+	logRequest(u, r)
+
+	actualResponse := &webApi.ReaderResponse{}
+	err := jsonpb.Unmarshal(strings.NewReader(object), actualResponse)
+	require.NoError(t, err)
+
+	require.Equal(t, true, len(actualResponse.Lists.FaceList.Url) > 0)
+}
+
 func CardApiGetFull(t *testing.T, c *CardGetFull) {
 	req, _ := CardGetFullRequest(c)
 	u := "/twirp/proto.CardService/GetFull"

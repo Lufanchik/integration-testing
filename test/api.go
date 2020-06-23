@@ -654,6 +654,13 @@ func ReaderConfigurationSend(t *testing.T, c *ReaderConfiguration) {
 	err := jsonpb.Unmarshal(strings.NewReader(object), actualResponse)
 	require.NoError(t, err)
 
+	r = httpWebApi.GET("/download/s3").WithQuery("id", actualResponse.Lists.FaceList.Id).WithJSON(req).
+		Expect().
+		Status(http.StatusOK)
+
+	object = r.Body().Raw()
+	logRequest(u, r)
+
 	require.Equal(t, true, len(actualResponse.Lists.FaceList.Url) > 0)
 }
 

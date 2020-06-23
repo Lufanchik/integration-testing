@@ -563,6 +563,7 @@ lab.dt.multicarta.ru/tp/auth-service v0.0.160/go.mod h1:Uzkuqlvp9l6jOn1xHydZ9CZa
 lab.dt.multicarta.ru/tp/calculator-service v0.0.82/go.mod h1:LJDEBuzmnUWsG/vYZf3hz8iGfZuN/FV/1frlMOAYepQ=
 lab.dt.multicarta.ru/tp/calculator-service v0.0.83/go.mod h1:KncJINlZLYJ3MohxRTdGaeDUYIKzDrknlo/hk+z6SSo=
 lab.dt.multicarta.ru/tp/card-service v0.0.10/go.mod h1:0YCvZ1klrnqOXat999SLOPTJRQ2cByhIHuCCZAr8c0Q=
+lab.dt.multicarta.ru/tp/card-service v0.0.14/go.mod h1:RBcHgkizo42UTQYwWXWmahikd6Dda/3S6Z9eUNALTTg=
 lab.dt.multicarta.ru/tp/common v0.0.303/go.mod h1:13FR4zpvHH2tDG8tgvUyJOrJeWEmkYn79HsH5kNevZs=
 lab.dt.multicarta.ru/tp/common v0.0.304/go.mod h1:thhCwit1n/QmqWCtswV42/75REfp7/+HAkuY8XzaknM=
 lab.dt.multicarta.ru/tp/common v0.0.329/go.mod h1:uasg3jk3cHIx97hgJFYBr2/hMw1Yr0JW3tzsIXBV3SU=
@@ -575,6 +576,7 @@ lab.dt.multicarta.ru/tp/common v0.0.341/go.mod h1:uasg3jk3cHIx97hgJFYBr2/hMw1Yr0
 lab.dt.multicarta.ru/tp/common v0.0.364/go.mod h1:nfrJqNmCCI32xJWEjPnfVdxnOlp72mg93lPvCGe8EtI=
 lab.dt.multicarta.ru/tp/common v0.0.367/go.mod h1:nfrJqNmCCI32xJWEjPnfVdxnOlp72mg93lPvCGe8EtI=
 lab.dt.multicarta.ru/tp/common v0.0.368/go.mod h1:nfrJqNmCCI32xJWEjPnfVdxnOlp72mg93lPvCGe8EtI=
+lab.dt.multicarta.ru/tp/common v0.0.371/go.mod h1:zHjwzwcTd9MjekQD4Binq5upRQb+/vy/Hk89UBN0+nA=
 lab.dt.multicarta.ru/tp/common v0.0.373 h1:O/UEgK54o2sy/1iES56itt0d7OMzdVD3X1+27/MiQxw=
 lab.dt.multicarta.ru/tp/common v0.0.373/go.mod h1:zHjwzwcTd9MjekQD4Binq5upRQb+/vy/Hk89UBN0+nA=
 lab.dt.multicarta.ru/tp/common v0.0.377 h1:YIWOMU2XyqYU1oAJWrhBTPSkEw/Us3+28NOJxmP+nRY=
@@ -596,6 +598,7 @@ lab.dt.multicarta.ru/tp/tidpool-service v0.0.22/go.mod h1:gk8w5s5caxZ5bOrO2z57M+
 lab.dt.multicarta.ru/tp/twpg-service v0.0.8/go.mod h1:GUyr7coj86DZ6xuJhH2j9MH1tnAFMyOautx/9ATS9+A=
 lab.dt.multicarta.ru/tp/twpg-service v0.0.12/go.mod h1:CtwOX7O/9eRWj2ZsDngndKKYvkjopDjPKNqEpNLhcuk=
 lab.dt.multicarta.ru/tp/twpg-service v0.0.19/go.mod h1:mqfgq4nW5LkAu1xZ2n/KDiIeiewJi7XN90UEfNRHDYw=
+lab.dt.multicarta.ru/tp/twpg-service v0.0.20/go.mod h1:g0tQwVm1H047fMspPP3/O/ktrUK7nvCL5oSYXXlQX9k=
 lab.dt.multicarta.ru/tp/web-api-gateway v0.0.14 h1:jNVe0BXRhnWj/BmqMBdZS3vrXOk+cBxceUceI46VmJs=
 lab.dt.multicarta.ru/tp/web-api-gateway v0.0.14/go.mod h1:QK2VzyvcWzhBgO0I4L4tShzOKFGpFHkoDqxKXMi6jGI=
 moul.io/http2curl v1.0.0 h1:6XwpyZOYsgZJrU8exnG87ncVkU1FVCcTRpwzOkTDUi8=

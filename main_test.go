@@ -143,6 +143,8 @@ func TestSimple(t *testing.T) {
 	test.Run(t, webapi.ReaderCase, test.RequestTypeOnline)
 
 	//test.Run(t, face.MetroComplexFaceID, test.RequestTypeOffline)
+	//
+	//test.Run(t, webapi.ReaderCase, test.RequestTypeOnline)
 
 	//test.Run(t, mtppk.CasesMTPPKPasses, test.RequestTypeOffline)
 	//test.Run(t, mtppk.CasesMTPPK_MGT, test.RequestTypeOffline)

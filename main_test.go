@@ -5,8 +5,8 @@ import (
 	"github.com/jinzhu/copier"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 	"github.com/stretchr/testify/require"
-	"lab.dt.multicarta.ru/tp/integration-testing/passes/face"
 	"lab.dt.multicarta.ru/tp/integration-testing/test"
+	"lab.dt.multicarta.ru/tp/integration-testing/webapi"
 	"net/http"
 	"net/http/pprof"
 	"testing"
@@ -139,14 +139,20 @@ func TestFull(t *testing.T) {
 
 func TestSimple(t *testing.T) {
 
-	test.Run(t, face.MetroComplexFaceID, test.RequestTypeOffline)
+	//test.Run(t, cards.FaceList, test.RequestTypeOffline)
+	test.Run(t, webapi.ReaderCase, test.RequestTypeOnline)
+
+	//test.Run(t, face.MetroComplexFaceID, test.RequestTypeOffline)
+	//
+	//test.Run(t, webapi.ReaderCase, test.RequestTypeOnline)
+
 	//test.Run(t, mtppk.CasesMTPPKPasses, test.RequestTypeOffline)
 	//test.Run(t, mtppk.CasesMTPPK_MGT, test.RequestTypeOffline)
 	//test.Run(t, mtppk.CasesMTPPK_MCD_MO, test.RequestTypeOffline)
 	//test.Run(t, face.MetroComplexFaceID, test.RequestTypeOffline)
 	//test.Run(t, mtppk.CasesMTPPK1, test.RequestTypeOffline)
 	//
-	//test.Run(t, webapi.CasesWEBAPI, test.RequestTypeOnline)
+
 	//test.Run(t, mck.CasesMetroComplexMCK1, test.RequestTypeOffline)
 	//test.RunApiRequest(t, registry.CasesReviseGetTaskList, test.RequestTypeOffline)
 	//test.RunApiRequest(t, registry.CasesResolveGetTaskList, test.RequestTypeOffline)

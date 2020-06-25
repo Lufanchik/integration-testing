@@ -191,7 +191,7 @@ func WebAPIRegisterRequest(fcl *RegisterFaceId, card *processing.Card) *authServ
 	return &authService.FaceIdRegisterRequest{
 		Id: card.Pan,
 		Urls: &authService.TWPGUrls{
-			Approve: gofakeit.URL(),
+			Approve: "CUSTOM_STATUS:PREAUTH-APPROVED",
 			Cancel:  gofakeit.URL(),
 			Decline: gofakeit.URL(),
 		},
@@ -241,6 +241,45 @@ func WebAPIFaceStatusRequest(faceCheck *FaceIdRegistrationStatus) (*twpg.Registr
 			Exp: "2101",
 		},
 	}
+
+	return req, resp
+}
+
+func CardGetFullRequest(c *CardGetFull) (*cards.GetFullRequest, *cards.GetFullResponse) {
+	req := &cards.GetFullRequest{
+		Requests: make([]*cards.FullRequest, 1),
+	}
+
+	req.Requests[0] = &cards.FullRequest{
+		Kind:     c.Kind,
+		FileType: c.FileType,
+	}
+
+	resp := &cards.GetFullResponse{}
+
+	return req, resp
+}
+
+func ReaderConfigurationRequest(c *ReaderConfiguration) (*webApi.ReaderRequest, *webApi.ReaderResponse) {
+	req := &webApi.ReaderRequest{
+		ServerStatus: &webApi.ServerStatus{
+			MemoryUsage: 1,
+			DiskUsage:   2,
+			FreeSpace:   3,
+			SystemTime:  4,
+			ReadOnly:    false,
+		},
+		ReaderId: "22",
+		Version:  "333",
+		Lists: &webApi.Lists{
+			FaceList: &webApi.FaceList{
+				Time:     uint64(c.FaceList.Time.UnixNano()),
+				FileType: c.FaceList.FileType,
+			},
+		},
+	}
+
+	resp := &webApi.ReaderResponse{}
 
 	return req, resp
 }

@@ -456,8 +456,8 @@ func TapRequest(c carriers.SubCarrier, card *processing.Card, p *Pass) (*process
 			Created:    timeNow,
 			Resolution: processing.TapResolution_APPROVE,
 			Terminal: &processing.Terminal{
-				Id:         gofakeit.HipsterWord(),
-				Station:    gofakeit.BeerName(),
+				Id:         gofakeit.Country(),
+				Station:    gofakeit.Color(),
 				Direction:  processing.TerminalDirection_INGRESS,
 				SubCarrier: c,
 			},

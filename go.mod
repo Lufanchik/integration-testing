@@ -26,6 +26,6 @@ require (
 	github.com/yudai/pp v2.0.1+incompatible // indirect
 	lab.dt.multicarta.ru/tp/common v0.0.388
 	lab.dt.multicarta.ru/tp/pass-service v0.0.168
-	lab.dt.multicarta.ru/tp/web-api-gateway v0.0.14
+	lab.dt.multicarta.ru/tp/web-api-gateway v0.0.20
 	moul.io/http2curl v1.0.0 // indirect
 )

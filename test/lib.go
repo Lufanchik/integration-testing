@@ -6,6 +6,7 @@ import (
 	"github.com/gavv/httpexpect"
 	"github.com/google/uuid"
 	"github.com/stretchr/testify/require"
+	"lab.dt.multicarta.ru/tp/common/crypt/sha"
 	"lab.dt.multicarta.ru/tp/common/messages/pass"
 	"lab.dt.multicarta.ru/tp/common/messages/processing"
 	"testing"
@@ -166,6 +167,7 @@ func Run(t *testing.T, cases Cases, rt RequestType) {
 		c         *Case
 		card      *processing.Card
 		carrierId string
+		shaPan    string
 	}
 	nc := make([]*NCase, len(cases))
 
@@ -174,7 +176,6 @@ func Run(t *testing.T, cases Cases, rt RequestType) {
 			c:         &cases[k],
 			carrierId: uuid.New().String(),
 		}
-
 		if cases[k].CustomerId != "" {
 			nc[k].card = FaceCard(cases[k].CardSystem, cases[k].CustomerId)
 		} else if cases[k].PassType == pass.PassType_PASS_MT {
@@ -182,6 +183,11 @@ func Run(t *testing.T, cases Cases, rt RequestType) {
 		} else {
 			nc[k].card = Card(cases[k].CardSystem)
 		}
+		pan, err := sha.Generate(nc[k].card.Pan)
+		if err != nil {
+			panic(err)
+		}
+		nc[k].shaPan = pan
 	}
 
 	results := make([][]*Pass, len(nc))
@@ -217,6 +223,10 @@ func Run(t *testing.T, cases Cases, rt RequestType) {
 
 					if firstPass.PassType == pass.PassType_PASS_MT {
 						firstPass.PaymentType = PaymentTypePrepayed
+					}
+
+					if firstPass.PassType == pass.PassType_PASS_FACE_ID {
+						ncc.card.Pan = ncc.shaPan
 					}
 
 					fmt.Printf("name: %s; pass-type: %d\n", ncc.c.N, ncc.c.PassType)

@@ -4,7 +4,7 @@ go 1.14
 
 require (
 	github.com/ajg/form v1.5.1 // indirect
-	github.com/brianvoe/gofakeit v2.2.0+incompatible
+	github.com/brianvoe/gofakeit v3.18.0+incompatible
 	github.com/fatih/structs v1.1.0 // indirect
 	github.com/gavv/httpexpect v1.1.2
 	github.com/gavv/monotime v0.0.0-20190418164738-30dba4353424 // indirect
@@ -24,8 +24,8 @@ require (
 	github.com/yudai/gojsondiff v1.0.0 // indirect
 	github.com/yudai/golcs v0.0.0-20170316035057-ecda9a501e82 // indirect
 	github.com/yudai/pp v2.0.1+incompatible // indirect
-	lab.dt.multicarta.ru/tp/common v0.0.388
-	lab.dt.multicarta.ru/tp/pass-service v0.0.168
-	lab.dt.multicarta.ru/tp/web-api-gateway v0.0.20
+	lab.dt.multicarta.ru/tp/common v0.0.390
+	lab.dt.multicarta.ru/tp/pass-service v0.0.169
+	lab.dt.multicarta.ru/tp/web-api-gateway v0.0.28
 	moul.io/http2curl v1.0.0 // indirect
 )

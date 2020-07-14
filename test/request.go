@@ -206,8 +206,9 @@ func TWPGCreatePaymentLinkTest(pay *TWPGCreateAndPayOrderStep) *twpg.CreateTWPGP
 			Cancel:  gofakeit.URL(),
 			Decline: gofakeit.URL(),
 		},
-		PaymentPurpose: twpg.CreateTWPGPOrderRequest_MT,
+		PaymentPurpose: twpg.CreateTWPGPOrderRequest_FACE_ID,
 		Amount:         300,
+		Merchant:       twpg.Merchant_FACE_ID,
 	}
 }
 

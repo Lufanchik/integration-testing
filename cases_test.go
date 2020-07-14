@@ -96,6 +96,9 @@ func init() {
 	//Отмена оплаты в TWPG
 	AddP(twpg.CaseTWPGReverseOrder)
 
+	AddP(cards.FaceList)
+	AddP(webapi.ReaderCase)
+
 	//Токен Мастеркард
 	AddP(mastercard.CasesTokensMC)
 
@@ -103,7 +106,7 @@ func init() {
 	AddP(mk_emulator.CasesEmulatorMK)
 
 	//Stop list add and remove card
-	AddP(cards.CardsStopList)
+	//AddP(cards.CardsStopList)
 
 	//черновики, которые пока что не запускаются
 	//AddP(passes.CasesWrongTimeComplexPass)

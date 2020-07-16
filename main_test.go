@@ -5,7 +5,7 @@ import (
 	"github.com/jinzhu/copier"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 	"github.com/stretchr/testify/require"
-	"lab.dt.multicarta.ru/tp/integration-testing/passes/mgt"
+	"lab.dt.multicarta.ru/tp/integration-testing/passes/face"
 	"lab.dt.multicarta.ru/tp/integration-testing/test"
 	"net/http"
 	"net/http/pprof"
@@ -143,14 +143,14 @@ func TestSimple(t *testing.T) {
 	//test.Run(t, webapi.ReaderCase, test.RequestTypeOnline)
 	//test.Run(t, twpg.CaseTWPGReverseOrder, test.RequestTypeOnline)
 	//
-	test.Run(t, mgt.CasesMGTWithEmptyEMV, test.RequestTypeOnline)
+	//test.Run(t, mgt.CasesMGTWithEmptyEMV, test.RequestTypeOnline)
 
 	//test.Run(t, webapi.ReaderCase, test.RequestTypeOnline)
 
 	//test.Run(t, mtppk.CasesMTPPKPasses, test.RequestTypeOffline)
 	//test.Run(t, mtppk.CasesMTPPK_MGT, test.RequestTypeOffline)
 	//test.Run(t, mtppk.CasesMTPPK_MCD_MO, test.RequestTypeOffline)
-	//test.Run(t, face.MetroComplexFaceID, test.RequestTypeOffline)
+	test.Run(t, face.MetroComplexFaceID, test.RequestTypeOffline)
 	//test.Run(t, mtppk.CasesMTPPK1, test.RequestTypeOffline)
 	//
 

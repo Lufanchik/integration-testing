@@ -42,10 +42,24 @@ func ConfigurePass(t *testing.T, p *Pass, carrierID string, card *processing.Car
 	p.carrierID = carrierID
 }
 
-func RunPass(t *testing.T, p *Pass, scenario *Case, carrierID string, card *processing.Card) {
+func RunPass(t *testing.T, p *Pass, scenario *Case, carrierID string, card *processing.Card) (PassResponser, PassResponser) {
+	var isEqual bool
+	if p.Equal != 0 {
+		isEqual = true
+		eq, ok := (scenario.T[p.Equal-1]).(*Pass)
+		if !ok {
+			t.Fail()
+		}
+		*p = *eq
+		card = p.card
+		p.AuthType = AuthTypeCorrect
+		p.EmptyEMV = false
+	}
+
 	ConfigurePass(t, p, carrierID, card)
-	tapReq := TapBySubCarrier(t, p, card)
-	timeRequest := PassBySubCarrier(t, tapReq, p)
+	tapReq, tapResp := TapBySubCarrier(t, p, card)
+	timeRequest, resp := PassBySubCarrier(t, tapReq, p)
+	require.Equal(t, tapResp.GetId(), resp.GetId())
 	var parent, ingress, aggregate *Pass
 	if p.Parent > 0 {
 		pr, ok := (scenario.T[p.Parent-1]).(*Pass)
@@ -73,7 +87,9 @@ func RunPass(t *testing.T, p *Pass, scenario *Case, carrierID string, card *proc
 	}
 
 	p.tapRequest = tapReq
-	p.timeRequest = timeRequest
+	if !isEqual {
+		p.timeRequest = timeRequest
+	}
 	p.card = card
 	p.parent = parent
 	p.ingress = ingress
@@ -99,6 +115,7 @@ func RunPass(t *testing.T, p *Pass, scenario *Case, carrierID string, card *proc
 		AuthStatus(t, ingress)
 		//}
 	}
+	return tapResp, resp
 }
 func getRequestType(t *testing.T, p *Pass) RequestType {
 	if GlobalRequestType != RequestTypeNone {
@@ -194,7 +211,6 @@ func Run(t *testing.T, cases Cases, rt RequestType) {
 
 	for casesNum, ncc := range nc {
 		fmt.Println("name: " + ncc.c.N)
-		fmt.Println(ncc.card.String())
 		scenario := ncc.c
 		for N, step := range scenario.T {
 			fmt.Println(N + 1)
@@ -230,7 +246,9 @@ func Run(t *testing.T, cases Cases, rt RequestType) {
 					}
 
 					fmt.Printf("name: %s; pass-type: %d\n", ncc.c.N, ncc.c.PassType)
-					RunPass(t, firstPass, scenario, ncc.carrierId, ncc.card)
+					tpp, ppp := RunPass(t, firstPass, scenario, ncc.carrierId, ncc.card)
+					firstPass.tapResponse = tpp
+					firstPass.passResponse = ppp
 				}
 
 				if results[casesNum] == nil {
@@ -405,22 +423,29 @@ func Run(t *testing.T, cases Cases, rt RequestType) {
 			}
 
 			fmt.Println("name check 1: " + ncc.c.N)
-			fmt.Println(ncc.card.String())
 
 			for N, step := range scenario.T {
 				t.Run("case check 1: "+scenario.N, func(t *testing.T) {
 					//Pass
 					secondPass, ok := step.(*Pass)
 					if ok && !secondPass.isCancel && secondPass.faceId == "" {
+						oldPass := results[casesNum][N]
+						secondPass.tapRequest = oldPass.tapRequest
 						fmt.Println(fmt.Sprintf("check 1 = %d", N+1))
 						ConfigurePass(t, secondPass, ncc.carrierId, ncc.card)
 						ValidatePass(t, secondPass, secondPass.parent, secondPass.ingress, false)
 						if !isAggregate(secondPass) {
 							AuthStatus(t, secondPass)
 						}
-						TapBySubCarrier(t, secondPass, ncc.card)
-						PassBySubCarrier(t, secondPass.tapRequest, secondPass)
-						oldPass := results[casesNum][N]
+
+						secondPass.Terminal = secondPass.tapRequest.Tap.Terminal
+
+						_, respTap := TapBySubCarrier(t, secondPass, ncc.card)
+						_, respPass := PassBySubCarrier(t, secondPass.tapRequest, secondPass)
+						require.Equal(t, respTap.GetId(), respPass.GetId())
+
+						require.Equal(t, respTap.GetId(), oldPass.tapResponse.GetId())
+						require.Equal(t, respTap.GetId(), oldPass.passResponse.GetId())
 						require.Equal(t, secondPass.id, oldPass.id)
 						ValidatePass(t, secondPass, secondPass.parent, secondPass.ingress, false)
 						if !isAggregate(secondPass) {
@@ -442,7 +467,7 @@ func Run(t *testing.T, cases Cases, rt RequestType) {
 	}
 
 	if !t.Failed() {
-		for _, ncc := range nc {
+		for casesNum, ncc := range nc {
 			scenario := ncc.c
 
 			if scenario.SkipIdempotencyCheck {
@@ -450,7 +475,6 @@ func Run(t *testing.T, cases Cases, rt RequestType) {
 			}
 
 			fmt.Println("name check 2: " + ncc.c.N)
-			fmt.Println(ncc.card.String())
 			for N, step := range scenario.T {
 				t.Run("case check 2: "+scenario.N, func(t *testing.T) {
 					//Pass
@@ -462,8 +486,12 @@ func Run(t *testing.T, cases Cases, rt RequestType) {
 						if !isAggregate(thirdPass) {
 							AuthStatus(t, thirdPass)
 						}
-						TapBySubCarrier(t, thirdPass, ncc.card)
-						PassBySubCarrier(t, thirdPass.tapRequest, thirdPass)
+						_, respTap := TapBySubCarrier(t, thirdPass, ncc.card)
+						_, respPass := PassBySubCarrier(t, thirdPass.tapRequest, thirdPass)
+						require.Equal(t, respTap.GetId(), respPass.GetId())
+						oldPass := results[casesNum][N]
+						require.Equal(t, respTap.GetId(), oldPass.tapResponse.GetId())
+						require.Equal(t, respTap.GetId(), oldPass.passResponse.GetId())
 						ValidatePass(t, thirdPass, thirdPass.parent, thirdPass.ingress, false)
 						if !isAggregate(thirdPass) {
 							AuthStatus(t, thirdPass)

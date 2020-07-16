@@ -153,6 +153,11 @@ func PassOnlineRequest(tap *processing.TapRequest, p *Pass) (*processing.OnlineP
 		request.Timeout = p.Duration
 	}
 
+	if p.EmptyEMV {
+		responseOR.Result = processing.PassStatus_FAILURE_INCORRECT_CARD
+		responseOR.Status = 0
+	}
+
 	return request, responseOR
 }
 
@@ -441,6 +446,12 @@ func AuthStatusRequest(p *Pass) (*processing.AuthRequest, *processing.AuthRespon
 		response.Resolution = processing.AuthResponse_FAILURE
 	}
 
+	if p.EmptyEMV {
+		response.Resolution = processing.AuthResponse_NONE_RESOLUTION
+		response.Status = processing.AuthResponse_NONE_STATUS
+		//response.Auth = nil
+	}
+
 	return request, response
 }
 
@@ -463,7 +474,7 @@ func TapRequest(c carriers.SubCarrier, card *processing.Card, p *Pass) (*process
 				SubCarrier: c,
 			},
 			Card: card,
-			Sign: gofakeit.BeerStyle(),
+			Sign: "1.0.2",
 		},
 	}
 	if p.Terminal != nil {
@@ -472,11 +483,19 @@ func TapRequest(c carriers.SubCarrier, card *processing.Card, p *Pass) (*process
 		}
 		request.Tap.Terminal = p.Terminal
 	}
+	if p.tapRequest != nil {
+		request.Tap.Created = p.tapRequest.Tap.Created
+	}
 	response := &processing.TapResponse{
 		Id:      "",
 		Created: 0,
 		Result:  processing.TapResponse_SUCCESS,
 		Msg:     "",
 	}
+
+	if p.EmptyEMV {
+		request.Tap.Card.Emv = ""
+	}
+	p.Terminal = request.Tap.Terminal
 	return request, response
 }

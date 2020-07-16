@@ -2,6 +2,7 @@ package test
 
 import (
 	"context"
+	"errors"
 	"fmt"
 	"github.com/gavv/httpexpect"
 	"github.com/golang/protobuf/jsonpb"
@@ -25,10 +26,9 @@ import (
 	"time"
 )
 
-func TapBySubCarrier(t *testing.T, p *Pass, card *processing.Card) *processing.TapRequest {
+func TapBySubCarrier(t *testing.T, p *Pass, card *processing.Card) (*processing.TapRequest, *processing.TapResponse) {
 	req, resp := TapRequest(p.SubCarrier, card, p)
 	u := "/" + p.Carrier.String() + "/twirp/sirocco.ProcessingAPI/ProcessTap"
-
 	r := httpProcessingApi.POST(u).WithJSON(req).
 		Expect().
 		Status(http.StatusOK)
@@ -46,10 +46,14 @@ func TapBySubCarrier(t *testing.T, p *Pass, card *processing.Card) *processing.T
 
 	require.Equal(t, resp, response)
 
-	return req
+	return req, response
 }
 
-func PassBySubCarrier(t *testing.T, tap *processing.TapRequest, p *Pass) uint64 {
+type PassResponser interface {
+	GetId() string
+}
+
+func PassBySubCarrier(t *testing.T, tap *processing.TapRequest, p *Pass) (uint64, PassResponser) {
 	var requestedTime uint64
 	switch p.RequestType {
 	case RequestTypeOffline:
@@ -71,6 +75,7 @@ func PassBySubCarrier(t *testing.T, tap *processing.TapRequest, p *Pass) uint64 
 		p.id = response.Id
 
 		require.Equal(t, resp, response)
+		return requestedTime, response
 	case RequestTypeOnline:
 		req, resp := PassOnlineRequest(tap, p)
 		requestedTime = req.Created
@@ -90,9 +95,14 @@ func PassBySubCarrier(t *testing.T, tap *processing.TapRequest, p *Pass) uint64 
 		resp.Created = response.Created
 		p.id = response.Id
 
+		if p.EmptyEMV {
+			resp.Msg = response.Msg
+		}
+
 		require.Equal(t, resp, response)
+		return requestedTime, response
 	}
-	return requestedTime
+	panic(errors.New("not found type pass"))
 }
 
 func Update(t *testing.T, p *Pass, up Updater) {
@@ -269,7 +279,12 @@ func ValidatePass(t *testing.T, p *Pass, parent *Pass, ingress *Pass, isFirst bo
 	isEqual := assert.ObjectsAreEqual(expectPass, passDB)
 	counter := 0
 
+	if p.EmptyEMV {
+		expectPass.Sum = 0
+	}
+
 	for !isEqual {
+		fmt.Println("pass not equal")
 		time.Sleep(TimeAfterRequest)
 		passDB, err = ps.GetPass(ctx, &pass.PassRequest{
 			Id: p.id,
@@ -306,6 +321,10 @@ func GetAuthStatus(p *Pass) (*processing.AuthResponse, *processing.AuthResponse,
 	resp.Created = response.Created
 	resp.Info = response.Info
 
+	if p.EmptyEMV {
+		resp.Auth = response.Auth
+	}
+
 	return resp, response, err
 }
 
@@ -323,6 +342,7 @@ func AuthStatus(t *testing.T, p *Pass) {
 	isEqual := assert.ObjectsAreEqual(resp, response)
 	counter := 0
 	for !isEqual {
+		fmt.Println("auth status not equal")
 		time.Sleep(TimeAfterRequest)
 		resp, response, err = GetAuthStatus(p)
 		isEqual = assert.ObjectsAreEqual(resp, response)
@@ -710,7 +730,6 @@ func ForceReauthCall(t *testing.T, fra *ForceReauth) {
 
 	fmt.Printf("pass_id: %s", fra.PassId)
 	object := r.Body().Raw()
-	fmt.Println(object)
 	logRequest(u, r)
 
 	actualResponse := &authService.AuthResponseEvent{}

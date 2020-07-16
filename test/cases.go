@@ -67,20 +67,26 @@ type (
 		//вышли ли мы за пределы таймаута комплексной поездки
 		IsComplexTimeout bool
 		faceId           string
-
-		id          string
-		carrierID   string
-		tapRequest  *processing.TapRequest
-		timeRequest uint64
-		card        *processing.Card
-		parent      *Pass
-		ingress     *Pass
-		aggregate   *Pass
-		isParent    bool
-		timeToWait  time.Duration
-		isCancel    bool
-		isComplete  bool
-		completeSum uint32
+		// сбрасываем emv
+		EmptyEMV bool
+		// проход должен быть таким же, как указанный
+		Equal        int
+		tapResponse  PassResponser
+		passResponse PassResponser
+		id           string
+		carrierID    string
+		tapRequest   *processing.TapRequest
+		timeRequest  uint64
+		card         *processing.Card
+		parent       *Pass
+		equal        *Pass
+		ingress      *Pass
+		aggregate    *Pass
+		isParent     bool
+		timeToWait   time.Duration
+		isCancel     bool
+		isComplete   bool
+		completeSum  uint32
 	}
 
 	//генерация прохода

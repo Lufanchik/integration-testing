@@ -8,7 +8,7 @@ import (
 
 var CasesMetroComplexMT = test.Cases{
 	{
-		N:        "1.MМ-MМ",
+		N:        "1.MМ-MМ-2",
 		PassType: pass.PassType_PASS_MT,
 		T: test.T{
 			&test.Pass{

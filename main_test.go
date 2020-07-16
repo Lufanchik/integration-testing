@@ -5,7 +5,7 @@ import (
 	"github.com/jinzhu/copier"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 	"github.com/stretchr/testify/require"
-	"lab.dt.multicarta.ru/tp/integration-testing/mastercard"
+	"lab.dt.multicarta.ru/tp/integration-testing/passes/mtppk"
 	"lab.dt.multicarta.ru/tp/integration-testing/test"
 	"net/http"
 	"net/http/pprof"
@@ -95,9 +95,9 @@ func TestFull(t *testing.T) {
 				//test.Run(t, v, test.RequestTypeOnline)
 				switch v.Type {
 				case PassApiRequest:
-					test.Run(t, v.Cases, test.RequestTypeOffline)
+					test.Run(t, v.Cases, test.RequestTypeOnline)
 				case SimpleApiRequest:
-					test.RunApiRequest(t, v.Cases, test.RequestTypeOffline)
+					test.RunApiRequest(t, v.Cases, test.RequestTypeOnline)
 				}
 
 				//test.Run(t, v, test.RequestType(gofakeit.Number(1, 2)))
@@ -143,7 +143,7 @@ func TestSimple(t *testing.T) {
 	//test.Run(t, webapi.ReaderCase, test.RequestTypeOnline)
 	//test.Run(t, twpg.CaseTWPGReverseOrder, test.RequestTypeOnline)
 	//
-	test.Run(t, mastercard.CasesTokensMC, test.RequestTypeOffline)
+	test.Run(t, mtppk.CasesMTPPK_single, test.RequestTypeOnline)
 
 	//test.Run(t, webapi.ReaderCase, test.RequestTypeOnline)
 

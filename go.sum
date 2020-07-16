@@ -652,6 +652,14 @@ lab.dt.multicarta.ru/tp/common v0.0.388 h1:V3pSa0UfpbgusOeFIL1gluw4cRJFdlGpH4vSC
 lab.dt.multicarta.ru/tp/common v0.0.388/go.mod h1:zHjwzwcTd9MjekQD4Binq5upRQb+/vy/Hk89UBN0+nA=
 lab.dt.multicarta.ru/tp/common v0.0.390 h1:xVSG/uZUHy1L13u/bagFAMj65pzVxL2azJGSHWO8hzY=
 lab.dt.multicarta.ru/tp/common v0.0.390/go.mod h1:zHjwzwcTd9MjekQD4Binq5upRQb+/vy/Hk89UBN0+nA=
+lab.dt.multicarta.ru/tp/common v0.0.391 h1:Hke936Jc2NDiWvxyHvlyf+WsDKE/Oqg/Z7RoWPVF0mE=
+lab.dt.multicarta.ru/tp/common v0.0.391/go.mod h1:zHjwzwcTd9MjekQD4Binq5upRQb+/vy/Hk89UBN0+nA=
+lab.dt.multicarta.ru/tp/common v0.0.392 h1:DTsboPqdSZWJaYJih7sXmq7ShRgtMZzHiDIdUuSpVFQ=
+lab.dt.multicarta.ru/tp/common v0.0.392/go.mod h1:zHjwzwcTd9MjekQD4Binq5upRQb+/vy/Hk89UBN0+nA=
+lab.dt.multicarta.ru/tp/common v0.0.393 h1:TeQqGoc9aGWo6gHLwvkXVaU74sedmhrCIhRvPf/fopg=
+lab.dt.multicarta.ru/tp/common v0.0.393/go.mod h1:zHjwzwcTd9MjekQD4Binq5upRQb+/vy/Hk89UBN0+nA=
+lab.dt.multicarta.ru/tp/common v0.0.394 h1:AjiBaOZd29WVG9Bko7BZr/LrV3Z3K6wLZLdrI/ryBRA=
+lab.dt.multicarta.ru/tp/common v0.0.394/go.mod h1:zHjwzwcTd9MjekQD4Binq5upRQb+/vy/Hk89UBN0+nA=
 lab.dt.multicarta.ru/tp/goosev2 v0.0.0-20200507131718-1cd82fe18227/go.mod h1:gHjciWYPazwQj6dakLctqS9VIVi2rzOBKtenMVc/YW0=
 lab.dt.multicarta.ru/tp/mcc-emulator v0.0.1/go.mod h1:4tHcCkmVnUdrDjBCONt68Pjyr5XDV2oNWTGF3gCTHG4=
 lab.dt.multicarta.ru/tp/monitoring-service v0.0.1/go.mod h1:q9M7Go4XAy+yWd+QQ2siZHLOCbKY/nODK8luE3TkfuA=

@@ -27,6 +27,10 @@ func PassOfflineRequest(tap *processing.TapRequest, p *Pass) (*processing.Offlin
 	response := &processing.OfflinePassResponse{
 		Result: processing.PassStatus_SUCCESS,
 	}
+
+	if p.EmptyEMV {
+		response.Result = processing.PassStatus_FAILURE_INCORRECT_CARD
+	}
 	return request, response
 }
 
@@ -449,7 +453,7 @@ func AuthStatusRequest(p *Pass) (*processing.AuthRequest, *processing.AuthRespon
 	if p.EmptyEMV {
 		response.Resolution = processing.AuthResponse_NONE_RESOLUTION
 		response.Status = processing.AuthResponse_NONE_STATUS
-		//response.Auth = nil
+		response.Result = processing.AuthResponse_FAILURE_AUTH_NOT_FOUND
 	}
 
 	return request, response

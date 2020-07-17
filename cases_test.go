@@ -4,13 +4,18 @@ import (
 	"lab.dt.multicarta.ru/tp/integration-testing/apm"
 	"lab.dt.multicarta.ru/tp/integration-testing/cards"
 	"lab.dt.multicarta.ru/tp/integration-testing/comments"
+	"lab.dt.multicarta.ru/tp/integration-testing/mastercard"
+	mk_emulator "lab.dt.multicarta.ru/tp/integration-testing/mk-emulator"
 	"lab.dt.multicarta.ru/tp/integration-testing/parking"
 	"lab.dt.multicarta.ru/tp/integration-testing/passes"
+	"lab.dt.multicarta.ru/tp/integration-testing/passes/face"
 	"lab.dt.multicarta.ru/tp/integration-testing/passes/mcd"
 	"lab.dt.multicarta.ru/tp/integration-testing/passes/mck"
 	"lab.dt.multicarta.ru/tp/integration-testing/passes/mgt"
 	"lab.dt.multicarta.ru/tp/integration-testing/passes/mm"
 	"lab.dt.multicarta.ru/tp/integration-testing/passes/mmts"
+	"lab.dt.multicarta.ru/tp/integration-testing/passes/mt"
+	"lab.dt.multicarta.ru/tp/integration-testing/passes/mtppk"
 	"lab.dt.multicarta.ru/tp/integration-testing/registry"
 	"lab.dt.multicarta.ru/tp/integration-testing/twpg"
 	"lab.dt.multicarta.ru/tp/integration-testing/webapi"
@@ -23,12 +28,12 @@ func init() {
 	AddP(passes.CasesCancel)
 
 	//МТППК
-	//AddP(mtppk.CasesMTPPKPasses)
-	//AddP(mtppk.CasesMTPPK_MGT)
-	//AddP(mtppk.CasesMTPPK_MCD_MO)
-	//AddP(mtppk.CasesMTPPK_MCK)
-	//AddP(mtppk.CasesMTPPK_MCD_MSK)
-	//AddP(mtppk.CasesMTPPK_single)
+	AddP(mtppk.CasesMTPPKPasses)
+	AddP(mtppk.CasesMTPPK_MGT)
+	AddP(mtppk.CasesMTPPK_MCD_MO)
+	AddP(mtppk.CasesMTPPK_MCK)
+	AddP(mtppk.CasesMTPPK_MCD_MSK)
+	AddP(mtppk.CasesMTPPK_single)
 
 	//ММТС
 	AddP(mmts.CasesComplexPassMMTS1)
@@ -61,8 +66,8 @@ func init() {
 	AddP(mcd.CasesComplexMCDMOPartFour)
 	AddP(mcd.CasesComplexMCDMOPartFife)
 
-	//Мобильная тройка - НЕ РАБОТАЕТ ОНЛАЙН
-	//AddP(mt.CasesMetroComplexMT)
+	//Мобильная тройка
+	AddP(mt.CasesMetroComplexMT)
 
 	//APM
 	AddP(apm.CasesApmGateway)
@@ -80,11 +85,11 @@ func init() {
 	AddP(webapi.CasesWEBAPI)
 
 	//Revise
-	//AddAR(registry.CasesReviseGetTaskList)
+	AddAR(registry.CasesReviseGetTaskList)
 	//Resolve
 	AddAR(registry.CasesResolveGetTaskList)
 	//Face
-	//AddP(face.MetroComplexFaceID)
+	AddP(face.MetroComplexFaceID)
 
 	//Comments CRUDs
 	AddP(comments.CasesCommentsCRUD)
@@ -96,13 +101,13 @@ func init() {
 	AddP(webapi.ReaderCase)
 
 	//Токен Мастеркард
-	//AddP(mastercard.CasesTokensMC)
+	AddP(mastercard.CasesTokensMC)
 
 	//MK-emulator
-	//AddP(mk_emulator.CasesEmulatorMK)
+	AddP(mk_emulator.CasesEmulatorMK)
 
 	//Stop list add and remove card
-	//AddP(cards.CardsStopList)
+	AddP(cards.CardsStopList)
 
 	//черновики, которые пока что не запускаются
 	//AddP(passes.CasesWrongTimeComplexPass)

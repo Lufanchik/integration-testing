@@ -358,6 +358,11 @@ func Run(t *testing.T, cases Cases, rt RequestType) {
 					CardApiGetFull(t, cgf)
 				}
 
+				prp, ok := step.(*ProcessRevisePass)
+				if ok {
+					ProcessRevisePassRequest(t, prp)
+				}
+
 				rc, ok := step.(*ReaderConfiguration)
 				if ok {
 					ReaderConfigurationSend(t, rc)

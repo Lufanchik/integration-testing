@@ -582,6 +582,13 @@ func WebAPI(t *testing.T, card *processing.Card, passes []*Pass) {
 	}
 }
 
+func ProcessRevisePassRequest(t *testing.T, prp *ProcessRevisePass) {
+	prpReq, prpResp := GetProcessRevisePass()
+	prpR, err := ps.ProcessRevisePass(context.Background(), prpReq)
+	require.NoError(t, err)
+	require.Equal(t, prpResp, prpR)
+}
+
 func CommentsCheck(t *testing.T, crud *CommentsCRUD) {
 	// Add comment
 	addReq := AddCommentRequest(crud)

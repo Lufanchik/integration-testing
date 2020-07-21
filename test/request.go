@@ -11,9 +11,11 @@ import (
 	"lab.dt.multicarta.ru/tp/common/messages/comments"
 	"lab.dt.multicarta.ru/tp/common/messages/pass"
 	"lab.dt.multicarta.ru/tp/common/messages/processing"
+	"lab.dt.multicarta.ru/tp/common/messages/registries"
 	"lab.dt.multicarta.ru/tp/common/messages/response"
 	"lab.dt.multicarta.ru/tp/common/messages/twpg"
 	webApi "lab.dt.multicarta.ru/tp/web-api-gateway/proto"
+	"time"
 )
 
 func PassOfflineRequest(tap *processing.TapRequest, p *Pass) (*processing.OfflinePassRequest, *processing.OfflinePassResponse) {
@@ -331,6 +333,47 @@ func AddCommentRequest(crud *CommentsCRUD) *comments.AddCommentRequest {
 	}
 
 	return request
+}
+
+func GetProcessRevisePass() (*processing.OnlinePassEvent, *registries.ProcessRevisePassResponse) {
+	rprReq := &processing.OnlinePassEvent{
+		Request: &processing.OnlinePassRequest{
+			Id:      uuid.New().String(),
+			Created: uint64(time.Now().UnixNano()),
+			Timeout: 0,
+			Auth: &processing.Auth{
+				Sum:  0,
+				Type: processing.Auth_NOT_REQUIRED,
+			},
+			Tap: &processing.Tap{
+				Created:    uint64(time.Now().UnixNano()),
+				Resolution: 1,
+				Terminal: &processing.Terminal{
+					Id:        "terminal_id",
+					Station:   "station_id",
+					Direction: processing.TerminalDirection_INGRESS,
+				},
+				Card: &processing.Card{
+					System: processing.CardSystem_UNKNOWN_SYSTEM,
+					Type:   processing.CardType_UNKNOWN_TYPE,
+					Pan:    CardPan(),
+					Bin:    11111111,
+					Exp:    "9912",
+				},
+				Sign: "123",
+			},
+		},
+		Id:          "",
+		Created:     uint64(time.Now().UnixNano()),
+		CardId:      "",
+		CarrierCode: carriers.Carrier_MM,
+	}
+
+	rprResp := &registries.ProcessRevisePassResponse{
+		IsDuplicate: false,
+	}
+
+	return rprReq, rprResp
 }
 
 func GetCommentsRequest(add *comments.AddCommentRequest) *comments.GetCommentsRequest {

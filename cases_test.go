@@ -16,6 +16,7 @@ import (
 	"lab.dt.multicarta.ru/tp/integration-testing/passes/mmts"
 	"lab.dt.multicarta.ru/tp/integration-testing/passes/mt"
 	"lab.dt.multicarta.ru/tp/integration-testing/passes/mtppk"
+	"lab.dt.multicarta.ru/tp/integration-testing/passes/resolve"
 	"lab.dt.multicarta.ru/tp/integration-testing/registry"
 	"lab.dt.multicarta.ru/tp/integration-testing/twpg"
 	"lab.dt.multicarta.ru/tp/integration-testing/webapi"
@@ -97,8 +98,12 @@ func init() {
 	//Отмена оплаты в TWPG
 	AddP(twpg.CaseTWPGReverseOrder)
 
+	//скачивание полного вайт листа на ридер
 	AddP(cards.FaceList)
+	//запрос от ридера, включая скачивание полного вайт листа
 	AddP(webapi.ReaderCase)
+	//запрос на восстановление прохода, если недостаточно данных для авторизации
+	AddP(resolve.CasesResolve)
 
 	//Токен Мастеркард
 	AddP(mastercard.CasesTokensMC)
@@ -107,7 +112,7 @@ func init() {
 	AddP(mk_emulator.CasesEmulatorMK)
 
 	//Stop list add and remove card
-	AddP(cards.CardsStopList)
+	//AddP(cards.CardsStopList)
 
 	//черновики, которые пока что не запускаются
 	//AddP(passes.CasesWrongTimeComplexPass)

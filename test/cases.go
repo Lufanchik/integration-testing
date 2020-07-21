@@ -30,6 +30,10 @@ type (
 		TWPGOrderId          uint64
 		SkipIdempotencyCheck bool
 	}
+
+	ProcessRevisePass struct {
+	}
+
 	//генерация прохода
 	Pass struct {
 		//тип оплаты

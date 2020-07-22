@@ -32,6 +32,8 @@ type (
 	}
 
 	ProcessRevisePass struct {
+		req  *processing.OnlinePassEvent
+		pass *pass.Pass
 	}
 
 	//генерация прохода
@@ -74,7 +76,9 @@ type (
 		// сбрасываем emv
 		EmptyEMV bool
 		// проход должен быть таким же, как указанный
-		Equal        int
+		Equal int
+		// до авторизуем восстановленный проход
+		RevisePass   int
 		tapResponse  PassResponser
 		passResponse PassResponser
 		id           string

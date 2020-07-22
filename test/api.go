@@ -19,6 +19,7 @@ import (
 	protoResponse "lab.dt.multicarta.ru/tp/common/messages/response"
 	"lab.dt.multicarta.ru/tp/common/messages/twpg"
 	"lab.dt.multicarta.ru/tp/common/messages/user"
+	"lab.dt.multicarta.ru/tp/common/uuid"
 	webApi "lab.dt.multicarta.ru/tp/web-api-gateway/proto"
 	"net/http"
 	"strings"
@@ -584,9 +585,69 @@ func WebAPI(t *testing.T, card *processing.Card, passes []*Pass) {
 
 func ProcessRevisePassRequest(t *testing.T, prp *ProcessRevisePass) {
 	prpReq, prpResp := GetProcessRevisePass()
+	prp.req = prpReq
 	prpR, err := ps.ProcessRevisePass(context.Background(), prpReq)
 	require.NoError(t, err)
 	require.Equal(t, prpResp, prpR)
+	ctx := context.Background()
+
+	id, err := uuid.GenerateUUID(ctx, prpReq.Request)
+	passDB, err := ps.GetPass(ctx, &pass.PassRequest{
+		Id: id,
+	})
+	require.NoError(t, err)
+	prp.pass = passDB
+
+	expectPass := &pass.Pass{
+		Id:                id,
+		UserId:            prpReq.Request.Tap.Card.Pan,
+		Kind:              processing.TapType_PASS_ONLINE,
+		CarrierTapId:      prpReq.Request.Id,
+		CarrierCode:       prpReq.CarrierCode,
+		CarrierResolution: prpReq.Request.Tap.Resolution,
+		TerminalId:        prpReq.Request.Tap.Terminal.Id,
+		TerminalStation:   prpReq.Request.Tap.Terminal.Station,
+		TerminalDirection: prpReq.Request.Tap.Terminal.Direction,
+		Sign:              prpReq.Request.Tap.Sign,
+		IsCancel:          false,
+		IsComplexTimeout:  false,
+		CreatedAtRequest:  passDB.CreatedAtRequest,
+		Updated:           passDB.Updated,
+		CreatedAtCarrier:  NanoToMicro(prpReq.Request.Tap.Created),
+		IsComplex:         false,
+		ParentComplexId:   "",
+		IsComplexCarrier:  global.IsComplexCarrier(prpReq.CarrierCode),
+		IsPass:            true,
+		IsFree:            false,
+		Sum:               4400,
+		IsAuth:            false,
+		PassType:          pass.PassType_PASS_BBK,
+		PaySystem:         prpReq.Request.Tap.Card.System,
+	}
+
+	isEqual := assert.ObjectsAreEqual(expectPass, passDB)
+	counter := 0
+
+	for !isEqual {
+		fmt.Println("pass not equal")
+		time.Sleep(TimeAfterRequest)
+		passDB, err = ps.GetPass(ctx, &pass.PassRequest{
+			Id: id,
+		})
+
+		if passDB != nil {
+			expectPass.Updated = passDB.Updated
+		}
+
+		isEqual = assert.ObjectsAreEqual(expectPass, passDB)
+		counter++
+		if counter > 200 {
+			break
+		}
+	}
+
+	require.Equal(t, expectPass, passDB)
+	require.NoError(t, err)
 }
 
 func CommentsCheck(t *testing.T, crud *CommentsCRUD) {

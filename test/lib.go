@@ -58,7 +58,28 @@ func RunPass(t *testing.T, p *Pass, scenario *Case, carrierID string, card *proc
 
 	ConfigurePass(t, p, carrierID, card)
 	tapReq, tapResp := TapBySubCarrier(t, p, card)
+	if p.RevisePass != 0 {
+		prp, ok := (scenario.T[p.RevisePass-1]).(*ProcessRevisePass)
+		if !ok {
+			t.Fail()
+		}
+		tapReq.Tap.Card.Pan = prp.req.Request.Tap.Card.Pan
+		tapReq.Tap.Created = prp.req.Request.Tap.Created
+		//tapReq.Tap.Terminal = prp.req.Request.Tap.Terminal
+		tapReq2 := &processing.TapRequest{
+			Id:      prp.req.Request.Id,
+			Created: prp.req.Request.Created,
+			Tap:     tapReq.Tap,
+		}
+		tapReq = tapReq2
+		tapResp.Id = prp.pass.Id
+		p.tapRequest = tapReq
+		fmt.Printf("p: %+v", *p)
+	}
 	timeRequest, resp := PassBySubCarrier(t, tapReq, p)
+	if p.RevisePass != 0 {
+		timeRequest = p.tapRequest.Created
+	}
 	require.Equal(t, tapResp.GetId(), resp.GetId())
 	var parent, ingress, aggregate *Pass
 	if p.Parent > 0 {

@@ -659,6 +659,12 @@ func CommentsCheck(t *testing.T, crud *CommentsCRUD) {
 		Status(http.StatusOK)
 	logRequest(addCommentURL, addR)
 
+	addCommentResponse := &comments.AddCommentResponse{}
+	object := addR.Body().Raw()
+	err := jsonpb.Unmarshal(strings.NewReader(object), addCommentResponse)
+	require.NoError(t, err)
+	addReq.Comment.Id = addCommentResponse.CommentId
+
 	fmt.Printf("EntityID: %s\n", addReq.Comment.EntityId)
 
 	// Get comments
@@ -667,11 +673,11 @@ func CommentsCheck(t *testing.T, crud *CommentsCRUD) {
 	getR := httpCommentService.POST(getCommenstURL).WithJSON(getReq).
 		Expect().
 		Status(http.StatusOK)
-	object := getR.Body().Raw()
+	object = getR.Body().Raw()
 	logRequest(getCommenstURL, getR)
 
 	getCommentsResponse := &comments.GetCommentsResponse{}
-	err := jsonpb.Unmarshal(strings.NewReader(object), getCommentsResponse)
+	err = jsonpb.Unmarshal(strings.NewReader(object), getCommentsResponse)
 	require.NoError(t, err)
 
 	count := len(getCommentsResponse.Comments)

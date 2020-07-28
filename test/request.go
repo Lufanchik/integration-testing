@@ -324,7 +324,6 @@ func ForceReauthRequest(fra *ForceReauth) (*authService.CardByPassIDRequest, *au
 func AddCommentRequest(crud *CommentsCRUD) *comments.AddCommentRequest {
 	request := &comments.AddCommentRequest{
 		Comment: &comments.Comment{
-			Id:        uuid.New().String(),
 			EntityId:  uuid.New().String(),
 			UserId:    uuid.New().String(),
 			RepliesTo: "",

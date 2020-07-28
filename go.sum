@@ -670,6 +670,8 @@ lab.dt.multicarta.ru/tp/common v0.0.406 h1:3uDWfnoYxorA3311Je8WQizd8dK1sCgph9jcy
 lab.dt.multicarta.ru/tp/common v0.0.406/go.mod h1:zHjwzwcTd9MjekQD4Binq5upRQb+/vy/Hk89UBN0+nA=
 lab.dt.multicarta.ru/tp/common v0.0.410 h1:8KgXpjj4Fwc+wT1cCt1wbznh4Zv7luIMX+SQRq/77jY=
 lab.dt.multicarta.ru/tp/common v0.0.410/go.mod h1:nwDRW5BadYYOQly5Ub7wjGJiVZ7HMcug4JlIGyUH9Vw=
+lab.dt.multicarta.ru/tp/common v0.0.412 h1:ByIIt3UlnA2P8juyHSg5iOEyolYrg+eApEcD3xJoCmk=
+lab.dt.multicarta.ru/tp/common v0.0.412/go.mod h1:nwDRW5BadYYOQly5Ub7wjGJiVZ7HMcug4JlIGyUH9Vw=
 lab.dt.multicarta.ru/tp/goosev2 v0.0.0-20200507131718-1cd82fe18227/go.mod h1:gHjciWYPazwQj6dakLctqS9VIVi2rzOBKtenMVc/YW0=
 lab.dt.multicarta.ru/tp/mcc-emulator v0.0.1/go.mod h1:4tHcCkmVnUdrDjBCONt68Pjyr5XDV2oNWTGF3gCTHG4=
 lab.dt.multicarta.ru/tp/monitoring-service v0.0.1/go.mod h1:q9M7Go4XAy+yWd+QQ2siZHLOCbKY/nODK8luE3TkfuA=

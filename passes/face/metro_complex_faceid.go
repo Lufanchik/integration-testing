@@ -9,7 +9,7 @@ import (
 
 var MetroComplexFaceID = test.Cases{
 	{
-		N:          "1. Face/MM-MCK-MMTS",
+		N:          "1. Face/MM-MCK-MMTS-MM",
 		CardSystem: processing.CardSystem_VISA,
 		CustomerId: uuid.New().String(),
 		T: test.T{
@@ -46,7 +46,7 @@ var MetroComplexFaceID = test.Cases{
 		},
 	},
 	{
-		N:          "2. Face/MMTS-MCK-MM",
+		N:          "2. Face/MMTS-MCK-MM-MCK",
 		CardSystem: processing.CardSystem_VISA,
 		CustomerId: uuid.New().String(),
 		T: test.T{
@@ -83,7 +83,7 @@ var MetroComplexFaceID = test.Cases{
 		},
 	},
 	{
-		N:          "3. Face/MCK-MM-MMTS",
+		N:          "3. Face/MCK-MM-MMTS-MM",
 		CardSystem: processing.CardSystem_VISA,
 		CustomerId: uuid.New().String(),
 		T: test.T{

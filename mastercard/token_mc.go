@@ -1,7 +1,6 @@
 package mastercard
 
 import (
-	"github.com/google/uuid"
 	"lab.dt.multicarta.ru/tp/common/messages/carriers"
 	"lab.dt.multicarta.ru/tp/common/messages/processing"
 	"lab.dt.multicarta.ru/tp/integration-testing/test"
@@ -96,43 +95,43 @@ var CasesTokensMC = test.Cases{
 			},
 		},
 	},
-	{
-		N:          "4. Face/MM-MCK-MMTS",
-		CardSystem: processing.CardSystem_MASTERCARD,
-		CustomerId: uuid.New().String(),
-		T: test.T{
-			&test.RegisterFaceId{},
-			&test.FaceIdRegistrationStatus{},
-			&test.Pass{
-				PaymentType: test.PaymentTypePayment,
-				Carrier:     carriers.Carrier_MM,
-				SubCarrier:  carriers.SubCarrier_MM_SUB,
-			},
-			&test.RegisterFaceId{},
-			&test.FaceIdRegistrationStatus{},
-			&test.Pass{
-				PaymentType: test.PaymentTypeFree,
-				Carrier:     carriers.Carrier_MM,
-				SubCarrier:  carriers.SubCarrier_MCK_SUB,
-				Parent:      3,
-			},
-			&test.RegisterFaceId{},
-			&test.FaceIdRegistrationStatus{},
-			&test.Pass{
-				PaymentType: test.PaymentTypeFree,
-				Carrier:     carriers.Carrier_MM,
-				SubCarrier:  carriers.SubCarrier_MMTS_SUB,
-				Parent:      3,
-			},
-			&test.RegisterFaceId{},
-			&test.FaceIdRegistrationStatus{},
-			&test.Pass{
-				PaymentType: test.PaymentTypePayment,
-				Carrier:     carriers.Carrier_MM,
-				SubCarrier:  carriers.SubCarrier_MM_SUB,
-			},
-		},
-	},
+	//{
+	//	N:          "4. Face/MM-MCK-MMTS",
+	//	CardSystem: processing.CardSystem_MASTERCARD,
+	//	CustomerId: uuid.New().String(),
+	//	T: test.T{
+	//		&test.RegisterFaceId{},
+	//		&test.FaceIdRegistrationStatus{},
+	//		&test.Pass{
+	//			PaymentType: test.PaymentTypePayment,
+	//			Carrier:     carriers.Carrier_MM,
+	//			SubCarrier:  carriers.SubCarrier_MM_SUB,
+	//		},
+	//		&test.RegisterFaceId{},
+	//		&test.FaceIdRegistrationStatus{},
+	//		&test.Pass{
+	//			PaymentType: test.PaymentTypeFree,
+	//			Carrier:     carriers.Carrier_MM,
+	//			SubCarrier:  carriers.SubCarrier_MCK_SUB,
+	//			Parent:      3,
+	//		},
+	//		&test.RegisterFaceId{},
+	//		&test.FaceIdRegistrationStatus{},
+	//		&test.Pass{
+	//			PaymentType: test.PaymentTypeFree,
+	//			Carrier:     carriers.Carrier_MM,
+	//			SubCarrier:  carriers.SubCarrier_MMTS_SUB,
+	//			Parent:      3,
+	//		},
+	//		&test.RegisterFaceId{},
+	//		&test.FaceIdRegistrationStatus{},
+	//		&test.Pass{
+	//			PaymentType: test.PaymentTypePayment,
+	//			Carrier:     carriers.Carrier_MM,
+	//			SubCarrier:  carriers.SubCarrier_MM_SUB,
+	//		},
+	//	},
+	//},
 	{
 		N:          "5. MCD MSK1 - MCD MSK2 - MCD MO2", //
 		CardSystem: processing.CardSystem_MASTERCARD,

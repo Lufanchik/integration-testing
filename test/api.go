@@ -280,9 +280,9 @@ func ValidatePass(t *testing.T, p *Pass, parent *Pass, ingress *Pass, isFirst bo
 	isEqual := assert.ObjectsAreEqual(expectPass, passDB)
 	counter := 0
 
-	if p.EmptyEMV {
-		expectPass.Sum = 0
-	}
+	//if p.EmptyEMV {
+	//	expectPass.Sum = 0
+	//}
 
 	for !isEqual {
 		fmt.Println("pass not equal")

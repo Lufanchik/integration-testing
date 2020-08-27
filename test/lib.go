@@ -54,6 +54,7 @@ func RunPass(t *testing.T, p *Pass, scenario *Case, carrierID string, card *proc
 		card = p.card
 		p.AuthType = AuthTypeCorrect
 		p.EmptyEMV = false
+		carrierID = p.carrierID
 	}
 
 	ConfigurePass(t, p, carrierID, card)
@@ -111,6 +112,8 @@ func RunPass(t *testing.T, p *Pass, scenario *Case, carrierID string, card *proc
 	if !isEqual {
 		p.timeRequest = timeRequest
 	}
+	fmt.Println(p.timeRequest)
+	fmt.Println(p.id)
 	p.card = card
 	p.parent = parent
 	p.ingress = ingress
@@ -202,18 +205,23 @@ func Run(t *testing.T, cases Cases, rt RequestType) {
 	httpTWPGService = httpexpect.New(t, TWPGApiUrl)
 
 	type NCase struct {
-		c         *Case
-		card      *processing.Card
-		carrierId string
-		shaPan    string
+		c    *Case
+		card *processing.Card
+		//carrierId string
+		carrierIds []string
+		shaPan     string
 	}
 	nc := make([]*NCase, len(cases))
 
 	for k, _ := range cases {
 		nc[k] = &NCase{
-			c:         &cases[k],
-			carrierId: uuid.New().String(),
+			c: &cases[k],
 		}
+		ids := make([]string, len(nc[k].c.T))
+		for numInCase := range nc[k].c.T {
+			ids[numInCase] = uuid.New().String()
+		}
+		nc[k].carrierIds = ids
 		if cases[k].CustomerId != "" {
 			nc[k].card = FaceCard(cases[k].CardSystem, cases[k].CustomerId)
 		} else if cases[k].PassType == pass.PassType_PASS_MT {
@@ -267,7 +275,7 @@ func Run(t *testing.T, cases Cases, rt RequestType) {
 					}
 
 					fmt.Printf("name: %s; pass-type: %d\n", ncc.c.N, ncc.c.PassType)
-					tpp, ppp := RunPass(t, firstPass, scenario, ncc.carrierId, ncc.card)
+					tpp, ppp := RunPass(t, firstPass, scenario, ncc.carrierIds[N], ncc.card)
 					firstPass.tapResponse = tpp
 					firstPass.passResponse = ppp
 				}
@@ -458,7 +466,7 @@ func Run(t *testing.T, cases Cases, rt RequestType) {
 						oldPass := results[casesNum][N]
 						secondPass.tapRequest = oldPass.tapRequest
 						fmt.Println(fmt.Sprintf("check 1 = %d", N+1))
-						ConfigurePass(t, secondPass, ncc.carrierId, ncc.card)
+						ConfigurePass(t, secondPass, ncc.carrierIds[N], ncc.card)
 						ValidatePass(t, secondPass, secondPass.parent, secondPass.ingress, false)
 						if !isAggregate(secondPass) {
 							AuthStatus(t, secondPass)
@@ -507,7 +515,7 @@ func Run(t *testing.T, cases Cases, rt RequestType) {
 					thirdPass, ok := step.(*Pass)
 					if ok && !thirdPass.isCancel && thirdPass.faceId == "" {
 						fmt.Println(fmt.Sprintf("check 2 = %d", N+1))
-						ConfigurePass(t, thirdPass, ncc.carrierId, ncc.card)
+						ConfigurePass(t, thirdPass, ncc.carrierIds[N], ncc.card)
 						ValidatePass(t, thirdPass, thirdPass.parent, thirdPass.ingress, false)
 						if !isAggregate(thirdPass) {
 							AuthStatus(t, thirdPass)

@@ -119,7 +119,7 @@ func Update(t *testing.T, p *Pass, up Updater) {
 
 func ValidatePass(t *testing.T, p *Pass, parent *Pass, ingress *Pass, isFirst bool) {
 	ctx := context.Background()
-
+	//time.Sleep(time.Second * 10)
 	expectPass := &pass.Pass{
 		Id:                p.id,
 		UserId:            p.card.Pan,

@@ -2,18 +2,15 @@ package integration_testing
 
 import (
 	"lab.dt.multicarta.ru/tp/integration-testing/apm"
-	"lab.dt.multicarta.ru/tp/integration-testing/cards"
 	mk_emulator "lab.dt.multicarta.ru/tp/integration-testing/mk-emulator"
 	"lab.dt.multicarta.ru/tp/integration-testing/parking"
 	"lab.dt.multicarta.ru/tp/integration-testing/passes"
-	"lab.dt.multicarta.ru/tp/integration-testing/passes/face"
 	"lab.dt.multicarta.ru/tp/integration-testing/passes/mcd"
 	"lab.dt.multicarta.ru/tp/integration-testing/passes/mck"
 	"lab.dt.multicarta.ru/tp/integration-testing/passes/mgt"
 	"lab.dt.multicarta.ru/tp/integration-testing/passes/mm"
 	"lab.dt.multicarta.ru/tp/integration-testing/passes/mmts"
 	"lab.dt.multicarta.ru/tp/integration-testing/passes/mt"
-	"lab.dt.multicarta.ru/tp/integration-testing/passes/resolve"
 	"lab.dt.multicarta.ru/tp/integration-testing/registry"
 	"lab.dt.multicarta.ru/tp/integration-testing/twpg"
 	"lab.dt.multicarta.ru/tp/integration-testing/webapi"
@@ -87,7 +84,7 @@ func init() {
 	//Resolve
 	AddAR(registry.CasesResolveGetTaskList)
 	//Face
-	AddP(face.MetroComplexFaceID)
+	//AddP(face.MetroComplexFaceID)
 
 	//Comments CRUDs
 	//AddP(comments.CasesCommentsCRUD)
@@ -95,12 +92,12 @@ func init() {
 	//Отмена оплаты в TWPG
 	AddP(twpg.CaseTWPGReverseOrder)
 
-	//скачивание полного вайт листа на ридер
-	AddP(cards.FaceList)
-	//запрос от ридера, включая скачивание полного вайт листа
-	AddP(webapi.ReaderCase)
-	//запрос на восстановление прохода, если недостаточно данных для авторизации
-	AddP(resolve.CasesResolve)
+	////скачивание полного вайт листа на ридер
+	//AddP(cards.FaceList)
+	////запрос от ридера, включая скачивание полного вайт листа
+	//AddP(webapi.ReaderCase)
+	////запрос на восстановление прохода, если недостаточно данных для авторизации
+	//AddP(resolve.CasesResolve)
 
 	//Токен Мастеркард
 	//AddP(mastercard.CasesTokensMC)

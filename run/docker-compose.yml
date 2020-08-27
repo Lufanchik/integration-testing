@@ -123,7 +123,7 @@ services:
     image: golang:1.14
     volumes:
       - ../../card-service:/app
-    command: /app/bin/app -f /app/config.local.yml
+    command: /app/bin/app service -f /app/config.local.yml
     network_mode: host
 
   storage-service:

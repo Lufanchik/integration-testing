@@ -2,6 +2,8 @@ module lab.dt.multicarta.ru/tp/integration-testing
 
 go 1.14
 
+replace lab.dt.multicarta.ru/tp/web-api-gateway => ../web-api-gateway
+
 require (
 	github.com/ajg/form v1.5.1 // indirect
 	github.com/brianvoe/gofakeit v3.18.0+incompatible
@@ -24,8 +26,8 @@ require (
 	github.com/yudai/gojsondiff v1.0.0 // indirect
 	github.com/yudai/golcs v0.0.0-20170316035057-ecda9a501e82 // indirect
 	github.com/yudai/pp v2.0.1+incompatible // indirect
-	lab.dt.multicarta.ru/tp/common v0.0.412
-	lab.dt.multicarta.ru/tp/pass-service v0.0.169
+	lab.dt.multicarta.ru/tp/common v0.0.454
+	lab.dt.multicarta.ru/tp/pass-service v0.0.171-ppa-2
 	lab.dt.multicarta.ru/tp/web-api-gateway v0.0.28
 	moul.io/http2curl v1.0.0 // indirect
 )

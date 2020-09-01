@@ -2,6 +2,7 @@ package test
 
 import (
 	"context"
+	"crypto/md5"
 	"errors"
 	"fmt"
 	"github.com/gavv/httpexpect"
@@ -747,15 +748,38 @@ func ReaderConfigurationSend(t *testing.T, c *ReaderConfiguration) {
 	actualResponse := &webApi.ReaderResponse{}
 	err := jsonpb.Unmarshal(strings.NewReader(object), actualResponse)
 	require.NoError(t, err)
+	require.NotNil(t, actualResponse.Lists)
+	require.Equal(t, true, len(actualResponse.Lists.FaceList.Url) > 0)
 
-	r = httpWebApi.GET("/download/s3").WithQuery("id", actualResponse.Lists.FaceList.Id).WithJSON(req).
+	r = httpWebApi.GET("/download/s3").WithQuery("id", actualResponse.Lists.FaceList.Id).
 		Expect().
 		Status(http.StatusOK)
 
 	object = r.Body().Raw()
 	logRequest(u, r)
 
-	require.Equal(t, true, len(actualResponse.Lists.FaceList.Url) > 0)
+	h := md5.New()
+	h.Write([]byte(r.Body().Raw()))
+	require.NoError(t, err)
+
+	hash := fmt.Sprintf("%x", h.Sum(nil))
+	require.Equal(t, actualResponse.Lists.FaceList.Md5, hash)
+	fmt.Println(hash)
+
+	r = httpWebApi.GET("/download/s3").WithQuery("id", actualResponse.Lists.StopList.Id).
+		Expect().
+		Status(http.StatusOK)
+
+	object = r.Body().Raw()
+	logRequest(u, r)
+
+	s := md5.New()
+	s.Write([]byte(r.Body().Raw()))
+	require.NoError(t, err)
+
+	hashS := fmt.Sprintf("%x", s.Sum(nil))
+	fmt.Println(hashS)
+	require.Equal(t, actualResponse.Lists.StopList.Md5, hashS)
 }
 
 func CardApiGetFull(t *testing.T, c *CardGetFull) {

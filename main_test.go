@@ -5,8 +5,8 @@ import (
 	"github.com/jinzhu/copier"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 	"github.com/stretchr/testify/require"
-	"lab.dt.multicarta.ru/tp/integration-testing/passes/face"
 	"lab.dt.multicarta.ru/tp/integration-testing/test"
+	"lab.dt.multicarta.ru/tp/integration-testing/webapi"
 	"net/http"
 	"net/http/pprof"
 	"testing"
@@ -139,7 +139,7 @@ func TestFull(t *testing.T) {
 
 func TestSimple(t *testing.T) {
 
-	test.Run(t, face.MetroComplexFaceID, test.RequestTypeOffline)
+	test.Run(t, webapi.ReaderCase, test.RequestTypeOffline)
 
 	//test.Run(t, cards.CardsStopList, test.RequestTypeOffline)
 	//test.Run(t, cards.FaceList, test.RequestTypeOffline)

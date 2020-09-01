@@ -15,6 +15,10 @@ var ReaderCase = test.Cases{
 					Time:     time.Now(),
 					FileType: cards.FileType_SQ_LITE_BINARY_TYPE,
 				},
+				StopList: &test.StopList{
+					Time:     time.Now(),
+					FileType: cards.FileType_SQ_LITE_BINARY_TYPE,
+				},
 			},
 		},
 	},

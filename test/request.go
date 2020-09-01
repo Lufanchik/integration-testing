@@ -288,6 +288,10 @@ func ReaderConfigurationRequest(c *ReaderConfiguration) (*webApi.ReaderRequest, 
 				Time:     uint64(c.FaceList.Time.UnixNano()),
 				FileType: c.FaceList.FileType,
 			},
+			StopList: &webApi.StopList{
+				Time:     uint64(c.StopList.Time.UnixNano()),
+				FileType: c.StopList.FileType,
+			},
 		},
 	}
 

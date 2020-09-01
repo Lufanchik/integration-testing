@@ -197,9 +197,15 @@ type (
 
 	ReaderConfiguration struct {
 		FaceList *FaceList
+		StopList *StopList
 	}
 
 	FaceList struct {
+		Time     time.Time
+		FileType cards.FileType
+	}
+
+	StopList struct {
 		Time     time.Time
 		FileType cards.FileType
 	}

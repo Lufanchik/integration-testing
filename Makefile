@@ -20,6 +20,8 @@ test: export TWPG_SERVICE_URL=http://twpg-service.test.svc.cluster.local:1312
 test: export COMMENTS_SERVICE_URL=http://comment-service.test.svc.cluster.local:5447
 test: export CARD_SERVICE_URL=http://card-service.test.svc.cluster.local:1480
 
+prod: export PASS_URL=http://pass-service.production.svc.cluster.local:13380
+
 full:
 	go test -c -o ./bin/test
 	./bin/test -test.run ^TestFull$
@@ -28,5 +30,6 @@ simple:
 	go test -c -o ./bin/test
 	./bin/test -test.run ^TestSimple$
 
-local: full
+local: simple
+prod: simple
 test: full

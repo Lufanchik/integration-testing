@@ -200,6 +200,13 @@ type (
 		StopList *StopList
 	}
 
+	ReAuth struct {
+		Id string
+	}
+
+	AuthResponse struct {
+	}
+
 	FaceList struct {
 		Time     time.Time
 		FileType cards.FileType

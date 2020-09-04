@@ -439,6 +439,16 @@ func Run(t *testing.T, cases Cases, rt RequestType) {
 					fra.PassId = reauthPass.id
 					ForceReauthCall(t, fra)
 				}
+
+				pra, ok := step.(*ReAuth)
+				if ok {
+					ReAuthGo(t, pra)
+				}
+
+				ara, ok := step.(*AuthResponse)
+				if ok {
+					AuthResponseGo(t, ara)
+				}
 			})
 			if t.Failed() {
 				break

@@ -3,15 +3,27 @@ package test
 import (
 	"github.com/brianvoe/gofakeit"
 	"lab.dt.multicarta.ru/tp/common/messages/processing"
+	"lab.dt.multicarta.ru/tp/common/rabbit"
 	passService "lab.dt.multicarta.ru/tp/pass-service/proto"
 	"net/http"
 	"strconv"
 	"time"
 )
 
+var rpa *rabbit.Exchange
+
 func init() {
 	ps = passService.NewPassServiceProtobufClient(PassUrl, http.DefaultClient)
 	gofakeit.Seed(time.Now().UnixNano())
+
+	//rabbitConfig := rabbit.Config{
+	//	ServiceName: "integration-test",
+	//	Endpoint:    "amqp://guest:guest@localhost:5673/",
+	//}
+	//
+	//rabbitPrimary := rabbit.MustNew(rabbitConfig)
+	//authExchange := exchanges.MustExchangeByID(exchanges.ExchangeAuth)
+	//rpa = rabbitPrimary.MustNewExchange(authExchange.Opts)
 }
 
 func CardExp() string {

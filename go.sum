@@ -312,6 +312,7 @@ github.com/onsi/gomega v1.7.1/go.mod h1:XdKZgCCFLUoM/7CFJVPcG8C1xQ1AJ0vpAezJrB7J
 github.com/onsi/gomega v1.8.1/go.mod h1:Ho0h+IUsWyvy1OpqCwxlQ/21gkhVunqlU8fDGcoTdcA=
 github.com/onsi/gomega v1.9.0 h1:R1uwffexN6Pr340GtYRIdZmAiN4J+iw6WG4wog1DUXg=
 github.com/onsi/gomega v1.9.0/go.mod h1:Ho0h+IUsWyvy1OpqCwxlQ/21gkhVunqlU8fDGcoTdcA=
+github.com/opentracing-contrib/go-amqp v0.0.0-20171102191528-e26701f95620 h1:OhtbNVqXz6DuVXGvwPYXnNwQy1n2rI+2mID9CQOok9U=
 github.com/opentracing-contrib/go-amqp v0.0.0-20171102191528-e26701f95620/go.mod h1:UTAgTV5+tXpWiYqczgUb2kCslN9sqcshFQdmHSTyzlU=
 github.com/opentracing/opentracing-go v1.0.2/go.mod h1:UkNAQd3GIcIGf0SeVgPpRdFStlNbqXla1AfSYxPUl2o=
 github.com/opentracing/opentracing-go v1.1.0 h1:pWlfV3Bxv7k65HYwkikxat0+s3pV4bsqf19k25Ur8rU=
@@ -411,6 +412,7 @@ github.com/spf13/viper v1.6.1/go.mod h1:t3iDnF5Jlj76alVNuyFBk5oUMCvsrkbvZK0WQdfD
 github.com/spf13/viper v1.6.2 h1:7aKfF+e8/k68gda3LOjo5RxiUqddoFxVq4BKBPrxk5E=
 github.com/spf13/viper v1.6.2/go.mod h1:t3iDnF5Jlj76alVNuyFBk5oUMCvsrkbvZK0WQdfDi5k=
 github.com/streadway/amqp v0.0.0-20190827072141-edfb9018d271/go.mod h1:AZpEONHx3DKn8O/DFsRAY58/XVQiIPMTMB1SddzLXVw=
+github.com/streadway/amqp v0.0.0-20200108173154-1c71cc93ed71 h1:2MR0pKUzlP3SGgj5NYJe/zRYDwOu9ku6YHy+Iw7l5DM=
 github.com/streadway/amqp v0.0.0-20200108173154-1c71cc93ed71/go.mod h1:AZpEONHx3DKn8O/DFsRAY58/XVQiIPMTMB1SddzLXVw=
 github.com/stretchr/objx v0.1.0/go.mod h1:HFkY916IF+rwdDfMAkV7OtwuqBVzrE8GR6GFx+wExME=
 github.com/stretchr/objx v0.1.1/go.mod h1:HFkY916IF+rwdDfMAkV7OtwuqBVzrE8GR6GFx+wExME=
@@ -648,6 +650,7 @@ lab.dt.multicarta.ru/tp/card-service v0.0.14/go.mod h1:RBcHgkizo42UTQYwWXWmahikd
 lab.dt.multicarta.ru/tp/card-service v0.0.35/go.mod h1:05uNQQcVqltK5tdOdiJvhzaDe2YFAVMuQ74e7VVAtjk=
 lab.dt.multicarta.ru/tp/common v0.0.303/go.mod h1:13FR4zpvHH2tDG8tgvUyJOrJeWEmkYn79HsH5kNevZs=
 lab.dt.multicarta.ru/tp/common v0.0.304/go.mod h1:thhCwit1n/QmqWCtswV42/75REfp7/+HAkuY8XzaknM=
+lab.dt.multicarta.ru/tp/common v0.0.306/go.mod h1:thhCwit1n/QmqWCtswV42/75REfp7/+HAkuY8XzaknM=
 lab.dt.multicarta.ru/tp/common v0.0.341 h1:8MY/csbYODElpoxp8mFGh/UTYSzgFitEXY2QX3eI2bM=
 lab.dt.multicarta.ru/tp/common v0.0.341/go.mod h1:uasg3jk3cHIx97hgJFYBr2/hMw1Yr0JW3tzsIXBV3SU=
 lab.dt.multicarta.ru/tp/common v0.0.367/go.mod h1:nfrJqNmCCI32xJWEjPnfVdxnOlp72mg93lPvCGe8EtI=
@@ -663,6 +666,11 @@ lab.dt.multicarta.ru/tp/common v0.0.443/go.mod h1:yu4Y8P62O2IK9VIeWP1wX+Snwdk2QH
 lab.dt.multicarta.ru/tp/common v0.0.447/go.mod h1:yu4Y8P62O2IK9VIeWP1wX+Snwdk2QH93HsdRTVrrpgc=
 lab.dt.multicarta.ru/tp/common v0.0.454 h1:0+IH79qVQcMSjXaRkZ8pFp06awHM7JZd37eCqvpbasE=
 lab.dt.multicarta.ru/tp/common v0.0.454/go.mod h1:yu4Y8P62O2IK9VIeWP1wX+Snwdk2QH93HsdRTVrrpgc=
+lab.dt.multicarta.ru/tp/common v0.0.461 h1:0b2peY7G/HnckdL/tKGO1hE+MteW9oReo/2phgluLt0=
+lab.dt.multicarta.ru/tp/common v0.0.461/go.mod h1:yu4Y8P62O2IK9VIeWP1wX+Snwdk2QH93HsdRTVrrpgc=
+lab.dt.multicarta.ru/tp/common v0.0.462 h1:UJoYZ83zXx7v6SoH0yTEtegSGJaZdPVAS8SwLmRguhE=
+lab.dt.multicarta.ru/tp/common v0.0.462/go.mod h1:yu4Y8P62O2IK9VIeWP1wX+Snwdk2QH93HsdRTVrrpgc=
+lab.dt.multicarta.ru/tp/goosev2 v0.0.0-20200403120043-750876720ce5/go.mod h1:gHjciWYPazwQj6dakLctqS9VIVi2rzOBKtenMVc/YW0=
 lab.dt.multicarta.ru/tp/goosev2 v0.0.0-20200507131718-1cd82fe18227/go.mod h1:gHjciWYPazwQj6dakLctqS9VIVi2rzOBKtenMVc/YW0=
 lab.dt.multicarta.ru/tp/mcc-emulator v0.0.1/go.mod h1:4tHcCkmVnUdrDjBCONt68Pjyr5XDV2oNWTGF3gCTHG4=
 lab.dt.multicarta.ru/tp/monitoring-service v0.0.1/go.mod h1:q9M7Go4XAy+yWd+QQ2siZHLOCbKY/nODK8luE3TkfuA=
@@ -674,12 +682,20 @@ lab.dt.multicarta.ru/tp/pass-service v0.0.169 h1:y/ZyAETrPDJEsusmoWhM+b/u9P94+wu
 lab.dt.multicarta.ru/tp/pass-service v0.0.169/go.mod h1:1x8pkB5Nb092sBDEdyDDZDtvS9GKp6kLwLhQIxaozV4=
 lab.dt.multicarta.ru/tp/pass-service v0.0.171-ppa-2 h1:bc3/pNcT2YliyO/DwHY2kbtHeXjScSeLtfO2VqmwS54=
 lab.dt.multicarta.ru/tp/pass-service v0.0.171-ppa-2/go.mod h1:tHGtSgtayMVBKf9A6bBrjDhEl/cZLgrFjweUQbExQ5U=
+lab.dt.multicarta.ru/tp/pass-service v0.0.206 h1:KcrMZcyboma7wuHPRwIN/cvRIn3Hb3DCqAdD00YxcHw=
+lab.dt.multicarta.ru/tp/pass-service v0.0.206/go.mod h1:h1kNXgHW7JJP1YzhOxst1u56ztigOl3xI1L0URzOGl8=
 lab.dt.multicarta.ru/tp/request-service v0.0.11/go.mod h1:M2GvkeCg8qyO+glrw1f2wAJr3HkPVW3SJ/kLo2+0LN0=
+lab.dt.multicarta.ru/tp/request-service v0.0.13/go.mod h1:rXvddUI/kd1wWPNRDZ4Y3IomvMDr8NeXAG+Z2u3WPSw=
+lab.dt.multicarta.ru/tp/request-service v0.0.15/go.mod h1:P/nT4ZLhesyBtt7x8ddFc+NU3/iVHN7dz8yAyt4pwgY=
 lab.dt.multicarta.ru/tp/storage-service v0.0.53/go.mod h1:H1RhBYf6bDLWOiO4ALT1e8g6frL3FwhZHu3kdDcJFZs=
 lab.dt.multicarta.ru/tp/tidpool-service v0.0.22/go.mod h1:gk8w5s5caxZ5bOrO2z57M+VaiFs1/SxYVDS1xgdPVpk=
 lab.dt.multicarta.ru/tp/twpg-service v0.0.20/go.mod h1:g0tQwVm1H047fMspPP3/O/ktrUK7nvCL5oSYXXlQX9k=
 lab.dt.multicarta.ru/tp/web-api-gateway v0.0.28 h1:dIerHHttXYbdjspZIrntlvG/Oi8TIvRl+Ph93+GpSBE=
 lab.dt.multicarta.ru/tp/web-api-gateway v0.0.28/go.mod h1:a1Sz1XA0voulb/zqmvvZEJnlReiabWo2yeL6G3z0J88=
+lab.dt.multicarta.ru/tp/web-api-gateway v0.0.57 h1:zgXsHJmKkQkgd7ir7vPwbwTpQL4G4wEjOT6fnz7xr28=
+lab.dt.multicarta.ru/tp/web-api-gateway v0.0.57/go.mod h1:jtoQFxeQk2Qn80TET/Muxbfb7nwjXgQNLQeyjguWZXo=
+lab.dt.multicarta.ru/tp/web-api-gateway v0.0.58 h1:N994IL/HKF+cE05o7gJ23TKsNNWsSImEsg4fYl+SDSY=
+lab.dt.multicarta.ru/tp/web-api-gateway v0.0.58/go.mod h1:9pDaAnqzpsh2ujLGuEpAJDNBABiv2koJEoTBYIjJrX0=
 moul.io/http2curl v1.0.0 h1:6XwpyZOYsgZJrU8exnG87ncVkU1FVCcTRpwzOkTDUi8=
 moul.io/http2curl v1.0.0/go.mod h1:f6cULg+e4Md/oW1cYmwW4IWQOVl2lGbmCNGOHvzX2kE=
 mvdan.cc/interfacer v0.0.0-20180901003855-c20040233aed h1:WX1yoOaKQfddO/mLzdV4wptyWgoH/6hwLs7QHTixo0I=

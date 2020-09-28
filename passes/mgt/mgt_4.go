@@ -21,21 +21,21 @@ var CasesMGTWithEmptyEMV = test.Cases{
 				Carrier:     carriers.Carrier_MGT,
 				Equal:       1,
 			},
-			&test.Pass{
-				PaymentType: test.PaymentTypePayment,
-				Carrier:     carriers.Carrier_MM,
-				SubCarrier:  carriers.SubCarrier_MM_SUB,
-			},
-			&test.Pass{
-				PaymentType: test.PaymentTypeFree,
-				Carrier:     carriers.Carrier_MM,
-				SubCarrier:  carriers.SubCarrier_MCK_SUB,
-				Parent:      3,
-			},
-			&test.Pass{
-				PaymentType: test.PaymentTypePayment,
-				Carrier:     carriers.Carrier_MGT,
-			},
+			//&test.Pass{
+			//	PaymentType: test.PaymentTypePayment,
+			//	Carrier:     carriers.Carrier_MM,
+			//	SubCarrier:  carriers.SubCarrier_MM_SUB,
+			//},
+			//&test.Pass{
+			//	PaymentType: test.PaymentTypeFree,
+			//	Carrier:     carriers.Carrier_MM,
+			//	SubCarrier:  carriers.SubCarrier_MCK_SUB,
+			//	Parent:      3,
+			//},
+			//&test.Pass{
+			//	PaymentType: test.PaymentTypePayment,
+			//	Carrier:     carriers.Carrier_MGT,
+			//},
 		},
 	},
 }

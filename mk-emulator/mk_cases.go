@@ -9,7 +9,7 @@ import (
 var CasesEmulatorMK = test.Cases{
 	{
 		N:          "Switch ON Success mode",
-		CardSystem: processing.CardSystem_MASTERCARD,
+		CardSystem: processing.CardSystem_MIR,
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -22,7 +22,7 @@ var CasesEmulatorMK = test.Cases{
 	},
 	{
 		N:          "Success pass",
-		CardSystem: processing.CardSystem_MASTERCARD,
+		CardSystem: processing.CardSystem_MIR,
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -35,7 +35,7 @@ var CasesEmulatorMK = test.Cases{
 	},
 	{
 		N:          "Switch OFF Success mode",
-		CardSystem: processing.CardSystem_MASTERCARD,
+		CardSystem: processing.CardSystem_MIR,
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -48,7 +48,7 @@ var CasesEmulatorMK = test.Cases{
 	},
 	{
 		N:          "Unsuccess pass with reauth",
-		CardSystem: processing.CardSystem_MASTERCARD,
+		CardSystem: processing.CardSystem_MIR,
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -61,7 +61,7 @@ var CasesEmulatorMK = test.Cases{
 	},
 	{
 		N:          "Unsuccess pass without reauth",
-		CardSystem: processing.CardSystem_MASTERCARD,
+		CardSystem: processing.CardSystem_MIR,
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -74,7 +74,7 @@ var CasesEmulatorMK = test.Cases{
 	},
 	//{
 	//	N:          "Switch ON Random mode",
-	//	CardSystem: processing.CardSystem_MASTERCARD,
+	//	CardSystem: processing.CardSystem_MIR,
 	//	T: test.T{
 	//		&test.Pass{
 	//			PaymentType: test.PaymentTypePayment,

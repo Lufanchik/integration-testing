@@ -9,7 +9,7 @@ import (
 var CasesMTPPK_MGT = test.Cases{
 	{
 		N:          "1. МТППК - МГТ, VISA",
-		CardSystem: processing.CardSystem_VISA,
+		CardSystem: processing.CardSystem_MIR,
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypeStartAggregate,
@@ -58,7 +58,7 @@ var CasesMTPPK_MGT = test.Cases{
 	},
 	{
 		N:          "2. МТППК - МГТ, VISA",
-		CardSystem: processing.CardSystem_VISA,
+		CardSystem: processing.CardSystem_MIR,
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,

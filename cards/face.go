@@ -9,7 +9,7 @@ import (
 var FaceList = test.Cases{
 	{
 		N:                    "1. Face list",
-		CardSystem:           processing.CardSystem_VISA,
+		CardSystem:           processing.CardSystem_MIR,
 		SkipIdempotencyCheck: true,
 		T: test.T{
 			&test.CardGetFull{

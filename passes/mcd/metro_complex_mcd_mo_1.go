@@ -905,7 +905,7 @@ var CasesComplexMCDMOPartOne = test.Cases{
 	},
 	{
 		N:          "22. MCD MSK1 - MCD MSK2 - MCD MO2", //
-		CardSystem: processing.CardSystem_VISA,
+		CardSystem: processing.CardSystem_MIR,
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,

@@ -10,7 +10,7 @@ import (
 var CardsStopList = test.Cases{
 	{
 		N:                    "1. Stop list",
-		CardSystem:           processing.CardSystem_VISA,
+		CardSystem:           processing.CardSystem_MIR,
 		SkipIdempotencyCheck: true,
 		T: test.T{
 			&test.Pass{

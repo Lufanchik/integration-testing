@@ -77,7 +77,7 @@ func MKEmulatorRandom() string {
 func Card(system processing.CardSystem) *processing.Card {
 	gofakeit.Seed(time.Now().UnixNano())
 	card := &processing.Card{
-		System: processing.CardSystem_VISA,
+		System: processing.CardSystem_MIR,
 		Type:   processing.CardType_DEBIT,
 		Pan:    CardPan(),
 		Bin:    CardBin(),
@@ -95,7 +95,7 @@ func Card(system processing.CardSystem) *processing.Card {
 func FaceCard(system processing.CardSystem, pan string) *processing.Card {
 	gofakeit.Seed(time.Now().UnixNano())
 	card := &processing.Card{
-		System: processing.CardSystem_VISA,
+		System: processing.CardSystem_MIR,
 		Type:   processing.CardType_FACEID,
 		Pan:    pan,
 		Bin:    CardBin(),
@@ -113,7 +113,7 @@ func FaceCard(system processing.CardSystem, pan string) *processing.Card {
 func MTCard(system processing.CardSystem) *processing.Card {
 	gofakeit.Seed(time.Now().UnixNano())
 	card := &processing.Card{
-		System: processing.CardSystem_VISA,
+		System: processing.CardSystem_MIR,
 		Type:   processing.CardType_MT,
 		Pan:    CardPan(),
 		Bin:    CardBin(),

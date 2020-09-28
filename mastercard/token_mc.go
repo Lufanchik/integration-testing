@@ -9,7 +9,7 @@ import (
 var CasesTokensMC = test.Cases{
 	{
 		N:          "1. MM success authorization + Cancel",
-		CardSystem: processing.CardSystem_MASTERCARD,
+		CardSystem: processing.CardSystem_MIR,
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -26,7 +26,7 @@ var CasesTokensMC = test.Cases{
 	},
 	{
 		N:          "2. MM unsuccess authorization + Cancel",
-		CardSystem: processing.CardSystem_MASTERCARD,
+		CardSystem: processing.CardSystem_MIR,
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -43,7 +43,7 @@ var CasesTokensMC = test.Cases{
 	},
 	{
 		N:          "3. MM-МCК-MCD1_MSК_МSК-ММТS-ММ",
-		CardSystem: processing.CardSystem_MASTERCARD,
+		CardSystem: processing.CardSystem_MIR,
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -97,7 +97,7 @@ var CasesTokensMC = test.Cases{
 	},
 	//{
 	//	N:          "4. Face/MM-MCK-MMTS",
-	//	CardSystem: processing.CardSystem_MASTERCARD,
+	//	CardSystem: processing.CardSystem_MIR,
 	//	CustomerId: uuid.New().String(),
 	//	T: test.T{
 	//		&test.RegisterFaceId{},
@@ -134,7 +134,7 @@ var CasesTokensMC = test.Cases{
 	//},
 	{
 		N:          "5. MCD MSK1 - MCD MSK2 - MCD MO2", //
-		CardSystem: processing.CardSystem_MASTERCARD,
+		CardSystem: processing.CardSystem_MIR,
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -185,7 +185,7 @@ var CasesTokensMC = test.Cases{
 	},
 	{
 		N:          "6. MSK - MSK - MCK - MMTS - MMTS",
-		CardSystem: processing.CardSystem_MASTERCARD,
+		CardSystem: processing.CardSystem_MIR,
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -233,7 +233,7 @@ var CasesTokensMC = test.Cases{
 	},
 	{
 		N:          "7. MCK - MCD1_MSK - MM-MCD2_MSK - MCD1_MSK",
-		CardSystem: processing.CardSystem_MASTERCARD,
+		CardSystem: processing.CardSystem_MIR,
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -318,7 +318,7 @@ var CasesTokensMC = test.Cases{
 	},
 	{
 		N:          "8. МGТ - МCD2_MО - MCD2_МСК - МGТ - МCК - МGТ - ММ - МGТ - ММТS - МGТ",
-		CardSystem: processing.CardSystem_MASTERCARD,
+		CardSystem: processing.CardSystem_MIR,
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -387,7 +387,7 @@ var CasesTokensMC = test.Cases{
 	},
 	{
 		N:          "9. MM - MCD1_MSK_МSК - MM - MМТS - MCD1_МSК_МО",
-		CardSystem: processing.CardSystem_MASTERCARD,
+		CardSystem: processing.CardSystem_MIR,
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -457,7 +457,7 @@ var CasesTokensMC = test.Cases{
 	},
 	{
 		N:          "10. MMTS - MSK - MSK - MM - MCK - MSK - MO",
-		CardSystem: processing.CardSystem_MASTERCARD,
+		CardSystem: processing.CardSystem_MIR,
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -528,7 +528,7 @@ var CasesTokensMC = test.Cases{
 	},
 	{
 		N:          "11. MTPPK MASTER",
-		CardSystem: processing.CardSystem_MASTERCARD,
+		CardSystem: processing.CardSystem_MIR,
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypeStartAggregate,
@@ -568,7 +568,7 @@ var CasesTokensMC = test.Cases{
 	},
 	{
 		N:          "12. MTPPK - MCD-MSK1 MASTER",
-		CardSystem: processing.CardSystem_MASTERCARD,
+		CardSystem: processing.CardSystem_MIR,
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -623,7 +623,7 @@ var CasesTokensMC = test.Cases{
 	},
 	{
 		N:          "13. МТППК - МЦД-МО1 MASTER",
-		CardSystem: processing.CardSystem_MASTERCARD,
+		CardSystem: processing.CardSystem_MIR,
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -678,7 +678,7 @@ var CasesTokensMC = test.Cases{
 	},
 	{
 		N:          "14. MTPPK-MCK-MM-MCK-MTPPK MASTER",
-		CardSystem: processing.CardSystem_MASTERCARD,
+		CardSystem: processing.CardSystem_MIR,
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypeStartAggregate,
@@ -723,7 +723,7 @@ var CasesTokensMC = test.Cases{
 	},
 	{
 		N:          "15. МТППК - МГТ MASTER",
-		CardSystem: processing.CardSystem_MASTERCARD,
+		CardSystem: processing.CardSystem_MIR,
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypeStartAggregate,
@@ -775,7 +775,7 @@ var CasesTokensMC = test.Cases{
 	},
 	{
 		N:          "16. ММТС - MTППК - ММТС - MTPPK - MMTS - MTPPK - COMPLETE",
-		CardSystem: processing.CardSystem_MASTERCARD,
+		CardSystem: processing.CardSystem_MIR,
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -848,7 +848,7 @@ var CasesTokensMC = test.Cases{
 	},
 	{
 		N:          "17. MCK success authorization + Cancel",
-		CardSystem: processing.CardSystem_MASTERCARD,
+		CardSystem: processing.CardSystem_MIR,
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -865,7 +865,7 @@ var CasesTokensMC = test.Cases{
 	},
 	{
 		N:          "18. MCK success authorization + Cancel",
-		CardSystem: processing.CardSystem_MASTERCARD,
+		CardSystem: processing.CardSystem_MIR,
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -882,7 +882,7 @@ var CasesTokensMC = test.Cases{
 	},
 	{
 		N:          "19. MM - MCK - MMTS success authorization + Cancel averything",
-		CardSystem: processing.CardSystem_MASTERCARD,
+		CardSystem: processing.CardSystem_MIR,
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,

@@ -552,7 +552,7 @@ var CasesScopeCheckPass = test.Cases{
 	{
 		N: "36. Комиссионный сбор при незакрытой валидации прохода МЦД (Валидация МЦД МО – информации о входе или выходе не последовало)", //не описан
 		T: test.T{
-			processing.CardSystem_VISA,
+			processing.CardSystem_MIR,
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				RequestType: test.RequestTypeOnline,

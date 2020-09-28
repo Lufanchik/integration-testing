@@ -9,7 +9,7 @@ import (
 var CasesMTPPK_MCD_MSK = test.Cases{
 	{
 		N:          "1. МТППК - МЦД-МСК1 VISA",
-		CardSystem: processing.CardSystem_VISA,
+		CardSystem: processing.CardSystem_MIR,
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -60,7 +60,7 @@ var CasesMTPPK_MCD_MSK = test.Cases{
 	},
 	{
 		N:          "2. МТППК - МЦД-МСК2 VISA",
-		CardSystem: processing.CardSystem_MASTERCARD,
+		CardSystem: processing.CardSystem_MIR,
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,

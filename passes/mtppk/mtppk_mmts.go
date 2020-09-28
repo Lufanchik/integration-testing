@@ -9,7 +9,7 @@ import (
 var CasesMTPPK_single = test.Cases{
 	{
 		N:          "1. ММТС - MTППК - ММТС - MTPPK - MMTS - MTPPK - COMPLETE",
-		CardSystem: processing.CardSystem_VISA,
+		CardSystem: processing.CardSystem_MIR,
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,

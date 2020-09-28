@@ -10,7 +10,7 @@ import (
 var CaseTWPGReverseOrder = test.Cases{
 	{
 		N:          "1. TWPG Reverse order",
-		CardSystem: processing.CardSystem_VISA,
+		CardSystem: processing.CardSystem_MIR,
 		CustomerId: uuid.New().String(),
 		T: test.T{
 			&test.TWPGCreateAndPayOrderStep{},

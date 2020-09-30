@@ -865,6 +865,8 @@ lab.dt.multicarta.ru/tp/auth-service v0.0.208/go.mod h1:ird3RUuY3l7os77Nndj1fD2b
 lab.dt.multicarta.ru/tp/calculator-service v0.0.82/go.mod h1:LJDEBuzmnUWsG/vYZf3hz8iGfZuN/FV/1frlMOAYepQ=
 lab.dt.multicarta.ru/tp/calculator-service v0.0.83/go.mod h1:KncJINlZLYJ3MohxRTdGaeDUYIKzDrknlo/hk+z6SSo=
 lab.dt.multicarta.ru/tp/calculator-service v0.0.98/go.mod h1:l3lifrN//y8UvYslcXo2JLvUg+yGEUFFBj2w2sbLlNc=
+lab.dt.multicarta.ru/tp/calculator-service v0.0.100/go.mod h1:lxQPehXJSBEeJGSN0izVved/2sehygUqhtCzle3G8nM=
+lab.dt.multicarta.ru/tp/calculator-service v0.0.101/go.mod h1:bVoDH6spqqgYOZQhgrl2w5kNcb1VPb7YMXstYhEaj/E=
 lab.dt.multicarta.ru/tp/card-service v0.0.14/go.mod h1:RBcHgkizo42UTQYwWXWmahikd6Dda/3S6Z9eUNALTTg=
 lab.dt.multicarta.ru/tp/card-service v0.0.35/go.mod h1:05uNQQcVqltK5tdOdiJvhzaDe2YFAVMuQ74e7VVAtjk=
 lab.dt.multicarta.ru/tp/common v0.0.303/go.mod h1:13FR4zpvHH2tDG8tgvUyJOrJeWEmkYn79HsH5kNevZs=

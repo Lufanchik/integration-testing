@@ -40,7 +40,7 @@ func Test_1_1(t *testing.T) {
 		now := int(time.Now().UnixNano())
 
 		req := []byte(`{
-			"pan": "61312C7296E8F21FC86A237E632C34FD10FE7C532A130F98EBFA4E037DB672A4",
+			"pan": "61312C7296E8F21FC86A237E632C34FD10FE7C532A130F98EBFA4E037DB672A6",
 			"time": ` + strconv.Itoa(now) + `
 		}`)
 

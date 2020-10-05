@@ -2,11 +2,6 @@ module lab.dt.multicarta.ru/tp/integration-testing
 
 go 1.14
 
-replace (
-	lab.dt.multicarta.ru/tp/common => ../common
-	lab.dt.multicarta.ru/tp/pass-service => ../pass-service
-)
-
 require (
 	github.com/ajg/form v1.5.1 // indirect
 	github.com/brianvoe/gofakeit v3.18.0+incompatible
@@ -19,10 +14,10 @@ require (
 	github.com/imkira/go-interpol v1.1.0 // indirect
 	github.com/jinzhu/copier v0.0.0-20190924061706-b57f9002281a
 	github.com/k0kubun/colorstring v0.0.0-20150214042306-9440f1994b88 // indirect
-	github.com/opentracing/opentracing-go v1.1.0
+	github.com/opentracing/opentracing-go v1.2.0
 	github.com/pkg/errors v0.9.1
-	github.com/prometheus/client_golang v1.5.1
-	github.com/prometheus/common v0.9.1
+	github.com/prometheus/client_golang v1.7.1
+	github.com/prometheus/common v0.12.0
 	github.com/sergi/go-diff v1.1.0 // indirect
 	github.com/stretchr/testify v1.6.1
 	github.com/xeipuuv/gojsonschema v1.2.0 // indirect
@@ -30,8 +25,8 @@ require (
 	github.com/yudai/gojsondiff v1.0.0 // indirect
 	github.com/yudai/golcs v0.0.0-20170316035057-ecda9a501e82 // indirect
 	github.com/yudai/pp v2.0.1+incompatible // indirect
-	lab.dt.multicarta.ru/tp/common v0.0.483
-	lab.dt.multicarta.ru/tp/pass-service v0.0.218
-	lab.dt.multicarta.ru/tp/web-api-gateway v0.0.58
+	lab.dt.multicarta.ru/tp/common v0.0.488
+	lab.dt.multicarta.ru/tp/pass-service v0.0.223
+	lab.dt.multicarta.ru/tp/web-api-gateway v0.0.88
 	moul.io/http2curl v1.0.0 // indirect
 )

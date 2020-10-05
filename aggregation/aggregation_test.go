@@ -99,12 +99,12 @@ func Test_1_1(t *testing.T) {
 						"id": "3213",
 						"station": "2000285",
 						"direction": 1,
-						"sub_carrier": 3
+						"sub_carrier": 1
 					},
 				"card": {
 						"system": 2,
 						"type": 1,
-						"pan": "61312C7296E8F21FC86A237E632C34FD10FE7C532A130F98EBFA4E037DB67210",
+						"pan": "61312C7296E8F21FC86A237E632C34FD10FE7C532A130F98EBFA4E037DB67212",
 						"bin": 47617310,
 						"exp": "1224",
 						"emv": "` + test.CardEmvCorrect() + `",

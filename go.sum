@@ -1110,6 +1110,8 @@ lab.dt.multicarta.ru/tp/common v0.0.483/go.mod h1:VltoRp8NJALkB1MZcJC1VdoezwcnBW
 lab.dt.multicarta.ru/tp/common v0.0.486/go.mod h1:VltoRp8NJALkB1MZcJC1VdoezwcnBWhCGjzDdaNoLFA=
 lab.dt.multicarta.ru/tp/common v0.0.488 h1:IJlVz8pO2yEdmpLd7P7YueSV+3gap1qVFTjmwoTMXMg=
 lab.dt.multicarta.ru/tp/common v0.0.488/go.mod h1:VltoRp8NJALkB1MZcJC1VdoezwcnBWhCGjzDdaNoLFA=
+lab.dt.multicarta.ru/tp/common v0.0.489 h1:5x0t7fZBq/lwYcWEhfTK21MxcL1WNE/oX0DRAAigh4w=
+lab.dt.multicarta.ru/tp/common v0.0.489/go.mod h1:VltoRp8NJALkB1MZcJC1VdoezwcnBWhCGjzDdaNoLFA=
 lab.dt.multicarta.ru/tp/goosev2 v0.0.0-20200403120043-750876720ce5/go.mod h1:gHjciWYPazwQj6dakLctqS9VIVi2rzOBKtenMVc/YW0=
 lab.dt.multicarta.ru/tp/goosev2 v0.0.0-20200507131718-1cd82fe18227/go.mod h1:gHjciWYPazwQj6dakLctqS9VIVi2rzOBKtenMVc/YW0=
 lab.dt.multicarta.ru/tp/mcc-emulator v0.0.1/go.mod h1:4tHcCkmVnUdrDjBCONt68Pjyr5XDV2oNWTGF3gCTHG4=

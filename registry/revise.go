@@ -21,7 +21,7 @@ var CasesReviseGetTaskList = test.Cases{
 			},
 		},
 	},
-	{
+	/*{
 		N: "200 get task list",
 		T: test.T{
 			&test.Revise{
@@ -38,7 +38,7 @@ var CasesReviseGetTaskList = test.Cases{
 				Response: &crud.EntitiesResponse{},
 			},
 		},
-	},
+	},*/
 	{
 		N: "200 get expires link",
 		T: test.T{
@@ -106,7 +106,7 @@ var CasesReviseGetTaskList = test.Cases{
 			},
 		},
 	},
-	{
+	/*{
 		N: "200 playground",
 		T: test.T{
 			&test.Revise{
@@ -123,5 +123,5 @@ var CasesReviseGetTaskList = test.Cases{
 				Response: &crud.Playground{},
 			},
 		},
-	},
+	},*/
 }

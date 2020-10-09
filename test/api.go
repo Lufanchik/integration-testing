@@ -157,6 +157,7 @@ func ValidatePass(t *testing.T, p *Pass, parent *Pass, ingress *Pass, isFirst bo
 
 	if ingress != nil {
 		expectPass.IngressId = ingress.id
+		expectPass.IngressCarrierTapId = ingress.carrierID
 	}
 
 	if p.isParent {

@@ -157,7 +157,7 @@ func ValidatePass(t *testing.T, p *Pass, parent *Pass, ingress *Pass, isFirst bo
 
 	if ingress != nil {
 		expectPass.IngressId = ingress.id
-		//expectPass.IngressCarrierTapId = ingress.carrierID
+		expectPass.IngressCarrierTapId = ingress.carrierID
 	}
 
 	if p.isParent {
@@ -181,6 +181,41 @@ func ValidatePass(t *testing.T, p *Pass, parent *Pass, ingress *Pass, isFirst bo
 	case PaymentTypePrepayed:
 		expectPass.IsFree = false
 		expectPass.IsAuth = false
+	}
+
+	//aggregate by card system(VISA, MASTERCARD)
+	if isAggeregateByCardSystemCarrier(p.Carrier, p.card.System) {
+		//проход является агрегационным
+		expectPass.IsAggregate = true
+
+		//aggregation_id указывает на открывайющий агрегацию проход
+		if p.aggregate != nil && !isFirst {
+			expectPass.AggregateId = p.aggregate.id
+		}
+
+		//до комплита
+		if isFirst {
+			expectPass.IsAuth = false
+			expectPass.Sum = 0
+			expectPass.IsAuthSend = false
+		} else {
+			//после комплита
+			expectPass.Sum = getSumByCarrier(p)
+			expectPass.IsAuthSend = true
+		}
+
+		//является ли проход инициирующим агрегацию
+		if p.IsInitAggregate {
+			//чеккард идет по инициирующему агрегацию проходу
+			expectPass.IsSuccessCheckCard = true
+			if !isFirst {
+				//после комплита мы можем сравнить сумму агрегации ,посланную на авторизацию
+				expectPass.SumAggregate = p.ExpectedSumAggregate
+				expectPass.IsInitAggregate = true
+			}
+		} else {
+			expectPass.IsSuccessCheckCard = false
+		}
 	}
 
 	if isAggregate(p) {
@@ -290,7 +325,7 @@ func ValidatePass(t *testing.T, p *Pass, parent *Pass, ingress *Pass, isFirst bo
 	//}
 
 	for !isEqual {
-		fmt.Println("pass not equal")
+		fmt.Println("pass not equal - " + t.Name())
 		time.Sleep(TimeAfterRequest)
 		passDB, err = ps.GetPass(ctx, &pass.PassRequest{
 			Id: p.id,
@@ -302,7 +337,8 @@ func ValidatePass(t *testing.T, p *Pass, parent *Pass, ingress *Pass, isFirst bo
 
 		isEqual = assert.ObjectsAreEqual(expectPass, passDB)
 		counter++
-		if counter > 200 {
+		//if counter > 200 {
+		if counter > 2 {
 			break
 		}
 	}
@@ -518,6 +554,30 @@ func ParkingApi(t *testing.T, card *processing.Card, pr *Parking) {
 	err := jsonpb.Unmarshal(strings.NewReader(object), response)
 	require.NoError(t, err)
 	require.Equal(t, resp, response)
+}
+
+func CompleteCalcApi(t *testing.T, aggregatePasses []*Pass, pan string) {
+	//check passes pan
+	for _, value := range aggregatePasses {
+		require.NotNil(t, value.card)
+		require.Equal(t, pan, value.card.Pan)
+	}
+
+	//made complete
+	req, resp := CompleteWithCalculateRequest(pan)
+	url := "/twirp/proto.WebAPIGateway/ProcessCompleteWithCalculate"
+	r := httpWebApi.POST(url).WithJSON(req).
+		Expect().
+		Status(http.StatusOK)
+
+	object := r.Body().Raw()
+	logRequest(url, r)
+	response := &processing.CompleteWithCalculateResponse{}
+	err := jsonpb.Unmarshal(strings.NewReader(object), response)
+	require.NoError(t, err)
+	require.Equal(t, resp, response)
+
+	//check passes after complete
 }
 
 func CompleteApi(t *testing.T, pass *Pass, passes []*Pass, sum int) {

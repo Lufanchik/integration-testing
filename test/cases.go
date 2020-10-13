@@ -29,6 +29,9 @@ type (
 		CustomerId           string
 		TWPGOrderId          uint64
 		SkipIdempotencyCheck bool
+		//Проходы по одной карте
+		Card           *processing.Card
+		NotDoubleCheck bool
 	}
 
 	ProcessRevisePass struct {
@@ -78,23 +81,26 @@ type (
 		// проход должен быть таким же, как указанный
 		Equal int
 		// до авторизуем восстановленный проход
-		RevisePass   int
-		tapResponse  PassResponser
-		passResponse PassResponser
-		id           string
-		carrierID    string
-		tapRequest   *processing.TapRequest
-		timeRequest  uint64
-		card         *processing.Card
-		parent       *Pass
-		equal        *Pass
-		ingress      *Pass
-		aggregate    *Pass
-		isParent     bool
-		timeToWait   time.Duration
-		isCancel     bool
-		isComplete   bool
-		completeSum  uint32
+		RevisePass      int
+		tapResponse     PassResponser
+		passResponse    PassResponser
+		id              string
+		carrierID       string
+		tapRequest      *processing.TapRequest
+		timeRequest     uint64
+		card            *processing.Card
+		parent          *Pass
+		equal           *Pass
+		ingress         *Pass
+		aggregate       *Pass
+		isParent        bool
+		timeToWait      time.Duration
+		isCancel        bool
+		isComplete      bool
+		completeSum     uint32
+		IsInitAggregate bool
+		//сумма, на которую мы ожидаем агрегацию
+		ExpectedSumAggregate uint32
 	}
 
 	//генерация прохода
@@ -158,6 +164,11 @@ type (
 		StartPass int
 		Passes    []int
 		Sum       int
+	}
+
+	//закрытие периода агрегации по карте
+	CompleteWithCalculate struct {
+		Pan string
 	}
 
 	WebAPIPasses struct {

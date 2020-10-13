@@ -227,7 +227,11 @@ func Run(t *testing.T, cases Cases, rt RequestType) {
 		} else if cases[k].PassType == pass.PassType_PASS_MT {
 			nc[k].card = MTCard(cases[k].CardSystem)
 		} else {
-			nc[k].card = Card(cases[k].CardSystem)
+			if nc[k].c.Card != nil {
+				nc[k].card = nc[k].c.Card
+			} else {
+				nc[k].card = Card(cases[k].CardSystem)
+			}
 		}
 		pan, err := sha.Generate(nc[k].card.Pan)
 		if err != nil {
@@ -325,6 +329,21 @@ func Run(t *testing.T, cases Cases, rt RequestType) {
 				pr, ok := step.(*Parking)
 				if ok {
 					ParkingApi(t, ncc.card, pr)
+				}
+
+				cm_calc, ok := step.(*CompleteWithCalculate)
+				if ok {
+					var aggregatePasses []*Pass
+					for _, v := range scenario.T {
+						ps, ok := v.(*Pass)
+						if ok {
+							aggregatePasses = append(aggregatePasses, ps)
+						}
+					}
+
+					if len(aggregatePasses) != 0 {
+						CompleteCalcApi(t, aggregatePasses, cm_calc.Pan)
+					}
 				}
 
 				cm, ok := step.(*Complete)
@@ -478,10 +497,9 @@ func Run(t *testing.T, cases Cases, rt RequestType) {
 						fmt.Println(fmt.Sprintf("check 1 = %d", N+1))
 						ConfigurePass(t, secondPass, ncc.carrierIds[N], ncc.card)
 						ValidatePass(t, secondPass, secondPass.parent, secondPass.ingress, false)
-						if !isAggregate(secondPass) {
+						if !isAggregate(secondPass) && !isAggeregateByCardSystemCarrier(secondPass.Carrier, secondPass.card.System) {
 							AuthStatus(t, secondPass)
 						}
-
 						secondPass.Terminal = secondPass.tapRequest.Tap.Terminal
 
 						_, respTap := TapBySubCarrier(t, secondPass, ncc.card)
@@ -491,8 +509,11 @@ func Run(t *testing.T, cases Cases, rt RequestType) {
 						require.Equal(t, respTap.GetId(), oldPass.tapResponse.GetId())
 						require.Equal(t, respTap.GetId(), oldPass.passResponse.GetId())
 						require.Equal(t, secondPass.id, oldPass.id)
-						ValidatePass(t, secondPass, secondPass.parent, secondPass.ingress, false)
-						if !isAggregate(secondPass) {
+						if !ncc.c.NotDoubleCheck {
+							ValidatePass(t, secondPass, secondPass.parent, secondPass.ingress, false)
+						}
+
+						if !isAggregate(secondPass) && !isAggeregateByCardSystemCarrier(secondPass.Carrier, secondPass.card.System) {
 							AuthStatus(t, secondPass)
 						}
 					}
@@ -526,8 +547,10 @@ func Run(t *testing.T, cases Cases, rt RequestType) {
 					if ok && !thirdPass.isCancel && thirdPass.faceId == "" {
 						fmt.Println(fmt.Sprintf("check 2 = %d", N+1))
 						ConfigurePass(t, thirdPass, ncc.carrierIds[N], ncc.card)
-						ValidatePass(t, thirdPass, thirdPass.parent, thirdPass.ingress, false)
-						if !isAggregate(thirdPass) {
+						if !ncc.c.NotDoubleCheck {
+							ValidatePass(t, thirdPass, thirdPass.parent, thirdPass.ingress, false)
+						}
+						if !isAggregate(thirdPass) && !isAggeregateByCardSystemCarrier(thirdPass.Carrier, thirdPass.card.System) {
 							AuthStatus(t, thirdPass)
 						}
 						_, respTap := TapBySubCarrier(t, thirdPass, ncc.card)
@@ -536,8 +559,10 @@ func Run(t *testing.T, cases Cases, rt RequestType) {
 						oldPass := results[casesNum][N]
 						require.Equal(t, respTap.GetId(), oldPass.tapResponse.GetId())
 						require.Equal(t, respTap.GetId(), oldPass.passResponse.GetId())
-						ValidatePass(t, thirdPass, thirdPass.parent, thirdPass.ingress, false)
-						if !isAggregate(thirdPass) {
+						if !ncc.c.NotDoubleCheck {
+							ValidatePass(t, thirdPass, thirdPass.parent, thirdPass.ingress, false)
+						}
+						if !isAggregate(thirdPass) && !isAggeregateByCardSystemCarrier(thirdPass.Carrier, thirdPass.card.System) {
 							AuthStatus(t, thirdPass)
 						}
 					}

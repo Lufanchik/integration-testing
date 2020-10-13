@@ -5,6 +5,7 @@ import (
 	"github.com/brianvoe/gofakeit"
 	"github.com/gavv/httpexpect"
 	"github.com/google/uuid"
+	"lab.dt.multicarta.ru/tp/common/global"
 	authService "lab.dt.multicarta.ru/tp/common/messages/auth"
 	"lab.dt.multicarta.ru/tp/common/messages/cards"
 	"lab.dt.multicarta.ru/tp/common/messages/carriers"
@@ -395,6 +396,17 @@ func DelCommentRequest(c *comments.Comment) *comments.DeleteCommentRequest {
 	return request
 }
 
+func CompleteWithCalculateRequest(pan string) (*processing.CompleteWithCalculateRequest, *processing.CompleteWithCalculateResponse) {
+	request := &processing.CompleteWithCalculateRequest{
+		Pan:  pan,
+		Time: NowBackup(),
+	}
+
+	resp := &processing.CompleteWithCalculateResponse{}
+
+	return request, resp
+}
+
 func CompleteRequest(pass *Pass, passes []*Pass, sum int) (*processing.CompleteRequest, *processing.CompleteResponse) {
 	request := &processing.CompleteRequest{
 		Id:      pass.id,
@@ -427,6 +439,7 @@ func AuthStatusRequest(p *Pass) (*processing.AuthRequest, *processing.AuthRespon
 	response := &processing.AuthResponse{
 		Result: processing.AuthResponse_SUCCESS_RESULT,
 	}
+
 	switch p.PaymentType {
 	case PaymentTypePayment:
 		response.Status = processing.AuthResponse_SUCCESS_STATUS
@@ -502,7 +515,27 @@ func AuthStatusRequest(p *Pass) (*processing.AuthRequest, *processing.AuthRespon
 		response.Result = processing.AuthResponse_FAILURE_AUTH_NOT_FOUND
 	}
 
+	//aggregate by card system
+	if isAggeregateByCardSystemCarrier(p.Carrier, p.card.System) {
+		response.Status = processing.AuthResponse_SUCCESS_AGGREGATE
+
+		response.Auth = &processing.Auth{
+			Sum:  0,
+			Type: processing.Auth_AGGREGATE,
+		}
+		response.Resolution = processing.AuthResponse_NONE_RESOLUTION
+	}
+
 	return request, response
+}
+
+//isAggeregateByCardSystemCarrier признак агрегационной модели с учетом перевозчика и карты
+func isAggeregateByCardSystemCarrier(carrier carriers.Carrier, ps processing.CardSystem) bool {
+	if carrier != carriers.Carrier_MM && carrier != carriers.Carrier_MGT {
+		return false
+	}
+
+	return global.IsAggregate(ps, carrier)
 }
 
 func isAggregate(p *Pass) bool {

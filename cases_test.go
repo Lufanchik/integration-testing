@@ -5,6 +5,7 @@ import (
 	mk_emulator "lab.dt.multicarta.ru/tp/integration-testing/mk-emulator"
 	"lab.dt.multicarta.ru/tp/integration-testing/parking"
 	"lab.dt.multicarta.ru/tp/integration-testing/passes"
+	"lab.dt.multicarta.ru/tp/integration-testing/passes/aggregate"
 	"lab.dt.multicarta.ru/tp/integration-testing/passes/mcd"
 	"lab.dt.multicarta.ru/tp/integration-testing/passes/mck"
 	"lab.dt.multicarta.ru/tp/integration-testing/passes/mgt"
@@ -21,6 +22,7 @@ func init() {
 	//общие кейсы проходов
 	//CasesCancel 25 26 27 пока на доработке
 	AddP(passes.CasesCancel)
+	AddP(aggregate.MetroAggregate)
 
 	//МТППК
 	//AddP(mtppk.CasesMTPPKPasses)

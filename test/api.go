@@ -338,8 +338,7 @@ func ValidatePass(t *testing.T, p *Pass, parent *Pass, ingress *Pass, isFirst bo
 
 		isEqual = assert.ObjectsAreEqual(expectPass, passDB)
 		counter++
-		//if counter > 200 {
-		if counter > 2 {
+		if counter > 200 {
 			break
 		}
 	}

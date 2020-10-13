@@ -17,5 +17,5 @@ var (
 	ResolveApiUrl     = os.Getenv("RESOLVE_SERVICE_URL")
 	TWPGApiUrl        = os.Getenv("TWPG_SERVICE_URL")
 	GlobalRequestType = RequestTypeOnline
-	TimeAfterRequest  = time.Millisecond * 50 * 10
+	TimeAfterRequest  = time.Millisecond * 50
 )

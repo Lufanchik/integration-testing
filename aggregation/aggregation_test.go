@@ -104,7 +104,7 @@ func Test_1_1(t *testing.T) {
 				"card": {
 						"system": 2,
 						"type": 1,
-						"pan": "61312C7296E8F21FC86A237E632C34FD10FE7C532A130F98EBFA4E037DB67212",
+						"pan": "61312C7296E8F21FC86A237E632C34FD10FE7C532A130F98EBFA4E037DB67112",
 						"bin": 47617310,
 						"exp": "1224",
 						"emv": "` + test.CardEmvCorrect() + `",

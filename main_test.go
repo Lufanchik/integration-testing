@@ -5,7 +5,7 @@ import (
 	"github.com/jinzhu/copier"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 	"github.com/stretchr/testify/require"
-	"lab.dt.multicarta.ru/tp/integration-testing/passes/aggregate"
+	"lab.dt.multicarta.ru/tp/integration-testing/comments"
 	"lab.dt.multicarta.ru/tp/integration-testing/test"
 	"net/http"
 	"net/http/pprof"
@@ -140,7 +140,8 @@ func TestFull(t *testing.T) {
 func TestSimple(t *testing.T) {
 
 	//test.Run(t, webapi.ReaderCase, test.RequestTypeOffline)
-	test.Run(t, aggregate.MetroAggregate, test.RequestTypeOffline)
+	//test.Run(t, aggregate.MetroAggregate, test.RequestTypeOffline)
+	test.RunApiRequest(t, comments.CasesCommentsCRUD, test.RequestTypeOffline)
 	//test.Run(t, aggregate.MgtAggregate, test.RequestTypeOffline)
 	//test.Run(t, cards.CardsStopList, test.RequestTypeOffline)
 	//test.Run(t, cards.FaceList, test.RequestTypeOffline)

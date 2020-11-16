@@ -42,3 +42,18 @@ test14:
 
 test15:
 	go test -test.run ^Test3_5_4_2_3$
+
+test16:
+	go test -test.run ^Test3_5_4_3_1$
+
+test17:
+	go test -test.run ^Test3_5_4_3_2$
+
+test18:
+	go test -test.run ^Test3_5_4_3_3$
+
+test19:
+	go test -test.run ^Test3_5_4_4_1$
+
+test20:
+	go test -test.run ^Test3_5_4_4_2$

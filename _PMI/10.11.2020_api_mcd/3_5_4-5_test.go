@@ -15,8 +15,8 @@ import (
 	"time"
 )
 
-//вход в МЦД МО1, выход в МЦД МСК 2
-func Test3_5_4_2(t *testing.T) {
+//вход в МЦД МО2, выход в МЦД МСК2.
+func Test3_5_4_5(t *testing.T) {
 	pan := CardPan()
 	responseE := &processing.OnlinePassResponse{}
 	{
@@ -32,9 +32,9 @@ func Test3_5_4_2(t *testing.T) {
 				"sign": "test",
 				"terminal": {
 					"id": "100",
-					"station": "2000055",
+					"station": "2000065",
 					"direction": 1,
-					"sub_carrier": 8
+					"sub_carrier": 6
 			},
 			"card": {
 					"system": 4,
@@ -112,7 +112,7 @@ func Test3_5_4_2(t *testing.T) {
 					"id": "100",
 					"station": "2001250",
 					"direction": 2,
-					"sub_carrier": 7
+					"sub_carrier": 8
 			},
 			"card": {
 					"system": 4,

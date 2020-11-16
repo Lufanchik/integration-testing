@@ -2,6 +2,10 @@ module lab.dt.multicarta.ru/tp/integration-testing
 
 go 1.14
 
+replace (
+	lab.dt.multicarta.ru/tp/common => ../common
+)
+
 require (
 	github.com/ajg/form v1.5.1 // indirect
 	github.com/brianvoe/gofakeit v3.18.0+incompatible

@@ -33,3 +33,12 @@ test11:
 
 test12:
 	go test -test.run ^Test3_5_4_1_3$
+
+test13:
+	go test -test.run ^Test3_5_4_2_1$
+
+test14:
+	go test -test.run ^Test3_5_4_2_2$
+
+test15:
+	go test -test.run ^Test3_5_4_2_3$

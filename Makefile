@@ -32,4 +32,4 @@ simple:
 
 local: full
 prod: simple
-test: simple
+test: full

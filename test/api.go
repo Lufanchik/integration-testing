@@ -3,6 +3,7 @@ package test
 import (
 	"context"
 	"crypto/md5"
+	"encoding/json"
 	"errors"
 	"fmt"
 	"github.com/gavv/httpexpect"
@@ -715,17 +716,22 @@ func ProcessRevisePassRequest(t *testing.T, prp *ProcessRevisePass) {
 }
 
 func CommentsCheck(t *testing.T, crud *CommentsCRUD) {
+	atClaims := GetAtClaims()
+	buf, err := json.Marshal(atClaims.Info)
+
 	// Add comment
 	addReq := AddCommentRequest(crud)
 	addCommentURL := "/twirp/proto.CommentsService/AddComment"
-	addR := httpCommentService.POST(addCommentURL).WithJSON(addReq).
+	addR := httpCommentService.POST(addCommentURL).
+		WithHeader("user", string(buf)).
+		WithJSON(addReq).
 		Expect().
 		Status(http.StatusOK)
 	logRequest(addCommentURL, addR)
 
 	addCommentResponse := &comments.AddCommentResponse{}
 	object := addR.Body().Raw()
-	err := jsonpb.Unmarshal(strings.NewReader(object), addCommentResponse)
+	err = jsonpb.Unmarshal(strings.NewReader(object), addCommentResponse)
 	require.NoError(t, err)
 	addReq.Comment.Id = addCommentResponse.CommentId
 
@@ -750,7 +756,7 @@ func CommentsCheck(t *testing.T, crud *CommentsCRUD) {
 
 	require.Equal(t, addReq.Comment.Body, comment.Body)
 	require.Equal(t, addReq.Comment.EntityId, comment.EntityId)
-	require.Equal(t, addReq.Comment.UserId, comment.UserId)
+	require.Equal(t, atClaims.Info.Uuid, comment.UserId)
 
 	// Delete comments
 	delReq := DelCommentRequest(comment)

@@ -26,7 +26,8 @@ const (
 	//passUrl = "http://processing-api-gateway.stage.svc.cluster.local:9090"
 	//authUrl = "http://auth-service.stage.svc.cluster.local:9091"
 
-	onlinePass       = "/mcd/twirp/sirocco.ProcessingAPI/ProcessOnlinePass"
+	onlinePassMCD    = "/mcd/twirp/sirocco.ProcessingAPI/ProcessOnlinePass"
+	onlinePassMM     = "/mm/twirp/sirocco.ProcessingAPI/ProcessOnlinePass"
 	offlinePassMCD   = "/mcd/twirp/sirocco.ProcessingAPI/ProcessOfflinePass"
 	offlinePassMTPPK = "/mtppk/twirp/sirocco.ProcessingAPI/ProcessOfflinePass"
 	offlinePassAE    = "/ae/twirp/sirocco.ProcessingAPI/ProcessOfflinePass"

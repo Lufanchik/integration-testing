@@ -24,3 +24,12 @@ test8:
 
 test9:
 	go test -test.run ^Test3_5_4_5$
+
+test10:
+	go test -test.run ^Test3_5_4_1_1$
+
+test11:
+	go test -test.run ^Test3_5_4_1_2$
+
+test12:
+	go test -test.run ^Test3_5_4_1_3$

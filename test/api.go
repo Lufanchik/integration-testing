@@ -31,6 +31,8 @@ import (
 	"time"
 )
 
+var timeCount = 400
+
 func TapBySubCarrier(t *testing.T, p *Pass, card *processing.Card) (*processing.TapRequest, *processing.TapResponse) {
 	req, resp := TapRequest(p.SubCarrier, card, p)
 	u := "/" + p.Carrier.String() + "/twirp/sirocco.ProcessingAPI/ProcessTap"
@@ -337,7 +339,7 @@ func ValidatePass(t *testing.T, p *Pass, parent *Pass, ingress *Pass, isFirst bo
 
 		isEqual = assert.ObjectsAreEqual(expectPass, passDB)
 		counter++
-		if counter > 200 {
+		if counter > timeCount {
 			break
 		}
 	}
@@ -388,7 +390,7 @@ func AuthStatus(t *testing.T, p *Pass) {
 		resp, response, err = GetAuthStatus(p)
 		isEqual = assert.ObjectsAreEqual(resp, response)
 		counter++
-		if counter > 200 {
+		if counter > timeCount {
 			break
 		}
 	}
@@ -618,7 +620,7 @@ func WebAPI(t *testing.T, card *processing.Card, passes []*Pass) {
 		if len(response.Passes) == 0 {
 			time.Sleep(TimeAfterRequest)
 			counter++
-			if counter > 200 {
+			if counter > timeCount {
 				break
 			} else {
 				continue
@@ -705,7 +707,7 @@ func ProcessRevisePassRequest(t *testing.T, prp *ProcessRevisePass) {
 
 		isEqual = assert.ObjectsAreEqual(expectPass, passDB)
 		counter++
-		if counter > 200 {
+		if counter > timeCount {
 			break
 		}
 	}

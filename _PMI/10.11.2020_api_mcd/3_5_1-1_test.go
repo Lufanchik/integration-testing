@@ -21,11 +21,14 @@ import (
 )
 
 const (
-	passUrl = "http://localhost:9090"
-	authUrl = "http://localhost:9091"
+	passUrl       = "http://localhost:9090"
+	authUrl       = "http://localhost:9091"
+	calculatorUrl = "http://localhost:9098"
 	//passUrl = "http://processing-api-gateway.stage.svc.cluster.local:9090"
 	//authUrl = "http://auth-service.stage.svc.cluster.local:9091"
+	//calculatorUrl = "http://calculator-service.stage.svc.cluster.local:9098"
 
+	complete         = "/twirp/sirocco.CalculatorAPI/ProcessCompleteWithCalculate"
 	onlinePassMCD    = "/mcd/twirp/sirocco.ProcessingAPI/ProcessOnlinePass"
 	onlinePassMM     = "/mm/twirp/sirocco.ProcessingAPI/ProcessOnlinePass"
 	onlinePassAE     = "/ae/twirp/sirocco.ProcessingAPI/ProcessOnlinePass"

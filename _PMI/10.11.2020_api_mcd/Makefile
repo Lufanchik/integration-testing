@@ -75,3 +75,9 @@ test25:
 
 test26:
 	go test -test.run ^Test3_5_5_2$
+
+test27:
+	go test -test.run ^Test3_5_6_1$
+
+test28:
+	go test -test.run ^Test3_5_6_2$

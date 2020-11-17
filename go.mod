@@ -9,6 +9,7 @@ replace (
 require (
 	github.com/ajg/form v1.5.1 // indirect
 	github.com/brianvoe/gofakeit v3.18.0+incompatible
+	github.com/dgrijalva/jwt-go v3.2.0+incompatible
 	github.com/fatih/structs v1.1.0 // indirect
 	github.com/gavv/httpexpect v1.1.2
 	github.com/gavv/monotime v0.0.0-20190418164738-30dba4353424 // indirect

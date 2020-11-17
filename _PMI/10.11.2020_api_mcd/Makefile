@@ -57,3 +57,21 @@ test19:
 
 test20:
 	go test -test.run ^Test3_5_4_4_2$
+
+test21:
+	go test -test.run ^Test3_5_4_5_1$
+
+test22:
+	go test -test.run ^Test3_5_4_5_2$
+
+test23:
+	go test -test.run ^Test3_5_4_5_3$
+
+test24:
+	go test -test.run ^Test3_5_4_6_1$
+
+test25:
+	go test -test.run ^Test3_5_5_1$
+
+test26:
+	go test -test.run ^Test3_5_5_2$

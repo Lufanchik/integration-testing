@@ -28,6 +28,7 @@ const (
 
 	onlinePassMCD    = "/mcd/twirp/sirocco.ProcessingAPI/ProcessOnlinePass"
 	onlinePassMM     = "/mm/twirp/sirocco.ProcessingAPI/ProcessOnlinePass"
+	onlinePassAE     = "/ae/twirp/sirocco.ProcessingAPI/ProcessOnlinePass"
 	offlinePassMCD   = "/mcd/twirp/sirocco.ProcessingAPI/ProcessOfflinePass"
 	offlinePassMTPPK = "/mtppk/twirp/sirocco.ProcessingAPI/ProcessOfflinePass"
 	offlinePassAE    = "/ae/twirp/sirocco.ProcessingAPI/ProcessOfflinePass"

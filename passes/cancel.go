@@ -116,7 +116,7 @@ var CasesCancel = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     1,
-				ExpectedSum: 700,
+				ExpectedSum: 5100,
 			},
 			&test.Cancel{
 				Target: 1,
@@ -141,7 +141,7 @@ var CasesCancel = test.Cases{
 					Station:   "2000460", //НАХАБИНО
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4900,
+				ExpectedSum: 5100,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -178,7 +178,7 @@ var CasesCancel = test.Cases{
 					Station:   "2000460", //НАХАБИНО
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4900,
+				ExpectedSum: 5100,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -263,7 +263,7 @@ var CasesCancel = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     1,
-				ExpectedSum: 700,
+				ExpectedSum: 5100,
 			},
 			&test.Cancel{
 				Target: 1,
@@ -324,7 +324,7 @@ var CasesCancel = test.Cases{
 					Station:   "2001101", //ИННОВАЦИОННЫЙ ЦЕНТР
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4900,
+				ExpectedSum: 5100,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -508,7 +508,7 @@ var CasesCancel = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     1,
-				ExpectedSum: 700,
+				ExpectedSum: 5100,
 			},
 			&test.Cancel{
 				Target: 1,
@@ -533,7 +533,7 @@ var CasesCancel = test.Cases{
 					Station:   "2000460", //НАХАБИНО
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4900,
+				ExpectedSum: 5100,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -569,7 +569,7 @@ var CasesCancel = test.Cases{
 					Station:   "2000460", //НАХАБИНО
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4900,
+				ExpectedSum: 5100,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -652,7 +652,7 @@ var CasesCancel = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     1,
-				ExpectedSum: 700,
+				ExpectedSum: 5100,
 			},
 			&test.Cancel{
 				Target: 1,
@@ -677,7 +677,7 @@ var CasesCancel = test.Cases{
 					Station:   "2000685", //БАКОВКА
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4900,
+				ExpectedSum: 5100,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -713,7 +713,7 @@ var CasesCancel = test.Cases{
 					Station:   "2001101", //ИННОВАЦИОННЫЙ ЦЕНТР
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4900,
+				ExpectedSum: 5100,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,

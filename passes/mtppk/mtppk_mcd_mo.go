@@ -19,7 +19,7 @@ var CasesMTPPK_MCD_MO = test.Cases{
 					Station:   "2000115", //ЛОБНЯ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4900,
+				ExpectedSum: 5100,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -70,7 +70,7 @@ var CasesMTPPK_MCD_MO = test.Cases{
 					Station:   "2000065", //ПОДОЛЬСК
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4900,
+				ExpectedSum: 5100,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,

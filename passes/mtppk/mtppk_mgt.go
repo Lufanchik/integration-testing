@@ -70,7 +70,7 @@ var CasesMTPPK_MGT = test.Cases{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
 				RequestType: test.RequestTypeOnline,
-				//ExpectedSum: 4200,
+				//ExpectedSum: 4400,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeStartAggregate,
@@ -82,7 +82,7 @@ var CasesMTPPK_MGT = test.Cases{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
 				RequestType: test.RequestTypeOnline,
-				//ExpectedSum: 4200,
+				//ExpectedSum: 4400,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeAggregate,
@@ -102,7 +102,7 @@ var CasesMTPPK_MGT = test.Cases{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
 				RequestType: test.RequestTypeOffline,
-				//ExpectedSum: 4200,
+				//ExpectedSum: 4400,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeAggregate,
@@ -115,7 +115,7 @@ var CasesMTPPK_MGT = test.Cases{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
 				RequestType: test.RequestTypeOffline,
-				//ExpectedSum: 4200,
+				//ExpectedSum: 4400,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeStartAggregate,

@@ -23,7 +23,7 @@ var CasesMGT_3 = test.Cases{
 					Station:   "2001250", //МОСКВА ТОВАРНАЯ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4200,
+				ExpectedSum: 4400,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -100,7 +100,7 @@ var CasesMGT_3 = test.Cases{
 					Station:   "2000155", //ФИЛИ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4200,
+				ExpectedSum: 4400,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -177,7 +177,7 @@ var CasesMGT_3 = test.Cases{
 					Station:   "2001250", //МОСКВА ТОВАРНАЯ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4200,
+				ExpectedSum: 4400,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -522,7 +522,7 @@ var CasesMGT_3 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     4,
-				ExpectedSum: 700,
+				ExpectedSum: 5100,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -565,7 +565,7 @@ var CasesMGT_3 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     4,
-				ExpectedSum: 700,
+				ExpectedSum: 5100,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -628,7 +628,7 @@ var CasesMGT_3 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     8,
-				ExpectedSum: 700,
+				ExpectedSum: 5100,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -691,7 +691,7 @@ var CasesMGT_3 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     8,
-				ExpectedSum: 700,
+				ExpectedSum: 5100,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -754,7 +754,7 @@ var CasesMGT_3 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     8,
-				ExpectedSum: 700,
+				ExpectedSum: 5100,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -817,7 +817,7 @@ var CasesMGT_3 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     8,
-				ExpectedSum: 700,
+				ExpectedSum: 5100,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -862,7 +862,7 @@ var CasesMGT_3 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     4,
-				ExpectedSum: 700,
+				ExpectedSum: 5100,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -906,7 +906,7 @@ var CasesMGT_3 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     4,
-				ExpectedSum: 700,
+				ExpectedSum: 5100,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -960,7 +960,7 @@ var CasesMGT_3 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     6,
-				ExpectedSum: 700,
+				ExpectedSum: 5100,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -1014,7 +1014,7 @@ var CasesMGT_3 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     6,
-				ExpectedSum: 700,
+				ExpectedSum: 5100,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -1079,7 +1079,7 @@ var CasesMGT_3 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     8,
-				ExpectedSum: 700,
+				ExpectedSum: 5100,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -1143,7 +1143,7 @@ var CasesMGT_3 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     8,
-				ExpectedSum: 700,
+				ExpectedSum: 5100,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -1187,7 +1187,7 @@ var CasesMGT_3 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     4,
-				ExpectedSum: 700,
+				ExpectedSum: 5100,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -1231,7 +1231,7 @@ var CasesMGT_3 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     4,
-				ExpectedSum: 700,
+				ExpectedSum: 5100,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -1285,7 +1285,7 @@ var CasesMGT_3 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     6,
-				ExpectedSum: 700,
+				ExpectedSum: 5100,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -1340,7 +1340,7 @@ var CasesMGT_3 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     6,
-				ExpectedSum: 700,
+				ExpectedSum: 5100,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,

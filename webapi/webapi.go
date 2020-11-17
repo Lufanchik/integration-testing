@@ -121,7 +121,7 @@ var (
 						Station:   "2000055", //ОДИНЦОВО
 						Direction: processing.TerminalDirection_INGRESS,
 					},
-					ExpectedSum: 4900,
+					ExpectedSum: 5100,
 				},
 				&test.Pass{
 					PaymentType: test.PaymentTypeFree,
@@ -162,7 +162,7 @@ var (
 						Station:   "2000055", //ОДИНЦОВО
 						Direction: processing.TerminalDirection_INGRESS,
 					},
-					ExpectedSum: 4900,
+					ExpectedSum: 5100,
 				},
 				&test.Pass{
 					PaymentType: test.PaymentTypeFree,
@@ -203,7 +203,7 @@ var (
 						Station:   "2000155", //ФИЛИ
 						Direction: processing.TerminalDirection_INGRESS,
 					},
-					ExpectedSum: 4200,
+					ExpectedSum: 4400,
 				},
 				&test.Pass{
 					PaymentType: test.PaymentTypeFree,
@@ -244,7 +244,7 @@ var (
 						Station:   "2000155", //ФИЛИ
 						Direction: processing.TerminalDirection_INGRESS,
 					},
-					ExpectedSum: 4200,
+					ExpectedSum: 4400,
 				},
 				&test.Pass{
 					PaymentType: test.PaymentTypeFree,
@@ -296,7 +296,7 @@ var (
 						Station:   "2000155", //ФИЛИ
 						Direction: processing.TerminalDirection_INGRESS,
 					},
-					ExpectedSum: 4200,
+					ExpectedSum: 4400,
 				},
 				&test.Pass{
 					PaymentType: test.PaymentTypeFree,
@@ -357,7 +357,7 @@ var (
 				&test.Pass{
 					PaymentType: test.PaymentTypePayment,
 					Carrier:     carriers.Carrier_MGT,
-					//ExpectedSum: 4200,
+					//ExpectedSum: 4400,
 				},
 				&test.Pass{
 					PaymentType: test.PaymentTypePayment,
@@ -367,7 +367,7 @@ var (
 						Station:   "2000055",
 						Direction: processing.TerminalDirection_INGRESS,
 					},
-					ExpectedSum: 4900,
+					ExpectedSum: 5100,
 				},
 				&test.Pass{
 					PaymentType: test.PaymentTypeFree,
@@ -382,7 +382,7 @@ var (
 				&test.Pass{
 					PaymentType: test.PaymentTypePayment,
 					Carrier:     carriers.Carrier_MGT,
-					//ExpectedSum: 4200,
+					//ExpectedSum: 4400,
 				},
 				&test.Pass{
 					PaymentType: test.PaymentTypeFree,
@@ -393,7 +393,7 @@ var (
 				&test.Pass{
 					PaymentType: test.PaymentTypePayment,
 					Carrier:     carriers.Carrier_MGT,
-					//ExpectedSum: 4200,
+					//ExpectedSum: 4400,
 				},
 				&test.WebAPIPasses{
 					Passes: []int{1, 2, 3, 4, 5, 6},

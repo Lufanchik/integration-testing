@@ -76,7 +76,7 @@ func Test_1_1(t *testing.T) {
 	//		}
 	//	},
 	//	"auth": {
-	//		"sum": 4200,
+	//		"sum": 4400,
 	//			"type": 2
 	//	}
 	//}`)
@@ -128,7 +128,7 @@ func Test_1_1(t *testing.T) {
 			}
 		},
 		"auth": {
-			"sum": 4200,
+			"sum": 4400,
 				"type": 2
 		}
 	}`)
@@ -180,7 +180,7 @@ func Test_1_1(t *testing.T) {
 			}
 		},
 		"auth": {
-			"sum": 4200,
+			"sum": 4400,
 				"type": 2
 		}
 	}`)
@@ -264,7 +264,7 @@ func Test_1_2(t *testing.T) {
 			}
 		},
 		"auth": {
-			"sum": 4200,
+			"sum": 4400,
 				"type": 2
 		}
 	}`)
@@ -406,7 +406,7 @@ func Test_CLEARING(t *testing.T) {
 			}
 		},
 		"auth": {
-			"sum": 4200,
+			"sum": 4400,
 				"type": 2
 		}
 	}`)
@@ -548,7 +548,7 @@ func Test_1_4(t *testing.T) {
 			}
 		},
 		"auth": {
-			"sum": 4200,
+			"sum": 4400,
 				"type": 2
 		}
 	}`)
@@ -660,7 +660,7 @@ func Test_1_6(t *testing.T) {
 			}
 		},
 		"auth": {
-			"sum": 4200,
+			"sum": 4400,
 				"type": 2
 		}
 	}`)
@@ -744,7 +744,7 @@ func Test_1_7(t *testing.T) {
 			}
 		},
 		"auth": {
-			"sum": 4200,
+			"sum": 4400,
 				"type": 2
 		}
 	}`)

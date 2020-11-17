@@ -113,7 +113,7 @@ var CasesMTPPK_MCK = test.Cases{
 					Station:   "2000055", //ОДИНЦОВО
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4900,
+				ExpectedSum: 5100,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,

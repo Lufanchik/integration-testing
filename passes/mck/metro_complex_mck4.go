@@ -54,7 +54,7 @@ var CasesMetroComplexMCK4 = test.Cases{ //gusmanovtestcase
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     4,
-				ExpectedSum: 700,
+				ExpectedSum: 5100,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -64,7 +64,7 @@ var CasesMetroComplexMCK4 = test.Cases{ //gusmanovtestcase
 					Station:   "2002077", //МАРК
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4200,
+				ExpectedSum: 4400,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -126,7 +126,7 @@ var CasesMetroComplexMCK4 = test.Cases{ //gusmanovtestcase
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     4,
-				ExpectedSum: 700,
+				ExpectedSum: 5100,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -136,7 +136,7 @@ var CasesMetroComplexMCK4 = test.Cases{ //gusmanovtestcase
 					Station:   "2002077", //МАРК
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4200,
+				ExpectedSum: 4400,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -147,7 +147,7 @@ var CasesMetroComplexMCK4 = test.Cases{ //gusmanovtestcase
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     6,
-				ExpectedSum: 700,
+				ExpectedSum: 5100,
 			},
 		},
 	},
@@ -179,7 +179,7 @@ var CasesMetroComplexMCK4 = test.Cases{ //gusmanovtestcase
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     2,
-				ExpectedSum: 700,
+				ExpectedSum: 5100,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -216,7 +216,7 @@ var CasesMetroComplexMCK4 = test.Cases{ //gusmanovtestcase
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     2,
-				ExpectedSum: 700,
+				ExpectedSum: 5100,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -253,7 +253,7 @@ var CasesMetroComplexMCK4 = test.Cases{ //gusmanovtestcase
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     2,
-				ExpectedSum: 700,
+				ExpectedSum: 5100,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -290,7 +290,7 @@ var CasesMetroComplexMCK4 = test.Cases{ //gusmanovtestcase
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     2,
-				ExpectedSum: 700,
+				ExpectedSum: 5100,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -300,7 +300,7 @@ var CasesMetroComplexMCK4 = test.Cases{ //gusmanovtestcase
 					Station:   "2002077", //МАРК
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4200,
+				ExpectedSum: 4400,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -342,7 +342,7 @@ var CasesMetroComplexMCK4 = test.Cases{ //gusmanovtestcase
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     2,
-				ExpectedSum: 700,
+				ExpectedSum: 5100,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -352,7 +352,7 @@ var CasesMetroComplexMCK4 = test.Cases{ //gusmanovtestcase
 					Station:   "2001270", //ОКРУЖНАЯ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4200,
+				ExpectedSum: 4400,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -363,7 +363,7 @@ var CasesMetroComplexMCK4 = test.Cases{ //gusmanovtestcase
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     4,
-				ExpectedSum: 700,
+				ExpectedSum: 5100,
 			},
 		},
 	},

@@ -18,7 +18,7 @@ var CasesComplexMCDMOPartTwo = test.Cases{
 					Station:   "2000055",
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4900,
+				ExpectedSum: 5100,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -56,7 +56,7 @@ var CasesComplexMCDMOPartTwo = test.Cases{
 					Station:   "2000055",
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4900,
+				ExpectedSum: 5100,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -81,7 +81,7 @@ var CasesComplexMCDMOPartTwo = test.Cases{
 					Station:   "2000055",
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4900,
+				ExpectedSum: 5100,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -123,7 +123,7 @@ var CasesComplexMCDMOPartTwo = test.Cases{
 					Station:   "2000055",
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4900,
+				ExpectedSum: 5100,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -166,7 +166,7 @@ var CasesComplexMCDMOPartTwo = test.Cases{
 					Station:   "2000055",
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4900,
+				ExpectedSum: 5100,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -214,7 +214,7 @@ var CasesComplexMCDMOPartTwo = test.Cases{
 					Station:   "2000055",
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4900,
+				ExpectedSum: 5100,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -262,7 +262,7 @@ var CasesComplexMCDMOPartTwo = test.Cases{
 					Station:   "2000055",
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4900,
+				ExpectedSum: 5100,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -310,7 +310,7 @@ var CasesComplexMCDMOPartTwo = test.Cases{
 					Station:   "2000055",
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4900,
+				ExpectedSum: 5100,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -348,7 +348,7 @@ var CasesComplexMCDMOPartTwo = test.Cases{
 					Station:   "2000275",
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4200,
+				ExpectedSum: 4400,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -373,7 +373,7 @@ var CasesComplexMCDMOPartTwo = test.Cases{
 					Station:   "2000055",
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4900,
+				ExpectedSum: 5100,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -411,7 +411,7 @@ var CasesComplexMCDMOPartTwo = test.Cases{
 					Station:   "2000275",
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4200,
+				ExpectedSum: 4400,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -422,7 +422,7 @@ var CasesComplexMCDMOPartTwo = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     6,
-				ExpectedSum: 700,
+				ExpectedSum: 5100,
 			},
 		},
 	},
@@ -437,7 +437,7 @@ var CasesComplexMCDMOPartTwo = test.Cases{
 					Station:   "2000055",
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4900,
+				ExpectedSum: 5100,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -500,7 +500,7 @@ var CasesComplexMCDMOPartTwo = test.Cases{
 					Station:   "2000055",
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4900,
+				ExpectedSum: 5100,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -563,7 +563,7 @@ var CasesComplexMCDMOPartTwo = test.Cases{
 					Station:   "2000055", //ОДИНЦОВО
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4900,
+				ExpectedSum: 5100,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -626,7 +626,7 @@ var CasesComplexMCDMOPartTwo = test.Cases{
 					Station:   "2000055",
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4900,
+				ExpectedSum: 5100,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -679,7 +679,7 @@ var CasesComplexMCDMOPartTwo = test.Cases{
 					Station:   "2000155", //ФИЛИ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4200,
+				ExpectedSum: 4400,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -704,7 +704,7 @@ var CasesComplexMCDMOPartTwo = test.Cases{
 					Station:   "2000115", //ЛОБНЯ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4900,
+				ExpectedSum: 5100,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -757,7 +757,7 @@ var CasesComplexMCDMOPartTwo = test.Cases{
 					Station:   "2000009", //САВЕЛОВСКИЙВОКЗАЛ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4200,
+				ExpectedSum: 4400,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -767,7 +767,7 @@ var CasesComplexMCDMOPartTwo = test.Cases{
 					Station:   "2000115", //ЛОБНЯ
 					Direction: processing.TerminalDirection_EGRESS,
 				},
-				ExpectedSum: 700,
+				ExpectedSum: 5100,
 				Ingress:     7,
 			},
 		},
@@ -783,7 +783,7 @@ var CasesComplexMCDMOPartTwo = test.Cases{
 					Station:   "2000115", //ЛОБНЯ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4900,
+				ExpectedSum: 5100,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -846,7 +846,7 @@ var CasesComplexMCDMOPartTwo = test.Cases{
 					Station:   "2000115", //ЛОБНЯ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4900,
+				ExpectedSum: 5100,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -909,7 +909,7 @@ var CasesComplexMCDMOPartTwo = test.Cases{
 					Station:   "2000115", //ЛОБНЯ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4900,
+				ExpectedSum: 5100,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -972,7 +972,7 @@ var CasesComplexMCDMOPartTwo = test.Cases{
 					Station:   "2000115", //ЛОБНЯ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4900,
+				ExpectedSum: 5100,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -1024,7 +1024,7 @@ var CasesComplexMCDMOPartTwo = test.Cases{
 					Station:   "2000275", //СЕТУНЬ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4200,
+				ExpectedSum: 4400,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -1049,7 +1049,7 @@ var CasesComplexMCDMOPartTwo = test.Cases{
 					Station:   "2000115", //ЛОБНЯ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4900,
+				ExpectedSum: 5100,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -1101,7 +1101,7 @@ var CasesComplexMCDMOPartTwo = test.Cases{
 					Station:   "2000275", //СЕТУНЬ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4200,
+				ExpectedSum: 4400,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -1112,7 +1112,7 @@ var CasesComplexMCDMOPartTwo = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     7,
-				ExpectedSum: 700,
+				ExpectedSum: 5100,
 			},
 		},
 	},
@@ -1127,7 +1127,7 @@ var CasesComplexMCDMOPartTwo = test.Cases{
 					Station:   "2000115", //ЛОБНЯ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4900,
+				ExpectedSum: 5100,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -1169,7 +1169,7 @@ var CasesComplexMCDMOPartTwo = test.Cases{
 					Station:   "2000115", //ЛОБНЯ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4900,
+				ExpectedSum: 5100,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -1211,7 +1211,7 @@ var CasesComplexMCDMOPartTwo = test.Cases{
 					Station:   "2000115", //ЛОБНЯ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4900,
+				ExpectedSum: 5100,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -1253,7 +1253,7 @@ var CasesComplexMCDMOPartTwo = test.Cases{
 					Station:   "2000115", //ЛОБНЯ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4900,
+				ExpectedSum: 5100,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -1285,7 +1285,7 @@ var CasesComplexMCDMOPartTwo = test.Cases{
 					Station:   "2000155", //ФИЛИ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4200,
+				ExpectedSum: 4400,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -1310,7 +1310,7 @@ var CasesComplexMCDMOPartTwo = test.Cases{
 					Station:   "2000115", //ЛОБНЯ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4900,
+				ExpectedSum: 5100,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -1342,7 +1342,7 @@ var CasesComplexMCDMOPartTwo = test.Cases{
 					Station:   "2000115", //ЛОБНЯ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4900,
+				ExpectedSum: 5100,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -1367,7 +1367,7 @@ var CasesComplexMCDMOPartTwo = test.Cases{
 					Station:   "2000115", //ЛОБНЯ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4900,
+				ExpectedSum: 5100,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -1429,7 +1429,7 @@ var CasesComplexMCDMOPartTwo = test.Cases{
 					Station:   "2000115", //ЛОБНЯ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4900,
+				ExpectedSum: 5100,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,

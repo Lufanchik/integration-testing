@@ -19,7 +19,7 @@ var CasesMTPPK_MCD_MSK = test.Cases{
 					Station:   "2001270", //ОКРУЖНАЯ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4200,
+				ExpectedSum: 4400,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -70,7 +70,7 @@ var CasesMTPPK_MCD_MSK = test.Cases{
 					Station:   "2001840", //ТРИКОТАЖНАЯ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4200,
+				ExpectedSum: 4400,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,

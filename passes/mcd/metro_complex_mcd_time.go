@@ -21,7 +21,7 @@ var (
 						Direction: processing.TerminalDirection_INGRESS,
 					},
 					Now:         test.NowFullDate(2019, 12, 05, 10, 30, 00),
-					ExpectedSum: 4900,
+					ExpectedSum: 5100,
 					TimeToWait:  35 * time.Minute,
 				},
 				&test.Pass{
@@ -56,7 +56,7 @@ var (
 						Direction: processing.TerminalDirection_INGRESS,
 					},
 					Now:         test.NowFullDate(2019, 12, 05, 10, 30, 00),
-					ExpectedSum: 4900,
+					ExpectedSum: 5100,
 					TimeToWait:  60 * time.Minute,
 				},
 				&test.Pass{
@@ -90,7 +90,7 @@ var (
 						Station:   "2000700", //ТЕСТОВСКАЯ
 						Direction: processing.TerminalDirection_INGRESS,
 					},
-					ExpectedSum: 4200,
+					ExpectedSum: 4400,
 					Now:         test.NowFullDate(2019, 12, 2, 8, 33, 00),
 					TimeToWait:  5 * time.Minute,
 				},
@@ -104,7 +104,7 @@ var (
 					},
 					Ingress:     1,
 					Now:         test.NowFullDate(2019, 12, 2, 9, 00, 00),
-					ExpectedSum: 700,
+					ExpectedSum: 5100,
 				},
 				&test.Pass{
 					PaymentType: test.PaymentTypePayment,
@@ -132,7 +132,7 @@ var (
 						Station:   "2000700", //ТЕСТОВСКАЯ
 						Direction: processing.TerminalDirection_INGRESS,
 					},
-					ExpectedSum: 4200,
+					ExpectedSum: 4400,
 					Now:         test.NowFullDate(2019, 12, 2, 14, 33, 00),
 					TimeToWait:  5 * time.Minute,
 				},
@@ -146,7 +146,7 @@ var (
 					},
 					Ingress:     4,
 					Now:         test.NowFullDate(2019, 12, 2, 15, 00, 00),
-					ExpectedSum: 700,
+					ExpectedSum: 5100,
 				},
 			},
 		},
@@ -162,7 +162,7 @@ var (
 						Direction: processing.TerminalDirection_INGRESS,
 					},
 					Now:         test.NowFullDate(2019, 12, 2, 9, 00, 00),
-					ExpectedSum: 4900,
+					ExpectedSum: 5100,
 					TimeToWait:  60 * time.Minute,
 				},
 				&test.Pass{
@@ -213,7 +213,7 @@ var (
 						Direction: processing.TerminalDirection_INGRESS,
 					},
 					Now:         test.NowFullDate(2019, 12, 31, 23, 00, 00),
-					ExpectedSum: 4900,
+					ExpectedSum: 5100,
 					TimeToWait:  30 * time.Minute,
 				},
 				&test.Pass{
@@ -263,7 +263,7 @@ var (
 						Station:   "2000700", //ТЕСТОВСКАЯ
 						Direction: processing.TerminalDirection_INGRESS,
 					},
-					ExpectedSum: 4200,
+					ExpectedSum: 4400,
 					Now:         test.NowFullDate(2019, 12, 01, 00, 30, 00),
 					TimeToWait:  10 * time.Minute,
 				},
@@ -304,7 +304,7 @@ var (
 						Station:   "2000700", //ТЕСТОВСКАЯ
 						Direction: processing.TerminalDirection_INGRESS,
 					},
-					ExpectedSum: 4200,
+					ExpectedSum: 4400,
 					Now:         test.NowFullDate(2019, 12, 01, 05, 35, 00),
 					TimeToWait:  10 * time.Minute,
 				},
@@ -318,7 +318,7 @@ var (
 					},
 					Ingress:     4,
 					Now:         test.NowFullDate(2019, 12, 01, 06, 07, 00),
-					ExpectedSum: 700,
+					ExpectedSum: 5100,
 				},
 				&test.Pass{
 					PaymentType: test.PaymentTypePayment,
@@ -328,7 +328,7 @@ var (
 						Station:   "2002952", //СИЛИКАТНАЯ
 						Direction: processing.TerminalDirection_INGRESS,
 					},
-					ExpectedSum: 4900,
+					ExpectedSum: 5100,
 					Now:         test.NowFullDate(2019, 12, 01, 06, 07, 00),
 					TimeToWait:  10 * time.Minute,
 				},
@@ -351,7 +351,7 @@ var (
 						Station:   "2000700", //ТЕСТОВСКАЯ
 						Direction: processing.TerminalDirection_INGRESS,
 					},
-					ExpectedSum: 4200,
+					ExpectedSum: 4400,
 					Now:         test.NowFullDate(2019, 12, 01, 8, 30, 00),
 					TimeToWait:  10 * time.Minute,
 				},
@@ -415,7 +415,7 @@ var (
 						Station:   "2001340", //ВОДНИКИ
 						Direction: processing.TerminalDirection_INGRESS,
 					},
-					ExpectedSum: 4900,
+					ExpectedSum: 5100,
 					Now:         test.NowFullDate(2019, 12, 30, 23, 45, 45),
 					TimeToWait:  1 * time.Minute,
 				},
@@ -468,7 +468,7 @@ var (
 					},
 					Now:         test.NowFullDate(2019, 12, 31, 23, 13, 00),
 					TimeToWait:  10 * time.Minute,
-					ExpectedSum: 4200,
+					ExpectedSum: 4400,
 				},
 				&test.Pass{
 					PaymentType: test.PaymentTypeFree,
@@ -489,7 +489,7 @@ var (
 						Station:   "2000700", //ТЕСТОВСКАЯ
 						Direction: processing.TerminalDirection_INGRESS,
 					},
-					//ExpectedSum:4200,
+					//ExpectedSum:4400,
 					Now:        test.NowFullDate(2020, 01, 01, 00, 30, 00),
 					TimeToWait: 10 * time.Minute,
 					Parent:     1,
@@ -519,7 +519,7 @@ var (
 						Station:   "2000037", //БИТЦА
 						Direction: processing.TerminalDirection_INGRESS,
 					},
-					ExpectedSum: 4200,
+					ExpectedSum: 4400,
 					Now:         test.NowFullDate(2019, 12, 31, 23, 00, 00),
 					TimeToWait:  1 * time.Minute,
 				},
@@ -531,7 +531,7 @@ var (
 						Station:   "2000460", //НАХАБИНО
 						Direction: processing.TerminalDirection_EGRESS,
 					},
-					ExpectedSum: 700,
+					ExpectedSum: 5100,
 					Now:         test.NowFullDate(2020, 01, 01, 00, 44, 00),
 					Ingress:     1,
 				},
@@ -543,7 +543,7 @@ var (
 						Station:   "2000685", //БАКОВКА
 						Direction: processing.TerminalDirection_EGRESS,
 					},
-					ExpectedSum: 4900,
+					ExpectedSum: 5100,
 					Parent:      1,
 					Now:         test.NowFullDate(2020, 01, 01, 01, 05, 00),
 					TimeToWait:  5 * time.Minute,

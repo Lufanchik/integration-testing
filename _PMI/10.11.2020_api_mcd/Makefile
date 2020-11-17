@@ -81,3 +81,33 @@ test27:
 
 test28:
 	go test -test.run ^Test3_5_6_2$
+
+test29:
+	go test -test.run ^Test3_5_7_1$
+
+test30:
+	go test -test.run ^Test3_5_7_2$
+
+test31:
+	go test -test.run ^Test3_5_7_3$
+
+test32:
+	go test -test.run ^Test3_5_8_1$
+
+test33:
+	go test -test.run ^Test3_5_8_2$
+
+test34:
+	go test -test.run ^Test3_5_8_3$
+
+test35:
+	go test -test.run ^Test3_5_9_1$
+
+test36:
+	go test -test.run ^Test3_5_9_2$
+
+test37:
+	go test -test.run ^Test3_5_10_1$
+
+test38:
+	go test -test.run ^Test3_5_10_2$

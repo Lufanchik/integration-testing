@@ -188,6 +188,11 @@ func RunApiRequest(t *testing.T, cases Cases, rt RequestType) {
 				if ok {
 					LoginApi(t, lg)
 				}
+
+				commentsCRUD, ok := step.(*CommentsCRUD)
+				if ok {
+					CommentsCheck(t, commentsCRUD)
+				}
 			}
 		})
 	}
@@ -394,11 +399,6 @@ func Run(t *testing.T, cases Cases, rt RequestType) {
 				if ok {
 					twpgReverse.OrderId = ncc.c.TWPGOrderId
 					TWPGReverse(t, twpgReverse)
-				}
-
-				commentsCRUD, ok := step.(*CommentsCRUD)
-				if ok {
-					CommentsCheck(t, commentsCRUD)
 				}
 
 				cgf, ok := step.(*CardGetFull)

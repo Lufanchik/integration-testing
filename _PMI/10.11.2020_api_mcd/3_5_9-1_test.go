@@ -7,6 +7,7 @@ import (
 	"github.com/golang/protobuf/jsonpb"
 	"github.com/google/uuid"
 	"github.com/stretchr/testify/require"
+	"lab.dt.multicarta.ru/tp/common/messages/auth"
 	"lab.dt.multicarta.ru/tp/common/messages/processing"
 	"net/http"
 	"strconv"
@@ -95,7 +96,7 @@ func Test3_5_9_1(t *testing.T) {
 					"pan": "` + pan + `",
 					"bin": 47617310,
 					"exp": "1224",
-					"emv": "` + MKEmulatorUnsuccessWithReauth() + `",
+					"emv": "` + CardEmvCorrect() + `",
 					"token": {
 					"type": 1
 				}
@@ -118,6 +119,32 @@ func Test3_5_9_1(t *testing.T) {
 		logRequest(r)
 
 		response := &processing.OnlinePassResponse{}
+		err = jsonpb.Unmarshal(strings.NewReader(r.Body().Raw()), response)
+		require.NoError(t, err)
+
+		fmt.Println(response)
+	}
+
+	time.Sleep(time.Second * 5)
+
+	{
+		httpService := httpexpect.New(t, authUrl)
+		req := []byte(`{
+							"pass_id": "` + responseI.Id + `"
+						}
+						`)
+		fmt.Println(string(req))
+		request := &auth.CardByPassIDRequest{}
+		err := json.Unmarshal(req, request)
+		require.NoError(t, err)
+
+		r := httpService.POST(reAuth).WithJSON(request).
+			Expect().
+			Status(http.StatusOK)
+
+		logRequest(r)
+
+		response := &auth.AuthResponseEvent{}
 		err = jsonpb.Unmarshal(strings.NewReader(r.Body().Raw()), response)
 		require.NoError(t, err)
 

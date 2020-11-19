@@ -7,6 +7,7 @@ import (
 	"github.com/golang/protobuf/jsonpb"
 	"github.com/google/uuid"
 	"github.com/stretchr/testify/require"
+	"lab.dt.multicarta.ru/tp/common/messages/auth"
 	"lab.dt.multicarta.ru/tp/common/messages/processing"
 	"net/http"
 	"strconv"
@@ -95,7 +96,7 @@ func Test3_5_9_2(t *testing.T) {
 					"pan": "` + pan + `",
 					"bin": 47617310,
 					"exp": "1224",
-					"emv": "` + MKEmulatorUnsuccessWithReauth() + `",
+					"emv": "` + CardEmvCorrect() + `",
 					"token": {
 					"type": 1
 				}
@@ -127,25 +128,23 @@ func Test3_5_9_2(t *testing.T) {
 	time.Sleep(time.Second * 5)
 
 	{
-		httpService := httpexpect.New(t, calculatorUrl)
-		now := int(time.Now().UnixNano())
-
+		httpService := httpexpect.New(t, authUrl)
 		req := []byte(`{
-				"pan": "` + pan + `",
-				"time": ` + strconv.Itoa(now) + `
-			}`)
+							"pass_id": "` + responseI.Id + `"
+						}
+						`)
 		fmt.Println(string(req))
-		request := &processing.CompleteWithCalculateRequest{}
+		request := &auth.CardByPassIDRequest{}
 		err := json.Unmarshal(req, request)
 		require.NoError(t, err)
 
-		r := httpService.POST(complete).WithJSON(request).
+		r := httpService.POST(reAuth).WithJSON(request).
 			Expect().
 			Status(http.StatusOK)
 
 		logRequest(r)
 
-		response := &processing.CompleteWithCalculateResponse{}
+		response := &auth.AuthResponseEvent{}
 		err = jsonpb.Unmarshal(strings.NewReader(r.Body().Raw()), response)
 		require.NoError(t, err)
 

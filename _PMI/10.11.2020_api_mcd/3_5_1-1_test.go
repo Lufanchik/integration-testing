@@ -21,12 +21,12 @@ import (
 )
 
 const (
-	passUrl       = "http://localhost:9090"
-	authUrl       = "http://localhost:9091"
-	calculatorUrl = "http://localhost:9098"
-	//passUrl = "http://processing-api-gateway.stage.svc.cluster.local:9090"
-	//authUrl = "http://auth-service.stage.svc.cluster.local:9091"
-	//calculatorUrl = "http://calculator-service.stage.svc.cluster.local:9098"
+	//passUrl       = "http://localhost:9090"
+	//authUrl       = "http://localhost:9091"
+	//calculatorUrl = "http://localhost:9098"
+	passUrl       = "http://processing-api-gateway.test.svc.cluster.local:9090"
+	authUrl       = "http://auth-service.test.svc.cluster.local:9091"
+	calculatorUrl = "http://calculator-service.test.svc.cluster.local:9098"
 
 	complete         = "/twirp/sirocco.CalculatorAPI/ProcessCompleteWithCalculate"
 	onlinePassMCD    = "/mcd/twirp/sirocco.ProcessingAPI/ProcessOnlinePass"
@@ -39,6 +39,7 @@ const (
 	authStatusMTPPK  = "/mtppk/twirp/sirocco.ProcessingAPI/AuthStatus"
 	authStatusMCD    = "/mcd/twirp/sirocco.ProcessingAPI/AuthStatus"
 	cancel           = "/mcd/twirp/sirocco.ProcessingAPI/CancelPass"
+	reAuth           = "/twirp/sirocco.AuthAPI/ActiveReAuth"
 
 	emv  = "YyN0wu0RVJz1xgVMq7qb2udtmu8CoK5CVjyuYxIU01pXyk1TyfshuTd/zZ50hDerUXzHjAcoOGC+RBxvtL1l69Kc291LxR79jd2nQAFVT8yyLPYqPfbdQS1vg9J+UTAd+5wggbT0/RJyTJv5QL0bD5sq6xwKNFwLG8su//bSsBtaE6MqrRaubRnpYwpUweMkNPTOtJHa4h6ptZ5YmmcHHN9kSJJwFWAKcPqVSLUwEn/G//uOdkUgfR5K5D5M4svASszGMWUd313qON/kOcGQbsL5FCXbwdvzXjiiejLQaYyGldflhI6znRYOxritVCIroVv8IsZdtAJQTiOh2o7cfQ=="
 	emv2 = "ozT3j/s7Z1APFxp6WXXUv6plrLAjn+vHMAc+MBTLDywxryqIShgyjH9qPD1nxrHDhcLL0HFjIaKdMbgIuZ24EfvbjRLwXtxfeq6oeSVcmivZzFMg5kw1TgmJyCycNgNB6XC6V4EZtb8KLrFOchKoalorbl2nK83VUL5b4GBPAulwoGbJ1VjUwvWt0pDaM7u9NNn0O36fZxzcsurCdCdeLNYaEvy1BbTCiOg9S7avM7VyteDMt9K0nJQXe6Hgc5UqCW5Er4QiJFuaGRWnfi9DCb2hWz4m8cnfttgYhat1ry8vCLuLZy7Y2QvvDGZ0h1PtFo3hS12H2NReObMGyHHvFw=="

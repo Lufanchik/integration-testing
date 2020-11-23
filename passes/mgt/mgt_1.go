@@ -231,7 +231,7 @@ var CasesMGT_1 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     12,
-				ExpectedSum: 5100,
+				ExpectedSum: 700,
 			},
 		},
 	},

@@ -2,7 +2,6 @@ package integration_testing
 
 import (
 	"lab.dt.multicarta.ru/tp/integration-testing/apm"
-	"lab.dt.multicarta.ru/tp/integration-testing/comments"
 	mk_emulator "lab.dt.multicarta.ru/tp/integration-testing/mk-emulator"
 	"lab.dt.multicarta.ru/tp/integration-testing/parking"
 	"lab.dt.multicarta.ru/tp/integration-testing/passes"
@@ -56,13 +55,13 @@ func init() {
 	AddP(mcd.CasesMetroComplexMCDMSK1)
 	AddP(mcd.CasesMetroComplexMCDMSK2)
 	AddP(mcd.CasesMetroComplexMCDMSK3)
-	AddP(mcd.CasesMetroComplexMCDMSK4)
-	AddP(mcd.CasesMetroComplexMCDMSK5)
-	AddP(mcd.CasesComplexMCDMOPartOne)
-	AddP(mcd.CasesComplexMCDMOPartTwo)
-	AddP(mcd.CasesComplexMCDMOPartThree)
-	AddP(mcd.CasesComplexMCDMOPartFour)
-	AddP(mcd.CasesComplexMCDMOPartFife)
+	//AddP(mcd.CasesMetroComplexMCDMSK4)
+	//AddP(mcd.CasesMetroComplexMCDMSK5)
+	//AddP(mcd.CasesComplexMCDMOPartOne)
+	//AddP(mcd.CasesComplexMCDMOPartTwo)
+	//AddP(mcd.CasesComplexMCDMOPartThree)
+	//AddP(mcd.CasesComplexMCDMOPartFour)
+	//AddP(mcd.CasesComplexMCDMOPartFife)
 
 	//Мобильная тройка
 	AddP(mt.CasesMetroComplexMT)
@@ -71,8 +70,8 @@ func init() {
 	AddP(apm.CasesApmGateway)
 
 	//МГТ
-	AddP(mgt.CasesMGT_1)
-	AddP(mgt.CasesMGT_2)
+	//AddP(mgt.CasesMGT_1)
+	//AddP(mgt.CasesMGT_2)
 	AddP(mgt.CasesMGT_3)
 	AddP(mgt.CasesMGTWithEmptyEMV)
 
@@ -90,7 +89,7 @@ func init() {
 	//AddP(face.MetroComplexFaceID)
 
 	//Comments CRUDs
-	AddAR(comments.CasesCommentsCRUD)
+	//AddAR(comments.CasesCommentsCRUD)
 
 	//Отмена оплаты в TWPG
 	AddP(twpg.CaseTWPGReverseOrder)

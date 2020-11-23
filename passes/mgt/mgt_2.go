@@ -197,6 +197,7 @@ var CasesMGT_2 = test.Cases{
 					Station:   "2002910", //НЕМЧИНОВКА
 					Direction: processing.TerminalDirection_INGRESS,
 				},
+				ExpectedSum: 5100,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -374,7 +375,7 @@ var CasesMGT_2 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     7,
-				ExpectedSum: 5100,
+				ExpectedSum: 700,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,

@@ -104,7 +104,7 @@ var (
 					},
 					Ingress:     1,
 					Now:         test.NowFullDate(2019, 12, 2, 9, 00, 00),
-					ExpectedSum: 5100,
+					ExpectedSum: 700,
 				},
 				&test.Pass{
 					PaymentType: test.PaymentTypePayment,
@@ -146,7 +146,7 @@ var (
 					},
 					Ingress:     4,
 					Now:         test.NowFullDate(2019, 12, 2, 15, 00, 00),
-					ExpectedSum: 5100,
+					ExpectedSum: 700,
 				},
 			},
 		},
@@ -318,7 +318,7 @@ var (
 					},
 					Ingress:     4,
 					Now:         test.NowFullDate(2019, 12, 01, 06, 07, 00),
-					ExpectedSum: 5100,
+					ExpectedSum: 700,
 				},
 				&test.Pass{
 					PaymentType: test.PaymentTypePayment,
@@ -531,7 +531,7 @@ var (
 						Station:   "2000460", //НАХАБИНО
 						Direction: processing.TerminalDirection_EGRESS,
 					},
-					ExpectedSum: 5100,
+					ExpectedSum: 700,
 					Now:         test.NowFullDate(2020, 01, 01, 00, 44, 00),
 					Ingress:     1,
 				},

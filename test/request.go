@@ -81,10 +81,10 @@ func getSumByCarrier(p *Pass) uint32 {
 		return 4400
 	}
 	if p.SubCarrier == carriers.SubCarrier_MCD1_MO {
-		return 5100
+		return 700
 	}
 	if p.SubCarrier == carriers.SubCarrier_MCD2_MO {
-		return 5100
+		return 700
 	}
 	if p.Carrier == carriers.Carrier_MM {
 		return 4400

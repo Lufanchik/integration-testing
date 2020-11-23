@@ -60,7 +60,7 @@ var CasesComplexPassMMTS4 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     5,
-				ExpectedSum: 5100,
+				ExpectedSum: 700,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -122,7 +122,7 @@ var CasesComplexPassMMTS4 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     5,
-				ExpectedSum: 5100,
+				ExpectedSum: 700,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -184,7 +184,7 @@ var CasesComplexPassMMTS4 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     5,
-				ExpectedSum: 5100,
+				ExpectedSum: 700,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -261,7 +261,7 @@ var CasesComplexPassMMTS4 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     5,
-				ExpectedSum: 5100,
+				ExpectedSum: 700,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -282,7 +282,7 @@ var CasesComplexPassMMTS4 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     7,
-				ExpectedSum: 5100,
+				ExpectedSum: 700,
 			},
 		},
 	},
@@ -319,7 +319,7 @@ var CasesComplexPassMMTS4 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     3,
-				ExpectedSum: 5100,
+				ExpectedSum: 700,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -361,7 +361,7 @@ var CasesComplexPassMMTS4 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     3,
-				ExpectedSum: 5100,
+				ExpectedSum: 700,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -403,7 +403,7 @@ var CasesComplexPassMMTS4 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     3,
-				ExpectedSum: 5100,
+				ExpectedSum: 700,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -445,7 +445,7 @@ var CasesComplexPassMMTS4 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     3,
-				ExpectedSum: 5100,
+				ExpectedSum: 700,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -502,7 +502,7 @@ var CasesComplexPassMMTS4 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     3,
-				ExpectedSum: 5100,
+				ExpectedSum: 700,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -523,7 +523,7 @@ var CasesComplexPassMMTS4 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     5,
-				ExpectedSum: 5100,
+				ExpectedSum: 700,
 			},
 		},
 	},
@@ -844,7 +844,7 @@ var CasesComplexPassMMTS4 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     6,
-				ExpectedSum: 5100,
+				ExpectedSum: 700,
 			},
 		},
 	},
@@ -1215,7 +1215,7 @@ var CasesComplexPassMMTS4 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     7,
-				ExpectedSum: 5100,
+				ExpectedSum: 700,
 			},
 		},
 	},
@@ -1272,7 +1272,7 @@ var CasesComplexPassMMTS4 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     5,
-				ExpectedSum: 5100,
+				ExpectedSum: 700,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -1334,7 +1334,7 @@ var CasesComplexPassMMTS4 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     5,
-				ExpectedSum: 5100,
+				ExpectedSum: 700,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -1395,7 +1395,7 @@ var CasesComplexPassMMTS4 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     5,
-				ExpectedSum: 5100,
+				ExpectedSum: 700,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,

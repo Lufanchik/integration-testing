@@ -378,7 +378,7 @@ var CasesScopeCheckPass = test.Cases{
 					Station:   "2000055", //ОДИНЦОВО
 					Direction: processing.TerminalDirection_EGRESS,
 				},
-				ExpectedSum: 5100,
+				ExpectedSum: 700,
 				Ingress:     1,
 			},
 		},
@@ -406,7 +406,7 @@ var CasesScopeCheckPass = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     1,
-				ExpectedSum: 5100,
+				ExpectedSum: 700,
 			},
 		},
 	},
@@ -906,7 +906,7 @@ var CasesScopeCheckPass = test.Cases{
 				RequestType: test.RequestTypeOnline,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD2_MO,
-				ExpectedSum: 5100,
+				ExpectedSum: 700,
 				Terminal: &processing.Terminal{
 					Direction: processing.TerminalDirection_EGRESS,
 					Station:   "2003960", //ПАВШИНО

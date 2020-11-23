@@ -314,6 +314,10 @@ func ValidatePass(t *testing.T, p *Pass, parent *Pass, ingress *Pass, isFirst bo
 		expectPass.IsInitAggregate = true
 	}
 
+	//if p.Carrier ==  carriers.Carrier_MCD && p. {
+	//
+	//}
+
 	expectPass.IsComplexTimeout = global.IsComplexTimeout(global.UnixNanoToLocalizedTime(expectPass.CreatedAtCarrier))
 
 	passDB, err := ps.GetPass(ctx, &pass.PassRequest{

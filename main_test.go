@@ -141,7 +141,7 @@ func TestSimple(t *testing.T) {
 
 	//test.Run(t, webapi.ReaderCase, test.RequestTypeOffline)
 	//test.Run(t, aggregate.MetroAggregate, test.RequestTypeOffline)
-	test.Run(t, mcd.CasesMetroComplexMCDMSK3, test.RequestTypeOffline)
+	test.Run(t, mcd.CasesMetroComplexMCDMSK4, test.RequestTypeOffline)
 	//test.Run(t, aggregate.MgtAggregate, test.RequestTypeOffline)
 	//test.Run(t, cards.CardsStopList, test.RequestTypeOffline)
 	//test.Run(t, cards.FaceList, test.RequestTypeOffline)

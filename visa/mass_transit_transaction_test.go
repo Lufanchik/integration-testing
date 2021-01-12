@@ -21,10 +21,10 @@ const (
 	passUrl = "http://processing-api-gateway.test.svc.cluster.local:9090"
 	authUrl = "http://auth-service.test.svc.cluster.local:9091"
 
-	onlinePass   = "/mtppk/twirp/sirocco.ProcessingAPI/ProcessOnlinePass"
-	complete     = "/mtppk/twirp/sirocco.ProcessingAPI/ProcessComplete"
-	cancel       = "/mtppk/twirp/sirocco.ProcessingAPI/CancelPass"
-	activeReAuth = "/twirp/sirocco.AuthAPI/ActiveReAuth"
+	onlinePass   = "/mtppk/twirp/lab.dt.multicarta.ru.ProcessingAPI/ProcessOnlinePass"
+	complete     = "/mtppk/twirp/lab.dt.multicarta.ru.ProcessingAPI/ProcessComplete"
+	cancel       = "/mtppk/twirp/lab.dt.multicarta.ru.ProcessingAPI/CancelPass"
+	activeReAuth = "/twirp/lab.dt.multicarta.ru.AuthAPI/ActiveReAuth"
 
 	// 17.02.2020
 	//emv = "nOK9Iah6LQpqHTPB7zmtdqtfAvQ0UYLmKQc52V6MrDCqsmorbH2HppQs7eRNQDZAHWGv77r60q6wr2WjR90eixyjL+84wpRVWhMLN9+pJQ0C74D6/fcIJErYCek9SwxhLgi2Sp0fJqUj3G40EeupmVST1CeX5HcprnrDnueaOPc2fUbUm/Q1RpM63bbxY2dX/JF2RaoSogTos7xbQKnzb1sJs4ISrw7+4UIl68mg7yN3cB2CnnydKWjCfaQkIwieGDyXfm4Z0XuEZeyqz1gik+dgc/xrfSdlaBfnVeSCyxX94yMTw8s1KwgVrrnM0KJuptRYyFBKvjmgI2sZMHW1Ew=="

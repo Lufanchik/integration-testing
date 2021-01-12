@@ -16,7 +16,7 @@ var CasesMTPPK_single = test.Cases{
 				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MMTS_SUB,
-				//ExpectedSum: 4400,
+				//ExpectedSum: 4600,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeStartAggregate,
@@ -31,7 +31,7 @@ var CasesMTPPK_single = test.Cases{
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
 				Parent:      1,
-				//ExpectedSum: 4400,
+				//ExpectedSum: 4600,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeAggregate,
@@ -45,7 +45,7 @@ var CasesMTPPK_single = test.Cases{
 				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MMTS_SUB,
-				//ExpectedSum: 4400,
+				//ExpectedSum: 4600,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeAggregate,
@@ -59,7 +59,7 @@ var CasesMTPPK_single = test.Cases{
 				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MMTS_SUB,
-				//ExpectedSum: 4400,
+				//ExpectedSum: 4600,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeAggregate,

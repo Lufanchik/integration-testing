@@ -1,28 +1,19 @@
 package integration_testing
 
 import (
-	"lab.dt.multicarta.ru/tp/integration-testing/apm"
 	mk_emulator "lab.dt.multicarta.ru/tp/integration-testing/mk-emulator"
-	"lab.dt.multicarta.ru/tp/integration-testing/parking"
-	"lab.dt.multicarta.ru/tp/integration-testing/passes"
-	"lab.dt.multicarta.ru/tp/integration-testing/passes/aggregate"
 	"lab.dt.multicarta.ru/tp/integration-testing/passes/mcd"
 	"lab.dt.multicarta.ru/tp/integration-testing/passes/mck"
-	"lab.dt.multicarta.ru/tp/integration-testing/passes/mgt"
 	"lab.dt.multicarta.ru/tp/integration-testing/passes/mm"
 	"lab.dt.multicarta.ru/tp/integration-testing/passes/mmts"
-	"lab.dt.multicarta.ru/tp/integration-testing/passes/mt"
-	"lab.dt.multicarta.ru/tp/integration-testing/registry"
-	"lab.dt.multicarta.ru/tp/integration-testing/twpg"
-	"lab.dt.multicarta.ru/tp/integration-testing/webapi"
 )
 
 func init() {
 	//параллельный запуск
 	//общие кейсы проходов
 	//CasesCancel 25 26 27 пока на доработке
-	AddP(passes.CasesCancel)
-	AddP(aggregate.MetroAggregate)
+	//AddP(passes.CasesCancel)
+	//AddP(aggregate.MetroAggregate)
 
 	//МТППК
 	//AddP(mtppk.CasesMTPPKPasses)
@@ -64,27 +55,27 @@ func init() {
 	AddP(mcd.CasesComplexMCDMOPartFife)
 
 	//Мобильная тройка
-	AddP(mt.CasesMetroComplexMT)
+	//AddP(mt.CasesMetroComplexMT)
 
 	//APM
-	AddP(apm.CasesApmGateway)
+	//AddP(apm.CasesApmGateway)
 
 	//МГТ
-	AddP(mgt.CasesMGT_1)
-	AddP(mgt.CasesMGT_2)
-	AddP(mgt.CasesMGT_3)
-	AddP(mgt.CasesMGTWithEmptyEMV)
+	//AddP(mgt.CasesMGT_1)
+	//AddP(mgt.CasesMGT_2)
+	//AddP(mgt.CasesMGT_3)
+	//AddP(mgt.CasesMGTWithEmptyEMV)
 
 	//Parking
-	AddP(parking.CasesParkingPass)
+	//AddP(parking.CasesParkingPass)
 
 	//WebAPI
-	AddP(webapi.CasesWEBAPI)
+	//AddP(webapi.CasesWEBAPI)
 
 	//Revise
-	AddAR(registry.CasesReviseGetTaskList)
+	//AddAR(registry.CasesReviseGetTaskList)
 	//Resolve
-	AddAR(registry.CasesResolveGetTaskList)
+	//AddAR(registry.CasesResolveGetTaskList)
 	//Face
 	//AddP(face.MetroComplexFaceID)
 
@@ -92,7 +83,7 @@ func init() {
 	//AddAR(comments.CasesCommentsCRUD)
 
 	//Отмена оплаты в TWPG
-	AddP(twpg.CaseTWPGReverseOrder)
+	//AddP(twpg.CaseTWPGReverseOrder)
 
 	////скачивание полного вайт листа на ридер
 	//AddP(cards.FaceList)

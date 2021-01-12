@@ -149,7 +149,7 @@ var CasesComplexPassMMTS2 = test.Cases{
 					Station:   "2000245", //РАБОЧИЙПОСЕЛОК
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4400,
+				ExpectedSum: 4600,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -211,7 +211,7 @@ var CasesComplexPassMMTS2 = test.Cases{
 					Station:   "2000245", //РАБОЧИЙПОСЕЛОК
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4400,
+				ExpectedSum: 4600,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -222,7 +222,7 @@ var CasesComplexPassMMTS2 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     6,
-				ExpectedSum: 700,
+				ExpectedSum: 800,
 			},
 		},
 	},
@@ -512,7 +512,7 @@ var CasesComplexPassMMTS2 = test.Cases{
 					Station:   "2000245", //РАБОЧИЙПОСЕЛОК
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4400,
+				ExpectedSum: 4600,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -588,7 +588,7 @@ var CasesComplexPassMMTS2 = test.Cases{
 					Station:   "2000245", //РАБОЧИЙПОСЕЛОК
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4400,
+				ExpectedSum: 4600,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -599,7 +599,7 @@ var CasesComplexPassMMTS2 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     7,
-				ExpectedSum: 700,
+				ExpectedSum: 800,
 			},
 		},
 	},
@@ -645,7 +645,7 @@ var CasesComplexPassMMTS2 = test.Cases{
 					Station:   "2000700", //ТЕСТОВСКАЯ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4400,
+				ExpectedSum: 4600,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -712,7 +712,7 @@ var CasesComplexPassMMTS2 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     5,
-				ExpectedSum: 700,
+				ExpectedSum: 800,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -795,7 +795,7 @@ var CasesComplexPassMMTS2 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     5,
-				ExpectedSum: 700,
+				ExpectedSum: 800,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -857,7 +857,7 @@ var CasesComplexPassMMTS2 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     5,
-				ExpectedSum: 700,
+				ExpectedSum: 800,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -919,7 +919,7 @@ var CasesComplexPassMMTS2 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     5,
-				ExpectedSum: 700,
+				ExpectedSum: 800,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -929,7 +929,7 @@ var CasesComplexPassMMTS2 = test.Cases{
 					Station:   "2000245", //РАБОЧИЙПОСЕЛОК
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4400,
+				ExpectedSum: 4600,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -996,7 +996,7 @@ var CasesComplexPassMMTS2 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     5,
-				ExpectedSum: 700,
+				ExpectedSum: 800,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -1006,7 +1006,7 @@ var CasesComplexPassMMTS2 = test.Cases{
 					Station:   "2000245", //РАБОЧИЙПОСЕЛОК
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4400,
+				ExpectedSum: 4600,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -1017,7 +1017,7 @@ var CasesComplexPassMMTS2 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     7,
-				ExpectedSum: 700,
+				ExpectedSum: 800,
 			},
 		},
 	},
@@ -1054,7 +1054,7 @@ var CasesComplexPassMMTS2 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     3,
-				ExpectedSum: 700,
+				ExpectedSum: 800,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -1096,7 +1096,7 @@ var CasesComplexPassMMTS2 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     3,
-				ExpectedSum: 700,
+				ExpectedSum: 800,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -1138,7 +1138,7 @@ var CasesComplexPassMMTS2 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     3,
-				ExpectedSum: 700,
+				ExpectedSum: 800,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -1180,7 +1180,7 @@ var CasesComplexPassMMTS2 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     3,
-				ExpectedSum: 700,
+				ExpectedSum: 800,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -1190,7 +1190,7 @@ var CasesComplexPassMMTS2 = test.Cases{
 					Station:   "2000700", //ТЕСТОВСКАЯ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4400,
+				ExpectedSum: 4600,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -1237,7 +1237,7 @@ var CasesComplexPassMMTS2 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     3,
-				ExpectedSum: 700,
+				ExpectedSum: 800,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -1247,7 +1247,7 @@ var CasesComplexPassMMTS2 = test.Cases{
 					Station:   "2000700", //ТЕСТОВСКАЯ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4400,
+				ExpectedSum: 4600,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -1258,7 +1258,7 @@ var CasesComplexPassMMTS2 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     5,
-				ExpectedSum: 700,
+				ExpectedSum: 800,
 			},
 		},
 	},
@@ -1382,7 +1382,7 @@ var CasesComplexPassMMTS2 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     4,
-				ExpectedSum: 700,
+				ExpectedSum: 800,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,

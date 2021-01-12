@@ -28,7 +28,7 @@ var MetroAggregate = test.Cases{
 				PaymentType:          test.PaymentTypePayment,
 				Carrier:              carriers.Carrier_MM,
 				IsInitAggregate:      true,
-				ExpectedSumAggregate: 13200,
+				ExpectedSumAggregate: 13800,
 				Aggregate:            1,
 			},
 			&test.Pass{

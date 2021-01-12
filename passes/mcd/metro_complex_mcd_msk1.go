@@ -18,7 +18,7 @@ var CasesMetroComplexMCDMSK1 = test.Cases{
 					Station:   "2000155", //ФИЛИ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4400,
+				ExpectedSum: 4600,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -54,7 +54,7 @@ var CasesMetroComplexMCDMSK1 = test.Cases{
 					Station:   "2000155", //ФИЛИ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4400,
+				ExpectedSum: 4600,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -102,7 +102,7 @@ var CasesMetroComplexMCDMSK1 = test.Cases{
 					Station:   "2000155", //ФИЛИ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4400,
+				ExpectedSum: 4600,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -150,7 +150,7 @@ var CasesMetroComplexMCDMSK1 = test.Cases{
 					Station:   "2000155", //ФИЛИ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4400,
+				ExpectedSum: 4600,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -198,7 +198,7 @@ var CasesMetroComplexMCDMSK1 = test.Cases{
 					Station:   "2000155", //ФИЛИ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4400,
+				ExpectedSum: 4600,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -236,7 +236,7 @@ var CasesMetroComplexMCDMSK1 = test.Cases{
 					Station:   "2000155", //ФИЛИ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4400,
+				ExpectedSum: 4600,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -261,7 +261,7 @@ var CasesMetroComplexMCDMSK1 = test.Cases{
 					Station:   "2000155", //ФИЛИ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4400,
+				ExpectedSum: 4600,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -299,7 +299,7 @@ var CasesMetroComplexMCDMSK1 = test.Cases{
 					Station:   "2000155", //ФИЛИ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4400,
+				ExpectedSum: 4600,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -310,7 +310,7 @@ var CasesMetroComplexMCDMSK1 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     6,
-				ExpectedSum: 700,
+				ExpectedSum: 800,
 			},
 		},
 	},
@@ -325,7 +325,7 @@ var CasesMetroComplexMCDMSK1 = test.Cases{
 					Station:   "2000155", //ФИЛИ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4400,
+				ExpectedSum: 4600,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -367,7 +367,7 @@ var CasesMetroComplexMCDMSK1 = test.Cases{
 					Station:   "2000155", //ФИЛИ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4400,
+				ExpectedSum: 4600,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -415,7 +415,7 @@ var CasesMetroComplexMCDMSK1 = test.Cases{
 					Station:   "2000155", //ФИЛИ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4400,
+				ExpectedSum: 4600,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -463,7 +463,7 @@ var CasesMetroComplexMCDMSK1 = test.Cases{
 					Station:   "2000155", //ФИЛИ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4400,
+				ExpectedSum: 4600,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -511,7 +511,7 @@ var CasesMetroComplexMCDMSK1 = test.Cases{
 					Station:   "2000155", //ФИЛИ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4400,
+				ExpectedSum: 4600,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -549,7 +549,7 @@ var CasesMetroComplexMCDMSK1 = test.Cases{
 					Station:   "2000155", //ФИЛИ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4400,
+				ExpectedSum: 4600,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -574,7 +574,7 @@ var CasesMetroComplexMCDMSK1 = test.Cases{
 					Station:   "2000155", //ФИЛИ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4400,
+				ExpectedSum: 4600,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -612,7 +612,7 @@ var CasesMetroComplexMCDMSK1 = test.Cases{
 					Station:   "2000155", //ФИЛИ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4400,
+				ExpectedSum: 4600,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -623,7 +623,7 @@ var CasesMetroComplexMCDMSK1 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     6,
-				ExpectedSum: 700,
+				ExpectedSum: 800,
 			},
 		},
 	},
@@ -638,7 +638,7 @@ var CasesMetroComplexMCDMSK1 = test.Cases{
 					Station:   "2000155", //ФИЛИ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4400,
+				ExpectedSum: 4600,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -700,7 +700,7 @@ var CasesMetroComplexMCDMSK1 = test.Cases{
 					Station:   "2000155", //ФИЛИ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4400,
+				ExpectedSum: 4600,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -762,7 +762,7 @@ var CasesMetroComplexMCDMSK1 = test.Cases{
 					Station:   "2000155", //ФИЛИ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4400,
+				ExpectedSum: 4600,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -824,7 +824,7 @@ var CasesMetroComplexMCDMSK1 = test.Cases{
 					Station:   "2000155", //ФИЛИ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4400,
+				ExpectedSum: 4600,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -876,7 +876,7 @@ var CasesMetroComplexMCDMSK1 = test.Cases{
 					Station:   "2000155", //ФИЛИ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4400,
+				ExpectedSum: 4600,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -901,7 +901,7 @@ var CasesMetroComplexMCDMSK1 = test.Cases{
 					Station:   "2000155", //ФИЛИ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4400,
+				ExpectedSum: 4600,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -953,7 +953,7 @@ var CasesMetroComplexMCDMSK1 = test.Cases{
 					Station:   "2000155", //ФИЛИ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4400,
+				ExpectedSum: 4600,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -964,7 +964,7 @@ var CasesMetroComplexMCDMSK1 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     7,
-				ExpectedSum: 700,
+				ExpectedSum: 800,
 			},
 		},
 	},
@@ -979,7 +979,7 @@ var CasesMetroComplexMCDMSK1 = test.Cases{
 					Station:   "2000155", //ФИЛИ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4400,
+				ExpectedSum: 4600,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -1011,7 +1011,7 @@ var CasesMetroComplexMCDMSK1 = test.Cases{
 					Station:   "2000155", //ФИЛИ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4400,
+				ExpectedSum: 4600,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -1022,7 +1022,7 @@ var CasesMetroComplexMCDMSK1 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     5,
-				ExpectedSum: 700,
+				ExpectedSum: 800,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -1042,7 +1042,7 @@ var CasesMetroComplexMCDMSK1 = test.Cases{
 					Station:   "2000155", //ФИЛИ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4400,
+				ExpectedSum: 4600,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -1074,7 +1074,7 @@ var CasesMetroComplexMCDMSK1 = test.Cases{
 					Station:   "2000155", //ФИЛИ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4400,
+				ExpectedSum: 4600,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -1085,7 +1085,7 @@ var CasesMetroComplexMCDMSK1 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     5,
-				ExpectedSum: 700,
+				ExpectedSum: 800,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -1105,7 +1105,7 @@ var CasesMetroComplexMCDMSK1 = test.Cases{
 					Station:   "2000155", //ФИЛИ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4400,
+				ExpectedSum: 4600,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -1137,7 +1137,7 @@ var CasesMetroComplexMCDMSK1 = test.Cases{
 					Station:   "2000155", //ФИЛИ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4400,
+				ExpectedSum: 4600,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -1148,7 +1148,7 @@ var CasesMetroComplexMCDMSK1 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     5,
-				ExpectedSum: 700,
+				ExpectedSum: 800,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -1168,7 +1168,7 @@ var CasesMetroComplexMCDMSK1 = test.Cases{
 					Station:   "2000155", //ФИЛИ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4400,
+				ExpectedSum: 4600,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -1200,7 +1200,7 @@ var CasesMetroComplexMCDMSK1 = test.Cases{
 					Station:   "2000155", //ФИЛИ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4400,
+				ExpectedSum: 4600,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -1211,7 +1211,7 @@ var CasesMetroComplexMCDMSK1 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     5,
-				ExpectedSum: 700,
+				ExpectedSum: 800,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -1221,7 +1221,7 @@ var CasesMetroComplexMCDMSK1 = test.Cases{
 					Station:   "2000155", //ФИЛИ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4400,
+				ExpectedSum: 4600,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -1246,7 +1246,7 @@ var CasesMetroComplexMCDMSK1 = test.Cases{
 					Station:   "2000155", //ФИЛИ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4400,
+				ExpectedSum: 4600,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -1278,7 +1278,7 @@ var CasesMetroComplexMCDMSK1 = test.Cases{
 					Station:   "2000155", //ФИЛИ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4400,
+				ExpectedSum: 4600,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -1289,7 +1289,7 @@ var CasesMetroComplexMCDMSK1 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     5,
-				ExpectedSum: 700,
+				ExpectedSum: 800,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -1299,7 +1299,7 @@ var CasesMetroComplexMCDMSK1 = test.Cases{
 					Station:   "2000155", //ФИЛИ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4400,
+				ExpectedSum: 4600,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -1310,7 +1310,7 @@ var CasesMetroComplexMCDMSK1 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     7,
-				ExpectedSum: 700,
+				ExpectedSum: 800,
 			},
 		},
 	},
@@ -1325,7 +1325,7 @@ var CasesMetroComplexMCDMSK1 = test.Cases{
 					Station:   "2000155", //ФИЛИ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4400,
+				ExpectedSum: 4600,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -1367,7 +1367,7 @@ var CasesMetroComplexMCDMSK1 = test.Cases{
 					Station:   "2000155", //ФИЛИ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4400,
+				ExpectedSum: 4600,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -1409,7 +1409,7 @@ var CasesMetroComplexMCDMSK1 = test.Cases{
 					Station:   "2000155", //ФИЛИ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4400,
+				ExpectedSum: 4600,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,

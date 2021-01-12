@@ -49,7 +49,7 @@ var CasesComplexPassMMTS5 = test.Cases{
 					Station:   "2000155", //ФИЛИ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4400,
+				ExpectedSum: 4600,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -60,7 +60,7 @@ var CasesComplexPassMMTS5 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     5,
-				ExpectedSum: 700,
+				ExpectedSum: 800,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -70,7 +70,7 @@ var CasesComplexPassMMTS5 = test.Cases{
 					Station:   "2000009", //САВЕЛОВСКИЙВОКЗАЛ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4400,
+				ExpectedSum: 4600,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -126,7 +126,7 @@ var CasesComplexPassMMTS5 = test.Cases{
 					Station:   "2000155", //ФИЛИ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4400,
+				ExpectedSum: 4600,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -137,7 +137,7 @@ var CasesComplexPassMMTS5 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     5,
-				ExpectedSum: 700,
+				ExpectedSum: 800,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -147,7 +147,7 @@ var CasesComplexPassMMTS5 = test.Cases{
 					Station:   "2000009", //САВЕЛОВСКИЙВОКЗАЛ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4400,
+				ExpectedSum: 4600,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -158,7 +158,7 @@ var CasesComplexPassMMTS5 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     7,
-				ExpectedSum: 700,
+				ExpectedSum: 800,
 			},
 		},
 	},
@@ -351,7 +351,7 @@ var CasesComplexPassMMTS5 = test.Cases{
 					Station:   "2001140", //КУНЦЕВСКАЯ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4400,
+				ExpectedSum: 4600,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -413,7 +413,7 @@ var CasesComplexPassMMTS5 = test.Cases{
 					Station:   "2001140", //КУНЦЕВСКАЯ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4400,
+				ExpectedSum: 4600,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -424,7 +424,7 @@ var CasesComplexPassMMTS5 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     6,
-				ExpectedSum: 700,
+				ExpectedSum: 800,
 			},
 		},
 	},
@@ -552,7 +552,7 @@ var CasesComplexPassMMTS5 = test.Cases{
 					Station:   "2001140", //КУНЦЕВСКАЯ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4400,
+				ExpectedSum: 4600,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -608,7 +608,7 @@ var CasesComplexPassMMTS5 = test.Cases{
 					Station:   "2001140", //КУНЦЕВСКАЯ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4400,
+				ExpectedSum: 4600,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -619,7 +619,7 @@ var CasesComplexPassMMTS5 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     5,
-				ExpectedSum: 700,
+				ExpectedSum: 800,
 			},
 		},
 	},
@@ -903,7 +903,7 @@ var CasesComplexPassMMTS5 = test.Cases{
 					Station:   "2001140", //КУНЦЕВСКАЯ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4400,
+				ExpectedSum: 4600,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -979,7 +979,7 @@ var CasesComplexPassMMTS5 = test.Cases{
 					Station:   "2001140", //КУНЦЕВСКАЯ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4400,
+				ExpectedSum: 4600,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -990,7 +990,7 @@ var CasesComplexPassMMTS5 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     7,
-				ExpectedSum: 700,
+				ExpectedSum: 800,
 			},
 		},
 	},
@@ -1239,7 +1239,7 @@ var CasesComplexPassMMTS5 = test.Cases{
 					Station:   "2001140", //КУНЦЕВСКАЯ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4400,
+				ExpectedSum: 4600,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -1315,7 +1315,7 @@ var CasesComplexPassMMTS5 = test.Cases{
 					Station:   "2001140", //КУНЦЕВСКАЯ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4400,
+				ExpectedSum: 4600,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -1326,7 +1326,7 @@ var CasesComplexPassMMTS5 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     7,
-				ExpectedSum: 700,
+				ExpectedSum: 800,
 			},
 		},
 	},
@@ -1421,7 +1421,7 @@ var CasesComplexPassMMTS5 = test.Cases{
 					Station:   "2001140", //КУНЦЕВСКАЯ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4400,
+				ExpectedSum: 4600,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -1471,7 +1471,7 @@ var CasesComplexPassMMTS5 = test.Cases{
 					Station:   "2001140", //КУНЦЕВСКАЯ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4400,
+				ExpectedSum: 4600,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -1482,7 +1482,7 @@ var CasesComplexPassMMTS5 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     4,
-				ExpectedSum: 700,
+				ExpectedSum: 800,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -1527,7 +1527,7 @@ var CasesComplexPassMMTS5 = test.Cases{
 					Station:   "2001140", //КУНЦЕВСКАЯ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4400,
+				ExpectedSum: 4600,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -1538,7 +1538,7 @@ var CasesComplexPassMMTS5 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     4,
-				ExpectedSum: 700,
+				ExpectedSum: 800,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -1583,7 +1583,7 @@ var CasesComplexPassMMTS5 = test.Cases{
 					Station:   "2001140", //КУНЦЕВСКАЯ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4400,
+				ExpectedSum: 4600,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -1594,7 +1594,7 @@ var CasesComplexPassMMTS5 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     4,
-				ExpectedSum: 700,
+				ExpectedSum: 800,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -1639,7 +1639,7 @@ var CasesComplexPassMMTS5 = test.Cases{
 					Station:   "2001140", //КУНЦЕВСКАЯ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4400,
+				ExpectedSum: 4600,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -1650,7 +1650,7 @@ var CasesComplexPassMMTS5 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     4,
-				ExpectedSum: 700,
+				ExpectedSum: 800,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -1660,7 +1660,7 @@ var CasesComplexPassMMTS5 = test.Cases{
 					Station:   "2001140", //КУНЦЕВСКАЯ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4400,
+				ExpectedSum: 4600,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -1710,7 +1710,7 @@ var CasesComplexPassMMTS5 = test.Cases{
 					Station:   "2001140", //КУНЦЕВСКАЯ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4400,
+				ExpectedSum: 4600,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -1721,7 +1721,7 @@ var CasesComplexPassMMTS5 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     4,
-				ExpectedSum: 700,
+				ExpectedSum: 800,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -1731,7 +1731,7 @@ var CasesComplexPassMMTS5 = test.Cases{
 					Station:   "2001140", //КУНЦЕВСКАЯ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4400,
+				ExpectedSum: 4600,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -1742,7 +1742,7 @@ var CasesComplexPassMMTS5 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     6,
-				ExpectedSum: 700,
+				ExpectedSum: 800,
 			},
 		},
 	},
@@ -1773,7 +1773,7 @@ var CasesComplexPassMMTS5 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     2,
-				ExpectedSum: 700,
+				ExpectedSum: 800,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -1809,7 +1809,7 @@ var CasesComplexPassMMTS5 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     2,
-				ExpectedSum: 700,
+				ExpectedSum: 800,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -1845,7 +1845,7 @@ var CasesComplexPassMMTS5 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     2,
-				ExpectedSum: 700,
+				ExpectedSum: 800,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -1881,7 +1881,7 @@ var CasesComplexPassMMTS5 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     2,
-				ExpectedSum: 700,
+				ExpectedSum: 800,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -1917,7 +1917,7 @@ var CasesComplexPassMMTS5 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     2,
-				ExpectedSum: 700,
+				ExpectedSum: 800,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -1927,7 +1927,7 @@ var CasesComplexPassMMTS5 = test.Cases{
 					Station:   "2001140", //КУНЦЕВСКАЯ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4400,
+				ExpectedSum: 4600,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -1938,7 +1938,7 @@ var CasesComplexPassMMTS5 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     4,
-				ExpectedSum: 700,
+				ExpectedSum: 800,
 			},
 		},
 	},

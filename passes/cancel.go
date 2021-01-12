@@ -116,7 +116,7 @@ var CasesCancel = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     1,
-				ExpectedSum: 700,
+				ExpectedSum: 800,
 			},
 			&test.Cancel{
 				Target: 1,
@@ -263,7 +263,7 @@ var CasesCancel = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     1,
-				ExpectedSum: 700,
+				ExpectedSum: 800,
 			},
 			&test.Cancel{
 				Target: 1,
@@ -509,7 +509,7 @@ var CasesCancel = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     1,
-				ExpectedSum: 700,
+				ExpectedSum: 800,
 			},
 			&test.Cancel{
 				Target: 1,
@@ -653,7 +653,7 @@ var CasesCancel = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     1,
-				ExpectedSum: 700,
+				ExpectedSum: 800,
 			},
 			&test.Cancel{
 				Target: 1,

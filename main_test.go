@@ -162,7 +162,7 @@ func TestSimple(t *testing.T) {
 	//test.RunApiRequest(t, registry.CasesReviseGetTaskList, test.RequestTypeOffline)
 	//test.RunApiRequest(t, registry.CasesResolveGetTaskList, test.RequestTypeOffline)
 	test.Run(t, mck.CasesMetroComplexMCK2, test.RequestTypeOffline)
-	test.Run(t, mck.CasesMetroComplexMCK3, test.RequestTypeOffline)
+	//test.Run(t, mck.CasesMetroComplexMCK3, test.RequestTypeOffline)
 	//test.Run(t, mck.CasesMetroComplexMCK4, test.RequestTypeOffline)
 	//test.Run(t, mck.CasesComplexTimeMCK, test.RequestTypeOffline)
 	//test.Run(t, mcd.CasesComplexMCDMOPartOne, test.RequestTypeOffline)

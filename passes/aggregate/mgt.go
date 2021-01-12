@@ -28,7 +28,7 @@ var MgtAggregate = test.Cases{
 				PaymentType:          test.PaymentTypePayment,
 				Carrier:              carriers.Carrier_MGT,
 				IsInitAggregate:      true,
-				ExpectedSumAggregate: 8800,
+				ExpectedSumAggregate: 9200,
 				Aggregate:            1,
 			},
 			&test.Pass{

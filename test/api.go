@@ -690,7 +690,7 @@ func ProcessRevisePassRequest(t *testing.T, prp *ProcessRevisePass) {
 		IsComplexCarrier:  global.IsComplexCarrier(prpReq.CarrierCode),
 		IsPass:            true,
 		IsFree:            false,
-		Sum:               4400,
+		Sum:               4600,
 		IsAuth:            false,
 		PassType:          pass.PassType_PASS_BBK,
 		PaySystem:         prpReq.Request.Tap.Card.System,
@@ -881,7 +881,7 @@ func AuthResponseGo(t *testing.T, ra *AuthResponse) {
 	rtat := rta.RouteByParam("MM")
 	aResp := &authService.AuthResponseEvent{
 		Response: &authService.AuthResponse{
-			Sum:              4400,
+			Sum:              4600,
 			Rrn:              "000022371574",
 			AuthId:           "d5f2e434-525b-401e-88a2-6c754b7255e2",
 			ParentAuthId:     "",

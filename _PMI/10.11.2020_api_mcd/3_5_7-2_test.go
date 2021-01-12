@@ -49,7 +49,7 @@ func Test3_5_7_2(t *testing.T) {
 			}
 		},
 		"auth": {
-			"sum": 4400,
+			"sum": 4600,
 			"type": 1
 		}
 	}`)
@@ -128,7 +128,7 @@ func Test3_5_7_2(t *testing.T) {
 			}
 		},
 		"auth": {
-			"sum": 4400,
+			"sum": 4600,
 			"type": 1
 		}
 	}`)

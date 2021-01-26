@@ -59,6 +59,8 @@ type (
 		ExpectedSum uint32
 		//ссылка на проход в нашем кейсе, которую мы считаем стартовой
 		Parent int
+		//ссылка на проход в нашем кейсе, которую мы считаем стартовой для всех проверок кроме первой
+		SecondParent int
 		//ссылка на вход, для валидации связи
 		Ingress int
 		//ссылка на открывающую агрегацию
@@ -90,6 +92,7 @@ type (
 		timeRequest     uint64
 		card            *processing.Card
 		parent          *Pass
+		secondParent    *Pass
 		equal           *Pass
 		ingress         *Pass
 		aggregate       *Pass

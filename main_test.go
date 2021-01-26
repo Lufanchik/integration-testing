@@ -5,7 +5,7 @@ import (
 	"github.com/jinzhu/copier"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 	"github.com/stretchr/testify/require"
-	"lab.dt.multicarta.ru/tp/integration-testing/passes/mck"
+	"lab.dt.multicarta.ru/tp/integration-testing/passes/mmts"
 	"lab.dt.multicarta.ru/tp/integration-testing/test"
 	"net/http"
 	"net/http/pprof"
@@ -14,7 +14,7 @@ import (
 )
 
 const (
-	Workers = 20
+	Workers = 10
 
 	SimpleApiRequest CaseType = 1
 	PassApiRequest   CaseType = 2
@@ -141,7 +141,7 @@ func TestSimple(t *testing.T) {
 
 	//test.Run(t, webapi.ReaderCase, test.RequestTypeOffline)
 	//test.Run(t, aggregate.MetroAggregate, test.RequestTypeOffline)
-	//test.Run(t, mcd.CasesMetroComplexMCDMSK4, test.RequestTypeOffline)
+	test.Run(t, mmts.CasesComplexPassMMTS3, test.RequestTypeOffline)
 	//test.Run(t, aggregate.MgtAggregate, test.RequestTypeOffline)
 	//test.Run(t, cards.CardsStopList, test.RequestTypeOffline)
 	//test.Run(t, cards.FaceList, test.RequestTypeOffline)
@@ -161,7 +161,7 @@ func TestSimple(t *testing.T) {
 	//test.Run(t, mck.CasesMetroComplexMCK1, test.RequestTypeOffline)
 	//test.RunApiRequest(t, registry.CasesReviseGetTaskList, test.RequestTypeOffline)
 	//test.RunApiRequest(t, registry.CasesResolveGetTaskList, test.RequestTypeOffline)
-	test.Run(t, mck.CasesMetroComplexMCK2, test.RequestTypeOffline)
+	//test.Run(t, mck.CasesMetroComplexMCK2, test.RequestTypeOffline)
 	//test.Run(t, mck.CasesMetroComplexMCK3, test.RequestTypeOffline)
 	//test.Run(t, mck.CasesMetroComplexMCK4, test.RequestTypeOffline)
 	//test.Run(t, mck.CasesComplexTimeMCK, test.RequestTypeOffline)

@@ -125,6 +125,13 @@ func Update(t *testing.T, p *Pass, up Updater) {
 }
 
 func ValidatePass(t *testing.T, p *Pass, parent *Pass, ingress *Pass, isFirst bool) {
+	fmt.Printf("pass: %+v\n", *p)
+	if ingress != nil {
+		fmt.Printf("ingress: %+v\n", *ingress)
+	}
+	if p.secondParent != nil {
+		fmt.Printf("secondParent: %+v\n", *p.secondParent)
+	}
 	ctx := context.Background()
 	//time.Sleep(time.Second * 10)
 	expectPass := &pass.Pass{
@@ -152,6 +159,7 @@ func ValidatePass(t *testing.T, p *Pass, parent *Pass, ingress *Pass, isFirst bo
 		IsAuth:            false,
 		PassType:          GetPassType(p),
 		PaySystem:         p.card.System,
+		IsNotInitComplex:  false,
 	}
 
 	if p.timeToWait != 0 {
@@ -165,6 +173,8 @@ func ValidatePass(t *testing.T, p *Pass, parent *Pass, ingress *Pass, isFirst bo
 
 	if p.isParent {
 		expectPass.IsComplex = true
+		expectPass.ParentComplexId = p.id
+		expectPass.IsNotInitComplex = false
 	}
 
 	switch p.RequestType {
@@ -229,6 +239,7 @@ func ValidatePass(t *testing.T, p *Pass, parent *Pass, ingress *Pass, isFirst bo
 	if p.Parent > 0 {
 		expectPass.IsComplex = true
 		expectPass.ParentComplexId = parent.id
+		expectPass.IsNotInitComplex = true
 	}
 
 	if p.AuthType == AuthTypeIncorrect {
@@ -314,9 +325,11 @@ func ValidatePass(t *testing.T, p *Pass, parent *Pass, ingress *Pass, isFirst bo
 		expectPass.IsInitAggregate = true
 	}
 
-	//if p.Carrier ==  carriers.Carrier_MCD && p. {
-	//
-	//}
+	if !isFirst && p.secondParent != nil {
+		expectPass.IsComplex = true
+		expectPass.ParentComplexId = p.secondParent.id
+		expectPass.IsNotInitComplex = true
+	}
 
 	expectPass.IsComplexTimeout = global.IsComplexTimeout(global.UnixNanoToLocalizedTime(expectPass.CreatedAtCarrier))
 
@@ -340,6 +353,10 @@ func ValidatePass(t *testing.T, p *Pass, parent *Pass, ingress *Pass, isFirst bo
 
 		if passDB != nil {
 			expectPass.Updated = passDB.Updated
+		}
+
+		if passDB != nil && passDB.TerminalDirection == processing.TerminalDirection_EGRESS && passDB.IsComplex {
+
 		}
 
 		isEqual = assert.ObjectsAreEqual(expectPass, passDB)

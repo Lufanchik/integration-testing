@@ -82,7 +82,7 @@ func RunPass(t *testing.T, p *Pass, scenario *Case, carrierID string, card *proc
 		timeRequest = p.tapRequest.Created
 	}
 	require.Equal(t, tapResp.GetId(), resp.GetId())
-	var parent, ingress, aggregate *Pass
+	var parent, ingress, aggregate, secondParent *Pass
 	if p.Parent > 0 {
 		pr, ok := (scenario.T[p.Parent-1]).(*Pass)
 		if !ok {
@@ -92,6 +92,15 @@ func RunPass(t *testing.T, p *Pass, scenario *Case, carrierID string, card *proc
 		parent.isParent = true
 		parent.timeToWait = parent.TimeToWait
 	}
+
+	if p.SecondParent > 0 {
+		pr, ok := (scenario.T[p.SecondParent-1]).(*Pass)
+		if !ok {
+			t.Fail()
+		}
+		secondParent = pr
+	}
+
 	if p.Ingress > 0 {
 		ing, ok := (scenario.T[p.Ingress-1]).(*Pass)
 		if !ok {
@@ -116,6 +125,7 @@ func RunPass(t *testing.T, p *Pass, scenario *Case, carrierID string, card *proc
 	fmt.Println(p.id)
 	p.card = card
 	p.parent = parent
+	p.secondParent = secondParent
 	p.ingress = ingress
 	p.aggregate = aggregate
 
@@ -284,6 +294,7 @@ func Run(t *testing.T, cases Cases, rt RequestType) {
 					}
 
 					fmt.Printf("name: %s; pass-type: %d\n", ncc.c.N, ncc.c.PassType)
+					fmt.Printf("name: %+v\n", *ncc.card)
 					tpp, ppp := RunPass(t, firstPass, scenario, ncc.carrierIds[N], ncc.card)
 					firstPass.tapResponse = tpp
 					firstPass.passResponse = ppp

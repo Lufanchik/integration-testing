@@ -8,7 +8,7 @@ import (
 
 var CasesMetroComplexMCDMSK1 = test.Cases{
 	{
-		N: "1.МСК-МСК-ММ-MМ",
+		N: "0.МСК-МСК-ММ-MМ",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -28,7 +28,8 @@ var CasesMetroComplexMCDMSK1 = test.Cases{
 					Station:   "2000185", //ЛИАНОЗОВО
 					Direction: processing.TerminalDirection_EGRESS,
 				},
-				Ingress: 1,
+				Ingress:      1,
+				SecondParent: 1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -40,6 +41,43 @@ var CasesMetroComplexMCDMSK1 = test.Cases{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
+			},
+		},
+	},
+	{
+		N: "1.МСК-МСК-ММ-MМ",
+		T: test.T{
+			&test.Pass{
+				PaymentType: test.PaymentTypePayment,
+				Carrier:     carriers.Carrier_MM,
+				SubCarrier:  carriers.SubCarrier_MM_SUB,
+			},
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
+				Carrier:     carriers.Carrier_MCD,
+				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
+				Terminal: &processing.Terminal{
+					Station:   "2000155", //ФИЛИ
+					Direction: processing.TerminalDirection_INGRESS,
+				},
+				Parent: 1,
+			},
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
+				Carrier:     carriers.Carrier_MCD,
+				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
+				Terminal: &processing.Terminal{
+					Station:   "2000185", //ЛИАНОЗОВО
+					Direction: processing.TerminalDirection_EGRESS,
+				},
+				Parent:  1,
+				Ingress: 2,
+			},
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
+				Carrier:     carriers.Carrier_MM,
+				SubCarrier:  carriers.SubCarrier_MM_SUB,
+				Parent:      1,
 			},
 		},
 	},
@@ -64,7 +102,8 @@ var CasesMetroComplexMCDMSK1 = test.Cases{
 					Station:   "2000185", //ЛИАНОЗОВО
 					Direction: processing.TerminalDirection_EGRESS,
 				},
-				Ingress: 1,
+				Ingress:      1,
+				SecondParent: 1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -112,7 +151,8 @@ var CasesMetroComplexMCDMSK1 = test.Cases{
 					Station:   "2000185", //ЛИАНОЗОВО
 					Direction: processing.TerminalDirection_EGRESS,
 				},
-				Ingress: 1,
+				Ingress:      1,
+				SecondParent: 1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -160,7 +200,8 @@ var CasesMetroComplexMCDMSK1 = test.Cases{
 					Station:   "2000185", //ЛИАНОЗОВО
 					Direction: processing.TerminalDirection_EGRESS,
 				},
-				Ingress: 1,
+				Ingress:      1,
+				SecondParent: 1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -208,7 +249,8 @@ var CasesMetroComplexMCDMSK1 = test.Cases{
 					Station:   "2000185", //ЛИАНОЗОВО
 					Direction: processing.TerminalDirection_EGRESS,
 				},
-				Ingress: 1,
+				Ingress:      1,
+				SecondParent: 1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -271,7 +313,8 @@ var CasesMetroComplexMCDMSK1 = test.Cases{
 					Station:   "2000185", //ЛИАНОЗОВО
 					Direction: processing.TerminalDirection_EGRESS,
 				},
-				Ingress: 1,
+				Ingress:      1,
+				SecondParent: 1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -335,7 +378,8 @@ var CasesMetroComplexMCDMSK1 = test.Cases{
 					Station:   "2000185", //ЛИАНОЗОВО
 					Direction: processing.TerminalDirection_EGRESS,
 				},
-				Ingress: 1,
+				Ingress:      1,
+				SecondParent: 1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -377,7 +421,8 @@ var CasesMetroComplexMCDMSK1 = test.Cases{
 					Station:   "2000185", //ЛИАНОЗОВО
 					Direction: processing.TerminalDirection_EGRESS,
 				},
-				Ingress: 1,
+				SecondParent: 1,
+				Ingress:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -425,7 +470,8 @@ var CasesMetroComplexMCDMSK1 = test.Cases{
 					Station:   "2000185", //ЛИАНОЗОВО
 					Direction: processing.TerminalDirection_EGRESS,
 				},
-				Ingress: 1,
+				SecondParent: 1,
+				Ingress:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -473,7 +519,8 @@ var CasesMetroComplexMCDMSK1 = test.Cases{
 					Station:   "2000185", //ЛИАНОЗОВО
 					Direction: processing.TerminalDirection_EGRESS,
 				},
-				Ingress: 1,
+				SecondParent: 1,
+				Ingress:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -521,7 +568,8 @@ var CasesMetroComplexMCDMSK1 = test.Cases{
 					Station:   "2000185", //ЛИАНОЗОВО
 					Direction: processing.TerminalDirection_EGRESS,
 				},
-				Ingress: 1,
+				SecondParent: 1,
+				Ingress:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -584,7 +632,8 @@ var CasesMetroComplexMCDMSK1 = test.Cases{
 					Station:   "2000185", //ЛИАНОЗОВО
 					Direction: processing.TerminalDirection_EGRESS,
 				},
-				Ingress: 1,
+				SecondParent: 1,
+				Ingress:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -648,7 +697,8 @@ var CasesMetroComplexMCDMSK1 = test.Cases{
 					Station:   "2000185", //ЛИАНОЗОВО
 					Direction: processing.TerminalDirection_EGRESS,
 				},
-				Ingress: 1,
+				SecondParent: 1,
+				Ingress:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -681,6 +731,7 @@ var CasesMetroComplexMCDMSK1 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 5,
+				Parent:  1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -710,7 +761,8 @@ var CasesMetroComplexMCDMSK1 = test.Cases{
 					Station:   "2000185", //ЛИАНОЗОВО
 					Direction: processing.TerminalDirection_EGRESS,
 				},
-				Ingress: 1,
+				SecondParent: 1,
+				Ingress:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -742,6 +794,7 @@ var CasesMetroComplexMCDMSK1 = test.Cases{
 					Station:   "2000001", //КУРСКИЙВОКЗАЛ
 					Direction: processing.TerminalDirection_EGRESS,
 				},
+				Parent:  1,
 				Ingress: 5,
 			},
 			&test.Pass{
@@ -772,7 +825,8 @@ var CasesMetroComplexMCDMSK1 = test.Cases{
 					Station:   "2000185", //ЛИАНОЗОВО
 					Direction: processing.TerminalDirection_EGRESS,
 				},
-				Ingress: 1,
+				Ingress:      1,
+				SecondParent: 1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -805,6 +859,7 @@ var CasesMetroComplexMCDMSK1 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 5,
+				Parent:  1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -834,7 +889,8 @@ var CasesMetroComplexMCDMSK1 = test.Cases{
 					Station:   "2000185", //ЛИАНОЗОВО
 					Direction: processing.TerminalDirection_EGRESS,
 				},
-				Ingress: 1,
+				Ingress:      1,
+				SecondParent: 1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -867,6 +923,7 @@ var CasesMetroComplexMCDMSK1 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 5,
+				Parent:  1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -911,7 +968,8 @@ var CasesMetroComplexMCDMSK1 = test.Cases{
 					Station:   "2000185", //ЛИАНОЗОВО
 					Direction: processing.TerminalDirection_EGRESS,
 				},
-				Ingress: 1,
+				Ingress:      1,
+				SecondParent: 1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -944,6 +1002,7 @@ var CasesMetroComplexMCDMSK1 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 5,
+				Parent:  1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -989,7 +1048,8 @@ var CasesMetroComplexMCDMSK1 = test.Cases{
 					Station:   "2000185", //ЛИАНОЗОВО
 					Direction: processing.TerminalDirection_EGRESS,
 				},
-				Ingress: 1,
+				Ingress:      1,
+				SecondParent: 1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -1052,7 +1112,8 @@ var CasesMetroComplexMCDMSK1 = test.Cases{
 					Station:   "2000185", //ЛИАНОЗОВО
 					Direction: processing.TerminalDirection_EGRESS,
 				},
-				Ingress: 1,
+				Ingress:      1,
+				SecondParent: 1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -1115,7 +1176,8 @@ var CasesMetroComplexMCDMSK1 = test.Cases{
 					Station:   "2000185", //ЛИАНОЗОВО
 					Direction: processing.TerminalDirection_EGRESS,
 				},
-				Ingress: 1,
+				Ingress:      1,
+				SecondParent: 1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -1178,7 +1240,8 @@ var CasesMetroComplexMCDMSK1 = test.Cases{
 					Station:   "2000185", //ЛИАНОЗОВО
 					Direction: processing.TerminalDirection_EGRESS,
 				},
-				Ingress: 1,
+				Ingress:      1,
+				SecondParent: 1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -1256,7 +1319,8 @@ var CasesMetroComplexMCDMSK1 = test.Cases{
 					Station:   "2000185", //ЛИАНОЗОВО
 					Direction: processing.TerminalDirection_EGRESS,
 				},
-				Ingress: 1,
+				Ingress:      1,
+				SecondParent: 1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -1335,7 +1399,8 @@ var CasesMetroComplexMCDMSK1 = test.Cases{
 					Station:   "2000185", //ЛИАНОЗОВО
 					Direction: processing.TerminalDirection_EGRESS,
 				},
-				Ingress: 1,
+				Ingress:      1,
+				SecondParent: 1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -1377,7 +1442,8 @@ var CasesMetroComplexMCDMSK1 = test.Cases{
 					Station:   "2000185", //ЛИАНОЗОВО
 					Direction: processing.TerminalDirection_EGRESS,
 				},
-				Ingress: 1,
+				Ingress:      1,
+				SecondParent: 1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -1419,7 +1485,8 @@ var CasesMetroComplexMCDMSK1 = test.Cases{
 					Station:   "2000185", //ЛИАНОЗОВО
 					Direction: processing.TerminalDirection_EGRESS,
 				},
-				Ingress: 1,
+				Ingress:      1,
+				SecondParent: 1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,

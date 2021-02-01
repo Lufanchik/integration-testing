@@ -33,6 +33,7 @@ var (
 						Direction: processing.TerminalDirection_EGRESS,
 					},
 					Ingress: 1,
+					Parent:  1,
 					Now:     test.NowFullDate(2019, 12, 05, 11, 22, 00),
 				},
 				&test.Pass{
@@ -68,6 +69,7 @@ var (
 						Direction: processing.TerminalDirection_EGRESS,
 					},
 					Ingress: 1,
+					Parent:  1,
 					Now:     test.NowFullDate(2019, 12, 05, 12, 9, 00),
 				},
 				&test.Pass{
@@ -103,6 +105,7 @@ var (
 						Direction: processing.TerminalDirection_EGRESS,
 					},
 					Ingress:     1,
+					Parent:      1,
 					Now:         test.NowFullDate(2019, 12, 2, 9, 00, 00),
 					ExpectedSum: 700,
 				},
@@ -145,6 +148,7 @@ var (
 						Direction: processing.TerminalDirection_EGRESS,
 					},
 					Ingress:     4,
+					Parent:      1,
 					Now:         test.NowFullDate(2019, 12, 2, 15, 00, 00),
 					ExpectedSum: 700,
 				},
@@ -174,6 +178,7 @@ var (
 						Direction: processing.TerminalDirection_EGRESS,
 					},
 					Ingress: 1,
+					Parent:  1,
 					Now:     test.NowFullDate(2019, 12, 2, 10, 23, 00),
 				},
 				&test.Pass{
@@ -197,6 +202,7 @@ var (
 						Direction: processing.TerminalDirection_EGRESS,
 					},
 					Ingress: 3,
+					Parent:  1,
 					Now:     test.NowFullDate(2019, 12, 2, 11, 55, 00),
 				},
 			},
@@ -225,6 +231,7 @@ var (
 						Direction: processing.TerminalDirection_EGRESS,
 					},
 					Ingress: 1,
+					Parent:  1,
 					Now:     test.NowFullDate(2019, 12, 31, 24, 8, 00),
 				},
 				&test.Pass{
@@ -249,6 +256,7 @@ var (
 					},
 					Now:     test.NowFullDate(2019, 12, 31, 25, 43, 00),
 					Ingress: 3,
+					Parent:  1,
 				},
 			},
 		},
@@ -276,6 +284,7 @@ var (
 						Direction: processing.TerminalDirection_EGRESS,
 					},
 					Ingress: 1,
+					Parent:  1,
 					Now:     test.NowFullDate(2019, 12, 01, 00, 53, 00),
 				},
 				&test.Pass{
@@ -317,6 +326,7 @@ var (
 						Direction: processing.TerminalDirection_EGRESS,
 					},
 					Ingress:     4,
+					Parent:      1,
 					Now:         test.NowFullDate(2019, 12, 01, 06, 07, 00),
 					ExpectedSum: 700,
 				},
@@ -341,6 +351,7 @@ var (
 						Direction: processing.TerminalDirection_EGRESS,
 					},
 					Ingress: 6,
+					Parent:  1,
 					Now:     test.NowFullDate(2019, 12, 01, 7, 58, 00),
 				},
 				&test.Pass{
@@ -364,6 +375,7 @@ var (
 						Direction: processing.TerminalDirection_EGRESS,
 					},
 					Ingress: 8,
+					Parent:  1,
 					Now:     test.NowFullDate(2019, 12, 01, 8, 53, 00),
 				},
 				&test.Pass{
@@ -393,6 +405,7 @@ var (
 						Direction: processing.TerminalDirection_EGRESS,
 					},
 					Ingress: 11,
+					Parent:  1,
 					Now:     test.NowFullDate(2019, 12, 01, 11, 18, 00),
 				},
 				&test.Pass{
@@ -429,6 +442,7 @@ var (
 					},
 					Now:     test.NowFullDate(2019, 12, 31, 00, 36, 45),
 					Ingress: 1,
+					Parent:  1,
 				},
 				&test.Pass{
 					PaymentType: test.PaymentTypeFree,
@@ -452,6 +466,7 @@ var (
 					},
 					Now:     test.NowFullDate(2019, 12, 31, 01, 8, 45),
 					Ingress: 3,
+					Parent:  1,
 				},
 			},
 		},
@@ -480,6 +495,7 @@ var (
 					},
 					Now:     test.NowFullDate(2020, 01, 01, 00, 10, 00),
 					Ingress: 1,
+					Parent:  1,
 				},
 				&test.Pass{
 					PaymentType: test.PaymentTypeFree,
@@ -503,6 +519,7 @@ var (
 						Direction: processing.TerminalDirection_EGRESS,
 					},
 					Ingress: 3,
+					Parent:  1,
 					Now:     test.NowFullDate(2020, 01, 01, 00, 53, 00),
 				},
 			},
@@ -534,6 +551,7 @@ var (
 					ExpectedSum: 700,
 					Now:         test.NowFullDate(2020, 01, 01, 00, 44, 00),
 					Ingress:     1,
+					Parent:      1,
 				},
 				&test.Pass{
 					PaymentType: test.PaymentTypePayment,
@@ -558,6 +576,7 @@ var (
 					},
 					Now:     test.NowFullDate(2020, 01, 01, 01, 31, 00),
 					Ingress: 3,
+					Parent:  1,
 				},
 			},
 		},

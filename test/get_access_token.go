@@ -3,13 +3,29 @@ package test
 import (
 	"bytes"
 	"encoding/json"
+	"github.com/dgrijalva/jwt-go"
+	"github.com/google/uuid"
 	"github.com/pkg/errors"
 	"github.com/prometheus/common/log"
 	"io/ioutil"
-	"lab.siroccotechnology.ru/tp/common/messages/user"
+	"lab.dt.multicarta.ru/tp/common/messages/user"
 	"net/http"
 	"testing"
 )
+
+type AccessTokenClaims struct {
+	jwt.StandardClaims
+	Info *user.User
+}
+
+func GetAtClaims() *AccessTokenClaims {
+	return &AccessTokenClaims{
+		Info: &user.User{
+			Id:   10,
+			Uuid: uuid.New().String(),
+		},
+	}
+}
 
 func GetAccessToken(t *testing.T) (AT string, err error) {
 	httpClient := http.DefaultClient
@@ -55,14 +71,13 @@ func GetAccessToken(t *testing.T) (AT string, err error) {
 	//регистрация
 	rqReg := &user.RegisterRequest{
 		Email:     "test@1234",
-		Password:  "test1234",
 		FirstName: "Tester",
 		LastName:  "Test",
 	}
 	data, _ = json.Marshal(rqReg)
 	registerData := bytes.NewReader(data)
 
-	resp, err = httpClient.Post(ApmApiUrl+"/twirp/proto.ApmAPIGatewayPublic/Register", "application/json", registerData)
+	resp, err = httpClient.Post(ApmApiUrl+"/twirp/proto.ApmAPIGateway/UserRegister", "application/json", registerData)
 	//ошибка регистрации
 	if resp == nil {
 		return "", errors.New("Error Register resp is nil")

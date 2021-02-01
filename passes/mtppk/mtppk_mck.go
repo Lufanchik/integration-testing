@@ -1,15 +1,15 @@
 package mtppk
 
 import (
-	"lab.siroccotechnology.ru/tp/common/messages/carriers"
-	"lab.siroccotechnology.ru/tp/common/messages/processing"
-	"lab.siroccotechnology.ru/tp/integration-testing/test"
+	"lab.dt.multicarta.ru/tp/common/messages/carriers"
+	"lab.dt.multicarta.ru/tp/common/messages/processing"
+	"lab.dt.multicarta.ru/tp/integration-testing/test"
 )
 
 var CasesMTPPK_MCK = test.Cases{
 	{
-		N: "1.MTPPK-MCK-MM-MCK-MTPPK",
-		CardSystem: processing.CardSystem_VISA,
+		N:          "1.MTPPK-MCK-MM-MCK-MTPPK",
+		CardSystem: processing.CardSystem_MIR,
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypeStartAggregate,
@@ -113,7 +113,7 @@ var CasesMTPPK_MCK = test.Cases{
 					Station:   "2000055", //ОДИНЦОВО
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4900,
+				ExpectedSum: 5100,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -171,7 +171,7 @@ var CasesMTPPK_MCK = test.Cases{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
-				ExpectedSum: 4400,
+				ExpectedSum: 4600,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,

@@ -1,11 +1,134 @@
 version: "3"
 services:
   apm-api-gateway:
-    build: .
-    ports:
-      - "6831:6831"
+    image: golang:1.14
     volumes:
-      - ../../../../../src:/go/src
-      - ~/.ssh:/root/.ssh
-    command: /go/src/lab.siroccotechnology.ru/tp/integration-testing/run/apm-api-gateway.run
+      - ../../apm-api-gateway:/app
+    command: /app/bin/app -f /app/config.local.yml
+    network_mode: host
+
+  auth-service:
+    image: golang:1.14
+    volumes:
+      - ../../auth-service:/app
+    command: /app/bin/app -f /app/config.local.yml
+    network_mode: host
+
+  calculator-service:
+    image: golang:1.14
+    volumes:
+      - ../../calculator-service:/app
+    command: /app/bin/app -f /app/config.local.yml
+    network_mode: host
+
+  mk-emulator:
+    image: golang:1.14
+    volumes:
+      - ../../mk-emulator:/app
+    command: /app/bin/app -f /app/config.local.yml
+    network_mode: host
+
+  pass-mm-service:
+    image: golang:1.14
+    volumes:
+      - ../../pass-service:/app
+    command: /app/bin/app -f /app/config.local.yml
+    network_mode: host
+
+  pass-mcd-service:
+    image: golang:1.14
+    volumes:
+      - ../../pass-service:/app
+    command: /app/bin/app -f /app/config.local.mcd.yml
+    network_mode: host
+
+  pass-mgt-service:
+    image: golang:1.14
+    volumes:
+      - ../../pass-service:/app
+    command: /app/bin/app -f /app/config.local.mgt.yml
+    network_mode: host
+
+  pass-mtppk-service:
+    image: golang:1.14
+    volumes:
+      - ../../pass-service:/app
+    command: /app/bin/app -f /app/config.local.mtppk.yml
+    network_mode: host
+
+  processing-api-gateway:
+    image: golang:1.14
+    volumes:
+      - ../../processing-api-gateway:/app
+    command: /app/bin/app -f /app/config.local.yml
+    network_mode: host
+
+  request-service:
+    image: golang:1.14
+    volumes:
+      - ../../request-service:/app
+    command: /app/bin/app -f /app/config.local.yml
+    network_mode: host
+
+  tidpool-service:
+    image: golang:1.14
+    volumes:
+      - ../../tidpool-service:/app
+    command: /app/bin/app -f /app/config.local.yml
+    network_mode: host
+
+  user-service:
+    image: golang:1.14
+    volumes:
+      - ../../user-service:/app
+    command: /app/bin/app -f /app/config.local.yml
+    network_mode: host
+
+  web-api-gateway:
+    image: golang:1.14
+    volumes:
+      - ../../web-api-gateway:/app
+    command: /app/bin/app -f /app/config.local.yml
+    network_mode: host
+
+  resolve-http-service:
+    image: golang:1.14
+    volumes:
+      - ../../resolve-service:/app
+    command: /app/bin/app http -f /app/config.local.yml
+    network_mode: host
+
+  revise-http-service:
+    image: golang:1.14
+    volumes:
+      - ../../revise-service:/app
+    command: /app/bin/app http -f /app/cfg/config.local.yml
+    network_mode: host
+
+  twpg-service:
+    image: golang:1.14
+    volumes:
+      - ../../twpg-service:/app
+    command: /app/bin/app -f /app/config.local.yml
+    network_mode: host
+
+  comment-service:
+    image: golang:1.14
+    volumes:
+      - ../../comment-service:/app
+    command: /app/bin/app -f /app/config.local.yml
+    network_mode: host
+
+  card-service:
+    image: golang:1.14
+    volumes:
+      - ../../card-service:/app
+    command: /app/bin/app service -f /app/config.local.yml
+    network_mode: host
+
+  storage-service:
+    image: golang:1.14
+    volumes:
+      - ../../storage-service:/app
+    command: /app/bin/app -f /app/config.local.yml
     network_mode: host

@@ -1,9 +1,9 @@
 package mmts
 
 import (
-	"lab.siroccotechnology.ru/tp/common/messages/carriers"
-	"lab.siroccotechnology.ru/tp/common/messages/processing"
-	"lab.siroccotechnology.ru/tp/integration-testing/test"
+	"lab.dt.multicarta.ru/tp/common/messages/carriers"
+	"lab.dt.multicarta.ru/tp/common/messages/processing"
+	"lab.dt.multicarta.ru/tp/integration-testing/test"
 )
 
 var CasesComplexPassMMTS3 = test.Cases{
@@ -46,7 +46,8 @@ var CasesComplexPassMMTS3 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     4,
-				ExpectedSum: 700,
+				ExpectedSum: 800,
+				Parent:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -94,7 +95,8 @@ var CasesComplexPassMMTS3 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     4,
-				ExpectedSum: 700,
+				ExpectedSum: 800,
+				Parent:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -142,7 +144,8 @@ var CasesComplexPassMMTS3 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     4,
-				ExpectedSum: 700,
+				ExpectedSum: 800,
+				Parent:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -152,7 +155,7 @@ var CasesComplexPassMMTS3 = test.Cases{
 					Station:   "2000700", //ТЕСТОВСКАЯ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4200,
+				ExpectedSum: 4600,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -205,6 +208,7 @@ var CasesComplexPassMMTS3 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 4,
+				Parent:  1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -214,7 +218,7 @@ var CasesComplexPassMMTS3 = test.Cases{
 					Station:   "2000700", //ТЕСТОВСКАЯ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4200,
+				ExpectedSum: 4600,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -225,7 +229,7 @@ var CasesComplexPassMMTS3 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     6,
-				ExpectedSum: 700,
+				ExpectedSum: 800,
 			},
 		},
 	},
@@ -268,7 +272,8 @@ var CasesComplexPassMMTS3 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     4,
-				ExpectedSum: 700,
+				ExpectedSum: 800,
+				Parent:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -316,7 +321,8 @@ var CasesComplexPassMMTS3 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     4,
-				ExpectedSum: 700,
+				ExpectedSum: 800,
+				Parent:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -364,7 +370,8 @@ var CasesComplexPassMMTS3 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     4,
-				ExpectedSum: 700,
+				ExpectedSum: 800,
+				Parent:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -412,7 +419,8 @@ var CasesComplexPassMMTS3 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     4,
-				ExpectedSum: 700,
+				ExpectedSum: 800,
+				Parent:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -422,7 +430,7 @@ var CasesComplexPassMMTS3 = test.Cases{
 					Station:   "2000700", //ТЕСТОВСКАЯ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4200,
+				ExpectedSum: 4600,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -475,7 +483,8 @@ var CasesComplexPassMMTS3 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     4,
-				ExpectedSum: 700,
+				ExpectedSum: 800,
+				Parent:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -485,7 +494,7 @@ var CasesComplexPassMMTS3 = test.Cases{
 					Station:   "2000700", //ТЕСТОВСКАЯ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4200,
+				ExpectedSum: 4600,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -496,7 +505,7 @@ var CasesComplexPassMMTS3 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     6,
-				ExpectedSum: 700,
+				ExpectedSum: 800,
 			},
 		},
 	},
@@ -575,6 +584,7 @@ var CasesComplexPassMMTS3 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 3,
+				Parent:  1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -622,6 +632,7 @@ var CasesComplexPassMMTS3 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 3,
+				Parent:  1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -669,6 +680,7 @@ var CasesComplexPassMMTS3 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 3,
+				Parent:  1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -716,6 +728,7 @@ var CasesComplexPassMMTS3 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 3,
+				Parent:  1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -731,7 +744,7 @@ var CasesComplexPassMMTS3 = test.Cases{
 					Station:   "2000700", //ТЕСТОВСКАЯ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4200,
+				ExpectedSum: 4600,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -778,6 +791,7 @@ var CasesComplexPassMMTS3 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 3,
+				Parent:  1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -793,7 +807,7 @@ var CasesComplexPassMMTS3 = test.Cases{
 					Station:   "2000700", //ТЕСТОВСКАЯ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4200,
+				ExpectedSum: 4600,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -804,7 +818,7 @@ var CasesComplexPassMMTS3 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     6,
-				ExpectedSum: 700,
+				ExpectedSum: 800,
 			},
 		},
 	},
@@ -841,6 +855,7 @@ var CasesComplexPassMMTS3 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 3,
+				Parent:  1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -882,6 +897,7 @@ var CasesComplexPassMMTS3 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 3,
+				Parent:  1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -923,6 +939,7 @@ var CasesComplexPassMMTS3 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 3,
+				Parent:  1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -943,6 +960,7 @@ var CasesComplexPassMMTS3 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 5,
+				Parent:  1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -984,6 +1002,7 @@ var CasesComplexPassMMTS3 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 3,
+				Parent:  1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -1004,6 +1023,7 @@ var CasesComplexPassMMTS3 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 5,
+				Parent:  1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -1044,6 +1064,7 @@ var CasesComplexPassMMTS3 = test.Cases{
 					Station:   "2000155", //ФИЛИ
 					Direction: processing.TerminalDirection_EGRESS,
 				},
+				Parent:  1,
 				Ingress: 3,
 			},
 			&test.Pass{
@@ -1065,6 +1086,7 @@ var CasesComplexPassMMTS3 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 5,
+				Parent:  1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -1106,6 +1128,7 @@ var CasesComplexPassMMTS3 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 3,
+				Parent:  1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -1126,6 +1149,7 @@ var CasesComplexPassMMTS3 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 5,
+				Parent:  1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -1135,7 +1159,7 @@ var CasesComplexPassMMTS3 = test.Cases{
 					Station:   "2000700", //ТЕСТОВСКАЯ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4200,
+				ExpectedSum: 4600,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -1182,6 +1206,7 @@ var CasesComplexPassMMTS3 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 3,
+				Parent:  1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -1202,6 +1227,7 @@ var CasesComplexPassMMTS3 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 5,
+				Parent:  1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -1211,7 +1237,7 @@ var CasesComplexPassMMTS3 = test.Cases{
 					Station:   "2000700", //ТЕСТОВСКАЯ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4200,
+				ExpectedSum: 4600,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -1222,7 +1248,7 @@ var CasesComplexPassMMTS3 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     7,
-				ExpectedSum: 700,
+				ExpectedSum: 800,
 			},
 		},
 	},
@@ -1259,6 +1285,7 @@ var CasesComplexPassMMTS3 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 3,
+				Parent:  1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -1268,7 +1295,7 @@ var CasesComplexPassMMTS3 = test.Cases{
 					Station:   "2000700", //ТЕСТОВСКАЯ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4200,
+				ExpectedSum: 4600,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -1315,6 +1342,7 @@ var CasesComplexPassMMTS3 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 3,
+				Parent:  1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -1335,7 +1363,8 @@ var CasesComplexPassMMTS3 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     5,
-				ExpectedSum: 700,
+				ExpectedSum: 800,
+				Parent:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,

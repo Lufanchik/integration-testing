@@ -1,22 +1,22 @@
 package mtppk
 
 import (
-	"lab.siroccotechnology.ru/tp/common/messages/carriers"
-	"lab.siroccotechnology.ru/tp/common/messages/processing"
-	"lab.siroccotechnology.ru/tp/integration-testing/test"
+	"lab.dt.multicarta.ru/tp/common/messages/carriers"
+	"lab.dt.multicarta.ru/tp/common/messages/processing"
+	"lab.dt.multicarta.ru/tp/integration-testing/test"
 )
 
 var CasesMTPPK_single = test.Cases{
 	{
 		N:          "1. ММТС - MTППК - ММТС - MTPPK - MMTS - MTPPK - COMPLETE",
-		CardSystem: processing.CardSystem_VISA,
+		CardSystem: processing.CardSystem_MIR,
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MMTS_SUB,
-				//ExpectedSum: 4200,
+				//ExpectedSum: 4600,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeStartAggregate,
@@ -31,7 +31,7 @@ var CasesMTPPK_single = test.Cases{
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
 				Parent:      1,
-				//ExpectedSum: 4400,
+				//ExpectedSum: 4600,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeAggregate,
@@ -45,7 +45,7 @@ var CasesMTPPK_single = test.Cases{
 				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MMTS_SUB,
-				//ExpectedSum: 4200,
+				//ExpectedSum: 4600,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeAggregate,
@@ -59,7 +59,7 @@ var CasesMTPPK_single = test.Cases{
 				RequestType: test.RequestTypeOffline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MMTS_SUB,
-				//ExpectedSum: 4200,
+				//ExpectedSum: 4600,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeAggregate,

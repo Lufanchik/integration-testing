@@ -1,10 +1,10 @@
 package registry
 
 import (
-	"lab.siroccotechnology.ru/tp/common/messages/crud"
-	"lab.siroccotechnology.ru/tp/common/messages/registries"
-	"lab.siroccotechnology.ru/tp/common/messages/response"
-	"lab.siroccotechnology.ru/tp/integration-testing/test"
+	"lab.dt.multicarta.ru/tp/common/messages/crud"
+	"lab.dt.multicarta.ru/tp/common/messages/registries"
+	"lab.dt.multicarta.ru/tp/common/messages/response"
+	"lab.dt.multicarta.ru/tp/integration-testing/test"
 	"net/http"
 )
 

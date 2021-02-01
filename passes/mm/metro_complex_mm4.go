@@ -1,9 +1,9 @@
 package mm
 
 import (
-	"lab.siroccotechnology.ru/tp/common/messages/carriers"
-	"lab.siroccotechnology.ru/tp/common/messages/processing"
-	"lab.siroccotechnology.ru/tp/integration-testing/test"
+	"lab.dt.multicarta.ru/tp/common/messages/carriers"
+	"lab.dt.multicarta.ru/tp/common/messages/processing"
+	"lab.dt.multicarta.ru/tp/integration-testing/test"
 )
 
 var CasesMetroComplexMM4 = test.Cases{
@@ -60,7 +60,7 @@ var CasesMetroComplexMM4 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     5,
-				ExpectedSum: 700,
+				ExpectedSum: 800,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -122,7 +122,7 @@ var CasesMetroComplexMM4 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     5,
-				ExpectedSum: 700,
+				ExpectedSum: 800,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -184,7 +184,7 @@ var CasesMetroComplexMM4 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     5,
-				ExpectedSum: 700,
+				ExpectedSum: 800,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -246,7 +246,7 @@ var CasesMetroComplexMM4 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     5,
-				ExpectedSum: 700,
+				ExpectedSum: 800,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -322,7 +322,7 @@ var CasesMetroComplexMM4 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     5,
-				ExpectedSum: 700,
+				ExpectedSum: 800,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -342,7 +342,7 @@ var CasesMetroComplexMM4 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     7,
-				ExpectedSum: 700,
+				ExpectedSum: 800,
 			},
 		},
 	},
@@ -576,7 +576,7 @@ var CasesMetroComplexMM4 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     5,
-				ExpectedSum: 700,
+				ExpectedSum: 800,
 			},
 		},
 	},
@@ -910,7 +910,7 @@ var CasesMetroComplexMM4 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     7,
-				ExpectedSum: 700,
+				ExpectedSum: 800,
 			},
 		},
 	},
@@ -1244,7 +1244,7 @@ var CasesMetroComplexMM4 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     7,
-				ExpectedSum: 700,
+				ExpectedSum: 800,
 			},
 		},
 	},
@@ -1578,7 +1578,7 @@ var CasesMetroComplexMM4 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     7,
-				ExpectedSum: 700,
+				ExpectedSum: 800,
 			},
 		},
 	},
@@ -1717,7 +1717,7 @@ var CasesMetroComplexMM4 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     6,
-				ExpectedSum: 700,
+				ExpectedSum: 800,
 			},
 		},
 	},
@@ -1816,7 +1816,7 @@ var CasesMetroComplexMM4 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     4,
-				ExpectedSum: 700,
+				ExpectedSum: 800,
 			},
 		},
 	},
@@ -1866,7 +1866,7 @@ var CasesMetroComplexMM4 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     4,
-				ExpectedSum: 700,
+				ExpectedSum: 800,
 			},
 		},
 	},
@@ -1897,7 +1897,7 @@ var CasesMetroComplexMM4 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     2,
-				ExpectedSum: 700,
+				ExpectedSum: 800,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -1933,7 +1933,7 @@ var CasesMetroComplexMM4 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     2,
-				ExpectedSum: 700,
+				ExpectedSum: 800,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -1969,7 +1969,7 @@ var CasesMetroComplexMM4 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     2,
-				ExpectedSum: 700,
+				ExpectedSum: 800,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -2019,7 +2019,7 @@ var CasesMetroComplexMM4 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     2,
-				ExpectedSum: 700,
+				ExpectedSum: 800,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -2039,7 +2039,7 @@ var CasesMetroComplexMM4 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     4,
-				ExpectedSum: 700,
+				ExpectedSum: 800,
 			},
 		},
 	},

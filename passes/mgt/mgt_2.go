@@ -1,9 +1,9 @@
 package mgt
 
 import (
-	"lab.siroccotechnology.ru/tp/common/messages/carriers"
-	"lab.siroccotechnology.ru/tp/common/messages/processing"
-	"lab.siroccotechnology.ru/tp/integration-testing/test"
+	"lab.dt.multicarta.ru/tp/common/messages/carriers"
+	"lab.dt.multicarta.ru/tp/common/messages/processing"
+	"lab.dt.multicarta.ru/tp/integration-testing/test"
 )
 
 var CasesMGT_2 = test.Cases{
@@ -197,6 +197,7 @@ var CasesMGT_2 = test.Cases{
 					Station:   "2002910", //НЕМЧИНОВКА
 					Direction: processing.TerminalDirection_INGRESS,
 				},
+				ExpectedSum: 5400,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -230,7 +231,7 @@ var CasesMGT_2 = test.Cases{
 					Station:   "2000460", //НАХАБИНО
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4900,
+				ExpectedSum: 5400,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -330,7 +331,7 @@ var CasesMGT_2 = test.Cases{
 					Station:   "2000055", //ОДИНЦОВО
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4900,
+				ExpectedSum: 5400,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -374,7 +375,7 @@ var CasesMGT_2 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     7,
-				ExpectedSum: 700,
+				ExpectedSum: 800,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -398,7 +399,7 @@ var CasesMGT_2 = test.Cases{
 					Station:   "2000055",
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4900,
+				ExpectedSum: 5400,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -461,7 +462,7 @@ var CasesMGT_2 = test.Cases{
 					Station:   "2003960",
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4900,
+				ExpectedSum: 5400,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -524,7 +525,7 @@ var CasesMGT_2 = test.Cases{
 					Station:   "2000055",
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4900,
+				ExpectedSum: 5400,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -587,7 +588,7 @@ var CasesMGT_2 = test.Cases{
 					Station:   "2003960",
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4900,
+				ExpectedSum: 5400,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -650,7 +651,7 @@ var CasesMGT_2 = test.Cases{
 					Station:   "2000055",
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4900,
+				ExpectedSum: 5400,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -693,7 +694,7 @@ var CasesMGT_2 = test.Cases{
 					Station:   "2003960",
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4900,
+				ExpectedSum: 5400,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -736,7 +737,7 @@ var CasesMGT_2 = test.Cases{
 					Station:   "2000055",
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4900,
+				ExpectedSum: 5400,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -789,7 +790,7 @@ var CasesMGT_2 = test.Cases{
 					Station:   "2003960",
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4900,
+				ExpectedSum: 5400,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -842,7 +843,7 @@ var CasesMGT_2 = test.Cases{
 					Station:   "2000055",
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4900,
+				ExpectedSum: 5400,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -905,7 +906,7 @@ var CasesMGT_2 = test.Cases{
 					Station:   "2003960",
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4900,
+				ExpectedSum: 5400,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -968,7 +969,7 @@ var CasesMGT_2 = test.Cases{
 					Station:   "2000155", //ФИЛИ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4200,
+				ExpectedSum: 4600,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -1025,7 +1026,7 @@ var CasesMGT_2 = test.Cases{
 					Station:   "2001250", //МОСКВА ТОВАРНАЯ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4200,
+				ExpectedSum: 4600,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -1082,7 +1083,7 @@ var CasesMGT_2 = test.Cases{
 					Station:   "2000155", //ФИЛИ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4200,
+				ExpectedSum: 4600,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -1149,7 +1150,7 @@ var CasesMGT_2 = test.Cases{
 					Station:   "2001250", //МОСКВА ТОВАРНАЯ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4200,
+				ExpectedSum: 4600,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -1216,7 +1217,7 @@ var CasesMGT_2 = test.Cases{
 					Station:   "2000155", //ФИЛИ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4200,
+				ExpectedSum: 4600,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,

@@ -1,15 +1,15 @@
 package mtppk
 
 import (
-	"lab.siroccotechnology.ru/tp/common/messages/carriers"
-	"lab.siroccotechnology.ru/tp/common/messages/processing"
-	"lab.siroccotechnology.ru/tp/integration-testing/test"
+	"lab.dt.multicarta.ru/tp/common/messages/carriers"
+	"lab.dt.multicarta.ru/tp/common/messages/processing"
+	"lab.dt.multicarta.ru/tp/integration-testing/test"
 )
 
 var CasesMTPPK_MGT = test.Cases{
 	{
 		N:          "1. МТППК - МГТ, VISA",
-		CardSystem: processing.CardSystem_VISA,
+		CardSystem: processing.CardSystem_MIR,
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypeStartAggregate,
@@ -21,7 +21,7 @@ var CasesMTPPK_MGT = test.Cases{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
 				RequestType: test.RequestTypeOffline,
-				//ExpectedSum: 4400,
+				//ExpectedSum: 4600,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeAggregate,
@@ -39,7 +39,7 @@ var CasesMTPPK_MGT = test.Cases{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
 				RequestType: test.RequestTypeOffline,
-				//ExpectedSum: 4400,
+				//ExpectedSum: 4600,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeAggregate,
@@ -58,19 +58,19 @@ var CasesMTPPK_MGT = test.Cases{
 	},
 	{
 		N:          "2. МТППК - МГТ, VISA",
-		CardSystem: processing.CardSystem_VISA,
+		CardSystem: processing.CardSystem_MIR,
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
 				RequestType: test.RequestTypeOffline,
-				ExpectedSum: 4400,
+				ExpectedSum: 4600,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
 				RequestType: test.RequestTypeOnline,
-				//ExpectedSum: 4200,
+				//ExpectedSum: 4600,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeStartAggregate,
@@ -82,7 +82,7 @@ var CasesMTPPK_MGT = test.Cases{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
 				RequestType: test.RequestTypeOnline,
-				//ExpectedSum: 4200,
+				//ExpectedSum: 4600,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeAggregate,
@@ -102,7 +102,7 @@ var CasesMTPPK_MGT = test.Cases{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
 				RequestType: test.RequestTypeOffline,
-				//ExpectedSum: 4200,
+				//ExpectedSum: 4600,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeAggregate,
@@ -115,7 +115,7 @@ var CasesMTPPK_MGT = test.Cases{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MGT,
 				RequestType: test.RequestTypeOffline,
-				//ExpectedSum: 4200,
+				//ExpectedSum: 4600,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeStartAggregate,

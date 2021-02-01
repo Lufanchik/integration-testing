@@ -1,9 +1,9 @@
 package mm
 
 import (
-	"lab.siroccotechnology.ru/tp/common/messages/carriers"
-	"lab.siroccotechnology.ru/tp/common/messages/processing"
-	"lab.siroccotechnology.ru/tp/integration-testing/test"
+	"lab.dt.multicarta.ru/tp/common/messages/carriers"
+	"lab.dt.multicarta.ru/tp/common/messages/processing"
+	"lab.dt.multicarta.ru/tp/integration-testing/test"
 	"time"
 )
 
@@ -223,7 +223,7 @@ var (
 					},
 					Ingress:          2,
 					Now:              test.NowFullDate(2019, 12, 01, 06, 07, 00),
-					ExpectedSum:      700,
+					ExpectedSum:      800,
 					IsComplexTimeout: true,
 				},
 			},
@@ -262,7 +262,7 @@ var (
 					},
 					Ingress:          4,
 					Now:              test.NowFullDate(2019, 12, 01, 06, 07, 00),
-					ExpectedSum:      700,
+					ExpectedSum:      800,
 					IsComplexTimeout: true,
 				},
 			},

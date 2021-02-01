@@ -1,9 +1,9 @@
 package mm
 
 import (
-	"lab.siroccotechnology.ru/tp/common/messages/carriers"
-	"lab.siroccotechnology.ru/tp/common/messages/processing"
-	"lab.siroccotechnology.ru/tp/integration-testing/test"
+	"lab.dt.multicarta.ru/tp/common/messages/carriers"
+	"lab.dt.multicarta.ru/tp/common/messages/processing"
+	"lab.dt.multicarta.ru/tp/integration-testing/test"
 )
 
 var CasesMetroComplexMM3 = test.Cases{
@@ -61,11 +61,11 @@ var CasesMetroComplexMM3 = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MO,
 				Terminal: &processing.Terminal{
-					Station:   "2002077", //
+					Station:   "2001101", //ИННОВАЦИОННЫЙЦЕНТР
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     6,
-				ExpectedSum: 700,
+				ExpectedSum: 800,
 			},
 		},
 	},
@@ -399,7 +399,7 @@ var CasesMetroComplexMM3 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     7,
-				ExpectedSum: 700,
+				ExpectedSum: 800,
 			},
 		},
 	},
@@ -510,7 +510,7 @@ var CasesMetroComplexMM3 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     5,
-				ExpectedSum: 700,
+				ExpectedSum: 800,
 			},
 		},
 	},
@@ -774,7 +774,7 @@ var CasesMetroComplexMM3 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     6,
-				ExpectedSum: 700,
+				ExpectedSum: 800,
 			},
 		},
 	},
@@ -1079,7 +1079,7 @@ var CasesMetroComplexMM3 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     6,
-				ExpectedSum: 700,
+				ExpectedSum: 800,
 			},
 		},
 	},
@@ -1413,12 +1413,12 @@ var CasesMetroComplexMM3 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     7,
-				ExpectedSum: 700,
+				ExpectedSum: 800,
 			},
 		},
 	},
 	{
-		N: "75.MM-MCD1_MSK_МSК-MCК-MCD1_MSК_МSК-MMTS",
+		N: "75.MM-MCD1_MSK_МSК-MCК-MCD1_MSК_МSК",
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -1469,11 +1469,6 @@ var CasesMetroComplexMM3 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 5,
-			},
-			&test.Pass{
-				PaymentType: test.PaymentTypePayment,
-				Carrier:     carriers.Carrier_MM,
-				SubCarrier:  carriers.SubCarrier_MMTS_SUB,
 			},
 		},
 	},

@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
 echo "user-service"
-cd ../../user-service && make run | tee ../logs/user-service.logs
+cd ../../user-service && make generate && make build && make migrate_up

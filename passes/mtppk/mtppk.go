@@ -1,15 +1,15 @@
 package mtppk
 
 import (
-	"lab.siroccotechnology.ru/tp/common/messages/carriers"
-	"lab.siroccotechnology.ru/tp/common/messages/processing"
-	"lab.siroccotechnology.ru/tp/integration-testing/test"
+	"lab.dt.multicarta.ru/tp/common/messages/carriers"
+	"lab.dt.multicarta.ru/tp/common/messages/processing"
+	"lab.dt.multicarta.ru/tp/integration-testing/test"
 )
 
 var CasesMTPPKPasses = test.Cases{
 	{
 		N:          "1.MTPPK,VISA",
-		CardSystem: processing.CardSystem_VISA,
+		CardSystem: processing.CardSystem_MIR,
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypeStartAggregate,
@@ -46,7 +46,7 @@ var CasesMTPPKPasses = test.Cases{
 	},
 	{
 		N:          "2. MTPPK, MASTERCARD",
-		CardSystem: processing.CardSystem_MASTERCARD,
+		CardSystem: processing.CardSystem_MIR,
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypeStartAggregate,
@@ -83,7 +83,7 @@ var CasesMTPPKPasses = test.Cases{
 	},
 	{
 		N:          "3. MTPPK, FAIL",
-		CardSystem: processing.CardSystem_MASTERCARD,
+		CardSystem: processing.CardSystem_MIR,
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypeStartAggregate,
@@ -120,7 +120,7 @@ var CasesMTPPKPasses = test.Cases{
 	},
 	{
 		N: "4. MTPPK - MЦK - MTPPK - MМТС - MTPPK - ММ - MTPPK	- COMPLETE",
-		CardSystem: processing.CardSystem_MASTERCARD,
+		CardSystem: processing.CardSystem_MIR,
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,

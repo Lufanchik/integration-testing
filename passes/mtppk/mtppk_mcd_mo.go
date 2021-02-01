@@ -1,15 +1,15 @@
 package mtppk
 
 import (
-	"lab.siroccotechnology.ru/tp/common/messages/carriers"
-	"lab.siroccotechnology.ru/tp/common/messages/processing"
-	"lab.siroccotechnology.ru/tp/integration-testing/test"
+	"lab.dt.multicarta.ru/tp/common/messages/carriers"
+	"lab.dt.multicarta.ru/tp/common/messages/processing"
+	"lab.dt.multicarta.ru/tp/integration-testing/test"
 )
 
 var CasesMTPPK_MCD_MO = test.Cases{
 	{
 		N:          "1. МТППК - МЦД-МО1 VISA",
-		CardSystem: processing.CardSystem_VISA,
+		CardSystem: processing.CardSystem_MIR,
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -19,7 +19,7 @@ var CasesMTPPK_MCD_MO = test.Cases{
 					Station:   "2000115", //ЛОБНЯ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4900,
+				ExpectedSum: 5100,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -60,7 +60,7 @@ var CasesMTPPK_MCD_MO = test.Cases{
 	},
 	{
 		N:          "2. МТППК - МЦД-МО2 MASTERCARD",
-		CardSystem: processing.CardSystem_MASTERCARD,
+		CardSystem: processing.CardSystem_MIR,
 		T: test.T{
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -70,7 +70,7 @@ var CasesMTPPK_MCD_MO = test.Cases{
 					Station:   "2000065", //ПОДОЛЬСК
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4900,
+				ExpectedSum: 5100,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,

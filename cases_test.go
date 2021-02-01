@@ -1,34 +1,27 @@
 package integration_testing
 
 import (
-	"lab.siroccotechnology.ru/tp/integration-testing/apm"
-	"lab.siroccotechnology.ru/tp/integration-testing/parking"
-	"lab.siroccotechnology.ru/tp/integration-testing/passes"
-	"lab.siroccotechnology.ru/tp/integration-testing/passes/face"
-	"lab.siroccotechnology.ru/tp/integration-testing/passes/mcd"
-	"lab.siroccotechnology.ru/tp/integration-testing/passes/mck"
-	"lab.siroccotechnology.ru/tp/integration-testing/passes/mgt"
-	"lab.siroccotechnology.ru/tp/integration-testing/passes/mm"
-	"lab.siroccotechnology.ru/tp/integration-testing/passes/mmts"
-	"lab.siroccotechnology.ru/tp/integration-testing/passes/mt"
-	"lab.siroccotechnology.ru/tp/integration-testing/passes/mtppk"
-	"lab.siroccotechnology.ru/tp/integration-testing/registry"
-	"lab.siroccotechnology.ru/tp/integration-testing/webapi"
+	mk_emulator "lab.dt.multicarta.ru/tp/integration-testing/mk-emulator"
+	"lab.dt.multicarta.ru/tp/integration-testing/passes/mcd"
+	"lab.dt.multicarta.ru/tp/integration-testing/passes/mck"
+	"lab.dt.multicarta.ru/tp/integration-testing/passes/mm"
+	"lab.dt.multicarta.ru/tp/integration-testing/passes/mmts"
 )
 
 func init() {
 	//параллельный запуск
 	//общие кейсы проходов
 	//CasesCancel 25 26 27 пока на доработке
-	AddP(passes.CasesCancel)
+	//AddP(passes.CasesCancel)
+	//AddP(aggregate.MetroAggregate)
 
 	//МТППК
-	AddP(mtppk.CasesMTPPKPasses)
-	AddP(mtppk.CasesMTPPK_MGT)
-	AddP(mtppk.CasesMTPPK_MCD_MO)
-	AddP(mtppk.CasesMTPPK_MCK)
-	AddP(mtppk.CasesMTPPK_MCD_MSK)
-	AddP(mtppk.CasesMTPPK_single)
+	//AddP(mtppk.CasesMTPPKPasses)
+	//AddP(mtppk.CasesMTPPK_MGT)
+	//AddP(mtppk.CasesMTPPK_MCD_MO)
+	//AddP(mtppk.CasesMTPPK_MCK)
+	//AddP(mtppk.CasesMTPPK_MCD_MSK)
+	//AddP(mtppk.CasesMTPPK_single)
 
 	//ММТС
 	AddP(mmts.CasesComplexPassMMTS1)
@@ -62,29 +55,51 @@ func init() {
 	AddP(mcd.CasesComplexMCDMOPartFife)
 
 	//Мобильная тройка
-	AddP(mt.CasesMetroComplexMT)
+	//AddP(mt.CasesMetroComplexMT)
 
 	//APM
-	AddP(apm.CasesApmGateway)
+	//AddP(apm.CasesApmGateway)
 
 	//МГТ
-	AddP(mgt.CasesMGT_1)
-	AddP(mgt.CasesMGT_2)
-	AddP(mgt.CasesMGT_3)
+	//AddP(mgt.CasesMGT_1)
+	//AddP(mgt.CasesMGT_2)
+	//AddP(mgt.CasesMGT_3)
+	//AddP(mgt.CasesMGTWithEmptyEMV)
 
 	//Parking
-	AddP(parking.CasesParkingPass)
+	//AddP(parking.CasesParkingPass)
 
 	//WebAPI
-	AddP(webapi.CasesWEBAPI)
+	//AddP(webapi.CasesWEBAPI)
 
 	//Revise
-	AddAR(registry.CasesReviseGetTaskList)
+	//AddAR(registry.CasesReviseGetTaskList)
 	//Resolve
-	AddAR(registry.CasesResolveGetTaskList)
+	//AddAR(registry.CasesResolveGetTaskList)
 	//Face
-	AddP(face.CasesAuthWithFace)
-	AddP(face.MetroComplexFaceID)
+	//AddP(face.MetroComplexFaceID)
+
+	//Comments CRUDs
+	//AddAR(comments.CasesCommentsCRUD)
+
+	//Отмена оплаты в TWPG
+	//AddP(twpg.CaseTWPGReverseOrder)
+
+	////скачивание полного вайт листа на ридер
+	//AddP(cards.FaceList)
+	////запрос от ридера, включая скачивание полного вайт листа
+	//AddP(webapi.ReaderCase)
+	////запрос на восстановление прохода, если недостаточно данных для авторизации
+	//AddP(resolve.CasesResolve)
+
+	//Токен Мастеркард
+	//AddP(mastercard.CasesTokensMC)
+
+	//MK-emulator
+	AddP(mk_emulator.CasesEmulatorMK)
+
+	//Stop list add and remove card
+	//AddP(cards.CardsStopList)
 
 	//черновики, которые пока что не запускаются
 	//AddP(passes.CasesWrongTimeComplexPass)

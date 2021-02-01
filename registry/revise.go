@@ -1,11 +1,11 @@
 package registry
 
 import (
-	"lab.siroccotechnology.ru/tp/common/global"
-	"lab.siroccotechnology.ru/tp/common/messages/crud"
-	"lab.siroccotechnology.ru/tp/common/messages/registries"
-	"lab.siroccotechnology.ru/tp/common/messages/response"
-	"lab.siroccotechnology.ru/tp/integration-testing/test"
+	"lab.dt.multicarta.ru/tp/common/global"
+	"lab.dt.multicarta.ru/tp/common/messages/crud"
+	"lab.dt.multicarta.ru/tp/common/messages/registries"
+	"lab.dt.multicarta.ru/tp/common/messages/response"
+	"lab.dt.multicarta.ru/tp/integration-testing/test"
 	"net/http"
 )
 
@@ -21,7 +21,7 @@ var CasesReviseGetTaskList = test.Cases{
 			},
 		},
 	},
-	{
+	/*{
 		N: "200 get task list",
 		T: test.T{
 			&test.Revise{
@@ -38,7 +38,7 @@ var CasesReviseGetTaskList = test.Cases{
 				Response: &crud.EntitiesResponse{},
 			},
 		},
-	},
+	},*/
 	{
 		N: "200 get expires link",
 		T: test.T{
@@ -106,7 +106,7 @@ var CasesReviseGetTaskList = test.Cases{
 			},
 		},
 	},
-	{
+	/*{
 		N: "200 playground",
 		T: test.T{
 			&test.Revise{
@@ -123,5 +123,5 @@ var CasesReviseGetTaskList = test.Cases{
 				Response: &crud.Playground{},
 			},
 		},
-	},
+	},*/
 }

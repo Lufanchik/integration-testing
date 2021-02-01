@@ -1,9 +1,9 @@
 package passes
 
 import (
-	"lab.siroccotechnology.ru/tp/common/messages/carriers"
-	"lab.siroccotechnology.ru/tp/common/messages/processing"
-	"lab.siroccotechnology.ru/tp/integration-testing/test"
+	"lab.dt.multicarta.ru/tp/common/messages/carriers"
+	"lab.dt.multicarta.ru/tp/common/messages/processing"
+	"lab.dt.multicarta.ru/tp/integration-testing/test"
 )
 
 var CasesCancel = test.Cases{
@@ -16,7 +16,6 @@ var CasesCancel = test.Cases{
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				AuthType:    test.AuthTypeCorrect,
-				ExpectedSum: 4400,
 			},
 			&test.Cancel{
 				Target: 1,
@@ -33,7 +32,6 @@ var CasesCancel = test.Cases{
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
 				AuthType:    test.AuthTypeCorrect,
-				ExpectedSum: 4400,
 			},
 			&test.Cancel{
 				Target: 1,
@@ -50,7 +48,6 @@ var CasesCancel = test.Cases{
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MMTS_SUB,
 				AuthType:    test.AuthTypeCorrect,
-				ExpectedSum: 4400,
 			},
 			&test.Cancel{
 				Target: 1,
@@ -119,7 +116,7 @@ var CasesCancel = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     1,
-				ExpectedSum: 700,
+				ExpectedSum: 800,
 			},
 			&test.Cancel{
 				Target: 1,
@@ -144,7 +141,7 @@ var CasesCancel = test.Cases{
 					Station:   "2000460", //НАХАБИНО
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4900,
+				ExpectedSum: 5100,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -181,7 +178,7 @@ var CasesCancel = test.Cases{
 					Station:   "2000460", //НАХАБИНО
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4900,
+				ExpectedSum: 5100,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -266,7 +263,7 @@ var CasesCancel = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     1,
-				ExpectedSum: 700,
+				ExpectedSum: 800,
 			},
 			&test.Cancel{
 				Target: 1,
@@ -291,6 +288,7 @@ var CasesCancel = test.Cases{
 					Station:   "2000685", //БАКОВКА
 					Direction: processing.TerminalDirection_INGRESS,
 				},
+				ExpectedSum: 5100,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -327,7 +325,7 @@ var CasesCancel = test.Cases{
 					Station:   "2001101", //ИННОВАЦИОННЫЙ ЦЕНТР
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4900,
+				ExpectedSum: 5100,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -360,7 +358,6 @@ var CasesCancel = test.Cases{
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				AuthType:    test.AuthTypeCorrect,
-				ExpectedSum: 4400,
 			},
 			&test.Cancel{
 				Target: 1,
@@ -372,7 +369,6 @@ var CasesCancel = test.Cases{
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				AuthType:    test.AuthTypeCorrect,
-				ExpectedSum: 4400,
 			},
 			&test.Cancel{
 				Target: 3,
@@ -384,7 +380,6 @@ var CasesCancel = test.Cases{
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				AuthType:    test.AuthTypeCorrect,
-				ExpectedSum: 4400,
 			},
 			&test.Cancel{
 				Target: 5,
@@ -396,7 +391,6 @@ var CasesCancel = test.Cases{
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				AuthType:    test.AuthTypeCorrect,
-				ExpectedSum: 4400,
 			},
 			&test.Cancel{
 				Target: 7,
@@ -416,7 +410,6 @@ var CasesCancel = test.Cases{
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				AuthType:    test.AuthTypeIncorrect,
-				ExpectedSum: 4400,
 			},
 			&test.Cancel{
 				Target: 1,
@@ -433,7 +426,6 @@ var CasesCancel = test.Cases{
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MCK_SUB,
 				AuthType:    test.AuthTypeIncorrect,
-				ExpectedSum: 4400,
 			},
 			&test.Cancel{
 				Target: 1,
@@ -450,7 +442,6 @@ var CasesCancel = test.Cases{
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MMTS_SUB,
 				AuthType:    test.AuthTypeIncorrect,
-				ExpectedSum: 4400,
 			},
 			&test.Cancel{
 				Target: 1,
@@ -506,7 +497,6 @@ var CasesCancel = test.Cases{
 					Station:   "2000075", //ТУШИНО
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4200,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -519,7 +509,7 @@ var CasesCancel = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     1,
-				ExpectedSum: 700,
+				ExpectedSum: 800,
 			},
 			&test.Cancel{
 				Target: 1,
@@ -544,7 +534,7 @@ var CasesCancel = test.Cases{
 					Station:   "2000460", //НАХАБИНО
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4900,
+				ExpectedSum: 5100,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -580,7 +570,7 @@ var CasesCancel = test.Cases{
 					Station:   "2000460", //НАХАБИНО
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4900,
+				ExpectedSum: 5100,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -616,7 +606,6 @@ var CasesCancel = test.Cases{
 					Station:   "2000155", //ФИЛИ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4200,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -652,7 +641,6 @@ var CasesCancel = test.Cases{
 					Station:   "2000155", //ФИЛИ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4200,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -665,7 +653,7 @@ var CasesCancel = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress:     1,
-				ExpectedSum: 700,
+				ExpectedSum: 800,
 			},
 			&test.Cancel{
 				Target: 1,
@@ -690,7 +678,7 @@ var CasesCancel = test.Cases{
 					Station:   "2000685", //БАКОВКА
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4900,
+				ExpectedSum: 5100,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -726,7 +714,7 @@ var CasesCancel = test.Cases{
 					Station:   "2001101", //ИННОВАЦИОННЫЙ ЦЕНТР
 					Direction: processing.TerminalDirection_INGRESS,
 				},
-				ExpectedSum: 4900,
+				ExpectedSum: 5100,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -758,7 +746,6 @@ var CasesCancel = test.Cases{
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				AuthType:    test.AuthTypeIncorrect,
-				ExpectedSum: 4400,
 			},
 			&test.Cancel{
 				Target: 1,
@@ -770,7 +757,6 @@ var CasesCancel = test.Cases{
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				AuthType:    test.AuthTypeIncorrect,
-				ExpectedSum: 4400,
 			},
 			&test.Cancel{
 				Target: 3,
@@ -782,7 +768,6 @@ var CasesCancel = test.Cases{
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				AuthType:    test.AuthTypeIncorrect,
-				ExpectedSum: 4400,
 			},
 			&test.Cancel{
 				Target: 5,
@@ -794,7 +779,6 @@ var CasesCancel = test.Cases{
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				AuthType:    test.AuthTypeIncorrect,
-				ExpectedSum: 4400,
 			},
 			&test.Cancel{
 				Target: 7,
@@ -860,7 +844,6 @@ var CasesCancel = test.Cases{
 				RequestType: test.RequestTypeOnline,
 				Carrier:     carriers.Carrier_MM,
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
-				//ExpectedSum: 4200,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,

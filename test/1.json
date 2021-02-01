@@ -1,0 +1,27 @@
+{
+  "RequestConfiguration": {
+    "UpdateConfigTime": "2020-11-20T13:25:09.861+03:00",
+    "StoplistTime": "",
+    "SoftwareVersion": "9.9.9",
+    "ReaderId": "00000",
+    "KKInfo": {
+      "KKversion": "tkp",
+      "KKstatus": 0,
+      "ReaderVersion": "00000",
+      "ReaderStatus": 0,
+      "DTlastRequest": "1970-01-01T00:00:00Z"
+    },
+    "KZPInfo": {
+      "KZPversion": "",
+      "KZPNumber": "0",
+      "KZPLobby": "0-0"
+    },
+    "ServerStatus": {
+      "MemoryUsage": 2763728,
+      "DiskUsage": 322059644928,
+      "FreeSpace": 189372809216,
+      "SystemTime": "2020-11-20T17:33:37.0148818+03:00",
+      "ReadOnly": false
+    }
+  }
+}

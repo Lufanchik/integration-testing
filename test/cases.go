@@ -1,9 +1,11 @@
 package test
 
 import (
-	"lab.siroccotechnology.ru/tp/common/messages/carriers"
-	"lab.siroccotechnology.ru/tp/common/messages/pass"
-	"lab.siroccotechnology.ru/tp/common/messages/processing"
+	"lab.dt.multicarta.ru/tp/common/messages/cards"
+	"lab.dt.multicarta.ru/tp/common/messages/carriers"
+	"lab.dt.multicarta.ru/tp/common/messages/pass"
+	"lab.dt.multicarta.ru/tp/common/messages/processing"
+	"lab.dt.multicarta.ru/tp/common/messages/twpg"
 	"time"
 )
 
@@ -23,9 +25,20 @@ type (
 		//платежная система
 		CardSystem processing.CardSystem
 		//тип прохода
-		PassType pass.PassType
-		FaceId   string
+		PassType             pass.PassType
+		CustomerId           string
+		TWPGOrderId          uint64
+		SkipIdempotencyCheck bool
+		//Проходы по одной карте
+		Card           *processing.Card
+		NotDoubleCheck bool
 	}
+
+	ProcessRevisePass struct {
+		req  *processing.OnlinePassEvent
+		pass *pass.Pass
+	}
+
 	//генерация прохода
 	Pass struct {
 		//тип оплаты
@@ -46,6 +59,8 @@ type (
 		ExpectedSum uint32
 		//ссылка на проход в нашем кейсе, которую мы считаем стартовой
 		Parent int
+		//ссылка на проход в нашем кейсе, которую мы считаем стартовой для всех проверок кроме первой
+		SecondParent int
 		//ссылка на вход, для валидации связи
 		Ingress int
 		//ссылка на открывающую агрегацию
@@ -63,20 +78,32 @@ type (
 		//вышли ли мы за пределы таймаута комплексной поездки
 		IsComplexTimeout bool
 		faceId           string
-
-		id          string
-		carrierID   string
-		tapRequest  *processing.TapRequest
-		timeRequest uint64
-		card        *processing.Card
-		parent      *Pass
-		ingress     *Pass
-		aggregate   *Pass
-		isParent    bool
-		timeToWait  time.Duration
-		isCancel    bool
-		isComplete  bool
-		completeSum uint32
+		// сбрасываем emv
+		EmptyEMV bool
+		// проход должен быть таким же, как указанный
+		Equal int
+		// до авторизуем восстановленный проход
+		RevisePass      int
+		tapResponse     PassResponser
+		passResponse    PassResponser
+		id              string
+		carrierID       string
+		tapRequest      *processing.TapRequest
+		timeRequest     uint64
+		card            *processing.Card
+		parent          *Pass
+		secondParent    *Pass
+		equal           *Pass
+		ingress         *Pass
+		aggregate       *Pass
+		isParent        bool
+		timeToWait      time.Duration
+		isCancel        bool
+		isComplete      bool
+		completeSum     uint32
+		IsInitAggregate bool
+		//сумма, на которую мы ожидаем агрегацию
+		ExpectedSumAggregate uint32
 	}
 
 	//генерация прохода
@@ -142,6 +169,11 @@ type (
 		Sum       int
 	}
 
+	//закрытие периода агрегации по карте
+	CompleteWithCalculate struct {
+		Pan string
+	}
+
 	WebAPIPasses struct {
 		Passes []int
 	}
@@ -151,8 +183,64 @@ type (
 		RedirectURL string
 	}
 
+	TWPGCreateAndPayOrderStep struct {
+		CustomerId string
+		OrderId    uint64
+	}
+
+	TWPGOrderStatus struct {
+		OrderId     uint64
+		OrderStatus twpg.OrderStatus
+	}
+
+	TWPGReverseOrder struct {
+		OrderId uint64
+	}
+
 	FaceIdRegistrationStatus struct {
 		Id string
+	}
+
+	CommentsCRUD struct {
+	}
+
+	CardGetFull struct {
+		Kind     cards.DiffExportKind
+		FileType cards.FileType
+	}
+
+	ReaderConfiguration struct {
+		FaceList *FaceList
+		StopList *StopList
+	}
+
+	ReAuth struct {
+		Id string
+	}
+
+	AuthResponse struct {
+	}
+
+	FaceList struct {
+		Time     time.Time
+		FileType cards.FileType
+	}
+
+	StopList struct {
+		Time     time.Time
+		FileType cards.FileType
+	}
+
+	CardStopList struct {
+		PassId         string
+		Pan            string
+		ExpectedStatus cards.CardStatus
+		Passes         []int
+	}
+
+	ForceReauth struct {
+		PassId string
+		Passes []int
 	}
 )
 
@@ -174,6 +262,13 @@ const (
 	AuthTypeCorrect AuthType = iota
 	AuthTypeIncorrect
 	AuthTypeRefund
+	AuthTypeMCTokenCorrect
+	AuthTypeMCTokenIncorrect
+	AuthTypeMKEmulatorSuccess
+	AuthTypeMKEmulatorUnsuccess
+	AuthTypeMKEmulatorRandom
+	AuthTypeUnsuccessWithReauth
+	AuthTypeUnsuccessWithoutReauth
 )
 
 var Now func() uint64

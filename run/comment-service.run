@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+echo "comment-service"
+cd ../../comment-service && make generate && make build && make migrate_up

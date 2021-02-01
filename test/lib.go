@@ -5,18 +5,22 @@ import (
 	"github.com/brianvoe/gofakeit"
 	"github.com/gavv/httpexpect"
 	"github.com/google/uuid"
-	"lab.siroccotechnology.ru/tp/common/messages/pass"
-	"lab.siroccotechnology.ru/tp/common/messages/processing"
+	"github.com/stretchr/testify/require"
+	"lab.dt.multicarta.ru/tp/common/crypt/sha"
+	"lab.dt.multicarta.ru/tp/common/messages/pass"
+	"lab.dt.multicarta.ru/tp/common/messages/processing"
 	"testing"
 	"time"
 
-	passService "lab.siroccotechnology.ru/tp/pass-service/proto"
+	passService "lab.dt.multicarta.ru/tp/pass-service/proto"
 )
 
 var (
 	httpProcessingApi  *httpexpect.Expect
 	httpApmApi         *httpexpect.Expect
 	httpWebApi         *httpexpect.Expect
+	httpCardService    *httpexpect.Expect
+	httpCommentService *httpexpect.Expect
 	httpAuthService    *httpexpect.Expect
 	httpReviseService  *httpexpect.Expect
 	httpResolveService *httpexpect.Expect
@@ -38,11 +42,47 @@ func ConfigurePass(t *testing.T, p *Pass, carrierID string, card *processing.Car
 	p.carrierID = carrierID
 }
 
-func RunPass(t *testing.T, p *Pass, scenario *Case, carrierID string, card *processing.Card) {
+func RunPass(t *testing.T, p *Pass, scenario *Case, carrierID string, card *processing.Card) (PassResponser, PassResponser) {
+	var isEqual bool
+	if p.Equal != 0 {
+		isEqual = true
+		eq, ok := (scenario.T[p.Equal-1]).(*Pass)
+		if !ok {
+			t.Fail()
+		}
+		*p = *eq
+		card = p.card
+		p.AuthType = AuthTypeCorrect
+		p.EmptyEMV = false
+		carrierID = p.carrierID
+	}
+
 	ConfigurePass(t, p, carrierID, card)
-	tapReq := TapBySubCarrier(t, p, card)
-	timeRequest := PassBySubCarrier(t, tapReq, p)
-	var parent, ingress, aggregate *Pass
+	tapReq, tapResp := TapBySubCarrier(t, p, card)
+	if p.RevisePass != 0 {
+		prp, ok := (scenario.T[p.RevisePass-1]).(*ProcessRevisePass)
+		if !ok {
+			t.Fail()
+		}
+		tapReq.Tap.Card.Pan = prp.req.Request.Tap.Card.Pan
+		tapReq.Tap.Created = prp.req.Request.Tap.Created
+		//tapReq.Tap.Terminal = prp.req.Request.Tap.Terminal
+		tapReq2 := &processing.TapRequest{
+			Id:      prp.req.Request.Id,
+			Created: prp.req.Request.Created,
+			Tap:     tapReq.Tap,
+		}
+		tapReq = tapReq2
+		tapResp.Id = prp.pass.Id
+		p.tapRequest = tapReq
+		fmt.Printf("p: %+v", *p)
+	}
+	timeRequest, resp := PassBySubCarrier(t, tapReq, p)
+	if p.RevisePass != 0 {
+		timeRequest = p.tapRequest.Created
+	}
+	require.Equal(t, tapResp.GetId(), resp.GetId())
+	var parent, ingress, aggregate, secondParent *Pass
 	if p.Parent > 0 {
 		pr, ok := (scenario.T[p.Parent-1]).(*Pass)
 		if !ok {
@@ -52,6 +92,15 @@ func RunPass(t *testing.T, p *Pass, scenario *Case, carrierID string, card *proc
 		parent.isParent = true
 		parent.timeToWait = parent.TimeToWait
 	}
+
+	if p.SecondParent > 0 {
+		pr, ok := (scenario.T[p.SecondParent-1]).(*Pass)
+		if !ok {
+			t.Fail()
+		}
+		secondParent = pr
+	}
+
 	if p.Ingress > 0 {
 		ing, ok := (scenario.T[p.Ingress-1]).(*Pass)
 		if !ok {
@@ -69,17 +118,22 @@ func RunPass(t *testing.T, p *Pass, scenario *Case, carrierID string, card *proc
 	}
 
 	p.tapRequest = tapReq
-	p.timeRequest = timeRequest
+	if !isEqual {
+		p.timeRequest = timeRequest
+	}
+	fmt.Println(p.timeRequest)
+	fmt.Println(p.id)
 	p.card = card
 	p.parent = parent
+	p.secondParent = secondParent
 	p.ingress = ingress
 	p.aggregate = aggregate
 
 	//time.Sleep(TimeAfterRequest)
-
 	ValidatePass(t, p, p.parent, p.ingress, true)
 	//if !isAggregate(p) {
 	AuthStatus(t, p)
+
 	//}
 
 	if parent != nil {
@@ -95,6 +149,7 @@ func RunPass(t *testing.T, p *Pass, scenario *Case, carrierID string, card *proc
 		AuthStatus(t, ingress)
 		//}
 	}
+	return tapResp, resp
 }
 func getRequestType(t *testing.T, p *Pass) RequestType {
 	if GlobalRequestType != RequestTypeNone {
@@ -113,6 +168,8 @@ func RunApiRequest(t *testing.T, cases Cases, rt RequestType) {
 	httpProcessingApi = httpexpect.New(t, ProcessingApiUrl)
 	httpApmApi = httpexpect.New(t, ApmApiUrl)
 	httpWebApi = httpexpect.New(t, WebApiUrl)
+	httpCommentService = httpexpect.New(t, CommentsURL)
+	httpCardService = httpexpect.New(t, CardURL)
 	httpAuthService = httpexpect.New(t, AuthServiceUrl)
 	httpReviseService = httpexpect.New(t, ReviseApiUrl)
 	httpResolveService = httpexpect.New(t, ResolveApiUrl)
@@ -141,6 +198,11 @@ func RunApiRequest(t *testing.T, cases Cases, rt RequestType) {
 				if ok {
 					LoginApi(t, lg)
 				}
+
+				commentsCRUD, ok := step.(*CommentsCRUD)
+				if ok {
+					CommentsCheck(t, commentsCRUD)
+				}
 			}
 		})
 	}
@@ -150,69 +212,99 @@ func Run(t *testing.T, cases Cases, rt RequestType) {
 	httpProcessingApi = httpexpect.New(t, ProcessingApiUrl)
 	httpApmApi = httpexpect.New(t, ApmApiUrl)
 	httpWebApi = httpexpect.New(t, WebApiUrl)
+	httpCommentService = httpexpect.New(t, CommentsURL)
+	httpCardService = httpexpect.New(t, CardURL)
 	httpAuthService = httpexpect.New(t, AuthServiceUrl)
 	httpReviseService = httpexpect.New(t, ReviseApiUrl)
 	httpResolveService = httpexpect.New(t, ResolveApiUrl)
 	httpTWPGService = httpexpect.New(t, TWPGApiUrl)
 
 	type NCase struct {
-		c         *Case
-		card      *processing.Card
-		carrierId string
+		c    *Case
+		card *processing.Card
+		//carrierId string
+		carrierIds []string
+		shaPan     string
 	}
 	nc := make([]*NCase, len(cases))
 
 	for k, _ := range cases {
 		nc[k] = &NCase{
-			c:         &cases[k],
-			carrierId: uuid.New().String(),
+			c: &cases[k],
 		}
-
-		if cases[k].FaceId != "" {
-			nc[k].card = FaceCard(cases[k].CardSystem, cases[k].FaceId)
+		ids := make([]string, len(nc[k].c.T))
+		for numInCase := range nc[k].c.T {
+			ids[numInCase] = uuid.New().String()
+		}
+		nc[k].carrierIds = ids
+		if cases[k].CustomerId != "" {
+			nc[k].card = FaceCard(cases[k].CardSystem, cases[k].CustomerId)
 		} else if cases[k].PassType == pass.PassType_PASS_MT {
 			nc[k].card = MTCard(cases[k].CardSystem)
 		} else {
-			nc[k].card = Card(cases[k].CardSystem)
+			if nc[k].c.Card != nil {
+				nc[k].card = nc[k].c.Card
+			} else {
+				nc[k].card = Card(cases[k].CardSystem)
+			}
 		}
+		pan, err := sha.Generate(nc[k].card.Pan)
+		if err != nil {
+			panic(err)
+		}
+		nc[k].shaPan = pan
 	}
 
-	for _, ncc := range nc {
+	results := make([][]*Pass, len(nc))
+
+	for casesNum, ncc := range nc {
 		fmt.Println("name: " + ncc.c.N)
-		fmt.Println(ncc.card.String())
 		scenario := ncc.c
 		for N, step := range scenario.T {
 			fmt.Println(N + 1)
 			t.Run("case: "+scenario.N, func(t *testing.T) {
 				//Pass
-				p, ok := step.(*Pass)
+				firstPass, ok := step.(*Pass)
 				if ok {
-					p.RequestType = rt
-					p.faceId = ncc.c.FaceId
+					firstPass.RequestType = rt
+					firstPass.faceId = ncc.c.CustomerId
 					//Если PassType в начале кейса не указан, дефолтим PassType_PASS_BBK, иначе используется предустановленный
 					if ncc.c.PassType == pass.PassType_PASS_NONE {
 						//Если фейс айди заполнен, то вместо BBK используем PassType_FACE_ID
-						if ncc.c.FaceId != "" {
-							p.PassType = pass.PassType_PASS_FACE_ID
+						if ncc.c.CustomerId != "" {
+							firstPass.PassType = pass.PassType_PASS_FACE_ID
 						} else {
-							p.PassType = pass.PassType_PASS_BBK
+							firstPass.PassType = pass.PassType_PASS_BBK
 						}
-					} else if ncc.c.FaceId != "" {
-						p.PassType = pass.PassType_PASS_FACE_ID
+					} else if ncc.c.CustomerId != "" {
+						firstPass.PassType = pass.PassType_PASS_FACE_ID
 					} else {
-						p.PassType = ncc.c.PassType
+						firstPass.PassType = ncc.c.PassType
 					}
-					if p.PaymentType == PaymentTypePrepayed {
-						p.PassType = pass.PassType_PASS_MT
+					if firstPass.PaymentType == PaymentTypePrepayed {
+						firstPass.PassType = pass.PassType_PASS_MT
 					}
 
-					if p.PassType == pass.PassType_PASS_MT {
-						p.PaymentType = PaymentTypePrepayed
+					if firstPass.PassType == pass.PassType_PASS_MT {
+						firstPass.PaymentType = PaymentTypePrepayed
+					}
+
+					if firstPass.PassType == pass.PassType_PASS_FACE_ID {
+						ncc.card.Pan = ncc.shaPan
 					}
 
 					fmt.Printf("name: %s; pass-type: %d\n", ncc.c.N, ncc.c.PassType)
-					RunPass(t, p, scenario, ncc.carrierId, ncc.card)
+					fmt.Printf("name: %+v\n", *ncc.card)
+					tpp, ppp := RunPass(t, firstPass, scenario, ncc.carrierIds[N], ncc.card)
+					firstPass.tapResponse = tpp
+					firstPass.passResponse = ppp
 				}
+
+				if results[casesNum] == nil {
+					results[casesNum] = make([]*Pass, len(scenario.T))
+				}
+
+				results[casesNum][N] = firstPass
 
 				//Updater
 				u, ok := step.(Updater)
@@ -255,6 +347,21 @@ func Run(t *testing.T, cases Cases, rt RequestType) {
 					ParkingApi(t, ncc.card, pr)
 				}
 
+				cm_calc, ok := step.(*CompleteWithCalculate)
+				if ok {
+					var aggregatePasses []*Pass
+					for _, v := range scenario.T {
+						ps, ok := v.(*Pass)
+						if ok {
+							aggregatePasses = append(aggregatePasses, ps)
+						}
+					}
+
+					if len(aggregatePasses) != 0 {
+						CompleteCalcApi(t, aggregatePasses, cm_calc.Pan)
+					}
+				}
+
 				cm, ok := step.(*Complete)
 				if ok {
 					start, ok := (scenario.T[cm.StartPass-1]).(*Pass)
@@ -286,6 +393,40 @@ func Run(t *testing.T, cases Cases, rt RequestType) {
 					FaceApiCheckStatus(t, faceCheck)
 				}
 
+				twpgPay, ok := step.(*TWPGCreateAndPayOrderStep)
+				if ok {
+					twpgPay.CustomerId = ncc.card.Pan
+					TWPGCreateAndPayOrder(t, twpgPay)
+					ncc.c.TWPGOrderId = twpgPay.OrderId
+				}
+
+				twpgOrderStatus, ok := step.(*TWPGOrderStatus)
+				if ok {
+					twpgOrderStatus.OrderId = ncc.c.TWPGOrderId
+					TWPGCheckOrderStatus(t, twpgOrderStatus)
+				}
+
+				twpgReverse, ok := step.(*TWPGReverseOrder)
+				if ok {
+					twpgReverse.OrderId = ncc.c.TWPGOrderId
+					TWPGReverse(t, twpgReverse)
+				}
+
+				cgf, ok := step.(*CardGetFull)
+				if ok {
+					CardApiGetFull(t, cgf)
+				}
+
+				prp, ok := step.(*ProcessRevisePass)
+				if ok {
+					ProcessRevisePassRequest(t, prp)
+				}
+
+				rc, ok := step.(*ReaderConfiguration)
+				if ok {
+					ReaderConfigurationSend(t, rc)
+				}
+
 				wgw, ok := step.(*WebAPIPasses)
 				if ok {
 					var passes []*Pass
@@ -294,6 +435,49 @@ func Run(t *testing.T, cases Cases, rt RequestType) {
 					}
 
 					WebAPI(t, ncc.card, passes)
+				}
+
+				csl, ok := step.(*CardStopList)
+				if ok {
+					var reauthPass *Pass
+					for _, v := range csl.Passes {
+						p := (scenario.T[v-1]).(*Pass)
+						if p.AuthType == AuthTypeUnsuccessWithReauth {
+							reauthPass = p
+							break
+						}
+					}
+					require.NotNil(t, reauthPass)
+
+					csl.PassId = reauthPass.id
+					csl.Pan = ncc.card.Pan
+					CardCheckStopList(t, csl)
+				}
+
+				fra, ok := step.(*ForceReauth)
+				if ok {
+					var reauthPass *Pass
+					for _, v := range fra.Passes {
+						p := (scenario.T[v-1]).(*Pass)
+						if p.AuthType == AuthTypeUnsuccessWithReauth {
+							reauthPass = p
+							break
+						}
+					}
+					require.NotNil(t, reauthPass)
+
+					fra.PassId = reauthPass.id
+					ForceReauthCall(t, fra)
+				}
+
+				pra, ok := step.(*ReAuth)
+				if ok {
+					ReAuthGo(t, pra)
+				}
+
+				ara, ok := step.(*AuthResponse)
+				if ok {
+					AuthResponseGo(t, ara)
 				}
 			})
 			if t.Failed() {
@@ -306,33 +490,52 @@ func Run(t *testing.T, cases Cases, rt RequestType) {
 	}
 
 	if !t.Failed() {
-		for _, ncc := range nc {
-			fmt.Println("name check 1: " + ncc.c.N)
-			fmt.Println(ncc.card.String())
+		for casesNum, ncc := range nc {
 			scenario := ncc.c
+			if scenario.SkipIdempotencyCheck {
+				break
+			}
+
+			fmt.Println("name check 1: " + ncc.c.N)
+
 			for N, step := range scenario.T {
 				t.Run("case check 1: "+scenario.N, func(t *testing.T) {
 					//Pass
-					p, ok := step.(*Pass)
-					if ok && !p.isCancel && p.faceId == "" {
+					secondPass, ok := step.(*Pass)
+					if ok && !secondPass.isCancel && secondPass.faceId == "" {
+						oldPass := results[casesNum][N]
+						secondPass.tapRequest = oldPass.tapRequest
 						fmt.Println(fmt.Sprintf("check 1 = %d", N+1))
-						ConfigurePass(t, p, ncc.carrierId, ncc.card)
-						ValidatePass(t, p, p.parent, p.ingress, false)
-						if !isAggregate(p) {
-							AuthStatus(t, p)
+						ConfigurePass(t, secondPass, ncc.carrierIds[N], ncc.card)
+						ValidatePass(t, secondPass, secondPass.parent, secondPass.ingress, false)
+						if !isAggregate(secondPass) && !isAggeregateByCardSystemCarrier(secondPass.Carrier, secondPass.card.System) {
+							AuthStatus(t, secondPass)
 						}
-						TapBySubCarrier(t, p, ncc.card)
-						PassBySubCarrier(t, p.tapRequest, p)
-						ValidatePass(t, p, p.parent, p.ingress, false)
-						if !isAggregate(p) {
-							AuthStatus(t, p)
+						secondPass.Terminal = secondPass.tapRequest.Tap.Terminal
+
+						_, respTap := TapBySubCarrier(t, secondPass, ncc.card)
+						_, respPass := PassBySubCarrier(t, secondPass.tapRequest, secondPass)
+						require.Equal(t, respTap.GetId(), respPass.GetId())
+
+						require.Equal(t, respTap.GetId(), oldPass.tapResponse.GetId())
+						require.Equal(t, respTap.GetId(), oldPass.passResponse.GetId())
+						require.Equal(t, secondPass.id, oldPass.id)
+						if !ncc.c.NotDoubleCheck {
+							ValidatePass(t, secondPass, secondPass.parent, secondPass.ingress, false)
+						}
+
+						if !isAggregate(secondPass) && !isAggeregateByCardSystemCarrier(secondPass.Carrier, secondPass.card.System) {
+							AuthStatus(t, secondPass)
 						}
 					}
+
 				})
+
 				if t.Failed() {
 					break
 				}
 			}
+
 			if t.Failed() {
 				break
 			}
@@ -340,26 +543,38 @@ func Run(t *testing.T, cases Cases, rt RequestType) {
 	}
 
 	if !t.Failed() {
-		for _, ncc := range nc {
-			fmt.Println("name check 2: " + ncc.c.N)
-			fmt.Println(ncc.card.String())
+		for casesNum, ncc := range nc {
 			scenario := ncc.c
+
+			if scenario.SkipIdempotencyCheck {
+				break
+			}
+
+			fmt.Println("name check 2: " + ncc.c.N)
 			for N, step := range scenario.T {
 				t.Run("case check 2: "+scenario.N, func(t *testing.T) {
 					//Pass
-					p, ok := step.(*Pass)
-					if ok && !p.isCancel && p.faceId == "" {
+					thirdPass, ok := step.(*Pass)
+					if ok && !thirdPass.isCancel && thirdPass.faceId == "" {
 						fmt.Println(fmt.Sprintf("check 2 = %d", N+1))
-						ConfigurePass(t, p, ncc.carrierId, ncc.card)
-						ValidatePass(t, p, p.parent, p.ingress, false)
-						if !isAggregate(p) {
-							AuthStatus(t, p)
+						ConfigurePass(t, thirdPass, ncc.carrierIds[N], ncc.card)
+						if !ncc.c.NotDoubleCheck {
+							ValidatePass(t, thirdPass, thirdPass.parent, thirdPass.ingress, false)
 						}
-						TapBySubCarrier(t, p, ncc.card)
-						PassBySubCarrier(t, p.tapRequest, p)
-						ValidatePass(t, p, p.parent, p.ingress, false)
-						if !isAggregate(p) {
-							AuthStatus(t, p)
+						if !isAggregate(thirdPass) && !isAggeregateByCardSystemCarrier(thirdPass.Carrier, thirdPass.card.System) {
+							AuthStatus(t, thirdPass)
+						}
+						_, respTap := TapBySubCarrier(t, thirdPass, ncc.card)
+						_, respPass := PassBySubCarrier(t, thirdPass.tapRequest, thirdPass)
+						require.Equal(t, respTap.GetId(), respPass.GetId())
+						oldPass := results[casesNum][N]
+						require.Equal(t, respTap.GetId(), oldPass.tapResponse.GetId())
+						require.Equal(t, respTap.GetId(), oldPass.passResponse.GetId())
+						if !ncc.c.NotDoubleCheck {
+							ValidatePass(t, thirdPass, thirdPass.parent, thirdPass.ingress, false)
+						}
+						if !isAggregate(thirdPass) && !isAggeregateByCardSystemCarrier(thirdPass.Carrier, thirdPass.card.System) {
+							AuthStatus(t, thirdPass)
 						}
 					}
 				})

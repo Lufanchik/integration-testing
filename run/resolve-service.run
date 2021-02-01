@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+echo "resolve-service"
+cd ../../resolve-service && make generate && make build && make migrate_up

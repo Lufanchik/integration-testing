@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
 echo "auth-service"
-cd ../../auth-service && make run | tee ../logs/auth-service.logs
+cd ../../auth-service && make generate && make build && make migrate_up

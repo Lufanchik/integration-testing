@@ -20,7 +20,7 @@ var CasesComplexPassMMTS5 = test.Cases{
 	//			Carrier:     carriers.Carrier_MCD,
 	//			SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 	//			Terminal: &processing.Terminal{
-	//				Station:   "2001140", //КУНЦЕВСКАЯ
+	//				Station:   "2002949", //КУНЦЕВСКАЯ
 	//				Direction: processing.TerminalDirection_INGRESS,
 	//			},
 	//			Parent: 1,
@@ -80,7 +80,7 @@ var CasesComplexPassMMTS5 = test.Cases{
 	//			Carrier:     carriers.Carrier_MCD,
 	//			SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 	//			Terminal: &processing.Terminal{
-	//				Station:   "2001140", //КУНЦЕВСКАЯ
+	//				Station:   "2002949", //КУНЦЕВСКАЯ
 	//				Direction: processing.TerminalDirection_EGRESS,
 	//			},
 	//			Ingress: 7,
@@ -101,7 +101,7 @@ var CasesComplexPassMMTS5 = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2001140", //КУНЦЕВСКАЯ
+					Station:   "2000155", //КУНЦЕВСКАЯ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
 				Parent: 1,
@@ -123,50 +123,51 @@ var CasesComplexPassMMTS5 = test.Cases{
 				SubCarrier:  carriers.SubCarrier_MM_SUB,
 				Parent:      1,
 			},
-			&test.Pass{
-				PaymentType: test.PaymentTypePayment,
-				Carrier:     carriers.Carrier_MCD,
-				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
-				Terminal: &processing.Terminal{
-					Station:   "2000155", //ФИЛИ
-					Direction: processing.TerminalDirection_INGRESS,
-				},
-				ExpectedSum: 4600,
-			},
-			&test.Pass{
-				PaymentType: test.PaymentTypePayment,
-				Carrier:     carriers.Carrier_MCD,
-				SubCarrier:  carriers.SubCarrier_MCD1_MO,
-				Terminal: &processing.Terminal{
-					Station:   "2000055", //ОДИНЦОВО
-					Direction: processing.TerminalDirection_EGRESS,
-				},
-				Ingress:     5,
-				Parent:      1,
-				ExpectedSum: 800,
-			},
-			&test.Pass{
-				PaymentType: test.PaymentTypePayment,
-				Carrier:     carriers.Carrier_MCD,
-				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
-				Terminal: &processing.Terminal{
-					Station:   "2000009", //САВЕЛОВСКИЙВОКЗАЛ
-					Direction: processing.TerminalDirection_INGRESS,
-				},
-				ExpectedSum: 4600,
-			},
-			&test.Pass{
-				PaymentType: test.PaymentTypePayment,
-				Carrier:     carriers.Carrier_MCD,
-				SubCarrier:  carriers.SubCarrier_MCD1_MO,
-				Terminal: &processing.Terminal{
-					Station:   "2001101", //ИННОВАЦИОННЫЙЦЕНТР
-					Direction: processing.TerminalDirection_EGRESS,
-				},
-				Ingress:     7,
-				Parent:      1,
-				ExpectedSum: 800,
-			},
+			//&test.Pass{
+			//	PaymentType: test.PaymentTypeFree,
+			//	Carrier:     carriers.Carrier_MCD,
+			//	SubCarrier:  carriers.SubCarrier_MCD1_MSK,
+			//	Terminal: &processing.Terminal{
+			//		Station:   "2000155", //ФИЛИ
+			//		Direction: processing.TerminalDirection_INGRESS,
+			//	},
+			//	Parent:  1,
+			//},
+			//&test.Pass{
+			//	PaymentType: test.PaymentTypePayment,
+			//	Carrier:     carriers.Carrier_MCD,
+			//	SubCarrier:  carriers.SubCarrier_MCD1_MO,
+			//	Terminal: &processing.Terminal{
+			//		Station:   "2000055", //ОДИНЦОВО
+			//		Direction: processing.TerminalDirection_EGRESS,
+			//	},
+			//	Ingress:     5,
+			//	Parent:      1,
+			//	ExpectedSum: 800,
+			//},
+			//&test.Pass{
+			//	PaymentType: test.PaymentTypePayment,
+			//	Carrier:     carriers.Carrier_MCD,
+			//	SubCarrier:  carriers.SubCarrier_MCD1_MSK,
+			//	Terminal: &processing.Terminal{
+			//		Station:   "2000009", //САВЕЛОВСКИЙВОКЗАЛ
+			//		Direction: processing.TerminalDirection_INGRESS,
+			//	},
+			//	ExpectedSum: 4600,
+			//},
+			//&test.Pass{
+			//	PaymentType: test.PaymentTypePayment,
+			//	Carrier:     carriers.Carrier_MCD,
+			//	SubCarrier:  carriers.SubCarrier_MCD1_MO,
+			//	Terminal: &processing.Terminal{
+			//		Station:   "2001101", //ИННОВАЦИОННЫЙЦЕНТР
+			//		Direction: processing.TerminalDirection_EGRESS,
+			//	},
+			//	Ingress:     7,
+			//	Parent:      7,
+			//	ExpectedSum: 800,
+			//},
+
 		},
 	},
 	{
@@ -182,7 +183,7 @@ var CasesComplexPassMMTS5 = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2001140", //КУНЦЕВСКАЯ
+					Station:   "2002949", //КУНЦЕВСКАЯ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
 				Parent: 1,
@@ -196,6 +197,7 @@ var CasesComplexPassMMTS5 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 2,
+				Parent:  1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -229,7 +231,7 @@ var CasesComplexPassMMTS5 = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2001140", //КУНЦЕВСКАЯ
+					Station:   "2002949", //КУНЦЕВСКАЯ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
 				Parent: 1,
@@ -243,6 +245,7 @@ var CasesComplexPassMMTS5 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 2,
+				Parent:  1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -276,7 +279,7 @@ var CasesComplexPassMMTS5 = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2001140", //КУНЦЕВСКАЯ
+					Station:   "2002949", //КУНЦЕВСКАЯ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
 				Parent: 1,
@@ -290,6 +293,7 @@ var CasesComplexPassMMTS5 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 2,
+				Parent:  1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -323,7 +327,7 @@ var CasesComplexPassMMTS5 = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2001140", //КУНЦЕВСКАЯ
+					Station:   "2002949", //КУНЦЕВСКАЯ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
 				Parent: 1,
@@ -337,6 +341,7 @@ var CasesComplexPassMMTS5 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 2,
+				Parent:  1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -355,7 +360,7 @@ var CasesComplexPassMMTS5 = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2001140", //КУНЦЕВСКАЯ
+					Station:   "2002949", //КУНЦЕВСКАЯ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
 				ExpectedSum: 4600,
@@ -385,7 +390,7 @@ var CasesComplexPassMMTS5 = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2001140", //КУНЦЕВСКАЯ
+					Station:   "2002949", //КУНЦЕВСКАЯ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
 				Parent: 1,
@@ -399,6 +404,7 @@ var CasesComplexPassMMTS5 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 2,
+				Parent:  1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -417,7 +423,7 @@ var CasesComplexPassMMTS5 = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2001140", //КУНЦЕВСКАЯ
+					Station:   "2002949", //КУНЦЕВСКАЯ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
 				ExpectedSum: 4600,
@@ -448,7 +454,7 @@ var CasesComplexPassMMTS5 = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2001140", //КУНЦЕВСКАЯ
+					Station:   "2002949", //КУНЦЕВСКАЯ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
 				Parent: 1,
@@ -462,6 +468,7 @@ var CasesComplexPassMMTS5 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 2,
+				Parent:  1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -489,7 +496,7 @@ var CasesComplexPassMMTS5 = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2001140", //КУНЦЕВСКАЯ
+					Station:   "2002949", //КУНЦЕВСКАЯ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
 				Parent: 1,
@@ -503,6 +510,7 @@ var CasesComplexPassMMTS5 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 2,
+				Parent:  1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -530,7 +538,7 @@ var CasesComplexPassMMTS5 = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2001140", //КУНЦЕВСКАЯ
+					Station:   "2002949", //КУНЦЕВСКАЯ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
 				Parent: 1,
@@ -544,6 +552,7 @@ var CasesComplexPassMMTS5 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 2,
+				Parent:  1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -556,7 +565,7 @@ var CasesComplexPassMMTS5 = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2001140", //КУНЦЕВСКАЯ
+					Station:   "2002949", //КУНЦЕВСКАЯ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
 				ExpectedSum: 4600,
@@ -586,7 +595,7 @@ var CasesComplexPassMMTS5 = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2001140", //КУНЦЕВСКАЯ
+					Station:   "2002949", //КУНЦЕВСКАЯ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
 				Parent: 1,
@@ -600,6 +609,7 @@ var CasesComplexPassMMTS5 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 2,
+				Parent:  1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -612,7 +622,7 @@ var CasesComplexPassMMTS5 = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2001140", //КУНЦЕВСКАЯ
+					Station:   "2002949", //КУНЦЕВСКАЯ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
 				ExpectedSum: 4600,
@@ -643,7 +653,7 @@ var CasesComplexPassMMTS5 = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2001140", //КУНЦЕВСКАЯ
+					Station:   "2002949", //КУНЦЕВСКАЯ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
 				Parent: 1,
@@ -657,6 +667,7 @@ var CasesComplexPassMMTS5 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 2,
+				Parent:  1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -678,7 +689,7 @@ var CasesComplexPassMMTS5 = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2001140", //КУНЦЕВСКАЯ
+					Station:   "2002949", //КУНЦЕВСКАЯ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
 				Parent: 1,
@@ -692,6 +703,7 @@ var CasesComplexPassMMTS5 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 2,
+				Parent:  1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -712,6 +724,7 @@ var CasesComplexPassMMTS5 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 4,
+				Parent:  1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -739,7 +752,7 @@ var CasesComplexPassMMTS5 = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2001140", //КУНЦЕВСКАЯ
+					Station:   "2002949", //КУНЦЕВСКАЯ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
 				Parent: 1,
@@ -753,6 +766,7 @@ var CasesComplexPassMMTS5 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 2,
+				Parent:  1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -773,6 +787,7 @@ var CasesComplexPassMMTS5 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 4,
+				Parent:  1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -800,7 +815,7 @@ var CasesComplexPassMMTS5 = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2001140", //КУНЦЕВСКАЯ
+					Station:   "2002949", //КУНЦЕВСКАЯ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
 				Parent: 1,
@@ -814,6 +829,7 @@ var CasesComplexPassMMTS5 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 2,
+				Parent:  1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -834,6 +850,7 @@ var CasesComplexPassMMTS5 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 4,
+				Parent:  1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -861,7 +878,7 @@ var CasesComplexPassMMTS5 = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2001140", //КУНЦЕВСКАЯ
+					Station:   "2002949", //КУНЦЕВСКАЯ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
 				Parent: 1,
@@ -875,6 +892,7 @@ var CasesComplexPassMMTS5 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 2,
+				Parent:  1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -895,6 +913,7 @@ var CasesComplexPassMMTS5 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 4,
+				Parent:  1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -907,7 +926,7 @@ var CasesComplexPassMMTS5 = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2001140", //КУНЦЕВСКАЯ
+					Station:   "2002949", //КУНЦЕВСКАЯ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
 				ExpectedSum: 4600,
@@ -937,7 +956,7 @@ var CasesComplexPassMMTS5 = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2001140", //КУНЦЕВСКАЯ
+					Station:   "2002949", //КУНЦЕВСКАЯ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
 				Parent: 1,
@@ -951,6 +970,7 @@ var CasesComplexPassMMTS5 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 2,
+				Parent:  1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -971,6 +991,7 @@ var CasesComplexPassMMTS5 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 4,
+				Parent:  1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -983,7 +1004,7 @@ var CasesComplexPassMMTS5 = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2001140", //КУНЦЕВСКАЯ
+					Station:   "2002949", //КУНЦЕВСКАЯ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
 				ExpectedSum: 4600,
@@ -1014,7 +1035,7 @@ var CasesComplexPassMMTS5 = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2001140", //КУНЦЕВСКАЯ
+					Station:   "2002949", //КУНЦЕВСКАЯ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
 				Parent: 1,
@@ -1028,6 +1049,7 @@ var CasesComplexPassMMTS5 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 2,
+				Parent:  1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -1048,6 +1070,7 @@ var CasesComplexPassMMTS5 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 4,
+				Parent:  1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -1075,7 +1098,7 @@ var CasesComplexPassMMTS5 = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2001140", //КУНЦЕВСКАЯ
+					Station:   "2002949", //КУНЦЕВСКАЯ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
 				Parent: 1,
@@ -1089,6 +1112,7 @@ var CasesComplexPassMMTS5 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 2,
+				Parent:  1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -1109,6 +1133,7 @@ var CasesComplexPassMMTS5 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 4,
+				Parent:  1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -1136,7 +1161,7 @@ var CasesComplexPassMMTS5 = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2001140", //КУНЦЕВСКАЯ
+					Station:   "2002949", //КУНЦЕВСКАЯ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
 				Parent: 1,
@@ -1150,6 +1175,7 @@ var CasesComplexPassMMTS5 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 2,
+				Parent:  1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -1170,6 +1196,7 @@ var CasesComplexPassMMTS5 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 4,
+				Parent:  1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -1197,7 +1224,7 @@ var CasesComplexPassMMTS5 = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2001140", //КУНЦЕВСКАЯ
+					Station:   "2002949", //КУНЦЕВСКАЯ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
 				Parent: 1,
@@ -1211,6 +1238,7 @@ var CasesComplexPassMMTS5 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 2,
+				Parent:  1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -1231,6 +1259,7 @@ var CasesComplexPassMMTS5 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 4,
+				Parent:  1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -1243,7 +1272,7 @@ var CasesComplexPassMMTS5 = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2001140", //КУНЦЕВСКАЯ
+					Station:   "2002949", //КУНЦЕВСКАЯ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
 				ExpectedSum: 4600,
@@ -1273,7 +1302,7 @@ var CasesComplexPassMMTS5 = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2001140", //КУНЦЕВСКАЯ
+					Station:   "2002949", //КУНЦЕВСКАЯ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
 				Parent: 1,
@@ -1287,6 +1316,7 @@ var CasesComplexPassMMTS5 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 2,
+				Parent:  1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -1307,6 +1337,7 @@ var CasesComplexPassMMTS5 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 4,
+				Parent:  1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -1319,7 +1350,7 @@ var CasesComplexPassMMTS5 = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2001140", //КУНЦЕВСКАЯ
+					Station:   "2002949", //КУНЦЕВСКАЯ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
 				ExpectedSum: 4600,
@@ -1350,7 +1381,7 @@ var CasesComplexPassMMTS5 = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2001140", //КУНЦЕВСКАЯ
+					Station:   "2002949", //КУНЦЕВСКАЯ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
 				Parent: 1,
@@ -1364,6 +1395,7 @@ var CasesComplexPassMMTS5 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 2,
+				Parent:  1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -1384,6 +1416,7 @@ var CasesComplexPassMMTS5 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 4,
+				Parent:  1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -1405,7 +1438,7 @@ var CasesComplexPassMMTS5 = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2001140", //КУНЦЕВСКАЯ
+					Station:   "2002949", //КУНЦЕВСКАЯ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
 				Parent: 1,
@@ -1419,13 +1452,14 @@ var CasesComplexPassMMTS5 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 2,
+				Parent:  1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2001140", //КУНЦЕВСКАЯ
+					Station:   "2002949", //КУНЦЕВСКАЯ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
 				ExpectedSum: 4600,
@@ -1455,7 +1489,7 @@ var CasesComplexPassMMTS5 = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2001140", //КУНЦЕВСКАЯ
+					Station:   "2002949", //КУНЦЕВСКАЯ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
 				Parent: 1,
@@ -1469,13 +1503,14 @@ var CasesComplexPassMMTS5 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 2,
+				Parent:  1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2001140", //КУНЦЕВСКАЯ
+					Station:   "2002949", //КУНЦЕВСКАЯ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
 				ExpectedSum: 4600,
@@ -1511,7 +1546,7 @@ var CasesComplexPassMMTS5 = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2001140", //КУНЦЕВСКАЯ
+					Station:   "2002949", //КУНЦЕВСКАЯ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
 				Parent: 1,
@@ -1525,13 +1560,14 @@ var CasesComplexPassMMTS5 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 2,
+				Parent:  1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2001140", //КУНЦЕВСКАЯ
+					Station:   "2002949", //КУНЦЕВСКАЯ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
 				ExpectedSum: 4600,
@@ -1567,7 +1603,7 @@ var CasesComplexPassMMTS5 = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2001140", //КУНЦЕВСКАЯ
+					Station:   "2002949", //КУНЦЕВСКАЯ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
 				Parent: 1,
@@ -1581,13 +1617,14 @@ var CasesComplexPassMMTS5 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 2,
+				Parent:  1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2001140", //КУНЦЕВСКАЯ
+					Station:   "2002949", //КУНЦЕВСКАЯ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
 				ExpectedSum: 4600,
@@ -1623,7 +1660,7 @@ var CasesComplexPassMMTS5 = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2001140", //КУНЦЕВСКАЯ
+					Station:   "2002949", //КУНЦЕВСКАЯ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
 				Parent: 1,
@@ -1637,13 +1674,14 @@ var CasesComplexPassMMTS5 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 2,
+				Parent:  1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2001140", //КУНЦЕВСКАЯ
+					Station:   "2002949", //КУНЦЕВСКАЯ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
 				ExpectedSum: 4600,
@@ -1664,7 +1702,7 @@ var CasesComplexPassMMTS5 = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2001140", //КУНЦЕВСКАЯ
+					Station:   "2002949", //КУНЦЕВСКАЯ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
 				ExpectedSum: 4600,
@@ -1694,7 +1732,7 @@ var CasesComplexPassMMTS5 = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2001140", //КУНЦЕВСКАЯ
+					Station:   "2002949", //КУНЦЕВСКАЯ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
 				Parent: 1,
@@ -1708,13 +1746,14 @@ var CasesComplexPassMMTS5 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 2,
+				Parent:  1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2001140", //КУНЦЕВСКАЯ
+					Station:   "2002949", //КУНЦЕВСКАЯ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
 				ExpectedSum: 4600,
@@ -1735,7 +1774,7 @@ var CasesComplexPassMMTS5 = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2001140", //КУНЦЕВСКАЯ
+					Station:   "2002949", //КУНЦЕВСКАЯ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
 				ExpectedSum: 4600,
@@ -1766,7 +1805,7 @@ var CasesComplexPassMMTS5 = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2001140", //КУНЦЕВСКАЯ
+					Station:   "2002949", //КУНЦЕВСКАЯ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
 				Parent: 1,
@@ -1781,6 +1820,7 @@ var CasesComplexPassMMTS5 = test.Cases{
 				},
 				Ingress:     2,
 				ExpectedSum: 800,
+				Parent:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -1802,7 +1842,7 @@ var CasesComplexPassMMTS5 = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2001140", //КУНЦЕВСКАЯ
+					Station:   "2002949", //КУНЦЕВСКАЯ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
 				Parent: 1,
@@ -1817,6 +1857,7 @@ var CasesComplexPassMMTS5 = test.Cases{
 				},
 				Ingress:     2,
 				ExpectedSum: 800,
+				Parent:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -1838,7 +1879,7 @@ var CasesComplexPassMMTS5 = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2001140", //КУНЦЕВСКАЯ
+					Station:   "2002949", //КУНЦЕВСКАЯ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
 				Parent: 1,
@@ -1853,6 +1894,7 @@ var CasesComplexPassMMTS5 = test.Cases{
 				},
 				Ingress:     2,
 				ExpectedSum: 800,
+				Parent:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -1874,7 +1916,7 @@ var CasesComplexPassMMTS5 = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2001140", //КУНЦЕВСКАЯ
+					Station:   "2002949", //КУНЦЕВСКАЯ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
 				Parent: 1,
@@ -1889,6 +1931,7 @@ var CasesComplexPassMMTS5 = test.Cases{
 				},
 				Ingress:     2,
 				ExpectedSum: 800,
+				Parent:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -1910,7 +1953,7 @@ var CasesComplexPassMMTS5 = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2001140", //КУНЦЕВСКАЯ
+					Station:   "2002949", //КУНЦЕВСКАЯ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
 				Parent: 1,
@@ -1925,13 +1968,14 @@ var CasesComplexPassMMTS5 = test.Cases{
 				},
 				Ingress:     2,
 				ExpectedSum: 800,
+				Parent:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2001140", //КУНЦЕВСКАЯ
+					Station:   "2002949", //КУНЦЕВСКАЯ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
 				ExpectedSum: 4600,

@@ -40,6 +40,7 @@ var CasesMetroComplexMM2 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 3,
+				Parent:  1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -61,6 +62,7 @@ var CasesMetroComplexMM2 = test.Cases{
 				},
 				Ingress:     5,
 				ExpectedSum: 800,
+				Parent:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -102,6 +104,7 @@ var CasesMetroComplexMM2 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 3,
+				Parent:  1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -123,6 +126,7 @@ var CasesMetroComplexMM2 = test.Cases{
 				},
 				Ingress:     5,
 				ExpectedSum: 800,
+				Parent:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -164,6 +168,7 @@ var CasesMetroComplexMM2 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 3,
+				Parent:  1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -185,6 +190,7 @@ var CasesMetroComplexMM2 = test.Cases{
 				},
 				Ingress:     5,
 				ExpectedSum: 800,
+				Parent:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -226,6 +232,7 @@ var CasesMetroComplexMM2 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 3,
+				Parent:  1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -247,6 +254,7 @@ var CasesMetroComplexMM2 = test.Cases{
 				},
 				Ingress:     5,
 				ExpectedSum: 800,
+				Parent:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -302,6 +310,7 @@ var CasesMetroComplexMM2 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 3,
+				Parent:  1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -323,6 +332,7 @@ var CasesMetroComplexMM2 = test.Cases{
 				},
 				Ingress:     5,
 				ExpectedSum: 800,
+				Parent:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -380,6 +390,7 @@ var CasesMetroComplexMM2 = test.Cases{
 				},
 				Ingress:     3,
 				ExpectedSum: 800,
+				Parent:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -422,6 +433,7 @@ var CasesMetroComplexMM2 = test.Cases{
 				},
 				Ingress:     3,
 				ExpectedSum: 800,
+				Parent:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -464,6 +476,7 @@ var CasesMetroComplexMM2 = test.Cases{
 				},
 				Ingress:     3,
 				ExpectedSum: 800,
+				Parent:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -506,6 +519,7 @@ var CasesMetroComplexMM2 = test.Cases{
 				},
 				Ingress:     3,
 				ExpectedSum: 800,
+				Parent:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -562,6 +576,7 @@ var CasesMetroComplexMM2 = test.Cases{
 				},
 				Ingress:     3,
 				ExpectedSum: 800,
+				Parent:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -742,10 +757,11 @@ var CasesMetroComplexMM2 = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2001140", //КУНЦЕВСКАЯ
+					Station:   "2002949", //КУНЦЕВСКАЯ
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 2,
+				Parent:  1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -783,10 +799,11 @@ var CasesMetroComplexMM2 = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2001140", //КУНЦЕВСКАЯ
+					Station:   "2002949", //КУНЦЕВСКАЯ
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 2,
+				Parent:  1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -830,10 +847,11 @@ var CasesMetroComplexMM2 = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2001140", //КУНЦЕВСКАЯ
+					Station:   "2002949", //КУНЦЕВСКАЯ
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 2,
+				Parent:  1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -877,10 +895,11 @@ var CasesMetroComplexMM2 = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2001140", //КУНЦЕВСКАЯ
+					Station:   "2002949", //КУНЦЕВСКАЯ
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 2,
+				Parent:  1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -924,10 +943,11 @@ var CasesMetroComplexMM2 = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2001140", //КУНЦЕВСКАЯ
+					Station:   "2002949", //КУНЦЕВСКАЯ
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 2,
+				Parent:  1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -946,7 +966,7 @@ var CasesMetroComplexMM2 = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2001140", //КУНЦЕВСКАЯ
+					Station:   "2002949", //КУНЦЕВСКАЯ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
 			},
@@ -985,10 +1005,11 @@ var CasesMetroComplexMM2 = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2001140", //КУНЦЕВСКАЯ
+					Station:   "2002949", //КУНЦЕВСКАЯ
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 2,
+				Parent:  1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -1007,7 +1028,7 @@ var CasesMetroComplexMM2 = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2001140", //КУНЦЕВСКАЯ
+					Station:   "2002949", //КУНЦЕВСКАЯ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
 			},
@@ -1037,7 +1058,7 @@ var CasesMetroComplexMM2 = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2001140", //КУНЦЕВСКАЯ
+					Station:   "2002949", //КУНЦЕВСКАЯ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
 				Parent: 1,
@@ -1051,6 +1072,7 @@ var CasesMetroComplexMM2 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 2,
+				Parent:  1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -1084,7 +1106,7 @@ var CasesMetroComplexMM2 = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2001140", //КУНЦЕВСКАЯ
+					Station:   "2002949", //КУНЦЕВСКАЯ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
 				Parent: 1,
@@ -1098,6 +1120,7 @@ var CasesMetroComplexMM2 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 2,
+				Parent:  1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -1131,7 +1154,7 @@ var CasesMetroComplexMM2 = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2001140", //КУНЦЕВСКАЯ
+					Station:   "2002949", //КУНЦЕВСКАЯ
 					Direction: processing.TerminalDirection_INGRESS,
 				},
 				Parent: 1,
@@ -1145,6 +1168,7 @@ var CasesMetroComplexMM2 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 2,
+				Parent:  1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -1192,6 +1216,7 @@ var CasesMetroComplexMM2 = test.Cases{
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 2,
+				Parent:  1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,

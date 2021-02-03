@@ -40,6 +40,7 @@ var CasesMetroComplexMCK2 = test.Cases{ //gusmanovtestcase
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 3,
+				Parent:  1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -61,6 +62,7 @@ var CasesMetroComplexMCK2 = test.Cases{ //gusmanovtestcase
 				},
 				Ingress:     5,
 				ExpectedSum: 800,
+				Parent:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -103,6 +105,7 @@ var CasesMetroComplexMCK2 = test.Cases{ //gusmanovtestcase
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 3,
+				Parent:  1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -124,6 +127,7 @@ var CasesMetroComplexMCK2 = test.Cases{ //gusmanovtestcase
 				},
 				Ingress:     5,
 				ExpectedSum: 800,
+				Parent:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -166,6 +170,7 @@ var CasesMetroComplexMCK2 = test.Cases{ //gusmanovtestcase
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 3,
+				Parent:  1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -187,6 +192,7 @@ var CasesMetroComplexMCK2 = test.Cases{ //gusmanovtestcase
 				},
 				Ingress:     5,
 				ExpectedSum: 800,
+				Parent:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -229,6 +235,7 @@ var CasesMetroComplexMCK2 = test.Cases{ //gusmanovtestcase
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 3,
+				Parent:  1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -250,6 +257,7 @@ var CasesMetroComplexMCK2 = test.Cases{ //gusmanovtestcase
 				},
 				Ingress:     5,
 				ExpectedSum: 800,
+				Parent:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -307,6 +315,7 @@ var CasesMetroComplexMCK2 = test.Cases{ //gusmanovtestcase
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 3,
+				Parent:  1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -328,6 +337,7 @@ var CasesMetroComplexMCK2 = test.Cases{ //gusmanovtestcase
 				},
 				Ingress:     5,
 				ExpectedSum: 800,
+				Parent:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -387,6 +397,7 @@ var CasesMetroComplexMCK2 = test.Cases{ //gusmanovtestcase
 				},
 				Ingress:     3,
 				ExpectedSum: 800,
+				Parent:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -430,6 +441,7 @@ var CasesMetroComplexMCK2 = test.Cases{ //gusmanovtestcase
 				},
 				Ingress:     3,
 				ExpectedSum: 800,
+				Parent:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -473,6 +485,7 @@ var CasesMetroComplexMCK2 = test.Cases{ //gusmanovtestcase
 				},
 				Ingress:     3,
 				ExpectedSum: 800,
+				Parent:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -516,6 +529,7 @@ var CasesMetroComplexMCK2 = test.Cases{ //gusmanovtestcase
 				},
 				Ingress:     3,
 				ExpectedSum: 800,
+				Parent:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -574,6 +588,7 @@ var CasesMetroComplexMCK2 = test.Cases{ //gusmanovtestcase
 				},
 				Ingress:     3,
 				ExpectedSum: 800,
+				Parent:      1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -783,6 +798,7 @@ var CasesMetroComplexMCK2 = test.Cases{ //gusmanovtestcase
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 2,
+				Parent:  1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -825,6 +841,7 @@ var CasesMetroComplexMCK2 = test.Cases{ //gusmanovtestcase
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 2,
+				Parent:  1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -867,6 +884,7 @@ var CasesMetroComplexMCK2 = test.Cases{ //gusmanovtestcase
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 2,
+				Parent:  1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -915,6 +933,7 @@ var CasesMetroComplexMCK2 = test.Cases{ //gusmanovtestcase
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 2,
+				Parent:  1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -963,6 +982,7 @@ var CasesMetroComplexMCK2 = test.Cases{ //gusmanovtestcase
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 2,
+				Parent:  1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -1011,6 +1031,7 @@ var CasesMetroComplexMCK2 = test.Cases{ //gusmanovtestcase
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 2,
+				Parent:  1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -1074,6 +1095,7 @@ var CasesMetroComplexMCK2 = test.Cases{ //gusmanovtestcase
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 2,
+				Parent:  1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -1138,6 +1160,7 @@ var CasesMetroComplexMCK2 = test.Cases{ //gusmanovtestcase
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 2,
+				Parent:  1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -1164,6 +1187,7 @@ var CasesMetroComplexMCK2 = test.Cases{ //gusmanovtestcase
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 5,
+				Parent:  1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -1200,6 +1224,7 @@ var CasesMetroComplexMCK2 = test.Cases{ //gusmanovtestcase
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 2,
+				Parent:  1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -1226,6 +1251,7 @@ var CasesMetroComplexMCK2 = test.Cases{ //gusmanovtestcase
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 5,
+				Parent:  1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,
@@ -1262,6 +1288,7 @@ var CasesMetroComplexMCK2 = test.Cases{ //gusmanovtestcase
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 2,
+				Parent:  1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypeFree,
@@ -1288,6 +1315,7 @@ var CasesMetroComplexMCK2 = test.Cases{ //gusmanovtestcase
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 5,
+				Parent:  1,
 			},
 			&test.Pass{
 				PaymentType: test.PaymentTypePayment,

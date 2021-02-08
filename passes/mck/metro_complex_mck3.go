@@ -317,7 +317,7 @@ var CasesMetroComplexMCK3 = test.Cases{ //gusmanovtestcase
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2001140", //Кунцевская(бывш.КУНЦЕВО1)
+					Station:   "2001270", //Кунцевская(бывш.КУНЦЕВО1)
 					Direction: processing.TerminalDirection_INGRESS,
 				},
 				Parent: 1,
@@ -360,7 +360,7 @@ var CasesMetroComplexMCK3 = test.Cases{ //gusmanovtestcase
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2001140", //Кунцевская(бывш.КУНЦЕВО1)
+					Station:   "2001270", //Кунцевская(бывш.КУНЦЕВО1)
 					Direction: processing.TerminalDirection_INGRESS,
 				},
 				Parent: 1,
@@ -403,7 +403,7 @@ var CasesMetroComplexMCK3 = test.Cases{ //gusmanovtestcase
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2001140", //Кунцевская(бывш.КУНЦЕВО1)
+					Station:   "2001270", //Кунцевская(бывш.КУНЦЕВО1)
 					Direction: processing.TerminalDirection_INGRESS,
 				},
 				Parent: 1,
@@ -461,7 +461,7 @@ var CasesMetroComplexMCK3 = test.Cases{ //gusmanovtestcase
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2001140", //Кунцевская(бывш.КУНЦЕВО1)
+					Station:   "2001270", //Кунцевская(бывш.КУНЦЕВО1)
 					Direction: processing.TerminalDirection_INGRESS,
 				},
 				Parent: 1,

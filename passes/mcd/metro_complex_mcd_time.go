@@ -32,9 +32,9 @@ var (
 						Station:   "2001140", //КУНЦЕВСКАЯ
 						Direction: processing.TerminalDirection_EGRESS,
 					},
-					Ingress: 1,
-					Parent:  1,
-					Now:     test.NowFullDate(2019, 12, 05, 11, 22, 00),
+					Ingress:      1,
+					SecondParent: 1,
+					Now:          test.NowFullDate(2019, 12, 05, 11, 22, 00),
 				},
 				&test.Pass{
 					PaymentType: test.PaymentTypeFree,
@@ -68,9 +68,9 @@ var (
 						Station:   "2002780", //ДЕПО
 						Direction: processing.TerminalDirection_EGRESS,
 					},
-					Ingress: 1,
-					Parent:  1,
-					Now:     test.NowFullDate(2019, 12, 05, 12, 9, 00),
+					Ingress:      1,
+					SecondParent: 1,
+					Now:          test.NowFullDate(2019, 12, 05, 12, 9, 00),
 				},
 				&test.Pass{
 					PaymentType: test.PaymentTypeFree,
@@ -104,10 +104,10 @@ var (
 						Station:   "2001101", //ИННОВАЦИОННЫЙЦЕНТР
 						Direction: processing.TerminalDirection_EGRESS,
 					},
-					Ingress:     1,
-					Parent:      1,
-					Now:         test.NowFullDate(2019, 12, 2, 9, 00, 00),
-					ExpectedSum: 800,
+					Ingress:      1,
+					SecondParent: 1,
+					Now:          test.NowFullDate(2019, 12, 2, 9, 00, 00),
+					ExpectedSum:  800,
 				},
 				&test.Pass{
 					PaymentType: test.PaymentTypePayment,
@@ -148,7 +148,6 @@ var (
 						Direction: processing.TerminalDirection_EGRESS,
 					},
 					Ingress:     4,
-					Parent:      1,
 					Now:         test.NowFullDate(2019, 12, 2, 15, 00, 00),
 					ExpectedSum: 800,
 				},
@@ -177,9 +176,9 @@ var (
 						Station:   "2001840", //ТРИКОТАЖНАЯ
 						Direction: processing.TerminalDirection_EGRESS,
 					},
-					Ingress: 1,
-					Parent:  1,
-					Now:     test.NowFullDate(2019, 12, 2, 10, 23, 00),
+					Ingress:      1,
+					SecondParent: 1,
+					Now:          test.NowFullDate(2019, 12, 2, 10, 23, 00),
 				},
 				&test.Pass{
 					PaymentType: test.PaymentTypeFree,
@@ -230,9 +229,9 @@ var (
 						Station:   "2001425", //КРАСНЫЙБАЛТИЕЦ
 						Direction: processing.TerminalDirection_EGRESS,
 					},
-					Ingress: 1,
-					Parent:  1,
-					Now:     test.NowFullDate(2019, 12, 31, 24, 8, 00),
+					Ingress:      1,
+					SecondParent: 1,
+					Now:          test.NowFullDate(2019, 12, 31, 24, 8, 00),
 				},
 				&test.Pass{
 					PaymentType: test.PaymentTypeFree,
@@ -283,9 +282,9 @@ var (
 						Station:   "2000245", //РАБОЧИЙПОСЕЛОК
 						Direction: processing.TerminalDirection_EGRESS,
 					},
-					Ingress: 1,
-					Parent:  1,
-					Now:     test.NowFullDate(2019, 12, 01, 00, 53, 00),
+					Ingress:      1,
+					SecondParent: 1,
+					Now:          test.NowFullDate(2019, 12, 01, 00, 53, 00),
 				},
 				&test.Pass{
 					PaymentType: test.PaymentTypePayment,
@@ -326,7 +325,6 @@ var (
 						Direction: processing.TerminalDirection_EGRESS,
 					},
 					Ingress:     4,
-					Parent:      1,
 					Now:         test.NowFullDate(2019, 12, 01, 06, 07, 00),
 					ExpectedSum: 800,
 				},
@@ -351,7 +349,6 @@ var (
 						Direction: processing.TerminalDirection_EGRESS,
 					},
 					Ingress: 6,
-					Parent:  1,
 					Now:     test.NowFullDate(2019, 12, 01, 7, 58, 00),
 				},
 				&test.Pass{
@@ -375,7 +372,6 @@ var (
 						Direction: processing.TerminalDirection_EGRESS,
 					},
 					Ingress: 8,
-					Parent:  1,
 					Now:     test.NowFullDate(2019, 12, 01, 8, 53, 00),
 				},
 				&test.Pass{
@@ -405,7 +401,7 @@ var (
 						Direction: processing.TerminalDirection_EGRESS,
 					},
 					Ingress: 11,
-					Parent:  1,
+					Parent:  10,
 					Now:     test.NowFullDate(2019, 12, 01, 11, 18, 00),
 				},
 				&test.Pass{
@@ -440,9 +436,9 @@ var (
 						Station:   "2000700", //ТЕСТОВСКАЯ
 						Direction: processing.TerminalDirection_EGRESS,
 					},
-					Now:     test.NowFullDate(2019, 12, 31, 00, 36, 45),
-					Ingress: 1,
-					Parent:  1,
+					Now:          test.NowFullDate(2019, 12, 31, 00, 36, 45),
+					Ingress:      1,
+					SecondParent: 1,
 				},
 				&test.Pass{
 					PaymentType: test.PaymentTypeFree,
@@ -493,9 +489,9 @@ var (
 						Station:   "2000200", //КАЛИТНИКИ
 						Direction: processing.TerminalDirection_EGRESS,
 					},
-					Now:     test.NowFullDate(2020, 01, 01, 00, 10, 00),
-					Ingress: 1,
-					Parent:  1,
+					Now:          test.NowFullDate(2020, 01, 01, 00, 10, 00),
+					Ingress:      1,
+					SecondParent: 1,
 				},
 				&test.Pass{
 					PaymentType: test.PaymentTypeFree,
@@ -548,10 +544,10 @@ var (
 						Station:   "2000460", //НАХАБИНО
 						Direction: processing.TerminalDirection_EGRESS,
 					},
-					ExpectedSum: 800,
-					Now:         test.NowFullDate(2020, 01, 01, 00, 44, 00),
-					Ingress:     1,
-					Parent:      1,
+					ExpectedSum:  800,
+					Now:          test.NowFullDate(2020, 01, 01, 00, 44, 00),
+					Ingress:      1,
+					SecondParent: 1,
 				},
 				&test.Pass{
 					PaymentType: test.PaymentTypePayment,
@@ -562,7 +558,6 @@ var (
 						Direction: processing.TerminalDirection_EGRESS,
 					},
 					ExpectedSum: 5400,
-					Parent:      1,
 					Now:         test.NowFullDate(2020, 01, 01, 01, 05, 00),
 					TimeToWait:  5 * time.Minute,
 				},
@@ -576,7 +571,6 @@ var (
 					},
 					Now:     test.NowFullDate(2020, 01, 01, 01, 31, 00),
 					Ingress: 3,
-					Parent:  1,
 				},
 			},
 		},

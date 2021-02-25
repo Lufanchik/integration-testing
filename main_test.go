@@ -6,10 +6,7 @@ import (
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 	"github.com/stretchr/testify/require"
 	"lab.dt.multicarta.ru/tp/integration-testing/passes/mcd"
-	"lab.dt.multicarta.ru/tp/integration-testing/passes/mck"
-	"lab.dt.multicarta.ru/tp/integration-testing/registry"
 	"lab.dt.multicarta.ru/tp/integration-testing/test"
-	"lab.dt.multicarta.ru/tp/integration-testing/webapi"
 	"net/http"
 	"net/http/pprof"
 	"testing"
@@ -147,16 +144,16 @@ func TestSimple(t *testing.T) {
 	//test.Run(t, mtppk.CasesMTPPK_MCK, test.RequestTypeOffline)
 	//test.Run(t, mtppk.CasesMTPPK1, test.RequestTypeOffline)
 	//
-	test.Run(t, webapi.CasesWEBAPI, test.RequestTypeOnline)
-	test.Run(t, mck.CasesMetroComplexMCK1, test.RequestTypeOffline)
-	test.RunApiRequest(t, registry.CasesReviseGetTaskList, test.RequestTypeOffline)
-	test.RunApiRequest(t, registry.CasesResolveGetTaskList, test.RequestTypeOffline)
-	test.Run(t, mck.CasesMetroComplexMCK2, test.RequestTypeOffline)
-	test.Run(t, mck.CasesMetroComplexMCK3, test.RequestTypeOffline)
-	test.Run(t, mck.CasesMetroComplexMCK4, test.RequestTypeOffline)
-	test.Run(t, mck.CasesComplexTimeMCK, test.RequestTypeOffline)
-	test.Run(t, mcd.CasesComplexMCDMOPartOne, test.RequestTypeOffline)
-	test.Run(t, mcd.CasesComplexMCDMOPartTwo, test.RequestTypeOffline)
+	test.Run(t, mcd.CasesMcdIngress, test.RequestTypeOffline)
+	//test.Run(t, mck.CasesMetroComplexMCK1, test.RequestTypeOffline)
+	//test.RunApiRequest(t, registry.CasesReviseGetTaskList, test.RequestTypeOffline)
+	//test.RunApiRequest(t, registry.CasesResolveGetTaskList, test.RequestTypeOffline)
+	//test.Run(t, mck.CasesMetroComplexMCK2, test.RequestTypeOffline)
+	//test.Run(t, mck.CasesMetroComplexMCK3, test.RequestTypeOffline)
+	//test.Run(t, mck.CasesMetroComplexMCK4, test.RequestTypeOffline)
+	//test.Run(t, mck.CasesComplexTimeMCK, test.RequestTypeOffline)
+	//test.Run(t, mcd.CasesComplexMCDMOPartOne, test.RequestTypeOffline)
+	//test.Run(t, mcd.CasesComplexMCDMOPartTwo, test.RequestTypeOffline)
 	//test.Run(t, mcd.CasesComplexMCDMOPartThree, test.RequestTypeOffline)
 	//test.Run(t, mcd.CasesComplexMCDMOPartFour, test.RequestTypeOffline)
 	//test.Run(t, mcd.CasesComplexMCDMOPartFife, test.RequestTypeOffline)

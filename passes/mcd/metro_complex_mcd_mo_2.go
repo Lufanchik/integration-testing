@@ -434,71 +434,71 @@ var CasesComplexMCDMOPartTwo = test.Cases{
 			},
 		},
 	},
-	//{
-	//	N: "34. МЦД МО1 - ММ -  МЦК - МЦД МСК 2 - ММ", //
-	//	T: test.T{
-	//		&test.Pass{
-	//			PaymentType: test.PaymentTypePayment,
-	//			Carrier:     carriers.Carrier_MCD,
-	//			SubCarrier:  carriers.SubCarrier_MCD1_MO,
-	//			Terminal: &processing.Terminal{
-	//				Station:   "2000055",
-	//				Direction: processing.TerminalDirection_INGRESS,
-	//			},
-	//			ExpectedSum: 5400,
-	//		},
-	//		&test.Pass{
-	//			PaymentType: test.PaymentTypeFree,
-	//			Carrier:     carriers.Carrier_MCD,
-	//			SubCarrier:  carriers.SubCarrier_MCD1_MSK,
-	//			Terminal: &processing.Terminal{
-	//				Station:   "2000155",
-	//				Direction: processing.TerminalDirection_EGRESS,
-	//			},
-	//			Ingress: 1,
-	//			SecondParent:  1,
-	//		},
-	//		&test.Pass{
-	//			PaymentType: test.PaymentTypeFree,
-	//			Carrier:     carriers.Carrier_MM,
-	//			SubCarrier:  carriers.SubCarrier_MM_SUB,
-	//			Parent:      1,
-	//		},
-	//		&test.Pass{
-	//			PaymentType: test.PaymentTypeFree,
-	//			Carrier:     carriers.Carrier_MM,
-	//			SubCarrier:  carriers.SubCarrier_MCK_SUB,
-	//			Parent:      1,
-	//		},
-	//
-	//		&test.Pass{
-	//			PaymentType: test.PaymentTypeFree,
-	//			Carrier:     carriers.Carrier_MCD,
-	//			SubCarrier:  carriers.SubCarrier_MCD2_MSK,
-	//			Terminal: &processing.Terminal{
-	//				Station:   "2001840",
-	//				Direction: processing.TerminalDirection_INGRESS,
-	//			},
-	//			Parent: 1,
-	//		},
-	//		&test.Pass{
-	//			PaymentType: test.PaymentTypeFree,
-	//			Carrier:     carriers.Carrier_MCD,
-	//			SubCarrier:  carriers.SubCarrier_MCD2_MSK,
-	//			Terminal: &processing.Terminal{
-	//				Station:   "2002780",
-	//				Direction: processing.TerminalDirection_EGRESS,
-	//			},
-	//			Ingress: 5,
-	//			Parent:  1,
-	//		},
-	//		&test.Pass{
-	//			PaymentType: test.PaymentTypePayment,
-	//			Carrier:     carriers.Carrier_MM,
-	//			SubCarrier:  carriers.SubCarrier_MM_SUB,
-	//		},
-	//	},
-	//},
+	{
+		N: "34. МЦД МО1 - ММ -  МЦК - МЦД МСК 2 - ММ", //
+		T: test.T{
+			&test.Pass{
+				PaymentType: test.PaymentTypePayment,
+				Carrier:     carriers.Carrier_MCD,
+				SubCarrier:  carriers.SubCarrier_MCD1_MO,
+				Terminal: &processing.Terminal{
+					Station:   "2000055",
+					Direction: processing.TerminalDirection_INGRESS,
+				},
+				ExpectedSum: 5400,
+			},
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
+				Carrier:     carriers.Carrier_MCD,
+				SubCarrier:  carriers.SubCarrier_MCD1_MSK,
+				Terminal: &processing.Terminal{
+					Station:   "2000155",
+					Direction: processing.TerminalDirection_EGRESS,
+				},
+				Ingress:      1,
+				SecondParent: 1,
+			},
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
+				Carrier:     carriers.Carrier_MM,
+				SubCarrier:  carriers.SubCarrier_MM_SUB,
+				Parent:      1,
+			},
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
+				Carrier:     carriers.Carrier_MM,
+				SubCarrier:  carriers.SubCarrier_MCK_SUB,
+				Parent:      1,
+			},
+
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
+				Carrier:     carriers.Carrier_MCD,
+				SubCarrier:  carriers.SubCarrier_MCD2_MSK,
+				Terminal: &processing.Terminal{
+					Station:   "2001840",
+					Direction: processing.TerminalDirection_INGRESS,
+				},
+				Parent: 1,
+			},
+			&test.Pass{
+				PaymentType: test.PaymentTypeFree,
+				Carrier:     carriers.Carrier_MCD,
+				SubCarrier:  carriers.SubCarrier_MCD2_MSK,
+				Terminal: &processing.Terminal{
+					Station:   "2002780",
+					Direction: processing.TerminalDirection_EGRESS,
+				},
+				Ingress: 5,
+				Parent:  1,
+			},
+			&test.Pass{
+				PaymentType: test.PaymentTypePayment,
+				Carrier:     carriers.Carrier_MM,
+				SubCarrier:  carriers.SubCarrier_MM_SUB,
+			},
+		},
+	},
 	{
 		N: "35. МЦД МО1 - ММ -  МЦК - МЦД МСК 2 - МЦК", //
 		T: test.T{

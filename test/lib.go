@@ -490,6 +490,7 @@ func Run(t *testing.T, cases Cases, rt RequestType) {
 	}
 
 	if !t.Failed() {
+		time.Sleep(time.Second * 10)
 		for casesNum, ncc := range nc {
 			scenario := ncc.c
 			if scenario.SkipIdempotencyCheck {
@@ -543,6 +544,8 @@ func Run(t *testing.T, cases Cases, rt RequestType) {
 	}
 
 	if !t.Failed() {
+		time.Sleep(time.Second * 10)
+
 		for casesNum, ncc := range nc {
 			scenario := ncc.c
 

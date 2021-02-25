@@ -104,6 +104,9 @@ type (
 		IsInitAggregate bool
 		//сумма, на которую мы ожидаем агрегацию
 		ExpectedSumAggregate uint32
+
+		IsReplaceDirection bool
+		RealDirection      processing.TerminalDirection
 	}
 
 	//генерация прохода

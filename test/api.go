@@ -344,6 +344,10 @@ func ValidatePass(t *testing.T, p *Pass, parent *Pass, ingress *Pass, isFirst bo
 	//	expectPass.Sum = 0
 	//}
 
+	if p.IsReplaceDirection {
+		expectPass.TerminalDirection = p.RealDirection
+	}
+
 	for !isEqual {
 		fmt.Println("pass not equal - " + t.Name())
 		time.Sleep(TimeAfterRequest)

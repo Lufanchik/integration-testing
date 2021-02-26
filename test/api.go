@@ -607,6 +607,24 @@ func CompleteCalcApi(t *testing.T, aggregatePasses []*Pass, pan string) {
 	//check passes after complete
 }
 
+func McdRestoreApi(t *testing.T, mr *McdRestore) {
+	//made complete
+	req, resp := McdRestoreRequest(mr)
+	url := "/twirp/sirocco.CalculatorAPI/ProcessMcdRestore"
+	r := httpCalculatorService.POST(url).WithJSON(req).
+		Expect().
+		Status(http.StatusOK)
+
+	object := r.Body().Raw()
+	logRequest(url, r)
+	response := &processing.McdRestoreResponse{}
+	err := jsonpb.Unmarshal(strings.NewReader(object), response)
+	require.NoError(t, err)
+	require.Equal(t, resp, response)
+
+	//check passes after complete
+}
+
 func CompleteApi(t *testing.T, pass *Pass, passes []*Pass, sum int) {
 	req, resp := CompleteRequest(pass, passes, sum)
 	u := "/" + pass.Carrier.String() + "/twirp/sirocco.ProcessingAPI/ProcessComplete"

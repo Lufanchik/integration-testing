@@ -164,7 +164,7 @@ var CasesTokensMC = test.Cases{
 				SubCarrier:  carriers.SubCarrier_MCD2_MSK,
 				AuthType:    test.AuthTypeMCTokenCorrect,
 				Terminal: &processing.Terminal{
-					Station:   "2000075",
+					Station:   "2001035",
 					Direction: processing.TerminalDirection_INGRESS,
 				},
 				Parent: 1,

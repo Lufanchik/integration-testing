@@ -407,6 +407,17 @@ func CompleteWithCalculateRequest(pan string) (*processing.CompleteWithCalculate
 	return request, resp
 }
 
+func McdRestoreRequest(mr *McdRestore) (*processing.McdRestoreRequest, *processing.McdRestoreResponse) {
+	request := &processing.McdRestoreRequest{
+		Pan:  mr.Pan,
+		Time: uint64(mr.Date.UnixNano()),
+	}
+
+	resp := &processing.McdRestoreResponse{}
+
+	return request, resp
+}
+
 func CompleteRequest(pass *Pass, passes []*Pass, sum int) (*processing.CompleteRequest, *processing.CompleteResponse) {
 	request := &processing.CompleteRequest{
 		Id:      pass.id,

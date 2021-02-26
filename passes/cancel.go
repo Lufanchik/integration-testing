@@ -65,7 +65,7 @@ var CasesCancel = test.Cases{
 				SubCarrier:  carriers.SubCarrier_MCD2_MSK,
 				AuthType:    test.AuthTypeCorrect,
 				Terminal: &processing.Terminal{
-					Station:   "2000075", //ТУШИНО
+					Station:   "2001035", //ТУШИНО
 					Direction: processing.TerminalDirection_INGRESS,
 				},
 			},
@@ -101,7 +101,7 @@ var CasesCancel = test.Cases{
 				SubCarrier:  carriers.SubCarrier_MCD2_MSK,
 				AuthType:    test.AuthTypeCorrect,
 				Terminal: &processing.Terminal{
-					Station:   "2000075", //ТУШИНО
+					Station:   "2001035", //ТУШИНО
 					Direction: processing.TerminalDirection_INGRESS,
 				},
 			},
@@ -150,7 +150,7 @@ var CasesCancel = test.Cases{
 				SubCarrier:  carriers.SubCarrier_MCD2_MSK,
 				AuthType:    test.AuthTypeCorrect,
 				Terminal: &processing.Terminal{
-					Station:   "2000075", //ТУШИНО
+					Station:   "2001035", //ТУШИНО
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 1,
@@ -494,7 +494,7 @@ var CasesCancel = test.Cases{
 				SubCarrier:  carriers.SubCarrier_MCD2_MSK,
 				AuthType:    test.AuthTypeIncorrect,
 				Terminal: &processing.Terminal{
-					Station:   "2000075", //ТУШИНО
+					Station:   "2001035", //ТУШИНО
 					Direction: processing.TerminalDirection_INGRESS,
 				},
 			},
@@ -542,7 +542,7 @@ var CasesCancel = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD2_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2000075", //ТУШИНО
+					Station:   "2001035", //ТУШИНО
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 1,

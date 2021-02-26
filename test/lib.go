@@ -16,16 +16,17 @@ import (
 )
 
 var (
-	httpProcessingApi  *httpexpect.Expect
-	httpApmApi         *httpexpect.Expect
-	httpWebApi         *httpexpect.Expect
-	httpCardService    *httpexpect.Expect
-	httpCommentService *httpexpect.Expect
-	httpAuthService    *httpexpect.Expect
-	httpReviseService  *httpexpect.Expect
-	httpResolveService *httpexpect.Expect
-	httpTWPGService    *httpexpect.Expect
-	ps                 passService.PassService
+	httpProcessingApi     *httpexpect.Expect
+	httpApmApi            *httpexpect.Expect
+	httpWebApi            *httpexpect.Expect
+	httpCardService       *httpexpect.Expect
+	httpCalculatorService *httpexpect.Expect
+	httpCommentService    *httpexpect.Expect
+	httpAuthService       *httpexpect.Expect
+	httpReviseService     *httpexpect.Expect
+	httpResolveService    *httpexpect.Expect
+	httpTWPGService       *httpexpect.Expect
+	ps                    passService.PassService
 )
 
 func NanoToMicro(tm uint64) uint64 {
@@ -170,6 +171,7 @@ func RunApiRequest(t *testing.T, cases Cases, rt RequestType) {
 	httpWebApi = httpexpect.New(t, WebApiUrl)
 	httpCommentService = httpexpect.New(t, CommentsURL)
 	httpCardService = httpexpect.New(t, CardURL)
+	httpCalculatorService = httpexpect.New(t, CalculatorApiUrl)
 	httpAuthService = httpexpect.New(t, AuthServiceUrl)
 	httpReviseService = httpexpect.New(t, ReviseApiUrl)
 	httpResolveService = httpexpect.New(t, ResolveApiUrl)
@@ -214,6 +216,7 @@ func Run(t *testing.T, cases Cases, rt RequestType) {
 	httpWebApi = httpexpect.New(t, WebApiUrl)
 	httpCommentService = httpexpect.New(t, CommentsURL)
 	httpCardService = httpexpect.New(t, CardURL)
+	httpCalculatorService = httpexpect.New(t, CalculatorApiUrl)
 	httpAuthService = httpexpect.New(t, AuthServiceUrl)
 	httpReviseService = httpexpect.New(t, ReviseApiUrl)
 	httpResolveService = httpexpect.New(t, ResolveApiUrl)
@@ -360,6 +363,12 @@ func Run(t *testing.T, cases Cases, rt RequestType) {
 					if len(aggregatePasses) != 0 {
 						CompleteCalcApi(t, aggregatePasses, cm_calc.Pan)
 					}
+				}
+
+				mcd_restore, ok := step.(*McdRestore)
+				if ok {
+					mcd_restore.Pan = "500358C1BB426F061A46743752B01BD1D1F930F7865AA439BFFA49CD11CB1F50"
+					McdRestoreApi(t, mcd_restore)
 				}
 
 				cm, ok := step.(*Complete)

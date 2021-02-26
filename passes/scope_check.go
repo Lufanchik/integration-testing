@@ -898,7 +898,7 @@ var CasesScopeCheckPass = test.Cases{
 				Parent:      1,
 				Terminal: &processing.Terminal{
 					Direction: processing.TerminalDirection_INGRESS,
-					Station:   "2000075", //ТУШИНО
+					Station:   "2001035", //ТУШИНО
 				},
 			},
 			&test.Pass{

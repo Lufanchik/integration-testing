@@ -946,7 +946,7 @@ var CasesComplexPassMMTS3 = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD2_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2000075", //ТУШИНО
+					Station:   "2001035", //ТУШИНО
 					Direction: processing.TerminalDirection_INGRESS,
 				},
 				Parent: 1,
@@ -1009,7 +1009,7 @@ var CasesComplexPassMMTS3 = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD2_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2000075", //ТУШИНО
+					Station:   "2001035", //ТУШИНО
 					Direction: processing.TerminalDirection_INGRESS,
 				},
 				Parent: 1,
@@ -1072,7 +1072,7 @@ var CasesComplexPassMMTS3 = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD2_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2000075", //ТУШИНО
+					Station:   "2001035", //ТУШИНО
 					Direction: processing.TerminalDirection_INGRESS,
 				},
 				Parent: 1,
@@ -1135,7 +1135,7 @@ var CasesComplexPassMMTS3 = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD2_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2000075", //ТУШИНО
+					Station:   "2001035", //ТУШИНО
 					Direction: processing.TerminalDirection_INGRESS,
 				},
 				Parent: 1,
@@ -1213,7 +1213,7 @@ var CasesComplexPassMMTS3 = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD2_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2000075", //ТУШИНО
+					Station:   "2001035", //ТУШИНО
 					Direction: processing.TerminalDirection_INGRESS,
 				},
 				Parent: 1,

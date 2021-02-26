@@ -948,7 +948,7 @@ var CasesComplexMCDMOPartOne = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD2_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2000075",
+					Station:   "2001035",
 					Direction: processing.TerminalDirection_INGRESS,
 				},
 				Parent: 1,

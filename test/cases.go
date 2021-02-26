@@ -39,6 +39,11 @@ type (
 		pass *pass.Pass
 	}
 
+	McdRestore struct {
+		Pan  string
+		Date time.Time
+	}
+
 	//генерация прохода
 	Pass struct {
 		//тип оплаты

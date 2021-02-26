@@ -58,7 +58,7 @@ var CasesComplexMCDMOPartFour = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD2_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2000075", //ТУШИНО
+					Station:   "2001035", //ТУШИНО
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 5,
@@ -137,7 +137,7 @@ var CasesComplexMCDMOPartFour = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD2_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2000075", //ТУШИНО
+					Station:   "2001035", //ТУШИНО
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 5,
@@ -845,7 +845,7 @@ var CasesComplexMCDMOPartFour = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD2_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2000075", //ТУШИНО
+					Station:   "2001035", //ТУШИНО
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 4,
@@ -909,7 +909,7 @@ var CasesComplexMCDMOPartFour = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD2_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2000075", //ТУШИНО
+					Station:   "2001035", //ТУШИНО
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 4,
@@ -973,7 +973,7 @@ var CasesComplexMCDMOPartFour = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD2_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2000075", //ТУШИНО
+					Station:   "2001035", //ТУШИНО
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 4,
@@ -1037,7 +1037,7 @@ var CasesComplexMCDMOPartFour = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD2_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2000075", //ТУШИНО
+					Station:   "2001035", //ТУШИНО
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 4,
@@ -1116,7 +1116,7 @@ var CasesComplexMCDMOPartFour = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD2_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2000075", //ТУШИНО
+					Station:   "2001035", //ТУШИНО
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 4,
@@ -1196,7 +1196,7 @@ var CasesComplexMCDMOPartFour = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD2_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2000075", //ТУШИНО
+					Station:   "2001035", //ТУШИНО
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 4,
@@ -1254,7 +1254,7 @@ var CasesComplexMCDMOPartFour = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD2_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2000075", //ТУШИНО
+					Station:   "2001035", //ТУШИНО
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 4,
@@ -1318,7 +1318,7 @@ var CasesComplexMCDMOPartFour = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD2_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2000075", //ТУШИНО
+					Station:   "2001035", //ТУШИНО
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 4,
@@ -1382,7 +1382,7 @@ var CasesComplexMCDMOPartFour = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD2_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2000075", //ТУШИНО
+					Station:   "2001035", //ТУШИНО
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 4,
@@ -1446,7 +1446,7 @@ var CasesComplexMCDMOPartFour = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD2_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2000075", //ТУШИНО
+					Station:   "2001035", //ТУШИНО
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 4,
@@ -1525,7 +1525,7 @@ var CasesComplexMCDMOPartFour = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD2_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2000075", //ТУШИНО
+					Station:   "2001035", //ТУШИНО
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 4,
@@ -1605,7 +1605,7 @@ var CasesComplexMCDMOPartFour = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD2_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2000075", //ТУШИНО
+					Station:   "2001035", //ТУШИНО
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 4,
@@ -1678,7 +1678,7 @@ var CasesComplexMCDMOPartFour = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD2_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2000075", //ТУШИНО
+					Station:   "2001035", //ТУШИНО
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 4,
@@ -1962,7 +1962,7 @@ var CasesComplexMCDMOPartFour = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD2_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2000075", //ТУШИНО
+					Station:   "2001035", //ТУШИНО
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 3,
@@ -2020,7 +2020,7 @@ var CasesComplexMCDMOPartFour = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD2_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2000075", //ТУШИНО
+					Station:   "2001035", //ТУШИНО
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 3,
@@ -2084,7 +2084,7 @@ var CasesComplexMCDMOPartFour = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD2_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2000075", //ТУШИНО
+					Station:   "2001035", //ТУШИНО
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 3,
@@ -2148,7 +2148,7 @@ var CasesComplexMCDMOPartFour = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD2_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2000075", //ТУШИНО
+					Station:   "2001035", //ТУШИНО
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 3,
@@ -2212,7 +2212,7 @@ var CasesComplexMCDMOPartFour = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD2_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2000075", //ТУШИНО
+					Station:   "2001035", //ТУШИНО
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 3,
@@ -2291,7 +2291,7 @@ var CasesComplexMCDMOPartFour = test.Cases{
 				Carrier:     carriers.Carrier_MCD,
 				SubCarrier:  carriers.SubCarrier_MCD2_MSK,
 				Terminal: &processing.Terminal{
-					Station:   "2000075", //ТУШИНО
+					Station:   "2001035", //ТУШИНО
 					Direction: processing.TerminalDirection_EGRESS,
 				},
 				Ingress: 3,

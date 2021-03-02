@@ -352,22 +352,22 @@ func Run(t *testing.T, cases Cases, rt RequestType) {
 
 				cm_calc, ok := step.(*CompleteWithCalculate)
 				if ok {
-					var aggregatePasses []*Pass
-					for _, v := range scenario.T {
-						ps, ok := v.(*Pass)
-						if ok {
-							aggregatePasses = append(aggregatePasses, ps)
-						}
-					}
-
-					if len(aggregatePasses) != 0 {
-						CompleteCalcApi(t, aggregatePasses, cm_calc.Pan)
-					}
+					//var aggregatePasses []*Pass
+					//for _, v := range scenario.T {
+					//	ps, ok := v.(*Pass)
+					//	if ok {
+					//		aggregatePasses = append(aggregatePasses, ps)
+					//	}
+					//}
+					//
+					//if len(aggregatePasses) != 0 {
+					//
+					//}
+					CompleteCalcApi(t, nil, cm_calc)
 				}
 
 				mcd_restore, ok := step.(*McdRestore)
 				if ok {
-					mcd_restore.Pan = "500358C1BB426F061A46743752B01BD1D1F930F7865AA439BFFA49CD11CB1F50"
 					McdRestoreApi(t, mcd_restore)
 				}
 

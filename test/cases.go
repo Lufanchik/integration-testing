@@ -179,7 +179,8 @@ type (
 
 	//закрытие периода агрегации по карте
 	CompleteWithCalculate struct {
-		Pan string
+		Pan  string
+		Date time.Time
 	}
 
 	WebAPIPasses struct {

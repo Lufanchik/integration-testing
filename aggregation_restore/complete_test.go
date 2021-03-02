@@ -16,17 +16,8 @@ import (
 )
 
 const (
-	passUrl = "http://localhost:9090"
-	authUrl = "http://localhost:9091"
-	webUrl  = "http://127.0.0.1:1344"
-	//passUrl = "http://processing-api-gateway.test.svc.cluster.local:9090"
-	//authUrl = "http://auth-service.test.svc.cluster.local:9091"
-
-	completeCalc = "/twirp/proto.WebAPIGateway/ProcessCompleteWithCalculate"
-	onlinePass   = "/mm/twirp/sirocco.ProcessingAPI/ProcessOnlinePass"
-	complete     = "/mtppk/twirp/sirocco.ProcessingAPI/ProcessComplete"
-	cancel       = "/mtppk/twirp/sirocco.ProcessingAPI/CancelPass"
-	activeReAuth = "/twirp/sirocco.AuthAPI/ActiveReAuth"
+	calcUrl    = "http://localhost:9098"
+	restoreMCD = "/twirp/sirocco.CalculatorAPI/ProcessMcdRestore"
 )
 
 func logRequest(r *httpexpect.Response) {
@@ -35,9 +26,9 @@ func logRequest(r *httpexpect.Response) {
 }
 
 func Test_1_1(t *testing.T) {
-	response := &processing.CompleteWithCalculateResponse{}
+	response := &processing.McdRestoreResponse{}
 	{
-		httpService := httpexpect.New(t, webUrl)
+		httpService := httpexpect.New(t, calcUrl)
 		now := int(time.Now().UnixNano())
 
 		req := []byte(`{
@@ -46,11 +37,11 @@ func Test_1_1(t *testing.T) {
 		}`)
 
 		fmt.Println(string(req))
-		request := &processing.CompleteWithCalculateRequest{}
+		request := &processing.McdRestoreRequest{}
 		err := json.Unmarshal(req, request)
 		require.NoError(t, err)
 
-		r := httpService.POST(completeCalc).WithJSON(request).
+		r := httpService.POST(restoreMCD).WithJSON(request).
 			Expect().
 			Status(http.StatusOK)
 

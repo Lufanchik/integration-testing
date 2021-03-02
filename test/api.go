@@ -583,17 +583,17 @@ func ParkingApi(t *testing.T, card *processing.Card, pr *Parking) {
 	require.Equal(t, resp, response)
 }
 
-func CompleteCalcApi(t *testing.T, aggregatePasses []*Pass, pan string) {
+func CompleteCalcApi(t *testing.T, aggregatePasses []*Pass, cc *CompleteWithCalculate) {
 	//check passes pan
-	for _, value := range aggregatePasses {
-		require.NotNil(t, value.card)
-		require.Equal(t, pan, value.card.Pan)
-	}
+	//for _, value := range aggregatePasses {
+	//	require.NotNil(t, value.card)
+	//	require.Equal(t, pan, value.card.Pan)
+	//}
 
 	//made complete
-	req, resp := CompleteWithCalculateRequest(pan)
-	url := "/twirp/proto.WebAPIGateway/ProcessCompleteWithCalculate"
-	r := httpWebApi.POST(url).WithJSON(req).
+	req, resp := CompleteWithCalculateRequest(cc)
+	url := "/twirp/sirocco.CalculatorAPI/ProcessCompleteWithCalculate"
+	r := httpCalculatorService.POST(url).WithJSON(req).
 		Expect().
 		Status(http.StatusOK)
 

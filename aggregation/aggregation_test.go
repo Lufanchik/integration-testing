@@ -22,10 +22,11 @@ const (
 	//passUrl = "http://processing-api-gateway.test.svc.cluster.local:9090"
 	//authUrl = "http://auth-service.test.svc.cluster.local:9091"
 
-	onlinePass   = "/mm/twirp/sirocco.ProcessingAPI/ProcessOnlinePass"
-	complete     = "/mtppk/twirp/sirocco.ProcessingAPI/ProcessComplete"
-	cancel       = "/mtppk/twirp/sirocco.ProcessingAPI/CancelPass"
-	activeReAuth = "/twirp/sirocco.AuthAPI/ActiveReAuth"
+	onlinePassMM  = "/mm/twirp/sirocco.ProcessingAPI/ProcessOnlinePass"
+	onlinePassMCD = "/mcd/twirp/sirocco.ProcessingAPI/ProcessOnlinePass"
+	complete      = "/mtppk/twirp/sirocco.ProcessingAPI/ProcessComplete"
+	cancel        = "/mtppk/twirp/sirocco.ProcessingAPI/CancelPass"
+	activeReAuth  = "/twirp/sirocco.AuthAPI/ActiveReAuth"
 
 	// 17.02.2020
 	//emv = "nOK9Iah6LQpqHTPB7zmtdqtfAvQ0UYLmKQc52V6MrDCqsmorbH2HppQs7eRNQDZAHWGv77r60q6wr2WjR90eixyjL+84wpRVWhMLN9+pJQ0C74D6/fcIJErYCek9SwxhLgi2Sp0fJqUj3G40EeupmVST1CeX5HcprnrDnueaOPc2fUbUm/Q1RpM63bbxY2dX/JF2RaoSogTos7xbQKnzb1sJs4ISrw7+4UIl68mg7yN3cB2CnnydKWjCfaQkIwieGDyXfm4Z0XuEZeyqz1gik+dgc/xrfSdlaBfnVeSCyxX94yMTw8s1KwgVrrnM0KJuptRYyFBKvjmgI2sZMHW1Ew=="
@@ -51,48 +52,14 @@ func logRequest(r *httpexpect.Response) {
 }
 
 func Test_1_1(t *testing.T) {
-	response := &processing.OnlinePassResponse{}
 	{
-		httpService := httpexpect.New(t, passUrl)
-		now := int(time.Now().UnixNano())
-		//Метро, онлайн, мир - успешная авторизация, акция
-		//	req := []byte(`{
-		//	"id": "` + uuid.New().String() + `",
-		//		"created": ` + strconv.Itoa(now) + `,
-		//		"tap": {
-		//		"created": ` + strconv.Itoa(now) + `,
-		//			"resolution": 1,
-		//			"sign": "test",
-		//			"terminal": {
-		//				"id": "3213",
-		//				"station": "2000285",
-		//				"direction": 1,
-		//				"sub_carrier": 3
-		//			},
-		//		"card": {
-		//				"system": 4,
-		//				"type": 1,
-		//				"pan": "61312C7296E8F21FC86A237E632C34FD10FE7C532A130F98EBFA4E037DB672FD",
-		//				"bin": 47617310,
-		//				"exp": "1224",
-		//				"emv": "` + test.CardEmvCorrect() + `",
-		//				"token": {
-		//					"type": 1
-		//				}
-		//		}
-		//	},
-		//	"auth": {
-		//		"sum": 4400,
-		//		"type": 1
-		//	}
-		//}`)
+		now := time.Now()
 
-		// Метро, оффлайн, виза - успешный обычный чеккард, не нашли чеккард
-		req := []byte(`{
+		reqMsk1 := []byte(`{
 			"id": "` + uuid.New().String() + `",
-				"created": ` + strconv.Itoa(now) + `,
+				"created": ` + strconv.Itoa(int(now.UnixNano())) + `,
 				"tap": {
-				"created": ` + strconv.Itoa(now) + `,
+				"created": ` + strconv.Itoa(int(now.UnixNano())) + `,
 					"resolution": 1,
 					"sign": "test",
 					"terminal": {
@@ -104,7 +71,7 @@ func Test_1_1(t *testing.T) {
 				"card": {
 						"system": 2,
 						"type": 1,
-						"pan": "61312C7296E8F21FC86A237E632C34FD10FE7C532A130F98EBFA4E037DB67112",
+						"pan": "` + Pan + `",
 						"bin": 47617310,
 						"exp": "1224",
 						"emv": "` + test.CardEmvCorrect() + `",
@@ -119,52 +86,155 @@ func Test_1_1(t *testing.T) {
 			}
 		}`)
 
-		//Метро, оффлайн, мастер - успешный обычный чеккард, не нашли чеккард
-		//	req := []byte(`{
-		//	"id": "` + uuid.New().String() + `",
-		//		"created": ` + strconv.Itoa(now) + `,
-		//		"tap": {
-		//		"created": ` + strconv.Itoa(now) + `,
-		//			"resolution": 1,
-		//			"sign": "test",
-		//			"terminal": {
-		//				"id": "3213",
-		//				"station": "2000285",
-		//				"direction": 1,
-		//				"sub_carrier": 3
-		//			},
-		//		"card": {
-		//				"system": 3,
-		//				"type": 1,
-		//				"pan": "61312C7296E8F21FC86A237E632C34FD10FE7C532A130F98EBFA4E037DB672FA",
-		//				"bin": 47617310,
-		//				"exp": "1224",
-		//				"emv": "` + test.CardEmvCorrect() + `",
-		//				"token": {
-		//					"type": 1
-		//				}
-		//		}
-		//	},
-		//	"auth": {
-		//		"sum": 4400,
-		//		"type": 1
-		//	}
-		//}`)
+		reqMsk11 := []byte(`{
+			"id": "` + uuid.New().String() + `",
+				"created": ` + strconv.Itoa(int(now.Add(time.Minute*4).UnixNano())) + `,
+				"tap": {
+				"created": ` + strconv.Itoa(int(now.Add(time.Minute*4).UnixNano())) + `,
+					"resolution": 1,
+					"sign": "test",
+					"terminal": {
+						"id": "3213",
+						"station": "2000285",
+						"direction": 1,
+						"sub_carrier": 2
+					},
+				"card": {
+						"system": 2,
+						"type": 1,
+						"pan": "` + Pan + `",
+						"bin": 47617310,
+						"exp": "1224",
+						"emv": "` + test.CardEmvCorrect() + `",
+						"token": {
+							"type": 1
+						}
+				}
+			},
+			"auth": {
+				"sum": 4600,
+				"type": 1
+			}
+		}`)
 
-		fmt.Println(string(req))
-		request := &processing.OnlinePassRequest{}
-		err := json.Unmarshal(req, request)
-		require.NoError(t, err)
+		reqMCD := []byte(`{
+			"id": "` + uuid.New().String() + `",
+				"created": ` + strconv.Itoa(int(now.Add(time.Minute*6).UnixNano())) + `,
+				"tap": {
+				"created": ` + strconv.Itoa(int(now.Add(time.Minute*6).UnixNano())) + `,
+					"resolution": 1,
+					"sign": "test",
+					"terminal": {
+						"id": "3213",
+						"station": "2000285",
+						"direction": 2,
+						"sub_carrier": 1
+					},
+				"card": {
+						"system": 2,
+						"type": 1,
+						"pan": "` + Pan + `",
+						"bin": 47617310,
+						"exp": "1224",
+						"emv": "` + test.CardEmvCorrect() + `",
+						"token": {
+							"type": 1
+						}
+				}
+			},
+			"auth": {
+				"sum": 4600,
+				"type": 1
+			}
+		}`)
 
-		r := httpService.POST(onlinePass).WithJSON(request).
-			Expect().
-			Status(http.StatusOK)
+		reqMsk2 := []byte(`{
+			"id": "` + uuid.New().String() + `",
+				"created": ` + strconv.Itoa(int(now.Add(time.Minute*8).UnixNano())) + `,
+				"tap": {
+				"created": ` + strconv.Itoa(int(now.Add(time.Minute*8).UnixNano())) + `,
+					"resolution": 1,
+					"sign": "test",
+					"terminal": {
+						"id": "3213",
+						"station": "2000285",
+						"direction": 1,
+						"sub_carrier": 1
+					},
+				"card": {
+						"system": 2,
+						"type": 1,
+						"pan": "` + Pan + `",
+						"bin": 47617310,
+						"exp": "1224",
+						"emv": "` + test.CardEmvCorrect() + `",
+						"token": {
+							"type": 1
+						}
+				}
+			},
+			"auth": {
+				"sum": 4600,
+				"type": 1
+			}
+		}`)
 
-		logRequest(r)
+		reqMsk22 := []byte(`{
+			"id": "` + uuid.New().String() + `",
+				"created": ` + strconv.Itoa(int(now.Add(time.Minute*10).UnixNano())) + `,
+				"tap": {
+				"created": ` + strconv.Itoa(int(now.Add(time.Minute*10).UnixNano())) + `,
+					"resolution": 1,
+					"sign": "test",
+					"terminal": {
+						"id": "3213",
+						"station": "2000285",
+						"direction": 1,
+						"sub_carrier": 2
+					},
+				"card": {
+						"system": 2,
+						"type": 1,
+						"pan": "` + Pan + `",
+						"bin": 47617310,
+						"exp": "1224",
+						"emv": "` + test.CardEmvCorrect() + `",
+						"token": {
+							"type": 1
+						}
+				}
+			},
+			"auth": {
+				"sum": 4600,
+				"type": 1
+			}
+		}`)
 
-		err = jsonpb.Unmarshal(strings.NewReader(r.Body().Raw()), response)
-		require.NoError(t, err)
-
-		fmt.Println(response)
+		Request(t, reqMsk1, onlinePassMM)
+		Request(t, reqMsk11, onlinePassMM)
+		Request(t, reqMCD, onlinePassMCD)
+		Request(t, reqMsk2, onlinePassMM)
+		Request(t, reqMsk22, onlinePassMM)
 	}
+}
+
+func Request(t *testing.T, req []byte, pe string) {
+	fmt.Println(string(req))
+	httpService := httpexpect.New(t, passUrl)
+
+	request := &processing.OnlinePassRequest{}
+	err := json.Unmarshal(req, request)
+	require.NoError(t, err)
+
+	r := httpService.POST(pe).WithJSON(request).
+		Expect().
+		Status(http.StatusOK)
+
+	logRequest(r)
+
+	response := &processing.OnlinePassResponse{}
+	err = jsonpb.Unmarshal(strings.NewReader(r.Body().Raw()), response)
+	require.NoError(t, err)
+
+	fmt.Println(response)
 }

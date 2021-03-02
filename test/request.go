@@ -396,10 +396,10 @@ func DelCommentRequest(c *comments.Comment) *comments.DeleteCommentRequest {
 	return request
 }
 
-func CompleteWithCalculateRequest(pan string) (*processing.CompleteWithCalculateRequest, *processing.CompleteWithCalculateResponse) {
+func CompleteWithCalculateRequest(cc *CompleteWithCalculate) (*processing.CompleteWithCalculateRequest, *processing.CompleteWithCalculateResponse) {
 	request := &processing.CompleteWithCalculateRequest{
-		Pan:  pan,
-		Time: NowBackup(),
+		Pan:  cc.Pan,
+		Time: uint64(cc.Date.UnixNano()),
 	}
 
 	resp := &processing.CompleteWithCalculateResponse{}

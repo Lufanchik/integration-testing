@@ -32,6 +32,6 @@ simple:
 	go test -c -o ./bin/test
 	./bin/test -test.run ^TestSimple$
 
-local: simple
+local: full
 prod: simple
 test: full

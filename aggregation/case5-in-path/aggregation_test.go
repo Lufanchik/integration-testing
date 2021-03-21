@@ -215,7 +215,7 @@ func Test_3(t *testing.T) {
 						"sub_carrier": 1
 					},
 				"card": {
-						"system": 4,
+						"system": 2,
 						"type": 1,
 						"pan": "` + pan + `",
 						"bin": 47617310,
@@ -246,7 +246,7 @@ func Test_3(t *testing.T) {
 						"sub_carrier": 1
 					},
 				"card": {
-						"system": 4,
+						"system": 2,
 						"type": 1,
 						"pan": "` + pan + `",
 						"bin": 47617310,
@@ -503,7 +503,7 @@ func Test_7(t *testing.T) {
 						"sub_carrier": 1
 					},
 				"card": {
-						"system": 4,
+						"system": 2,
 						"type": 1,
 						"pan": "` + pan + `",
 						"bin": 47617310,
@@ -534,7 +534,7 @@ func Test_7(t *testing.T) {
 						"sub_carrier": 1
 					},
 				"card": {
-						"system": 4,
+						"system": 2,
 						"type": 1,
 						"pan": "` + pan + `",
 						"bin": 47617310,
@@ -791,7 +791,7 @@ func Test_11(t *testing.T) {
 						"sub_carrier": 1
 					},
 				"card": {
-						"system": 4,
+						"system": 2,
 						"type": 1,
 						"pan": "` + pan + `",
 						"bin": 47617310,
@@ -822,7 +822,7 @@ func Test_11(t *testing.T) {
 						"sub_carrier": 1
 					},
 				"card": {
-						"system": 4,
+						"system": 2,
 						"type": 1,
 						"pan": "` + pan + `",
 						"bin": 47617310,
@@ -1079,7 +1079,7 @@ func Test_15(t *testing.T) {
 						"sub_carrier": 1
 					},
 				"card": {
-						"system": 4,
+						"system": 2,
 						"type": 1,
 						"pan": "` + pan + `",
 						"bin": 47617310,
@@ -1110,7 +1110,7 @@ func Test_15(t *testing.T) {
 						"sub_carrier": 1
 					},
 				"card": {
-						"system": 4,
+						"system": 2,
 						"type": 1,
 						"pan": "` + pan + `",
 						"bin": 47617310,

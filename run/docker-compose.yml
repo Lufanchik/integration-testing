@@ -56,6 +56,13 @@ services:
     command: /app/bin/app -f /app/config.local.mtppk.yml
     network_mode: host
 
+  pass-ae-service:
+    image: golang:1.14
+    volumes:
+      - ../../pass-service:/app
+    command: /app/bin/app -f /app/config.local.ae.yml
+    network_mode: host
+
   processing-api-gateway:
     image: golang:1.14
     volumes:

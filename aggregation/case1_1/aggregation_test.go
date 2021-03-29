@@ -1,4 +1,4 @@
-package case2
+package case1_1
 
 import (
 	"encoding/json"
@@ -70,7 +70,7 @@ func Test_1(t *testing.T) {
 						"sub_carrier": 1
 					},
 				"card": {
-						"system": 2,
+						"system": 4,
 						"type": 1,
 						"pan": "` + aggregation.Pan + `",
 						"bin": 47617310,
@@ -101,7 +101,7 @@ func Test_1(t *testing.T) {
 						"sub_carrier": 2
 					},
 				"card": {
-						"system": 2,
+						"system": 4,
 						"type": 1,
 						"pan": "` + aggregation.Pan + `",
 						"bin": 47617310,
@@ -132,7 +132,7 @@ func Test_1(t *testing.T) {
 						"sub_carrier": 1
 					},
 				"card": {
-						"system": 2,
+						"system": 4,
 						"type": 1,
 						"pan": "` + aggregation.Pan + `",
 						"bin": 47617310,
@@ -163,7 +163,7 @@ func Test_1(t *testing.T) {
 						"sub_carrier": 1
 					},
 				"card": {
-						"system": 2,
+						"system": 4,
 						"type": 1,
 						"pan": "` + aggregation.Pan + `",
 						"bin": 47617310,
@@ -194,38 +194,7 @@ func Test_1(t *testing.T) {
 						"sub_carrier": 1
 					},
 				"card": {
-						"system": 2,
-						"type": 1,
-						"pan": "` + aggregation.Pan + `",
-						"bin": 47617310,
-						"exp": "1224",
-						"emv": "` + test.CardEmvCorrect() + `",
-						"token": {
-							"type": 1
-						}
-				}
-			},
-			"auth": {
-				"sum": 4600,
-				"type": 1
-			}
-		}`)
-
-		reqMsk222 := []byte(`{
-			"id": "` + uuid.New().String() + `",
-				"created": ` + strconv.Itoa(int(now.Add(time.Minute*9).UnixNano())) + `,
-				"tap": {
-				"created": ` + strconv.Itoa(int(now.Add(time.Minute*9).UnixNano())) + `,
-					"resolution": 1,
-					"sign": "test",
-					"terminal": {
-						"id": "3213",
-						"station": "2000285",
-						"direction": 1,
-						"sub_carrier": 2
-					},
-				"card": {
-						"system": 2,
+						"system": 4,
 						"type": 1,
 						"pan": "` + aggregation.Pan + `",
 						"bin": 47617310,
@@ -244,9 +213,9 @@ func Test_1(t *testing.T) {
 
 		reqMCD31 := []byte(`{
 			"id": "` + uuid.New().String() + `",
-				"created": ` + strconv.Itoa(int(now.Add(time.Minute*10).UnixNano())) + `,
+				"created": ` + strconv.Itoa(int(now.Add(time.Minute*9).UnixNano())) + `,
 				"tap": {
-				"created": ` + strconv.Itoa(int(now.Add(time.Minute*10).UnixNano())) + `,
+				"created": ` + strconv.Itoa(int(now.Add(time.Minute*9).UnixNano())) + `,
 					"resolution": 1,
 					"sign": "test",
 					"terminal": {
@@ -256,7 +225,7 @@ func Test_1(t *testing.T) {
 						"sub_carrier": 1
 					},
 				"card": {
-						"system": 2,
+						"system": 4,
 						"type": 1,
 						"pan": "` + aggregation.Pan + `",
 						"bin": 47617310,
@@ -275,9 +244,9 @@ func Test_1(t *testing.T) {
 
 		reqMCD3 := []byte(`{
 			"id": "` + uuid.New().String() + `",
-				"created": ` + strconv.Itoa(int(now.Add(time.Minute*11).UnixNano())) + `,
+				"created": ` + strconv.Itoa(int(now.Add(time.Minute*10).UnixNano())) + `,
 				"tap": {
-				"created": ` + strconv.Itoa(int(now.Add(time.Minute*11).UnixNano())) + `,
+				"created": ` + strconv.Itoa(int(now.Add(time.Minute*10).UnixNano())) + `,
 					"resolution": 1,
 					"sign": "test",
 					"terminal": {
@@ -287,7 +256,7 @@ func Test_1(t *testing.T) {
 						"sub_carrier": 1
 					},
 				"card": {
-						"system": 2,
+						"system": 4,
 						"type": 1,
 						"pan": "` + aggregation.Pan + `",
 						"bin": 47617310,
@@ -306,9 +275,9 @@ func Test_1(t *testing.T) {
 
 		reqMCD4 := []byte(`{
 			"id": "` + uuid.New().String() + `",
-				"created": ` + strconv.Itoa(int(now.Add(time.Minute*12).UnixNano())) + `,
+				"created": ` + strconv.Itoa(int(now.Add(time.Minute*11).UnixNano())) + `,
 				"tap": {
-				"created": ` + strconv.Itoa(int(now.Add(time.Minute*12).UnixNano())) + `,
+				"created": ` + strconv.Itoa(int(now.Add(time.Minute*11).UnixNano())) + `,
 					"resolution": 1,
 					"sign": "test",
 					"terminal": {
@@ -318,7 +287,7 @@ func Test_1(t *testing.T) {
 						"sub_carrier": 1
 					},
 				"card": {
-						"system": 2,
+						"system": 4,
 						"type": 1,
 						"pan": "` + aggregation.Pan + `",
 						"bin": 47617310,
@@ -337,9 +306,9 @@ func Test_1(t *testing.T) {
 
 		reqMsk2 := []byte(`{
 			"id": "` + uuid.New().String() + `",
-				"created": ` + strconv.Itoa(int(now.Add(time.Minute*13).UnixNano())) + `,
+				"created": ` + strconv.Itoa(int(now.Add(time.Minute*12).UnixNano())) + `,
 				"tap": {
-				"created": ` + strconv.Itoa(int(now.Add(time.Minute*13).UnixNano())) + `,
+				"created": ` + strconv.Itoa(int(now.Add(time.Minute*12).UnixNano())) + `,
 					"resolution": 1,
 					"sign": "test",
 					"terminal": {
@@ -349,7 +318,7 @@ func Test_1(t *testing.T) {
 						"sub_carrier": 1
 					},
 				"card": {
-						"system": 2,
+						"system": 4,
 						"type": 1,
 						"pan": "` + aggregation.Pan + `",
 						"bin": 47617310,
@@ -368,9 +337,9 @@ func Test_1(t *testing.T) {
 
 		reqMsk22 := []byte(`{
 			"id": "` + uuid.New().String() + `",
-				"created": ` + strconv.Itoa(int(now.Add(time.Minute*14).UnixNano())) + `,
+				"created": ` + strconv.Itoa(int(now.Add(time.Minute*13).UnixNano())) + `,
 				"tap": {
-				"created": ` + strconv.Itoa(int(now.Add(time.Minute*14).UnixNano())) + `,
+				"created": ` + strconv.Itoa(int(now.Add(time.Minute*13).UnixNano())) + `,
 					"resolution": 1,
 					"sign": "test",
 					"terminal": {
@@ -380,7 +349,7 @@ func Test_1(t *testing.T) {
 						"sub_carrier": 2
 					},
 				"card": {
-						"system": 2,
+						"system": 4,
 						"type": 1,
 						"pan": "` + aggregation.Pan + `",
 						"bin": 47617310,
@@ -402,7 +371,6 @@ func Test_1(t *testing.T) {
 		Request(t, reqMCD1, onlinePassMCD)
 		Request(t, reqMCD2, onlinePassMCD)
 		Request(t, reqMCD21, onlinePassMCD)
-		Request(t, reqMsk222, onlinePassMM)
 		Request(t, reqMCD31, onlinePassMCD)
 		Request(t, reqMCD3, onlinePassMCD)
 		Request(t, reqMCD4, onlinePassMCD)

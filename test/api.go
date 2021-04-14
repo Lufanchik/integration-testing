@@ -52,7 +52,7 @@ func TapBySubCarrier(t *testing.T, p *Pass, card *processing.Card) (*processing.
 	resp.Created = response.Created
 	p.id = response.Id
 
-	require.Equal(t, resp, response)
+	require.Equal(t, resp.String(), response.String())
 
 	return req, response
 }
@@ -82,7 +82,7 @@ func PassBySubCarrier(t *testing.T, tap *processing.TapRequest, p *Pass) (uint64
 		resp.Created = response.Created
 		p.id = response.Id
 
-		require.Equal(t, resp, response)
+		require.Equal(t, resp.String(), response.String())
 		return requestedTime, response
 	case RequestTypeOnline:
 		req, resp := PassOnlineRequest(tap, p)
@@ -107,7 +107,7 @@ func PassBySubCarrier(t *testing.T, tap *processing.TapRequest, p *Pass) (uint64
 			resp.Msg = response.Msg
 		}
 
-		require.Equal(t, resp, response)
+		require.Equal(t, resp.String(), response.String())
 		return requestedTime, response
 	}
 	panic(errors.New("not found type pass"))
@@ -337,7 +337,11 @@ func ValidatePass(t *testing.T, p *Pass, parent *Pass, ingress *Pass, isFirst bo
 		Id: p.id,
 	})
 
-	isEqual := assert.ObjectsAreEqual(expectPass, passDB)
+	var isEqual bool
+	if passDB != nil {
+		isEqual = assert.ObjectsAreEqual(expectPass.String(), passDB.String())
+	}
+
 	counter := 0
 
 	//if p.EmptyEMV {
@@ -363,14 +367,18 @@ func ValidatePass(t *testing.T, p *Pass, parent *Pass, ingress *Pass, isFirst bo
 
 		}
 
-		isEqual = assert.ObjectsAreEqual(expectPass, passDB)
+		if passDB != nil {
+			isEqual = assert.ObjectsAreEqual(expectPass.String(), passDB.String())
+		}
+
 		counter++
 		if counter > timeCount {
 			break
 		}
 	}
 
-	require.Equal(t, expectPass, passDB)
+	require.NoError(t, err)
+	require.Equal(t, expectPass.String(), passDB.String())
 	require.NoError(t, err)
 }
 
@@ -407,21 +415,25 @@ func AuthStatus(t *testing.T, p *Pass) {
 	}
 
 	resp, response, err := GetAuthStatus(p)
+	require.NoError(t, err)
 
-	isEqual := assert.ObjectsAreEqual(resp, response)
+	isEqual := assert.ObjectsAreEqual(resp.String(), response.String())
 	counter := 0
 	for !isEqual {
 		fmt.Println("auth status not equal")
 		time.Sleep(TimeAfterRequest)
 		resp, response, err = GetAuthStatus(p)
-		isEqual = assert.ObjectsAreEqual(resp, response)
+		if resp != nil && response != nil {
+			isEqual = assert.ObjectsAreEqual(resp.String(), response.String())
+		}
 		counter++
 		if counter > timeCount {
 			break
 		}
 	}
 
-	require.Equal(t, resp, response)
+	require.NoError(t, err)
+	require.Equal(t, resp.String(), response.String())
 	require.NoError(t, err)
 }
 
@@ -564,7 +576,7 @@ func CancelApi(t *testing.T, cl *Cancel, target *Pass) {
 	err := jsonpb.Unmarshal(strings.NewReader(object), response)
 	require.NoError(t, err)
 	resp.Created = response.Created
-	require.Equal(t, resp, response)
+	require.Equal(t, resp.String(), response.String())
 }
 
 func ParkingApi(t *testing.T, card *processing.Card, pr *Parking) {
@@ -580,7 +592,7 @@ func ParkingApi(t *testing.T, card *processing.Card, pr *Parking) {
 	response := &processing.CheckParkingResponse{}
 	err := jsonpb.Unmarshal(strings.NewReader(object), response)
 	require.NoError(t, err)
-	require.Equal(t, resp, response)
+	require.Equal(t, resp.String(), response.String())
 }
 
 func CompleteCalcApi(t *testing.T, aggregatePasses []*Pass, cc *CompleteWithCalculate) {
@@ -602,7 +614,7 @@ func CompleteCalcApi(t *testing.T, aggregatePasses []*Pass, cc *CompleteWithCalc
 	response := &processing.CompleteWithCalculateResponse{}
 	err := jsonpb.Unmarshal(strings.NewReader(object), response)
 	require.NoError(t, err)
-	require.Equal(t, resp, response)
+	require.Equal(t, resp.String(), response.String())
 
 	//check passes after complete
 }
@@ -620,7 +632,7 @@ func McdRestoreApi(t *testing.T, mr *McdRestore) {
 	response := &processing.McdRestoreResponse{}
 	err := jsonpb.Unmarshal(strings.NewReader(object), response)
 	require.NoError(t, err)
-	require.Equal(t, resp, response)
+	require.Equal(t, resp.String(), response.String())
 
 	//check passes after complete
 }
@@ -639,7 +651,7 @@ func CompleteApi(t *testing.T, pass *Pass, passes []*Pass, sum int) {
 	err := jsonpb.Unmarshal(strings.NewReader(object), response)
 	resp.Created = response.Created
 	require.NoError(t, err)
-	require.Equal(t, resp, response)
+	require.Equal(t, resp.String(), response.String())
 }
 
 func WebAPI(t *testing.T, card *processing.Card, passes []*Pass) {
@@ -698,7 +710,7 @@ func ProcessRevisePassRequest(t *testing.T, prp *ProcessRevisePass) {
 	prp.req = prpReq
 	prpR, err := ps.ProcessRevisePass(context.Background(), prpReq)
 	require.NoError(t, err)
-	require.Equal(t, prpResp, prpR)
+	require.Equal(t, prpResp.String(), prpR.String())
 	ctx := context.Background()
 
 	id, err := uuid.GenerateUUID(ctx, prpReq.Request)
@@ -735,7 +747,7 @@ func ProcessRevisePassRequest(t *testing.T, prp *ProcessRevisePass) {
 		PaySystem:         prpReq.Request.Tap.Card.System,
 	}
 
-	isEqual := assert.ObjectsAreEqual(expectPass, passDB)
+	isEqual := assert.ObjectsAreEqual(expectPass.String(), passDB.String())
 	counter := 0
 
 	for !isEqual {
@@ -749,14 +761,17 @@ func ProcessRevisePassRequest(t *testing.T, prp *ProcessRevisePass) {
 			expectPass.Updated = passDB.Updated
 		}
 
-		isEqual = assert.ObjectsAreEqual(expectPass, passDB)
+		if passDB != nil {
+			isEqual = assert.ObjectsAreEqual(expectPass.String(), passDB.String())
+		}
+
 		counter++
 		if counter > timeCount {
 			break
 		}
 	}
-
-	require.Equal(t, expectPass, passDB)
+	require.NoError(t, err)
+	require.Equal(t, expectPass.String(), passDB.String())
 	require.NoError(t, err)
 }
 
@@ -845,7 +860,7 @@ func FaceApiCheckStatus(t *testing.T, faceCheck *FaceIdRegistrationStatus) {
 	err := jsonpb.Unmarshal(strings.NewReader(object), actualResponse)
 	require.NoError(t, err)
 
-	require.Equal(t, expectedResponse, actualResponse)
+	require.Equal(t, expectedResponse.String(), actualResponse.String())
 }
 
 func ReaderConfigurationSend(t *testing.T, c *ReaderConfiguration) {
@@ -1028,7 +1043,7 @@ func CardCheckStopList(t *testing.T, cardCheck *CardStopList) {
 	err := jsonpb.Unmarshal(strings.NewReader(object), actualResponse)
 	require.NoError(t, err)
 
-	require.Equal(t, expectedResponse, actualResponse)
+	require.Equal(t, expectedResponse.String(), actualResponse.String())
 }
 
 func ForceReauthCall(t *testing.T, fra *ForceReauth) {
@@ -1112,7 +1127,7 @@ func TWPGCheckOrderStatus(t *testing.T, os *TWPGOrderStatus) {
 	response := &twpg.OrderStatusResponse{}
 	err := jsonpb.Unmarshal(strings.NewReader(object), response)
 	require.NoError(t, err)
-	require.Equal(t, expectedResponse, response)
+	require.Equal(t, expectedResponse.String(), response.String())
 }
 
 func TWPGReverse(t *testing.T, os *TWPGReverseOrder) {

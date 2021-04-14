@@ -5,7 +5,7 @@ import (
 	"github.com/jinzhu/copier"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 	"github.com/stretchr/testify/require"
-	"lab.dt.multicarta.ru/tp/integration-testing/passes/restore"
+	"lab.dt.multicarta.ru/tp/integration-testing/passes/mm"
 	"lab.dt.multicarta.ru/tp/integration-testing/test"
 	"net/http"
 	"net/http/pprof"
@@ -144,7 +144,7 @@ func TestSimple(t *testing.T) {
 	//test.Run(t, mtppk.CasesMTPPK_MCK, test.RequestTypeOffline)
 	//test.Run(t, mtppk.CasesMTPPK1, test.RequestTypeOffline)
 	//
-	test.Run(t, restore.McdRestore, test.RequestTypeOffline)
+	test.Run(t, mm.CasesMetroComplexMM1, test.RequestTypeOffline)
 	//test.Run(t, mck.CasesMetroComplexMCK1, test.RequestTypeOffline)
 	//test.RunApiRequest(t, registry.CasesReviseGetTaskList, test.RequestTypeOffline)
 	//test.RunApiRequest(t, registry.CasesResolveGetTaskList, test.RequestTypeOffline)

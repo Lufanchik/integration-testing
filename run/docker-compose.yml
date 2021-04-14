@@ -139,3 +139,10 @@ services:
       - ../../storage-service:/app
     command: /app/bin/app -f /app/config.local.yml
     network_mode: host
+
+  catalogue-service:
+    image: golang:1.14
+    volumes:
+      - ../../catalogue-service:/app
+    command: /app/bin/app -f /app/config.local.yml
+    network_mode: host

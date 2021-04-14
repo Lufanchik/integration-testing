@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+echo "catalogue-service"
+cd ../../catalogue-service && make generate && make build && make migrate_up

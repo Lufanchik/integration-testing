@@ -43,6 +43,7 @@ func logRequest(r *httpexpect.Response) {
 // 5. вход где-то в мцд, выход на мск рижская, вход на ржевской (за 10 минут), выход где-то в мцд
 // 6. вход где-то в мцд, выход на мск рижская, вход на ржевской (за 20 минут), выход где-то в мцд
 // 7. вход где-то в мцд, выход на ржевской, линейка 1, вход на ржевской линейка 2 (за 10 минут), выход где-то в мцд
+// 7.1 сценарий с прода
 
 // 8.  вход где-то в мцд, выход на тестовской (лин 3), вход (лин 1), выход (лин 2)
 // 9.  вход на тестовской (лин 2), выход (лин 1), вход (лин 3), выход где-то в мцд
@@ -1036,6 +1037,142 @@ func Test_7(t *testing.T) {
 					"terminal": {
 						"id": "3213",
 						"station": "2000285",
+						"direction": 2,
+						"sub_carrier": 1
+					},
+				"card": {
+						"system": 2,
+						"type": 1,
+						"pan": "` + pan + `",
+						"bin": 47617310,
+						"exp": "1224",
+						"emv": "` + test.CardEmvCorrect() + `",
+						"token": {
+							"type": 1
+						}
+				}
+			},
+			"auth": {
+				"sum": 4600,
+				"type": 1
+			}
+		}`)
+
+		Request(t, reqMCD1, onlinePassMCD)
+		Request(t, reqMCD2, onlinePassMCD)
+		Request(t, reqMCD3, onlinePassMCD)
+		Request(t, reqMCD4, onlinePassMCD)
+	}
+}
+
+func Test_71(t *testing.T) {
+	{
+		now := time.Now()
+		pan := aggregation.Pan + "71"
+
+		reqMCD1 := []byte(`{
+			"id": "` + uuid.New().String() + `",
+				"created": ` + strconv.Itoa(int(now.Add(time.Minute*6).UnixNano())) + `,
+				"tap": {
+				"created": ` + strconv.Itoa(int(now.Add(time.Minute*6).UnixNano())) + `,
+					"resolution": 1,
+					"sign": "test",
+					"terminal": {
+						"id": "5208",
+						"station": "2001085",
+						"direction": 1,
+						"sub_carrier": 1
+					},
+				"card": {
+						"system": 2,
+						"type": 1,
+						"pan": "` + pan + `",
+						"bin": 47617310,
+						"exp": "1224",
+						"emv": "` + test.CardEmvCorrect() + `",
+						"token": {
+							"type": 1
+						}
+				}
+			},
+			"auth": {
+				"sum": 4600,
+				"type": 1
+			}
+		}`)
+
+		reqMCD2 := []byte(`{
+			"id": "` + uuid.New().String() + `",
+				"created": ` + strconv.Itoa(int(now.Add(time.Minute*8).UnixNano())) + `,
+				"tap": {
+				"created": ` + strconv.Itoa(int(now.Add(time.Minute*8).UnixNano())) + `,
+					"resolution": 1,
+					"sign": "test",
+					"terminal": {
+						"id": "5102",
+						"station": "2000008",
+						"direction": 2,
+						"sub_carrier": 1
+					},
+				"card": {
+						"system": 2,
+						"type": 1,
+						"pan": "` + pan + `",
+						"bin": 47617310,
+						"exp": "1224",
+						"emv": "` + test.CardEmvCorrect() + `",
+						"token": {
+							"type": 1
+						}
+				}
+			},
+			"auth": {
+				"sum": 4600,
+				"type": 1
+			}
+		}`)
+
+		reqMCD3 := []byte(`{
+			"id": "` + uuid.New().String() + `",
+				"created": ` + strconv.Itoa(int(now.Add(time.Minute*10).UnixNano())) + `,
+				"tap": {
+				"created": ` + strconv.Itoa(int(now.Add(time.Minute*10).UnixNano())) + `,
+					"resolution": 1,
+					"sign": "test",
+					"terminal": {
+						"id": "5413",
+						"station": "2000605",
+						"direction": 1,
+						"sub_carrier": 1
+					},
+				"card": {
+						"system": 2,
+						"type": 1,
+						"pan": "` + pan + `",
+						"bin": 47617310,
+						"exp": "1224",
+						"emv": "` + test.CardEmvCorrect() + `",
+						"token": {
+							"type": 1
+						}
+				}
+			},
+			"auth": {
+				"sum": 4600,
+				"type": 1
+			}
+		}`)
+
+		reqMCD4 := []byte(`{
+			"id": "` + uuid.New().String() + `",
+				"created": ` + strconv.Itoa(int(now.Add(time.Minute*12).UnixNano())) + `,
+				"tap": {
+				"created": ` + strconv.Itoa(int(now.Add(time.Minute*12).UnixNano())) + `,
+					"resolution": 1,
+					"sign": "test",
+					"terminal": {
+						"id": "5362",
+						"station": "2001005",
 						"direction": 2,
 						"sub_carrier": 1
 					},

@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
 echo "calculator-service"
-cd ../../calculator-service && make generate && make build && make build_complete && make build_restore && make build_mcd && make migrate_up
+cd ../../calculator-service && make generate && make build && make build_complete && make build_restore && make build_mcd && make build_delay && make migrate_up

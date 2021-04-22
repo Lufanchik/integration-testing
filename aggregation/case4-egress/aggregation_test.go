@@ -58,7 +58,7 @@ func Test_1(t *testing.T) {
 					"sign": "test",
 					"terminal": {
 						"id": "3213",
-						"station": "2001137",
+						"station": "2000285",
 						"direction": 2,
 						"sub_carrier": 1
 					},
